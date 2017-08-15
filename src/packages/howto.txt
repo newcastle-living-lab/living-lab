@@ -1,0 +1,16 @@
+Steps:
+
+install node from msi
+
+open console/terminal
+
+make sure there is an npm directory in c:/users/yourname/AppData/Roaming/npm
+(AppData may be hidden, so change directory view properties)
+
+npm install --save socket.io
+
+npm install sqlite3 --save
+
+npm install formidable@latest
+
+

@@ -1,0 +1,219 @@
+/*
+---------------------------------------------------------------
+  Note that styles you apply to the main menu items are inherited by the sub menus items too.
+  If you'd like to avoid this, you could use child selectors (not supported by IE6) - for example:
+  .ll-simple > li > a { ... } instead of .ll-simple a { ... }
+---------------------------------------------------------------*/
+
+
+/* Menu box
+===================*/
+
+	.ll-simple,
+	.ll-simple ul {
+		border-bottom: 1px solid #8888bb;
+		background:#fff;
+		-moz-box-shadow:0 1px 1px rgba(0,0,0,0.2);
+		-webkit-box-shadow:0 1px 1px rgba(0,0,0,0.2);
+		box-shadow:0 1px 1px rgba(0,0,0,0.2);
+	}
+
+
+/* Menu items
+===================*/
+
+	.ll-simple a {
+		padding:11px 10px;
+		color:#000;
+		font-size:11px;
+		line-height:10px;
+		font-family:Verdana;
+		text-decoration:none;
+	}
+	.ll-simple a:hover, .ll-simple a:focus, .ll-simple a:active,
+	.ll-simple a.highlighted {
+		background:#ccccee;
+		color:#000;
+	}
+	/* current items - add the class manually to some item or check the "markCurrentItem" script option */
+	.ll-simple a.current, .ll-simple a.current:hover, .ll-simple a.current:focus, .ll-simple a.current:active {
+		background:#555;
+		color:#fff;
+	}
+	.ll-simple a.has-submenu {
+		padding-right:10px;
+	}
+ 	.ll-simple ul a.has-submenu,
+	.ll-simple-vertical a.has-submenu {
+		padding-right:10px;
+	}
+
+
+/* Sub menu indicators
+===================*/
+
+	.ll-simple a span.sub-arrow {
+		position:absolute;
+		right:12px;
+		top:50%;
+		margin-top:-8px;
+		width:16px;
+		height:16px;
+		line-height:10px;
+		display: none;
+	}
+ 	.ll-simple ul a span.sub-arrow,
+	.ll-simple-vertical a span.sub-arrow {
+		right:auto;
+		margin-left:-14px;
+	}
+
+
+/* Items separators
+===================*/
+
+	.ll-simple li {
+		border-left:1px solid #f3f3f3;
+	}
+	.ll-simple li:first-child {
+		border-left:0;
+	}
+	.ll-simple ul li,
+	.ll-simple-vertical li {
+		border-left:0;
+		border-top:1px solid #f3f3f3;
+	}
+	.ll-simple ul li:first-child,
+	.ll-simple-vertical li:first-child {
+		border-top:0;
+	}
+
+
+/* Scrolling arrows containers for tall sub menus - test sub menu: "Sub test" -> "more..." -> "more..." in the default download package
+===================*/
+
+	.ll-simple span.scroll-up, .ll-simple span.scroll-down {
+		position:absolute;
+		display:none;
+		visibility:hidden;
+		overflow:hidden;
+		border:solid #bbb;
+		border-width:1px 0;
+		background:#fff;
+		height:20px;
+		/* width and position will be automatically set by the script */
+	}
+	.ll-simple span.scroll-up-arrow, .ll-simple span.scroll-down-arrow {
+		position:absolute;
+		top:-2px;
+		left:50%;
+		margin-left:-8px;
+		/* we will use one-side border to create a triangle so that we don't use a real background image, of course, you can use a real image if you like too */
+		width:0;
+		height:0;
+		overflow:hidden;
+		border-width:8px; /* tweak size of the arrow */
+		border-style:dashed dashed solid dashed;
+		border-color:transparent transparent #555 transparent;
+	}
+	.ll-simple span.scroll-down-arrow {
+		top:6px;
+		border-style:solid dashed dashed dashed;
+		border-color:#555 transparent transparent transparent;
+	}
+
+
+/*
+---------------------------------------------------------------
+  Responsiveness
+  These will make the sub menus collapsible when the screen width is too small.
+---------------------------------------------------------------*/
+
+
+@media screen and (max-width: 640px) {
+
+	/* The following will make the sub menus collapsible for small screen devices (it's not recommended editing these) */
+	ul.ll-simple{width:auto !important;}
+	ul.ll-simple ul{display:none;position:static !important;top:auto !important;left:auto !important;margin-left:0 !important;margin-top:0 !important;width:auto !important;min-width:0 !important;max-width:none !important;}
+	ul.ll-simple>li{float:none;}
+	ul.ll-simple>li>a,ul.ll-simple ul.sm-nowrap>li>a{white-space:normal;}
+	ul.ll-simple iframe{display:none;}
+
+	/* Uncomment this rule to disable completely the sub menus for small screen devices */
+	/*.ll-simple ul, .ll-simple span.sub-arrow, .ll-simple iframe {
+		display:none !important;
+	}*/
+
+
+/* Menu box
+===================*/
+
+	.ll-simple ul {
+		border:0;
+		/* darken the background of the sub menus */
+		background:rgba(100,100,100,0.1);
+		-moz-box-shadow:none;
+		-webkit-box-shadow:none;
+		box-shadow:none;
+	}
+
+
+/* Menu items
+===================*/
+
+	.ll-simple a {
+		padding-top:10px;
+		padding-bottom:10px;
+		background:transparent !important;
+		color:#555 !important;
+	}
+	.ll-simple a.current {
+		background:#555 !important;
+		color:#fff !important;
+	}
+	.ll-simple a.has-submenu {
+		padding-right:23px;
+	}
+	/* add some text indentation for the 2+ level sub menu items */
+	.ll-simple ul a {
+		border-left:8px solid transparent;
+	}
+	.ll-simple ul ul a {
+		border-left:16px solid transparent;
+	}
+	.ll-simple ul ul ul a {
+		border-left:24px solid transparent;
+	}
+	.ll-simple ul ul ul ul a {
+		border-left:32px solid transparent;
+	}
+	.ll-simple ul ul ul ul ul a {
+		border-left:40px solid transparent;
+	}
+
+
+/* Sub menu indicators
+===================*/
+
+	.ll-simple a span.sub-arrow {
+		right:auto;
+		margin-left:-14px;
+	}
+	/* Hide sub indicator when item is expanded - we enable the item link when it's expanded */
+	.ll-simple a.highlighted span.sub-arrow {
+		display:none !important;
+	}
+
+
+/* Items separators
+===================*/
+
+	.ll-simple li {
+		border-left:0;
+		border-top:1px solid rgba(0,0,0,0.05) !important;
+	}
+	.ll-simple li:first-child {
+		border-top:0 !important;
+	}
+
+}
