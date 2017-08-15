@@ -1,3 +1,7 @@
+# Living Lab
+src/playlists/*
+!src/playlists/.gitkeep
+
 # Logs
 logs
 *.log
