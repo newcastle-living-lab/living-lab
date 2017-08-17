@@ -1743,12 +1743,10 @@ $('#castaction').prop( 'checked', castmode);
 
 //smartmenus
 	$(function() {
-	  $('#treemenu').smartmenus({subMenusMinWidth:'80px',subMenusMaxWidth:'150px'});
-	  $('#treemenu').bind('click.smapi', function(e, item) {
-	  	//alert('menu item ='+item+' event='+e.target.id);
-	  	$('#treemenu').smartmenus('menuHideAll');
-	  	return false; //do not go to link but rather fire onclick function linked to list element
-
+	  $('#treemenu').smartmenus({
+	  	subMenusMinWidth:'80px',
+	  	subMenusMaxWidth:'150px',
+	  	noMouseOver: true
 	  });
 	});
 
