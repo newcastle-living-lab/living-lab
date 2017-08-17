@@ -38,19 +38,19 @@ var playmode = false;
 var sspeevnonselcol = '#ccddcc';
 var sspeevselectcol = '#aaaaff';
 
-	
+
 
 function updateViewState(prop)
 {
 /**
 * Updates the state attribute of the presentevent
-*/	
+*/
 	var propkey = Object.keys(prop)[0];
 	var propval = prop[propkey];
 //console.log(propkey,propval);
 	var state = activeviewobj.getAttr('state');
 	state[propkey] = propval;
-	
+
 	if (propkey == 'name') {
 		activeviewobj.find('.viewname')[0].text(propval);
 	}
@@ -60,7 +60,7 @@ function updateViewState(prop)
 		for (var i=0;i<presentevents.length;i++) {
 			pestate = presentevents[i].getAttr('state');
 			(pestate.peviews[vindex]).viewstate.name = propval;
-		}		
+		}
 	}
 	txPEventsArr();
 
@@ -77,11 +77,11 @@ function updateViewPropDisp()
 		//make table to display
 		$("#proptable").empty();
 		for (var key in state) {
-		 if (key != 'peviews' && key != 'id') {	
+		 if (key != 'peviews' && key != 'id') {
 			var propval = state[key];
 			if (key == 'type' ) {
 				$("#proptable").append('<tr><td class="tablekey">'+key+'</td><td class="tableval" style="text-align:left">'+propval+'</td></tr>');
-				
+
 			}
 			else {
 				if (isNaN(propval)) {
@@ -97,11 +97,11 @@ function updateViewPropDisp()
 				else {
 					var num = parseFloat(propval);
 					if ((num % 1) == 0.0) { $("#prop"+key).val(propval.toFixed(0));}
-					else { $("#prop"+key).val(propval.toFixed(2));}					
+					else { $("#prop"+key).val(propval.toFixed(2));}
 				}
 			}
 		}
-	}	
+	}
 }
 
 
@@ -117,7 +117,7 @@ function updatePEState(prop)
 {
 /**
 * Updates the state attribute of the presentevent
-*/	
+*/
 	var propkey = Object.keys(prop)[0];
 	var propval = prop[propkey];
 //console.log(propkey,propval);
@@ -148,7 +148,7 @@ function updatePEpropDisp()
 		//make table to display
 		$("#proptable").empty();
 		for (var key in state) {
-		 if (key != 'actiontype' && key != 'index' && key != 'id') {	
+		 if (key != 'actiontype' && key != 'index' && key != 'id') {
 		   var propval = state[key];
 			if (key == 'name' && propval == 'startevent') {
 				$("#proptable").append('<tr><td class="tablekey">'+key+'</td><td class="tableval" style="text-align:left">'+propval+'</td></tr>');
@@ -158,18 +158,18 @@ function updatePEpropDisp()
 				for (var li=0;li<layers.length;li++) {
 					var lrname = layers[li].layername;
 					htmlstr = htmlstr + '<option value="'+lrname+'">'+lrname+'</option>';
-				}												
+				}
 				var pevarr = propval;
 				$("#proptable").append('<tr><td class="tablekey">View</td><td class="tableval" style="text-align:left">Layer</td></tr>');
 				for (var vi=0;vi<views.length;vi++) {
 					var viewname = views[vi].getAttr('state').name;
 					var layerinfo = pevarr[vi];
-					$("#proptable").append('<tr><td class="tablekey">'+viewname+'</td><td class="tableval"><select id="prop'+key+vi.toFixed(0)+'" class="layerselect" size="1" onchange="updatePEState({'+key+vi.toFixed(0)+':this.selectedIndex})"></select></td></tr>');					
+					$("#proptable").append('<tr><td class="tablekey">'+viewname+'</td><td class="tableval"><select id="prop'+key+vi.toFixed(0)+'" class="layerselect" size="1" onchange="updatePEState({'+key+vi.toFixed(0)+':this.selectedIndex})"></select></td></tr>');
 					$('#prop'+key+vi.toFixed(0)).empty();
 					$('#prop'+key+vi.toFixed(0)).append(htmlstr);
-					$('#prop'+key+vi.toFixed(0)).val(layerinfo.layername);					
+					$('#prop'+key+vi.toFixed(0)).val(layerinfo.layername);
 				}
-			
+
 			}
 			else {
 				if (isNaN(propval)) {
@@ -185,12 +185,12 @@ function updatePEpropDisp()
 				else {
 					var num = parseFloat(propval);
 					if ((num % 1) == 0.0) { $("#prop"+key).val(propval.toFixed(0));}
-					else { $("#prop"+key).val(propval.toFixed(2));}					
+					else { $("#prop"+key).val(propval.toFixed(2));}
 				}
 			}
 		}
 	}
- }	
+ }
 }
 
 
@@ -208,7 +208,7 @@ function enableDesignButtons()
 {
 /**
 * Manage the activation of the buttons above the design space
-*/	
+*/
 	if (presentevents.length>0) {
 		$('#deletepebutton').prop('disabled',false);
 	}
@@ -217,7 +217,7 @@ function enableDesignButtons()
 	}
 
 	$('#createpebutton').prop('disabled',false);
-	$('#txscrbutton').prop('disabled',false);	
+	$('#txscrbutton').prop('disabled',false);
 }
 
 function disableDesignButtons()
@@ -226,7 +226,7 @@ function disableDesignButtons()
 * Disable all the design buttons
 */
 	$('#deletepebutton').prop('disabled',true);
-	$('#txscrbutton').prop('disabled',false);	
+	$('#txscrbutton').prop('disabled',false);
 	$('#createpebutton').prop('disabled',true);
 }
 
@@ -239,7 +239,7 @@ function updateallPEventActions(PEstatesarray)
 		//console.log(pevstate);
 		pevstate.peviews = pestate.peviews;
 		updatePresentEvent(pev);
-		
+
 	}
 
 }
@@ -249,7 +249,7 @@ function delPresentEvent()
 {
 	if (activepeevobj != null) {
 		var ans = confirm('Are you sure you want to delete this event?');
-		if (ans == true) {	
+		if (ans == true) {
 			var delind = presentevents.indexOf(activepeevobj);
 			if (delind>-1) {
 				presentevents.splice(delind,1);
@@ -258,7 +258,7 @@ function delPresentEvent()
 				for (var i=0;i<presentevents.length;i++) {
 					var preevstate = presentevents[i].getAttr('state');
 					preevstate.index = i;
-				}	
+				}
 				updateViews();
 				txPEventsDelete(delind);
 				if (presentevents.length>0) {
@@ -267,7 +267,7 @@ function delPresentEvent()
 				else {
 					$('#deletepebutton').prop('disabled',true);
 				}
-				
+
 			}
 		}
 	}
@@ -282,8 +282,8 @@ function updatePresentEvent(pev)
 	for (var j=0;j<oldactions.length;j++) {
 		oldactions[j].destroy();
 	}
-	
-//make new updated ones and adjust height of PE	
+
+//make new updated ones and adjust height of PE
 	var peviews = pevstate.peviews;
 	var numactions = 0;
 	for (var i=0;i<peviews.length;i++) {
@@ -300,29 +300,29 @@ function updatePresentEvent(pev)
 					  	text:actstate.name,
 					  	fontSize:12,
 					  	fill:'black'
-					  });	
+					  });
 			pev.add(actobj);
-			actobj.moveToTop();		  		
+			actobj.moveToTop();
 		}
-				
-		
+
+
 	}
-	
+
 	if (numactions*(actobjh+actobjgap) < peevobjh) {
 		pev.find('.peevblock')[0].height(peevobjh);
 	}
 	else {
 		pev.find('.peevblock')[0].height(numactions*(actobjh+actobjgap));
 	}
-		
-		
+
+
 	var yoffset = viewYoffset+presenteventoffset+peevobjh+presenteventgap;
 	for (var j=0;j<pevstate.index;j++) {
 		var pevnt = presentevents[j];
 		var block = pevnt.find('.peevblock')[0];
 		yoffset = yoffset + block.height() + presenteventgap;
 	}
-	pev.y(yoffset); 
+	pev.y(yoffset);
 	preslayer.draw();
 
 }
@@ -342,8 +342,8 @@ function newPresentEvent()
 	return newPE;
 }
 
-function makePresentEvent(state) 
-{	
+function makePresentEvent(state)
+{
 
 	var peevobj = new Kinetic.Group({
 			name:'presentevent',
@@ -355,7 +355,7 @@ function makePresentEvent(state)
 			height:peevobjh
 	});
 
-	peevobj.setAttr('state',state);	
+	peevobj.setAttr('state',state);
 
 	var peevblock = new Kinetic.Rect({
 			name:'peevblock',
@@ -367,10 +367,10 @@ function makePresentEvent(state)
 			cornerRadius:0,
 			fill:peevnonselcol,
 			stroke:'black',
-			strokeWidth:1	
+			strokeWidth:1
 	});
-	
-		
+
+
 		var nameobj = new Kinetic.Text({
 						name:'peevname',
 					  	draggable: false,
@@ -379,9 +379,9 @@ function makePresentEvent(state)
 					  	text:state.name,
 					  	fontSize:12,
 					  	fill:'black'
-					  	
+
 					  });
-					  
+
 		var startbutton = new Kinetic.RegularPolygon({
 						x: 150,
 						y: 15,
@@ -390,7 +390,7 @@ function makePresentEvent(state)
 					  	radius : 10,
 					  	rotation: -90,
 					  	fill: '#000'
-					  });					  
+					  });
 
 		var playbutton = new Kinetic.RegularPolygon({
 						x: 170,
@@ -400,46 +400,46 @@ function makePresentEvent(state)
 					  	radius : 10,
 					  	rotation: 90,
 					  	fill: '#000'
-					  });					  
-					  
+					  });
+
 		peevobj.add(peevblock);
 		peevobj.add(nameobj);
 		peevobj.add(startbutton);
 		peevobj.add(playbutton);
-		startbutton.moveToTop();			  
-		playbutton.moveToTop();			  
+		startbutton.moveToTop();
+		playbutton.moveToTop();
 
 
 		preslayer.add(peevobj);
-		//peevobj.moveToBottom();	
+		//peevobj.moveToBottom();
 		//preslayer.draw();
 
 	  startbutton.on('mouseover', function() {
 	    document.body.style.cursor = 'pointer';
 	    cursorstate = 'onpeev';
 	  });
-	  
+
 	  startbutton.on('mouseout', function() {
 	    document.body.style.cursor = 'default';
 	    cursorstate = 'free';
 	  });
 
-	  
+
 	  startbutton.on('mousedown', function() {
 	  	 	//this.fill('#ff5555');
 	  	 	 mousedown_action = true;
 	  	 	 if (activepeevobj == this.getParent()) {
 				txstartEvent(activepeevobj);
-			 }			
-			
-			
+			 }
+
+
 	  });
 
 	  playbutton.on('mouseover', function() {
 	    document.body.style.cursor = 'pointer';
 	    cursorstate = 'onpeev';
 	  });
-	  
+
 	  playbutton.on('mouseout', function() {
 	    document.body.style.cursor = 'default';
 	    cursorstate = 'free';
@@ -450,11 +450,11 @@ function makePresentEvent(state)
 	  	 	 mousedown_action = true;
 	  	 	 if (activepeevobj == this.getParent()) {
 				txplayEvent(activepeevobj);
-			 }			
-			
-			
-	  });	  
-	  
+			 }
+
+
+	  });
+
 	  peevobj.on('mousedown', function() {
 	  	 if (mousedown_action == false) {
 	  	 	 activepeevobj = this;
@@ -468,30 +468,30 @@ function makePresentEvent(state)
 					else {
 						selobj.find('.peevblock').fill(peevnonselcol);
 					}
-						
+
 				}
 			 preslayer.draw();
 			 castPresentEvent();
-			 
+
 			 if (playmode ==  true) {
 			 	setTimeout(function () {txplayEvent(activepeevobj);},200);
 			 }
-			 
+
 			}
 			else {
 				mousedown_action = false;
 			}
-			
+
 			updatePEpropDisp();
 
 	  });
-	  
+
 	  peevobj.on('dragend', function (e) {
 	  		var ypos = this.y();
 	  		var pei = 0;
 	  		var indx = (this.getAttr('state')).index;
 	  		var pl = presentevents.length;
-			while ((pei<pl) && (ypos >= presentevents[pei].y())) 
+			while ((pei<pl) && (ypos >= presentevents[pei].y()))
 			{
 				pei = pei+1;
 			}
@@ -506,33 +506,33 @@ function makePresentEvent(state)
 			for (var i=0;i<pl;i++) {
 				var preevstate = presentevents[i].getAttr('state');
 				preevstate.index = i;
-			}			
+			}
 			this.x(prmargin);
 			txPEventsArr();
 			updatePresentEvent(this);
-			updateViews(); 			  		
+			updateViews();
 	  });
-	  
+
 	presentevents.push(peevobj);
 	//console.log(presentevents);
 	if (openingProject == false) {
 		txPEventsArr();
 	}
 	updatePresentEvent(peevobj);
-	updateViews(); 	  
-	
+	updateViews();
+
 	if (presentevents.length>0) {
 		$('#deletepebutton').prop('disabled',false);
 	}
 	else {
 		$('#deletepebutton').prop('disabled',true);
 	}
-	
+
 	return peevobj;
 }
 
-function makeStartEvent(peviews) 
-{	
+function makeStartEvent(peviews)
+{
 	var ind = 0;
 	var pestate = {name:'startevent',index:ind,id:UniqueId(),actiontype:'Eventlist'};
 	if (peviews == null) {
@@ -541,13 +541,13 @@ function makeStartEvent(peviews)
 			var peview = {id:UniqueId(),parentid:pestate.id, viewstate:views[i].getAttr('state'),layerid:'none',layername:'none',actions:[]};
 			peviewarr.push(peview);
 		}
-	
+
 		pestate.peviews = peviewarr;
 		}
 	else {
 		pestate.peviews = peviews;
 	}
-	
+
 	var peevobj = new Kinetic.Group({
 			name:'startevent',
 			draggable:false,
@@ -558,7 +558,7 @@ function makeStartEvent(peviews)
 			height:peevobjh
 	});
 
-	peevobj.setAttr('state',pestate);	
+	peevobj.setAttr('state',pestate);
 
 	var peevblock = new Kinetic.Rect({
 			name:'peevblock',
@@ -570,10 +570,10 @@ function makeStartEvent(peviews)
 			cornerRadius:0,
 			fill:sspeevnonselcol,
 			stroke:'black',
-			strokeWidth:1	
+			strokeWidth:1
 	});
-	
-		
+
+
 		var nameobj = new Kinetic.Text({
 						name:'peevname',
 					  	draggable: false,
@@ -582,17 +582,17 @@ function makeStartEvent(peviews)
 					  	text:pestate.name,
 					  	fontSize:12,
 					  	fill:'black'
-					  	
+
 					  });
-					  
-					  
+
+
 		peevobj.add(peevblock);
 		peevobj.add(nameobj);
 
 
 		preslayer.add(peevobj);
 
-	  
+
 	  peevobj.on('mousedown', function() {
 	  	 if (mousedown_action == false) {
 	  	 	 activepeevobj = this;
@@ -606,68 +606,68 @@ function makeStartEvent(peviews)
 					else {
 						selobj.find('.peevblock').fill(sspeevnonselcol);
 					}
-						
+
 				}
 			 preslayer.draw();
 			 castStartEvent();
-		 
+
 			}
 			else {
 				mousedown_action = false;
 			}
-			
+
 			updatePEpropDisp();
 
 	  });
-	  
+
 	var yoffset = viewYoffset+presenteventoffset;
-	peevobj.y(yoffset); 
+	peevobj.y(yoffset);
 	preslayer.draw();
 
 	return peevobj;
 }
 
 
-function newView() 
+function newView()
 {
 
 	if (views.length < maxviews) {
 		var viewstate = {name:'view'};
-		
+
 		//use existing name or give it unique if same
 		var namearr = new Array();
 		for (var i=0;i<views.length;i++) {
 			var vobj = views[i];
 			var vname = vobj.getAttr('state').name;
 			namearr.push(vname);
-		}			
+		}
 		var nameindex = namearr.indexOf(viewstate.name+'0');
 		if (nameindex == -1) {  //name not used
 			tryname = viewstate.name+'0';
 		}
-		else { 
+		else {
 				var namenum = 0;
 				var same = true;
 				while (namenum<1000 && same) {
 					var tryname = viewstate.name+namenum.toString();
-					
+
 					if (namearr.indexOf(tryname) == -1) {
-						same = false;			
+						same = false;
 					}
 					else {
-						namenum = namenum+1;	
-					}	
-				}	
+						namenum = namenum+1;
+					}
+				}
 		}
 		viewstate.name = tryname;
-	
+
 		var view = makeView(viewstate);
 		views.push(view);
-		
+
 		//add view to presentevents peviews and startevent
 		var spe = preslayer.find('.startevent')[0];
 		if (spe != null) {
-			var spestate = spe.getAttr('state');		
+			var spestate = spe.getAttr('state');
 			spestate.peviews.push({viewstate:viewstate,layerid:'none',layername:'none'});
 		}
 		for (var pei=0;pei<presentevents.length;pei++) {
@@ -679,21 +679,21 @@ function newView()
 		for (var vi=0;vi<views.length;vi++) {
 			views[i].moveToBottom();
 		}
-		
+
 		if (views.length>0) {
 			$('#deleteviewbutton').prop('disabled',false);
 		}
 		else {
 			$('#deleteviewbutton').prop('disabled',true);
 		}
-		
+
 		if (views.length<maxviews) {
 			$('#createviewbutton').prop('disabled',false);
 		}
 		else {
 			$('#createviewbutton').prop('disabled',true);
 		}
-				
+
 	}
 }
 
@@ -701,7 +701,7 @@ function delView()
 {
 	if (activeviewobj != null) {
 		var ans = confirm('Are you sure you want to delete this view?');
-		if (ans == true) {	
+		if (ans == true) {
 			var delind = views.indexOf(activeviewobj);
 			if (delind>-1) {
 				views.splice(delind,1);
@@ -722,14 +722,14 @@ function delView()
 				}
 				//remove view from presentevents peviews and startevent
 				var spe = preslayer.find('.startevent')[0];
-				var spestate = spe.getAttr('state');		
+				var spestate = spe.getAttr('state');
 				spestate.peviews.splice(delind,1);
 				for (var pei=0;pei<presentevents.length;pei++) {
 					var peviewstate = presentevents[pei].getAttr('state');
 					peviewstate.peviews.splice(delind,1);
 				}
 				txPEventsArr();
-				
+
 			}
 			updateViews();
 			preslayer.draw();
@@ -742,15 +742,15 @@ function updateViews()
 {
 //	var newheight = presenteventoffset;
 	var newheight = presenteventoffset+peevobjh+presenteventgap;
-	for (var pei=0;pei<presentevents.length;pei++) 
+	for (var pei=0;pei<presentevents.length;pei++)
 	{
 		var pev = presentevents[pei];
 		//updatePresentEvent(pev);
 		newheight = newheight + pev.find('.peevblock')[0].height() + presenteventgap;
 	}
-	
+
 	if (newheight<viewheight) { newheight = viewheight; }
-	
+
 	viewheight = newheight;
 	for (var swi=0;swi<views.length;swi++)
 	{
@@ -764,7 +764,7 @@ function updateViews()
 	presstage.height(prstageh);
 }
 
-		
+
 function makeView(state)
 {
 	var viewindex = views.length;
@@ -776,8 +776,8 @@ function makeView(state)
 			width:viewwidth,
 			height:viewheight+viewtextspace
 	});
-	
-	
+
+
 	var viewblock = new Kinetic.Rect({
 			name:'viewblock',
 			draggable:false,
@@ -788,9 +788,9 @@ function makeView(state)
 			cornerRadius:5,
 			fill:viewnonselcol,
 			stroke:'black',
-			strokeWidth:1	
+			strokeWidth:1
 	});
-	
+
 	var nameobj = new Kinetic.Text({
 						name:'viewname',
 					  	draggable: false,
@@ -800,9 +800,9 @@ function makeView(state)
 					  	fontSize:12,
 					  	fill:'black'
 					  });
-					  
+
 		viewobj.add(viewblock);
-		viewobj.add(nameobj);			  
+		viewobj.add(nameobj);
 		preslayer.add(viewobj);
 		viewobj.moveToBottom();
 		nameobj.moveToTop();
@@ -811,7 +811,7 @@ function makeView(state)
  	  viewobj.on('mousedown', function() {
 	  	 if (mousedown_action == false) {
 	  	 	 activeviewobj = this;
-		  	 
+
 		  	 var vchildren = preslayer.getChildren().toArray();
 				for (var i=0;i<vchildren.length;i++) {
 					var selobj = vchildren[i];
@@ -821,7 +821,7 @@ function makeView(state)
 					else {
 						selobj.find('.viewblock').fill(viewnonselcol);
 					}
-						
+
 				}
 			 preslayer.draw();
 			}
@@ -830,7 +830,7 @@ function makeView(state)
 			}
 			updateViewPropDisp();
 
-	  });		
+	  });
 
 	viewobj.setAttr('state',state);
 	return viewobj;
@@ -851,13 +851,13 @@ function createPEandViews(peinfo)
 			for (var vi=0;vi<peviews.length;vi++) {
 				var view = makeView(peviews[vi].viewstate);
 				views.push(view);
-			}		
+			}
 			// make PEs
 			for (var pei=0;pei<evlists.length;pei++) {
 				pestate = evlists[pei];
 				makePresentEvent(pestate);
 			}
-			
+
 			preslayer.draw();
 			openingProject = false;
 		}
@@ -870,7 +870,7 @@ function togFullscreen() {
     var element = document.documentElement;
 
 	if (fullscreen == false) {
-    // These function will not exist in the browsers that don't support fullscreen mode yet, 
+    // These function will not exist in the browsers that don't support fullscreen mode yet,
     // so we'll have to check to see if they're available before calling them.
     if (element.RequestFullScreen) {
     	element.RequestFullScreen();
@@ -879,7 +879,7 @@ function togFullscreen() {
     else if (element.mozRequestFullScreen) {
       element.mozRequestFullScreen();  //Mozilla
 	   fullscreen = true;
-    } 
+    }
     else if (element.webkitRequestFullScreen) {
       element.webkitRequestFullScreen();  //Chrome, Safari
 	   fullscreen = true;
@@ -889,18 +889,18 @@ function togFullscreen() {
     if (document.cancelFullScreen) {
       document.cancelFullScreen();
 	   fullscreen = false;
-    } 
+    }
     else if (document.mozCancelFullScreen) {
       document.mozCancelFullScreen();
 	   fullscreen = false;
-    } 
+    }
     else if (document.webkitCancelFullScreen) {
       document.webkitCancelFullScreen();
 	   fullscreen = false;
-    } 		
+    }
  	}
- 	
-	
+
+
 }
 
 function setCastmode()
@@ -916,19 +916,19 @@ function screenSetup()
 */
  	var ww = $(window).width();
 	var wh = $(window).height();
-	$('#page').css({'height': Math.round(0.98*wh).toString() + 'px'});	
+	$('#page').css({'height': Math.round(0.98*wh).toString() + 'px'});
 	$('#page').css({'width': Math.round(0.98*ww).toString() + 'px'});
-	var ph = $('#page').height();	
-	var pw = $('#page').width();	
-	$('#leftcolumn').css({'height': Math.round(1.0*ph).toString() + 'px'});	
-	$('#leftcolumn').css({'width': Math.round(0.2*pw).toString() + 'px'});	
-	$('#rightcolumn').css({'left': Math.round(0.2*pw).toString() + 'px'});	
-	$('#rightcolumn').css({'height': Math.round(1.0*ph).toString() + 'px'});	
-	$('#rightcolumn').css({'width': Math.round(0.8*pw).toString() + 'px'});	
-	
-	$('#functionspace').css({'height': Math.round(0.5*ph).toString() + 'px'});	
-	$('#presentspace').css({'height': Math.round(ph-10).toString() + 'px'});	
-	//$('#presentspace').height(Math.round(0.7*ph-10));	
+	var ph = $('#page').height();
+	var pw = $('#page').width();
+	$('#leftcolumn').css({'height': Math.round(1.0*ph).toString() + 'px'});
+	$('#leftcolumn').css({'width': Math.round(0.2*pw).toString() + 'px'});
+	$('#rightcolumn').css({'left': Math.round(0.2*pw).toString() + 'px'});
+	$('#rightcolumn').css({'height': Math.round(1.0*ph).toString() + 'px'});
+	$('#rightcolumn').css({'width': Math.round(0.8*pw).toString() + 'px'});
+
+	$('#functionspace').css({'height': Math.round(0.5*ph).toString() + 'px'});
+	$('#presentspace').css({'height': Math.round(ph-10).toString() + 'px'});
+	//$('#presentspace').height(Math.round(0.7*ph-10));
 	$('#propedit').css({'height': Math.round(0.5*ph-12).toString() + 'px'});
 	prh = $('#presentspace').height();
 	prw = $('#presentspace').width();
@@ -958,7 +958,7 @@ function castStartEvent()
 {
 	if (activepeevobj != null) {
 		var spe = preslayer.find('.startevent')[0];
-		var spestate = spe.getAttr('state');		
+		var spestate = spe.getAttr('state');
 		var startinfo = spestate.peviews;
 		var msg = JSON.stringify({command:'castStartinfo',info:startinfo});
 		socket.emit('updateEvents', msg);
@@ -974,7 +974,7 @@ function txPEventsArr()
 		statearr.push(pestate);
 	}
 	var spe = preslayer.find('.startevent')[0];
-	var spestate = spe.getAttr('state');		
+	var spestate = spe.getAttr('state');
 	var seviews = spestate.peviews;
 	var msg = JSON.stringify({command:'updateEventArr',info:{pel:statearr,sev:seviews}});
 	socket.emit('updateEvents', msg);
@@ -1026,18 +1026,18 @@ function txplayEvent(peobj)
 {
 	//message to screen to play
 	var ind = presentevents.indexOf(peobj);
-	txplayPEEvents(ind);		
-	//message to screen to play	
+	txplayPEEvents(ind);
+	//message to screen to play
 	var pevstate = peobj.getAttr('state');
 	for (var pei=0;pei<pevstate.peviews.length;pei++) {
 		var peview = pevstate.peviews[pei];
 		var scrname = peview.viewstate.name;
 		var layerid = peview.layerid;
-		if (layerid != 'none' && peview.actions.length>0) {		
+		if (layerid != 'none' && peview.actions.length>0) {
 			var scrcommand = {view:scrname,scrtxmsg:{command:'play',info:''}};
 			var scrjson = JSON.stringify(scrcommand);
 			socket.emit('screenmsg', scrjson);
-			
+
 		}
 	}
 }
@@ -1046,14 +1046,14 @@ function txstartEvent(peobj)
 {
 	//message to screen to go to startstate
 	var ind = presentevents.indexOf(peobj);
-	txstartPEEvents(ind);	
-	//message to screen to go to startstate	
+	txstartPEEvents(ind);
+	//message to screen to go to startstate
 	var pevstate = peobj.getAttr('state');
 	for (var pei=0;pei<pevstate.peviews.length;pei++) {
 		var peview = pevstate.peviews[pei];
 		var scrname = peview.viewstate.name;
 		var layerid = peview.layerid;
-		if (layerid != 'none' && peview.actions.length>0) {		
+		if (layerid != 'none' && peview.actions.length>0) {
 			var scrcommand = {view:scrname,scrtxmsg:{command:'start',info:''}};
 			var scrjson = JSON.stringify(scrcommand);
 			socket.emit('screenmsg', scrjson);
@@ -1063,9 +1063,9 @@ function txstartEvent(peobj)
 
 function ioUpdate(respdata) {
 		//console.log(respdata);
-		var viewcommand = JSON.parse(respdata);	
+		var viewcommand = JSON.parse(respdata);
 		var command = viewcommand.command;
-		
+
 		//console.log(command);
 		switch(command) {
 
@@ -1073,44 +1073,44 @@ function ioUpdate(respdata) {
 				var msg = viewcommand.info;
 				if (msg == 'openready'){
 					designready = true;
-					$('#createpebutton').prop('disabled',false);				
-					$('#createviewbutton').prop('disabled',false);	
-					txPEventsGetPEInfo();			
+					$('#createpebutton').prop('disabled',false);
+					$('#createviewbutton').prop('disabled',false);
+					txPEventsGetPEInfo();
 				}
 				else if (msg == 'newready'){
 					designready = true;
-					$('#createpebutton').prop('disabled',false);				
-					$('#createviewbutton').prop('disabled',false);	
+					$('#createpebutton').prop('disabled',false);
+					$('#createviewbutton').prop('disabled',false);
 					makeStartEvent([]);
-					txPEventsGetLayerInfo();			
+					txPEventsGetLayerInfo();
 				}
 				else {
 					designready = false;
 					alert('Designscreen is not ready');
 				}
-			break;	
-			
+			break;
+
 			case 'layerinfo':
 				layers = [{layerid:'none',layername:'none'}];
-				Array.prototype.push.apply(layers,viewcommand.info);	
+				Array.prototype.push.apply(layers,viewcommand.info);
 				//console.log(layers);
-				updatePEpropDisp();	
-			break;	
-			
+				updatePEpropDisp();
+			break;
+
 			case 'peinfo':
 				var peinfo = viewcommand.info;
-				openingProject = true; 
-				createPEandViews(peinfo);	
-				txPEventsGetLayerInfo();			
-			break;	
+				openingProject = true;
+				createPEandViews(peinfo);
+				txPEventsGetLayerInfo();
+			break;
 
 			case 'updateAllPEventActions':
 				var statesarr = viewcommand.info;
-				updateallPEventActions(statesarr);													
+				updateallPEventActions(statesarr);
 			break;
-			
+
 		}
-		
+
 }
 
 function setPlaymode()
@@ -1141,8 +1141,8 @@ presstage = new Kinetic.Stage({
 	presstage.add(preslayer);
 	preslayer.draw();
 
-	
-txPEventsCheckDesign();	
+
+txPEventsCheckDesign();
 disableDesignButtons();
 
 
@@ -1152,21 +1152,21 @@ document.addEventListener("fullscreenchange", function () {
 	screenSetup();
 	resizeStages();
 }, false);
- 
+
 document.addEventListener("mozfullscreenchange", function () {
 	screenSetup();
 	resizeStages();
 }, false);
- 
+
 document.addEventListener("webkitfullscreenchange", function () {
 	screenSetup();
 	resizeStages();
 }, false);
- 
+
 screenSetup();
- 
+
 //$('#playaction').prop( 'checked', playmode);
- 
+
 $('#functionspace').resizable({
     // only use the southern handle
     handles: 's',
@@ -1177,19 +1177,19 @@ $('#functionspace').resizable({
     resize: function(event, ui){
         var currentHeight = ui.size.height;
 
-        // this accounts for padding in the panels + 
+        // this accounts for padding in the panels +
         // borders, you could calculate this using jQuery
-        var padding = 12; 
+        var padding = 12;
 
-        // this accounts for some lag in the ui.size value, if you take this away 
+        // this accounts for some lag in the ui.size value, if you take this away
         // you'll get some instable behaviour
         $(this).height(currentHeight);
 
         // set the tree panel height
         var containerHeight = $('#leftcolumn').height();
-        $("#propedit").height(containerHeight - currentHeight - padding);            
+        $("#propedit").height(containerHeight - currentHeight - padding);
     }
-}); 
+});
 
 
 }

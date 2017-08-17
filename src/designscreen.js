@@ -26,7 +26,7 @@ function makeCurvedArrow()
   else {
 		alert('no layer is defined');
   }
-  	
+
 }
 
 
@@ -35,7 +35,7 @@ function updateprojState(prop)
 {
 /**
 * Updates the state attribute of the project
-*/	
+*/
 	var propkey = Object.keys(prop)[0];
 	var propval = prop[propkey];
 //console.log(propkey,propval);
@@ -46,10 +46,10 @@ function updateprojState(prop)
 	if (propkey == 'screenwidth' || propkey == 'screenheight') {
 		//adjust active screen area and txscale
 		stageDims();
-	   //project.screenwidthstage.setAttr('state',stagestate);     			
+	   //project.screenwidthstage.setAttr('state',stagestate);
 	}
-	
-		
+
+
 }
 
 function updateprojPropDisp()
@@ -62,11 +62,11 @@ function updateprojPropDisp()
 		//make table to display
 		$("#proptable").empty();
 		for (var key in state) {
-		 if (key != 'layers' && key != 'actions' && key != 'library' && key != 'id' && key != 'presentevents' && key != 'starteventviews') {	
+		 if (key != 'layers' && key != 'actions' && key != 'library' && key != 'id' && key != 'presentevents' && key != 'starteventviews') {
 			var propval = state[key];
 			if (key == 'type' || key == 'createdate' || key == 'lastdate') {
 				$("#proptable").append('<tr><td class="tablekey">'+key+'</td><td class="tableval" style="text-align:left">'+propval+'</td></tr>');
-				
+
 			}
 			else {
 				if (isNaN(propval)) {
@@ -83,11 +83,11 @@ function updateprojPropDisp()
 					var num = parseFloat(propval);
 					//console.log(propval,num);
 					if ((num % 1) == 0.0) { $("#prop"+key).val(propval.toFixed(0));}
-					else { $("#prop"+key).val(propval.toFixed(2));}					
+					else { $("#prop"+key).val(propval.toFixed(2));}
 				}
 			}
 		}
-	}	
+	}
 }
 
 function updateObjStateandTree(prop)
@@ -95,37 +95,37 @@ function updateObjStateandTree(prop)
 /**
 * Updates the state attribute and the tree node of the active object
 * This calls the updateGroupState or updateState functions in llcore.js depending on the type
-*/	
+*/
 	if (selectedObjlist.length>1) {
 		for (var obji=0;obji<selectedObjlist.length;obji++)
 		{
-			var obj = selectedObjlist[obji];	
+			var obj = selectedObjlist[obji];
 			var state = obj.getAttr('state');
 			if (state.type == 'Group') {
 				updateGroupState(obj,prop);
-			}		
-			else { 
+			}
+			else {
 				updateState(obj,prop);
-			}		
-		}		
+			}
+		}
 			activeobject = obj;
 	}
 	else if (activeobject != null) {
 		var state = activeobject.getAttr('state');
 		if (state.type == 'Group') {
 			updateGroupState(activeobject,prop);
-		}		
-		else { 
+		}
+		else {
 			updateState(activeobject,prop);
 		}
 		var propkey = Object.keys(prop)[0];
 		var propval = prop[propkey];
-		//console.log(propkey,propval);	
+		//console.log(propkey,propval);
 		//update tree if there
 		if (treecontainer && propkey == 'name') {
 			treecontainer.jstree(true).rename_node(selectednode, propval);
 		}
-	
+
 	}
 }
 
@@ -133,11 +133,11 @@ function libuse()
 {
 /**
 * Adds the selected library object on the libpane to the active layer and creates a treenode for it
-*/	
+*/
 	if (layer != null) {
 		if (activelibobj != null) {
 		 	var dw = $('#designspace').width();
-			var dh = $('#designspace').height();	
+			var dh = $('#designspace').height();
 			var statestr = JSON.stringify(activelibobj.getAttr('state'));
 			var state = JSON.parse(statestr);
 			state.x = state.x+Math.floor(dw/2);
@@ -148,7 +148,7 @@ function libuse()
 			state.name = uniqueNameonLayer(obj);
 			state.id = UniqueId();  //replace id if used from library else objects will have same ids
 			obj.setAttr('state',state);
-			layer.add(obj);	
+			layer.add(obj);
 			}
 			else {
 			var obj = newobj(true,state);
@@ -158,7 +158,7 @@ function libuse()
 			layer.add(obj);
 			}
 			obj.id(state.id);//replace id if used from library else objects will have same ids
-			layer.draw();	
+			layer.draw();
 			//console.log(obj.id());
 			addTreeNode(layer.id(),obj.id(),state);
 	  	}
@@ -166,17 +166,17 @@ function libuse()
   else {
 		alert('no layer is defined');
   }
-  
+
 }
 
 function delObject()
 {
-/** 
+/**
 * Deletes the selected object and removes it from the layer and tree
-*/	
+*/
 	if (activeobject != null) {
 		var ans = confirm('Are you sure you want to delete this object?');
-		if (ans == true) {	
+		if (ans == true) {
 			//delete actions associated with object
 			var actions = getNodeActions(activeobject);
 			actlayer = layer.getAttr('actionlayer');
@@ -186,9 +186,9 @@ function delObject()
 			actlayer.draw();
 
 			delobj();
-	
+
 			treecontainer.jstree(true).delete_node(selectednode);
-	
+
 		}
 	}
 }
@@ -206,10 +206,10 @@ function createObject()
 			layer.add(obj);
 	  		if (objSelector != null) {
 	  			objSelector.deleteOldSelector();
-				objSelector.drawSelector(obj);			
+				objSelector.drawSelector(obj);
 	  		}
 			activeobject = obj;
-			updatePropDisp(); 
+			updatePropDisp();
 		}
 		else {
 			var obj = addobj(objtype);
@@ -218,8 +218,8 @@ function createObject()
 		objstate.name = uniqueNameonLayer(obj);
 		obj.name(objstate.name);
 		obj.setAttr('state',objstate);
-		layer.draw();	
-		
+		layer.draw();
+
 		addTreeNode(layer.id(),obj.id(),objstate);
 }
 
@@ -228,7 +228,7 @@ function copyObject()
 /**
 * Copies the selected object and adds it to the layer and tree with a unique name
 * Also assigns the selector object to the new copy
-*/	
+*/
 		if (activeobject != null) {
 		var statestr = JSON.stringify(activeobject.getAttr('state'));
 		var state = JSON.parse(statestr);
@@ -248,12 +248,12 @@ function copyObject()
 		obj.name(objstate.name);
 		obj.setAttr('state',objstate);
 		layer.add(obj);
-		layer.draw();	
+		layer.draw();
   		objSelector.deleteOldSelector();
 		activeobject = obj;
-		updatePropDisp();  	
+		updatePropDisp();
 		objSelector.drawSelector(obj);
-		
+
 		addTreeNode(layer.id(),obj.id(),objstate);
 	  }
 }
@@ -269,7 +269,7 @@ function groupObjects()
 	for (var i=0;i<tempgroup.length;i++) {
 		var obj = tempgroup[i];
 		//console.log(obj.id());
-		treecontainer.jstree('delete_node', obj.id());			
+		treecontainer.jstree('delete_node', obj.id());
 	}
 	var grobj = groupobjects();
 	var state = grobj.getAttr('state');
@@ -293,8 +293,8 @@ function ungroupObjects()
 	for (var iact=0;iact<actions.length;iact++) {
 		actions[iact].destroy();
 	}
-	actlayer.draw();	
-		
+	actlayer.draw();
+
 	var children = ungroupobjects();
 	//console.log(children);
 	if (children != null) {
@@ -330,7 +330,7 @@ function resetlib()
 {
 /**
 * Displays all the objects in the library database
-*/	
+*/
 	clearObjects();
 	loadObjects('all');
 }
@@ -340,20 +340,20 @@ function moveNode(node,newparentid,oldparentid,newposition,oldposition)
 {
 /**
 * Moves an object up or down in its z-index when the treenode of the object is moved in the tree
-*/	
+*/
 	var nodetype = node.type;
 	switch(nodetype) {
-		
+
 		case 'Layer':
 			layer.setZIndex(newposition);
 		break;
-		
+
 		default:
-			var newparent = treecontainer.jstree(true).get_node(newparentid);  
-			var oldparent = treecontainer.jstree(true).get_node(oldparentid); 
+			var newparent = treecontainer.jstree(true).get_node(newparentid);
+			var oldparent = treecontainer.jstree(true).get_node(oldparentid);
 			var oldlayer = stage.find('#'+oldparentid)[0];
 			layer = stage.find('#'+newparentid)[0];
-			
+
 			obj = oldlayer.find('#'+node.id)[0];
 			if (obj == null) {
 				activeobject = null;
@@ -374,9 +374,9 @@ function moveNode(node,newparentid,oldparentid,newposition,oldposition)
 					treecontainer.jstree('select_node', newparentid);
 				}
 			}
-		
+
 		break;
-		
+
 	}
 
 }
@@ -392,34 +392,34 @@ function selectObject(source)
 	 case 'jstree':
 		var id = selectednode.id;
 		//console.log(selectednode.id);
-		var nodetype = selectednode.type; 
-		
+		var nodetype = selectednode.type;
+
 		switch(nodetype) {
 			case 'Project':
 				disableDesignButtons();
-				clearActiveObject();					
+				clearActiveObject();
 				clearTempGroup();
-				updateprojPropDisp();  	
+				updateprojPropDisp();
 			break;
 
 			case 'Layer':
 				disableDesignButtons();
-				clearActiveObject();					
-				clearTempGroup();	
+				clearActiveObject();
+				clearTempGroup();
 				if (stage != null) {
 					stage.clear();
 					layer = stage.find('#'+id)[0];
 					if (layer != null) {
-						activeobject = layer;			
+						activeobject = layer;
 						actlayer = layer.getAttr('actionlayer');
 						updatePropDisp();
-						layer.draw(); 
-						actstage.clear(); 	
+						layer.draw();
+						actstage.clear();
 						actlayer.draw();
-					}		
+					}
 				}
 			break;
-			
+
 			default:
 			//search for objects across all layers
 				selectedObjlist.length = 0;
@@ -433,7 +433,7 @@ function selectObject(source)
 						obj = projlayers[lcount].find('#'+oid)[0];
 						lcount = lcount +1;
 					}
-					
+
 					if (obj != null) {
 						selectedObjlist.push(obj);
 					}
@@ -445,7 +445,7 @@ function selectObject(source)
 				else {
 					obj = null;
 				}
-				
+
 				//console.log(obj);
 				if (obj == null) {
 					activeobject = null;
@@ -463,9 +463,9 @@ function selectObject(source)
 					}
 					actlayer = layer.getAttr('actionlayer');
 					updatePropDisp();
-					actstage.clear(); 	
-					actlayer.draw();					
-					  	
+					actstage.clear();
+					actlayer.draw();
+
 					if (objSelector == null) {
 						objSelector = new objectSelector();
 					}
@@ -473,7 +473,7 @@ function selectObject(source)
 					enableDesignButtons();
 					$('#actiontypeselect').empty();
 					$('#actiontypeselect').append(makeActionTypeOptions(activeobject));
-					//remember last actiontype  
+					//remember last actiontype
 					var opts = $('#actiontypeselect option');
 					var values = $.map(opts,function(opt) {
 						return($(opt).val());
@@ -481,21 +481,21 @@ function selectObject(source)
 					//console.log(values);
 					if ($.inArray(activeactiontype,values) != -1)
 					{
-						$('#actiontypeselect').val(activeactiontype);						
-					}				
-					
+						$('#actiontypeselect').val(activeactiontype);
+					}
+
 				}
-			
+
 			break;
-			
+
 		}
 	break;
-	
+
 	case 'grouping':
 			enableDesignButtons();
-	
+
 	break;
-	
+
 	case 'kineticjs':
 		if (activeobject != null) {
 			layer = activeobject.getLayer();
@@ -507,7 +507,7 @@ function selectObject(source)
 			treecontainer.jstree('select_node', id);
 			$('#actiontypeselect').empty();
 			$('#actiontypeselect').append(makeActionTypeOptions(activeobject));
-			//remember last actiontype  
+			//remember last actiontype
 			var opts = $('#actiontypeselect option');
 			var values = $.map(opts,function(opt) {
 				return($(opt).val());
@@ -515,12 +515,12 @@ function selectObject(source)
 			//console.log(values);
 			if ($.inArray(activeactiontype,values) != -1)
 			{
-				$('#actiontypeselect').val(activeactiontype);						
-			}							
+				$('#actiontypeselect').val(activeactiontype);
+			}
 
-		}	
+		}
 	break;
-	
+
 	}
 }
 
@@ -547,7 +547,7 @@ function createStage(stagestate)
 	$('#'+stagestate.container).width(stw);
 
 	if (stagestate.id == 'none') {stagestate.id = UniqueId();}
-	
+
 	var newstage = new Kinetic.Stage({
           container: stagestate.container,
           id: stagestate.id,
@@ -555,9 +555,9 @@ function createStage(stagestate)
           width: stw,
           height: sth
         });
-        
-    stagestate.txscale = stagestate.screenwidth/stw;    
-    newstage.setAttr('state',stagestate);     
+
+    stagestate.txscale = stagestate.screenwidth/stw;
+    newstage.setAttr('state',stagestate);
    return newstage;
 }
 
@@ -565,36 +565,36 @@ function createLayer(layerstate)
 {
 /**
 * Creates a new layer on the active stage/view
-*/	
+*/
 	if (layer != null) {layer.clear();}
 	if (layerstate.id == 'none') {layerstate.id = UniqueId();}
 	var newlayer = new Kinetic.Layer({name:layerstate.name,id:layerstate.id});
-   newlayer.setAttr('state',layerstate);     
+   newlayer.setAttr('state',layerstate);
 	stage.add(newlayer);
-	
+
 // create an action layer for this layer
 	var actionlayer = new Kinetic.Layer({name:"act_"+layerstate.name,id:UniqueId()});
 	actstage.add(actionlayer);
 	actionlayer.setAttr('parentlayer',newlayer);
 	newlayer.setAttr('actionlayer',actionlayer);
-	if (openedproject == false) {	
+	if (openedproject == false) {
 		makeActionBox(actionlayer);
 	}
 	makeLayerAnimation(actionlayer);
 
-	
+
 	return newlayer;
 
 }
 
-function removeProject(pj) 
-{	
+function removeProject(pj)
+{
 /**
 * Remove a project from the database by making an ajax call to nodeio
-*/								
+*/
 		var projid = pj.getAttribute('data-projid');
 		var projstatestr = pj.getAttribute('data-project');
-		var projdetail = JSON.parse(projstatestr);		
+		var projdetail = JSON.parse(projstatestr);
 		var ans = confirm('Are you sure you want to remove the project '+projdetail.name+'?');
 		if (ans == true) {
 				$.ajax({
@@ -610,11 +610,11 @@ function removeProject(pj)
 								})
 								.always(function() {
 								//alert( "complete" );
-							
 
-								});			
+
+								});
 		}
-	
+
 }
 
 function newProject()
@@ -622,7 +622,7 @@ function newProject()
 /**
 * Create a new project and instantiate the tree
 */
-	var cdate = (new Date()).toLocaleDateString(); 
+	var cdate = (new Date()).toLocaleDateString();
 	project ={id:'project',name:'Project',creator:'unknown',type:'Project',createdate:cdate,lastdate:cdate,screenheight:1080,screenwidth:1920,layers:[],presentevents:[],starteventviews:[]};
 
 	clearActiveObject();
@@ -647,8 +647,8 @@ function populateProject(proj)
 		var layers = proj.layers;
 		for (var j=0;j<layers.length;j++) {
 			var layerstate = layers[j];
-			var newlayer = createLayer(layerstate); 
-			stage.add(newlayer); 
+			var newlayer = createLayer(layerstate);
+			stage.add(newlayer);
 			layer = newlayer;
 			nodelist.push({parentid:proj.id,nodeid:newlayer.id(),nodestate:layerstate});
 			var objects = layerstate.children;
@@ -656,13 +656,13 @@ function populateProject(proj)
 				var objstate = objects[k];
 				if (objstate.type == 'Group') {
 					var obj = newgroupobj(true,false,objstate);
-					layer.add(obj);	
+					layer.add(obj);
 				}
 				else {
 					var obj = newobj(true,objstate);
 					layer.add(obj);
-				}	
-				layer.draw();			
+				}
+				layer.draw();
 				nodelist.push({parentid:newlayer.id(),nodeid:obj.id(),nodestate:objstate});
 
 			}
@@ -679,15 +679,15 @@ function populateProject(proj)
 				}
 				for (var ai=0;ai<eventliststate.actions.length;ai++) {
 					var actstate = eventliststate.actions[ai];
-					var actobj = actionobj(actstate,evobj);		
+					var actobj = actionobj(actstate,evobj);
 				}
-				
+
 			}
-			
+
 		}
-	//info to generate presentscreen views and presentevents	
+	//info to generate presentscreen views and presentevents
 	eventliststates = [];
-	Array.prototype.push.apply(eventliststates,proj.presentevents);	
+	Array.prototype.push.apply(eventliststates,proj.presentevents);
 
 	stage.clear();
 	layer.draw();
@@ -700,11 +700,11 @@ function fetchnextProjectNode()
 * Called by tree when nodes are created during opening of project
 * allows nodes to be added recursively on nodecreate event of tree to allow each operation to complete
 * before new node is added
-*/ 
+*/
 
 		if (listcounter<nodelist.length) {
 			var nodeinfo = nodelist[listcounter];
-			listcounter += 1; 
+			listcounter += 1;
 			return nodeinfo;
 		}
 		else {
@@ -736,18 +736,18 @@ function openProject(pj)
 		stage.destroyChildren();
 		actstage.clear();
 		actstage.destroyChildren();
-		
+
 		project = JSON.parse(projstatestr);
 		project.id = projid;
 		eventliststates = [];
-		Array.prototype.push.apply(eventliststates,project.presentevents);	
+		Array.prototype.push.apply(eventliststates,project.presentevents);
 		nodelist = [];
 		populateProject(project);
 		listcounter = 0;
 
 		makeTree(project);
-		
-		stageDims();	
+
+		stageDims();
 
 		setTimeout(function () {
 			if (layer == null) {
@@ -756,8 +756,8 @@ function openProject(pj)
 			layer.draw();
 			var id = layer.id();
 			treecontainer.jstree('select_node', id);
-		},500);				
-				
+		},500);
+
 }
 
 
@@ -771,14 +771,14 @@ function packageProject()
 	var eventliststatearr = new Array();
 	var actionstatearr = new Array();
 	var objstatearr = new Array();
-	
-		
+
+
 		var projlayers = stage.getLayers().toArray();
 		layerstatearr = [];
 		for (var vch=0;vch<projlayers.length;vch++) {
 			var vlayer = projlayers[vch];
 			var layerstate = vlayer.getAttr('state');
-			
+
 			var lchildren = vlayer.getChildren().toArray();
 			objstatearr = [];
 			for (var lch=0;lch<lchildren.length;lch++) {
@@ -789,7 +789,7 @@ function packageProject()
 				}
 			}
 			layerstate.children = objstatearr;
-			
+
 			var actionlayer = vlayer.getAttr('actionlayer');
 			var layereventlists = actionlayer.find('.eventgroup');
 			eventliststatearr = [];
@@ -803,21 +803,21 @@ function packageProject()
 				var evstate = layereventlists[evi].getAttr('state');
 				evstate.actions = actionstatearr;
 				eventliststatearr.push(evstate);
-			
+
 			}
 			layerstate.eventlists = eventliststatearr;
-						
-			
-			
+
+
+
 			layerstatearr.push(layerstate);
 		}
-		
-	var projstate = {id:project.id,name:project.name,creator:project.creator,type:'Project',createdate:project.createdate,lastdate:ldate,screenwidth:project.screenwidth,screenheight:project.screenheight,
-layers:layerstatearr,presentevents:eventliststates,starteventviews:project.starteventviews};  
-	
 
-	
-	return projstate;	
+	var projstate = {id:project.id,name:project.name,creator:project.creator,type:'Project',createdate:project.createdate,lastdate:ldate,screenwidth:project.screenwidth,screenheight:project.screenheight,
+layers:layerstatearr,presentevents:eventliststates,starteventviews:project.starteventviews};
+
+
+
+	return projstate;
 }
 
 function saveProject()
@@ -845,12 +845,12 @@ function saveProject()
 					.always(function() {
 					//alert( "complete" );
 					});
-						
+
 }
 
 function saveasnewProject() {
 	project.id = 'project';
-	var cdate = (new Date()).toLocaleDateString(); 
+	var cdate = (new Date()).toLocaleDateString();
 	project.createdate = cdate;
 	saveProject();
 }
@@ -862,7 +862,7 @@ function showProjDetails(pj)
 */
 		var projid = pj.getAttribute('data-projid');
 		var projstatestr = pj.getAttribute('data-project');
-		var projdetail = JSON.parse(projstatestr);		
+		var projdetail = JSON.parse(projstatestr);
 		$("#proptable").empty();
 
 		$("#proptable").append('<tr><td class="tablekey">id</td><td class="tableval" style="text-align:left">'+projid+'</td></tr>');
@@ -870,8 +870,8 @@ function showProjDetails(pj)
 		$("#proptable").append('<tr><td class="tablekey">creator</td><td class="tableval" style="text-align:left">'+projdetail.creator+'</td></tr>');
 		$("#proptable").append('<tr><td class="tablekey">created</td><td class="tableval" style="text-align:left">'+projdetail.createdate+'</td></tr>');
 		$("#proptable").append('<tr><td class="tablekey">saved</td><td class="tableval" style="text-align:left">'+projdetail.lastdate+'</td></tr>');
-				
-		
+
+
 }
 
 function clearProps()
@@ -900,7 +900,7 @@ function loadProjects()
 //						$("<div class='projecticon' data-projid='"+projid+"' data-project='"+projstatestr+"' onclick='openProject(this)' onmouseover='showProjDetails(this)' onmouseout='clearProps()'><img src='images/proj.png' />"+projname+"</div>" ).appendTo( "#projects" );
 						$("<div class='projectrow' data-projid='"+projid+"' data-project='"+projstatestr+"' onmouseover='showProjDetails(this)' onmouseout='clearProps()'><div class='projectrowname'>"+projname+"</div><div class='projectbuttons'><button type='button' class='projectrowbutton' data-projid='"+projid+"' data-project='"+projstatestr+"' onclick='openProject(this)'>open</button><button type='button' class='projectrowbutton' data-projid='"+projid+"' data-project='"+projstatestr+"' onclick='removeProject(this)'>delete</button></div></div>" ).appendTo( "#projects" );
 
-					}); 
+					});
 				});
 }
 
@@ -916,30 +916,30 @@ function addLayer()
 		var nameindex = 1;
 		var nameused = true;
 		while (nameused == true) {
-			nameused = false;		
+			nameused = false;
 			for (var i=0;i<childlayers.length;i++) {
 				child = childlayers[i];
 			  if (child.name()=='layer'+nameindex.toString()) {nameused = true;}
-			}	
+			}
 			if (nameused==true) {nameindex++;}
-			
-		} 			
+
+		}
 		var layername = 'layer'+nameindex.toString();
 		layerstate = {name:layername,type:'Layer',id:'none'};
 		layer = createLayer(layerstate);  // create and make active layer
 		actlayer = layer.getAttr('actionlayer');
-	
+
 		if (objSelector == null) {
 			objSelector = new objectSelector();
 		}
 		else {
 			clearActiveObject();
 		}
-	
+
 		layer.add(objSelector.objSelGroup);
 
 		addTreeNode(project.id,layer.id(),layerstate);
-		
+
 		txLayers();
 		//console.log(layer);
 	}
@@ -952,36 +952,36 @@ function deleteLayer()
 */
 	if (activeobject != null && selectednode.type == 'Layer') {
 		var ans = confirm('Are you sure you want to delete this layer and its contents?');
-		if (ans == true) {	
+		if (ans == true) {
 			var dellayer = layer;
 			var dchildren = dellayer.getChildren().toArray();
 			for (var i=0;i<dchildren.length;i++) {
-				var dchild = dchildren[i];		
+				var dchild = dchildren[i];
 				var id = dchild.id();
 				treecontainer.jstree('delete_node', id);
 				dchild.destroy();
 			}
-			
+
 			//delete the actionlayer associated with this layer
 			var alayer = dellayer.getAttr('actionlayer');
 			alayer.destroyChildren();
 			alayer.destroy();
-			
+
 			//make sure there is a blank layer left in view
 			if (stage.getChildren().toArray().length>1) {
 				treecontainer.jstree('select_node', selectednode.parent);
 				treecontainer.jstree('delete_node', dellayer.id());
-				dellayer.destroy();	
-				layer = stage.getChildren().toArray()[0];		
+				dellayer.destroy();
+				layer = stage.getChildren().toArray()[0];
 			}
-			
+
 			if (objSelector == null) {
 				objSelector = new objectSelector();
 			}
 			else {
 				clearActiveObject();
 			}
-			
+
 			txLayers();
 		}
 	}
@@ -994,35 +994,35 @@ function makeObjectListOptions() {
 	for (var i=0;i<objtypes.length;i++) {
 		var objtype = objtypes[i];
 			htmlstr = htmlstr + '<option value="'+objtype+'">'+objtype+'</option>';
-	}	
+	}
 	return htmlstr;
-}	
+}
 
 function enableDesignButtons()
 {
 /**
 * Manage the activation of the buttons above the design space
-*/	
+*/
 	//console.log(tgroupindicator);
 	if (activeobject != null) {
 		var state = activeobject.getAttr('state');
-	
+
 		if (state.type == 'Group' && tgroupindicator == null) {
 			$('#ungroupbutton').prop('disabled',false);
-			
+
 		}
-		else {	
+		else {
 			$('#ungroupbutton').prop('disabled',true);
 		}
 	}
-	
+
 	if (tempgroup.length>1) {
 		$('#groupbutton').prop('disabled',false);
 	}
 	else {
 		$('#groupbutton').prop('disabled',true);
 	}
-	
+
 	if (tgroupindicator == null) {
 		$('#copybutton').prop('disabled',false);
 		$('#deletebutton').prop('disabled',false);
@@ -1037,7 +1037,7 @@ function enableDesignButtons()
 	$('#createbutton').prop('disabled',false);
 	$('#objecttypeselect').prop('disabled',false);
 	$('#multiselectbutton').prop('disabled',false);
-	$('#txscrbutton').prop('disabled',false);	
+	$('#txscrbutton').prop('disabled',false);
 	$('#showallbutton').prop('disabled',false);
 	$('#playlist').show();
 }
@@ -1047,7 +1047,7 @@ function disableDesignButtons()
 /**
 * Disable all the design buttons
 */
-	$('#copybutton').prop('disabled',true);	
+	$('#copybutton').prop('disabled',true);
 	$('#deletebutton').prop('disabled',true);
 	//$('#arrowbutton').prop('disabled',true);
 	$('#groupbutton').prop('disabled',true);
@@ -1055,14 +1055,14 @@ function disableDesignButtons()
 	$('#multiselectbutton').prop('disabled',true);
 	if (layer == null) {
 		$('#showallbutton').prop('disabled',true);
-		$('#txscrbutton').prop('disabled',true);	
+		$('#txscrbutton').prop('disabled',true);
 		$('#createbutton').prop('disabled',true);
 		$('#objecttypeselect').prop('disabled',true);
 		$('#playlist').hide();
 	}
 	else {
 		$('#showallbutton').prop('disabled',false);
-		$('#txscrbutton').prop('disabled',false);	
+		$('#txscrbutton').prop('disabled',false);
 		$('#createbutton').prop('disabled',false);
 		$('#objecttypeselect').prop('disabled',false);
 		$('#playlist').show();
@@ -1097,7 +1097,7 @@ function togShowall() {
 					lchild.visible(true);
 					lchild.opacity(0.5);
 				}
-			}	
+			}
 			layer.draw();
 			showall = true;
 			$('#showallbutton').text('restore');
@@ -1113,12 +1113,12 @@ function togShowall() {
 					lchild.visible(state.visible);
 					lchild.opacity(state.opacity);
 				}
-			}	
+			}
 			layer.draw();
 			showall = false;
 			$('#showallbutton').text('show all');
 		 }
-	
+
 	}
 }
 
@@ -1130,7 +1130,7 @@ function togFullscreen() {
     var element = document.documentElement;
 
 	if (fullscreen == false) {
-    // These function will not exist in the browsers that don't support fullscreen mode yet, 
+    // These function will not exist in the browsers that don't support fullscreen mode yet,
     // so we'll have to check to see if they're available before calling them.
     if (element.RequestFullScreen) {
     	element.RequestFullScreen();
@@ -1139,7 +1139,7 @@ function togFullscreen() {
     else if (element.mozRequestFullScreen) {
       element.mozRequestFullScreen();  //Mozilla
 	   fullscreen = true;
-    } 
+    }
     else if (element.webkitRequestFullScreen) {
       element.webkitRequestFullScreen();  //Chrome, Safari
 	   fullscreen = true;
@@ -1149,18 +1149,18 @@ function togFullscreen() {
     if (document.cancelFullScreen) {
       document.cancelFullScreen();
 	   fullscreen = false;
-    } 
+    }
     else if (document.mozCancelFullScreen) {
       document.mozCancelFullScreen();
 	   fullscreen = false;
-    } 
+    }
     else if (document.webkitCancelFullScreen) {
       document.webkitCancelFullScreen();
 	   fullscreen = false;
-    } 		
+    }
  	}
- 	
-	
+
+
 }
 
 function setCastmode()
@@ -1184,10 +1184,10 @@ function stageDims()
 		}
 		$('#designstage').height(sth);
 		$('#designstage').width(stw);
-	
+
 	   stage.width(stw);
 	   stage.height(sth);
- 	   txscale = project.screenwidth/stw;    
+ 	   txscale = project.screenwidth/stw;
 
 }
 
@@ -1198,19 +1198,19 @@ function screenSetup()
 */
  	var ww = $(window).width();
 	var wh = $(window).height();
-	$('#page').css({'height': Math.round(0.98*wh).toString() + 'px'});	
+	$('#page').css({'height': Math.round(0.98*wh).toString() + 'px'});
 	$('#page').css({'width': Math.round(0.98*ww).toString() + 'px'});
-	var ph = $('#page').height();	
-	var pw = $('#page').width();	
-	$('#leftcolumn').css({'height': Math.round(1.0*ph).toString() + 'px'});	
-	$('#leftcolumn').css({'width': Math.round(0.3*pw).toString() + 'px'});	
-	$('#rightcolumn').css({'left': Math.round(0.3*pw).toString() + 'px'});	
-	$('#rightcolumn').css({'height': Math.round(1.0*ph).toString() + 'px'});	
-	$('#rightcolumn').css({'width': Math.round(0.7*pw).toString() + 'px'});	
-	
-	$('#treespace').css({'height': Math.round(0.5*ph).toString() + 'px'});	
-	$('#designspace').css({'height': Math.round(0.7*ph-10).toString() + 'px'});	
-	//$('#designspace').height(Math.round(0.7*ph-10));	
+	var ph = $('#page').height();
+	var pw = $('#page').width();
+	$('#leftcolumn').css({'height': Math.round(1.0*ph).toString() + 'px'});
+	$('#leftcolumn').css({'width': Math.round(0.3*pw).toString() + 'px'});
+	$('#rightcolumn').css({'left': Math.round(0.3*pw).toString() + 'px'});
+	$('#rightcolumn').css({'height': Math.round(1.0*ph).toString() + 'px'});
+	$('#rightcolumn').css({'width': Math.round(0.7*pw).toString() + 'px'});
+
+	$('#treespace').css({'height': Math.round(0.5*ph).toString() + 'px'});
+	$('#designspace').css({'height': Math.round(0.7*ph-10).toString() + 'px'});
+	//$('#designspace').height(Math.round(0.7*ph-10));
 	$('#libpane').css({'height': Math.round(0.3*ph-110).toString() + 'px'});
 	$('#actionpane').css({'height': Math.round(0.3*ph-110).toString() + 'px'});
 	$('#actionpane').css({'width': Math.round(0.7*pw-2).toString() + 'px'});
@@ -1253,9 +1253,9 @@ function setLayerStartState()
 function getLayerObjects(sendlayer) {
 /**
 * Gets the child states on layer excluding selector. Returns an array of child states
-*/	
+*/
 			var layerstate = sendlayer.getAttr('state');
-			
+
 			var lchildren = sendlayer.getChildren().toArray();
 			objstatearr = [];
 			for (var lch=0;lch<lchildren.length;lch++) {
@@ -1266,17 +1266,17 @@ function getLayerObjects(sendlayer) {
 				}
 			}
 			return objstatearr;
-	
+
 }
 
 function txStartViews(startviews) {
 /**
 * Sends the start states of layers in the views attached to the startevent to the screens that are listening for their names e.g.screen1
 * Receives the startviews object from from presentscreen
-*/	
+*/
 				//console.log(startviews);
 	var affectedlayers = [];
-	if (stage != null && layer != null) { 
+	if (stage != null && layer != null) {
 		for (var pei=0;pei<startviews.length;pei++) {
 			var peview = startviews[pei];
 			var scrname = peview.viewstate.name;
@@ -1292,13 +1292,13 @@ function txStartViews(startviews) {
 					var scrcommand = {view:scrname,scrtxmsg:{command:'update',info:screenstate}};
 					var scrjson = JSON.stringify(scrcommand);
 				 	socket.emit('screenmsg', scrjson);
-	
+
 				}
 			}
 		}
 		setTimeout(function () {	//delay to allow screenmesgs to go
 			//set layers to start startstates
-			for (var li=0;li<affectedlayers.length;li++) {		
+			for (var li=0;li<affectedlayers.length;li++) {
 					var aflayer = affectedlayers[li];
 					var sstate = JSON.parse(aflayer.getAttr('state').startstate);
 					if (sstate != null) {
@@ -1312,13 +1312,13 @@ function txStartViews(startviews) {
 								}
 								else {
 									updateState(obj,objstate);
-								}	
+								}
 							}
 						}
-						aflayer.draw(); 
+						aflayer.draw();
 					}
-			}	
-		},500);	
+			}
+		},500);
 	}
 
 }
@@ -1327,9 +1327,9 @@ function txViews(pevindex) {
 /**
 * Sends the present event state to the screens that are listening for their names e.g.screen1
 * Receives the presentevent index from presentscreen
-*/	
+*/
 
-	if (stage != null && layer != null) { 
+	if (stage != null && layer != null) {
 		var pevstate = eventliststates[pevindex];
 		var peviews = pevstate.peviews;
 		for (var pei=0;pei<pevstate.peviews.length;pei++) {
@@ -1355,7 +1355,7 @@ function txViews(pevindex) {
 				socket.emit('screenmsg', scrjson);
 			}
 		}
-		
+
 	}
 
 }
@@ -1364,13 +1364,13 @@ function findPELayer(layerid,layerstates)
 {
 /**
 * Called by compileViews to find a layer in a layerstates list
-*/	
+*/
 	var found = false;
 	var i = 0;
 	var index = -1;
 	while (found == false && i<layerstates.length)
 	{
-		if (layerid == layerstates[i].layerid) {	
+		if (layerid == layerstates[i].layerid) {
 			found = true;
 			index = i;
 		}
@@ -1383,13 +1383,13 @@ function findobjinPELayer(objid,layerobjstates)
 {
 /**
 * Called by compileViews to find an object layer in a layerstate list
-*/	
+*/
 	var found = false;
 	var i = 0;
 	var index = -1;
 	while (found == false && i<layerobjstates.length)
 	{
-		if (objid == layerobjstates[i].id) {	
+		if (objid == layerobjstates[i].id) {
 			found = true;
 			index = i;
 		}
@@ -1415,7 +1415,7 @@ function findLayerImages(objstates)
 				imgobjs.push(obj);
 			}
 		}
-			
+
 	}
 	return imgobjs;
 }
@@ -1424,11 +1424,11 @@ function compileViews()
 {
 	var pelayerobjstates = [];  // snapshot state of objects and actions on each layer on start of each presentevent
 	var playimages = [];
-	if (stage != null && layer != null) { 
+	if (stage != null && layer != null) {
 		var layers = stage.getLayers().toArray();
-		
+
  //snapshot at start presentevent taken from layer startstates
-		var layerstates = [];			
+		var layerstates = [];
 		for (var li=0;li<layers.length;li++)
 		{
 			var stlayer = layers[li];
@@ -1440,7 +1440,7 @@ function compileViews()
 			}
 			var layerobjs = JSON.parse(layerstate);
 		//if the objects are image objects we need to package the image resources as well and change the image paths
-					
+
 			var playimgs = findLayerImages(layerobjs);
 			//console.log(playimgs);
 			for (var imn = 0;imn<playimgs.length;imn++) {
@@ -1449,22 +1449,22 @@ function compileViews()
 				imgobj.path = 'playlists/'+project.name+'/images/'+imgfilename;
 				playimages.push(imgfilename);
 			}
-			
+
 			var lstate = {layerid:stlayer.id(),objstates:layerobjs,layeractions:[]};  //objstates are object states and layeractions are action definitions/states for each action applied on that presentevent
 			layerstates.push(lstate);
 		}
 		pelayerobjstates.push(layerstates);
 	// snapshots for each presentevent following first one
-		for (var pevindex = 0;pevindex<eventliststates.length;pevindex++) 
+		for (var pevindex = 0;pevindex<eventliststates.length;pevindex++)
 		{
 			if (pevindex<eventliststates.length-1) {
 				var origlayerobjstate = JSON.stringify(pelayerobjstates[pevindex]);
 				var newlayerobjstate = JSON.parse(origlayerobjstate);			//clone layerstates from previous one
 			}
-			var layerstates = [];			
+			var layerstates = [];
 			var pevstate = eventliststates[pevindex];
 			var peviews = pevstate.peviews;
-			for (var pei=0;pei<pevstate.peviews.length;pei++) { //get actions for the event 
+			for (var pei=0;pei<pevstate.peviews.length;pei++) { //get actions for the event
 				var peview = peviews[pei];
 				var scrname = peview.viewstate.name;
 				var layerid = peview.layerid;
@@ -1480,15 +1480,15 @@ function compileViews()
 						var actstate = act.getAttr('state');
 						actionstatearr.push(actstate);
 					}
-					var layerind = findPELayer(layerid,pelayerobjstates[pevindex]); 
+					var layerind = findPELayer(layerid,pelayerobjstates[pevindex]);
 					(pelayerobjstates[pevindex][layerind]).layeractions = actionstatearr;  //add actionstates for layer
-					
+
 //get obj states at start of presentevent from previous snapshot and evolve states
 //only up to penultimate PE as next start state evolves from current one
 					if (pevindex<eventliststates.length-1) {
-						
+
 				//now apply actions to applicable objects in layer to get new layerstate snapshot
-	
+
 						var newlayerobjs = newlayerobjstate[layerind].objstates;
 						for (var lai=0;lai<actionstatearr.length;lai++)
 						{
@@ -1496,20 +1496,20 @@ function compileViews()
 							var objind = findobjinPELayer(astate.parentobjectid,newlayerobjs);
 							if (objind != -1) {
 								var objstate = newlayerobjs[objind];
-								var prop = actiontypes[astate.actiontype]; 
+								var prop = actiontypes[astate.actiontype];
 								if (prop == 'position') {
 									objstate.x = astate.endstate.x;
 									objstate.y = astate.endstate.y;
 								}
 								else {
 									objstate[prop] = astate.endstate;
-								} 
+								}
 							}
 						}
 					}
 
 				}
-				
+
 			}
 			if (pevindex<eventliststates.length-1) {
 				//console.log(newlayerobjstate);
@@ -1517,7 +1517,7 @@ function compileViews()
 			}
 		}
 		//console.log(playimages);
-		
+
 		var compiledViews = {screenwidth:project.screenwidth,screenheight:project.screenheight,txscale:txscale,layersnapshots:pelayerobjstates,pestates:eventliststates,playimages:playimages};
 		var playlist = JSON.stringify(compiledViews);
 		console.log('playlist length='+playlist.length);
@@ -1535,22 +1535,22 @@ function compileViews()
 					.always(function() {
 					//alert( "complete" );
 					});
-		
+
 	}
 
-	
+
 }
 
 function txReady(readystatus) //readystatus : newready or openready or notready
 {
 	var msg = JSON.stringify({command:'designready',info:readystatus});
-	socket.emit('designmsg', msg);	
+	socket.emit('designmsg', msg);
 }
 
 function txLayers() {
 /**
 * Sends the layer info as an array of {layerid:id,layername:name}
-*/	
+*/
 	var layerinfo = [];
 	var layers = stage.getLayers().toArray();
 	for (var i=0;i<layers.length;i++) {
@@ -1558,7 +1558,7 @@ function txLayers() {
 		var layername = layers[i].name();
 		layerinfo.push({layerid:layers[i].id(),layername:layers[i].name()});
 	}
-	
+
 	var msg = JSON.stringify({command:'layerinfo',info:layerinfo});
 	socket.emit('designmsg', msg);
 
@@ -1582,25 +1582,25 @@ function txLayerActions(actionobj,playlist) {
 
 // Sends the actions that are played to the active view and layer
 // The screen number is found from the view index of the active stage
-	
 
-	if (stage != null && layer != null) { 
+
+	if (stage != null && layer != null) {
 		var astate = actionobj.getAttr('state');
 		var scrname = astate.viewname;
-		var layername = layer.name();	
+		var layername = layer.name();
 		var scrcommand = {view:scrname,scrtxmsg:{command:'action',info:playlist}};
 		var scrjson = JSON.stringify(scrcommand);
 		socket.emit('screenmsg', scrjson);
-		
+
 	}
 }
 */
 
 function ioUpdate(respdata) {
 		//console.log(respdata);
-		var viewcommand = JSON.parse(respdata);	
+		var viewcommand = JSON.parse(respdata);
 		var command = viewcommand.command;
-		
+
 		//console.log(command);
 		switch(command) {
 			case 'updateEventArr':
@@ -1608,7 +1608,7 @@ function ioUpdate(respdata) {
 				project.starteventviews = viewcommand.info.sev;
 				updateEventSwimList();
 			break;
-			
+
 			case 'deleteEventList':
 				var ind = viewcommand.info;
 				deleteEventList(ind);
@@ -1618,33 +1618,33 @@ function ioUpdate(respdata) {
 				if (projectopened == true && layer != null) {
 					txReady('openready');
 				}
-				else if (projectopened == false && layer != null) {	
+				else if (projectopened == false && layer != null) {
 					deleteAllEventLists();
 					txReady('newready');
 				}
 				else {
 					deleteAllEventLists();
 					txReady('notready');
-				}					
+				}
 			break;
-			
+
 			case 'getLayerinfo':
 				txLayers();
-			break;			
+			break;
 
 			case 'playPE':
 				var ind = viewcommand.info;
 				playPEEvents(ind);
-			break;			
+			break;
 
 			case 'startPE':
 				var ind = viewcommand.info;
 				startPEEvents(ind);
-			break;			
+			break;
 
 			case 'getPEinfo':
 				txPEinfo();
-			break;	
+			break;
 
 			case 'castPEinfo':
 				var ind = viewcommand.info;
@@ -1655,9 +1655,9 @@ function ioUpdate(respdata) {
 				var startviews = viewcommand.info;
 				txStartViews(startviews);
 			break;
-					
+
 		}
-		
+
 }
 
 
@@ -1679,18 +1679,18 @@ function setup()
 	// Tabs  - thanks Seb Kay http://inspirationalpixels.com/tutorials/creating-tabs-with-html-css-and-jquery
     $('.tabs .tab-links a').on('click', function(e)  {
         var currentAttrValue = $(this).attr('href');
- 
+
         // Show/Hide Tabs
         $('.tabs ' + currentAttrValue).show().siblings().hide();
- 
+
         // Change/remove current tab to active
         $(this).parent('li').addClass('active').siblings().removeClass('active');
- 
+
         e.preventDefault();
         screenSetup();
         resizeStages();
-    });	
- 
+    });
+
  	screenSetup();
 	var hwratio = project.screenheight/project.screenwidth;
 	var vh = sh-4;
@@ -1706,7 +1706,7 @@ function setup()
 	}
 	$('#designstage').height(sth);
 	$('#designstage').width(stw);
-    
+
 	stage = new Kinetic.Stage({
           container: designstage,
           id: 'stage0',
@@ -1714,7 +1714,7 @@ function setup()
           width: stw,
           height: sth
         });
-	
+
 //	console.log(vh,vw,sth,stw);
 //setup objlist
 	objstage = new Kinetic.Stage({
@@ -1727,7 +1727,7 @@ function setup()
 	objstage.add(objlayer);
 	//librarylist selector
 	 objlayer.add(libselector);
-	
+
 	loadObjects('all');
 	objlayer.draw();
 
@@ -1748,19 +1748,19 @@ $('#castaction').prop( 'checked', castmode);
 	  	//alert('menu item ='+item+' event='+e.target.id);
 	  	$('#treemenu').smartmenus('menuHideAll');
 	  	return false; //do not go to link but rather fire onclick function linked to list element
-	  
+
 	  });
-	});	
+	});
 
 
 //jstree
 	treecontainer = $('#tree');
 	$(function () { treecontainer.jstree(); });
 	changeCallback = updateObjStateandTree;
-	
+
 	$('#objecttypeselect').empty();
 	$('#objecttypeselect').append(makeObjectListOptions());
-		
+
 	disableDesignButtons();
 	$('#multiselectbutton').css("background-color","#eeaa88");
 	togShowall();
@@ -1772,23 +1772,23 @@ document.addEventListener("fullscreenchange", function () {
 	resizeStages();
 	stageDims();
 }, false);
- 
+
 document.addEventListener("mozfullscreenchange", function () {
 	screenSetup();
 	resizeStages();
 	stageDims();
 }, false);
- 
+
 document.addEventListener("webkitfullscreenchange", function () {
 	screenSetup();
 	resizeStages();
 	stageDims();
 }, false);
- 
+
 screenSetup();
 resizeStages();
 stageDims();
-	
+
 $('#treespace').resizable({
     // only use the southern handle
     handles: 's',
@@ -1799,20 +1799,20 @@ $('#treespace').resizable({
     resize: function(event, ui){
         var currentHeight = ui.size.height;
 
-        // this accounts for padding in the panels + 
+        // this accounts for padding in the panels +
         // borders, you could calculate this using jQuery
-        var padding = 12; 
+        var padding = 12;
 
-        // this accounts for some lag in the ui.size value, if you take this away 
+        // this accounts for some lag in the ui.size value, if you take this away
         // you'll get some instable behaviour
         $(this).height(currentHeight);
 
         // set the tree panel height
         var containerHeight = $('#leftcolumn').height();
         var menuHeight = $('#treemenu').height();
-        $("#propedit").height(containerHeight - menuHeight - currentHeight - padding);            
+        $("#propedit").height(containerHeight - menuHeight - currentHeight - padding);
     }
-}); 
+});
 
 $('#designspace').resizable({
     // only use the southern handle
@@ -1824,23 +1824,23 @@ $('#designspace').resizable({
     resize: function(event, ui){
         var currentHeight = ui.size.height;
 
-        // this accounts for padding in the panels + 
+        // this accounts for padding in the panels +
         // borders, you could calculate this using jQuery
-        var padding = 1; 
+        var padding = 1;
 
-        // this accounts for some lag in the ui.size value, if you take this away 
+        // this accounts for some lag in the ui.size value, if you take this away
         // you'll get some instable behaviour
         $(this).height(currentHeight);
 
-		  //$('.tab').height(currentHeight-52);	
-			
+		  //$('.tab').height(currentHeight-52);
+
         // set the design panel height
         var containerHeight = $('#rightcolumn').height();
         var menuHeight = $('#menu').height();
         var tabpaneHeight = containerHeight - menuHeight - currentHeight - padding;
-        $(".tabs").height(tabpaneHeight);   
-		  $('#libpane').height(tabpaneHeight-80);	
-		  $('#actionpane').height(tabpaneHeight-80);	
+        $(".tabs").height(tabpaneHeight);
+		  $('#libpane').height(tabpaneHeight-80);
+		  $('#actionpane').height(tabpaneHeight-80);
 			libh = $('#libpane').height();
 			acth = $('#actionpane').height();
 			sh = $('#designspace').height();
@@ -1853,11 +1853,11 @@ $('#designspace').resizable({
 				layer.draw();
 				var id = layer.id();
 				treecontainer.jstree('select_node', id);
-				
-			} 			
-       
+
+			}
+
     }
-}); 
+});
 
 $( window ).focus(function() {
 	if (stage != null) {
