@@ -1543,7 +1543,20 @@ function compileViews()
 
 function txReady(readystatus) //readystatus : newready or openready or notready
 {
-	var msg = JSON.stringify({command:'designready',info:readystatus});
+	var msg = JSON.stringify({
+		command: 'designready',
+		info: readystatus,
+		project: {
+			id: project.id,
+			name: project.name,
+			creator: project.creator,
+			type: 'Project',
+			createdate: project.createdate,
+			lastdate: project.lastdate,
+			screenwidth: project.screenwidth,
+			screenheight: project.screenheight
+		}
+	});
 	socket.emit('designmsg', msg);
 }
 
@@ -1615,6 +1628,9 @@ function ioUpdate(respdata) {
 			break;
 
 			case 'checkDesignScreen':
+				console.log("checkDesignScreen");
+				console.log(projectopened);
+				console.log(layer);
 				if (projectopened == true && layer != null) {
 					txReady('openready');
 				}
