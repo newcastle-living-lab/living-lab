@@ -157,22 +157,25 @@ function writePlayfileandImages(fname, htmlstr, imglist) {
 
 function loadpage(req, res) {
 
+	var url = require('url').parse(req.url);
+
 	var contentType = 'text/html';
-	var filePath = '.' + req.url;
-	//console.log(req.url);
+	var filePath = '.' + url.pathname;
 	var extname = path.extname(filePath);
 
-	switch (extname) {
-		case '.html':
-			contentType = 'text/html';
-		break;
-		case '.js':
-			contentType = 'text/javascript';
-		break;
-		case '.css':
-			contentType = 'text/css';
-		break;
-	}
+	var mimes = {
+		"html": "text/html",
+		"js": "text/javascript",
+		"css": "text/css",
+		"eot": "application/vnd.ms-fontobject",
+		"otf": "application/font-sfnt",
+		"svg": "image/svg+xml",
+		"ttf": "application/font-sfnt",
+		"woff": "application/font-woff",
+		"woff2": "font/woff2",
+	};
+
+	contentType = mimes[extname.replace(/^./, "")];
 
 	fs.exists(filePath, function(exists) {
 		//console.log(filePath);
