@@ -1,30 +1,41 @@
+"use strict";
+
 var Mn = require('backbone.marionette'),
 	Radio = require("backbone.radio");
 
+
 var Comms = Mn.Object.extend({
 
-	socket: null,
-	app_channel: null,
+	_socket: null,
+	_dataChannel: null,
+	_appChannel: null,
 
 	initialize: function(options) {
 
 		var self = this;
 
-		this.app_channel = Radio.channel("app");
+		this._dataChannel = Radio.channel("data");
+		this._appChannel = Radio.channel("app");
 
-		this.socket = io(options.url);
-		this.socket.on('designmsg', function(respdata) {
-			//console.log(respdata);
+		// Init socket.io + listener
+		this._socket = io(options.url);
+		this._socket.on('designmsg', function(respdata) {
 			self.ioUpdate(respdata);
 		});
 
+		// Wait for main app starting
+		this.listenTo(this._appChannel, "start", function() {
+			// Kick off the first message to get info/check if design is ready
+			self.txPEventsCheckDesign();
+		});
 	},
 
 	ioUpdate: function(respdata) {
 
 		var self = this;
 
-		console.log(respdata);
+		// console.log("ioUpdate");
+		// console.log(respdata);
 		var viewcommand = JSON.parse(respdata);
 		var command = viewcommand.command;
 
@@ -38,7 +49,7 @@ var Comms = Mn.Object.extend({
 
 				if (msg == 'openready') {
 
-					self.app_channel.trigger("designready", {
+					self._dataChannel.trigger("designready", {
 						project: viewcommand.project,
 						status: msg
 					});
@@ -50,7 +61,7 @@ var Comms = Mn.Object.extend({
 
 				} else if (msg == 'newready') {
 
-					self.app_channel.trigger("designready", {
+					self._dataChannel.trigger("designready", {
 						project: project,
 						status: msg
 					});
@@ -58,13 +69,14 @@ var Comms = Mn.Object.extend({
 					// designready = true;
 					// $('#createpebutton').prop('disabled', false);
 					// $('#createviewbutton').prop('disabled', false);
-					makeStartEvent([]);
-					txPEventsGetLayerInfo();
+					// makeStartEvent([]);
+
+					self.txPEventsGetLayerInfo();
 
 				} else {
 
 					// designready = false;
-					self.app_channel.trigger("designready", {
+					self._dataChannel.trigger("designready", {
 						project: null,
 						status: null
 					});
@@ -75,17 +87,23 @@ var Comms = Mn.Object.extend({
 			break;
 
 			case 'layerinfo':
-				layers = [{
+				self._dataChannel.trigger("layerinfo", {
+					layers: viewcommand.info
+				});
+				/*var layers = [{
 					layerid: 'none',
 					layername: 'none'
 				}];
-				Array.prototype.push.apply(layers, viewcommand.info);
-				console.log(layers);
+				Array.prototype.push.apply(layers, viewcommand.info);*/
+				// console.log(layers);
 				// updatePEpropDisp();
 			break;
 
 			case 'peinfo':
-				var peinfo = viewcommand.info;
+				self._dataChannel.trigger("peinfo", {
+					peinfo: viewcommand.info
+				});
+				// var peinfo = viewcommand.info;
 				// openingProject = true;
 				// createPEandViews(peinfo);
 				self.txPEventsGetLayerInfo();
@@ -104,7 +122,7 @@ var Comms = Mn.Object.extend({
 			command: 'checkDesignScreen',
 			info: ''
 		});
-		this.socket.emit('updateEvents', msg);
+		this._socket.emit('updateEvents', msg);
 	},
 
 	txPEventsGetPEInfo: function() {
@@ -112,7 +130,7 @@ var Comms = Mn.Object.extend({
 			command: 'getPEinfo',
 			info: ''
 		});
-		this.socket.emit('updateEvents', msg);
+		this._socket.emit('updateEvents', msg);
 	},
 
 	txPEventsGetLayerInfo: function() {
@@ -120,9 +138,10 @@ var Comms = Mn.Object.extend({
 			command: 'getLayerinfo',
 			info: ''
 		});
-		this.socket.emit('updateEvents', msg);
+		this._socket.emit('updateEvents', msg);
 	}
 
 });
+
 
 module.exports = Comms;
