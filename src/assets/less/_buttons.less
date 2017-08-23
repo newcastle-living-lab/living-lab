@@ -9,6 +9,7 @@ a.pure-button {
 .pure-button,
 a.pure-button {
 	// .transition(all 0.2s ease);
+	.box-shadow(none);
 	.border-radius(0);
 
 	background: @purple-dark;
@@ -18,12 +19,18 @@ a.pure-button {
 	padding-bottom: .7em;
 	text-decoration: none;
 
-	&:hover,
-	&:focus,
-	&:active {
+	&:active,
+	&:focus {
+		.box-shadow(none);
+		background: @purple-dark;
+		color: contrast(@purple-dark);
+		border: 2px solid @purple-dark;
+	}
+
+	&:hover {
+		.box-shadow(none);
 		background: @white;
 		color: @black;
-		box-shadow: none;
 	}
 
 	// font-weight: @weight-bold;
@@ -68,6 +75,15 @@ a.button-link {
 
 }
 
+.button-min,
+a.button-min {
+	font-size: 100%;
+	padding: 2px 4px;
+	font-size: @size-sm;
+	.fa-rotate-90 {
+		margin-top: -4px;
+	}
+}
 
 .button-hollow,
 a.button-hollow {
@@ -76,8 +92,13 @@ a.button-hollow {
 	background: transparent;
 	color: @black;
 
-	&:hover,
-	&:focus {
+	&:focus,
+	&:active {
+		background: transparent;
+		color: @black;
+	}
+
+	&:hover {
 		background: @purple-dark;
 		color: contrast(@purple-dark);
 		.fa {
@@ -93,6 +114,7 @@ a.button-hollow {
 	.pure-button,
 	a.pure-button {
 		margin-bottom: @button-spacing;
+		margin-right: @button-spacing;
 	}
 
 }

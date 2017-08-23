@@ -58,8 +58,26 @@
 		.event-group-item {
 			background: @white;
 			color: @black;
-			padding: @padding-sm;
+			// padding: @padding-sm;
+			padding: 0;
 			margin-bottom: @padding-sm;
+			cursor: default;
+			border: 1px solid @white;
+			&:hover,
+			&.is-active {
+				border-color: @black;
+			}
+		}
+
+		.when-active {
+			display: none;
+		}
+		.when-default {
+			display: block;
+		}
+
+		.event-group-item-header {
+			padding: @padding-sm;
 		}
 
 		.event-group-item-title {
@@ -69,11 +87,26 @@
 		}
 
 		.event-group-item-body {
-			// display: none;
+			display: none;
+			padding: @padding-sm;
 		}
 
 		.event-group-item-actions {
-			padding: @padding 0;
+			padding: 0;
+			margin-bottom: @padding-sm;
+		}
+
+		.event-group-item.is-active {
+			border-color: @black;
+			.event-group-item-body {
+				display: block;
+			}
+			.when-active {
+				display: block;
+			}
+			.when-default {
+				display: none;
+			}
 		}
 	}
 
@@ -90,11 +123,33 @@
 		}
 
 		.event-item {
-			background: @purple-light;
+			background: @olive;
 			color: @black;
 			padding: @padding-sm;
 			margin-bottom: @padding-sm;
+			cursor: default;
+			&:hover {
+				background: @yellow;
+			}
 		}
 	}
 
+}
+
+
+
+
+.vex.vex-theme-livinglab {
+
+	.vex-content {
+		// font-family: inherit;
+		border-color: @purple-dark;
+		// border-width: 4px;
+	}
+
+	.vex-dialog-button {
+		letter-spacing: normal;
+		text-transform: none;
+		font-size: 100%;
+	}
 }
