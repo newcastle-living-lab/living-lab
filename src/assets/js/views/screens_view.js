@@ -10,6 +10,9 @@ var ScreenButton = Mn.View.extend({
 	template: _.template("<%= name %>"),
 	triggers: {
 		"click": "view:edit"
+	},
+	modelEvents: {
+		"change": "render"
 	}
 });
 

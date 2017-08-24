@@ -6,6 +6,7 @@ var _ = require("lodash"),
 	Radio = require("backbone.radio"),
 	ScreensView = require("./screens_view"),
 	GroupListView = require("./group_list_view"),
+	ViewEditView = require("./view_edit_view"),
 	vex = require('vex-js'),
 	mainTmpl = require("../templates/present_app_view.html");
 
@@ -69,9 +70,9 @@ var PresentAppView = Mn.View.extend({
 		});
 
 		this.listenTo(this._appChannel, "view:edit", function(data) {
-			// self.showChildView("props", new ScreenEditView({
-			// 	model: data.view
-			// }));
+			self.showChildView("props", new ViewEditView({
+				model: data.view
+			}));
 		});
 	},
 

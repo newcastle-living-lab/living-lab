@@ -67,6 +67,7 @@ function updateViewState(prop) {
 }
 
 function updateViewPropDisp() {
+
 	/**
 	 *Updates the displayed properties of the presentevent
 	 */
@@ -137,6 +138,8 @@ function updatePEpropDisp() {
 	/**
 	 *Updates the displayed properties of the presentevent
 	 */
+console.log("updatePEpropDisp");
+console.log(activepeevobj);
 	if (activepeevobj != null) {
 		var state = activepeevobj.getAttr('state');
 		//make table to display
@@ -509,6 +512,8 @@ function makePresentEvent(state) {
 
 	presentevents.push(peevobj);
 	//console.log(presentevents);
+	// CR: WHen making present event - it is transmitted immediately.
+	// This fn is called when a project is first opened - so skip the transmit in this case.l
 	if (openingProject == false) {
 		txPEventsArr();
 	}
@@ -525,6 +530,8 @@ function makePresentEvent(state) {
 }
 
 function makeStartEvent(peviews) {
+	// console.log("makeStartEvent");
+	// console.log(peviews);
 	var ind = 0;
 	var pestate = {
 		name: 'startevent',
@@ -533,6 +540,7 @@ function makeStartEvent(peviews) {
 		actiontype: 'Eventlist'
 	};
 	if (peviews == null) {
+		console.log("peviews is null");
 		var peviewarr = [];
 		for (var i = 0; i < views.length; i++) {
 			var peview = {
@@ -550,6 +558,9 @@ function makeStartEvent(peviews) {
 	} else {
 		pestate.peviews = peviews;
 	}
+
+	console.log("makeStartEvent");
+	console.log(pestate);
 
 	var peevobj = new Kinetic.Group({
 		name: 'startevent',
@@ -641,6 +652,7 @@ function newView() {
 		for (var i = 0; i < views.length; i++) {
 			var vobj = views[i];
 			var vname = vobj.getAttr('state').name;
+			console.log(vname);
 			namearr.push(vname);
 		}
 		var nameindex = namearr.indexOf(viewstate.name + '0');
@@ -770,6 +782,9 @@ function updateViews() {
 
 
 function makeView(state) {
+	console.log(views);
+	console.log("makeView");
+	console.log(state);
 	var viewindex = views.length;
 	var viewobj = new Kinetic.Group({
 		name: 'view',
@@ -838,6 +853,7 @@ function makeView(state) {
 }
 
 function createPEandViews(peinfo) {
+	console.log("createPEandViews");
 	var evlists = peinfo.evl;
 	var seviews = peinfo.sev;
 	preslayer.destroyChildren();
@@ -855,6 +871,7 @@ function createPEandViews(peinfo) {
 		// make PEs
 		for (var pei = 0; pei < evlists.length; pei++) {
 			pestate = evlists[pei];
+			console.log(pestate);
 			makePresentEvent(pestate);
 		}
 

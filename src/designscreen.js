@@ -756,6 +756,7 @@ function openProject(pj)
 			layer.draw();
 			var id = layer.id();
 			treecontainer.jstree('select_node', id);
+			txReady('openready');
 		},500);
 
 }
@@ -1331,6 +1332,8 @@ function txViews(pevindex) {
 
 	if (stage != null && layer != null) {
 		var pevstate = eventliststates[pevindex];
+		console.log("pevstate");
+		console.log(pevstate);
 		var peviews = pevstate.peviews;
 		for (var pei=0;pei<pevstate.peviews.length;pei++) {
 			var peview = peviews[pei];

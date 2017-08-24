@@ -120,7 +120,7 @@ var Store = Mn.Object.extend({
 
 			if ( ! self.viewCollection.canAddView()) {
 				this._appChannel.trigger("ui:error", {
-					message: "Maximum number of screens has been reached."
+					message: "Maximum number of views has been reached."
 				});
 				return;
 			}
