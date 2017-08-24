@@ -36,6 +36,31 @@ a.pure-button {
 	// font-weight: @weight-bold;
 }
 
+
+.button-secondary,
+a.button-secondary {
+
+	background: @grey;
+	color: contrast(@grey);
+	border-color: @grey;
+
+	&:active,
+	&:focus {
+		.box-shadow(none);
+		background: @grey;
+		color: contrast(@grey);
+		border: 2px solid @grey;
+	}
+
+	&:hover {
+		.box-shadow(none);
+		background: @white;
+		color: @black;
+	}
+
+	// font-weight: @weight-bold;
+}
+
 .button-full,
 a.button-full {
 	width: 100%;

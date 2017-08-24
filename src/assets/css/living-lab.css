@@ -2221,6 +2221,10 @@ body:hover .visually-hidden input,
 body:hover .visually-hidden button {
   display: none !important;
 }
+.panel {
+  padding: 20px;
+  background: #eeeeff;
+}
 .pure-button {
   cursor: default;
 }
@@ -2256,6 +2260,29 @@ a.pure-button:focus {
 }
 .pure-button:hover,
 a.pure-button:hover {
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  background: #ffffff;
+  color: #000000;
+}
+.button-secondary,
+a.button-secondary {
+  background: #666666;
+  color: #ffffff;
+  border-color: #666666;
+}
+.button-secondary:active,
+a.button-secondary:active,
+.button-secondary:focus,
+a.button-secondary:focus {
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  background: #666666;
+  color: #ffffff;
+  border: 2px solid #666666;
+}
+.button-secondary:hover,
+a.button-secondary:hover {
   -webkit-box-shadow: none;
   box-shadow: none;
   background: #ffffff;
@@ -2330,6 +2357,61 @@ a.button-hollow:hover .fa {
 .button-collection a.pure-button {
   margin-bottom: 5.6px;
   margin-right: 5.6px;
+}
+.pure-form input[type="text"],
+.pure-form input[type="password"],
+.pure-form input[type="email"],
+.pure-form input[type="url"],
+.pure-form input[type="date"],
+.pure-form input[type="month"],
+.pure-form input[type="time"],
+.pure-form input[type="datetime"],
+.pure-form input[type="datetime-local"],
+.pure-form input[type="week"],
+.pure-form input[type="number"],
+.pure-form input[type="search"],
+.pure-form input[type="tel"],
+.pure-form input[type="color"],
+.pure-form select,
+.pure-form textarea {
+  border: 1px solid #bbbbbb;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-border-radius: 0;
+  -webkit-background-clip: padding-box;
+  -moz-border-radius: 0;
+  -moz-background-clip: padding;
+  border-radius: 0;
+  background-clip: padding-box;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  color: #000000;
+  width: 100%;
+  max-width: 100%;
+}
+.pure-form input[type="text"]:focus,
+.pure-form input[type="password"]:focus,
+.pure-form input[type="email"]:focus,
+.pure-form input[type="url"]:focus,
+.pure-form input[type="date"]:focus,
+.pure-form input[type="month"]:focus,
+.pure-form input[type="time"]:focus,
+.pure-form input[type="datetime"]:focus,
+.pure-form input[type="datetime-local"]:focus,
+.pure-form input[type="week"]:focus,
+.pure-form input[type="number"]:focus,
+.pure-form input[type="search"]:focus,
+.pure-form input[type="tel"]:focus,
+.pure-form input[type="color"]:focus,
+.pure-form select:focus,
+.pure-form textarea:focus {
+  outline: 2px solid #ffdc00;
+}
+.pure-form-stacked .pure-control-group {
+  margin-bottom: 20px;
+}
+.pure-form-stacked .pure-form-label > label {
+  margin: 0 0 5px;
 }
 .page-present {
   /*.pure-g {
