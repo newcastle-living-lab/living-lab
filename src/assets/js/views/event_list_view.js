@@ -9,7 +9,15 @@ var Mn = require("backbone.marionette"),
 var EventHeaderView = Mn.View.extend({
 	tagName: "li",
 	className: "event-header",
-	template: headerTmpl
+	template: headerTmpl,
+
+	ui: {
+		"views": "[data-ui=views]"
+	},
+
+	initialize: function() {
+
+	}
 });
 
 
@@ -22,12 +30,32 @@ var EventListView = Mn.CollectionView.extend({
 
 	_appChannel: null,
 
-	initialize: function() {
+	initialize: function(options) {
 		this._appChannel = Radio.channel("app");
+		this.group = options.group;
 	},
 
 	onRender: function() {
 		this.addChildView((new EventHeaderView()), 0);
+	},
+
+	/**
+	 * Ensure that only the events for the group that this list is part of is rendered
+	 *
+	 */
+	filter: function(model, index, collection) {
+		return (model.get("group") == this.group.get("name"));
+		// return (model.get("name") != "event");
+	},
+
+
+	/**
+	 * Return the number of children that match the filter.
+	 * Minus 1 for the "header" child view
+	 *
+	 */
+	getChildViewCount: function() {
+		return this.children.length - 1;
 	}
 
 });

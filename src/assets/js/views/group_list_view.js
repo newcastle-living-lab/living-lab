@@ -13,18 +13,26 @@ var GroupListView = Mn.CollectionView.extend({
 	template: _.noop,
 
 	childViewEvents: {
-		"group:toggle": "toggleGroup"
+		"group:toggle": "toggleGroup",
+		"group:edit": "editGroup"
 	},
 
 	_appChannel: null,
 
-	initialize: function() {
+	initialize: function(options) {
 		this._appChannel = Radio.channel("app");
+		this._viewCollection = options.views || null;
 		this.listenTo(this._appChannel, "group:active", this.handleActive);
 	},
 
 	toggleGroup: function(childView) {
 		childView.toggleActive();
+	},
+
+	editGroup: function(childView) {
+		this._appChannel.trigger("group:edit", {
+			group: childView.model
+		});
 	},
 
 	handleActive: function(data) {

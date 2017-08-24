@@ -1,6 +1,7 @@
 "use strict";
 
 var Mn = require("backbone.marionette"),
+	Radio = require("backbone.radio"),
 	EventListView = require("./event_list_view"),
 	mainTmpl = require("../templates/group_item_view.html");
 
@@ -16,30 +17,48 @@ var GroupItemView = Mn.View.extend({
 	},
 
 	ui: {
-		"event_count": "[data-ui=event_count]"
+		"event_count": "[data-ui=event_count]",
+		"group_name": "[data-ui=group_name]",
+		"btn_edit": "[data-ui=btn_edit]"
 	},
 
 	triggers: {
-		"click .event-group-item-header": "group:toggle"
+		"click .event-group-item-header": "group:toggle",
+		"click @ui.btn_edit": "group:edit"
 	},
 
-	onRender: function() {
+	modelEvents: {
+		"change": "updateUi"
+	},
+
+	initialize: function() {
 
 		var self = this;
 
-		this.updateEventCount();
+		this._storeChannel = Radio.channel("store");
 
-		this.listenTo(this.model.eventCollection, "change reset add remove", function() {
-			self.updateEventCount();
+		this.eventListView = new EventListView({
+			// pass in the whole event collection
+			collection: this._storeChannel.request("eventCollection"),
+			// pass this group model into the list so it knows how to filter the global event colleciton
+			group: this.model
 		});
 
-		this.showChildView("events", new EventListView({
-			collection: this.model.eventCollection
-		}));
+		// Wait for the evenlistview render event and update our event counter UI to match the filtered list
+		this.listenTo(this.eventListView, "render", function() {
+			self.updateUi();
+		});
+
 	},
 
-	updateEventCount: function() {
-		this.ui.event_count.text(this.model.eventCollection.models.length);
+	onRender: function() {
+		this.showChildView("events", this.eventListView);
+		this.updateUi();
+	},
+
+	updateUi: function() {
+		this.ui.group_name.text(_.escape(this.model.get("name")));
+		this.ui.event_count.text(this.eventListView.getChildViewCount());
 	},
 
 	setActive: function() {

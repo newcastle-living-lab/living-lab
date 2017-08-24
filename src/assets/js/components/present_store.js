@@ -14,6 +14,12 @@ var Store = Mn.Object.extend({
 
 	_appChannel: null,
 	_dataChannel: null,
+	_storeChannel: null,
+
+	groupCollection: null,
+	viewCollection: null,
+	eventCollection: null,
+	layerCollection: null,
 
 	//list of {layerid:id,layername:name} in designscreen
 	layers: [],
@@ -26,15 +32,34 @@ var Store = Mn.Object.extend({
 
 	initialize: function() {
 
+		console.log("Store | initialize");
+
 		var self = this;
 
 		this._dataChannel = Radio.channel("data");
 		this._appChannel = Radio.channel("app");
+		this._storeChannel = Radio.channel("store");
 
-		this.groupCollection = new GroupCollection(null, { store: this });
-		this.viewCollection = new ViewCollection(null, { store: this });
-		this.eventCollection = new EventCollection(null, { store: this });
-		this.layerCollection = new LayerCollection(null, { store: this });
+		this.groupCollection = new GroupCollection();
+		this.viewCollection = new ViewCollection();
+		this.eventCollection = new EventCollection();
+		this.layerCollection = new LayerCollection();
+
+		this._storeChannel.reply("groupCollection", function() {
+			return self.groupCollection
+		});
+
+		this._storeChannel.reply("viewCollection", function() {
+			return self.viewCollection
+		});
+
+		this._storeChannel.reply("eventCollection", function() {
+			return self.eventCollection
+		});
+
+		this._storeChannel.reply("layerCollection", function() {
+			return self.layerCollection
+		});
 
 		// (debug)
 		this.listenTo(this.layerCollection, "change reset add", function(m) {
@@ -44,6 +69,12 @@ var Store = Mn.Object.extend({
 		this.listenTo(this.eventCollection, "change reset add", function(m) {
 			// console.log("eventCollection");
 			// console.log(m);
+		});
+
+		this.listenTo(this.viewCollection, "change", function(model) {
+			// a ViewModel has changed
+			//
+			self._appChannel.trigger("view:changed", { view: model });
 		});
 
 		// Initialise the collections/models with actual data (when received)
@@ -164,6 +195,5 @@ var Store = Mn.Object.extend({
 	}
 
 });
-
 
 module.exports = Store;

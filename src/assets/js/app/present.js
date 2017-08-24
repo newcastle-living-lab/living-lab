@@ -33,7 +33,6 @@ var PresentApp = Mn.Application.extend({
 		console.log("onStart");
 		this._appChannel.trigger("start");
 		this.showView(new PresentAppView({ store: this._store }));
-		console.log(config);
 	}
 
 });

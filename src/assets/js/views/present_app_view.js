@@ -7,6 +7,7 @@ var _ = require("lodash"),
 	ScreensView = require("./screens_view"),
 	GroupListView = require("./group_list_view"),
 	ViewEditView = require("./view_edit_view"),
+	GroupEditView = require("./group_edit_view"),
 	vex = require('vex-js'),
 	mainTmpl = require("../templates/present_app_view.html");
 
@@ -21,7 +22,8 @@ var PresentAppView = Mn.View.extend({
 	template: mainTmpl,
 
 	_appChannel: null,
-	_store: null,
+	_dataChannel: null,
+	_storeChannel: null,
 
 	regions: {
 		"screens": "[data-region=screens]",
@@ -45,10 +47,9 @@ var PresentAppView = Mn.View.extend({
 
 		var self = this;
 
-		this._store = options.store;
-
 		this._appChannel = Radio.channel("app");
 		this._dataChannel = Radio.channel("data");
+		this._storeChannel = Radio.channel("store");
 
 		// Update UI when we get project name
 		this.listenTo(this._dataChannel, "designready", function(data) {
@@ -74,16 +75,22 @@ var PresentAppView = Mn.View.extend({
 				model: data.view
 			}));
 		});
+
+		this.listenTo(this._appChannel, "group:edit", function(data) {
+			self.showChildView("props", new GroupEditView({
+				model: data.group
+			}));
+		});
 	},
 
 	onRender: function() {
 
 		this.showChildView("screens", new ScreensView({
-			collection: this._store.viewCollection
+			collection: this._storeChannel.request("viewCollection")
 		}));
 
 		this.showChildView("groups", new GroupListView({
-			collection: this._store.groupCollection
+			collection: this._storeChannel.request("groupCollection")
 		}));
 
 	},

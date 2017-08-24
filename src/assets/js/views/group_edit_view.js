@@ -2,10 +2,10 @@
 
 var Mn = require("backbone.marionette"),
 	Radio = require("backbone.radio"),
-	mainTmpl = require("../templates/view_edit_view.html");
+	mainTmpl = require("../templates/group_edit_view.html");
 
 
-var ViewEditView = Mn.View.extend({
+var GroupEditView = Mn.View.extend({
 	tagName: "div",
 	className: "panel",
 	template:mainTmpl,
@@ -38,4 +38,4 @@ var ViewEditView = Mn.View.extend({
 });
 
 
-module.exports = ViewEditView;
+module.exports = GroupEditView;
