@@ -31,10 +31,10 @@ var Store = Mn.Object.extend({
 		this._dataChannel = Radio.channel("data");
 		this._appChannel = Radio.channel("app");
 
-		this.groupCollection = new GroupCollection();
-		this.viewCollection = new ViewCollection();
-		this.eventCollection = new EventCollection();
-		this.layerCollection = new LayerCollection();
+		this.groupCollection = new GroupCollection(null, { store: this });
+		this.viewCollection = new ViewCollection(null, { store: this });
+		this.eventCollection = new EventCollection(null, { store: this });
+		this.layerCollection = new LayerCollection(null, { store: this });
 
 		// (debug)
 		this.listenTo(this.layerCollection, "change reset add", function(m) {
@@ -53,10 +53,29 @@ var Store = Mn.Object.extend({
 	},
 
 	setupGroups: function() {
+
 		var self = this;
+
 		this.groupCollection.add({
 			name: "default"
 		});
+
+		this.listenTo(this._appChannel, "group:add", function() {
+
+			var newGroup = self.viewCollection.createNew();
+			if (newGroup) {
+				// Trigger event to say a new view has been added.
+				// Event listeners to this should make sure the views are added to the presentevents and are then updated over IO.
+				self._appChannel.trigger("group:added", {
+					group: newGroup
+				});
+			} else {
+				self._appChannel.trigger("ui:error", {
+					message: "Unable to create new group."
+				});
+			}
+		});
+
 	},
 
 	setupViewEvents: function() {
@@ -66,11 +85,12 @@ var Store = Mn.Object.extend({
 		this.listenTo(this._dataChannel, "peinfo", function(data) {
 
 			var evlists = data.peinfo.evl,
-				seviews = data.peinfo.sev;
+				seviews = data.peinfo.sev,
+				items = [];
 
 			// Create the start event
 			// self.createStartEvent(seviews);
-			self.eventCollection.addStartEvent(seviews);
+			self.eventCollection.getStartEvent(seviews);
 
 			if (evlists.length <= 0) {
 				return;
@@ -81,13 +101,19 @@ var Store = Mn.Object.extend({
 			var peviews = evlists[0].peviews;
 			// loop through the info and create the view entries
 			for (var vi = 0; vi < peviews.length; vi++) {
-				self.viewCollection.add(peviews[vi].viewstate);
+				items.push(peviews[vi].viewstate);
 			}
+			self.viewCollection.reset(items);
 
 			// Create the PEs (pei = present event index)
+			items = [ self.eventCollection.getStartEvent(seviews) ];
+
 			for (var pei = 0; pei < evlists.length; pei++) {
-				self.eventCollection.add(evlists[pei]);
+				items.push(evlists[pei]);
+				// self.eventCollection.add(evlists[pei]);
 			}
+			self.eventCollection.reset(items);
+
 		});
 
 		this.listenTo(this._appChannel, "view:add", function() {

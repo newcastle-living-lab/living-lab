@@ -25,6 +25,7 @@ var PresentAppView = Mn.View.extend({
 	regions: {
 		"screens": "[data-region=screens]",
 		"groups": "[data-region=groups]",
+		"props": "[data-region=props]"
 	},
 
 	ui: {
@@ -34,6 +35,7 @@ var PresentAppView = Mn.View.extend({
 
 	events: {
 		"click @ui.btn_groups_toggle": "handleGroupsToggle",
+		"click @ui.btn_add_group": "handleAddGroup"
 	},
 
 	initialize: function(options) {
@@ -58,8 +60,18 @@ var PresentAppView = Mn.View.extend({
 			}
 		});
 
+		// Show error dialogs when they occur
 		this.listenTo(this._appChannel, "ui:error", function(data) {
-			vex.dialog.alert("Error: " + data.message);
+			vex.dialog.alert({
+				contentClassName: "vex-type-error",
+				message: "Error: " + data.message
+			});
+		});
+
+		this.listenTo(this._appChannel, "view:edit", function(data) {
+			// self.showChildView("props", new ScreenEditView({
+			// 	model: data.view
+			// }));
 		});
 	},
 
@@ -70,8 +82,7 @@ var PresentAppView = Mn.View.extend({
 		}));
 
 		this.showChildView("groups", new GroupListView({
-			collection: this._store.groupCollection,
-			store: this._store,
+			collection: this._store.groupCollection
 		}));
 
 	},
@@ -83,6 +94,10 @@ var PresentAppView = Mn.View.extend({
 		this._appChannel.trigger("group:active", {
 			action: action
 		});
+	},
+
+	handleAddGroup: function() {
+		this._appChannel.trigger("group:add");
 	}
 
 });

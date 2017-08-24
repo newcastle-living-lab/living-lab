@@ -29,11 +29,7 @@ var GroupListView = Mn.CollectionView.extend({
 
 	handleActive: function(data) {
 
-		console.log("handleActive");
-		console.log(data);
-
 		if (data && data.action && data.target === undefined) {
-
 
 			// Loop through all children and set as active/inactive
 			this.children.each(function(child) {
@@ -45,10 +41,6 @@ var GroupListView = Mn.CollectionView.extend({
 
 			return;
 		}
-
-		// if single group, then toggle it's status
-		// if "expand" then set all to active
-		// if "collapse" then set all to collapsed
 	}
 
 });

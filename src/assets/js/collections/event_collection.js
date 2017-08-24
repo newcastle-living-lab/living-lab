@@ -10,7 +10,8 @@ var EventCollection = Bb.Collection.extend({
 
 	model: EventModel,
 
-	addStartEvent: function(peviews) {
+	// Get an array that represents the "startevent"
+	getStartEvent: function(peviews) {
 
 		var pestate = {
 			name: "startevent",
@@ -25,7 +26,9 @@ var EventCollection = Bb.Collection.extend({
 			console.warn("createStartEvent: peviews is null!");
 		}
 
-		this.add(pestate);
+		return pestate;
+
+		// this.add(pestate);
 	}
 
 });
