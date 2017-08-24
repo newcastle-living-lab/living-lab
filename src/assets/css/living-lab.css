@@ -2449,8 +2449,13 @@ a.button-hollow:hover .fa {
 .vex.vex-theme-livinglab .vex-content {
   border-color: #8888bb;
 }
+.vex.vex-theme-livinglab .vex-content.vex-type-error {
+  border-color: #FF4136;
+}
 .vex.vex-theme-livinglab .vex-dialog-button {
   letter-spacing: normal;
   text-transform: none;
   font-size: 100%;
+  float: none;
+  margin: 0 .5em 0 0;
 }
