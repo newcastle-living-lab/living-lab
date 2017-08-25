@@ -2528,6 +2528,18 @@ a.button-hollow:hover .fa {
 .page-present .event-list .event-item:hover {
   background: #ffffaa;
 }
+.page-present .event-list .event-item-screen-actions {
+  font-size: 83.33333333%;
+}
+.page-present .event-list .event-item-screen-actions ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.page-present .event-list .event-item-screen-actions li {
+  margin: 2px 0;
+  padding: 0;
+}
 .vex.vex-theme-livinglab .vex-content {
   border-color: #8888bb;
 }

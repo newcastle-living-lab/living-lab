@@ -34,6 +34,7 @@ var PresentAppView = Mn.View.extend({
 	ui: {
 		"project_name": "[data-ui=project_name]",
 		"btn_groups_toggle": "[data-ui=btn_groups_toggle]",
+		"btn_add_group": "[data-ui=btn_add_group]"
 	},
 
 	events: {
@@ -42,8 +43,6 @@ var PresentAppView = Mn.View.extend({
 	},
 
 	initialize: function(options) {
-
-		console.log("PresentAppView:initialize");
 
 		var self = this;
 

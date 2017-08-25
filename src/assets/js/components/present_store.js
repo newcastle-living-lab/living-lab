@@ -32,8 +32,6 @@ var Store = Mn.Object.extend({
 
 	initialize: function() {
 
-		console.log("Store | initialize");
-
 		var self = this;
 
 		this._dataChannel = Radio.channel("data");
@@ -93,7 +91,7 @@ var Store = Mn.Object.extend({
 
 		this.listenTo(this._appChannel, "group:add", function() {
 
-			var newGroup = self.viewCollection.createNew();
+			var newGroup = self.groupCollection.createNew();
 			if (newGroup) {
 				// Trigger event to say a new view has been added.
 				// Event listeners to this should make sure the views are added to the presentevents and are then updated over IO.
@@ -121,7 +119,7 @@ var Store = Mn.Object.extend({
 
 			// Create the start event
 			// self.createStartEvent(seviews);
-			self.eventCollection.getStartEvent(seviews);
+			// self.eventCollection.getStartEvent(seviews);
 
 			if (evlists.length <= 0) {
 				return;

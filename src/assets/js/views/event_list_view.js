@@ -8,6 +8,10 @@ var Mn = require("backbone.marionette"),
 	headerTmpl = require("../templates/event_header_view.html");
 
 
+/**
+ * ScreenView item
+ *
+ */
 var EventHeaderScreenView = Mn.View.extend({
 	tagName: "div",
 	template: _.template("<strong><%- name %></strong>"),
@@ -19,6 +23,11 @@ var EventHeaderScreenView = Mn.View.extend({
 	}
 });
 
+
+/**
+ * View area in the EventHeaderView that manages the list of screens
+ *
+ */
 var EventHeaderScreensView = Mn.CollectionView.extend({
 	tagName: "div",
 	className: "pure-g",
@@ -26,7 +35,14 @@ var EventHeaderScreensView = Mn.CollectionView.extend({
 	template: _.noop()
 });
 
+
+/**
+ * Header row for the events list.
+ * Adds the view info
+ *
+ */
 var EventHeaderView = Mn.View.extend({
+
 	tagName: "li",
 	className: "event-header",
 	template: headerTmpl,
@@ -49,6 +65,11 @@ var EventHeaderView = Mn.View.extend({
 });
 
 
+/**
+ * Main list view for all events.
+ * Parent view of this should be group item view.
+ *
+ */
 var EventListView = Mn.CollectionView.extend({
 
 	tagName: "ul",
@@ -75,7 +96,6 @@ var EventListView = Mn.CollectionView.extend({
 		return (model.get("group") == this.group.get("name"));
 		// return (model.get("name") != "event");
 	},
-
 
 	/**
 	 * Return the number of children that match the filter.
