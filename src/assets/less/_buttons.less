@@ -61,6 +61,34 @@ a.button-secondary {
 	// font-weight: @weight-bold;
 }
 
+
+.button-negative,
+a.button-negative {
+
+	background: @danger;
+	color: contrast(@danger);
+	border-color: @danger;
+
+	&:active,
+	&:focus {
+		.box-shadow(none);
+		background: @danger;
+		color: contrast(@danger);
+		border: 2px solid @danger;
+	}
+
+	&:hover {
+		.box-shadow(none);
+		background: @white;
+		color: @black;
+	}
+
+	// font-weight: @weight-bold;
+}
+
+
+
+
 .button-full,
 a.button-full {
 	width: 100%;

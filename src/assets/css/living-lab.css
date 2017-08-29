@@ -2288,6 +2288,29 @@ a.button-secondary:hover {
   background: #ffffff;
   color: #000000;
 }
+.button-negative,
+a.button-negative {
+  background: #ff4136;
+  color: #ffffff;
+  border-color: #ff4136;
+}
+.button-negative:active,
+a.button-negative:active,
+.button-negative:focus,
+a.button-negative:focus {
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  background: #ff4136;
+  color: #ffffff;
+  border: 2px solid #ff4136;
+}
+.button-negative:hover,
+a.button-negative:hover {
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  background: #ffffff;
+  color: #000000;
+}
 .button-full,
 a.button-full {
   width: 100%;

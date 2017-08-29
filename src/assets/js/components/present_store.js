@@ -71,9 +71,16 @@ var Store = Mn.Object.extend({
 
 		this.listenTo(this.viewCollection, "change", function(model) {
 			// a ViewModel has changed
-			//
-			self._appChannel.trigger("view:changed", { view: model });
+			self._appChannel.trigger("view:changed", {
+				view: model,
+				previousAttributes: model.previousAttributes()
+			});
 		});
+
+		this.listenTo(this.viewCollection, "destroy", function(model) {
+			self._appChannel.trigger("view:deleted", { view: model });
+		});
+
 
 		// Initialise the collections/models with actual data (when received)
 		this.setupGroups();

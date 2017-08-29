@@ -13,12 +13,22 @@ var ViewEditView = Mn.View.extend({
 	ui: {
 		"btn_save": "[data-ui=btn_save]",
 		"btn_cancel": "[data-ui=btn_cancel]",
+		"btn_delete": "[data-ui=btn_delete]",
 		"input_name": "input[name=name]"
 	},
 
 	events: {
 		"click @ui.btn_cancel": "handleCancel",
-		"click @ui.btn_save": "handleSave"
+		"click @ui.btn_save": "handleSave",
+		"click @ui.btn_delete": "handleDelete"
+	},
+
+	modelEvents: {
+		"destroy": "destroy"
+	},
+
+	initialize: function() {
+		this._appChannel = Radio.channel("app");
 	},
 
 	onAttach: function() {
@@ -32,6 +42,10 @@ var ViewEditView = Mn.View.extend({
 	handleSave: function() {
 		this.model.set("name", this.ui.input_name.val());
 		this.destroy();
+	},
+
+	handleDelete: function() {
+		this._appChannel.trigger("view:delete", { view: this.model });
 	}
 
 

@@ -10,6 +10,14 @@ var EventCollection = Bb.Collection.extend({
 
 	model: EventModel,
 
+	_appChannel: null,
+
+	initialize: function() {
+		this._appChannel = Radio.channel("app");
+		this.listenTo(this._appChannel, "view:deleted", this.handleDeleteView);
+		this.listenTo(this._appChannel, "view:changed", this.handleChangeView);
+	},
+
 	// Get an array that represents the "startevent"
 	getStartEvent: function(peviews) {
 
@@ -29,6 +37,43 @@ var EventCollection = Bb.Collection.extend({
 		return pestate;
 
 		// this.add(pestate);
+	},
+
+	handleChangeView: function(data) {
+		console.log("EventCollection");
+		console.log("View has changed, need to update");
+		console.log(data);
+
+		var viewModel = data.view,
+			hasChanged = (data.previousAttributes.name != viewModel.get("name"));
+
+		if ( ! hasChanged) {
+			return;
+		}
+
+		this.each(function(eventModel) {
+			eventModel.renameView(data.previousAttributes.name, viewModel.get("name"));
+		});
+	},
+
+	handleDeleteView: function(data) {
+
+		console.log(this);
+		console.log("EventCollection");
+		console.log("Loop through events and remove peviewstate for view name " + data.view.get("name"));
+
+		var viewModel = data.view;
+
+		this.each(function(eventModel) {
+			eventModel.deleteView(viewModel.get("name"));
+			// console.log(eventModel.get("peviews"));
+			// if (eventModel.hasScreen(viewModel.get("name"))) {
+
+			// }
+			// console.log(eventModel);
+		});
+
+		console.log(this.models);
 	}
 
 });

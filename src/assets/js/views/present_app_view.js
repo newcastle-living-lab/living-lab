@@ -80,6 +80,9 @@ var PresentAppView = Mn.View.extend({
 				model: data.group
 			}));
 		});
+
+		this.listenTo(this._appChannel, "view:delete", this.deleteView);
+		this.listenTo(this._appChannel, "group:delete", this.deleteGroup);
 	},
 
 	onRender: function() {
@@ -105,6 +108,22 @@ var PresentAppView = Mn.View.extend({
 
 	handleAddGroup: function() {
 		this._appChannel.trigger("group:add");
+	},
+
+	deleteGroup: function(data) {
+		var buttons = _.extend({}, vex.dialog.buttons);
+		buttons.YES.text = "Yes, delete";
+		buttons.NO.text = "Cancel";
+
+		vex.dialog.confirm({
+			message: 'Are you sure you want to delete this event group? All events inside it will also be deleted!',
+			buttons: [ buttons.YES, buttons.NO ],
+			callback: function (value) {
+				if (value) {
+					data.group.trigger('destroy', data.group);
+				}
+			}
+		});
 	}
 
 });
