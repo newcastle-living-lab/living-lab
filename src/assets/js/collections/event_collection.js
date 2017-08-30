@@ -14,6 +14,7 @@ var EventCollection = Bb.Collection.extend({
 
 	initialize: function() {
 		this._appChannel = Radio.channel("app");
+		this.listenTo(this._appChannel, "view:added", this.handleAddView);
 		this.listenTo(this._appChannel, "view:deleted", this.handleDeleteView);
 		this.listenTo(this._appChannel, "view:changed", this.handleChangeView);
 	},
@@ -39,10 +40,11 @@ var EventCollection = Bb.Collection.extend({
 		// this.add(pestate);
 	},
 
+	handleAddView: function(data) {
+		var viewModel = data.view;
+	},
+
 	handleChangeView: function(data) {
-		console.log("EventCollection");
-		console.log("View has changed, need to update");
-		console.log(data);
 
 		var viewModel = data.view,
 			hasChanged = (data.previousAttributes.name != viewModel.get("name"));

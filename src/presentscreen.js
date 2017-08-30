@@ -999,6 +999,7 @@ function castStartEvent() {
 }
 
 function txPEventsArr() {
+	console.log("txPEventsArr");
 	//only emit states
 	var statearr = [];
 	for (var i = 0; i < presentevents.length; i++) {
@@ -1015,6 +1016,10 @@ function txPEventsArr() {
 			sev: seviews
 		}
 	});
+	console.log({
+			pel: statearr,
+			sev: seviews
+		});
 	socket.emit('updateEvents', msg);
 }
 

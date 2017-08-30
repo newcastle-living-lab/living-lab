@@ -6,6 +6,7 @@ var Mn = require("backbone.marionette"),
 
 
 var ViewEditView = Mn.View.extend({
+
 	tagName: "div",
 	className: "panel",
 	template:mainTmpl,
@@ -26,6 +27,8 @@ var ViewEditView = Mn.View.extend({
 	modelEvents: {
 		"destroy": "destroy"
 	},
+
+	_appChannel: null,
 
 	initialize: function() {
 		this._appChannel = Radio.channel("app");

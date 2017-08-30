@@ -81,7 +81,6 @@ var Store = Mn.Object.extend({
 			self._appChannel.trigger("view:deleted", { view: model });
 		});
 
-
 		// Initialise the collections/models with actual data (when received)
 		this.setupGroups();
 		this.setupViewEvents();
