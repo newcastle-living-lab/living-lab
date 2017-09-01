@@ -64,6 +64,10 @@ var EventItemView = Mn.View.extend({
 		"views": "[data-region=views]"
 	},
 
+	triggers: {
+		"click": "event:toggle"
+	},
+
 	initialize: function() {
 		var self = this;
 		this._storeChannel = Radio.channel("store");
@@ -74,6 +78,18 @@ var EventItemView = Mn.View.extend({
 			collection: this._storeChannel.request("viewCollection"),
 			model: this.model
 		}));
+	},
+
+	setActive: function() {
+		this.$el.addClass("is-active");
+	},
+
+	setInactive: function() {
+		this.$el.removeClass("is-active");
+	},
+
+	toggleActive: function() {
+		this.$el.toggleClass("is-active");
 	}
 
 });

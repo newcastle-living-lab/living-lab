@@ -68,6 +68,12 @@ var EventModel = Bb.Model.extend({
 		this.set("peviews", peviews);
 	},
 
+	renameGroup: function(oldName, newName) {
+		if (this.get("group") == oldName) {
+			this.set("group", newName);
+		}
+	},
+
 	deleteView: function(viewName) {
 
 		// Get copy of our peviews

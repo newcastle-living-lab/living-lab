@@ -12,6 +12,7 @@ var ViewCollection = Bb.Collection.extend({
 
 	_dispatchChannel: null,
 
+
 	initialize: function() {
 		this._dispatchChannel = Radio.channel("dispatch");
 		this.on("change:name", this.handleChangeName);
@@ -38,7 +39,7 @@ var ViewCollection = Bb.Collection.extend({
 
 
 	/**
-	 * Determine if a new view can be added, based on current nuimber of views and maximum views supported.
+	 * Determine if a new view can be added, based on current number of views and maximum views supported.
 	 *
 	 */
 	canAddView: function() {

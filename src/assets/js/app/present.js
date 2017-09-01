@@ -19,6 +19,7 @@ var Actions = [
 	require("../actions/app_start"),
 	require("../actions/io_updates"),
 	require("../actions/views"),
+	require("../actions/groups"),
 ];
 
 

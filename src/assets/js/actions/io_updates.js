@@ -75,7 +75,7 @@ module.exports = Mn.Object.extend({
 		}];
 
 		// Add the ones we received from the data
-		Array.prototype.push.apply(store.layers);
+		Array.prototype.push.apply(store.layers, data.layers);
 		store.layerCollection.reset(store.layers);
 	},
 
@@ -94,32 +94,48 @@ module.exports = Mn.Object.extend({
 
 		var evlists = data.peinfo.evl,
 			seviews = data.peinfo.sev,
-			items = [];
+			groups = data.peinfo.groups,
+			group_arr = [],
+			view_arr = [],
+			event_arr = [];
 
 		if (evlists.length <= 0) {
 			return;
 		}
 
-		// Add default group
-		store.groupCollection.add({ name: "default" });
+		// Groups
+		//
+		if (groups === undefined || groups.length == 0) {
+			group_arr.push({ index: 0, name: "default" });
+		}
 
-		// Create views from first entry
+		Array.prototype.push.apply(group_arr, groups);
+		store.groupCollection.reset(group_arr);
+
+
+		// Views (create views from first entry)
 		//
 		var peviews = evlists[0].peviews;
 		// loop through the info and create the view entries
 		for (var vi = 0; vi < peviews.length; vi++) {
-			items.push(peviews[vi].viewstate);
+			view_arr.push(peviews[vi].viewstate);
 		}
-		store.viewCollection.reset(items);
+		store.viewCollection.reset(view_arr);
 
-		// Create the PEs (pei = present event index)
-		items = [ store.eventCollection.getStartEvent(seviews) ];
 
+		// Events. Create the PEs
+		//
+		var firstGroup = store.groupCollection.first();
+		event_arr.push(store.eventCollection.getStartEvent(seviews, firstGroup.get("name")));
+
+		//  (pei = present event index)
 		for (var pei = 0; pei < evlists.length; pei++) {
-			items.push(evlists[pei]);
+			event_arr.push(evlists[pei]);
 		}
-		store.eventCollection.reset(items);
+		store.eventCollection.reset(event_arr);
 
+
+		// Now that the data has been parsed and the relevant collections set, request the layer info
 		this._commsChannel.request("txPEventsGetLayerInfo");
 	},
 
@@ -135,9 +151,11 @@ module.exports = Mn.Object.extend({
 		// Get info from events to create raw array for sending
 
 		var statearr = [],
+			grouparr = [],
 			startEvent = {},
 			seviews = [],
-			eventCollection = this._storeChannel.request("eventCollection");
+			eventCollection = this._storeChannel.request("eventCollection"),
+			groupCollection = this._storeChannel.request("groupCollection");
 
 		// Iterate through all the events
 		eventCollection.each(function(eventModel) {
@@ -150,11 +168,21 @@ module.exports = Mn.Object.extend({
 			}
 		});
 
+		// Iterate through the groups.
+		// We need to send/store the groups separately as we need both name AND `index` (for sorting)
+		groupCollection.each(function(groupModel) {
+			grouparr.push(groupModel.attributes);
+		});
+
 		// Params needed for the comms channel event handler.
 		var params = {
 			statearr: statearr,
-			seviews: startEvent.peviews
+			seviews: startEvent.peviews,
+			grouparr: grouparr
 		};
+
+		// console.log("txPEventsArr");
+		// console.log(params);
 
 		this._commsChannel.request("txPEventsArr", params);
 	}

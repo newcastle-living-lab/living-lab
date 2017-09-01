@@ -49,6 +49,7 @@ var PresentAppView = Mn.View.extend({
 		this._appChannel = Radio.channel("app");
 		this._dataChannel = Radio.channel("data");
 		this._storeChannel = Radio.channel("store");
+		this._dispatchChannel = Radio.channel("dispatch");
 
 		// Get reference to project model so we can update the title.
 		this.projectModel = this._storeChannel.request("projectModel");

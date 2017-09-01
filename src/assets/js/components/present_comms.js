@@ -99,7 +99,8 @@ var Comms = Mn.Object.extend({
 			command: 'updateEventArr',
 			info: {
 				pel: data.statearr,
-				sev: data.seviews
+				sev: data.seviews,
+				groups: data.grouparr
 			}
 		});
 		this._socket.emit('updateEvents', msg);

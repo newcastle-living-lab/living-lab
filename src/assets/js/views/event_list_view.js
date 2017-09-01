@@ -77,6 +77,10 @@ var EventListView = Mn.CollectionView.extend({
 	childView: EventItemView,
 	template: _.noop,
 
+	childViewEvents: {
+		"event:select": "selectEvent"
+	},
+
 	_appChannel: null,
 
 	initialize: function(options) {
@@ -104,6 +108,10 @@ var EventListView = Mn.CollectionView.extend({
 	 */
 	getChildViewCount: function() {
 		return this.children.length - 1;
+	},
+
+	selectEvent: function(childView) {
+		childView.toggleActive();
 	}
 
 });

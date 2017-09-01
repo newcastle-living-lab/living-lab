@@ -11,14 +11,15 @@ var EventCollection = Bb.Collection.extend({
 	model: EventModel,
 
 	// Get an array that represents the "startevent"
-	getStartEvent: function(peviews) {
+	getStartEvent: function(peviews, groupName) {
 
 		var pestate = {
 			name: "startevent",
 			index: 0,
 			id: Common.uniqueId(),
 			actiontype: "Eventlist",
-			peviews: peviews
+			peviews: peviews,
+			group: groupName
 		};
 
 		if (peviews == null) {
@@ -57,6 +58,18 @@ var EventCollection = Bb.Collection.extend({
 
 		this.each(function(eventModel) {
 			eventModel.renameView(oldName, newName);
+		});
+	},
+
+
+	renameGroup: function(oldName, newName) {
+
+		if (oldName == newName) {
+			return;
+		}
+
+		this.each(function(eventModel) {
+			eventModel.renameGroup(oldName, newName);
 		});
 	},
 

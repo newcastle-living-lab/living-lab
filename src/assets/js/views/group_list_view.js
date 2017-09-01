@@ -18,9 +18,11 @@ var GroupListView = Mn.CollectionView.extend({
 	},
 
 	_appChannel: null,
+	_dispatchChannel: null,
 
 	initialize: function(options) {
 		this._appChannel = Radio.channel("app");
+		this._dispatchChannel = Radio.channel("dispatch");
 		this._viewCollection = options.views || null;
 		this.listenTo(this._appChannel, "group:active", this.handleActive);
 	},
@@ -30,9 +32,7 @@ var GroupListView = Mn.CollectionView.extend({
 	},
 
 	editGroup: function(childView) {
-		this._appChannel.trigger("group:edit", {
-			group: childView.model
-		});
+		this._dispatchChannel.request("group:edit", { group: childView.model });
 	},
 
 	handleActive: function(data) {
