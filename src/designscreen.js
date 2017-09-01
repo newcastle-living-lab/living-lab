@@ -1,4 +1,4 @@
-var project ={id:'project',name:'Project',creator:'unknown',type:'Project',createdate:'ddmmyyyy',lastdate:'ddmmyyyy',screenheight:1080,screenwidth:1920,layers:[],presentevents:[],starteventviews:[]};
+var project ={id:'project',name:'Project',creator:'unknown',type:'Project',createdate:'ddmmyyyy',lastdate:'ddmmyyyy',screenheight:1080,screenwidth:1920,layers:[],presentevents:[],starteventviews:[],groups:[]};
 var fullscreen = false;
 var openedproject = false; //used to control tree node unpacking
 var projectopened = false; //whether project opened or new
@@ -813,9 +813,20 @@ function packageProject()
 			layerstatearr.push(layerstate);
 		}
 
-	var projstate = {id:project.id,name:project.name,creator:project.creator,type:'Project',createdate:project.createdate,lastdate:ldate,screenwidth:project.screenwidth,screenheight:project.screenheight,
-layers:layerstatearr,presentevents:eventliststates,starteventviews:project.starteventviews};
-
+	var projstate = {
+		id: project.id,
+		name: project.name,
+		creator: project.creator,
+		type: 'Project',
+		createdate: project.createdate,
+		lastdate: ldate,
+		screenwidth: project.screenwidth,
+		screenheight: project.screenheight,
+		layers: layerstatearr,
+		presentevents: eventliststates,
+		starteventviews: project.starteventviews,
+		groups: project.groups
+	};
 
 
 	return projstate;
@@ -1584,7 +1595,7 @@ function txLayers() {
 
 function txPEinfo()
 {
-	var msg = JSON.stringify({command:'peinfo',info:{evl:eventliststates,sev:project.starteventviews}});
+	var msg = JSON.stringify({command:'peinfo',info:{evl:eventliststates,sev:project.starteventviews,groups:project.groups}});
 	socket.emit('designmsg', msg);
 }
 
@@ -1622,6 +1633,9 @@ function ioUpdate(respdata) {
 			case 'updateEventArr':
 				eventliststates = viewcommand.info.pel;
 				project.starteventviews = viewcommand.info.sev;
+				project.groups = viewcommand.info.groups;
+				// console.log("updateEventArr");
+				// console.log(project);
 				updateEventSwimList();
 			break;
 
