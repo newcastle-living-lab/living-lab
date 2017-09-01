@@ -38,10 +38,10 @@ var ScreensView = Mn.CollectionView.extend({
 		"view:edit": "editView"
 	},
 
-	_appChannel: null,
+	_dispatchChannel: null,
 
 	initialize: function() {
-		this._appChannel = Radio.channel("app");
+		this._dispatchChannel = Radio.channel("dispatch");
 	},
 
 	onRender: function() {
@@ -50,11 +50,11 @@ var ScreensView = Mn.CollectionView.extend({
 	},
 
 	addView: function() {
-		this._appChannel.trigger("view:add");
+		this._dispatchChannel.request("view:add");
 	},
 
 	editView: function(childView) {
-		this._appChannel.trigger("view:edit", {
+		this._dispatchChannel.request("view:edit", {
 			view: childView.model
 		});
 	}

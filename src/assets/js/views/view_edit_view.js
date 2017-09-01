@@ -25,12 +25,14 @@ var ViewEditView = Mn.View.extend({
 	},
 
 	modelEvents: {
-		"destroy": "destroy"
+		"remove": "destroy"
 	},
 
+	_dispatchChannel: null,
 	_appChannel: null,
 
 	initialize: function() {
+		this._dispatchChannel = Radio.channel("dispatch");
 		this._appChannel = Radio.channel("app");
 	},
 
@@ -43,12 +45,28 @@ var ViewEditView = Mn.View.extend({
 	},
 
 	handleSave: function() {
-		this.model.set("name", this.ui.input_name.val());
-		this.destroy();
+
+		var self = this;
+
+		// Listen once to a viewModel validation error, and just raise it to the UI.
+		this.model.once("invalid", function(viewModel, error) {
+			self._appChannel.request("ui:error", {
+				message: error
+			});
+		});
+
+		// Update the model with the new name.
+		// Because we pass {validate: true}, `update` will be false if the validation fails.
+		var update = this.model.set({ "name": this.ui.input_name.val() }, { validate: true });
+
+		if (update) {
+			// Only remove the view if the name change is successful.
+			this.destroy();
+		}
 	},
 
 	handleDelete: function() {
-		this._appChannel.trigger("view:delete", { view: this.model });
+		this._dispatchChannel.request("view:delete", { view: this.model });
 	}
 
 

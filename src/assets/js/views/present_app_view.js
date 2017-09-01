@@ -42,7 +42,7 @@ var PresentAppView = Mn.View.extend({
 		"click @ui.btn_add_group": "handleAddGroup"
 	},
 
-	initialize: function(options) {
+	initialize: function() {
 
 		var self = this;
 
@@ -50,19 +50,14 @@ var PresentAppView = Mn.View.extend({
 		this._dataChannel = Radio.channel("data");
 		this._storeChannel = Radio.channel("store");
 
-		// Update UI when we get project name
-		this.listenTo(this._dataChannel, "designready", function(data) {
-			if (data.status == "openready") {
-				self.ui.project_name.text(data.project.name);
-			} else if (data.status == "newready") {
-				self.ui.project_name.text("(New) " + data.project.name);
-			} else {
-				self.ui.project_name.text("Design not ready!");
-			}
+		// Get reference to project model so we can update the title.
+		this.projectModel = this._storeChannel.request("projectModel");
+		this.listenTo(this.projectModel, "change", function(projectModel) {
+			self.ui.project_name.text(projectModel.getName());
 		});
 
 		// Show error dialogs when they occur
-		this.listenTo(this._appChannel, "ui:error", function(data) {
+		this._appChannel.reply("ui:error", function(data) {
 			vex.dialog.alert({
 				contentClassName: "vex-type-error",
 				message: "Error: " + data.message
@@ -80,9 +75,6 @@ var PresentAppView = Mn.View.extend({
 				model: data.group
 			}));
 		});
-
-		this.listenTo(this._appChannel, "view:delete", this.deleteView);
-		this.listenTo(this._appChannel, "group:delete", this.deleteGroup);
 	},
 
 	onRender: function() {
@@ -107,7 +99,7 @@ var PresentAppView = Mn.View.extend({
 	},
 
 	handleAddGroup: function() {
-		this._appChannel.trigger("group:add");
+		this._dispatchChannel.request("group:add");
 	},
 
 	deleteGroup: function(data) {

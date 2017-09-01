@@ -3,7 +3,7 @@
 		<strong><%- view_data.layername %></strong>
 	<% } %>
 
-	<% if (view_data && view_data.actions.length > 0) { %>
+	<% if (view_data && view_data.actions && view_data.actions.length > 0) { %>
 	<ul>
 		<% _.each(view_data.actions, function(action) {
 			print("<li>" + _.escape(action.name) + "</li>");

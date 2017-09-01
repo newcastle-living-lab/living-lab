@@ -10,19 +10,57 @@ var ViewCollection = Bb.Collection.extend({
 
 	model: ViewModel,
 
+	_dispatchChannel: null,
+
+	initialize: function() {
+		this._dispatchChannel = Radio.channel("dispatch");
+		this.on("change:name", this.handleChangeName);
+	},
+
+
+	/**
+	 * When a view model name changes, we need to raise the event on the dispatch channel.
+	 * The intention of the action for this event is to update all the `peviews` info in the event models.
+	 *
+	 */
+	handleChangeName: function(viewModel) {
+
+		var oldName = viewModel.previous("name"),
+			newName = viewModel.get("name");
+
+		this._dispatchChannel.request("view:rename", {
+			oldName: oldName,
+			newName: newName,
+			viewModel: viewModel
+		});
+
+	},
+
+
+	/**
+	 * Determine if a new view can be added, based on current nuimber of views and maximum views supported.
+	 *
+	 */
 	canAddView: function() {
 		return (this.models.length < config.max_views);
 	},
 
-	createNew: function() {
 
-		var newView = new ViewModel();
-		var index = 0;
+	/**
+	 * Add a new view.
+	 *
+	 * If a new view can be made, create one with a suitable name, add it to the collection, and return it.
+	 *
+	 */
+	createNew: function() {
 
 		if ( ! this.canAddView()) {
 			console.error("Maximum number of views reached.");
 			return false;
 		}
+
+		var newView = new ViewModel();
+		var index = 0;
 
 		while (index <= config.max_views) {
 			var tryName = newView.get("name") + index;
@@ -38,51 +76,8 @@ var ViewCollection = Bb.Collection.extend({
 		return newView;
 	}
 
-});
-
-
-/*
-
-	_dataChannel: null,
-	_appChannel: null,
-
-	initialize: function() {
-
-		var self = this;
-
-		this._dataChannel = Radio.channel("data");
-		this._appChannel = Radio.channel("app");
-
-		this.listenTo(this._dataChannel, "peinfo", function(data) {
-
-			var views = [];
-
-			var peinfo = data.peinfo,
-				evlists = peinfo.evl,
-				seviews = peinfo.sev;
-
-			if (evlists.length > 0) {
-				// first event
-				var pestate = evlists[0];
-				// Views for the first event
-				var peviews = pestate.peviews;
-				// Loop through views
-				for (var vi = 0; vi < peviews.length; vi++) {
-					// var view = makeView(peviews[vi].viewstate);
-					self.add(peviews[vi].viewstate);
-				}
-			}
-		});
-
-		this.on("reset add change", function() {
-			console.log("ViewCollection");
-			console.log(self);
-		});
-
-	}
 
 });
-*/
 
 
 module.exports = ViewCollection;

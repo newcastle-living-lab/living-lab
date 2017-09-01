@@ -7,7 +7,8 @@ var Mn = require('backbone.marionette'),
 	GroupCollection = require("../collections/group_collection"),
 	LayerCollection = require("../collections/layer_collection"),
 	ViewCollection = require("../collections/view_collection"),
-	EventCollection = require("../collections/event_collection");
+	EventCollection = require("../collections/event_collection"),
+	ProjectModel = require("../models/project_model");
 
 
 var Store = Mn.Object.extend({
@@ -42,51 +43,35 @@ var Store = Mn.Object.extend({
 		this.viewCollection = new ViewCollection();
 		this.eventCollection = new EventCollection();
 		this.layerCollection = new LayerCollection();
+		this.projectModel = new ProjectModel();
 
 		this._storeChannel.reply("groupCollection", function() {
-			return self.groupCollection
+			return self.groupCollection;
 		});
 
 		this._storeChannel.reply("viewCollection", function() {
-			return self.viewCollection
+			return self.viewCollection;
 		});
 
 		this._storeChannel.reply("eventCollection", function() {
-			return self.eventCollection
+			return self.eventCollection;
 		});
 
 		this._storeChannel.reply("layerCollection", function() {
-			return self.layerCollection
+			return self.layerCollection;
 		});
 
-		// (debug)
-		this.listenTo(this.layerCollection, "change reset add", function(m) {
-			// console.log("layerCollection");
-			// console.log(m);
-		});
-		this.listenTo(this.eventCollection, "change reset add", function(m) {
-			// console.log("eventCollection");
-			// console.log(m);
+		this._storeChannel.reply("projectModel", function() {
+			return self.projectModel;
 		});
 
-		this.listenTo(this.viewCollection, "change", function(model) {
-			// a ViewModel has changed
-			self._appChannel.trigger("view:changed", {
-				view: model,
-				previousAttributes: model.previousAttributes()
-			});
+		this._storeChannel.reply("store", function() {
+			return self;
 		});
 
-		this.listenTo(this.viewCollection, "destroy", function(model) {
-			self._appChannel.trigger("view:deleted", { view: model });
-		});
-
-		// Initialise the collections/models with actual data (when received)
-		this.setupGroups();
-		this.setupViewEvents();
-		this.setupLayers();
 	},
 
+	/*
 	setupGroups: function() {
 
 		var self = this;
@@ -105,18 +90,20 @@ var Store = Mn.Object.extend({
 					group: newGroup
 				});
 			} else {
-				self._appChannel.trigger("ui:error", {
+				self._appChannel.request("ui:error", {
 					message: "Unable to create new group."
 				});
 			}
 		});
 
 	},
+	*/
 
 	setupViewEvents: function() {
 
 		var self = this;
 
+		/*
 		this.listenTo(this._dataChannel, "peinfo", function(data) {
 
 			var evlists = data.peinfo.evl,
@@ -150,7 +137,9 @@ var Store = Mn.Object.extend({
 			self.eventCollection.reset(items);
 
 		});
+		*/
 
+		/*
 		this.listenTo(this._appChannel, "view:add", function() {
 
 			if ( ! self.viewCollection.canAddView()) {
@@ -174,9 +163,11 @@ var Store = Mn.Object.extend({
 				});
 			}
 		});
+		*/
 
-	},
+	}
 
+	/*
 	setupLayers: function() {
 
 		var self = this;
@@ -197,6 +188,7 @@ var Store = Mn.Object.extend({
 			self.layerCollection.reset(self.layers);
 		});
 	}
+	*/
 
 });
 

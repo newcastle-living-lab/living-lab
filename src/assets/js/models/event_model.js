@@ -1,7 +1,8 @@
 "use strict";
 
 var _ = require("lodash"),
-	Bb = require("backbone");
+	Bb = require("backbone"),
+	Common = require("../components/common");
 
 
 var EventModel = Bb.Model.extend({
@@ -30,7 +31,28 @@ var EventModel = Bb.Model.extend({
 	},
 
 	addView: function(viewModel) {
-		// @TODO Handle adding a new view into the event data
+
+		var peviews = this.get("peviews"),
+			view = {};
+
+		if (this.get("name") == "startevent") {
+			view = {
+				viewstate: viewModel.attributes,
+				layerid: "none",
+				layername: "none"
+			};
+		} else {
+			view = {
+				id: Common.uniqueId(),
+				viewstate: viewModel.attributes,
+				layerid: "none",
+				layername: "none",
+				actions: []
+			};
+		}
+
+		peviews.push(view);
+		this.set("peviews", peviews);
 	},
 
 	renameView: function(oldName, newName) {
@@ -38,7 +60,9 @@ var EventModel = Bb.Model.extend({
 		var peviews = this.get("peviews");
 
 		_.each(peviews, function(item, idx) {
-			peviews[idx].viewstate.name = newName;
+			if (peviews[idx].viewstate.name == oldName) {
+				peviews[idx].viewstate.name = newName;
+			}
 		});
 
 		this.set("peviews", peviews);
