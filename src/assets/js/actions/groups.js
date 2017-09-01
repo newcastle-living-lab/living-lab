@@ -18,10 +18,7 @@ module.exports = Mn.Object.extend({
 		this._dispatchChannel.reply("group:add", this.handleAddGroup, this);
 		this._dispatchChannel.reply("group:edit", this.handleEditGroup, this);
 		this._dispatchChannel.reply("group:rename", this.handleRenameGroup, this);
-		// this._dispatchChannel.reply("group:added", this.handleGroupAdded, this);
-		// this._dispatchChannel.reply("group:changed", this.handleGroupChanged, this);
-		// this._dispatchChannel.reply("group:delete", this.handleGroupDelete, this);
-		// this._dispatchChannel.reply("group:deleted", this.handleGroupDelete, this);
+		this._dispatchChannel.reply("group:delete", this.handleDeleteGroup, this);
 	},
 
 	handleAddGroup: function(data) {
@@ -61,7 +58,24 @@ module.exports = Mn.Object.extend({
 
 		// Request a comms sync for data
 		this._dispatchChannel.request("io:send_events");
+	},
+
+
+	handleDeleteGroup: function(data) {
+
+		var groupCollection = this._storeChannel.request("groupCollection"),
+			eventCollection = this._storeChannel.request("eventCollection");
+
+		// Remove group from the group collection
+		groupCollection.remove(data.group);
+
+		// remove the group from all events
+		// eventCollection.deleteGroup(data.group);
+
+		// Request a comms sync for data
+		this._dispatchChannel.request("io:send_events");
 	}
+
 
 
 });

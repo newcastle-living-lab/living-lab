@@ -76,6 +76,8 @@ var PresentAppView = Mn.View.extend({
 				model: data.group
 			}));
 		});
+
+		this.listenTo(this._appChannel, "group:confirm_delete", this.confirmDeleteGroup);
 	},
 
 	onRender: function() {
@@ -103,7 +105,10 @@ var PresentAppView = Mn.View.extend({
 		this._dispatchChannel.request("group:add");
 	},
 
-	deleteGroup: function(data) {
+	confirmDeleteGroup: function(data) {
+
+		var self = this;
+
 		var buttons = _.extend({}, vex.dialog.buttons);
 		buttons.YES.text = "Yes, delete";
 		buttons.NO.text = "Cancel";
@@ -113,7 +118,11 @@ var PresentAppView = Mn.View.extend({
 			buttons: [ buttons.YES, buttons.NO ],
 			callback: function (value) {
 				if (value) {
-					data.group.trigger('destroy', data.group);
+					self._dispatchChannel.request("group:delete", {
+						group: data.group
+					});
+					// alert("DELETE");
+					// data.group.trigger('destroy', data.group);
 				}
 			}
 		});

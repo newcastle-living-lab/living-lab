@@ -25,7 +25,7 @@ var GroupEditView = Mn.View.extend({
 	},
 
 	modelEvents: {
-		"destroy": "destroy"
+		"remove": "destroy"
 	},
 
 	_dispatchChannel: null,
@@ -66,7 +66,7 @@ var GroupEditView = Mn.View.extend({
 	},
 
 	handleDelete: function() {
-		this._appChannel.trigger("group:delete", { group: this.model });
+		this._appChannel.trigger("group:confirm_delete", { group: this.model });
 	}
 
 
