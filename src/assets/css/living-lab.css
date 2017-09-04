@@ -2411,6 +2411,7 @@ a.button-hollow:hover .fa {
   color: #000000;
   width: 100%;
   max-width: 100%;
+  min-height: 32px;
 }
 .pure-form input[type="text"]:focus,
 .pure-form input[type="password"]:focus,
@@ -2548,7 +2549,8 @@ a.button-hollow:hover .fa {
   margin-bottom: 5px;
   cursor: default;
 }
-.page-present .event-list .event-item:hover {
+.page-present .event-list .event-item:hover,
+.page-present .event-list .event-item.is-active {
   background: #ffffaa;
 }
 .page-present .event-list .event-item-screen-actions {
