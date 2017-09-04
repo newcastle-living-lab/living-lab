@@ -64,8 +64,21 @@ var EventItemView = Mn.View.extend({
 		"views": "[data-region=views]"
 	},
 
+	ui: {
+		"btn_start": "[data-ui=btn_start]",
+		"btn_play": "[data-ui=btn_play]"
+	},
+
 	triggers: {
-		"click": "event:toggle"
+		"click @ui.btn_start": "event:start",
+		"click @ui.btn_play": "event:play",
+		"click": "event:select",
+	},
+
+	modelEvents: {
+		"change": "render",
+		"select": "setActive",
+		"deselect": "setInactive"
 	},
 
 	initialize: function() {

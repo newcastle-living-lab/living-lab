@@ -69,7 +69,8 @@ module.exports = Mn.Object.extend({
 		// Remove group from the group collection
 		groupCollection.remove(data.group);
 
-		// remove the group from all events
+		// remove the group from all events @TODO
+		// OR delete events
 		// eventCollection.deleteGroup(data.group);
 
 		// Request a comms sync for data

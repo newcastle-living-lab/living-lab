@@ -78,6 +78,8 @@ var EventListView = Mn.CollectionView.extend({
 	template: _.noop,
 
 	childViewEvents: {
+		"event:play": "playEvent",
+		"event:start": "startEvent",
 		"event:select": "selectEvent"
 	},
 
@@ -85,6 +87,7 @@ var EventListView = Mn.CollectionView.extend({
 
 	initialize: function(options) {
 		this._appChannel = Radio.channel("app");
+		this._dispatchChannel = Radio.channel("dispatch");
 		this.group = options.group;
 	},
 
@@ -110,8 +113,16 @@ var EventListView = Mn.CollectionView.extend({
 		return this.children.length - 1;
 	},
 
+	startEvent: function(childView) {
+		this._dispatchChannel.request("event:start", { event: childView.model });
+	},
+
+	playEvent: function(childView) {
+		this._dispatchChannel.request("event:play", { event: childView.model });
+	},
+
 	selectEvent: function(childView) {
-		childView.toggleActive();
+		this._dispatchChannel.request("event:select", { event: childView.model });
 	}
 
 });

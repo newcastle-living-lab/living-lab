@@ -8,6 +8,7 @@ var _ = require("lodash"),
 	GroupListView = require("./group_list_view"),
 	ViewEditView = require("./view_edit_view"),
 	GroupEditView = require("./group_edit_view"),
+	EventEditView = require("./event_edit_view"),
 	vex = require('vex-js'),
 	mainTmpl = require("../templates/present_app_view.html");
 
@@ -74,6 +75,12 @@ var PresentAppView = Mn.View.extend({
 		this.listenTo(this._appChannel, "group:edit", function(data) {
 			self.showChildView("props", new GroupEditView({
 				model: data.group
+			}));
+		});
+
+		this.listenTo(this._appChannel, "event:edit", function(data) {
+			self.showChildView("props", new EventEditView({
+				model: data.event
 			}));
 		});
 

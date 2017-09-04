@@ -18,6 +18,12 @@ var EventModel = Bb.Model.extend({
 		group: "default"
 	},
 
+	validate: function(attributes, options) {
+		if (attributes.name === "startevent") {
+			return "It is not possible to use the name 'startevent' in other events.";
+		}
+	},
+
 	/**
 	 * Get the "peviews" data - layer, view, and actions - for a given view name.
 	 * If nothing found, _.head will return `undefined`.

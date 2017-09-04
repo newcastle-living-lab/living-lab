@@ -20,6 +20,7 @@ var Actions = [
 	require("../actions/io_updates"),
 	require("../actions/views"),
 	require("../actions/groups"),
+	require("../actions/events"),
 ];
 
 

@@ -10,7 +10,39 @@ var EventCollection = Bb.Collection.extend({
 
 	model: EventModel,
 
-	// Get an array that represents the "startevent"
+	initialize: function() {
+		this._dispatchChannel = Radio.channel("dispatch");
+		this.on("change", this.handleChange);
+	},
+
+
+	handleChange: function(eventModel) {
+		this._dispatchChannel.request("event:change", {
+			eventModel: eventModel
+		});
+	},
+
+
+	/**
+	 * Handle the selection of an event.
+	 * Loop through the models, and if the model is the parameter (selected model) then trigger the select event.
+	 *
+	 */
+	selectEvent: function(eventModel) {
+		this.each(function(model) {
+			if (model == eventModel) {
+				model.trigger("select");
+			} else {
+				model.trigger("deselect");
+			}
+		});
+	},
+
+
+	/**
+	 * Get an array that represents the "startevent"
+	 *
+	 */
 	getStartEvent: function(peviews, groupName) {
 
 		var pestate = {
@@ -56,17 +88,26 @@ var EventCollection = Bb.Collection.extend({
 			return;
 		}
 
+		console.log("EventCollection | renameView | Renaming view " + oldName + " -> " + newName + " on all events...");
+
 		this.each(function(eventModel) {
 			eventModel.renameView(oldName, newName);
 		});
 	},
 
 
+	/**
+	 * Handle the renaming of a group.
+	 * In each event model, if the `group` attr matches `oldName`, set to `newName`.
+	 *
+	 */
 	renameGroup: function(oldName, newName) {
 
 		if (oldName == newName) {
 			return;
 		}
+
+		console.log("EventCollection | renameGroup | Renaming group " + oldName + " -> " + newName + " on all events...");
 
 		this.each(function(eventModel) {
 			eventModel.renameGroup(oldName, newName);
@@ -85,6 +126,7 @@ var EventCollection = Bb.Collection.extend({
 			eventModel.deleteView(viewModel.get("name"));
 		});
 	}
+
 
 });
 
