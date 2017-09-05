@@ -623,7 +623,7 @@ function newProject()
 * Create a new project and instantiate the tree
 */
 	var cdate = (new Date()).toLocaleDateString();
-	project ={id:'project',name:'Project',creator:'unknown',type:'Project',createdate:cdate,lastdate:cdate,screenheight:1080,screenwidth:1920,layers:[],presentevents:[],starteventviews:[]};
+	project ={id:'project',name:'Project',creator:'unknown',type:'Project',createdate:cdate,lastdate:cdate,screenheight:1080,screenwidth:1920,layers:[],presentevents:[],starteventviews:[],groups:[]};
 
 	clearActiveObject();
 	stage.clear();
