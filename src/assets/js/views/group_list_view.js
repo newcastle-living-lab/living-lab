@@ -14,7 +14,8 @@ var GroupListView = Mn.CollectionView.extend({
 
 	childViewEvents: {
 		"group:toggle": "toggleGroup",
-		"group:edit": "editGroup"
+		"group:edit": "editGroup",
+		"event:add": "addEvent"
 	},
 
 	_appChannel: null,
@@ -33,6 +34,10 @@ var GroupListView = Mn.CollectionView.extend({
 
 	editGroup: function(childView) {
 		this._dispatchChannel.request("group:edit", { group: childView.model });
+	},
+
+	addEvent: function(childView) {
+		this._dispatchChannel.request("event:add", { group: childView.model });
 	},
 
 	handleActive: function(data) {

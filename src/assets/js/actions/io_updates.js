@@ -181,9 +181,6 @@ module.exports = Mn.Object.extend({
 			grouparr: grouparr
 		};
 
-		// console.log("txPEventsArr");
-		// console.log(params);
-
 		this._commsChannel.request("txPEventsArr", params);
 	},
 

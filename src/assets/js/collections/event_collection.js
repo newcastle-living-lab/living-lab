@@ -9,10 +9,15 @@ var Bb = require("backbone"),
 var EventCollection = Bb.Collection.extend({
 
 	model: EventModel,
+	// comparator: "index",
+
+	_dispatchChannel: null,
+	selectedEvent: null,
 
 	initialize: function() {
 		this._dispatchChannel = Radio.channel("dispatch");
 		this.on("change", this.handleChange);
+		this.on("add remove", this.handleAddRemove);
 	},
 
 
@@ -23,12 +28,24 @@ var EventCollection = Bb.Collection.extend({
 	},
 
 
+	handleAddRemove: function(model, index) {
+		this.each(function(eventModel, index) {
+			// silent, to ensure the "change" handler doesn't fire a million times.
+			eventModel.set({ "index": index }, { silent: true });
+		});
+	},
+
+
 	/**
 	 * Handle the selection of an event.
-	 * Loop through the models, and if the model is the parameter (selected model) then trigger the select event.
 	 *
 	 */
 	selectEvent: function(eventModel) {
+
+		// Keep copy of currently selected event
+		this.selectedEvent = eventModel;
+
+		// Loop through the models, and if the model is the parameter (selected model) then trigger the select event.
 		this.each(function(model) {
 			if (model == eventModel) {
 				model.trigger("select");
@@ -125,6 +142,44 @@ var EventCollection = Bb.Collection.extend({
 		this.each(function(eventModel) {
 			eventModel.deleteView(viewModel.get("name"));
 		});
+	},
+
+
+	createNew: function(attrs) {
+
+		var addOptions = {},
+			storeChannel = Radio.channel("store"),
+			viewCollection = storeChannel.request("viewCollection");
+
+		attrs = attrs || {};
+		attrs.id = Common.uniqueId();
+
+		var peviews = [];
+
+		// Get views
+		viewCollection.each(function(viewModel) {
+			peviews.push({
+				id: Common.uniqueId(),
+				parentid: attrs.id,
+				viewstate: viewModel.attributes,
+				layerid: "none",
+				layername: "none",
+				actions: []
+			});
+		});
+
+		attrs.peviews = peviews;
+
+		if (this.selectedEvent) {
+			addOptions.at = this.indexOf(this.selectedEvent) + 1;
+		}
+
+		console.log(addOptions);
+
+		var newEvent = new EventModel(attrs);
+
+		this.add(newEvent, addOptions);
+		return newEvent;
 	}
 
 

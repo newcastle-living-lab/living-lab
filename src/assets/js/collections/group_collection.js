@@ -9,6 +9,7 @@ var Bb = require("backbone"),
 var GroupCollection = Bb.Collection.extend({
 
 	model: GroupModel,
+	comparator: "index",
 
 	_dispatchChannel: null,
 
@@ -16,6 +17,7 @@ var GroupCollection = Bb.Collection.extend({
 	initialize: function() {
 		this._dispatchChannel = Radio.channel("dispatch");
 		this.on("change:name", this.handleChangeName);
+		this.on("add remove", this.handleAddRemove);
 	},
 
 
@@ -36,6 +38,13 @@ var GroupCollection = Bb.Collection.extend({
 			groupModel: groupModel
 		});
 
+	},
+
+
+	handleAddRemove: function() {
+		this.each(function(groupModel, index) {
+			groupModel.set({ "index": index }, { silent: true });
+		});
 	},
 
 
@@ -78,12 +87,12 @@ var GroupCollection = Bb.Collection.extend({
 			return groupModel.get("index");
 		});
 
-		console.log("maxIndex");
-		console.log(maxIndex);
+		// console.log("maxIndex");
+		// console.log(maxIndex);
 
-		newGroup.set("index", parseInt(maxIndex.get("index"), 10) + 1);
+		//newGroup.set("index", parseInt(maxIndex.get("index"), 10) + 1);
 
-		this.add(newGroup);
+		this.add(newGroup, { at: this.length });
 		return newGroup;
 	}
 

@@ -15,11 +15,42 @@ module.exports = Mn.Object.extend({
 		this._dispatchChannel = Radio.channel("dispatch");
 		this._appChannel = Radio.channel("app");
 
+		this._dispatchChannel.reply("event:add", this.handleAddEvent, this);
 		this._dispatchChannel.reply("event:select", this.handleSelectEvent, this);
 		this._dispatchChannel.reply("event:change", this.handleChangeEvent, this);
+		this._dispatchChannel.reply("event:delete", this.handleDeleteEvent, this);
 	},
 
+
+	handleAddEvent: function(data) {
+
+		var eventCollection = this._storeChannel.request("eventCollection");
+
+		var params = {};
+
+		if (data.group) {
+			params.group = data.group.get("name");
+		}
+
+		var newEvent = eventCollection.createNew(params);
+
+		if (newEvent) {
+			// Highlight new event
+			this._dispatchChannel.request("event:select", { event: newEvent });
+			// Comms update to send data
+			this._dispatchChannel.request("io:send_events");
+			return;
+		}
+
+		this._appChannel.request("ui:error", {
+			message: "Unable to create new event."
+		});
+	},
+
+
 	handleSelectEvent: function(data) {
+
+		console.log("Action | event | handleSelectEvent");
 
 		// Call collection function to select the event.
 		// This triggers select/deselect event on each model as appropriate.
@@ -35,6 +66,13 @@ module.exports = Mn.Object.extend({
 
 	handleChangeEvent: function(data) {
 		// Request a comms sync for data
+		this._dispatchChannel.request("io:send_events");
+	},
+
+
+	handleDeleteEvent: function(data) {
+		var eventCollection = this._storeChannel.request("eventCollection");
+		eventCollection.remove(data.event);
 		this._dispatchChannel.request("io:send_events");
 	}
 

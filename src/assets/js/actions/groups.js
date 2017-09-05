@@ -40,7 +40,7 @@ module.exports = Mn.Object.extend({
 			return;
 		}
 
-		this._dispatchChannel.request("ui:error", {
+		this.appchannel.request("ui:error", {
 			message: "Unable to create new group"
 		});
 	},
@@ -66,17 +66,26 @@ module.exports = Mn.Object.extend({
 		var groupCollection = this._storeChannel.request("groupCollection"),
 			eventCollection = this._storeChannel.request("eventCollection");
 
+		if (groupCollection.length == 1) {
+			this._appChannel.request("ui:error", {
+				message: "You cannot delete the last remaining group."
+			});
+			return;
+		}
+
+		var groupName = data.group.get("name");
+
+		// Remove events from collection where their group name matches groupName being deleted.
+		eventCollection.remove(eventCollection.filter(function(eventModel) {
+			return (eventModel.get("group") == groupName && eventModel.get("name") !== "startevent");
+		}));
+
 		// Remove group from the group collection
 		groupCollection.remove(data.group);
-
-		// remove the group from all events @TODO
-		// OR delete events
-		// eventCollection.deleteGroup(data.group);
 
 		// Request a comms sync for data
 		this._dispatchChannel.request("io:send_events");
 	}
-
 
 
 });

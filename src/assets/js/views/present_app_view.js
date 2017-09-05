@@ -60,7 +60,10 @@ var PresentAppView = Mn.View.extend({
 
 		// Show error dialogs when they occur
 		this._appChannel.reply("ui:error", function(data) {
+			var buttons = _.extend({}, vex.dialog.buttons);
+			buttons.YES.text = "OK";
 			vex.dialog.alert({
+				buttons: [ buttons.YES ],
 				contentClassName: "vex-type-error",
 				message: "Error: " + data.message
 			});
@@ -85,6 +88,7 @@ var PresentAppView = Mn.View.extend({
 		});
 
 		this.listenTo(this._appChannel, "group:confirm_delete", this.confirmDeleteGroup);
+		this.listenTo(this._appChannel, "event:confirm_delete", this.confirmDeleteEvent);
 	},
 
 	onRender: function() {
@@ -130,6 +134,28 @@ var PresentAppView = Mn.View.extend({
 					});
 					// alert("DELETE");
 					// data.group.trigger('destroy', data.group);
+				}
+			}
+		});
+	},
+
+
+	confirmDeleteEvent: function(data) {
+
+		var self = this;
+
+		var buttons = _.extend({}, vex.dialog.buttons);
+		buttons.YES.text = "Yes, delete";
+		buttons.NO.text = "Cancel";
+
+		vex.dialog.confirm({
+			message: 'Are you sure you want to delete this event?',
+			buttons: [ buttons.YES, buttons.NO ],
+			callback: function (value) {
+				if (value) {
+					self._dispatchChannel.request("event:delete", {
+						event: data.event
+					});
 				}
 			}
 		});
