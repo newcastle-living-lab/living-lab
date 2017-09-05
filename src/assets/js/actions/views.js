@@ -8,7 +8,7 @@ module.exports = Mn.Object.extend({
 
 	initialize: function(options) {
 
-		console.log("Action | groups | initialize");
+		console.log("Action | views | initialize");
 
 		this._storeChannel = Radio.channel("store");
 		this._commsChannel = Radio.channel("comms");
