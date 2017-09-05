@@ -2376,6 +2376,21 @@ a.button-hollow:hover {
 a.button-hollow:hover .fa {
   color: #ffffff;
 }
+.button-collection {
+  /*.respond-min(@screen-xl, {
+		.align-right {
+			float: right;
+		}
+	});*/
+}
+.button-collection:before,
+.button-collection:after {
+  content: " ";
+  display: table;
+}
+.button-collection:after {
+  clear: both;
+}
 .button-collection .pure-button,
 .button-collection a.pure-button {
   margin-bottom: 5.6px;
@@ -2435,6 +2450,8 @@ a.button-hollow:hover .fa {
   margin-bottom: 20px;
 }
 .pure-form-stacked .pure-form-label > label {
+  font-weight: bold;
+  color: #444444;
   margin: 0 0 5px;
 }
 .page-present {
