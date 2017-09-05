@@ -37,16 +37,14 @@ var Comms = Mn.Object.extend({
 		var viewcommand = JSON.parse(respdata);
 		var command = viewcommand.command;
 
+		console.log("Comms | ioUpdate | Command: " + command);
+
 		switch (command) {
 
 			case 'designready':
-
-				var msg = viewcommand.info;
-				var project = (viewcommand.project ? viewcommand.project : null);
-
 				this._dispatchChannel.request("io:designready", {
-					project: project,
-					status: msg
+					project: (viewcommand.project ? viewcommand.project : null),
+					status: viewcommand.info
 				});
 			break;
 
@@ -63,10 +61,10 @@ var Comms = Mn.Object.extend({
 			break;
 
 			case 'updateAllPEventActions':
-				var statesarr = viewcommand.info;
-				updateallPEventActions(statesarr);
+				this._dispatchChannel.request("io:update_actions", {
+					statesarr: viewcommand.info
+				});
 			break;
-
 		}
 	},
 

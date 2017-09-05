@@ -18,6 +18,7 @@ module.exports = Mn.Object.extend({
 		this._dispatchChannel.reply("io:layerinfo", this.handleLayerInfo, this);
 		this._dispatchChannel.reply("io:peinfo", this.handlePeInfo, this);
 		this._dispatchChannel.reply("io:send_events", this.handleSendEvents, this);
+		this._dispatchChannel.reply("io:update_actions", this.handleUpdateActions, this);
 	},
 
 
@@ -134,7 +135,6 @@ module.exports = Mn.Object.extend({
 		}
 		store.eventCollection.reset(event_arr);
 
-
 		// Now that the data has been parsed and the relevant collections set, request the layer info
 		this._commsChannel.request("txPEventsGetLayerInfo");
 	},
@@ -185,6 +185,27 @@ module.exports = Mn.Object.extend({
 		// console.log(params);
 
 		this._commsChannel.request("txPEventsArr", params);
+	},
+
+
+	/**
+	 * Update the actions (in peviews) on each event when they change in the designscreen.
+	 *
+	 */
+	handleUpdateActions: function(data) {
+
+		console.log("Action | io | handleUpdateActions()");
+
+		var statesarr = data.statesarr,
+			eventCollection = this._storeChannel.request("eventCollection");
+
+		// Loop through the items we have received
+		_.each(statesarr, function(eventArr) {
+			// Find the eventModel in the collection using the ID
+			var eventModel = eventCollection.get(eventArr.id);
+			// Set the peviews array of the eventModel with the new data
+			eventModel.set("peviews", eventArr.peviews);
+		});
 	}
 
 
