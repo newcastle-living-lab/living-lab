@@ -62,7 +62,7 @@ function updateprojPropDisp()
 		//make table to display
 		$("#proptable").empty();
 		for (var key in state) {
-		 if (key != 'layers' && key != 'actions' && key != 'library' && key != 'id' && key != 'presentevents' && key != 'starteventviews') {
+		 if (key != 'layers' && key != 'actions' && key != 'library' && key != 'id' && key != 'presentevents' && key != 'starteventviews' && key != "groups") {
 			var propval = state[key];
 			if (key == 'type' || key == 'createdate' || key == 'lastdate') {
 				$("#proptable").append('<tr><td class="tablekey">'+key+'</td><td class="tableval" style="text-align:left">'+propval+'</td></tr>');
