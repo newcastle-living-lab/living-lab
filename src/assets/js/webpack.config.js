@@ -1,7 +1,7 @@
 var path = require('path');
 
 module.exports = {
-	devtool: 'inline-source-map',
+	devtool: 'eval-source-map',
 	entry: './app/present.js',
 	output: {
 		filename: 'present.js',
