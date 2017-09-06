@@ -35,6 +35,7 @@ module.exports = Mn.Object.extend({
 		var newEvent = eventCollection.createNew(params);
 
 		if (newEvent) {
+			eventCollection.updateIndexes();
 			// Highlight new event
 			this._dispatchChannel.request("event:select", { event: newEvent });
 			// Comms update to send data
@@ -73,6 +74,7 @@ module.exports = Mn.Object.extend({
 	handleDeleteEvent: function(data) {
 		var eventCollection = this._storeChannel.request("eventCollection");
 		eventCollection.remove(data.event);
+		eventCollection.updateIndexes();
 		this._dispatchChannel.request("io:send_events");
 	}
 
