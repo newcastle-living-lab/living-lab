@@ -148,6 +148,8 @@ module.exports = Mn.Object.extend({
 	 */
 	handleSendEvents: function() {
 
+		console.log("Action | io | handleSendEvents()");
+
 		// Get info from events to create raw array for sending
 
 		var statearr = [],
