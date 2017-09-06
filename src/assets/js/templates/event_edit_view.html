@@ -18,7 +18,9 @@
 	<div class="button-collection">
 		<button class="pure-button" type="button" data-ui="btn_save"><i class="fa fa-check"></i> Save</button>
 		<button class="pure-button button-secondary" type="button" data-ui="btn_cancel">Cancel</button>
+		<% if (name !== "startevent") { %>
 		<button class="pure-button button-negative" type="button" data-ui="btn_delete"><i class="fa fa-times"></i> Delete</button>
+		<% } %>
 	</div>
 
 </div>
