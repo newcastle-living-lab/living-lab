@@ -4,12 +4,12 @@ var _ = require("lodash"),
 	$ = require("jquery"),
 	Mn = require("backbone.marionette"),
 	Radio = require("backbone.radio"),
+	vex = require("vex-js"),
 	ScreensView = require("./screens_view"),
 	GroupListView = require("./group_list_view"),
 	ViewEditView = require("./view_edit_view"),
 	GroupEditView = require("./group_edit_view"),
 	EventEditView = require("./event_edit_view"),
-	vex = require('vex-js'),
 	mainTmpl = require("../templates/present_app_view.html");
 
 vex.registerPlugin(require('vex-dialog'));

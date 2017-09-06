@@ -2582,6 +2582,9 @@ a.button-hollow:hover .fa {
   margin: 2px 0;
   padding: 0;
 }
+.sortable-ghost {
+  outline: 2px solid #ffdc00;
+}
 .vex.vex-theme-livinglab .vex-content {
   border-color: #8888bb;
 }

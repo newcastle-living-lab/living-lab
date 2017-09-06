@@ -1,7 +1,9 @@
 "use strict";
 
-var Mn = require("backbone.marionette"),
+var $ = require("jquery"),
+	Mn = require("backbone.marionette"),
 	Radio = require("backbone.radio"),
+	Sortable = require("sortablejs"),
 	GroupItemView = require("./group_item_view");
 
 
@@ -26,6 +28,34 @@ var GroupListView = Mn.CollectionView.extend({
 		this._dispatchChannel = Radio.channel("dispatch");
 		this._viewCollection = options.views || null;
 		this.listenTo(this._appChannel, "group:active", this.handleActive);
+	},
+
+	onRender: function() {
+
+		var self = this;
+
+		var sortable = Sortable.create(this.el, {
+
+			group: "event_groups",
+			animation: 100,
+			onUpdate: function(event) {
+
+				// Handle the dropping of group items.
+
+				// Get model cid from the view's element (set in GroupItemView)
+				var modelCid = $(event.item).data("model-cid");
+				// Get model by cid
+				var model = self.collection.get(modelCid);
+
+				// Quietly remove the model and re-insert at the new index.
+				self.collection.remove(model, { silent: true });
+				self.collection.add(model, { at: event.newIndex, silent: true });
+				// Tell the collection to update the "index" property of each groupModel
+				self.collection.updateIndexes();
+				// Request comms update to send the data with the updated order.
+				self._dispatchChannel.request("io:send_events");
+			}
+		});
 	},
 
 	toggleGroup: function(childView) {
