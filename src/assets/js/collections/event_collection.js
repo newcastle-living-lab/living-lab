@@ -17,7 +17,7 @@ var EventCollection = Bb.Collection.extend({
 	initialize: function() {
 		this._dispatchChannel = Radio.channel("dispatch");
 		this.on("change", this.handleChange);
-		this.on("add remove", this.handleAddRemove);
+		// this.on("add remove", this.handleAddRemove);
 	},
 
 
@@ -28,7 +28,14 @@ var EventCollection = Bb.Collection.extend({
 	},
 
 
-	handleAddRemove: function(model, index) {
+	/**
+	 * Update the "index" property of each event based on their position in the collection.
+	 *
+	 */
+	updateIndexes: function() {
+
+		console.log("EventCollection | updateIndexes");
+
 		this.each(function(eventModel, index) {
 			// silent, to ensure the "change" handler doesn't fire a million times.
 			eventModel.set({ "index": index }, { silent: true });
@@ -174,9 +181,8 @@ var EventCollection = Bb.Collection.extend({
 			addOptions.at = this.indexOf(this.selectedEvent) + 1;
 		}
 
-		console.log(addOptions);
-
 		var newEvent = new EventModel(attrs);
+		newEvent.set("name", newEvent.get("name") + newEvent.get("id"));
 
 		this.add(newEvent, addOptions);
 		return newEvent;
