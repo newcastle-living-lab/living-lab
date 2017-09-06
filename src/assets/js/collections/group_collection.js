@@ -17,7 +17,7 @@ var GroupCollection = Bb.Collection.extend({
 	initialize: function() {
 		this._dispatchChannel = Radio.channel("dispatch");
 		this.on("change:name", this.handleChangeName);
-		this.on("add remove", this.handleAddRemove);
+		// this.on("add remove", this.handleAddRemove);
 	},
 
 
@@ -41,7 +41,7 @@ var GroupCollection = Bb.Collection.extend({
 	},
 
 
-	handleAddRemove: function() {
+	updateIndexes: function() {
 		this.each(function(groupModel, index) {
 			groupModel.set({ "index": index }, { silent: true });
 		});

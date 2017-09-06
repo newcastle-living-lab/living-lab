@@ -35,6 +35,7 @@ module.exports = Mn.Object.extend({
 		var newGroup = groupCollection.createNew();
 
 		if (newGroup) {
+			groupCollection.updateIndexes();
 			// Request a comms sync for data
 			this._dispatchChannel.request("io:send_events");
 			return;
@@ -82,6 +83,8 @@ module.exports = Mn.Object.extend({
 
 		// Remove group from the group collection
 		groupCollection.remove(data.group);
+
+		groupCollection.updateIndexes();
 
 		// Request a comms sync for data
 		this._dispatchChannel.request("io:send_events");
