@@ -114,6 +114,7 @@
 		margin: 0;
 		padding: 0;
 		list-style: none;
+		min-height: @padding-xs * 4;
 
 		.event-header {
 			padding: @padding-xs;
@@ -123,6 +124,7 @@
 		}
 
 		.event-item {
+			.box-sizing(border-box);
 			background: @olive;
 			color: @black;
 			padding: @padding-xs;
@@ -132,7 +134,23 @@
 			&.is-active {
 				background: @yellow;
 			}
+
+			&.sortable-ghost {
+				background: red;
+				padding: 0;
+				height: 0;
+				border: 2px solid @yellow-bright;
+				overflow: hidden;
+			}
 		}
+
+		/*.event-item-empty {
+			border: 1px dashed @grey-medium;
+			padding: @padding-sm;
+			p {
+				margin: 0;
+			}
+		}*/
 
 		.event-item-screen-actions {
 			font-size: @size-sm;
@@ -149,14 +167,6 @@
 	}
 
 }
-
-
-.sortable-ghost {
-	outline: 2px solid @yellow-bright;
-	// opacity: .6;
-}
-
-
 
 
 .vex.vex-theme-livinglab {

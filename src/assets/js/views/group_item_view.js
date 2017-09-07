@@ -118,7 +118,7 @@ var GroupItemView = Mn.View.extend({
 
 
 	onRender: function() {
-		this.$el.attr("data-model-cid", this.model.cid);
+		this.$el.attr("data-group-model-cid", this.model.cid);
 		this.showChildView("header", new EventHeaderView());
 		this.showChildView("events", this.eventListView);
 		this.updateUi();

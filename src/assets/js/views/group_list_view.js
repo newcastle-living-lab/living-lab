@@ -30,20 +30,30 @@ var GroupListView = Mn.CollectionView.extend({
 		this.listenTo(this._appChannel, "group:active", this.handleActive);
 	},
 
-	onRender: function() {
+	onAttach: function() {
 
 		var self = this;
 
 		var sortable = Sortable.create(this.el, {
 
-			group: "event_groups",
+			group: {
+				name: "groups",
+				pull: true,
+				put: ["groups"]
+			},
+			draggable: ".event-group-item",
 			animation: 100,
+
+			onStart: function(event) {
+				return false;
+			},
+
 			onUpdate: function(event) {
 
 				// Handle the dropping of group items.
 
 				// Get model cid from the view's element (set in GroupItemView)
-				var modelCid = $(event.item).data("model-cid");
+				var modelCid = $(event.item).data("group-model-cid");
 				// Get model by cid
 				var model = self.collection.get(modelCid);
 

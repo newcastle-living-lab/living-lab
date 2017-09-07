@@ -87,6 +87,7 @@ var EventItemView = Mn.View.extend({
 	},
 
 	onRender: function() {
+		this.$el.attr("data-event-model-cid", this.model.cid);
 		this.showChildView("views", new EventItemScreensView({
 			collection: this._storeChannel.request("viewCollection"),
 			model: this.model
