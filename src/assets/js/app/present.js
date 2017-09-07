@@ -18,6 +18,7 @@ var $ = require("jquery"),
 var Actions = [
 	require("../actions/app_start"),
 	require("../actions/io_updates"),
+	require("../actions/store"),
 	require("../actions/views"),
 	require("../actions/groups"),
 	require("../actions/events"),

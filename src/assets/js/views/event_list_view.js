@@ -71,11 +71,38 @@ var EventListView = Mn.CollectionView.extend({
 			draggable: ".event-item",
 			// filter: ".event-item-empty",
 			animation: 0,
+			dataIdAttr: "data-event-model-cid",
+
+			onMove: function(event) {
+				console.log("EventListView | onMove");
+				console.log(event);
+			},
 
 			onEnd: function(event) {
 
+				return;
+
 				// Handle the dropping of event items.
 				console.log("EventListView | onEnd");
+
+				// Bug with Sortable:
+				// The "to" property of the `event` object is the same as the "from" property.
+				// To get where the drop target/destination is - get the parentNode of the item.
+				// The parentNode will be the list - which as the cid of the group model.
+				// Use this to retrive the group from the collection.
+				var par = $(event.item.parentNode),
+					newGroupCid = par.data("group-model-cid"),
+					groupModel = self.group.collection.get(newGroupCid);
+
+				var eventArr = self.sortable.toArray();
+				console.log(eventArr);
+
+				self._dispatchChannel.request("store:sort", {
+					group: groupModel,
+					events: eventArr
+				});
+
+				return;
 
 				// Bug with Sortable:
 				// The "to" property of the `event` object is the same as the "from" property.

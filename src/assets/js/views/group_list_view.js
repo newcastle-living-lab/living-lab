@@ -42,13 +42,19 @@ var GroupListView = Mn.CollectionView.extend({
 				put: ["groups"]
 			},
 			draggable: ".event-group-item",
-			animation: 100,
+			animation: 0,
+			dataIdAttr: "data-group-model-cid",
 
-			onStart: function(event) {
-				return false;
-			},
+			onEnd: function(event) {
 
-			onUpdate: function(event) {
+				var groupArr = sortable.toArray();
+				console.log(groupArr);
+
+				self._dispatchChannel.request("store:sort", { groups: groupArr });
+
+				self._dispatchChannel.request("io:send_events");
+
+				return;
 
 				// Handle the dropping of group items.
 
