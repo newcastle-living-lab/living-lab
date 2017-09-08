@@ -2514,6 +2514,12 @@ a.button-hollow:hover .fa {
 .page-present .event-group-list .event-group-item.is-active {
   border-color: #000000;
 }
+.page-present .event-group-list .event-group-item.sortable-ghost {
+  padding: 0;
+  height: 0;
+  border: 2px solid #8888bb;
+  overflow: hidden;
+}
 .page-present .event-group-list .when-active {
   display: none;
 }
