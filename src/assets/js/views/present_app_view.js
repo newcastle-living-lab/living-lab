@@ -5,6 +5,7 @@ var _ = require("lodash"),
 	Mn = require("backbone.marionette"),
 	Radio = require("backbone.radio"),
 	vex = require("vex-js"),
+	sortable = require("html5sortable/dist/html.sortable.js"),
 	ScreensView = require("./screens_view"),
 	GroupListView = require("./group_list_view"),
 	ViewEditView = require("./view_edit_view"),
@@ -89,6 +90,9 @@ var PresentAppView = Mn.View.extend({
 
 		this.listenTo(this._appChannel, "group:confirm_delete", this.confirmDeleteGroup);
 		this.listenTo(this._appChannel, "event:confirm_delete", this.confirmDeleteEvent);
+
+		var debounceSortables = _.debounce(this.reloadSortables, 100, { trailing: true });
+		this.listenTo(this._appChannel, "ui:reload_sortables", debounceSortables);
 	},
 
 	onRender: function() {
@@ -100,6 +104,27 @@ var PresentAppView = Mn.View.extend({
 		this.showChildView("groups", new GroupListView({
 			collection: this._storeChannel.request("groupCollection")
 		}));
+
+		this.reloadSortables();
+	},
+
+	reloadSortables: function() {
+
+		// console.log("present_app_view | reloadSortables");
+
+		sortable(".event-group-list", "destroy");
+		var groupList = sortable(".event-group-list", {
+			items: ".event-group-item",
+			placeholderClass: "event-group-item sortable-ghost",
+			connectWith: "groups",
+		});
+
+		sortable(".js-event-list", "destroy");
+		var eventList = sortable(".js-event-list", {
+			items: ".event-item",
+			connectWith: "events",
+			placeholderClass: "event-item sortable-ghost"
+		});
 
 	},
 
