@@ -40,6 +40,8 @@ var EventCollection = Bb.Collection.extend({
 			// silent, to ensure the "change" handler doesn't fire a million times.
 			eventModel.set({ "index": index }, { silent: true });
 		});
+
+		this.trigger("update:indexes");
 	},
 
 

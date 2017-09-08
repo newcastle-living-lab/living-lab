@@ -106,18 +106,17 @@ var GroupItemView = Mn.View.extend({
 			group: this.model
 		});
 
-		this.listenTo(this.eventListView, "add:child remove:child", function(a, b) {
-			// Hack: We need to introduce a delay.
-			// The updateUi function gets the count of the event list view children.
-			// When removing children, this function gets called before the children count is updated :(
-			setTimeout(function() {
-				self.updateUi();
-			}, 50);
+		var debounceUpdateUi = _.debounce(this.updateUi, 100, { trailing: true });
+		this.listenTo(this.eventListView, "add:child remove:child", debounceUpdateUi);
+
+		this.listenTo(this.eventListView.collection, "update:indexes", function() {
+			self.eventListView.reorder();
+			self.updateUi();
 		});
 	},
 
-
 	onRender: function() {
+		// console.log("GroupItemView | render");
 		this.$el.attr("data-group-model-cid", this.model.cid);
 		this.showChildView("header", new EventHeaderView());
 		this.showChildView("events", this.eventListView);
@@ -125,6 +124,7 @@ var GroupItemView = Mn.View.extend({
 	},
 
 	updateUi: function() {
+		// console.log("GroupItemView | updateUi");
 		this.ui.group_name.text(_.escape(this.model.get("name")));
 		this.ui.event_count.text(this.eventListView.children.length);
 	},

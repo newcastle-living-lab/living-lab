@@ -3,7 +3,6 @@
 var $ = require("jquery"),
 	Mn = require("backbone.marionette"),
 	Radio = require("backbone.radio"),
-	Sortable = require("sortablejs"),
 	GroupItemView = require("./group_item_view");
 
 
@@ -14,64 +13,45 @@ var GroupListView = Mn.CollectionView.extend({
 	childView: GroupItemView,
 	template: _.noop,
 
+	events: {
+		"dom:refresh": "onDomRefresh"
+	},
+
 	childViewEvents: {
 		"group:toggle": "toggleGroup",
 		"group:edit": "editGroup",
-		"event:add": "addEvent"
+		"event:add": "addEvent",
+		"attach": "onChildAttach"
 	},
 
 	_appChannel: null,
 	_dispatchChannel: null,
 
 	initialize: function(options) {
+
+		var self = this;
+
 		this._appChannel = Radio.channel("app");
 		this._dispatchChannel = Radio.channel("dispatch");
 		this._viewCollection = options.views || null;
 		this.listenTo(this._appChannel, "group:active", this.handleActive);
+
+		this.$el.on("sortupdate", function(e) {
+			self._dispatchChannel.request("store:sort", {
+				list: "groups",
+				sortable: e.detail
+			});
+		});
 	},
 
-	onAttach: function() {
+	onDomRefresh: function() {
+		this._appChannel.trigger("ui:reload_sortables");
+	},
 
-		var self = this;
-
-		var sortable = Sortable.create(this.el, {
-
-			group: {
-				name: "groups",
-				pull: true,
-				put: ["groups"]
-			},
-			draggable: ".event-group-item",
-			animation: 0,
-			dataIdAttr: "data-group-model-cid",
-
-			onEnd: function(event) {
-
-				var groupArr = sortable.toArray();
-				console.log(groupArr);
-
-				self._dispatchChannel.request("store:sort", { groups: groupArr });
-
-				self._dispatchChannel.request("io:send_events");
-
-				return;
-
-				// Handle the dropping of group items.
-
-				// Get model cid from the view's element (set in GroupItemView)
-				var modelCid = $(event.item).data("group-model-cid");
-				// Get model by cid
-				var model = self.collection.get(modelCid);
-
-				// Quietly remove the model and re-insert at the new index.
-				self.collection.remove(model, { silent: true });
-				self.collection.add(model, { at: event.newIndex, silent: true });
-				// Tell the collection to update the "index" property of each groupModel
-				self.collection.updateIndexes();
-				// Request comms update to send the data with the updated order.
-				self._dispatchChannel.request("io:send_events");
-			}
-		});
+	onChildAttach: function() {
+		if (this.isAttached() && this.isRendered()) {
+			this._appChannel.trigger("ui:reload_sortables");
+		}
 	},
 
 	toggleGroup: function(childView) {

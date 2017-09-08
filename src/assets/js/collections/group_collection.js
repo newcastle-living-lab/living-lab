@@ -45,6 +45,8 @@ var GroupCollection = Bb.Collection.extend({
 		this.each(function(groupModel, index) {
 			groupModel.set({ "index": index }, { silent: true });
 		});
+
+		this.trigger("update:indexes");
 	},
 
 

@@ -22,16 +22,15 @@ var EmptyItemView = Mn.View.extend({
 var EventListView = Mn.CollectionView.extend({
 
 	tagName: "ul",
-	className: "event-list",
+	className: "event-list js-event-list",
 	childView: EventItemView,
-	// emptyView: EmptyItemView,
 	template: _.noop,
-	// reorderOnSort: true,
 
 	childViewEvents: {
 		"event:play": "playEvent",
 		"event:start": "startEvent",
-		"event:select": "selectEvent"
+		"event:select": "selectEvent",
+		"attach": "onChildAttach"
 	},
 
 	_appChannel: null,
@@ -44,94 +43,41 @@ var EventListView = Mn.CollectionView.extend({
 
 		this._appChannel = Radio.channel("app");
 		this._dispatchChannel = Radio.channel("dispatch");
-		// this._storeChannel = Radio.channel("store");
-
-		// this.groupCollection = this._storeChannel.request("groupCollection");
 
 		this.group = options.group;
 		this.listenTo(this.group, "change", function(groupModel) {
+			// console.log("EventListView | group change");
 			self.$el.attr("data-group-model-cid", groupModel.cid);
 		});
 
-	},
+		this.$el.on("sortupdate", function(e) {
+			var groupCid = $(e.detail.endparent).data("group-model-cid"),
+				thisGroupCid = self.group.cid;
 
-	onAttach: function() {
-
-		var self = this;
-
-		self.$el.attr("data-group-model-cid", this.group.cid);
-
-		console.log("EventListView | onAttach");
-		console.log(this.group.get("name"));
-		console.log(this.el);
-
-		this.sortable = Sortable.create(this.el, {
-
-			group: "events",
-			draggable: ".event-item",
-			// filter: ".event-item-empty",
-			animation: 0,
-			dataIdAttr: "data-event-model-cid",
-
-			onMove: function(event) {
-				console.log("EventListView | onMove");
-				console.log(event);
-			},
-
-			onEnd: function(event) {
-
-				return;
-
-				// Handle the dropping of event items.
-				console.log("EventListView | onEnd");
-
-				// Bug with Sortable:
-				// The "to" property of the `event` object is the same as the "from" property.
-				// To get where the drop target/destination is - get the parentNode of the item.
-				// The parentNode will be the list - which as the cid of the group model.
-				// Use this to retrive the group from the collection.
-				var par = $(event.item.parentNode),
-					newGroupCid = par.data("group-model-cid"),
-					groupModel = self.group.collection.get(newGroupCid);
-
-				var eventArr = self.sortable.toArray();
-				console.log(eventArr);
-
+			if (groupCid == thisGroupCid) {
 				self._dispatchChannel.request("store:sort", {
-					group: groupModel,
-					events: eventArr
+					list: "events",
+					sortable: e.detail
 				});
-
-				return;
-
-				// Bug with Sortable:
-				// The "to" property of the `event` object is the same as the "from" property.
-				// To get where the drop target/destination is - get the parentNode of the item.
-				// The parentNode will be the list - which as the cid of the group model.
-				// Use this to retrive the group from the collection.
-				var par = $(event.item.parentNode),
-					newGroupCid = par.data("group-model-cid"),
-					groupModel = self.group.collection.get(newGroupCid);
-
-				// Get model cid from the view's element (set in GroupItemView)
-				// And then get the model from the collection using the cid.
-				var modelCid = $(event.item).data("event-model-cid"),
-					model = self.collection.get(modelCid);
-
-				model.set({ "group": groupModel.get("name") });
-
-				// Quietly remove the model and re-insert at the new index.
-				self.collection.remove(model, { silent: true });
-				self.collection.add(model, { at: event.newIndex, silent: true });
-				// Tell the collection to update the "index" property of each groupModel
-				self.collection.updateIndexes();
-				// Request comms update to send the data with the updated order.
-				console.log(self.collection);
-
-				self._dispatchChannel.request("io:send_events");
-
 			}
 		});
+	},
+
+	onDomRefresh: function() {
+		// console.log("EventListView | onDomRefresh");
+		this._appChannel.trigger("ui:reload_sortables");
+	},
+
+	onChildAttach: function() {
+		// console.log("EventListView | onChildAttach");
+		if (this.isAttached() && this.isRendered()) {
+			this._appChannel.trigger("ui:reload_sortables");
+		}
+	},
+
+	onRender: function() {
+		// console.log("EventListView onRender");
+		this.$el.attr("data-group-model-cid", this.group.cid);
 	},
 
 	/**
