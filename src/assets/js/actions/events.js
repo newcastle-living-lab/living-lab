@@ -19,6 +19,7 @@ module.exports = Mn.Object.extend({
 		this._dispatchChannel.reply("event:select", this.handleSelectEvent, this);
 		this._dispatchChannel.reply("event:change", this.handleChangeEvent, this);
 		this._dispatchChannel.reply("event:delete", this.handleDeleteEvent, this);
+		// this._dispatchChannel.reply("event:start", this.)
 	},
 
 
@@ -49,6 +50,10 @@ module.exports = Mn.Object.extend({
 	},
 
 
+	/**
+	 * Handle the selection of an event.
+	 *
+	 */
 	handleSelectEvent: function(data) {
 
 		console.log("Action | event | handleSelectEvent");
@@ -58,10 +63,13 @@ module.exports = Mn.Object.extend({
 		var eventCollection = this._storeChannel.request("eventCollection");
 		eventCollection.selectEvent(data.event);
 
+		// Raise UI event on the appchannel so the main view can show the edit view.
 		if (data.event !== null) {
-			// Raise UI event on the appchannel so the main view can show the edit view.
 			this._appChannel.trigger("event:edit", data);
 		}
+
+		// Cast it
+		this._dispatchChannel.request("io:cast_event", { event: data.event });
 	},
 
 

@@ -55,6 +55,7 @@ var EventCollection = Bb.Collection.extend({
 		this.selectedEvent = eventModel;
 
 		// Loop through the models, and if the model is the parameter (selected model) then trigger the select event.
+		// For now, only the views are interested in this - to indicate the selected state.
 		this.each(function(model) {
 			if (model == eventModel) {
 				model.trigger("select");

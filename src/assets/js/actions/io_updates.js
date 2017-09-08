@@ -19,6 +19,7 @@ module.exports = Mn.Object.extend({
 		this._dispatchChannel.reply("io:peinfo", this.handlePeInfo, this);
 		this._dispatchChannel.reply("io:send_events", this.handleSendEvents, this);
 		this._dispatchChannel.reply("io:update_actions", this.handleUpdateActions, this);
+		this._dispatchChannel.reply("io:cast_event", this.handleCastEvent, this);
 	},
 
 
@@ -205,6 +206,23 @@ module.exports = Mn.Object.extend({
 			// Set the peviews array of the eventModel with the new data
 			eventModel.set("peviews", eventArr.peviews);
 		});
+	},
+
+
+	/**
+	 * Handle the cast event action
+	 *
+	 */
+	handleCastEvent: function(data) {
+
+		console.log("Action | io | handleCastEvent()");
+		var event = data.event;
+
+		if (event.get("name") == "startevent") {
+			this._commsChannel.request("castStartEvent", { "event": event });
+		} else {
+			this._commsChannel.request("castPresentEvent", { "event": event });
+		}
 	}
 
 
