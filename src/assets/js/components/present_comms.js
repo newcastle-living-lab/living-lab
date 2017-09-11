@@ -31,6 +31,8 @@ var Comms = Mn.Object.extend({
 		this._commsChannel.reply("txPEventsArr", this.txPEventsArr, this);
 		this._commsChannel.reply("castStartEvent", this.castStartEvent, this);
 		this._commsChannel.reply("castPresentEvent", this.castPresentEvent, this);
+		this._commsChannel.reply("txStartEvent", this.txStartEvent, this);
+		this._commsChannel.reply("txPlayEvent", this.txPlayEvent, this);
 	},
 
 	ioUpdate: function(respdata) {
@@ -124,26 +126,123 @@ var Comms = Mn.Object.extend({
 	castPresentEvent: function(data) {
 
 		var event = data.event,
-			castind = event.get("index");
+			castind = event.collection.indexOf(event);
 
 		// This command only sends the index of the event.
 		// In terms of the data transferred...
 		// our indexes are offset by 1 due to the presence of the startevent in the collection.
 		// Just to check - if our item at index 0 is startevent, we need to adjust by -1 to account for this.
 		// This ensures that when we send `castPEInfo` with index of 0, it's the first custom/user-defined/non-startevent event.
-		var firstEventName = data.event.collection.at(0).get("name");
-		if (firstEventName == "startevent") {
+		// var firstEventName = event.collection.at(0).get("name");
+		// if (firstEventName == "startevent") {
+		// 	castind = castind - 1;
+		// }
+
+		if (castind > 0) {
 			castind = castind - 1;
 		}
 
-		var msg = JSON.stringify({
+		var msg = {
 			command: 'castPEinfo',
 			info: castind
+		};
+
+		console.log(msg);
+
+		this._socket.emit("updateEvents", JSON.stringify(msg));
+	},
+
+	txStartEvent: function(data) {
+
+		// console.log("txStartEvent");
+		// console.log(data);
+
+		var self = this,
+			event = data.event,
+			index = event.collection.indexOf(event),
+			peviews = event.get("peviews"),
+			screenName = null,
+			layerId = null,
+			cmd = {};
+
+		if (index > 0) {
+			index = index - 1;
+		}
+
+		// message to screen to go to startstate
+		//
+		var msg = {
+			command: 'startPE',
+			info: index
+		};
+		// console.log(msg);
+		this._socket.emit('updateEvents', JSON.stringify(msg));
+
+		_.each(peviews, function(peview) {
+
+			screenName = peview.viewstate.name;
+			layerId = peview.layerid;
+
+			if (layerId != "none" && peview.actions.length > 0) {
+				cmd = {
+					view: screenName,
+					scrtxmsg: {
+						command: "start",
+						info: ""
+					}
+				};
+				console.log(cmd);
+				self._socket.emit("screenmsg", JSON.stringify(cmd));
+			}
 		});
 
-		// console.log(msg);
+	},
 
-		this._socket.emit("updateEvents", msg);
+	txPlayEvent: function(data) {
+
+		// console.log("txPlayEvent");
+		// console.log(data);
+
+		var self = this,
+			event = data.event,
+			index = event.collection.indexOf(event),
+			peviews = event.get("peviews"),
+			screenName = null,
+			layerId = null,
+			cmd = {};
+
+		if (index > 0) {
+			index = index - 1;
+		}
+
+		// message to screen ??
+		var msg = {
+			command: 'playPE',
+			info: index
+		};
+		// console.log(msg);
+		this._socket.emit("updateEvents", JSON.stringify(msg));
+
+		_.each(peviews, function(peview) {
+
+			screenName = peview.viewstate.name;
+			layerId = peview.layerid;
+
+			if (layerId != "none" && peview.actions.length > 0) {
+
+				cmd = {
+					view: screenName,
+					scrtxmsg: {
+						command: "play",
+						info: ""
+					}
+				}
+
+				console.log(cmd);
+
+				self._socket.emit("screenmsg", JSON.stringify(cmd));
+			}
+		});
 	}
 
 });

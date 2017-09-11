@@ -20,6 +20,8 @@ module.exports = Mn.Object.extend({
 		this._dispatchChannel.reply("io:send_events", this.handleSendEvents, this);
 		this._dispatchChannel.reply("io:update_actions", this.handleUpdateActions, this);
 		this._dispatchChannel.reply("io:cast_event", this.handleCastEvent, this);
+		this._dispatchChannel.reply("io:send_event_start", this.handleSendEventStart, this);
+		this._dispatchChannel.reply("io:send_event_play", this.handleSendEventPlay, this);
 	},
 
 
@@ -210,12 +212,14 @@ module.exports = Mn.Object.extend({
 
 
 	/**
-	 * Handle the cast event action
+	 * Handle the cast event action.
+	 * This is triggered when a whole event is clicked.
 	 *
 	 */
 	handleCastEvent: function(data) {
 
 		console.log("Action | io | handleCastEvent()");
+
 		var event = data.event;
 
 		if (event.get("name") == "startevent") {
@@ -223,6 +227,26 @@ module.exports = Mn.Object.extend({
 		} else {
 			this._commsChannel.request("castPresentEvent", { "event": event });
 		}
+	},
+
+
+	/**
+	 * Handle the txstartEvent sending
+	 *
+	 */
+	handleSendEventStart: function(data) {
+		console.log("Action | io | handleSendEventStart()");
+		this._commsChannel.request("txStartEvent", { "event": data.event });
+	},
+
+
+	/**
+	 * Handle the txPlayEvent sending
+	 *
+	 */
+	handleSendEventPlay: function(data) {
+		console.log("Action | io | handleSendEventPlay()");
+		this._commsChannel.request("txPlayEvent", { "event": data.event });
 	}
 
 
