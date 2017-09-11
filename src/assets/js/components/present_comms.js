@@ -131,13 +131,6 @@ var Comms = Mn.Object.extend({
 		// This command only sends the index of the event.
 		// In terms of the data transferred...
 		// our indexes are offset by 1 due to the presence of the startevent in the collection.
-		// Just to check - if our item at index 0 is startevent, we need to adjust by -1 to account for this.
-		// This ensures that when we send `castPEInfo` with index of 0, it's the first custom/user-defined/non-startevent event.
-		// var firstEventName = event.collection.at(0).get("name");
-		// if (firstEventName == "startevent") {
-		// 	castind = castind - 1;
-		// }
-
 		if (castind > 0) {
 			castind = castind - 1;
 		}

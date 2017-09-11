@@ -9,7 +9,7 @@ var ViewEditView = Mn.View.extend({
 
 	tagName: "div",
 	className: "panel",
-	template:mainTmpl,
+	template: mainTmpl,
 
 	ui: {
 		"btn_save": "[data-ui=btn_save]",

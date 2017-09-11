@@ -20,7 +20,7 @@ var ScreenButton = Mn.View.extend({
 var AddScreenButton = Mn.View.extend({
 	tagName: "button",
 	className: "pure-button",
-	template: _.template("+ Add View"),
+	template: _.template("<i class='fa fa-fw fa-desktop'></i> Add View"),
 	triggers: {
 		"click": "view:add"
 	}

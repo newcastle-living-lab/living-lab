@@ -1,6 +1,7 @@
 "use strict";
 
-var Mn = require("backbone.marionette"),
+var $ = require("jquery"),
+	Mn = require("backbone.marionette"),
 	Radio = require("backbone.radio"),
 	config = require("../config/present"),
 	mainTmpl = require("../templates/event_item_view.html"),
@@ -96,6 +97,9 @@ var EventItemView = Mn.View.extend({
 
 	setActive: function() {
 		this.$el.addClass("is-active");
+		if ( ! this.isVisible()) {
+			this.scrollIntoView();
+		}
 	},
 
 	setInactive: function() {
@@ -104,6 +108,24 @@ var EventItemView = Mn.View.extend({
 
 	toggleActive: function() {
 		this.$el.toggleClass("is-active");
+	},
+
+	isVisible: function() {
+		var rect = this.el.getBoundingClientRect();
+		var visible = (
+			rect.top >= 0 &&
+			rect.left >= 0 &&
+			rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) && /*or $(window).height() */
+			rect.right <= (window.innerWidth || document.documentElement.clientWidth) /*or $(window).width() */
+		);
+		return visible;
+	},
+
+	scrollIntoView: function() {
+		var offset = this.$el.offset();
+		$('html, body').animate({
+			scrollTop: offset.top - 50,
+		});
 	}
 
 });

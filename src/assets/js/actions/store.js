@@ -17,9 +17,11 @@ module.exports = Mn.Object.extend({
 
 		this._dispatchChannel = Radio.channel("dispatch");
 		this._dispatchChannel.reply("store:sort", this.handleStoreSort, this);
+		this._dispatchChannel.reply("store:play_mode", this.handlePlayMode, this);
 
 		this._eventCollection = this._storeChannel.request("eventCollection");
 		this._groupCollection = this._storeChannel.request("groupCollection");
+		this._store = this._storeChannel.request("store");
 	},
 
 
@@ -129,6 +131,11 @@ module.exports = Mn.Object.extend({
 		});
 
 		return true;
+	},
+
+
+	handlePlayMode: function(data) {
+		this._store.setPlayMode(data.playMode);
 	}
 
 

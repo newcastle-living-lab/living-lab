@@ -11,6 +11,7 @@ var _ = require("lodash"),
 	ViewEditView = require("./view_edit_view"),
 	GroupEditView = require("./group_edit_view"),
 	EventEditView = require("./event_edit_view"),
+	PresentView = require("./present_view"),
 	mainTmpl = require("../templates/present_app_view.html");
 
 vex.registerPlugin(require('vex-dialog'));
@@ -30,7 +31,8 @@ var PresentAppView = Mn.View.extend({
 	regions: {
 		"screens": "[data-region=screens]",
 		"groups": "[data-region=groups]",
-		"props": "[data-region=props]"
+		"props": "[data-region=props]",
+		"present": "[data-region=present]"
 	},
 
 	ui: {
@@ -96,6 +98,8 @@ var PresentAppView = Mn.View.extend({
 	},
 
 	onRender: function() {
+
+		this.showChildView("present", new PresentView());
 
 		this.showChildView("screens", new ScreensView({
 			collection: this._storeChannel.request("viewCollection")
