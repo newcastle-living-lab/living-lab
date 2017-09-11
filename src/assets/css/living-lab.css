@@ -2225,6 +2225,12 @@ body:hover .visually-hidden button {
   padding: 20px;
   background: #eeeeff;
 }
+.panel.panel-sm {
+  padding: 10px;
+}
+.panel.panel-alt {
+  background: #e4f1fb;
+}
 .pure-button {
   cursor: default;
 }
