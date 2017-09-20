@@ -23,6 +23,8 @@ module.exports = Mn.Object.extend({
 
 	handleAddGroup: function(data) {
 
+		console.log("Action | groups | handleAddGroup");
+
 		var groupCollection = this._storeChannel.request("groupCollection");
 
 		if ( ! groupCollection.canAddGroup()) {
@@ -53,6 +55,8 @@ module.exports = Mn.Object.extend({
 
 	handleRenameGroup: function(data) {
 
+		console.log("Action | groups | handleRenameGroup");
+
 		// Rename the view in all the events
 		var eventCollection = this._storeChannel.request("eventCollection");
 		eventCollection.renameGroup(data.oldName, data.newName);
@@ -63,6 +67,8 @@ module.exports = Mn.Object.extend({
 
 
 	handleDeleteGroup: function(data) {
+
+		console.log("Action | groups | handleDeleteGroup");
 
 		var groupCollection = this._storeChannel.request("groupCollection"),
 			eventCollection = this._storeChannel.request("eventCollection");
