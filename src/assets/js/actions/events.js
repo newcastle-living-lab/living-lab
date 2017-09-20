@@ -24,10 +24,13 @@ module.exports = Mn.Object.extend({
 		this._dispatchChannel.reply("event:start", this.handleStartEvent, this);
 		this._dispatchChannel.reply("event:play", this.handlePlayEvent, this);
 		this._dispatchChannel.reply("event:next", this.handleNextEvent, this);
+		this._dispatchChannel.reply("event:prev", this.handlePrevEvent, this);
 	},
 
 
 	handleAddEvent: function(data) {
+
+		console.log("Action | events | handleAddEvent");
 
 		var eventCollection = this._storeChannel.request("eventCollection");
 
@@ -62,7 +65,7 @@ module.exports = Mn.Object.extend({
 
 		var self = this;
 
-		console.log("Action | event | handleSelectEvent");
+		console.log("Action | events | handleSelectEvent");
 
 		// Call collection function to select the event.
 		// This triggers select/deselect event on each model as appropriate.
@@ -91,6 +94,7 @@ module.exports = Mn.Object.extend({
 
 
 	handleChangeEvent: function(data) {
+		console.log("Action | events | handleChangeEvent");
 		// Request a comms sync for data
 		this._dispatchChannel.request("io:send_events");
 	},
@@ -123,6 +127,19 @@ module.exports = Mn.Object.extend({
 
 		if (nextEvent) {
 			this._dispatchChannel.request("event:select", { event: nextEvent });
+		}
+	},
+
+
+	handlePrevEvent: function() {
+
+		var eventCollection = this._storeChannel.request("eventCollection"),
+			indexOfSelected = eventCollection.indexOf(eventCollection.selectedEvent),
+			indexOfNext = indexOfSelected-1,
+			prevEvent = eventCollection.at(indexOfNext);
+
+		if (prevEvent) {
+			this._dispatchChannel.request("event:select", { event: prevEvent });
 		}
 	}
 
