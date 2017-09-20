@@ -13,11 +13,13 @@
     "vex-js": "^4.0.0"
   },
   "devDependencies": {
+    "uglifyjs-webpack-plugin": "^0.4.6",
     "underscore-template-loader": "^0.8.0",
-    "webpack": "^3.5.5"
+    "webpack": "^3.5.5",
+    "webpack-merge": "^4.1.0"
   },
   "scripts": {
-    "build:dev": "webpack --watch --progress --colors",
-    "build:prod": "webpack -p"
+    "build:dev": "webpack --config webpack.dev.js --watch --progress --colors",
+    "build:prod": "webpack --config webpack.prod.js -p"
   }
 }
