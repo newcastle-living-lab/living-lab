@@ -6,6 +6,7 @@ var _ = require("lodash"),
 	Radio = require("backbone.radio"),
 	vex = require("vex-js"),
 	sortable = require("html5sortable/dist/html.sortable.js"),
+	config = require("../config/present"),
 	ScreensView = require("./screens_view"),
 	GroupListView = require("./group_list_view"),
 	ViewEditView = require("./view_edit_view"),
@@ -95,6 +96,20 @@ var PresentAppView = Mn.View.extend({
 
 		var debounceSortables = _.debounce(this.reloadSortables, 100, { trailing: true });
 		this.listenTo(this._appChannel, "ui:reload_sortables", debounceSortables);
+
+		$(document).on("keydown", function(e) {
+			if ($(e.target).is("input, textarea, select")) {
+				return;
+			}
+			switch (e.which) {
+				case config.DOM_VK_J:
+					self._dispatchChannel.request("event:next");
+				break;
+				case config.DOM_VK_K:
+					self._dispatchChannel.request("event:prev");
+				break;
+			}
+		});
 	},
 
 	onRender: function() {
