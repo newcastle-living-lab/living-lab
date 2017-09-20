@@ -4,6 +4,7 @@ var _ = require("lodash"),
 	Bb = require("backbone"),
 	Mn = require("backbone.marionette"),
 	Radio = require("backbone.radio"),
+	config = require("../config/present"),
 	mainTmpl = require("../templates/event_edit_view.html"),
 	screenLayerTmpl = require("../templates/event_edit_screen_layer.html");
 
@@ -123,7 +124,8 @@ var EventEditView = Mn.View.extend({
 	events: {
 		"click @ui.btn_cancel": "handleCancel",
 		"click @ui.btn_save": "handleSave",
-		"click @ui.btn_delete": "handleDelete"
+		"click @ui.btn_delete": "handleDelete",
+		"keypress @ui.input_name": "handleEnter"
 	},
 
 	modelEvents: {
@@ -163,10 +165,14 @@ var EventEditView = Mn.View.extend({
 		var self = this;
 
 		// Listen once to a eventModel validation error, and just raise it to the UI.
-		this.model.once("invalid", function(eventModel, error) {
+		this.listenToOnce(this.model, "invalid", function(eventModel, error) {
 			self._appChannel.request("ui:error", {
 				message: error
 			});
+		});
+
+		this.listenToOnce(this.model, "change", function(eventModel) {
+			self._dispatchChannel.request("io:send_events");
 		});
 
 		// Update the model with the new props
@@ -212,6 +218,13 @@ var EventEditView = Mn.View.extend({
 
 	handleDelete: function() {
 		this._appChannel.trigger("event:confirm_delete", { event: this.model });
+	},
+
+
+	handleEnter: function(e) {
+		if (e.which == config.DOM_VK_RETURN) {
+			this.handleSave();
+		}
 	}
 
 
