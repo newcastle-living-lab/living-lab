@@ -9,22 +9,12 @@ var Bb = require("backbone"),
 var EventCollection = Bb.Collection.extend({
 
 	model: EventModel,
-	// comparator: "index",
 
 	_dispatchChannel: null,
 	selectedEvent: null,
 
 	initialize: function() {
 		this._dispatchChannel = Radio.channel("dispatch");
-		this.on("change", this.handleChange);
-		// this.on("add remove", this.handleAddRemove);
-	},
-
-
-	handleChange: function(eventModel) {
-		this._dispatchChannel.request("event:change", {
-			eventModel: eventModel
-		});
 	},
 
 
@@ -148,7 +138,9 @@ var EventCollection = Bb.Collection.extend({
 	 *
 	 */
 	deleteView: function(viewModel) {
+
 		console.log("EventCollection | deleteView | Removing " + viewModel.get("name") + " from events...");
+
 		this.each(function(eventModel) {
 			eventModel.deleteView(viewModel.get("name"));
 		});
