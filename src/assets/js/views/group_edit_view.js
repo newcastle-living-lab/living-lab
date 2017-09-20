@@ -2,6 +2,7 @@
 
 var Mn = require("backbone.marionette"),
 	Radio = require("backbone.radio"),
+	config = require("../config/present"),
 	mainTmpl = require("../templates/group_edit_view.html");
 
 
@@ -21,7 +22,8 @@ var GroupEditView = Mn.View.extend({
 	events: {
 		"click @ui.btn_cancel": "handleCancel",
 		"click @ui.btn_save": "handleSave",
-		"click @ui.btn_delete": "handleDelete"
+		"click @ui.btn_delete": "handleDelete",
+		"keypress @ui.input_name": "handleEnter"
 	},
 
 	modelEvents: {
@@ -67,6 +69,12 @@ var GroupEditView = Mn.View.extend({
 
 	handleDelete: function() {
 		this._appChannel.trigger("group:confirm_delete", { group: this.model });
+	},
+
+	handleEnter: function(e) {
+		if (e.which == config.DOM_VK_RETURN) {
+			this.handleSave();
+		}
 	}
 
 
