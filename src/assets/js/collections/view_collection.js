@@ -34,7 +34,6 @@ var ViewCollection = Bb.Collection.extend({
 			newName: newName,
 			viewModel: viewModel
 		});
-
 	},
 
 
