@@ -176,59 +176,105 @@ function editboxPropValue(prop) { //for number types
 //populates the property list from the object's state attribute. Change of a value calls the changeCallback
 // function with a {key:value} parameter to update state and displayed values
 function updatePropDisp() {
+
+	var validKey = false;
+
 	if (activeobject != null) {
 		var state = activeobject.getAttr('state');
 		//console.log(state);
-	}
-	else {  //the designgroup
+	} else {  //the designgroup
 		var state = designgroup;
 	}
 
-	//console.log(obj.getAttr('state'));
 	//make table to display
 	$("#proptable").empty();
-	for (var key in state) {
-		if (key != 'points' && key != 'children' && key != 'container' && key != 'id' && key != 'txscale' && key != 'startstate') {
-			var propval = state[key];
-			if (key == 'path' || key == 'type') {
-				if (propval.length < tbltxtoverflow) {
-					$("#proptable").append('<tr><td class="tablekey">' + key + '</td><td colspan="2" class="tableval" style="text-align:left">' + propval + '</td></tr>');
-				}
-				else {  //flow over into next line
-					$("#proptable").append('<tr><td class="tablekey">' + key + '</td><td colspan="2" class="tableval" style="text-align:left">' + propval.substr(0, tbltxtoverflow) + '</td></tr>');
-					$("#proptable").append('<tr><td class="tablekey"></td><td colspan="2" class="tableval" style="text-align:left">' + propval.substr(tbltxtoverflow) + '</td></tr>');
-				}
-			}
-			else {
-				switch (typeof propval) {
-					case 'string':
-						if (key == 'fill' || key == 'stroke') {
-							if (propval.length != 7 && propval.slice(0, 1) != '#') { propval = '#000000'; }
-							$("#proptable").append('<tr><td class="tablekey">' + key + '</td><td class="tableval"><input id="prop' + key + '" type="text" style="text-align:left" size="7" onchange="changeCallback({' + key + ':this.value})"></td><td class="tablegui"><input class="tablegui" type="color" value="' + propval + '" onchange="colorPropValue({' + key + ':this.value})"></td></tr>');
-							$("#prop" + key).val(propval);
-						}
-						else {
-							$("#proptable").append('<tr><td class="tablekey">' + key + '</td><td class="tableval"><input id="prop' + key + '" type="text" style="text-align:left" size="7" onchange="changeCallback({' + key + ':this.value})"></td><td class="tablegui"></td></tr>');
-							$("#prop" + key).val(propval);
-						}
-						break;
-					case 'boolean':
-						$("#proptable").append('<tr><td class="tablekey">' + key + '</td><td class="tableval"><input id="prop' + key + '" type="checkbox" onchange="changeCallback({' + key + ':this.checked})"></td></tr>');
-						$("#prop" + key).prop("checked", propval);
 
-						break;
-					case 'number':
-						var limits = propLimits(key);
-						var minval = limits.min;
-						var maxval = limits.max;
-						var stepval = limits.step;
-						$("#proptable").append('<tr><td class="tablekey">' + key + '</td><td class="tableval"><input id="prop' + key + '" type="text" style="text-align:right" size="7" onchange="editboxPropValue({' + key + ':this.value})"></td><td class="guirow"><button class="tablenudge" onclick="nudgePropValue({' + key + ':-' + stepval.toString() + '})">-</button><input class="tablegui" type="range" min="' + minval.toString() + '" max="' + maxval.toString() + '" step="' + stepval.toString() + '" value="' + propval + '" onchange="sliderPropValue({' + key + ':this.value})"><button class="tablenudge" onclick="nudgePropValue({' + key + ':' + stepval.toString() + '})">+</button></td></tr>');
-						var num = parseFloat(propval);
-						if ((num % 1) == 0.0) { $("#prop" + key).val(num.toFixed(0)); }
-						else { $("#prop" + key).val(num.toFixed(2)); }
-						break;
-				}
+	var validTypeForEvents = (state.type && state.type != undefined && state.type != "Layer");
+
+	if (validTypeForEvents) {
+		state.event = (state.event === undefined ? "" : state.event);
+	}
+
+	for (var key in state) {
+
+		validKey = (key != 'points' && key != 'children' && key != 'container' && key != 'id' && key != 'txscale' && key != 'startstate');
+
+		if ( ! validKey) {
+			continue;
+		}
+
+		var propval = state[key];
+
+		if (key == 'path' || key == 'type') {
+
+			if (propval.length < tbltxtoverflow) {
+				$("#proptable").append('<tr><td class="tablekey">' + key + '</td><td colspan="2" class="tableval" style="text-align:left">' + propval + '</td></tr>');
+			} else {  //flow over into next line
+				$("#proptable").append('<tr><td class="tablekey">' + key + '</td><td colspan="2" class="tableval" style="text-align:left">' + propval.substr(0, tbltxtoverflow) + '</td></tr>');
+				$("#proptable").append('<tr><td class="tablekey"></td><td colspan="2" class="tableval" style="text-align:left">' + propval.substr(tbltxtoverflow) + '</td></tr>');
 			}
+
+		} else if (key == "event") {
+
+			// Add the dropdown list to choose the event to trigger on clicking this object
+
+			if (eventliststates != undefined) {
+
+				var $row = $("<tr></tr>"),
+					$keyTd = $("<td class='tablekey'>" + key + "</td>"),
+					$valTd = $("<td class='tableval'></td>"),
+					$guiTd = $("<td class='tablegui'></td>"),
+					$select = $('<select id="prop' + key + '" type="text" onchange="changeCallback({' + key + ':this.value})"></select>');
+
+				var selectedAttr = (propval.length == 0 || propval == 'none' ? 'selected="selected"' : ''),
+					$option = $("<option value='' " + selectedAttr + "></option>");
+
+				$select.append($option);
+
+				for (var ind = 0; ind < eventliststates.length; ind++) {
+					var pevstate = eventliststates[ind];
+
+					selectedAttr = (pevstate.id == propval ? "selected='selected'" : '');
+					$option = $("<option value='" + pevstate.id + "' " + selectedAttr + ">" + pevstate.name + "</option>");
+					$select.append($option);
+				}
+
+				$valTd.append($select);
+
+				$row.append($keyTd, $valTd, $guiTd);
+				$("#proptable").append($row);
+			}
+
+		} else {
+
+			switch (typeof propval) {
+				case 'string':
+					if (key == 'fill' || key == 'stroke') {
+						if (propval.length != 7 && propval.slice(0, 1) != '#') { propval = '#000000'; }
+						$("#proptable").append('<tr><td class="tablekey">' + key + '</td><td class="tableval"><input id="prop' + key + '" type="text" style="text-align:left" size="7" onchange="changeCallback({' + key + ':this.value})"></td><td class="tablegui"><input class="tablegui" type="color" value="' + propval + '" onchange="colorPropValue({' + key + ':this.value})"></td></tr>');
+						$("#prop" + key).val(propval);
+					} else {
+						$("#proptable").append('<tr><td class="tablekey">' + key + '</td><td class="tableval"><input id="prop' + key + '" type="text" style="text-align:left" size="7" onchange="changeCallback({' + key + ':this.value})"></td><td class="tablegui"></td></tr>');
+						$("#prop" + key).val(propval);
+					}
+					break;
+				case 'boolean':
+					$("#proptable").append('<tr><td class="tablekey">' + key + '</td><td class="tableval"><input id="prop' + key + '" type="checkbox" onchange="changeCallback({' + key + ':this.checked})"></td></tr>');
+					$("#prop" + key).prop("checked", propval);
+
+					break;
+				case 'number':
+					var limits = propLimits(key);
+					var minval = limits.min;
+					var maxval = limits.max;
+					var stepval = limits.step;
+					$("#proptable").append('<tr><td class="tablekey">' + key + '</td><td class="tableval"><input id="prop' + key + '" type="text" style="text-align:right" size="7" onchange="editboxPropValue({' + key + ':this.value})"></td><td class="guirow"><button class="tablenudge" onclick="nudgePropValue({' + key + ':-' + stepval.toString() + '})">-</button><input class="tablegui" type="range" min="' + minval.toString() + '" max="' + maxval.toString() + '" step="' + stepval.toString() + '" value="' + propval + '" onchange="sliderPropValue({' + key + ':this.value})"><button class="tablenudge" onclick="nudgePropValue({' + key + ':' + stepval.toString() + '})">+</button></td></tr>');
+					var num = parseFloat(propval);
+					if ((num % 1) == 0.0) { $("#prop" + key).val(num.toFixed(0)); }
+					else { $("#prop" + key).val(num.toFixed(2)); }
+					break;
+			}
+
 		}
 	}
 }
