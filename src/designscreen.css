@@ -24,7 +24,7 @@ select {
 #page {
 	position: absolute;
 	width: 98%;
-	height: 98%; 
+	height: 98%;
 	border: 2px solid #8888bb;
 }
 
@@ -54,14 +54,14 @@ select {
 }
 
 #treemenu {
-	position: relative; 
+	position: relative;
 	width: 99.8%;
 	height: 35px;
 	background-color: #bbbbee;
 	display:block;
 	font-size: 11px;
 	font-family: Verdana;
-	
+
 }
 
 .projectrow {
@@ -69,7 +69,7 @@ select {
 	width: 100%;
 	height: 30px;
 	font-size: 10px;
-	font-family: Verdana;	
+	font-family: Verdana;
 }
 
 .projectrowname {
@@ -87,7 +87,7 @@ select {
 .projectbuttons {
 	display: inline-block;
 	width: auto;
-	vertical-align: middle;	
+	vertical-align: middle;
 }
 
 
@@ -97,7 +97,7 @@ select {
 	width: auto;
 	float:right;
 	font-size: 10px;
-	font-family: Verdana;	
+	font-family: Verdana;
 }
 
 .projectrowbutton:hover {
@@ -109,7 +109,7 @@ select {
 	width: 50px;
 	height: 50px;
 	padding: 10px;
-	text-align: center; 
+	text-align: center;
 	font-size: 10px;
 	/*background-image: url('images/proj.png');*/
 }
@@ -120,7 +120,7 @@ select {
 
 .projectname {
 	position: relative;
-	text-align: center; 
+	text-align: center;
 	font-size: 10px;
 }
 
@@ -135,7 +135,7 @@ select {
 
 #designspace {
 	position: relative;
-	border-top: 1px solid #8888bb;	
+	border-top: 1px solid #8888bb;
 }
 
 .screenspace {
@@ -146,7 +146,7 @@ select {
 }
 
 #menu {
-	position: relative; 
+	position: relative;
 	height: 35px;
 	width: 99.8%;
 	background-color: #bbbbee;
@@ -159,23 +159,23 @@ select {
 	width: 10em;
 	font-size: 11px;
 	font-family: Verdana;
-	
+
 }
 
 #actiontypeselect {
 	width: 10em;
 	font-size: 11px;
 	font-family: Verdana;
-	
+
 }
 
 #libmenu {
-	position: relative; 
+	position: relative;
 	height: 35px;
 	width: 100%;
 	background-color: #ccccee;
 	display:block;
-	border-top: 1px solid #ccccee;	
+	border-top: 1px solid #ccccee;
 	font-family: Verdana;
 	font-size: 11px;
 }
@@ -185,16 +185,16 @@ select {
 	background-color: #ffffff;
 	border-top: 1px solid #bbbbee;
 	width: 99.8%;
-	overflow: auto;	
+	overflow: auto;
 }
 
 #actionmenu {
-	position: relative; 
+	position: relative;
 	height: 35px;
 	width: 100%;
 	background-color: #ccccee;
 	display:block;
-	border-top: 1px solid #ccccee;	
+	border-top: 1px solid #ccccee;
 	font-family: Verdana;
 	font-size: 11px;
 }
@@ -204,7 +204,7 @@ select {
 	background-color: #ffffff;
 	border-top: 1px solid #ccccee;
 /*	width: 99.8%; */
-	overflow: auto;	
+	overflow: auto;
 }
 
 #filterpanel {
@@ -247,11 +247,19 @@ select {
 .tablekey {
 	text-align: left;
 	width: 60px;
+	padding: 2px 5px;
 }
 
 .tableval {
-	text-align: right;
+	text-align: left;
+	padding: 2px 5px;
+}
 
+.tableval input[type=text],
+.tableval select {
+	box-sizing: border-box;
+	width: 100%;
+	max-width: 100%;
 }
 
 .guirow {
@@ -278,10 +286,10 @@ select {
 .tabs {
     width:99.8%;
     display:inline-block;
-    background-color: #bbbbee; 
+    background-color: #bbbbee;
     /*border-top: 1px solid #8888bb; */
 }
- 
+
     /*----- Tab Links -----*/
     /* Clearfix */
  /*   .tab-links:after {
@@ -292,15 +300,15 @@ select {
  */
     .tab-links {
     	height: 10px;
-    
+
     }
-    
+
     .tab-links li {
         margin:0px 5px;
         float:left;
         list-style:none;
     }
- 
+
         .tab-links a {
             padding:5px 5px;
             display:inline-block;
@@ -315,28 +323,28 @@ select {
             color:#4c4c4c;
             transition:all linear 0.15s;
         }
- 
+
         .tab-links a:hover {
             background:#8888bb;
             text-decoration:none;
         }
- 
+
     li.active a, li.active a:hover {
         background:#ccccee;
         color:#000;
     }
- 
+
     /*----- Content of Tabs -----*/
     .tab-content {
         padding:0px;
         /*box-shadow:-1px 1px 1px rgba(0,0,0,0.15); */
         background:#aff;
     }
- 
+
      .tab {
          display:none;
      }
- 
+
      .tab.active {
          display:block;
      }
