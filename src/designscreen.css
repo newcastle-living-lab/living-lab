@@ -262,6 +262,10 @@ select {
 	max-width: 100%;
 }
 
+.tableval select {
+	height: auto;
+}
+
 .guirow {
 	width: 80%;
 	display: inline;
