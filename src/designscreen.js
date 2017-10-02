@@ -1250,7 +1250,8 @@ function txStartViews(startviews) {
 	* Sends the start states of layers in the views attached to the startevent to the screens that are listening for their names e.g.screen1
 	* Receives the startviews object from from presentscreen
 	*/
-	//console.log(startviews);
+	// console.log("txStartViews");
+	// console.log(startviews);
 	var affectedlayers = [];
 	if (stage != null && layer != null) {
 		for (var pei = 0; pei < startviews.length; pei++) {
@@ -1263,7 +1264,9 @@ function txStartViews(startviews) {
 					affectedlayers.push(sendlayer);
 					var layerstate = sendlayer.getAttr('state');
 					var startstate = JSON.parse(layerstate.startstate);
-					//console.log(startstate);
+					// console.log(sendlayer);
+					// console.log(layerstate);
+					// console.log(startstate);
 					var screenstate = { screenwidth: project.screenwidth, screenheight: project.screenheight, txscale: txscale, viewstate: peview.viewstate, layerchildren: startstate, layeractions: [] };
 					var scrcommand = { view: scrname, scrtxmsg: { command: 'update', info: screenstate } };
 					var scrjson = JSON.stringify(scrcommand);
@@ -1304,7 +1307,8 @@ function txViews(pevindex) {
 	* Sends the present event state to the screens that are listening for their names e.g.screen1
 	* Receives the presentevent index from presentscreen
 	*/
-
+	// console.log("txViews");
+	// console.log(pevindex);
 	if (stage != null && layer != null) {
 		var pevstate = eventliststates[pevindex];
 		console.log("pevstate");
@@ -1578,11 +1582,11 @@ function txLayerActions(actionobj,playlist) {
 */
 
 function ioUpdate(respdata) {
-	//console.log(respdata);
+	// console.log(respdata);
 	var viewcommand = JSON.parse(respdata);
 	var command = viewcommand.command;
 
-	//console.log(command);
+	// console.log(viewcommand);
 	switch (command) {
 		case 'updateEventArr':
 			eventliststates = viewcommand.info.pel;
@@ -1643,8 +1647,71 @@ function ioUpdate(respdata) {
 			txStartViews(startviews);
 			break;
 
+		case "clickEvent":
+			txClickEvent(viewcommand.info);
+		break;
+
+	}
+}
+
+
+function txClickEvent(eventId) {
+
+	var eventIdx = findEventById(eventId);
+
+	// console.log("Event " + eventId + " has index " + eventIdx);
+
+	if (eventIdx == undefined || eventIdx < 0) {
+		return;
 	}
 
+	// console.log("txViews / playPEEvents for Index " + eventIdx);
+
+	// Send views
+	txViews(eventIdx);
+
+	// Send events
+	setTimeout(function() {
+		playPEEvents(eventIdx);
+	}, 250);
+
+	// Play
+	setTimeout(function() {
+
+		var pevstate = eventliststates[eventIdx];
+		// console.log("pevstate");
+		// console.log(pevstate);
+
+		for (var pei = 0; pei < pevstate.peviews.length; pei++) {
+			var peview = pevstate.peviews[pei];
+			var scrname = peview.viewstate.name;
+			var layerid = peview.layerid;
+			if (layerid != 'none' && peview.actions.length > 0) {
+				var scrcommand = {
+					view: scrname,
+					scrtxmsg: {
+						command: 'play',
+						info: ''
+					}
+				};
+				var scrjson = JSON.stringify(scrcommand);
+				socket.emit('screenmsg', scrjson);
+			}
+		}
+	}, 500);
+}
+
+
+function findEventById(eventId) {
+	console.log("findEventById: looking for event index for ID " + eventId);
+	// console.log(eventliststates);
+	indexes = $.map(eventliststates, function(obj, idx) {
+		// console.log(obj);
+		if (obj.id == eventId) {
+			return idx;
+		}
+	});
+	return indexes[0];
 }
 
 
