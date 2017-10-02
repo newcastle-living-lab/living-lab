@@ -1589,18 +1589,18 @@ function ioUpdate(respdata) {
 	// console.log(viewcommand);
 	switch (command) {
 		case 'updateEventArr':
-			eventliststates = viewcommand.info.pel;
+		eventliststates = viewcommand.info.pel;
 			project.starteventviews = viewcommand.info.sev;
 			project.groups = viewcommand.info.groups;
 			// console.log("updateEventArr");
 			// console.log(project);
 			updateEventSwimList();
-			break;
+		break;
 
 		case 'deleteEventList':
 			var ind = viewcommand.info;
 			deleteEventList(ind);
-			break;
+		break;
 
 		case 'checkDesignScreen':
 			console.log("checkDesignScreen");
@@ -1608,49 +1608,47 @@ function ioUpdate(respdata) {
 			console.log(layer);
 			if (projectopened == true && layer != null) {
 				txReady('openready');
-			}
-			else if (projectopened == false && layer != null) {
+			} else if (projectopened == false && layer != null) {
 				deleteAllEventLists();
 				txReady('newready');
-			}
-			else {
+			} else {
 				deleteAllEventLists();
 				txReady('notready');
 			}
-			break;
+		break;
 
 		case 'getLayerinfo':
 			txLayers();
-			break;
+		break;
 
 		case 'playPE':
 			var ind = viewcommand.info;
 			playPEEvents(ind);
-			break;
+		break;
 
 		case 'startPE':
 			var ind = viewcommand.info;
 			startPEEvents(ind);
-			break;
+		break;
 
 		case 'getPEinfo':
 			txPEinfo();
-			break;
+		break;
 
 		case 'castPEinfo':
 			var ind = viewcommand.info;
 			txViews(ind);
-			break;
+		break;
 
 		case 'castStartinfo':
 			var startviews = viewcommand.info;
 			txStartViews(startviews);
-			break;
-
-		case "clickEvent":
-			txClickEvent(viewcommand.info);
 		break;
 
+		case "clickEvent":
+			// data.info will be eventId to trigger.
+			txClickEvent(viewcommand.info);
+		break;
 	}
 }
 
@@ -1703,7 +1701,7 @@ function txClickEvent(eventId) {
 
 
 function findEventById(eventId) {
-	console.log("findEventById: looking for event index for ID " + eventId);
+	// console.log("findEventById: looking for event index for ID " + eventId);
 	// console.log(eventliststates);
 	indexes = $.map(eventliststates, function(obj, idx) {
 		// console.log(obj);
@@ -1715,14 +1713,15 @@ function findEventById(eventId) {
 }
 
 
+/**
+ * Initial set up
+ *
+ */
 function setup() {
-	/**
-	* Initial set up
-	*/
 
 	if (USEIO) {
 		socket = io(serverurl);
-		socket.on('updateEvents', function (respdata) {
+		socket.on('updateEvents', function(respdata) {
 			//console.log(respdata);
 			ioUpdate(respdata);
 		});
