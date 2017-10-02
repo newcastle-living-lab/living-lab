@@ -79,21 +79,25 @@ function setupEvents(obj) {
 		return;
 	}
 
-	obj.on('mouseover', function () {
+	obj.on('mouseover', function() {
 		document.body.style.cursor = 'pointer';
 		// cursorstate = 'onobj';
 	});
 
-	obj.on('mouseout', function () {
+	obj.on('mouseout', function() {
 		document.body.style.cursor = 'default';
 		// cursorstate = 'free';
 	});
 
-	obj.on('mousedown', function () {
-		var eventId = this.getAttr('event');
-		// console.log("triggering event click ID " + eventId);
-		var msg = JSON.stringify({ command: 'clickEvent', info: eventId });
-		socket.emit('updateEvents', msg);
+	obj.on('mousedown', function() {
+		// On click: ask the parent screen (Design or Playlist) to trigger the event by ID
+		var msg = {
+			command: 'clickEvent',
+			info: this.getAttr("event"),
+			src: this.getAttr("id")
+		};
+		// console.log(msg);
+		socket.emit("updateEvents", JSON.stringify(msg));
 	});
 }
 
