@@ -585,6 +585,7 @@ function findPeviewLayer(layerid, snapshotlayers) {
 	return index;
 }
 
+
 function txstartStatetoScreens(peobj) {
 	//message to screens to go to startstate of event
 	var ind = playentevents.indexOf(peobj);
@@ -608,13 +609,43 @@ function txstartStatetoScreens(peobj) {
 }
 
 
+function txClickEvent(eventId) {
+
+	var eventIdx = findEventById(eventId);
+	if (eventIdx == playentevents.length) { eventIdx = 0; }
+
+	var peev = playentevents[eventIdx];
+	var prev_playmode = playmode;
+	playmode = true;
+	peev.fire('mousedown');
+	playmode = prev_playmode;
+
+	//txstartStatetoScreens(activepeevobj);
+	// setTimeout(function () { txplayEventtoScreens(activepeevobj); }, 200);
+}
+
+
+function findEventById(eventId) {
+	var indexes = $.map(playentevents, function(obj, idx) {
+		var state = obj.getAttr("state");
+		if (state.id == eventId) {
+			return idx;
+		}
+	});
+	return indexes[0];
+}
+
+
 function ioUpdate(respdata) {
-	//console.log(respdata);
 	var viewcommand = JSON.parse(respdata);
 	var command = viewcommand.command;
 
 	//console.log(command);
 	switch (command) {
+		case "clickEvent":
+			txClickEvent(viewcommand.info);
+		break;
+
 
 		/*			case 'designready':
 						var msg = viewcommand.info;
@@ -642,9 +673,11 @@ function ioUpdate(respdata) {
 
 }
 
+
 function setPlaymode() {
 	playmode = $('#playaction').prop('checked');
 }
+
 
 function setup() {
 	/**
@@ -652,8 +685,7 @@ function setup() {
 	*/
 	if (USEIO) {
 		socket = io(serverurl);
-		socket.on('designmsg', function (respdata) {
-			//console.log(respdata);
+		socket.on('updateEvents', function(respdata) {
 			ioUpdate(respdata);
 		});
 	}
@@ -689,6 +721,5 @@ function setup() {
 	screenSetup();
 	$('#playaction').prop('checked', playmode);
 	createPEandViews(peinfo);
-
 
 }
