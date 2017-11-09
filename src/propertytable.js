@@ -218,7 +218,7 @@ function updatePropDisp() {
 
 			// Add the dropdown list to choose the event to trigger on clicking this object
 
-			if (eventliststates != undefined) {
+			if (typeof eventliststates !== "undefined") {
 
 				var $row = $("<tr></tr>"),
 					$keyTd = $("<td class='tablekey'>" + key + "</td>"),
