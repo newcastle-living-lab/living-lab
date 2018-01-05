@@ -41,7 +41,7 @@ function makeLayerAnimation(actionlayer)
 		var alayer = objlayer.getAttr('actionlayer');
 		var animlist = alayer.getAttr('playlist');
 		for (var i=0;i<animlist.length;i++) {
-			var action = animlist[i]; 	
+			var action = animlist[i];
 			var prop = action.interpolateProp(frame);
 			var obj = action.parentobject;
 			var objstate = obj.getAttr('state');
@@ -53,8 +53,8 @@ function makeLayerAnimation(actionlayer)
 			else {
 				objstate[action.property] = prop;
 			}
-				
-			if ((frame.time-action.starttime*1000)>action.animDuration*1000) {  
+
+			if ((frame.time-action.starttime*1000)>action.animDuration*1000) {
 				stopflag = stopflag && true;   //if many objects wait until last one is finished
 			}
 			else {
@@ -67,11 +67,11 @@ function makeLayerAnimation(actionlayer)
 	   	frame.time = 0.0;
 	   	//console.log('stopped',this.isRunning());
 	   }
-	   
-	   
-		
+
+
+
 	}, animlayer);
-	
+
 	actionlayer.setAttr('animation',anim);
 
 
@@ -92,20 +92,20 @@ function makeActionTypeOptions(obj) {
 				if (objtype == 'CurvedArrow') {
 					htmlstr = htmlstr + '<option value="'+acttype+'">'+acttype+'</option>';
 			}
-		}	
+		}
 	}
 	}
 	return htmlstr;
-}	
+}
 
 function getNodeActions(obj)
 {
-/** 
+/**
 * find all the actions in the layer which has obj as its parentobject
 */
 	var actionlayer = obj.getLayer().getAttr('actionlayer');
 	var actionlist = new Array();
-	
+
 	//console.log(obj);
 	var lactions = actionlayer.find('.action');
 	//console.log(lactions);
@@ -113,12 +113,12 @@ function getNodeActions(obj)
 		if (lactions[i].getAttr('action').parentobject == obj) {
 			actionlist.push(lactions[i]);
 		}
-	}	
+	}
 	//console.log(actionlist);
 	return actionlist;
 }
 
-function Action(parentobject,id,actiontype,startval,endval,starttime,duration) 
+function Action(parentobject,id,actiontype,startval,endval,starttime,duration)
 {
 /**
 Action that animates the change of an object from a startstate to the endstate
@@ -129,10 +129,10 @@ Animation is from startstate to endstate of the property.
 	this.starttime = starttime;
 	this.animDuration = duration;   //default 1 second
 	this.actiontype = actiontype;
-	this.property = actiontypes[actiontype];  
+	this.property = actiontypes[actiontype];
 	this.startstate = startval;
 	this.endstate = endval;
-	
+
 	this.interpolateProp = function(frame) {
 			var frac = 0.0;
 			if ((frame.time-this.starttime*1000) > this.animDuration*1000) {
@@ -149,7 +149,7 @@ Animation is from startstate to endstate of the property.
 						var ypos = frac*(this.endstate.y-this.startstate.y)+this.startstate.y;
 						prop = {x:xpos,y:ypos};
 					break;
-					
+
 					case 'fadein':
 						prop = frac*(this.endstate - this.startstate)+this.startstate;
 						if (prop<0.0) {prop = 0.0;}
@@ -159,7 +159,7 @@ Animation is from startstate to endstate of the property.
 						prop = frac*(this.endstate - this.startstate)+this.startstate;
 						if (prop<0.0) {prop = 0.0;}
 					break;
-					
+
 					case 'appear':
 						if (frac<1.0) {
 							prop = this.startstate;
@@ -181,13 +181,13 @@ Animation is from startstate to endstate of the property.
 					case 'arrowflow':
 							prop = this.startstate+frac*(this.endstate - this.startstate);
 					break;
-					
+
 				}
 			}
 
-		return prop;	
+		return prop;
 	};
-	
+
 }
 
 
@@ -235,8 +235,8 @@ Action.prototype.settoEndstate = function () {
 
 function startActionEvent()
 {
- 	
-   if (activeactobj != null) {	
+
+   if (activeactobj != null) {
 	if (activeactobj.name() == 'eventgroup') {
 	  	var actchildren = activeactobj.find('.action');
 		for (var i=0;i<actchildren.length;i++) {
@@ -254,8 +254,8 @@ function startActionEvent()
 
 function endActionEvent()
 {
- 	
-  if (activeactobj != null) {	
+
+  if (activeactobj != null) {
 	if (activeactobj.name() == 'eventgroup') {
 	  	var actchildren = activeactobj.find('.action');
 		for (var i=0;i<actchildren.length;i++) {
@@ -273,8 +273,8 @@ function endActionEvent()
 
 function playActionEvent()
 {
- 	
-  if (activeactobj != null) {	
+
+  if (activeactobj != null) {
 	var playlist = new Array();
 	if (activeactobj.name() == 'eventgroup') {
 	  	var actchildren = activeactobj.find('.action');
@@ -329,13 +329,13 @@ function startPEEvents(ind)
 		}
 	}
 }
- 
-function actionobj(state,eventlistobj)  
+
+function actionobj(state,eventlistobj)
 { //draw an action object on the action pane
 	var tspace = 10;
 	var obj = null;
- 	if (state.id == 'none') {state.id = UniqueId();}	
-	
+ 	if (state.id == 'none') {state.id = UniqueId();}
+
 	var actobj = new Kinetic.Group({
 			name:'action',
 			draggable:true,
@@ -345,8 +345,8 @@ function actionobj(state,eventlistobj)
 			width:actobjw,
 			height:actobjh-tspace
 	});
-	
-	
+
+
 	var actblock = new Kinetic.Rect({
 			name:'actblock',
 			draggable:false,
@@ -357,9 +357,9 @@ function actionobj(state,eventlistobj)
 			cornerRadius:5,
 			fill:actnonselcol,
 			stroke:'black',
-			strokeWidth:1	
+			strokeWidth:1
 	});
-	
+
 		var parentobject = layer.find('#'+state.parentobjectid)[0];
 	   actobj.setAttr('action',new Action(parentobject,state.id,state.actiontype,state.startstate,state.endstate,state.starttime,state.duration));
 
@@ -367,9 +367,9 @@ function actionobj(state,eventlistobj)
 		if (state.descriptor == '') {
 			state.descriptor = state.actiontype+'_'+pname;
 		}
-		
+
 		var actionname = state.descriptor;
-		
+
 		var displaystr = (actionname).slice(0,15);
 		var nameobj = new Kinetic.Text({
 						name:'actname',
@@ -379,18 +379,18 @@ function actionobj(state,eventlistobj)
 					  	text:displaystr,
 					  	fontSize:12,
 					  	fill:'black'
-					  	
+
 					  });
-					  
+
 		actobj.add(actblock);
-		actobj.add(nameobj);			  
+		actobj.add(nameobj);
 		eventlistobj.add(actobj);
 		actobj.setAttr('state',state);
 		actobj.find('.actblock').stroke(evnonselcol);
 	//	var actboxstate = eventlistobj.getAttr('state');
 	//	actboxstate.actions.push(state);
 	//	eventlistobj.setAttr('state',actboxstate);
-		
+
 		actobj.moveToTop();
 		nameobj.moveToTop();
 
@@ -398,7 +398,7 @@ function actionobj(state,eventlistobj)
 	    document.body.style.cursor = 'pointer';
 	    cursorstate = 'onact';
 	  });
-	  
+
 	  actobj.on('mouseout', function() {
 	    document.body.style.cursor = 'default';
 	    cursorstate = 'free';
@@ -407,7 +407,7 @@ function actionobj(state,eventlistobj)
 	  actobj.on('mousedown', function() {
 	  	 activeactobj = this;
 	  	 mousedown_action = true;
-		 showActionPropDisp()	  	
+		 showActionPropDisp()
 	  	 var actchildren = actlayer.find('.action');
 			for (var i=0;i<actchildren.length;i++) {
 				var selobj = actchildren[i];
@@ -417,12 +417,12 @@ function actionobj(state,eventlistobj)
 				else {
 					selobj.find('.actblock').fill(actnonselcol);
 				}
-					
+
 			}
 			actlayer.draw();
-			
+
 			if (castmode ==  true) {
-				playActionEvent();			
+				playActionEvent();
 			}
 
 	  });
@@ -430,23 +430,23 @@ function actionobj(state,eventlistobj)
   	  actobj.on('dragstart', function (e) {
   			var dragobj = e.target;
   			dragobj.find('.actblock').stroke('#000000');
-			var par = dragobj.getParent();  
+			var par = dragobj.getParent();
   	  		par.moveToTop();
   	  		dragobj.moveToTop();
   	  });
-	  
+
 	  actobj.on('dragmove', function (e) {
-			e.target.moveToTop();	  	
+			e.target.moveToTop();
 	  });
-	  	  
+
 	  actobj.on('dragend', function (e) {
-	  	
+
 	  		var ingroupflag = false;
   			var dragobj = e.target;
-			var par = dragobj.getParent();  
+			var par = dragobj.getParent();
 			var drx = dragobj.x()+par.x();
 			var dry = dragobj.y()+par.y();
-			
+
 			var eventgroups  = actlayer.find('.eventgroup');
 			for (var j=0;j<eventgroups.length;j++) {
 				var evgroup = eventgroups[j];
@@ -465,12 +465,12 @@ function actionobj(state,eventlistobj)
 					evgroup.setAttr('state',evstate); */
 				  	updateActionList(evgroup);
 				  	updateEventactions();
-					
+
 				}
-			}	 
-			
+			}
+
 /*			if (ingroupflag == false) {
-					par = dragobj.getParent();  
+					par = dragobj.getParent();
 					if (par != actlayer) {
 						//this.moveTo(actlayer);
 						this.find('.actblock').stroke('#000000');
@@ -481,7 +481,7 @@ function actionobj(state,eventlistobj)
 						evstate.actions.splice(index,1);
 						updateActionList();
 						par.setAttr('state',evstate);
-					
+
 					}
 			} */
 	  		var objstate = this.getAttr('state');
@@ -489,8 +489,8 @@ function actionobj(state,eventlistobj)
 	  		objstate.y = this.y();
 	  		this.setAttr('state',objstate);
 			showActionPropDisp();
-			actlayer.draw(); 
-	  
+			actlayer.draw();
+
 	  });
 
      	updateActionList(eventlistobj);
@@ -593,7 +593,7 @@ function newAction()
 					};
 					actobj = actionobj(state,actionbox);
 					break;
-					
+
 				case 'arrowflow':
 					var state = {
 						descriptor:'',
@@ -609,9 +609,9 @@ function newAction()
 						duration:1.0
 					};
 					actobj = actionobj(state,actionbox);
-					break;					
+					break;
  			}
-	
+
 	}
 
 }
@@ -628,7 +628,7 @@ function deleteAction() {
 				updateActionList(par);
 				updateEventactions();
 			}
-	
+
 	}
 
 }
@@ -640,7 +640,7 @@ function removeEventList(pevid) {
 		var actbox = alayer.getAttr('actionbox');
 		var pevchildren = pev.getChildren().toArray();
 		for (var chi=0;chi<pevchildren.length;chi++) {
-			var pchild = pevchildren[chi];					
+			var pchild = pevchildren[chi];
 			if (pchild.name() == 'action') {
 				pchild.moveTo(actbox);
 			}
@@ -648,7 +648,7 @@ function removeEventList(pevid) {
 		updateActionList(actbox);
 		pev.destroyChildren();
 		pev.destroy();
-		alayer.draw();	
+		alayer.draw();
 	}
 }
 
@@ -662,11 +662,11 @@ function deleteAllEventLists() {
 		}
 	}
 	eventliststates = [];
-	
+
 }
 
 function deleteEventList(delind) {
-	
+
 	if (delind>-1) {
 		var pevstate = eventliststates[delind];
 		var peviews = pevstate.peviews;
@@ -677,11 +677,11 @@ function deleteEventList(delind) {
 		eventliststates.splice(delind,1);
 		for (var i=0;i<eventliststates.length;i++) {
 			eventliststates[i].index = i;
-		}	
+		}
 	}
 	updateEventSwimList();
 
-}	
+}
 
 
 
@@ -693,27 +693,27 @@ function updateEventactions()
 		for (var pei=0;pei<peviews.length;pei++) {
 			var peview = peviews[pei];
 			if (peview.layerid != 'none') {
-				peview.actions = [];	
+				peview.actions = [];
 				var evlist = actstage.find('#'+peview.id)[0];
 				var actionlist = evlist.find('.action');
 				for (var ai=0;ai<actionlist.length;ai++) {
 					var act = actionlist[ai];
 					var actstate = act.getAttr('state');
 					//console.log(actstate);
-					peview.actions.push({id:actstate.id, name:actstate.descriptor});				
+					peview.actions.push({id:actstate.id, name:actstate.descriptor});
 				}
-				eventliststates[i].peviews[pei] = peview;	
+				eventliststates[i].peviews[pei] = peview;
 				//console.log(eventliststates);
 			}
 		}
 	}
-	
+
 	txupdateAllEventListActions(eventliststates);
 }
 
 function updateActionList(eventbox)
-{	
-	if (actlayer != null) {	
+{
+	if (actlayer != null) {
 		var actionlist = eventbox.find('.action');
 		for (var i=0;i<actionlist.length;i++) {
 			var act = actionlist[i];
@@ -722,9 +722,9 @@ function updateActionList(eventbox)
 			for (var j=0;j<i;j++) {
 				var block = act.find('.actblock')[0];
 				yoffset = yoffset + block.height() + actionlistgap;
-			}	
-			act.x(ineventactionXoffset);	
-			act.y(yoffset); 
+			}
+			act.x(ineventactionXoffset);
+			act.y(yoffset);
 		}
 
 		var boxheight = yoffset+actionlistgap+actobjh;
@@ -735,11 +735,11 @@ function updateActionList(eventbox)
 		else {
 			eventbox.height(evobjh);
 			eventbox.find('.evblock').height(evobjh);
-			
+
 		}
 		var actstageh = actionlistYoffset+yoffset+actionlistgap+actobjh;
 		if (actstageh>actstage.height()) {
-		actstage.height(actstageh);		
+		actstage.height(actstageh);
 		}
 		actlayer.draw();
 	}
@@ -759,13 +759,13 @@ function findEventState(parsid)
 {
 /**
 * Find a PE state in the eventliststates array for a given id
-*/	
+*/
 	var found = false;
 	var i = 0;
 	var evs = null;
 	while (found == false && i<eventliststates.length)
 	{
-		if (parsid == eventliststates[i].id) {	
+		if (parsid == eventliststates[i].id) {
 			found = true;
 			evs = eventliststates[i];
 		}
@@ -778,14 +778,14 @@ function findPEinEventState(peviewid,pevstate)
 {
 /**
 * Finds a PE peview index in the PEventliststate for a given eventlist id
-*/	
+*/
 	var found = false;
 	var i = 0;
 	var peviewindex = 0;
 	var pws = pevstate.peviews;
 	while (found == false && i<pws.length)
 	{
-		if (peviewid == pws[i].id) {	
+		if (peviewid == pws[i].id) {
 			found = true;
 			peviewindex = i;
 		}
@@ -795,7 +795,7 @@ function findPEinEventState(peviewid,pevstate)
 }
 
 function updateEventSwimList()
-{	
+{
 
 	for (var i=0;i<eventliststates.length;i++) {
 		var pevstate = eventliststates[i];
@@ -825,7 +825,7 @@ function updateEventSwimList()
 						pev = makeEventList({x:actionlistXoffset, y:actionlistYoffset, parentid:pevstate.id, id:peview.id, name: pevstate.name,actiontype:'Eventlist', viewstate:peview.viewstate, actions:peview.actions});
 						alayer.add(pev);
 						pev.moveToBottom();
-					}			
+					}
 					else {
 						var numactions = peview.actions.length;
 						var boxheight = ineventactionXoffset+numactions*(actionlistgap+actobjh);
@@ -842,8 +842,8 @@ function updateEventSwimList()
 				alayer.draw();
 			}
 	}
- }	
- 
+ }
+
 //find eventlists on action layers that do not exist in eventliststates and remove them
  //first make list of all peview ids
 var peviewidarr = new Array();
@@ -857,7 +857,7 @@ for (var i=0;i<eventliststates.length;i++) {
 			peviewidarr.push(peview.id);
 		}
 	}
-}	
+}
 //console.log(peviewidarr);
  // now try and find it in the list of boxes on actionlayers
 
@@ -878,10 +878,10 @@ for (var li=0;li<actlayers.length;li++) {
 			}
 		}
 	}
-	
+
 }
 
- 
+
 //arrange blocks on each actionlayer
 	for (var li=0;li<actlayers.length;li++) {
 		var alayer = actlayers[li];
@@ -891,20 +891,20 @@ for (var li=0;li<actlayers.length;li++) {
 			var elstate = el.getAttr('state');
 			if (elstate.name == 'actionbox') { return true;}
 			return false;
-		});	
+		});
 		if (aboxindex > -1) {
 			layerblocks.splice(aboxindex,1);
-		}	
+		}
 //sort according to index
 		layerblocks.sort(function (a,b) {
 			var statea = a.getAttr('state');
 			var stateb = b.getAttr('state');
-			
+
 			var parida = statea.parentid;
 			var para = findEventState(parida);
 			var parindexa = para.index;
 			var peviewindexa = findPEinEventState(statea.id,para);
-			
+
 			var paridb = stateb.parentid;
 			var parb = findEventState(paridb);
 			var parindexb = parb.index;
@@ -913,22 +913,22 @@ for (var li=0;li<actlayers.length;li++) {
 			if (parindexa < parindexb) { return -1; }
 			if (parindexa > parindexb) { return 1; }
 			if (parindexa == parindexb) {
-				if (peviewindexa < peviewindexb) { return -1; }			
+				if (peviewindexa < peviewindexb) { return -1; }
 				if (peviewindexa > peviewindexb) { return 1; }
 			}
 			return 0;
-		});		
+		});
 		//console.log(layerblocks);
-		
+
 		for (var bi=0; bi<layerblocks.length;bi++) {
-			var xoffset = eventlistXoffset + bi*(eventlistgap+evobjw);	
-			layerblocks[bi].x(xoffset); 
-	
-	//check that stage is still wide enough		
+			var xoffset = eventlistXoffset + bi*(eventlistgap+evobjw);
+			layerblocks[bi].x(xoffset);
+
+	//check that stage is still wide enough
 			var actstagew = xoffset+eventlistgap+evobjw;
 			if (actstagew > actstage.width()) {
 				actstage.width(actstagew);
-			}	
+			}
 		}
 		alayer.draw();
 	}
@@ -938,7 +938,7 @@ for (var li=0;li<actlayers.length;li++) {
 
 function makeEventList(state) {
 
- 	
+
 	var eventobj = new Kinetic.Group({
 			name:'eventgroup',
 			draggable:false,
@@ -949,8 +949,8 @@ function makeEventList(state) {
 			height:evobjh
 	});
 
-	eventobj.setAttr('state',state);	
-	
+	eventobj.setAttr('state',state);
+
 	var evblock = new Kinetic.Rect({
 			name:'evblock',
 			draggable:false,
@@ -961,10 +961,10 @@ function makeEventList(state) {
 			cornerRadius:0,
 			fill:evnonselcol,
 			stroke:'black',
-			strokeWidth:1	
+			strokeWidth:1
 	});
-	
-		
+
+
 		var displaystr = (state.name).slice(0,10);
 		var nameobj = new Kinetic.Text({
 						name:'evname',
@@ -974,7 +974,7 @@ function makeEventList(state) {
 					  	text:displaystr,
 					  	fontSize:12,
 					  	fill:'black'
-					  	
+
 					  });
 
 		displaystr = (state.viewstate.name).slice(0,10);
@@ -986,28 +986,28 @@ function makeEventList(state) {
 					  	text:displaystr,
 					  	fontSize:12,
 					  	fill:'black'
-					  	
+
 					  });
-					  					  
+
 		eventobj.add(evblock);
-		eventobj.add(nameobj);			  
-		eventobj.add(scrnameobj);			  
+		eventobj.add(nameobj);
+		eventobj.add(scrnameobj);
 /*
 		for (var ev=0;ev<state.actions.length;ev++) {
 			var evstate = state.actions[ev];
 			var acobj = actionobj(evstate);
 			eventobj.add(acobj);
-		}	
-*/			
+		}
+*/
 		//actlayer.add(eventobj);
-		//eventobj.moveToBottom();	
+		//eventobj.moveToBottom();
 		//actlayer.draw();
 
 	  eventobj.on('mouseover', function() {
 	    document.body.style.cursor = 'pointer';
 	    cursorstate = 'onev';
 	  });
-	  
+
 	  eventobj.on('mouseout', function() {
 	    document.body.style.cursor = 'default';
 	    cursorstate = 'free';
@@ -1026,7 +1026,7 @@ function makeEventList(state) {
 					else {
 						selobj.find('.evblock').fill(evnonselcol);
 					}
-						
+
 				}
 		  	 var actchildren = actlayer.find('.action');
 				for (var i=0;i<actchildren.length;i++) {
@@ -1038,12 +1038,12 @@ function makeEventList(state) {
 			else {
 				mousedown_action = false;
 			}
-			
+
 			if (castmode == true) {
-				playActionEvent();			
+				playActionEvent();
 			}
 	  });
-	  
+
 
 	return eventobj;
 }
@@ -1056,78 +1056,78 @@ function actpropLimits(propkey)
 	var dh = $('#actionpane').height();
 	switch(propkey) {
 		case 'x':
-			return {min:0,max:dw,step:5};		
+			return {min:0,max:dw,step:5};
 		break;
 		case 'y':
-			return {min:0,max:dh,step:5};		
+			return {min:0,max:dh,step:5};
 		break;
 		case 'width':
-			return {min:0,max:dw,step:5};		
+			return {min:0,max:dw,step:5};
 		break;
 		case 'height':
-			return {min:0,max:dh,step:5};		
+			return {min:0,max:dh,step:5};
 		break;
 		case 'radius':
-			return {min:0,max:dh/2,step:5};		
+			return {min:0,max:dh/2,step:5};
 		break;
 		case 'cornerRadius':
-			return {min:0,max:100,step:1};		
+			return {min:0,max:100,step:1};
 		break;
 		case 'innerRadius':
-			return {min:0,max:dh/2,step:5};		
+			return {min:0,max:dh/2,step:5};
 		break;
 		case 'outerRadius':
-			return {min:0,max:dh/2,step:5};		
+			return {min:0,max:dh/2,step:5};
 		break;
 		case 'opacity':
-			return {min:0,max:1,step:0.1};		
+			return {min:0,max:1,step:0.1};
 		break;
 		case 'lineLength':
-			return {min:1,max:Math.sqrt(dw*dw + dh*dh),step:5};		
+			return {min:1,max:Math.sqrt(dw*dw + dh*dh),step:5};
 		break;
 		case 'scaleSize':
-			return {min:0.1,max:10,step:0.1};		
+			return {min:0.1,max:10,step:0.1};
 		break;
 		case 'strokeWidth':
-			return {min:0.1,max:10,step:0.1};		
+			return {min:0.1,max:10,step:0.1};
 		break;
 		case 'sides':
-			return {min:3,max:30,step:1};		
+			return {min:3,max:30,step:1};
 		break;
 		case 'arrowWidth':
-			return {min:1,max:100,step:2};		
+			return {min:1,max:100,step:2};
 		break;
 		case 'arrowheadWidth':
-			return {min:1,max:100,step:2};		
+			return {min:1,max:100,step:2};
 		break;
 		case 'arrowheadLength':
-			return {min:1,max:100,step:2};		
+			return {min:1,max:100,step:2};
 		break;
 		case 'midX':
-			return {min:-dw,max:dw,step:5};		
+			return {min:-dw,max:dw,step:5};
 		break;
 		case 'midY':
-			return {min:-dh,max:dh,step:5};		
+			return {min:-dh,max:dh,step:5};
 		break;
 		case 'endX':
-			return {min:-dw,max:dw,step:5};		
+			return {min:-dw,max:dw,step:5};
 		break;
 		case 'endY':
-			return {min:-dh,max:dh,step:5};		
+			return {min:-dh,max:dh,step:5};
 		break;
 		case 'rotation':
-			return {min:-180,max:180,step:1};		
+			return {min:-180,max:180,step:1};
 		break;
 		case 'fontSize':
-			return {min:6,max:200,step:2};		
+			return {min:6,max:200,step:2};
 		break;
 
 		case 'duration':
-			return {min:0.1,max:10,step:0.1};		
-		break;	
+			return {min:0.1,max:10,step:0.1};
+		break;
 		case 'starttime':
-			return {min:0.1,max:10,step:0.1};		
-		break;	
+			return {min:0.1,max:10,step:0.1};
+		break;
 		default:
 			return {min:0,max:1,step:0.1};
 		break;
@@ -1139,10 +1139,10 @@ function actcolorPropValue(prop)
 		var propkey = Object.keys(prop)[0];
 		var propval = prop[propkey];
 		//console.log(propkey,propval);
-		$("#prop"+propkey).val(propval);	
-		
-		prop[propkey] = checkInput(propval);				
-		updateAction(prop);		
+		$("#prop"+propkey).val(propval);
+
+		prop[propkey] = checkInput(propval);
+		updateAction(prop);
 }
 
 function actsliderPropValue(prop) { //for number types
@@ -1151,11 +1151,11 @@ function actsliderPropValue(prop) { //for number types
 		//console.log(propkey,propval);
 		var num = parseFloat(propval);
 		if ((num % 1) == 0.0) { $("#prop"+propkey).val(num.toFixed(0));}
-		else { $("#prop"+propkey).val(num.toFixed(2));}	
-		
-		prop[propkey] = checkInput(propval);				
+		else { $("#prop"+propkey).val(num.toFixed(2));}
+
+		prop[propkey] = checkInput(propval);
 		updateAction(prop);
-	
+
 }
 
 function actnudgePropValue(prop) { //for number types
@@ -1169,14 +1169,14 @@ function actnudgePropValue(prop) { //for number types
 		var num = parseFloat(propval)+parseFloat(nudgeval);
 		if (num<minval) {num = minval;}
 		if (num>maxval) {num = maxval;}
-		
+
 		if ((num % 1) == 0.0) { $("#prop"+propkey).val(num.toFixed(0));}
-		else { $("#prop"+propkey).val(num.toFixed(2));}	
-		
+		else { $("#prop"+propkey).val(num.toFixed(2));}
+
 		prop[propkey] = checkInput(num);
-		//console.log(prop);				
+		//console.log(prop);
 		updateAction(prop);
-	
+
 }
 
 function acteditboxPropValue(prop) { //for number types
@@ -1187,23 +1187,23 @@ function acteditboxPropValue(prop) { //for number types
 		var num = parseFloat(propval);
 		var limits = actpropLimits(propkey);
 		var minval = limits.min;
-		var maxval = limits.max;		
-		
-		if (num < minval) { 
+		var maxval = limits.max;
+
+		if (num < minval) {
 			num = minval;
 		}
-		
+
 		if (num > maxval) {
 			num = maxval;
 		}
-		
+
 		if ((num % 1) == 0.0) {$("#prop"+propkey).val(num.toFixed(0));}
 		else { $("#prop"+propkey).val(num.toFixed(2));}
-		
+
 		propval = num.toString();
-		prop[propkey] = checkInput(propval);				
+		prop[propkey] = checkInput(propval);
 		updateAction(prop);
-	
+
 }
 
 function updateAction(prop)
@@ -1212,7 +1212,7 @@ function updateAction(prop)
 		for (var propkey in prop) {
 			var propval = prop[propkey];
 			state[propkey] = propval;
-			
+
 			if (propkey == 'descriptor') {
 				switch(activeactobj.name()) {
 					case 'action':
@@ -1221,24 +1221,26 @@ function updateAction(prop)
 					case 'eventgroup':
 						activeactobj.find('.evname').text(propval);
 						break;
-				
+
 				}
 			}
 
 			if (propkey == 'x' || propkey == 'y') {
 				activeactobj.setAttr(propkey,propval);
-			}			
+			}
 		}
-		
+
 		if (activeactobj.name() == 'action') {
 			var action = activeactobj.getAttr('action');
 			action.startstate = state.startstate;
 			action.endstate = state.endstate;
 			action.starttime = state.starttime;
-			action.animDuration = state.duration;			
+			action.animDuration = state.duration;
 		}
 		activeactobj.setAttr('state',state);
 		actlayer.draw();
+
+		updateEventactions();
 }
 
 function setPropVal(prop) {
@@ -1248,24 +1250,24 @@ function setPropVal(prop) {
 	switch(key) {
 		case 'startstate':
 			action.setStart();
-		break;	
+		break;
 		case 'endstate':
 			action.setEnd();
-		break;	
-		
-	}	
+		break;
+
+	}
 	state[key] = action[key];
 	//console.log(state[key]);
 	$("#prop"+key).text(JSON.stringify(state[key]));
 }
 
 function showActionPropDisp()
-//populates the property list from the action attribute. 
+//populates the property list from the action attribute.
 //
  {
 		//make table to display
 		$("#proptable").empty();
-		
+
 		var state = activeactobj.getAttr('state');
 		//console.log(state);
 		for (var key in state) {
@@ -1276,7 +1278,7 @@ function showActionPropDisp()
 					$("#proptable").append('<tr><td class="tablekey">parentobject</td><td colspan="2" class="tableval" style="text-align:left">'+parentobject.name()+'</td></tr>');
 				}
 				else {
-					if (propval.length < tbltxtoverflow) {  
+					if (propval.length < tbltxtoverflow) {
 					$("#proptable").append('<tr><td class="tablekey">'+key+'</td><td colspan="2" class="tableval" style="text-align:left">'+propval+'</td></tr>');
 					}
 					else {  //flow over into next line
@@ -1304,7 +1306,7 @@ function showActionPropDisp()
 						$("#proptable").append('<tr><td class="tablekey">'+key+'</td><td class="tableval"><input id="prop'+key+'" type="checkbox" onchange="updateAction({'+key+':this.checked})"></td></tr>');
 						$("#prop"+key).prop( "checked", propval);
 						//document.getElementById("prop"+key).checked = propval;
-					
+
 					break;
 					case 'number':
 						var limits = actpropLimits(key);
@@ -1314,7 +1316,7 @@ function showActionPropDisp()
 						$("#proptable").append('<tr><td class="tablekey">'+key+'</td><td class="tableval"><input id="prop'+key+'" type="text" style="text-align:right" size="7" onchange="acteditboxPropValue({'+key+':this.value})"></td><td class="guirow"><button class="tablenudge" onclick="actnudgePropValue({'+key+':-'+stepval.toString()+'})">-</button><input class="tablegui" type="range" min="'+minval.toString()+'" max="'+maxval.toString()+'" step="'+stepval.toString()+'" value="'+propval+'" onchange="actsliderPropValue({'+key+':this.value})"><button class="tablenudge" onclick="actnudgePropValue({'+key+':'+stepval.toString()+'})">+</button></td></tr>');
 						var num = parseFloat(propval);
 						if ((num % 1) == 0.0) { $("#prop"+key).val(num.toFixed(0));}
-						else { $("#prop"+key).val(num.toFixed(2));}					
+						else { $("#prop"+key).val(num.toFixed(2));}
 					break;
 					case 'object':
 						if (key == 'startstate' || key == 'endstate') {
@@ -1326,7 +1328,7 @@ function showActionPropDisp()
 				}
 		  }
 		}
-	}	
+	}
 }
 
 
