@@ -1,11 +1,7 @@
 # Living Lab
-
 src/data
-!src/data/.gitkeep
-src/config/config.json
-src/config/config.example.json
-
 src/node_modules
+src/config/config.json
 
 # Logs
 logs
