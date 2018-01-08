@@ -57,6 +57,10 @@ var initSocketEvents = function(ws) {
 	//webSocket.set('log level', 1);
 	ws.on('connection', function(socket) {
 
+		socket.on("ident:request", function() {
+			ws.emit("ident:show");
+		});
+
 		socket.on('updateEvents', function(msg) {
 			socket.broadcast.emit('updateEvents', msg);
 			//console.log(msg);

@@ -5,6 +5,7 @@ var screenlayer = null;
 var sw, sh;
 var socket = null;
 var ioqueue = [];
+var screenIdTimeout = null;
 
 //var serverurl = 'http://127.0.0.1:1337';
 var serverurl = 'http://' + window.location.hostname + ':' + window.location.port;
@@ -37,7 +38,32 @@ function initScreen() {
 	addLayerAnimation(screenlayer);
 	screenstage.add(screenlayer);
 
+	showScreenIdentifier(5);
+
 }
+
+
+var showScreenIdentifier = function(len) {
+	var $container = $("<div class='screen-identifier'>");
+	var $span = $("<span>").text(window.screen_name);
+	$span.appendTo($container);
+	$container.appendTo($("body"));
+
+	clearTimeout(screenIdTimeout);
+
+	screenIdTimeout = setTimeout(function() {
+		closeScreenIdentifier();
+	}, (parseInt(len, 10) * 1000));
+}
+
+
+var closeScreenIdentifier = function() {
+	$(".screen-identifier").fadeOut("slow", function() {
+		$(".screen-identifier").remove();
+
+	});
+}
+
 
 function addLayerAnimation(animlayer) {
 	var anim = new Kinetic.Animation(function (frame) {
@@ -304,11 +330,21 @@ function processNextio(ev) {
 }
 
 $(document).ready(function () {
+
 	initScreen();
+
+	$("body").on("click", ".screen-identifier", function() {
+		closeScreenIdentifier();
+	});
 
 	if (USEIO) {
 		socket = io(serverurl);
-		socket.on(socketmessage, function (respdata) {
+
+		socket.on("ident:show", function() {
+			showScreenIdentifier(5);
+		});
+
+		socket.on(socketmessage, function(respdata) {
 			if (ioqueue.length == 0) {
 				ioqueue.push(respdata);
 				processNextio('incoming');
@@ -317,8 +353,7 @@ $(document).ready(function () {
 				ioqueue.push(respdata);
 			}
 		});
+
 	}
-
-
 
 });
