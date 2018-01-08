@@ -1,6 +1,7 @@
 # Living Lab
-src/playlists/*
-!src/playlists/.gitkeep
+src/data
+src/node_modules
+src/config/config.json
 
 # Logs
 logs

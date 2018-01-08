@@ -1,0 +1,170 @@
+
+html {
+
+
+}
+
+body {
+	font-family: Verdana;
+
+}
+
+input {
+	font-family: Verdana;
+	font-size: 12px;
+
+}
+
+#mainpanel {
+	position: relative;
+	float: left;
+	border: 2px solid #888888;
+
+}
+
+#designpanel {
+	position: relative;
+	width: 100%;
+}
+
+#menu {
+	position: relative;
+	height: 50px;
+	border-bottom: 1px solid #888888;
+}
+
+#funcmenu {
+	position: relative;
+	height: 50px;
+	border-bottom: 1px solid #888888;
+}
+
+#designspace {
+	float: left;
+	border-right: 1px solid #888888;
+	
+}
+
+#resourcepanel {
+	float:right;
+	border: 2px solid #888888;
+}
+
+#iconlist {
+	position: relative;
+	overflow-y: auto;
+}
+
+.resourceicon {
+	float: left;
+	width: 90px;
+	height: 90px;
+	padding: 5px;
+	text-align: center; 
+	font-size: 10px;
+}
+
+.resourceicon:hover {
+	background-color: #eeeeff;
+}
+
+.resourceimg {
+  height: 55px;
+  width: 70px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.resourcename {
+	position: relative;
+	text-align: center; 
+	font-size: 10px;
+}
+
+#uploadpanel {
+	position: relative;
+	padding: 5px;
+	height: 91px;
+	font-size: 12px;
+	border-bottom: 1px solid #888888;
+}
+
+#propertypanel {
+	float: right;
+	padding-left: 10px;
+	padding-top: 10px;
+	font-size: 12px;
+	overflow: auto;
+}
+
+td {
+	vertical-align: middle;
+}
+
+.tablekey {
+	text-align: left;
+	width: 60px;
+}
+
+.tableval {
+	text-align: right;
+
+}
+
+.guirow {
+	width: 80%;
+	display: inline;
+}
+
+.tablegui {
+	font-size: 10px;
+	width: 50%;
+	vertical-align: middle;
+}
+
+.tablenudge {
+	height: 20px;
+	width: 10px;
+	font-size: 12px;
+	vertical-align: middle;
+	text-align: center;
+}
+
+.buttonbox {
+	float:left;
+	padding: 5px;
+}
+
+.menubutton {
+	height: 40px;
+	width: 50px;
+	font-size: 12px;
+	
+	
+}
+
+#addlibbox {
+	float:left;
+	padding: 10px;
+}
+
+#objectlist {
+	position: relative;
+	overflow-y: auto;
+	overflow-x: hidden; 
+	border-top: 1px solid #888888;
+	width: 100%;
+}
+
+#libraryfunc {
+	position: relative;
+	border-top: 1px solid #888888;
+	width: 100%;
+	height: 50px;
+	font-size: 12px;
+
+
+}
+
+
+

@@ -1,0 +1,79 @@
+
+html {
+
+}
+
+body {
+	font-family: Verdana;
+
+}
+
+
+#page {
+	position: relative;
+	width: 98%;
+	height: 98%; 
+	border: 2px solid #8888bb;
+}
+
+
+#playlistspace {
+	position: relative;
+	padding: 5px;
+	overflow: auto;
+}
+#header {
+	position: relative;
+	padding: 5px;
+}
+
+.heading {
+	position:relative;
+	font-family: Verdana;
+	font-weight: bold;
+	font-size: 22px;
+	left: 40%;
+
+}
+
+.tablehdrrow {
+	display: inline-block;
+	background-color: #ddddff;
+	font-size: 12px;
+	font-weight: bold;
+	vertical-align: middle;
+	height: 28px;
+	width: 100%;	
+}
+
+.tablerow {
+	display: inline-block;
+	background-color: #eeeeff;
+	font-size: 12px;
+	vertical-align: middle;
+	height: 28px;
+	width: 100%;
+
+}
+
+.titlecell {
+	display: inline-block;
+	padding: 3px;
+	width: 175px;
+}
+
+.buttoncell {
+	display: inline-block;
+	float: right;
+	padding: 1px;
+	vertical-align: middle;
+}
+
+.actionbutton {
+	display: inline-block;
+	float: right;
+	width: auto;
+	height: 25px;
+	font-size: 12px;
+
+}

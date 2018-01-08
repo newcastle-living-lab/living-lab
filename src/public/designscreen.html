@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ <link rel="stylesheet" href="designscreen.css">
+ <link rel="stylesheet" href="jstree_3.0.9/themes/default/style.css" />
+<link href='smartmenus/css/sm-core-css.css' rel='stylesheet' type='text/css' />
+<!-- "sm-blue" menu theme (optional, you can use your own CSS, too) -->
+<link href='smartmenus/css/ll-simple/ll-simple.css' rel='stylesheet' type='text/css' />
+<link rel="stylesheet" href="jquery-ui.min.css">
+ <script src="jquery-2.1.1.min.js"></script>
+ <script src="jquery-ui.min.js"></script>
+<script src="smartmenus/jquery.smartmenus.min.js" type="text/javascript"></script>
+<script src="kinetic-v5.1.0.min.js"></script>
+<script src="jstree_3.0.9/jstree.min.js"></script>
+ <script src="/socket.io/socket.io.js"></script>
+ <script src="propertytable.js"></script>
+ <script src="kineticselectors.js"></script>
+ <script src="llcore.js"></script>
+ <script src="objecttree.js"></script>
+ <script src="arrows.js"></script>
+ <script src="actions.js"></script>
+ <script src="designscreen.js"></script>
+
+<!--
+<script src="dsmin.js"></script> -->
+
+</head>
+<body>
+<div id="page">
+<div id="leftcolumn">
+		<ul id="treemenu" class="sm ll-simple">
+		  <li><a href="#">Project</a>
+		    <ul>
+		      <li><a href="javascript:newProject()">new</a></li>
+		      <li><a href="javascript:loadProjects()">projects</a></li>
+		      <li><a href="javascript:saveProject()">save</a></li>
+		      <li><a href="javascript:saveasnewProject()">save as new</a></li>
+		      <li id="playlist"><a href="javascript:compileViews()">save playlist</a></li>
+		    </ul>
+		  </li>
+<!--		  <li><a href="#">Views</a>
+		    <ul>
+		      <li onclick="addView()"><a href="#">add view</a></li>
+		      <li onclick="deleteView()"><a href="#">delete view</a></li>
+		    </ul>
+		  </li>  -->
+		  <li><a href="#">Layers</a>
+		    <ul>
+		      <li onclick="addLayer()"><a href="#">add layer</a></li>
+		      <li onclick="deleteLayer()"><a href="#">delete layer</a></li>
+		    </ul>
+		  </li>
+		</ul>
+	<div id="treespace">
+		<div id="tree">
+		</div>
+		<div id="projects">
+		</div>
+	</div>
+	<div id="propedit">
+		<table id="proptable">
+		</table>
+	</div>
+
+</div>
+<div id="rightcolumn">
+	<div id="menu">
+		<div class="buttonbox">new object:</div>
+		<div class="buttonbox"><select id="objecttypeselect"></select></div>
+		<div class="buttonbox"><button id="createbutton" class="menubutton" title="create" onclick="createObject()">create</button></div>
+		<div class="buttonbox"><button id="copybutton" class="menubutton" title="copy" onclick="copyObject()">copy</button></div>
+		<div class="buttonbox"><button id="deletebutton" class="menubutton" title="delete" onclick="delObject()">delete</button></div>
+		<div class="buttonbox"><button id="ungroupbutton" class="menubutton" title="ungroup" onclick="ungroupObjects()">ungroup</button></div>
+		<div class="buttonbox"><button id="multiselectbutton" class="menubutton" title="multiselect" onclick="togMultiselect()">group select</button></div>
+		<div class="buttonbox"><button id="groupbutton" class="menubutton" title="group" onclick="groupObjects()">group</button></div>
+<!--		<div class="buttonbox"><button id="arrowbutton" class="menubutton" title="arrow" onclick="makeCurvedArrow()">arrow</button></div> -->
+
+		<div id="screencontrol">
+			<div class="buttonbox"><button id="showallbutton" class="menubutton" title="show all" onclick="togShowall()">show all</button></div>
+			<div class="buttonbox"><button id="txscrbutton" class="menubutton" title="layer start state" onclick="setLayerStartState()">layer start</button></div>
+			<div class="buttonbox"><button id="fullscrbutton" class="menubutton" title="toggle fullscreen" onclick="togFullscreen()">full screen</button></div>
+		</div>
+	</div>
+	<div id="designspace">
+		<div id="designstage" class="screenspace"></div>
+	</div>
+	<div class="tabs">
+	    <ul class="tab-links">
+	        <li class="active"><a href="#tab1">Library</a></li>
+	        <li><a href="#tab2">Actions</a></li>
+	    </ul>
+
+	    <div class="tab-content">
+	        <div id="tab1" class="tab active">
+				<div id="libmenu" >
+					<div class="buttonbox"><button class="menubutton" title="use" onclick="libuse()">use</button></div>
+					<div id="filterpanel">filter string
+						<input type="text" id="filtername" size="10">
+						<input type="button" value="filter" onclick="filterlib()">
+						<input type="button" value="reset" onclick="resetlib()">
+					</div>
+				</div>
+				<div id="libpane">
+				</div>
+	        </div>
+
+	        <div id="tab2" class="tab">
+				<div id="actionmenu" >
+					<div class="buttonbox">action type:</div>
+					<div class="buttonbox"><select id="actiontypeselect" onchange="actionselect()"></select></div>
+					<div class="buttonbox"><button class="actionmenubutton" title="new action" onclick="newAction()">create </button></div>
+					<div class="buttonbox"><button class="actionmenubutton" title="delete action" onclick="deleteAction()">delete</button></div>
+					<div class="buttonbox"><button class="actionmenubutton" title="start" onclick="startActionEvent()">start</button></div>
+					<div class="buttonbox"><button class="actionmenubutton" title="end" onclick="endActionEvent()">end</button></div>
+					<div class="buttonbox"><button class="actionmenubutton" title="play" onclick="playActionEvent()">play</button></div>
+					<div class="buttonbox"><input id="castaction" type="checkbox" onchange="setCastmode()" >play mode</div>
+
+				</div>
+				<div id="actionpane">
+				</div>
+	        </div>
+	    </div>
+	</div>
+
+</div>
+</div>
+<script>
+ $( document ).ready(setup());
+</script>
+
+</body>
+</html>
