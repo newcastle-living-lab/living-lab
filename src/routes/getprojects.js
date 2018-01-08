@@ -11,7 +11,7 @@ exports.handler = function(req, res) {
 	var sql = "SELECT id,name,createdate,lastdate,creator FROM Projects";
 
 	db.all(sql, function(err, rows) {
-		res.end(JSON.stringify(rows));
+		res.send(rows);
 	});
 
 };

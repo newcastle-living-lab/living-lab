@@ -47,7 +47,7 @@ exports.handler = function (req, res) {
 				db.run(sql, function (error) {
 					insid = pid;
 					// db.close();
-					res.end(insid.toString());
+					res.send(insid.toString());
 				});
 
 			} else {
@@ -59,7 +59,7 @@ exports.handler = function (req, res) {
 						insid = row.id;
 					}, function(err, rows) {
 						// db.close();
-						res.end(insid.toString());
+						res.send(insid.toString());
 					});
 
 				});
