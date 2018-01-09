@@ -5,8 +5,15 @@ var express = require("express"),
 	url = require("url"),
 	path = require("path"),
 	fs = require("fs"),
+	nunjucks = require("nunjucks"),
+	passport = require("passport"),
+	Strategy = require("passport-local").Strategy,
+	session = require("express-session"),
+	cookieParser = require("cookie-parser"),
+	bodyParser = require("body-parser"),
 	init = require("./includes/init.js"),
 	database = require("./includes/database.js"),
+	users = require("./includes/users.js"),
 	config = require("./config/config.json"),
 	routes = require("./routes/index.js");
 
@@ -15,8 +22,31 @@ var app,
 	httpServer,
 	socketServer;
 
-// Initialises dirs and database
-init();
+
+var initAuth = function() {
+
+	passport.use(new Strategy(function(username, password, cb) {
+		users.findByUsername(username, function(err, user) {
+			if (err) { return cb(err); }
+			if ( ! user) { return cb(null, false); }
+			if ( ! users.checkPassword(password, user.password)) { return cb(null, false); }
+			// if (user.password != password) { return cb(null, false); }
+			return cb(null, user);
+		});
+	}));
+
+	passport.serializeUser(function(user, cb) {
+		cb(null, user.username);
+	});
+
+	passport.deserializeUser(function(id, cb) {
+		users.findByUsername(id, function (err, user) {
+			if (err) { return cb(err); }
+			cb(null, user);
+		});
+	});
+
+}
 
 
 var initServers = function() {
@@ -25,6 +55,19 @@ var initServers = function() {
 	app.use(express.static(path.join(__dirname, "public")));
 	app.use("/resources", express.static(path.join(__dirname, "data", "resources")));
 	app.use("/playlists", express.static(path.join(__dirname, "data", "playlists")));
+
+	if (config.require_auth) {
+		app.use(session({ secret: config.secret, resave: false, saveUninitialized: false }));
+		app.use(cookieParser()),
+		app.use(bodyParser.urlencoded({ extended: false }));
+		app.use(passport.initialize());
+		app.use(passport.session());
+	}
+
+	nunjucks.configure('views', {
+		autoescape: true,
+		express: app
+	});
 
 	httpServer = http.Server(app);
 
@@ -84,6 +127,13 @@ var initSocketEvents = function(ws) {
 	});
 }
 
+// Initialises dirs and database
+init();
+
+if (config.require_auth) {
+	users.init();
+	initAuth();
+}
 
 initServers();
 

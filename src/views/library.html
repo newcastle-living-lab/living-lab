@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title></title>
+<link rel="stylesheet" href="library.css">
+ <script src="jquery-2.1.1.min.js"></script>
+ <script src="kinetic-v5.1.0.min.js"></script>
+
+ <script src="kineticselectors.js"></script>
+ <script src="propertytable.js"></script>
+ <script src="llcore.js"></script>
+ <script src="library.js"></script>
+<!--
+<script src="libmin.js"></script>
+-->
+</head>
+<body>
+<div id="mainpanel">
+	<div id="menu">
+		<div class="buttonbox"><button class="menubutton" title="new image" onclick="addobj('Image')"><img src="/images/img.png" /></button></div>
+		<div class="buttonbox"><button class="menubutton" title="new rectangle" onclick="addobj('Rect')"><img src="/images/rect.png" /></button></div>
+		<div class="buttonbox"><button class="menubutton" title="new ellipse" onclick="addobj('Ellipse')"><img src="/images/ellipse.png" /></button></div>
+		<div class="buttonbox"><button class="menubutton" title="new polygon" onclick="addobj('RegularPolygon')"><img src="/images/poly.png" /></button></div>
+		<div class="buttonbox"><button class="menubutton" title="new star" onclick="addobj('Star')"><img src="/images/star.png" /></button></div>
+		<div class="buttonbox"><button class="menubutton" title="new ring" onclick="addobj('Ring')"><img src="/images/ring.png" /></button></div>
+		<div class="buttonbox"><button class="menubutton" title="new text" onclick="addobj('Text')"><img src="/images/text.png" /></button></div>
+		<div class="buttonbox"><button class="menubutton" title="new line" onclick="addobj('Line')"><img src="/images/line.png" /></button></div>
+		<div class="buttonbox"><button class="menubutton" title="new polyline" onclick="addobj('PolyLine')"><img src="/images/polyline.png" /></button></div>
+		<div class="buttonbox"><button class="menubutton" title="new mfigure" onclick="addobj('Mfigure')"><img src="/images/mfigure.png" /></button></div>
+		<div class="buttonbox"><button class="menubutton" title="new ffigure" onclick="addobj('Ffigure')"><img src="/images/ffigure.png" /></button></div>
+
+	</div>
+	<div id="funcmenu">
+		<div class="buttonbox"><button class="menubutton" title="copy" onclick="copyobj()">copy</button></div>
+		<div class="buttonbox"><button class="menubutton" title="delete" onclick="delObject()">delete</button></div>
+		<div class="buttonbox"><button class="menubutton" title="move forward" onclick="moveup()">to<br>front</button></div>
+		<div class="buttonbox"><button class="menubutton" title="move back" onclick="movedown()">to<br>back</button></div>
+	 	<div class="buttonbox"><button class="menubutton" title="save to library" onclick="prepareforlib()">save</button></div>
+		<div class="buttonbox"><button class="menubutton" title="clear all" onclick="cleardesign()">discard</button></div>
+	</div>
+	<div id="designpanel">
+		<div id="propertypanel">
+			<table id="proptable">
+			</table>
+		<div id="addlibbox"><button class="menubutton" onclick="addLibObj()">update<br>library</button></div>
+		</div>
+
+		<div id="designspace">
+		</div>
+	</div>
+	<div id="libraryfunc">
+		<div class="buttonbox"><button class="menubutton" title="use" onclick="libuse()">use</button></div>
+		<div class="buttonbox"><button class="menubutton" title="remove" onclick="libremove()">remove</button></div>
+		Filter name</br>
+		<input type="text" id="filtername" size="10">
+		<input type="button" value="filter" onclick="filterlib()">
+		<input type="button" value="reset" onclick="resetlib()">
+	</div>
+	<div id="objectlist">
+
+	</div>
+</div>
+<div id="resourcepanel">
+   <div id="uploadpanel">
+   	Add resource</br>
+		<form id="uploadform" enctype="multipart/form-data" method="post">
+		<input type="file" name="imgfiles" id="fimg" multiple = "multiple">
+		<input type="button" value="Upload Files" onclick="uploadFile()">
+
+		</form>
+	</div>
+	<div id="iconlist">
+
+	</div>
+</div>
+</div>
+<script>
+ $( document ).ready(setup());
+</script>
+</body>
+</html>
