@@ -2,6 +2,7 @@
 src/data
 src/node_modules
 src/config/config.json
+src/config/users.json
 
 # Logs
 logs

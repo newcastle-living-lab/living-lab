@@ -2,8 +2,6 @@
 	"db_path": "data/livlab.sqlite",
 	"http_port": 1337,
 	"socket_port": 1337,
-	"passwords": {
-		"edit": "LetMeIn",
-		"view": "ChangeMe"
-	}
+	"require_auth": true,
+	"secret": "living"
 }

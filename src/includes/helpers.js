@@ -122,9 +122,17 @@ var makeScreen = function(viewName) {
 
 
 
+var userHasRole = function(user, roleName) {
+	if ( ! user || ! user.roles || user.roles.length == 0) return false;
+	return (user.roles.indexOf(roleName) !== -1);
+}
+
+
+
 module.exports = {
 	getIPAddress: getIPAddress,
 	copyFile: copyFile,
 	writePlayfileandImages: writePlayfileandImages,
-	makeScreen: makeScreen
+	makeScreen: makeScreen,
+	userHasRole: userHasRole
 };
