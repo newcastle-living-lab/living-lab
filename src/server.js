@@ -13,8 +13,10 @@ var express = require("express"),
 	bodyParser = require("body-parser"),
 	init = require("./includes/init.js"),
 	database = require("./includes/database.js"),
+	helpers = require("./includes/helpers.js"),
 	users = require("./includes/users.js"),
 	config = require("./config/config.json"),
+	package = require("./package.json"),
 	routes = require("./routes/index.js");
 
 var app,
@@ -22,6 +24,7 @@ var app,
 	httpServer,
 	socketServer;
 
+var VERSION = package.version;
 
 var initAuth = function() {
 
@@ -64,9 +67,20 @@ var initServers = function() {
 		app.use(passport.session());
 	}
 
-	nunjucks.configure('views', {
+	var nunjucksEnv = nunjucks.configure('views', {
+		// watch: true,
+		noCache: true,
 		autoescape: true,
 		express: app
+	});
+
+	app.use(function(req, res, next) {
+		res.locals.app_version = VERSION;
+		res.locals.user = (req.user ? req.user : null);
+		res.locals.require_auth = config.require_auth;
+		res.locals.authenticated = (req.user);
+		res.locals.userHasRole = function(role) { return helpers.userHasRole(req.user, role) }
+		next();
 	});
 
 	httpServer = http.Server(app);
