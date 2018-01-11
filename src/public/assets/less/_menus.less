@@ -1,0 +1,131 @@
+@icon-size: 3em;
+
+.tasks-menu {
+	display: block;
+
+	.pure-menu-list {
+		margin: 0;
+		padding: 0;
+		border-top: 1px solid @grey-medium;
+	}
+
+	.pure-menu-item {
+		margin: 0;
+		padding: 0;
+	}
+
+	.pure-menu-link {
+		position: relative;
+		margin: 0;
+		padding: @padding;
+		border-bottom: 1px solid @grey-medium;
+		padding-left: @icon-size * 1.5;
+		text-decoration: none;
+		color: inherit;
+	}
+
+	.menu-item-title,
+	.menu-item-hint {
+		display: block;
+	}
+
+	.menu-item-title {
+		font-size: @size-md;
+		font-weight: @weight-bold;
+	}
+
+	.menu-item-hint {
+		color: @grey-dark;
+	}
+
+	.menu-item-icon {
+		position: absolute;
+		display: block;
+		left: @padding/2;
+		top: @padding;
+		width: @icon-size;
+		height: @icon-size;
+		line-height: @icon-size;
+		text-align: center;
+		background: @red;
+		color: contrast(@red);
+		.border-radius(50%);
+	}
+}
+
+
+
+
+.header-menu {
+	margin: 0;
+	padding: 0;
+	text-align: right;
+
+	.pure-menu-list {
+		margin: 0;
+		padding: 0;
+	}
+
+	.pure-menu-item {
+		margin: 0;
+		padding: 0;
+		margin-left: @padding-lg;
+
+		.fa {
+			margin-right: .25em;
+		}
+	}
+
+	.pure-menu-text {
+		display: inline-block;
+		padding: 2px 6px;
+		color: @black;
+	}
+
+	.pure-menu-link {
+		margin: 0;
+		padding: 2px 6px;
+		text-decoration: none;
+		font-weight: @weight-bold;
+		color: @black;
+	}
+
+	.pure-menu-link:hover,
+	.pure-menu-link:active,
+	.pure-menu-link:focus {
+		background: @red;
+		color: contrast(@red);
+	}
+}
+
+
+
+
+.playlist-menu {
+	margin: 0;
+	padding: 0;
+
+	.pure-menu-list {
+		margin: 0;
+		padding: 0;
+	}
+
+	.pure-menu-item {
+		margin: 0;
+		padding: 0;
+	}
+
+	.pure-menu-link {
+		background: #fff;
+		color: @black;
+		margin: 0 0 @padding-sm 0;
+		padding: @padding-sm;
+		font-size: 100%;
+		text-decoration: none;
+	}
+
+	.pure-menu-link:hover {
+		background: @red;
+		color: contrast(@red);
+	}
+}
