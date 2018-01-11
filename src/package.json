@@ -1,6 +1,6 @@
 {
   "name": "living-lab",
-  "version": "1.0.0",
+  "version": "1.2.0",
   "private": true,
   "description": "Living Lab project",
   "main": "server.js",
@@ -26,6 +26,7 @@
     "gulp-clean-css": "^3.9.2",
     "gulp-concat": "^2.6.1",
     "gulp-less": "^3.4.0",
+    "gulp-plumber": "^1.2.0",
     "gulp-rename": "^1.2.2"
   }
 }
