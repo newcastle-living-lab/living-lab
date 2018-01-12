@@ -33,7 +33,6 @@ var initAuth = function() {
 			if (err) { return cb(err); }
 			if ( ! user) { return cb(null, false); }
 			if ( ! users.checkPassword(password, user.password)) { return cb(null, false); }
-			// if (user.password != password) { return cb(null, false); }
 			return cb(null, user);
 		});
 	}));
