@@ -15,6 +15,7 @@ several new features.
 * Added config file (`config/config.json`).
 * Updated several pages with a design refresh.
 * Added `Gulp` for processing frontend CSS assets.
+* Added Screen Identification feature to dashboard.
 * Branding and documentation updates.
 
 **package.json**
@@ -82,3 +83,10 @@ describes the tasks.
 
 The built CSS files are included, but if they need to be built, ensure the devDependencies
 are installed, then run `gulp`.
+
+**Screen Identification**
+
+When each screen page is loaded, the name is displayed for about five seconds.
+
+The _Identify Screens_ button on the dashboard page will instruct all open screens to show
+this message again.
