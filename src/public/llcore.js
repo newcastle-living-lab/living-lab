@@ -1078,6 +1078,7 @@ function newgroupobj(isdesign, editable, state) {
 	//console.log(gchildren);
 	for (var i = 0; i < gchildren.length; i++) {
 		childstate = gchildren[i];
+		childstate.id = "none";
 		//console.log(childstate);
 		if (childstate.type == 'Group') {
 			var obj = newgroupobj(editable, editable, childstate);
