@@ -39,6 +39,8 @@ var sspeevselectcol = '#aaaaff';
 var snapshots;  //snapshots of object states at start and end of each presentevent
 var screenwidth, screenheight, txscale;
 
+serverurl = serverurl.replace(/:$/, '');
+
 
 function updatePresentEvent(pev) {
 	var pevstate = pev.getAttr('state');

@@ -1,4 +1,5 @@
 var hostaddr = 'http://'+window.location.hostname+':'+window.location.port;
+hostaddr = hostaddr.replace(/:$/, '');
 
 
 function uploadFile()
@@ -29,9 +30,9 @@ function uploadFile()
 							.always(function() {
 							//alert( "complete" );
 							});
-						
+
  }
- 
+
 function openPlaylist(el)
 {
 	selecteddir = el.getAttribute('data-filename');
@@ -44,12 +45,12 @@ function openPlaylist(el)
 	    alert('Please allow popups for this site');
 	}
 }
- 
+
 function loadPlaylists()
 {
 	/**
 	* Load the uploaded playlists by doing a get ajax call to nodeio
-	*/ 
+	*/
 		$('#playlistspace').empty();
 				$.getJSON( hostaddr+"/getplaylists", function( data ) {
 					//var items = [];
@@ -57,9 +58,9 @@ function loadPlaylists()
 						//console.log(item);
 						$('<div class="tablerow"><div class="titlecell">'+item+'</div><div class="buttoncell"><button class="actionbutton"  data-filename="'+item+'" onclick="openPlaylist(this)">open</button></div></div></div>').appendTo( '#playlistspace' );
 
-					}); 
+					});
 				});
-						
+
 
 }
 

@@ -11,6 +11,7 @@ var USEIO = true;
 var socket;
 var serverurl = 'http://' + window.location.hostname + ':' + window.location.port;
 var txscale = 1.0;
+serverurl = serverurl.replace(/:$/, '');
 
 function makeCurvedArrow() {
 	if (layer != null) {

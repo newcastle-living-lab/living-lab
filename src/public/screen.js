@@ -9,6 +9,7 @@ var screenIdTimeout = null;
 
 //var serverurl = 'http://127.0.0.1:1337';
 var serverurl = 'http://' + window.location.hostname + ':' + window.location.port;
+serverurl = serverurl.replace(/:$/, '');
 
 var screenanimlist = new Array();
 

@@ -1,6 +1,12 @@
 # Living Lab Changelog
 
 
+## v1.2.1
+
+* Fixed problem when using Project > Save or Project > Save Playlist.
+* Updated port number references to better handle port 80 usage.
+
+
 ## v1.2.0
 
 This version includes a number of changes to the way the project is structured as well as

@@ -38,6 +38,7 @@ var playmode = false;
 var sspeevnonselcol = '#ccddcc';
 var sspeevselectcol = '#aaaaff';
 
+serverurl = serverurl.replace(/:$/, '');
 
 
 function updateViewState(prop) {

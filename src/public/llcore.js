@@ -22,6 +22,8 @@ var dashdef = [10, 5];
 var usedefaults = true;
 var objdefaults = {};
 
+hostaddr = hostaddr.replace(/:$/, '');
+
 function UniqueId() {
 	/**
 	* Generate a random id for the object
