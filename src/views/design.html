@@ -13,6 +13,8 @@
 <script src="smartmenus/jquery.smartmenus.min.js" type="text/javascript"></script>
 <script src="kinetic-v5.1.0.min.js"></script>
 <script src="jstree_3.0.9/jstree.min.js"></script>
+<script src="md5.min.js"></script>
+<script src="idle.js"></script>
  <script src="/socket.io/socket.io.js"></script>
  <script src="propertytable.js"></script>
  <script src="kineticselectors.js"></script>
@@ -126,8 +128,10 @@
 </div>
 </div>
 <script>
- $( document ).ready(setup());
+var auto_save = {% if auto_save %}true{% else %}false{% endif %};
+$( document ).ready(setup());
 </script>
+
 
 </body>
 </html>

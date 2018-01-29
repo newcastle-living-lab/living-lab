@@ -1,10 +1,13 @@
 var qs = require("querystring"),
+	bodyParser = require("body-parser"),
 	database = require("../includes/database.js");
 
 exports.method = "post";
 exports.route = "/addproject";
 
-exports.handler = function(req, res) {
+var handlers = [];
+
+handlers.push(function(req, res, next) {
 
 	var decodedBody = req.body;
 	var pid = decodedBody.id;
@@ -84,4 +87,6 @@ exports.handler = function(req, res) {
 
 	});
 
-};
+});
+
+exports.handler = handlers;

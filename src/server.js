@@ -61,7 +61,7 @@ var initServers = function() {
 	if (config.require_auth) {
 		app.use(session({ secret: config.secret, resave: false, saveUninitialized: false }));
 		app.use(cookieParser()),
-		app.use(bodyParser.urlencoded({ extended: false }));
+		app.use(bodyParser.urlencoded({ extended: true, limit: 5 * 1024 * 1024 }));
 		app.use(passport.initialize());
 		app.use(passport.session());
 	}
@@ -78,6 +78,7 @@ var initServers = function() {
 		res.locals.user = (req.user ? req.user : null);
 		res.locals.require_auth = config.require_auth;
 		res.locals.authenticated = (req.user);
+		res.locals.auto_save = config.auto_save;
 		res.locals.userHasRole = function(role) { return helpers.userHasRole(req.user, role) }
 		next();
 	});
