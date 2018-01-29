@@ -62,15 +62,15 @@
 					<div class="footer-logos">
 						{% for logo in logos %}
 							{% if logo.url %}
-								{% set open_tag %}<a class="footer-logo-item" href="{{ logo.url }}" target="_blank">{% endset %}
+								{% set open_tag %}<a class="footer-logo-item" href="{{ logo.url }}" target="_blank" title="{{ logo.title|e }}">{% endset %}
 								{% set close_tag %}</a>{% endset %}
 							{% else %}
-								{% set open_tag %}<li class="footer-logo-item">{% endset %}
+								{% set open_tag %}<li class="footer-logo-item" title="{{ logo.title|e }}">{% endset %}
 								{% set close_tag %}</li>{% endset %}
 							{% endif %}
 
 							{{ open_tag|safe }}
-							<img class="pure-img footer-logo-img" src="images/logos/{{ logo.filename }}" alt="{{ logo.title }}">
+							<img class="pure-img footer-logo-img" src="images/logos/{{ logo.filename }}" alt="{{ logo.title|e }} logo" title="{{ logo.title|e }}">
 							{{ close_tag|safe }}
 						{% endfor %}
 					</div>
