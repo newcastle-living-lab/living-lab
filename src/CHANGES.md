@@ -1,6 +1,11 @@
 # Living Lab Changelog
 
 
+## v1.4.0
+
+* Added logos to footer area.
+
+
 ## v1.3.0
 
 * Added an autosave feature to the Design screen.
