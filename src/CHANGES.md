@@ -1,6 +1,21 @@
 # Living Lab Changelog
 
 
+## v1.3.0
+
+* Added an autosave feature to the Design screen.
+* Fixed size limit of project data when saving.
+
+### Autosave
+
+The `config/config.json` file **must** be updated with the `auto_save` boolean property
+to specify whether the autosave feature should be enabled or not (see `config.example.json`).
+
+When enabled, any open project in the Design screen will be automatically saved when
+either 1) the page is hidden (e.g. the tab is no longer active) or 2) no user activity is
+detected for two seconds.
+
+
 ## v1.2.1
 
 * Fixed problem when using Project > Save or Project > Save Playlist.
