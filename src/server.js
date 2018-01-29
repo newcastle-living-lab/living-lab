@@ -80,6 +80,7 @@ var initServers = function() {
 		res.locals.authenticated = (req.user);
 		res.locals.auto_save = config.auto_save;
 		res.locals.userHasRole = function(role) { return helpers.userHasRole(req.user, role) }
+		res.locals.logos = require("./config/logos.json");
 		next();
 	});
 

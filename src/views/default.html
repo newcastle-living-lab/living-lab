@@ -75,12 +75,6 @@
 				</div>
 				{% endif %}
 
-				<div class="box box-white">
-					<div class="box-content">
-						<h3 class="box-title">This IP address</h3>
-						<p id='ip'>ip</p>
-					</div>
-				</div>
 			</div>
 
 		</div>
@@ -104,13 +98,6 @@
 	hostaddr = hostaddr.replace(/:$/, '');
 
 	var socket = io(hostaddr);
-
-	$.getJSON(hostaddr+'/getaddress','',function (data,status,jqxhr) {
-		ipaddr = data[0];
-		url = "http://" + ipaddr + ":" + window.location.port;
-		url = url.replace(/:$/, '');
-		$('#ip').html("<a href='" + url + "'>" + url + "</a>");
-	});
 
 	$(document).ready(function() {
 		$("body").on("click", "button#go_view", function() {
