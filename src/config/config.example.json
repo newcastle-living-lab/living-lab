@@ -3,5 +3,6 @@
 	"http_port": 1337,
 	"socket_port": 1337,
 	"require_auth": true,
-	"secret": "living"
+	"secret": "living",
+	"auto_save": true
 }

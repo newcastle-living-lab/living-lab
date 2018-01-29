@@ -11,6 +11,8 @@ var USEIO = true;
 var socket;
 var serverurl = 'http://' + window.location.hostname + ':' + window.location.port;
 var txscale = 1.0;
+var last_saved_project_hash = null;
+var saving_project = false;
 serverurl = serverurl.replace(/:$/, '');
 
 function makeCurvedArrow() {
@@ -616,6 +618,7 @@ function newProject() {
 	eventliststates = [];
 	makeTree(project);
 	disableDesignButtons();
+	last_saved_project_hash = null;
 }
 
 
@@ -727,6 +730,8 @@ function openProject(pj) {
 
 		stageDims();
 
+		last_saved_project_hash = null;
+
 		setTimeout(function () {
 			if (layer == null) {
 				layer = stage.getLayers()[0];
@@ -810,31 +815,52 @@ function packageProject() {
 	return projstate;
 }
 
+
+/**
+* Saves a project to the database with an ajax call to nodeio
+*
+*/
 function saveProject() {
-	/**
-	* Saves a project to the database with an ajax call to nodeio
-	*/
+
+	// Skip this if we're already in the process of saving.
+	if (saving_project === true) return;
+
 	var ldate = (new Date()).toLocaleDateString();
 	var projstate = packageProject();
 	var projectjson = JSON.stringify(projstate);
 
+	// Create hash of project data to work out if it has changed since the last save
+	var project_hash = md5(project.id + projectjson),
+		is_different = (project_hash != last_saved_project_hash);
+
+	if ( ! is_different) {
+		console.log("Project not changed - not saving");
+		return;
+	}
+
+	saving_project = true;
 
 	$.ajax({
 		url: hostaddr + "/addproject",
 		type: "POST",
 		data: { id: project.id, name: project.name, cdate: project.createdate, ldate: ldate, creator: project.creator, state: projectjson }
+	}).done(function (resp) {
+		//alert( "success" );
+		//console.log(resp);
+		// console.log("Saved project");
 	})
-		.done(function (resp) {
-			//alert( "success" );
-			//console.log(resp);
-			project.id = resp;
-		})
-		.fail(function () {
-			alert("error");
-		})
-		.always(function () {
-			//alert( "complete" );
-		});
+	.success(function(resp) {
+		project.id = resp;
+		last_saved_project_hash = md5(project.id + projectjson);
+		console.log("Saved project successfully.");
+	})
+	.fail(function () {
+		alert("error");
+	})
+	.always(function () {
+		saving_project = false;
+		//alert( "complete" );
+	});
 
 }
 
@@ -1929,4 +1955,18 @@ function setup() {
 		}
 	});
 
+	if (window.auto_save) {
+		var idleCallback = function() {
+			if (project && project.id == "project") {
+				// Skip "new" and unsaved ones
+				return;
+			}
+			saveProject();
+		}
+		var idle = new Idle({
+			onHidden: idleCallback,
+			onAway: idleCallback,
+			awayTimeout: 2000
+		}).start();
+	}
 }
