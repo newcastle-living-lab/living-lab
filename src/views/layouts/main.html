@@ -45,7 +45,7 @@
 					Living Lab version <a href="/changelog">{{ app_version }}</a>.
 				</div>
 				<div class="pure-u-1 pure-u-md-1-2">
-					<div class="footer-logos">
+					<div class="footer-logos align-right">
 						<a class="footer-logo-item" href="http://www.clouddataservice.co.uk/" target="_blank">
 							<img class="pure-img footer-logo-img" src="images/logos/cds-transparent-light-sm.png" alt="Cloud Data Service logo">
 						</a>
@@ -53,6 +53,30 @@
 				</div>
 			</div>
 		</div>
+	</footer>
+
+	<footer class="logo-footer">
+		<div class="container">
+			<div class="pure-g">
+				<div class="pure-u-1">
+					<div class="footer-logos">
+						{% for logo in logos %}
+							{% if logo.url %}
+								{% set open_tag %}<a class="footer-logo-item" href="{{ logo.url }}" target="_blank" title="{{ logo.title|e }}">{% endset %}
+								{% set close_tag %}</a>{% endset %}
+							{% else %}
+								{% set open_tag %}<li class="footer-logo-item" title="{{ logo.title|e }}">{% endset %}
+								{% set close_tag %}</li>{% endset %}
+							{% endif %}
+
+							{{ open_tag|safe }}
+							<img class="pure-img footer-logo-img" src="images/logos/{{ logo.filename }}" alt="{{ logo.title|e }} logo" title="{{ logo.title|e }}">
+							{{ close_tag|safe }}
+						{% endfor %}
+					</div>
+				</div>
+			</div>
+		<?
 	</footer>
 
 	<script type="text/javascript" src="jquery-2.1.1.min.js"></script>
