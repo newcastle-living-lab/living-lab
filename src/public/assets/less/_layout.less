@@ -99,15 +99,33 @@
 
 
 .footer-logos {
-	text-align: right;
+
+	&.align-right {
+		text-align: right;
+	}
 
 	.footer-logo-item {
 		display: inline-block;
 	}
 
-	.footer-logo-image {
+	.footer-logo-image,
+	.footer-logo-img, {
 		height: 60px;
 		width: auto;
+	}
+}
+
+
+.logo-footer {
+	background: #fff;
+	padding-top: @padding-lg;
+	padding-bottom: @padding-lg;
+
+	.footer-logos {
+		text-align: center;
+		.footer-logo-item {
+			margin: @padding;
+		}
 	}
 }
 
