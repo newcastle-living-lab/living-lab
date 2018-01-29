@@ -1,0 +1,26 @@
+<h3><i class="fa fa-bolt"></i> Edit Event: <%= name %></h3>
+
+<div class="pure-form pure-form-stacked">
+
+	<% if (name !== "startevent") { %>
+	<div class="pure-control-group">
+		<div class="pure-form-label">
+			<label for="name">Name</label>
+		</div>
+		<div class="pure-form-input">
+			<input name="name" type="text" value="<%- name %>">
+		</div>
+	</div>
+	<% } %>
+
+	<div data-region="views"></div>
+
+	<div class="button-collection">
+		<button class="pure-button" type="button" data-ui="btn_save"><i class="fa fa-check"></i> Save</button>
+		<button class="pure-button button-secondary" type="button" data-ui="btn_cancel">Cancel</button>
+		<% if (name !== "startevent") { %>
+		<button class="pure-button button-negative" type="button" data-ui="btn_delete"><i class="fa fa-times"></i> Delete</button>
+		<% } %>
+	</div>
+
+</div>

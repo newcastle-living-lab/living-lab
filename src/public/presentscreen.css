@@ -1,0 +1,179 @@
+
+html {
+
+}
+
+body {
+	font-family: Verdana;
+
+}
+
+input {
+	font-family: Verdana;
+	font-size: 11px;
+
+}
+
+select {
+	font-family: Verdana;
+	font-size: 12px;
+	height: 30px;
+
+}
+
+#page {
+	position: absolute;
+	width: 98%;
+	height: 98%; 
+	border: 2px solid #8888bb;
+}
+
+
+#leftcolumn {
+	position: absolute;
+	left: 0px;
+	top: 0px;
+
+}
+
+#rightcolumn {
+	position: absolute;
+	border-left: 1px solid #8888bb;
+}
+
+#functionspace {
+	position: relative;
+	background-color: #ffffff;
+	font-size: 11px;
+	overflow: auto; 
+	border-bottom: 1px solid #8888bb;
+}
+
+
+.projecticon {
+	float: left;
+	width: 50px;
+	height: 50px;
+	padding: 10px;
+	text-align: center; 
+	font-size: 10px;
+	/*background-image: url('images/proj.png');*/
+}
+
+.projecticon:hover {
+	background-color: #eeeeff;
+}
+
+.projectname {
+	position: relative;
+	text-align: center; 
+	font-size: 10px;
+}
+
+#propedit {
+	position: relative;
+	background-color: #bbbbee;
+	padding-left: 10px;
+	padding-top: 10px;
+	overflow: auto;
+	font-size: 11px;
+}
+
+#presentspace {
+	position: relative;
+	padding: 5px;
+	overflow: auto;
+}
+
+
+#menu {
+	position: relative; 
+	background-color: #bbbbee;
+	display:block; 
+	font-size: 12px;
+	font-family: Verdana;
+	padding: 5px;
+}
+
+#screencontrol {
+	position: relative;
+	height: inherit;
+	background-color: #eeeeff;
+	font-size: 12px;
+	font-family: Verdana;
+	padding: 5px;	
+}
+
+.layerselect {
+	width: 10em;
+	height: 25px;
+	font-size: 11px;
+	font-family: Verdana;
+	
+}
+
+#actiontypeselect {
+	width: 10em;
+	font-size: 11px;
+	font-family: Verdana;
+	
+}
+
+.buttonbox {
+	position:relative;
+	vertical-align: middle;
+	padding: 3px;
+	font-size: 11px;
+	font-family: Verdana;
+}
+
+.menubutton {
+	height: 30px;
+	line-height: 10px;
+	width: 60px;
+	font-size: 12px;
+}
+
+.actionmenubutton {
+	height: 30px;
+	line-height: 10px;
+	width: 60px;
+	font-size: 12px;
+}
+
+.tablebutton {
+	height: 25px;
+	line-height: 10px;
+	width: 100px;
+	font-size: 12px;
+}
+
+.tablekey {
+	text-align: left;
+	width: 60px;
+}
+
+.tableval {
+	text-align: right;
+
+}
+
+.guirow {
+	width: 80%;
+	display: inline;
+}
+
+.tablegui {
+	font-size: 10px;
+	width: 50%;
+	vertical-align: middle;
+}
+
+.tablenudge {
+	height: 20px;
+	width: 10px;
+	font-size: 12px;
+	vertical-align: middle;
+	text-align: center;
+}
+

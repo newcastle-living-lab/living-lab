@@ -1,0 +1,165 @@
+html, button, input, select, textarea,
+.pure-g [class *= "pure-u"] {
+	/* Set your content font stack here: */
+	font-family: @font-stack;
+	font-weight: @weight-normal;
+}
+
+html {
+	// http://updates.html5rocks.com/2013/12/300ms-tap-delay-gone-away
+	-ms-touch-action: manipulation;
+	touch-action: manipulation;
+	overflow: -moz-scrollbars-vertical;
+	overflow-y: scroll;
+}
+
+body {
+	.font-size-base();
+	color: @black;
+	line-height: 1.5;
+}
+
+p {
+	margin: 0 0 @gutter 0;
+}
+
+a, a:link {
+	text-decoration: underline;
+	// border-bottom: 1px dotted @blue;
+	color: @navy;
+}
+
+strong {
+	font-weight: @weight-bold;
+}
+
+code {
+	background-color: @grey-light;
+	border-color: @grey-medium;
+	border-style: solid;
+	border-width: 1px;
+	color: @black;
+	font-family: "Ubuntu Mono",Consolas,"Liberation Mono",Courier,monospace;
+	font-weight: normal;
+	padding: 1px 3px;
+	color: @red;
+}
+
+pre {
+    white-space: pre-wrap;       /* css-3 */
+    white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+    white-space: -pre-wrap;      /* Opera 4-6 */
+    white-space: -o-pre-wrap;    /* Opera 7 */
+    word-wrap: break-word;       /* Internet Explorer 5.5+ */
+    background-color: @grey-light;
+    border: 1px solid @grey-medium;
+    margin-top: 1.5em;
+    margin-bottom: 1.5em;
+    padding: 2px 4px;
+	code {
+		background-color: transparent;
+		border: 0;
+		padding: 0;
+	}
+}
+
+
+h1, h2, h3, h4, h5, h6 {
+	font-weight: @weight-bold;
+	margin-top: 0;
+}
+
+.size-xs { font-size: @size-xs; }
+.size-sm { font-size: @size-sm; }
+.size-md { font-size: @size-md; }
+.size-lg { font-size: @size-lg; }
+.size-xl { font-size: @size-xl; }
+
+
+.half-bottom {
+	margin-bottom: @padding/2;
+}
+
+.add-bottom {
+	margin-bottom: @padding;
+}
+
+.more-bottom {
+	margin-bottom: @padding * 2;
+}
+
+.remove-bottom {
+	margin-bottom: 0 !important;
+}
+
+.text-right {
+	text-align: right;
+}
+
+.text-centre,
+.text-center {
+	text-align: center;
+}
+
+.text-large {
+	font-size: @size-lg;
+}
+
+
+.float {
+	margin-bottom: @gutter;
+}
+
+.float-left {
+	.float();
+	float: left;
+	margin-right: @gutter;
+}
+
+.float-right {
+	.float();
+	float: right;
+	margin-left: @gutter;
+}
+
+
+
+.img-right {
+	float: right;
+	margin-bottom: @padding;
+	margin-left: @padding;
+}
+
+
+.visually-hidden { /*https://developer.yahoo.com/blogs/ydn/clip-hidden-content-better-accessibility-53456.html*/
+    position: absolute !important;
+    clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
+    clip: rect(1px, 1px, 1px, 1px);
+    padding:0 !important;
+    border:0 !important;
+    height: 1px !important;
+    width: 1px !important;
+    overflow: hidden;
+}
+body:hover .visually-hidden a,
+body:hover .visually-hidden input,
+body:hover .visually-hidden button {
+	display: none !important;
+}
+
+
+.page-title {
+	font-size: @size-xxxl;
+}
+
+
+.panel {
+	padding: @padding;
+	background: @purple-light;
+	&.panel-sm {
+		padding: @padding-sm;
+	}
+	&.panel-alt {
+		background: @blue-light;
+	}
+}
