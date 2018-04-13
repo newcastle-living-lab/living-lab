@@ -1,6 +1,11 @@
 # Living Lab Changelog
 
 
+## v1.4.1
+
+* Fixed issue with 'null' prefix when launching screen names from dashboard.
+
+
 ## v1.4.0
 
 * Added logos to footer area.
