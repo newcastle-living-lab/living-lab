@@ -1,6 +1,12 @@
 # Living Lab Changelog
 
 
+## v1.5.0
+
+* Added scrollbar to side of Present screen for when content gets longer than the browser window height.
+* Added page titles to all pages.
+
+
 ## v1.4.1
 
 * Fixed issue with 'null' prefix when launching screen names from dashboard.
