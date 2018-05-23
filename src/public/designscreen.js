@@ -1750,6 +1750,20 @@ function findEventById(eventId) {
 }
 
 
+// Generate an ID for this page. This is used for single instance checking.
+var myId = "DESIGN" + UniqueId();
+
+
+/**
+ * Show the "one instance only" error element, and hide the page.
+ *
+ */
+function showInstanceError() {
+	$("#instanceError").show();
+	$("#page").remove();
+}
+
+
 /**
  * Initial set up
  *
@@ -1757,11 +1771,31 @@ function findEventById(eventId) {
 function setup() {
 
 	if (USEIO) {
+
 		socket = io(serverurl);
+
 		socket.on('updateEvents', function(respdata) {
 			//console.log(respdata);
 			ioUpdate(respdata);
 		});
+
+		socket.on("instance:syn", function(msg) {
+			if (msg && msg.id && msg.id != myId) {
+				socket.emit("instance:ack", { id: myId });
+			}
+		});
+
+		socket.on("instance:ping", function(msg) {
+			if (msg && msg.id && msg.id != myId) {
+				socket.disconnect();
+				showInstanceError();
+			}
+		});
+
+		if (window.single_instance) {
+			// If single_instance mode is enabled, send the check message.
+			socket.emit('instance:check', { id: myId });
+		}
 	}
 
 	coreSetup();
