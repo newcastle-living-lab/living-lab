@@ -4,5 +4,6 @@
 	"socket_port": 1337,
 	"require_auth": true,
 	"secret": "living",
-	"auto_save": true
+	"auto_save": true,
+	"single_instance": true
 }
