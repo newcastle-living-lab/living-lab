@@ -128,8 +128,14 @@
 
 </div>
 </div>
+
+<div id="instanceError" style="text-align:center; padding:50px; display: none">
+	<h3>Only one design screen can be open at a time.</h3>
+</div>
+
 <script>
 var auto_save = {% if auto_save %}true{% else %}false{% endif %};
+var single_instance = {% if single_instance %}true{% else %}false{% endif %};
 $( document ).ready(setup());
 </script>
 
