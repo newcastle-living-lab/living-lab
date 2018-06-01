@@ -1,6 +1,11 @@
 # Living Lab Changelog
 
 
+## v1.6.1
+
+* Attempt at fixing the issue where some projects wouldn't load due to a javascript error.
+
+
 ## v1.6.0
 
 * Added ability to permit only a single instance of the Design Screen to be loaded.

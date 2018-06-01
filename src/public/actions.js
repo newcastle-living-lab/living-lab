@@ -714,6 +714,9 @@ function updateEventactions()
 function updateActionList(eventbox)
 {
 	if (actlayer != null) {
+		if ( ! eventbox) {
+			return;
+		}
 		var actionlist = eventbox.find('.action');
 		for (var i=0;i<actionlist.length;i++) {
 			var act = actionlist[i];
@@ -812,6 +815,9 @@ function updateEventSwimList()
 			}
 			else {
 				var stlayer = stage.find('#'+peview.layerid)[0];
+				if ( ! stlayer) {
+					continue;
+				}
 				var alayer = stlayer.getAttr('actionlayer');
 				if (pev == null) //create Eventlist on layer
 				{
