@@ -1364,8 +1364,10 @@ function txViews(pevindex) {
 				for (var ai = 0; ai < pevactions.length; ai++) {
 					var actid = pevactions[ai].id;
 					var act = actionlayer.find('#' + actid)[0];
-					var actstate = act.getAttr('state');
-					actionstatearr.push(actstate);
+					if (act) {
+						var actstate = act.getAttr('state');
+						actionstatearr.push(actstate);
+					}
 				}
 				var layerobjs = getLayerObjects(sendlayer);
 				var screenstate = { screenwidth: project.screenwidth, screenheight: project.screenheight, txscale: txscale, viewstate: peview.viewstate, layerchildren: layerobjs, layeractions: actionstatearr };
@@ -1477,19 +1479,23 @@ function compileViews() {
 			var peviews = pevstate.peviews;
 			for (var pei = 0; pei < pevstate.peviews.length; pei++) { //get actions for the event
 				var peview = peviews[pei];
+				// console.log(peview);
 				var scrname = peview.viewstate.name;
 				var layerid = peview.layerid;
-				if (layerid != 'none') {
-					var sendlayer = stage.find('#' + layerid)[0];
+				var sendlayer = stage.find('#' + layerid)[0];
+				var layerexists = (sendlayer !== undefined);
+				if (layerid != 'none' && layerexists) {
 					var actionlayer = sendlayer.getAttr('actionlayer');
 					var pevactions = peview.actions;
-					//console.log(pevactions);
+					// console.log(pevactions);
 					actionstatearr = [];
 					for (var ai = 0; ai < pevactions.length; ai++) {
 						var actid = pevactions[ai].id;
 						var act = actionlayer.find('#' + actid)[0];
-						var actstate = act.getAttr('state');
-						actionstatearr.push(actstate);
+						if (act) {
+							var actstate = act.getAttr('state');
+							actionstatearr.push(actstate);
+						}
 					}
 					var layerind = findPELayer(layerid, pelayerobjstates[pevindex]);
 					(pelayerobjstates[pevindex][layerind]).layeractions = actionstatearr;  //add actionstates for layer

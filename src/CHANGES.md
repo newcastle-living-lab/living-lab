@@ -1,6 +1,11 @@
 # Living Lab Changelog
 
 
+## v1.6.2
+
+* More fixes to the issues identified and fixed in v1.6.1, particularly with saving playlists.
+
+
 ## v1.6.1
 
 * Attempt at fixing the issue where some projects wouldn't load due to a javascript error.
