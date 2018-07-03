@@ -79,6 +79,7 @@ var initServers = function() {
 		res.locals.require_auth = config.require_auth;
 		res.locals.authenticated = (req.user);
 		res.locals.auto_save = config.auto_save;
+		res.locals.single_instance = config.single_instance;
 		res.locals.userHasRole = function(role) { return helpers.userHasRole(req.user, role) }
 		res.locals.logos = require("./config/logos.json");
 		next();
@@ -117,6 +118,14 @@ var initSocketEvents = function(ws) {
 
 		socket.on("ident:request", function() {
 			ws.emit("ident:show");
+		});
+
+		socket.on("instance:check", function(msg) {
+			ws.emit("instance:syn", msg);
+		});
+
+		socket.on("instance:ack", function(msg) {
+			ws.emit("instance:ping", msg);
 		});
 
 		socket.on('updateEvents', function(msg) {

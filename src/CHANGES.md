@@ -1,6 +1,32 @@
 # Living Lab Changelog
 
 
+## v1.6.2
+
+* More fixes to the issues identified and fixed in v1.6.1, particularly with saving playlists.
+
+
+## v1.6.1
+
+* Attempt at fixing the issue where some projects wouldn't load due to a javascript error.
+
+
+## v1.6.0
+
+* Added ability to permit only a single instance of the Design Screen to be loaded.
+
+### Single instance
+
+The `config/config.json` file **must** be updated with the `single_instance` boolean property
+to specify whether the single instance feature should be enabled or not (see `config.example.json`).
+
+When enabled, only one Design Screen page can be opened at the same time. If more than one
+page is opened, subsequent Design Screen pages will display an error message and the page
+will not work. Subsequent screens also disconnect from the websocket server to prevent it
+from sending and processing further messages.
+
+
+
 ## v1.5.0
 
 * Added scrollbar to side of Present screen for when content gets longer than the browser window height.
