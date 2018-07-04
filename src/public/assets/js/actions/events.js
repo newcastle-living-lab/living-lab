@@ -44,6 +44,7 @@ module.exports = Mn.Object.extend({
 
 		if (newEvent) {
 			eventCollection.updateIndexes();
+			newEvent.inheritViewLayers();
 			// Highlight new event
 			this._dispatchChannel.request("event:select", { event: newEvent });
 			// Comms update to send data
