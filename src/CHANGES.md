@@ -1,6 +1,11 @@
 # Living Lab Changelog
 
 
+## v1.7.0
+
+* Added functionality to Present screen so that new events inherit the view layers from the selected or previous event.
+
+
 ## v1.6.2
 
 * More fixes to the issues identified and fixed in v1.6.1, particularly with saving playlists.
