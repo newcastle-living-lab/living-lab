@@ -102,6 +102,29 @@ var EventModel = Bb.Model.extend({
 			// Can't find the view in this model's data matching the viewName
 			// console.log("matchingIdx is still null");
 		}
+	},
+
+	inheritViewLayers: function() {
+
+		// Copy viewlayers from other event (selected, or previous)
+		var otherEvent;
+		if (this.collection.selectedEvent) {
+			otherEvent = this.collection.selectedEvent;
+		} else {
+			otherEvent = this.collection.at(this.collection.indexOf(this) - 1);
+		}
+
+		var otherPeviews = otherEvent.get("peviews");
+
+		var myPeviews = this.get("peviews");
+
+		var newPeviews = _.map(myPeviews, function(peview, idx) {
+			peview.layerid = otherPeviews[idx].layerid;
+			peview.layername = otherPeviews[idx].layername;
+			return peview;
+		});
+
+		this.set("peviews", newPeviews);
 	}
 
 });
