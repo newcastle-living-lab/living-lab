@@ -77,17 +77,17 @@ function updatePresentEvent(pev) {
 
 	if (numactions * (actobjh + actobjgap) < peevobjh) {
 		pev.find('.peevblock')[0].height(peevobjh);
-	}
-	else {
+	} else {
 		pev.find('.peevblock')[0].height(numactions * (actobjh + actobjgap));
 	}
-
 
 	var yoffset = viewYoffset + playenteventoffset + peevobjh + playenteventgap;
 	for (var j = 0; j < pevstate.index; j++) {
 		var pevnt = playentevents[j];
-		var block = pevnt.find('.peevblock')[0];
-		yoffset = yoffset + block.height() + playenteventgap;
+		if (pevnt !== undefined) {
+			var block = pevnt.find('.peevblock')[0];
+			yoffset = yoffset + block.height() + playenteventgap;
+		}
 	}
 	pev.y(yoffset);
 	playlayer.draw();
@@ -236,12 +236,9 @@ function makePresentEvent(state) {
 
 	});
 
-
 	playentevents.push(peevobj);
 	updatePresentEvent(peevobj);
 	updateViews();
-
-
 
 	return peevobj;
 }

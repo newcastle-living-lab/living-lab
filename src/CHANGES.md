@@ -1,6 +1,11 @@
 # Living Lab Changelog
 
 
+## v1.7.1
+
+* Fixed issue with playlist page to handle deleted/missing events/layers/views.
+
+
 ## v1.7.0
 
 * Added functionality to Present screen so that new events inherit the view layers from the selected or previous event.
