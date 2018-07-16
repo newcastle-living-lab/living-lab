@@ -914,6 +914,9 @@ layerblocks.sort(function (a,b) {
 
 	var parida = statea.parentid;
 	var para = findEventState(parida);
+	if (para === null) {
+		return 0;
+	}
 	var parindexa = para.index;
 	var peviewindexa = findPEinEventState(statea.id,para);
 

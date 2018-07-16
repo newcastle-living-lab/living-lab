@@ -61,7 +61,7 @@ var initServers = function() {
 	if (config.require_auth) {
 		app.use(session({ secret: config.secret, resave: false, saveUninitialized: false }));
 		app.use(cookieParser()),
-		app.use(bodyParser.urlencoded({ extended: true, limit: 5 * 1024 * 1024 }));
+		app.use(bodyParser.urlencoded({ extended: true, limit: 50 * 1024 * 1024 }));
 		app.use(passport.initialize());
 		app.use(passport.session());
 	}
