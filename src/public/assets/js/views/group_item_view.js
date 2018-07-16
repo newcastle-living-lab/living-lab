@@ -106,7 +106,7 @@ var GroupItemView = Mn.View.extend({
 			group: this.model
 		});
 
-		var debounceUpdateUi = _.debounce(this.updateUi, 100, { trailing: true });
+		var debounceUpdateUi = _.debounce(this.updateUi, 250, { trailing: true });
 		this.listenTo(this.eventListView, "add:child remove:child", debounceUpdateUi);
 
 		this.listenTo(this.eventListView.collection, "update:indexes", function() {
@@ -125,6 +125,9 @@ var GroupItemView = Mn.View.extend({
 
 	updateUi: function() {
 		// console.log("GroupItemView | updateUi");
+		if (this.ui === undefined || this.ui.group_name === undefined) {
+			return;
+		}
 		this.ui.group_name.text(_.escape(this.model.get("name")));
 		this.ui.event_count.text(this.eventListView.children.length);
 	},

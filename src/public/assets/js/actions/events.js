@@ -46,7 +46,7 @@ module.exports = Mn.Object.extend({
 			eventCollection.updateIndexes();
 			newEvent.inheritViewLayers();
 			// Highlight new event
-			this._dispatchChannel.request("event:select", { event: newEvent });
+			this._dispatchChannel.request("event:select", { event: newEvent, isNew: true });
 			// Comms update to send data
 			this._dispatchChannel.request("io:send_events");
 			return;
@@ -80,8 +80,14 @@ module.exports = Mn.Object.extend({
 				this._appChannel.trigger("event:edit", data);
 			}
 
-			// Cast it
-			this._dispatchChannel.request("io:cast_event", { event: data.event });
+			if (data.isNew === undefined || ! data.isNew) {
+				// Cast it
+				// console.log("Casting");
+				this._dispatchChannel.request("io:cast_event", { event: data.event });
+			} else {
+				// console.log("Not casting");
+			}
+
 
 			// Are we in Play mode?
 			if (this._store.getPlayMode() && data.event.get("name") !== "startevent") {
