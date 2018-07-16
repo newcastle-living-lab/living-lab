@@ -330,10 +330,17 @@ function startPEEvents(ind)
 	}
 }
 
+//draw an action object on the action pane
 function actionobj(state,eventlistobj)
-{ //draw an action object on the action pane
+{
 	var tspace = 10;
 	var obj = null;
+
+	var parentobject = layer.find('#'+state.parentobjectid)[0];
+	if (parentobject === undefined) {
+		return null;
+	}
+
 	if (state.id == 'none') {state.id = UniqueId();}
 
 	var actobj = new Kinetic.Group({
@@ -360,7 +367,6 @@ function actionobj(state,eventlistobj)
 		strokeWidth:1
 	});
 
-	var parentobject = layer.find('#'+state.parentobjectid)[0];
 	actobj.setAttr('action',new Action(parentobject,state.id,state.actiontype,state.startstate,state.endstate,state.starttime,state.duration));
 
 	var pname = parentobject.name();
