@@ -1346,10 +1346,16 @@ function txViews(pevindex) {
 	*/
 	// console.log("txViews");
 	// console.log(pevindex);
+	// console.log(eventliststates);
 	if (stage != null && layer != null) {
 		var pevstate = eventliststates[pevindex];
-		console.log("pevstate");
-		console.log(pevstate);
+		// console.log("pevstate");
+		// console.log(pevstate);
+		if (pevstate === undefined) {
+			console.warn("txViews(): No knowledge of event with index " + pevindex + ", skipping.");
+			return;
+		}
+		console.log("txViews(): Sending event index " + pevindex + ". (" + pevstate.group + " / " + pevstate.name + ")");
 		var peviews = pevstate.peviews;
 		for (var pei = 0; pei < pevstate.peviews.length; pei++) {
 			var peview = peviews[pei];
