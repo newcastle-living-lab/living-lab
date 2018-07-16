@@ -1,6 +1,11 @@
 # Living Lab Changelog
 
 
+## v1.7.3
+
+* Fixed some more issues caused by deleted items.
+
+
 ## v1.7.2
 
 * Fixed issue with the Actions tab contents not being generated when layer objects are missing/deleted.
