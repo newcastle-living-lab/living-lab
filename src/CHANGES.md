@@ -1,6 +1,11 @@
 # Living Lab Changelog
 
 
+## v1.7.2
+
+* Fixed issue with the Actions tab contents not being generated when layer objects are missing/deleted.
+
+
 ## v1.7.1
 
 * Fixed issue with playlist page to handle deleted/missing events/layers/views.
