@@ -62,9 +62,9 @@ function makeLayerAnimation(actionlayer)
 			}
 			//console.log(this.isRunning());
 		}
-	   if (stopflag == true) {
-	   	this.stop();
-	   	frame.time = 0.0;
+		if (stopflag == true) {
+			this.stop();
+			frame.time = 0.0;
 	   	//console.log('stopped',this.isRunning());
 	   }
 
@@ -91,9 +91,9 @@ function makeActionTypeOptions(obj) {
 			else {
 				if (objtype == 'CurvedArrow') {
 					htmlstr = htmlstr + '<option value="'+acttype+'">'+acttype+'</option>';
+				}
 			}
 		}
-	}
 	}
 	return htmlstr;
 }
@@ -103,8 +103,8 @@ function getNodeActions(obj)
 /**
 * find all the actions in the layer which has obj as its parentobject
 */
-	var actionlayer = obj.getLayer().getAttr('actionlayer');
-	var actionlist = new Array();
+var actionlayer = obj.getLayer().getAttr('actionlayer');
+var actionlist = new Array();
 
 	//console.log(obj);
 	var lactions = actionlayer.find('.action');
@@ -124,9 +124,9 @@ function Action(parentobject,id,actiontype,startval,endval,starttime,duration)
 Action that animates the change of an object from a startstate to the endstate
 Animation is from startstate to endstate of the property.
 */
-	this.parentobject = parentobject;
-	this.id = id;
-	this.starttime = starttime;
+this.parentobject = parentobject;
+this.id = id;
+this.starttime = starttime;
 	this.animDuration = duration;   //default 1 second
 	this.actiontype = actiontype;
 	this.property = actiontypes[actiontype];
@@ -134,56 +134,56 @@ Animation is from startstate to endstate of the property.
 	this.endstate = endval;
 
 	this.interpolateProp = function(frame) {
-			var frac = 0.0;
-			if ((frame.time-this.starttime*1000) > this.animDuration*1000) {
-				frac = 1.0;
-			}
-			else {
-				frac = (frame.time-this.starttime*1000)/(this.animDuration*1000);
-			}
-			var prop = this.parentobject.getAttr(this.property);
-			if (frac>0.0) {
-				switch(this.actiontype) {
-					case 'move':
-						var xpos = frac*(this.endstate.x-this.startstate.x)+this.startstate.x;
-						var ypos = frac*(this.endstate.y-this.startstate.y)+this.startstate.y;
-						prop = {x:xpos,y:ypos};
-					break;
+		var frac = 0.0;
+		if ((frame.time-this.starttime*1000) > this.animDuration*1000) {
+			frac = 1.0;
+		}
+		else {
+			frac = (frame.time-this.starttime*1000)/(this.animDuration*1000);
+		}
+		var prop = this.parentobject.getAttr(this.property);
+		if (frac>0.0) {
+			switch(this.actiontype) {
+				case 'move':
+				var xpos = frac*(this.endstate.x-this.startstate.x)+this.startstate.x;
+				var ypos = frac*(this.endstate.y-this.startstate.y)+this.startstate.y;
+				prop = {x:xpos,y:ypos};
+				break;
 
-					case 'fadein':
-						prop = frac*(this.endstate - this.startstate)+this.startstate;
-						if (prop<0.0) {prop = 0.0;}
-					break;
+				case 'fadein':
+				prop = frac*(this.endstate - this.startstate)+this.startstate;
+				if (prop<0.0) {prop = 0.0;}
+				break;
 
-					case 'fadeout':
-						prop = frac*(this.endstate - this.startstate)+this.startstate;
-						if (prop<0.0) {prop = 0.0;}
-					break;
+				case 'fadeout':
+				prop = frac*(this.endstate - this.startstate)+this.startstate;
+				if (prop<0.0) {prop = 0.0;}
+				break;
 
-					case 'appear':
-						if (frac<1.0) {
-							prop = this.startstate;
-						}
-						else {
-							prop = this.endstate;
-						}
-					break;
-
-					case 'disappear':
-						if (frac<1.0) {
-							prop = this.startstate;
-						}
-						else {
-							prop = this.endstate;
-						}
-					break;
-
-					case 'arrowflow':
-							prop = this.startstate+frac*(this.endstate - this.startstate);
-					break;
-
+				case 'appear':
+				if (frac<1.0) {
+					prop = this.startstate;
 				}
+				else {
+					prop = this.endstate;
+				}
+				break;
+
+				case 'disappear':
+				if (frac<1.0) {
+					prop = this.startstate;
+				}
+				else {
+					prop = this.endstate;
+				}
+				break;
+
+				case 'arrowflow':
+				prop = this.startstate+frac*(this.endstate - this.startstate);
+				break;
+
 			}
+		}
 
 		return prop;
 	};
@@ -236,66 +236,66 @@ Action.prototype.settoEndstate = function () {
 function startActionEvent()
 {
 
-   if (activeactobj != null) {
-	if (activeactobj.name() == 'eventgroup') {
-	  	var actchildren = activeactobj.find('.action');
-		for (var i=0;i<actchildren.length;i++) {
-			var action = actchildren[i].getAttr('action');
+	if (activeactobj != null) {
+		if (activeactobj.name() == 'eventgroup') {
+			var actchildren = activeactobj.find('.action');
+			for (var i=0;i<actchildren.length;i++) {
+				var action = actchildren[i].getAttr('action');
+				action.settoStartstate();
+			}
+		}
+		else if (activeactobj.name() == 'action') {
+			var action = activeactobj.getAttr('action');
 			action.settoStartstate();
 		}
+		layer.draw();
 	}
-	else if (activeactobj.name() == 'action') {
-		var action = activeactobj.getAttr('action');
-		action.settoStartstate();
-	}
-	layer.draw();
-  }
 }
 
 function endActionEvent()
 {
 
-  if (activeactobj != null) {
-	if (activeactobj.name() == 'eventgroup') {
-	  	var actchildren = activeactobj.find('.action');
-		for (var i=0;i<actchildren.length;i++) {
-			var action = actchildren[i].getAttr('action');
+	if (activeactobj != null) {
+		if (activeactobj.name() == 'eventgroup') {
+			var actchildren = activeactobj.find('.action');
+			for (var i=0;i<actchildren.length;i++) {
+				var action = actchildren[i].getAttr('action');
+				action.settoEndstate();
+			}
+		}
+		else if (activeactobj.name() == 'action') {
+			var action = activeactobj.getAttr('action');
 			action.settoEndstate();
 		}
+		layer.draw();
 	}
-	else if (activeactobj.name() == 'action') {
-		var action = activeactobj.getAttr('action');
-		action.settoEndstate();
-	}
-	layer.draw();
-  }
 }
 
 function playActionEvent()
 {
 
-  if (activeactobj != null) {
-	var playlist = new Array();
-	if (activeactobj.name() == 'eventgroup') {
-	  	var actchildren = activeactobj.find('.action');
-		for (var i=0;i<actchildren.length;i++) {
-			var action = actchildren[i].getAttr('action');
+	if (activeactobj != null) {
+		var playlist = new Array();
+		if (activeactobj.name() == 'eventgroup') {
+			var actchildren = activeactobj.find('.action');
+			for (var i=0;i<actchildren.length;i++) {
+				var action = actchildren[i].getAttr('action');
+				playlist.push(action);
+			}
+		}
+		else if (activeactobj.name() == 'action') {
+			var action = activeactobj.getAttr('action');
 			playlist.push(action);
 		}
-	}
-	else if (activeactobj.name() == 'action') {
-		var action = activeactobj.getAttr('action');
-		playlist.push(action);
-	}
-	var alayer = activeactobj.getLayer();
-	alayer.setAttr('playlist',playlist);
-	var objlayer = alayer.getAttr('parentlayer');
+		var alayer = activeactobj.getLayer();
+		alayer.setAttr('playlist',playlist);
+		var objlayer = alayer.getAttr('parentlayer');
 	//console.log(objlayer);
 	var anim = alayer.getAttr('animation');
 	//objlayer.draw();
 //	console.log(anim);
-	anim.start();
-  }
+anim.start();
+}
 }
 
 function playPEEvents(ind)
@@ -330,141 +330,147 @@ function startPEEvents(ind)
 	}
 }
 
+//draw an action object on the action pane
 function actionobj(state,eventlistobj)
-{ //draw an action object on the action pane
+{
 	var tspace = 10;
 	var obj = null;
- 	if (state.id == 'none') {state.id = UniqueId();}
+
+	var parentobject = layer.find('#'+state.parentobjectid)[0];
+	if (parentobject === undefined) {
+		return null;
+	}
+
+	if (state.id == 'none') {state.id = UniqueId();}
 
 	var actobj = new Kinetic.Group({
-			name:'action',
-			draggable:true,
-			id:state.id,
-			x:state.x,
-			y:state.y,
-			width:actobjw,
-			height:actobjh-tspace
+		name:'action',
+		draggable:true,
+		id:state.id,
+		x:state.x,
+		y:state.y,
+		width:actobjw,
+		height:actobjh-tspace
 	});
 
 
 	var actblock = new Kinetic.Rect({
-			name:'actblock',
-			draggable:false,
-			x:0,
-			y:0,
-			width:actobjw,
-			height:actobjh-tspace,
-			cornerRadius:5,
-			fill:actnonselcol,
-			stroke:'black',
-			strokeWidth:1
+		name:'actblock',
+		draggable:false,
+		x:0,
+		y:0,
+		width:actobjw,
+		height:actobjh-tspace,
+		cornerRadius:5,
+		fill:actnonselcol,
+		stroke:'black',
+		strokeWidth:1
 	});
 
-		var parentobject = layer.find('#'+state.parentobjectid)[0];
-	   actobj.setAttr('action',new Action(parentobject,state.id,state.actiontype,state.startstate,state.endstate,state.starttime,state.duration));
+	actobj.setAttr('action',new Action(parentobject,state.id,state.actiontype,state.startstate,state.endstate,state.starttime,state.duration));
 
-		var pname = parentobject.name();
-		if (state.descriptor == '') {
-			state.descriptor = state.actiontype+'_'+pname;
-		}
+	var pname = parentobject.name();
+	if (state.descriptor == '') {
+		state.descriptor = state.actiontype+'_'+pname;
+	}
 
-		var actionname = state.descriptor;
+	var actionname = state.descriptor;
 
-		var displaystr = (actionname).slice(0,15);
-		var nameobj = new Kinetic.Text({
-						name:'actname',
-					  	draggable: false,
-					  	x:5,
-					  	y:actobjh/2-tspace,
-					  	text:displaystr,
-					  	fontSize:12,
-					  	fill:'black'
+	var displaystr = (actionname).slice(0,15);
+	var nameobj = new Kinetic.Text({
+		name:'actname',
+		draggable: false,
+		x:5,
+		y:actobjh/2-tspace,
+		text:displaystr,
+		fontSize:12,
+		fill:'black'
 
-					  });
+	});
 
-		actobj.add(actblock);
-		actobj.add(nameobj);
-		eventlistobj.add(actobj);
-		actobj.setAttr('state',state);
-		actobj.find('.actblock').stroke(evnonselcol);
+	actobj.add(actblock);
+	actobj.add(nameobj);
+	eventlistobj.add(actobj);
+	actobj.setAttr('state',state);
+	actobj.find('.actblock').stroke(evnonselcol);
 	//	var actboxstate = eventlistobj.getAttr('state');
 	//	actboxstate.actions.push(state);
 	//	eventlistobj.setAttr('state',actboxstate);
 
-		actobj.moveToTop();
-		nameobj.moveToTop();
+	actobj.moveToTop();
+	nameobj.moveToTop();
 
-	  actobj.on('mouseover', function() {
-	    document.body.style.cursor = 'pointer';
-	    cursorstate = 'onact';
-	  });
+	actobj.on('mouseover', function() {
+		document.body.style.cursor = 'pointer';
+		cursorstate = 'onact';
+	});
 
-	  actobj.on('mouseout', function() {
-	    document.body.style.cursor = 'default';
-	    cursorstate = 'free';
-	  });
+	actobj.on('mouseout', function() {
+		document.body.style.cursor = 'default';
+		cursorstate = 'free';
+	});
 
-	  actobj.on('mousedown', function() {
-	  	 activeactobj = this;
-	  	 mousedown_action = true;
-		 showActionPropDisp()
-	  	 var actchildren = actlayer.find('.action');
-			for (var i=0;i<actchildren.length;i++) {
-				var selobj = actchildren[i];
-				if (activeactobj == selobj) {
-					selobj.find('.actblock').fill(actselectcol);
-				}
-				else {
-					selobj.find('.actblock').fill(actnonselcol);
-				}
-
+	actobj.on('mousedown', function() {
+		activeactobj = this;
+		mousedown_action = true;
+		showActionPropDisp()
+		var actchildren = actlayer.find('.action');
+		for (var i=0;i<actchildren.length;i++) {
+			var selobj = actchildren[i];
+			if (activeactobj == selobj) {
+				selobj.find('.actblock').fill(actselectcol);
 			}
-			actlayer.draw();
-
-			if (castmode ==  true) {
-				playActionEvent();
+			else {
+				selobj.find('.actblock').fill(actnonselcol);
 			}
 
-	  });
+		}
+		actlayer.draw();
 
-  	  actobj.on('dragstart', function (e) {
-  			var dragobj = e.target;
-  			dragobj.find('.actblock').stroke('#000000');
-			var par = dragobj.getParent();
-  	  		par.moveToTop();
-  	  		dragobj.moveToTop();
-  	  });
+		if (castmode ==  true) {
+			playActionEvent();
+		}
 
-	  actobj.on('dragmove', function (e) {
-			e.target.moveToTop();
-	  });
+	});
 
-	  actobj.on('dragend', function (e) {
+	actobj.on('dragstart', function (e) {
+		var dragobj = e.target;
+		dragobj.find('.actblock').stroke('#000000');
+		var par = dragobj.getParent();
+		par.moveToTop();
+		dragobj.moveToTop();
+	});
 
-	  		var ingroupflag = false;
-  			var dragobj = e.target;
-			var par = dragobj.getParent();
-			var drx = dragobj.x()+par.x();
-			var dry = dragobj.y()+par.y();
+	actobj.on('dragmove', function (e) {
+		e.target.moveToTop();
+	});
 
-			var eventgroups  = actlayer.find('.eventgroup');
-			for (var j=0;j<eventgroups.length;j++) {
-				var evgroup = eventgroups[j];
-				var egh = evgroup.height();
-				var egw = evgroup.width();
-				var egx = evgroup.x();
-				var egy = evgroup.y();
+	actobj.on('dragend', function (e) {
 
-				if ((drx<(egx+egw)) && (drx>egx) && (dry<(egy+egh)) && (dry>egy)) {
-					this.moveTo(evgroup);
-					this.find('.actblock').stroke(evnonselcol);
-					this.moveToTop();
-					ingroupflag = true;
+		var ingroupflag = false;
+		var dragobj = e.target;
+		var par = dragobj.getParent();
+		var drx = dragobj.x()+par.x();
+		var dry = dragobj.y()+par.y();
+
+		var eventgroups  = actlayer.find('.eventgroup');
+		for (var j=0;j<eventgroups.length;j++) {
+			var evgroup = eventgroups[j];
+			var egh = evgroup.height();
+			var egw = evgroup.width();
+			var egx = evgroup.x();
+			var egy = evgroup.y();
+
+			if ((drx<(egx+egw)) && (drx>egx) && (dry<(egy+egh)) && (dry>egy)) {
+				this.moveTo(evgroup);
+				this.find('.actblock').stroke(evnonselcol);
+				this.moveToTop();
+				ingroupflag = true;
 			/*		var evstate = evgroup.getAttr('state');
 					evstate.actions.push(this.getAttr('state'));
 					evgroup.setAttr('state',evstate); */
-				  	updateActionList(evgroup);
-				  	updateEventactions();
+					updateActionList(evgroup);
+					updateEventactions();
 
 				}
 			}
@@ -483,134 +489,134 @@ function actionobj(state,eventlistobj)
 						par.setAttr('state',evstate);
 
 					}
-			} */
-	  		var objstate = this.getAttr('state');
-	  		objstate.x = this.x();
-	  		objstate.y = this.y();
-	  		this.setAttr('state',objstate);
-			showActionPropDisp();
-			actlayer.draw();
+				} */
+				var objstate = this.getAttr('state');
+				objstate.x = this.x();
+				objstate.y = this.y();
+				this.setAttr('state',objstate);
+				showActionPropDisp();
+				actlayer.draw();
 
-	  });
+			});
 
-     	updateActionList(eventlistobj);
-		return actobj;
+	updateActionList(eventlistobj);
+	return actobj;
 }
 
 function newAction()
 {
 	if (activeobject != null && selectednode.type != 'Stage' && selectednode.type != 'Layer') {
-			var margin = 10;
-			var ypos = margin;
-			var xpos = margin;
-			var actobj = null;
-			var actionbox = actlayer.getAttr('actionbox');
+		var margin = 10;
+		var ypos = margin;
+		var xpos = margin;
+		var actobj = null;
+		var actionbox = actlayer.getAttr('actionbox');
 
 
-			var acttype = $('#actiontypeselect').val();
-			switch(acttype) {
-				case 'appear':
-					var state = {
-						descriptor:'',
-						parentobjectid:activeobject.id(),
-						id:'none',
-						actiontype:acttype,
-						property:actiontypes[acttype],
-						x:xpos,
-						y:ypos,
-						startstate:false,
-						endstate:true,
-						starttime:0.0,
-						duration:1.0
-					};
-					actobj = actionobj(state,actionbox);
-					break;
+		var acttype = $('#actiontypeselect').val();
+		switch(acttype) {
+			case 'appear':
+			var state = {
+				descriptor:'',
+				parentobjectid:activeobject.id(),
+				id:'none',
+				actiontype:acttype,
+				property:actiontypes[acttype],
+				x:xpos,
+				y:ypos,
+				startstate:false,
+				endstate:true,
+				starttime:0.0,
+				duration:1.0
+			};
+			actobj = actionobj(state,actionbox);
+			break;
 
-				case 'disappear':
-					var state = {
-						descriptor:'',
-						parentobjectid:activeobject.id(),
-						id:'none',
-						actiontype:acttype,
-						property:actiontypes[acttype],
-						x:xpos,
-						y:ypos,
-						startstate:true,
-						endstate:false,
-						starttime:0.0,
-						duration:1.0
-					};
-					actobj = actionobj(state,actionbox);
-					break;
+			case 'disappear':
+			var state = {
+				descriptor:'',
+				parentobjectid:activeobject.id(),
+				id:'none',
+				actiontype:acttype,
+				property:actiontypes[acttype],
+				x:xpos,
+				y:ypos,
+				startstate:true,
+				endstate:false,
+				starttime:0.0,
+				duration:1.0
+			};
+			actobj = actionobj(state,actionbox);
+			break;
 
-				case 'fadein':
-					var state = {
-						descriptor:'',
-						parentobjectid:activeobject.id(),
-						id:'none',
-						actiontype:acttype,
-						property:actiontypes[acttype],
-						x:xpos,
-						y:ypos,
-						startstate:0.0,
-						endstate:1.0,
-						starttime:0.0,
-						duration:1.0
-					};
-					actobj = actionobj(state,actionbox);
-					break;
+			case 'fadein':
+			var state = {
+				descriptor:'',
+				parentobjectid:activeobject.id(),
+				id:'none',
+				actiontype:acttype,
+				property:actiontypes[acttype],
+				x:xpos,
+				y:ypos,
+				startstate:0.0,
+				endstate:1.0,
+				starttime:0.0,
+				duration:1.0
+			};
+			actobj = actionobj(state,actionbox);
+			break;
 
-				case 'fadeout':
-					var state = {
-						descriptor:'',
-						parentobjectid:activeobject.id(),
-						id:'none',
-						actiontype:acttype,
-						property:actiontypes[acttype],
-						x:xpos,
-						y:ypos,
-						startstate:1.0,
-						endstate:0.0,
-						starttime:0.0,
-						duration:1.0
-					};
-					actobj = actionobj(state,actionbox);
-					break;
+			case 'fadeout':
+			var state = {
+				descriptor:'',
+				parentobjectid:activeobject.id(),
+				id:'none',
+				actiontype:acttype,
+				property:actiontypes[acttype],
+				x:xpos,
+				y:ypos,
+				startstate:1.0,
+				endstate:0.0,
+				starttime:0.0,
+				duration:1.0
+			};
+			actobj = actionobj(state,actionbox);
+			break;
 
-				case 'move':
-					var state = {
-						descriptor:'',
-						parentobjectid:activeobject.id(),
-						id:'none',
-						actiontype:acttype,
-						property:actiontypes[acttype],
-						x:xpos,
-						y:ypos,
-						startstate:activeobject.getAttr(actiontypes[acttype]),
-						endstate:activeobject.getAttr(actiontypes[acttype]),
-						starttime:0.0,
-						duration:1.0
-					};
-					actobj = actionobj(state,actionbox);
-					break;
+			case 'move':
+			var state = {
+				descriptor:'',
+				parentobjectid:activeobject.id(),
+				id:'none',
+				actiontype:acttype,
+				property:actiontypes[acttype],
+				x:xpos,
+				y:ypos,
+				startstate:activeobject.getAttr(actiontypes[acttype]),
+				endstate:activeobject.getAttr(actiontypes[acttype]),
+				starttime:0.0,
+				duration:1.0
+			};
+			actobj = actionobj(state,actionbox);
+			break;
 
-				case 'arrowflow':
-					var state = {
-						descriptor:'',
-						parentobjectid:activeobject.id(),
-						id:'none',
-						actiontype:acttype,
-						property:actiontypes[acttype],
-						x:xpos,
-						y:ypos,
-						startstate:0.1,
-						endstate:1.0,
-						starttime:0.0,
-						duration:1.0
-					};
-					actobj = actionobj(state,actionbox);
-					break;
- 			}
+			case 'arrowflow':
+			var state = {
+				descriptor:'',
+				parentobjectid:activeobject.id(),
+				id:'none',
+				actiontype:acttype,
+				property:actiontypes[acttype],
+				x:xpos,
+				y:ypos,
+				startstate:0.1,
+				endstate:1.0,
+				starttime:0.0,
+				duration:1.0
+			};
+			actobj = actionobj(state,actionbox);
+			break;
+		}
 
 	}
 
@@ -620,14 +626,14 @@ function deleteAction() {
 	if (activeactobj != null && activeactobj.name()=='action') {
 		var ans = confirm('Are you sure you want to delete this action?');
 		if (ans == true) {
-				var par = activeactobj.getParent();
-				activeactobj.destroyChildren();
-				activeactobj.destroy();
-				actlayer.draw();
-				$("#proptable").empty();
-				updateActionList(par);
-				updateEventactions();
-			}
+			var par = activeactobj.getParent();
+			activeactobj.destroyChildren();
+			activeactobj.destroy();
+			actlayer.draw();
+			$("#proptable").empty();
+			updateActionList(par);
+			updateEventactions();
+		}
 
 	}
 
@@ -742,7 +748,7 @@ function updateActionList(eventbox)
 		}
 		var actstageh = actionlistYoffset+yoffset+actionlistgap+actobjh;
 		if (actstageh>actstage.height()) {
-		actstage.height(actstageh);
+			actstage.height(actstageh);
 		}
 		actlayer.draw();
 	}
@@ -763,18 +769,18 @@ function findEventState(parsid)
 /**
 * Find a PE state in the eventliststates array for a given id
 */
-	var found = false;
-	var i = 0;
-	var evs = null;
-	while (found == false && i<eventliststates.length)
-	{
-		if (parsid == eventliststates[i].id) {
-			found = true;
-			evs = eventliststates[i];
-		}
-		i = i+1;
+var found = false;
+var i = 0;
+var evs = null;
+while (found == false && i<eventliststates.length)
+{
+	if (parsid == eventliststates[i].id) {
+		found = true;
+		evs = eventliststates[i];
 	}
-	return evs;
+	i = i+1;
+}
+return evs;
 }
 
 function findPEinEventState(peviewid,pevstate)
@@ -782,19 +788,19 @@ function findPEinEventState(peviewid,pevstate)
 /**
 * Finds a PE peview index in the PEventliststate for a given eventlist id
 */
-	var found = false;
-	var i = 0;
-	var peviewindex = 0;
-	var pws = pevstate.peviews;
-	while (found == false && i<pws.length)
-	{
-		if (peviewid == pws[i].id) {
-			found = true;
-			peviewindex = i;
-		}
-		i = i+1;
+var found = false;
+var i = 0;
+var peviewindex = 0;
+var pws = pevstate.peviews;
+while (found == false && i<pws.length)
+{
+	if (peviewid == pws[i].id) {
+		found = true;
+		peviewindex = i;
 	}
-	return peviewindex;
+	i = i+1;
+}
+return peviewindex;
 }
 
 function updateEventSwimList()
@@ -847,18 +853,18 @@ function updateEventSwimList()
 				}
 				alayer.draw();
 			}
+		}
 	}
- }
 
 //find eventlists on action layers that do not exist in eventliststates and remove them
  //first make list of all peview ids
-var peviewidarr = new Array();
-for (var i=0;i<eventliststates.length;i++) {
-	var pevstate = eventliststates[i];
-	var peviews = pevstate.peviews;
-	for (var pei=0;pei<peviews.length;pei++) {
-		var peview = peviews[pei];
-		if (peview.layerid != 'none') {
+ var peviewidarr = new Array();
+ for (var i=0;i<eventliststates.length;i++) {
+ 	var pevstate = eventliststates[i];
+ 	var peviews = pevstate.peviews;
+ 	for (var pei=0;pei<peviews.length;pei++) {
+ 		var peview = peviews[pei];
+ 		if (peview.layerid != 'none') {
 			//console.log(peview.layerid,peview);
 			peviewidarr.push(peview.id);
 		}
@@ -868,12 +874,12 @@ for (var i=0;i<eventliststates.length;i++) {
  // now try and find it in the list of boxes on actionlayers
 
 
-var actlayers = actstage.getLayers().toArray();
+ var actlayers = actstage.getLayers().toArray();
 
-for (var li=0;li<actlayers.length;li++) {
-	var alayer = actlayers[li];
-	var layerblocks = (alayer.find('.eventgroup')).toArray();
-	for (var lb=0;lb<layerblocks.length;lb++) {
+ for (var li=0;li<actlayers.length;li++) {
+ 	var alayer = actlayers[li];
+ 	var layerblocks = (alayer.find('.eventgroup')).toArray();
+ 	for (var lb=0;lb<layerblocks.length;lb++) {
 		// check if it is in peview id list
 		var el = layerblocks[lb];
 		var elstate = el.getAttr('state');
@@ -889,41 +895,41 @@ for (var li=0;li<actlayers.length;li++) {
 
 
 //arrange blocks on each actionlayer
-	for (var li=0;li<actlayers.length;li++) {
-		var alayer = actlayers[li];
-		var layerblocks = (alayer.find('.eventgroup')).toArray();
+for (var li=0;li<actlayers.length;li++) {
+	var alayer = actlayers[li];
+	var layerblocks = (alayer.find('.eventgroup')).toArray();
 //find actionbox and exclude
-		var aboxindex = layerblocks.findIndex(function (el,ind,arr) {
-			var elstate = el.getAttr('state');
-			if (elstate.name == 'actionbox') { return true;}
-			return false;
-		});
-		if (aboxindex > -1) {
-			layerblocks.splice(aboxindex,1);
-		}
+var aboxindex = layerblocks.findIndex(function (el,ind,arr) {
+	var elstate = el.getAttr('state');
+	if (elstate.name == 'actionbox') { return true;}
+	return false;
+});
+if (aboxindex > -1) {
+	layerblocks.splice(aboxindex,1);
+}
 //sort according to index
-		layerblocks.sort(function (a,b) {
-			var statea = a.getAttr('state');
-			var stateb = b.getAttr('state');
+layerblocks.sort(function (a,b) {
+	var statea = a.getAttr('state');
+	var stateb = b.getAttr('state');
 
-			var parida = statea.parentid;
-			var para = findEventState(parida);
-			var parindexa = para.index;
-			var peviewindexa = findPEinEventState(statea.id,para);
+	var parida = statea.parentid;
+	var para = findEventState(parida);
+	var parindexa = para.index;
+	var peviewindexa = findPEinEventState(statea.id,para);
 
-			var paridb = stateb.parentid;
-			var parb = findEventState(paridb);
-			var parindexb = parb.index;
-			var peviewindexb = findPEinEventState(stateb.id,parb);
+	var paridb = stateb.parentid;
+	var parb = findEventState(paridb);
+	var parindexb = parb.index;
+	var peviewindexb = findPEinEventState(stateb.id,parb);
 
-			if (parindexa < parindexb) { return -1; }
-			if (parindexa > parindexb) { return 1; }
-			if (parindexa == parindexb) {
-				if (peviewindexa < peviewindexb) { return -1; }
-				if (peviewindexa > peviewindexb) { return 1; }
-			}
-			return 0;
-		});
+	if (parindexa < parindexb) { return -1; }
+	if (parindexa > parindexb) { return 1; }
+	if (parindexa == parindexb) {
+		if (peviewindexa < peviewindexb) { return -1; }
+		if (peviewindexa > peviewindexb) { return 1; }
+	}
+	return 0;
+});
 		//console.log(layerblocks);
 
 		for (var bi=0; bi<layerblocks.length;bi++) {
@@ -931,99 +937,99 @@ for (var li=0;li<actlayers.length;li++) {
 			layerblocks[bi].x(xoffset);
 
 	//check that stage is still wide enough
-			var actstagew = xoffset+eventlistgap+evobjw;
-			if (actstagew > actstage.width()) {
-				actstage.width(actstagew);
-			}
-		}
-		alayer.draw();
+	var actstagew = xoffset+eventlistgap+evobjw;
+	if (actstagew > actstage.width()) {
+		actstage.width(actstagew);
 	}
-	actstage.clear();
-	actlayer.draw();
+}
+alayer.draw();
+}
+actstage.clear();
+actlayer.draw();
 }
 
 function makeEventList(state) {
 
 
 	var eventobj = new Kinetic.Group({
-			name:'eventgroup',
-			draggable:false,
-			id:state.id,
-			x:state.x,
-			y:state.y,
-			width:evobjw,
-			height:evobjh
+		name:'eventgroup',
+		draggable:false,
+		id:state.id,
+		x:state.x,
+		y:state.y,
+		width:evobjw,
+		height:evobjh
 	});
 
 	eventobj.setAttr('state',state);
 
 	var evblock = new Kinetic.Rect({
-			name:'evblock',
-			draggable:false,
-			x:0,
-			y:0,
-			width:evobjw,
-			height:evobjh,
-			cornerRadius:0,
-			fill:evnonselcol,
-			stroke:'black',
-			strokeWidth:1
+		name:'evblock',
+		draggable:false,
+		x:0,
+		y:0,
+		width:evobjw,
+		height:evobjh,
+		cornerRadius:0,
+		fill:evnonselcol,
+		stroke:'black',
+		strokeWidth:1
 	});
 
 
-		var displaystr = (state.name).slice(0,10);
-		var nameobj = new Kinetic.Text({
-						name:'evname',
-					  	draggable: false,
-					  	x:5,
-					  	y:5,
-					  	text:displaystr,
-					  	fontSize:12,
-					  	fill:'black'
+	var displaystr = (state.name).slice(0,10);
+	var nameobj = new Kinetic.Text({
+		name:'evname',
+		draggable: false,
+		x:5,
+		y:5,
+		text:displaystr,
+		fontSize:12,
+		fill:'black'
 
-					  });
+	});
 
-		displaystr = (state.viewstate.name).slice(0,10);
-		var scrnameobj = new Kinetic.Text({
-						name:'scrname',
-					  	draggable: false,
-					  	x:5,
-					  	y:15,
-					  	text:displaystr,
-					  	fontSize:12,
-					  	fill:'black'
+	displaystr = (state.viewstate.name).slice(0,10);
+	var scrnameobj = new Kinetic.Text({
+		name:'scrname',
+		draggable: false,
+		x:5,
+		y:15,
+		text:displaystr,
+		fontSize:12,
+		fill:'black'
 
-					  });
+	});
 
-		eventobj.add(evblock);
-		eventobj.add(nameobj);
-		eventobj.add(scrnameobj);
+	eventobj.add(evblock);
+	eventobj.add(nameobj);
+	eventobj.add(scrnameobj);
 /*
 		for (var ev=0;ev<state.actions.length;ev++) {
 			var evstate = state.actions[ev];
 			var acobj = actionobj(evstate);
 			eventobj.add(acobj);
 		}
-*/
+		*/
 		//actlayer.add(eventobj);
 		//eventobj.moveToBottom();
 		//actlayer.draw();
 
-	  eventobj.on('mouseover', function() {
-	    document.body.style.cursor = 'pointer';
-	    cursorstate = 'onev';
-	  });
+		eventobj.on('mouseover', function() {
+			document.body.style.cursor = 'pointer';
+			cursorstate = 'onev';
+		});
 
-	  eventobj.on('mouseout', function() {
-	    document.body.style.cursor = 'default';
-	    cursorstate = 'free';
-	  });
+		eventobj.on('mouseout', function() {
+			document.body.style.cursor = 'default';
+			cursorstate = 'free';
+		});
 
-	  eventobj.on('mousedown', function() {
-	  	 if (mousedown_action == false) {
-	  	 	 activeactobj = this;
-		  	 showActionPropDisp();
-		  	 var actchildren = actlayer.getChildren().toArray();
+		eventobj.on('mousedown', function() {
+			if (mousedown_action == false) {
+				activeactobj = this;
+				showActionPropDisp();
+				var actchildren = actlayer.getChildren().toArray();
 				for (var i=0;i<actchildren.length;i++) {
 					var selobj = actchildren[i];
 					if (activeactobj == selobj) {
@@ -1034,12 +1040,12 @@ function makeEventList(state) {
 					}
 
 				}
-		  	 var actchildren = actlayer.find('.action');
+				var actchildren = actlayer.find('.action');
 				for (var i=0;i<actchildren.length;i++) {
 					var selobj = actchildren[i];
 					selobj.find('.actblock').fill(actnonselcol);
 				}
-			 actlayer.draw();
+				actlayer.draw();
 			}
 			else {
 				mousedown_action = false;
@@ -1048,11 +1054,11 @@ function makeEventList(state) {
 			if (castmode == true) {
 				playActionEvent();
 			}
-	  });
+		});
 
 
-	return eventobj;
-}
+		return eventobj;
+	}
 
 
 //property edit
@@ -1062,98 +1068,98 @@ function actpropLimits(propkey)
 	var dh = $('#actionpane').height();
 	switch(propkey) {
 		case 'x':
-			return {min:0,max:dw,step:5};
+		return {min:0,max:dw,step:5};
 		break;
 		case 'y':
-			return {min:0,max:dh,step:5};
+		return {min:0,max:dh,step:5};
 		break;
 		case 'width':
-			return {min:0,max:dw,step:5};
+		return {min:0,max:dw,step:5};
 		break;
 		case 'height':
-			return {min:0,max:dh,step:5};
+		return {min:0,max:dh,step:5};
 		break;
 		case 'radius':
-			return {min:0,max:dh/2,step:5};
+		return {min:0,max:dh/2,step:5};
 		break;
 		case 'cornerRadius':
-			return {min:0,max:100,step:1};
+		return {min:0,max:100,step:1};
 		break;
 		case 'innerRadius':
-			return {min:0,max:dh/2,step:5};
+		return {min:0,max:dh/2,step:5};
 		break;
 		case 'outerRadius':
-			return {min:0,max:dh/2,step:5};
+		return {min:0,max:dh/2,step:5};
 		break;
 		case 'opacity':
-			return {min:0,max:1,step:0.1};
+		return {min:0,max:1,step:0.1};
 		break;
 		case 'lineLength':
-			return {min:1,max:Math.sqrt(dw*dw + dh*dh),step:5};
+		return {min:1,max:Math.sqrt(dw*dw + dh*dh),step:5};
 		break;
 		case 'scaleSize':
-			return {min:0.1,max:10,step:0.1};
+		return {min:0.1,max:10,step:0.1};
 		break;
 		case 'strokeWidth':
-			return {min:0.1,max:10,step:0.1};
+		return {min:0.1,max:10,step:0.1};
 		break;
 		case 'sides':
-			return {min:3,max:30,step:1};
+		return {min:3,max:30,step:1};
 		break;
 		case 'arrowWidth':
-			return {min:1,max:100,step:2};
+		return {min:1,max:100,step:2};
 		break;
 		case 'arrowheadWidth':
-			return {min:1,max:100,step:2};
+		return {min:1,max:100,step:2};
 		break;
 		case 'arrowheadLength':
-			return {min:1,max:100,step:2};
+		return {min:1,max:100,step:2};
 		break;
 		case 'midX':
-			return {min:-dw,max:dw,step:5};
+		return {min:-dw,max:dw,step:5};
 		break;
 		case 'midY':
-			return {min:-dh,max:dh,step:5};
+		return {min:-dh,max:dh,step:5};
 		break;
 		case 'endX':
-			return {min:-dw,max:dw,step:5};
+		return {min:-dw,max:dw,step:5};
 		break;
 		case 'endY':
-			return {min:-dh,max:dh,step:5};
+		return {min:-dh,max:dh,step:5};
 		break;
 		case 'rotation':
-			return {min:-180,max:180,step:1};
+		return {min:-180,max:180,step:1};
 		break;
 		case 'fontSize':
-			return {min:6,max:200,step:2};
+		return {min:6,max:200,step:2};
 		break;
 
 		case 'duration':
-			return {min:0.1,max:10,step:0.1};
+		return {min:0.1,max:10,step:0.1};
 		break;
 		case 'starttime':
-			return {min:0.1,max:10,step:0.1};
+		return {min:0.1,max:10,step:0.1};
 		break;
 		default:
-			return {min:0,max:1,step:0.1};
+		return {min:0,max:1,step:0.1};
 		break;
 	}
 }
 
 function actcolorPropValue(prop)
 {
-		var propkey = Object.keys(prop)[0];
-		var propval = prop[propkey];
+	var propkey = Object.keys(prop)[0];
+	var propval = prop[propkey];
 		//console.log(propkey,propval);
 		$("#prop"+propkey).val(propval);
 
 		prop[propkey] = checkInput(propval);
 		updateAction(prop);
-}
+	}
 
 function actsliderPropValue(prop) { //for number types
-		var propkey = Object.keys(prop)[0];
-		var propval = prop[propkey];
+	var propkey = Object.keys(prop)[0];
+	var propval = prop[propkey];
 		//console.log(propkey,propval);
 		var num = parseFloat(propval);
 		if ((num % 1) == 0.0) { $("#prop"+propkey).val(num.toFixed(0));}
@@ -1162,15 +1168,15 @@ function actsliderPropValue(prop) { //for number types
 		prop[propkey] = checkInput(propval);
 		updateAction(prop);
 
-}
+	}
 
 function actnudgePropValue(prop) { //for number types
-		var propkey = Object.keys(prop)[0];
-		var limits = actpropLimits(propkey);
-		var minval = limits.min;
-		var maxval = limits.max;
-		var nudgeval = prop[propkey];
-		var propval = $("#prop"+propkey).val();
+	var propkey = Object.keys(prop)[0];
+	var limits = actpropLimits(propkey);
+	var minval = limits.min;
+	var maxval = limits.max;
+	var nudgeval = prop[propkey];
+	var propval = $("#prop"+propkey).val();
 		//console.log(propkey,propval,nudgeval);
 		var num = parseFloat(propval)+parseFloat(nudgeval);
 		if (num<minval) {num = minval;}
@@ -1183,11 +1189,11 @@ function actnudgePropValue(prop) { //for number types
 		//console.log(prop);
 		updateAction(prop);
 
-}
+	}
 
 function acteditboxPropValue(prop) { //for number types
-		var propkey = Object.keys(prop)[0];
-		var propval = prop[propkey];
+	var propkey = Object.keys(prop)[0];
+	var propval = prop[propkey];
 		//console.log(propkey,propval);
 
 		var num = parseFloat(propval);
@@ -1210,10 +1216,10 @@ function acteditboxPropValue(prop) { //for number types
 		prop[propkey] = checkInput(propval);
 		updateAction(prop);
 
-}
+	}
 
-function updateAction(prop)
-{
+	function updateAction(prop)
+	{
 		var state = activeactobj.getAttr('state');
 		for (var propkey in prop) {
 			var propval = prop[propkey];
@@ -1222,11 +1228,11 @@ function updateAction(prop)
 			if (propkey == 'descriptor') {
 				switch(activeactobj.name()) {
 					case 'action':
-						activeactobj.find('.actname').text(propval);
-						break;
+					activeactobj.find('.actname').text(propval);
+					break;
 					case 'eventgroup':
-						activeactobj.find('.evname').text(propval);
-						break;
+					activeactobj.find('.evname').text(propval);
+					break;
 
 				}
 			}
@@ -1247,22 +1253,22 @@ function updateAction(prop)
 		actlayer.draw();
 
 		updateEventactions();
-}
-
-function setPropVal(prop) {
-	var key = Object.keys(prop)[0];
-	var action = activeactobj.getAttr('action');
-	var state = activeactobj.getAttr('state');
-	switch(key) {
-		case 'startstate':
-			action.setStart();
-		break;
-		case 'endstate':
-			action.setEnd();
-		break;
-
 	}
-	state[key] = action[key];
+
+	function setPropVal(prop) {
+		var key = Object.keys(prop)[0];
+		var action = activeactobj.getAttr('action');
+		var state = activeactobj.getAttr('state');
+		switch(key) {
+			case 'startstate':
+			action.setStart();
+			break;
+			case 'endstate':
+			action.setEnd();
+			break;
+
+		}
+		state[key] = action[key];
 	//console.log(state[key]);
 	$("#prop"+key).text(JSON.stringify(state[key]));
 }
@@ -1270,7 +1276,7 @@ function setPropVal(prop) {
 function showActionPropDisp()
 //populates the property list from the action attribute.
 //
- {
+{
 		//make table to display
 		$("#proptable").empty();
 
@@ -1285,11 +1291,11 @@ function showActionPropDisp()
 				}
 				else {
 					if (propval.length < tbltxtoverflow) {
-					$("#proptable").append('<tr><td class="tablekey">'+key+'</td><td colspan="2" class="tableval" style="text-align:left">'+propval+'</td></tr>');
+						$("#proptable").append('<tr><td class="tablekey">'+key+'</td><td colspan="2" class="tableval" style="text-align:left">'+propval+'</td></tr>');
 					}
 					else {  //flow over into next line
-					$("#proptable").append('<tr><td class="tablekey">'+key+'</td><td colspan="2" class="tableval" style="text-align:left">'+propval.substr(0,tbltxtoverflow)+'</td></tr>');
-					$("#proptable").append('<tr><td class="tablekey"></td><td colspan="2" class="tableval" style="text-align:left">'+propval.substr(tbltxtoverflow)+'</td></tr>');
+						$("#proptable").append('<tr><td class="tablekey">'+key+'</td><td colspan="2" class="tableval" style="text-align:left">'+propval.substr(0,tbltxtoverflow)+'</td></tr>');
+						$("#proptable").append('<tr><td class="tablekey"></td><td colspan="2" class="tableval" style="text-align:left">'+propval.substr(tbltxtoverflow)+'</td></tr>');
 					}
 				}
 			}
@@ -1298,23 +1304,23 @@ function showActionPropDisp()
 				//console.log(typeof propval,key);
 				switch(typeof propval) {
 					case 'string':
-					 if (key == 'fill' || key == 'stroke') {
-					 	if (propval.length != 7 && propval.slice(0,1) != '#') { propval = '#000000';}
+					if (key == 'fill' || key == 'stroke') {
+						if (propval.length != 7 && propval.slice(0,1) != '#') { propval = '#000000';}
 						$("#proptable").append('<tr><td class="tablekey">'+key+'</td><td class="tableval"><input id="prop'+key+'" type="text" style="text-align:left" size="7" onchange="updateAction({'+key+':this.value})"></td><td class="tablegui"><input class="tablegui" type="color" value="'+propval+'" onchange="actcolorPropValue({'+key+':this.value})"></td></tr>');
 						$("#prop"+key).val(propval);
-					 }
-					 else {
+					}
+					else {
 						$("#proptable").append('<tr><td class="tablekey">'+key+'</td><td class="tableval"><input id="prop'+key+'" type="text" style="text-align:left" size="12" onchange="updateAction({'+key+':this.value})"></td><td class="tablegui"></td></tr>');
 						$("#prop"+key).val(propval);
-					 }
+					}
 					break;
 					case 'boolean':
-						$("#proptable").append('<tr><td class="tablekey">'+key+'</td><td class="tableval"><input id="prop'+key+'" type="checkbox" onchange="updateAction({'+key+':this.checked})"></td></tr>');
-						$("#prop"+key).prop( "checked", propval);
+					$("#proptable").append('<tr><td class="tablekey">'+key+'</td><td class="tableval"><input id="prop'+key+'" type="checkbox" onchange="updateAction({'+key+':this.checked})"></td></tr>');
+					$("#prop"+key).prop( "checked", propval);
 						//document.getElementById("prop"+key).checked = propval;
 
-					break;
-					case 'number':
+						break;
+						case 'number':
 						var limits = actpropLimits(key);
 						var minval = limits.min;
 						var maxval = limits.max;
@@ -1323,18 +1329,18 @@ function showActionPropDisp()
 						var num = parseFloat(propval);
 						if ((num % 1) == 0.0) { $("#prop"+key).val(num.toFixed(0));}
 						else { $("#prop"+key).val(num.toFixed(2));}
-					break;
-					case 'object':
+						break;
+						case 'object':
 						if (key == 'startstate' || key == 'endstate') {
 							$("#proptable").append('<tr><td class="tablekey">'+key+'</td><td class="tableval" style="text-align:left" id="prop'+key+'"></td><td><button class="tablebutton" onclick="setPropVal({'+key+':0})">set value</button></td></tr>');
 							var valstr = JSON.stringify(propval);
 							$("#prop"+key).text(valstr);
 						}
-					break;
+						break;
+					}
 				}
-		  }
+			}
 		}
 	}
-}
 
 
