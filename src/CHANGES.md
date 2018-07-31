@@ -1,6 +1,11 @@
 # Living Lab Changelog
 
 
+## v1.7.4
+
+* Fixed play screen setup so that grouped objects can also be clickable for events, like regular objects.
+
+
 ## v1.7.3
 
 * Fixed some more issues caused by deleted items.
