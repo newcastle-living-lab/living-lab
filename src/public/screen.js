@@ -166,6 +166,7 @@ function makeScreen(screenstate) {
 			obj.y(objstate.y * screenscaling);
 			obj.scale({ x: screenscaling, y: screenscaling });
 			screenlayer.add(obj);
+			setupEvents(obj);
 			//console.log('added group');
 		} else {
 			var obj = newobj(false, objstate);
