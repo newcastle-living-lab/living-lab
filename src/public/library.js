@@ -28,15 +28,15 @@ function uploadFile()
 							.always(function() {
 							//alert( "complete" );
 							});
-						
+
  }
- 
+
 function loadResources()
 {
 	/**
 	* Load the uploaded resources by doing a get ajax call to nodeio
 	* Create an icon for each resource in the resource pane and attach a setToResource callback when the resource icon is clicked
-	*/ 
+	*/
 		$('#iconlist').empty();
 				$.getJSON( hostaddr+"/getresources", function( data ) {
 					//var items = [];
@@ -44,9 +44,9 @@ function loadResources()
 						//console.log(item);
 						$("<div class='resourceicon' data-filename='resources/"+item+"' onclick='setToResource(this)'><img class='resourceimg' src='resources/"+item+"'/>"+item+"</div>" ).appendTo( "#iconlist" );
 
-					}); 
+					});
 				});
-						
+
 
 }
 
@@ -60,7 +60,7 @@ function libuse()
 		var childarr = state.children;
 		for (var i=0;i<childarr.length;i++) {
 			var childstate = childarr[i];
-			var obj = newobj(true,childstate);		
+			var obj = newobj(true,childstate);
 			layer.add(obj);
 		}
 	}
@@ -68,14 +68,14 @@ function libuse()
 		var obj = newobj(true,state);
 		layer.add(obj);
 	}
-	layer.draw();	
+	layer.draw();
 }
 
-function libremove() 
-{	
+function libremove()
+{
 /**
 * Remove a library object from the database by making an ajax call to nodeio
-*/								
+*/
 		clearObjects();
 
 		var ans = confirm('Are you sure you want to remove the object?');
@@ -94,11 +94,11 @@ function libremove()
 								})
 								.always(function() {
 								//alert( "complete" );
-							
 
-								});			
+
+								});
 		}
-	
+
 }
 
 function filterlib()
@@ -131,7 +131,7 @@ function setToResource(sel)
 		selectedresource = sel.getAttribute('data-filename');
 		var state = activeobject.getAttr('state');
 		switch (state.type) {
-				
+
 				case 'Image':
 					var img = new Image();
     				img.onload = function() {
@@ -148,20 +148,20 @@ function setToResource(sel)
 						updateState(activeobject,{path:state.path,width:state.width,height:state.height});
 						layer.draw();
 						document.getElementById('addlibbox').style.visibility = 'hidden';
-						updatePropDisp(activeobject);		
+						updatePropDisp(activeobject);
     				}
     				img.src = selectedresource;
-					
+
 				break;
 			}
-	}	
+	}
 }
 
 
 
 function prepareforlib()
 {
-	/** 
+	/**
 	* add the button which saves the objects on the layer to the library
 	*/
 	activebutton = 'prepareforlib';
@@ -190,29 +190,29 @@ function addLibObj()
 	*/
 	document.getElementById('addlibbox').style.visibility = 'hidden';
 
-	var selector = layer.find('.Selector')[0];//do not include objectselector 
+	var selector = layer.find('.Selector')[0];//do not include objectselector
 	if (selector != null) {
 		selector.remove();
 	}
 	var desobjects = (layer.getChildren()).toArray();
-	numobj = desobjects.length;  
+	numobj = desobjects.length;
 	//console.log(numobj.toString());
 	if (numobj>0) {  // make sure there is something to save
 		if (numobj == 1) {  //if single object get rid of its offset and prepare its state
 			var obj = desobjects[0];
 			var state = obj.getAttr('state');
 			//decouple from objectstate
-			var cobjstate = JSON.parse(JSON.stringify(state));			
+			var cobjstate = JSON.parse(JSON.stringify(state));
 			var objextents = getobjextents(obj);
 			cobjstate.x = cobjstate.x-objextents.minx;
 			cobjstate.y = cobjstate.y-objextents.miny;
-			var designobject = {name:cobjstate.name,type:cobjstate.type,jsonstate:JSON.stringify(cobjstate)};	
+			var designobject = {name:cobjstate.name,type:cobjstate.type,jsonstate:JSON.stringify(cobjstate)};
 		}
 		else {  //if it is a number of objects find the extent of the objects and define it as a group object
 			var childstatearr = new Array();
 			var gxmin = 100000; //group width and height
 			var gxmax = 1;
-			var gymin = 100000; 
+			var gymin = 100000;
 			var gymax = 1;
 			for (var i=0;i<numobj;i++) {
 				var obj = desobjects[i];
@@ -225,9 +225,9 @@ function addLibObj()
 					var objextents = getobjextents(obj);
 					//console.log(objextents);
 					if (objextents.maxx > gxmax) { gxmax = objextents.maxx;} //include objects
-					if (objextents.maxy > gymax) { gymax = objextents.maxy;} 
-					if (objextents.minx < gxmin) { gxmin = objextents.minx;} 
-					if (objextents.miny < gymin) { gymin = objextents.miny;}	
+					if (objextents.maxy > gymax) { gymax = objextents.maxy;}
+					if (objextents.minx < gxmin) { gxmin = objextents.minx;}
+					if (objextents.miny < gymin) { gymin = objextents.miny;}
 				}
 			}
 			var w = gxmax-gxmin;
@@ -243,7 +243,7 @@ function addLibObj()
 			var gstate = JSON.stringify(groupstate);
 			var designobject = {name:designgroup.name,type:designgroup.type,jsonstate:gstate};
 		}
-			
+
 		// send the object to the library database with an ajax call to nodeio
 				$.ajax({
 							  url: hostaddr+"/addlibobj",
@@ -261,8 +261,8 @@ function addLibObj()
 								.always(function() {
 								//alert( "complete" );
 								});
-	}							
-	
+	}
+
 }
 
 function selectObject(source)
@@ -273,17 +273,17 @@ function selectObject(source)
 			stage = layer.getStage();
 			var id = activeobject.id();
 			//console.log(id);
-		}	
+		}
 }
 
 function delObject()
 {
 	if (activeobject != null) {
 		var ans = confirm('Are you sure you want to delete this object?');
-		if (ans == true) {	
+		if (ans == true) {
 			delobj();
 		}
-		
+
 	}
 }
 
@@ -293,7 +293,7 @@ function updateObjState(prop)
 * Updates the state attribute of the active object
 * Called by updatePropDisp() in llcore
 * This calls the updateState functions in llcore.js depending on the type
-*/	
+*/
 		updateState(activeobject,prop);
 }
 
@@ -305,21 +305,21 @@ function screenSetup()
 	*/
  	var ww = $(window).width();
 	var wh = $(window).height();
-	$('#mainpanel').css({'height': Math.round(1.0*wh).toString() + 'px'});	
-	$('#mainpanel').css({'width': Math.round(0.70*ww).toString() + 'px'});	
-//	$('#resourcepanel').css({'left': Math.round(0.25*ww).toString() + 'px'});	
-	$('#resourcepanel').css({'height': Math.round(1.0*wh).toString() + 'px'});	
-	$('#resourcepanel').css({'width': Math.round(0.27*ww).toString() + 'px'});	
-	var rh = $('#resourcepanel').height();	
-	$('#iconlist').css({'height': Math.round(1.0*rh-100-5).toString() + 'px'});	
-	
-	var mh = $('#mainpanel').height();	
-	var mw = $('#mainpanel').width();	
-	$('#designpanel').css({'height': Math.round(0.6*mh-4).toString() + 'px'});	
-	var dh = $('#designpanel').height();	
-	var dw = $('#designpanel').width();	
-	$('#designspace').css({'height': Math.round(1.0*dh).toString() + 'px'});	
-	$('#designspace').css({'width': Math.round(0.6*dw-4).toString() + 'px'});	
+	$('#mainpanel').css({'height': Math.round(1.0*wh).toString() + 'px'});
+	$('#mainpanel').css({'width': Math.round(0.70*ww).toString() + 'px'});
+//	$('#resourcepanel').css({'left': Math.round(0.25*ww).toString() + 'px'});
+	$('#resourcepanel').css({'height': Math.round(1.0*wh).toString() + 'px'});
+	$('#resourcepanel').css({'width': Math.round(0.27*ww).toString() + 'px'});
+	var rh = $('#resourcepanel').height();
+	$('#iconlist').css({'height': Math.round(1.0*rh-100-5).toString() + 'px'});
+
+	var mh = $('#mainpanel').height();
+	var mw = $('#mainpanel').width();
+	$('#designpanel').css({'height': Math.round(0.6*mh-4).toString() + 'px'});
+	var dh = $('#designpanel').height();
+	var dw = $('#designpanel').width();
+	$('#designspace').css({'height': Math.round(1.0*dh).toString() + 'px'});
+	$('#designspace').css({'width': Math.round(0.6*dw-4).toString() + 'px'});
 	$('#propertypanel').css({'height': Math.round(1.0*dh-15).toString() + 'px'});
 	$('#propertypanel').css({'width': Math.round(0.4*dw-15).toString() + 'px'});
 	$('#objectlist').css({'height': Math.round(0.4*mh-155).toString() + 'px'});
@@ -342,16 +342,16 @@ function setup()
 {
 /**
 * Initial setup of the stages and layers and event listeners
-*/	
+*/
 	screenSetup();
 	//var pw = $(window).width();
 	//var ph = $(window).height();
-	//$('#designpanel').css({'height': Math.round(1.0*ph-50-50-50-150-8).toString() + 'px'});	
-	//$('#iconlist').css({'height': Math.round(1.0*ph-100-5).toString() + 'px'});	
+	//$('#designpanel').css({'height': Math.round(1.0*ph-50-50-50-150-8).toString() + 'px'});
+	//$('#iconlist').css({'height': Math.round(1.0*ph-100-5).toString() + 'px'});
 
 	var sw = $('#designspace').width();
 	var sh = $('#designspace').height();
-	
+
 	loadResources();
 	//document.getElementById("resname").value = 'none';
 //setup designspace
@@ -375,7 +375,7 @@ function setup()
 						$("#proptable").empty();
 					}
 				}
-	
+
         });
 
 //setup objlist
@@ -389,29 +389,29 @@ function setup()
 	objstage.add(objlayer);
 	coreSetup();
    objlayer.add(libselector);
-	
+
 	loadObjects('all');
-	document.getElementById('addlibbox').style.visibility = 'hidden';	
+	document.getElementById('addlibbox').style.visibility = 'hidden';
 	objlayer.draw();
-	
+
 	changeCallback = updateObjState;  //define property change callback
-	
+
 document.addEventListener("fullscreenchange", function () {
 	screenSetup();
 	resizeStages();
 }, false);
- 
+
 document.addEventListener("mozfullscreenchange", function () {
 	screenSetup();
 	resizeStages();
 }, false);
- 
+
 document.addEventListener("webkitfullscreenchange", function () {
 	screenSetup();
 	resizeStages();
 }, false);
- 
+
  screenSetup();
-	
-  
+
+
 }
