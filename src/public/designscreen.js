@@ -484,6 +484,8 @@ function selectObject(source) {
 			break;
 
 		case 'kineticjs':
+		case 'konvajs':
+		case 'canvas':
 			if (activeobject != null) {
 				layer = activeobject.getLayer();
 				actlayer = layer.getAttr('actionlayer');
@@ -533,7 +535,7 @@ function createStage(stagestate) {
 
 	if (stagestate.id == 'none') { stagestate.id = UniqueId(); }
 
-	var newstage = new Kinetic.Stage({
+	var newstage = new Konva.Stage({
 		container: stagestate.container,
 		id: stagestate.id,
 		name: stagestate.name,
@@ -552,12 +554,12 @@ function createLayer(layerstate) {
 	*/
 	if (layer != null) { layer.clear(); }
 	if (layerstate.id == 'none') { layerstate.id = UniqueId(); }
-	var newlayer = new Kinetic.Layer({ name: layerstate.name, id: layerstate.id });
+	var newlayer = new Konva.Layer({ name: layerstate.name, id: layerstate.id });
 	newlayer.setAttr('state', layerstate);
 	stage.add(newlayer);
 
 	// create an action layer for this layer
-	var actionlayer = new Kinetic.Layer({ name: "act_" + layerstate.name, id: UniqueId() });
+	var actionlayer = new Konva.Layer({ name: "act_" + layerstate.name, id: UniqueId() });
 	actstage.add(actionlayer);
 	actionlayer.setAttr('parentlayer', newlayer);
 	newlayer.setAttr('actionlayer', actionlayer);
@@ -1842,7 +1844,7 @@ function setup() {
 	$('#designstage').height(sth);
 	$('#designstage').width(stw);
 
-	stage = new Kinetic.Stage({
+	stage = new Konva.Stage({
 		container: designstage,
 		id: 'stage0',
 		name: 'designstage',
@@ -1852,13 +1854,13 @@ function setup() {
 
 	//	console.log(vh,vw,sth,stw);
 	//setup objlist
-	objstage = new Kinetic.Stage({
+	objstage = new Konva.Stage({
 		container: libpane,
 		name: 'objscreen',
 		width: libw - 10,
 		height: libh - 10
 	});
-	objlayer = new Kinetic.Layer({ name: "objlayer" });
+	objlayer = new Konva.Layer({ name: "objlayer" });
 	objstage.add(objlayer);
 	//librarylist selector
 	objlayer.add(libselector);
@@ -1867,7 +1869,7 @@ function setup() {
 	objlayer.draw();
 
 	//setup actionlist
-	actstage = new Kinetic.Stage({
+	actstage = new Konva.Stage({
 		container: actionpane,
 		name: 'actscreen',
 		width: actw - 10,
