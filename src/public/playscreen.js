@@ -59,7 +59,7 @@ function updatePresentEvent(pev) {
 		if (nac > numactions) { numactions = nac; }
 		for (var ai = 0; ai < actions.length; ai++) {
 			var actstate = actions[ai];
-			var actobj = new Kinetic.Text({
+			var actobj = new Konva.Text({
 				name: 'actionname',
 				draggable: false,
 				x: (i * (viewwidth + viewgap)) + viewXoffset + evbutspacewidth + 3,  //align with view
@@ -98,7 +98,7 @@ function updatePresentEvent(pev) {
 
 function makePresentEvent(state) {
 
-	var peevobj = new Kinetic.Group({
+	var peevobj = new Konva.Group({
 		name: 'playentevent',
 		draggable: false,
 		id: state.id,
@@ -110,7 +110,7 @@ function makePresentEvent(state) {
 
 	peevobj.setAttr('state', state);
 
-	var peevblock = new Kinetic.Rect({
+	var peevblock = new Konva.Rect({
 		name: 'peevblock',
 		draggable: false,
 		x: 0,
@@ -124,7 +124,7 @@ function makePresentEvent(state) {
 	});
 
 
-	var nameobj = new Kinetic.Text({
+	var nameobj = new Konva.Text({
 		name: 'peevname',
 		draggable: false,
 		x: 5,
@@ -135,7 +135,7 @@ function makePresentEvent(state) {
 
 	});
 
-	var startbutton = new Kinetic.RegularPolygon({
+	var startbutton = new Konva.RegularPolygon({
 		x: 150,
 		y: 15,
 		draggable: false,
@@ -145,7 +145,7 @@ function makePresentEvent(state) {
 		fill: '#000'
 	});
 
-	var playbutton = new Kinetic.RegularPolygon({
+	var playbutton = new Konva.RegularPolygon({
 		x: 170,
 		y: 15,
 		draggable: false,
@@ -259,7 +259,7 @@ function makeStartEvent(peviews) {
 		pestate.peviews = peviews;
 	}
 
-	var peevobj = new Kinetic.Group({
+	var peevobj = new Konva.Group({
 		name: 'startevent',
 		draggable: false,
 		id: pestate.id,
@@ -271,7 +271,7 @@ function makeStartEvent(peviews) {
 
 	peevobj.setAttr('state', pestate);
 
-	var peevblock = new Kinetic.Rect({
+	var peevblock = new Konva.Rect({
 		name: 'peevblock',
 		draggable: false,
 		x: 0,
@@ -285,7 +285,7 @@ function makeStartEvent(peviews) {
 	});
 
 
-	var nameobj = new Kinetic.Text({
+	var nameobj = new Konva.Text({
 		name: 'peevname',
 		draggable: false,
 		x: 5,
@@ -365,7 +365,7 @@ function updateViews() {
 
 function makeView(state) {
 	var viewindex = views.length;
-	var viewobj = new Kinetic.Group({
+	var viewobj = new Konva.Group({
 		name: 'view',
 		draggable: false,
 		x: (viewindex * (viewwidth + viewgap)) + viewXoffset + evbutspacewidth,
@@ -375,7 +375,7 @@ function makeView(state) {
 	});
 
 
-	var viewblock = new Kinetic.Rect({
+	var viewblock = new Konva.Rect({
 		name: 'viewblock',
 		draggable: false,
 		x: 0,
@@ -388,7 +388,7 @@ function makeView(state) {
 		strokeWidth: 1
 	});
 
-	var nameobj = new Kinetic.Text({
+	var nameobj = new Konva.Text({
 		name: 'viewname',
 		draggable: false,
 		x: 0,
@@ -689,13 +689,13 @@ function setup() {
 		});
 	}
 
-	playstage = new Kinetic.Stage({
+	playstage = new Konva.Stage({
 		container: playspace,
 		name: 'playscreen',
 		width: prstagew,
 		height: prstageh
 	});
-	playlayer = new Kinetic.Layer({ name: "playlayer" });
+	playlayer = new Konva.Layer({ name: "playlayer" });
 	playstage.add(playlayer);
 	playlayer.draw();
 

@@ -35,7 +35,7 @@ function actionselect()
 function makeLayerAnimation(actionlayer)
 {
 	var animlayer = actionlayer.getAttr('parentlayer');
-	var anim = new Kinetic.Animation(function(frame) {
+	var anim = new Konva.Animation(function(frame) {
 		var stopflag = true;
 		var objlayer = this.getLayers()[0];
 		var alayer = objlayer.getAttr('actionlayer');
@@ -343,7 +343,7 @@ function actionobj(state,eventlistobj)
 
 	if (state.id == 'none') {state.id = UniqueId();}
 
-	var actobj = new Kinetic.Group({
+	var actobj = new Konva.Group({
 		name:'action',
 		draggable:true,
 		id:state.id,
@@ -354,7 +354,7 @@ function actionobj(state,eventlistobj)
 	});
 
 
-	var actblock = new Kinetic.Rect({
+	var actblock = new Konva.Rect({
 		name:'actblock',
 		draggable:false,
 		x:0,
@@ -377,7 +377,7 @@ function actionobj(state,eventlistobj)
 	var actionname = state.descriptor;
 
 	var displaystr = (actionname).slice(0,15);
-	var nameobj = new Kinetic.Text({
+	var nameobj = new Konva.Text({
 		name:'actname',
 		draggable: false,
 		x:5,
@@ -851,7 +851,7 @@ function updateEventSwimList()
 						(pev.find('.scrname')[0]).text(peview.viewstate.name);
 					}
 				}
-				alayer.draw();
+				alayer.batchDraw();
 			}
 		}
 	}
@@ -954,7 +954,7 @@ actlayer.draw();
 function makeEventList(state) {
 
 
-	var eventobj = new Kinetic.Group({
+	var eventobj = new Konva.Group({
 		name:'eventgroup',
 		draggable:false,
 		id:state.id,
@@ -966,7 +966,7 @@ function makeEventList(state) {
 
 	eventobj.setAttr('state',state);
 
-	var evblock = new Kinetic.Rect({
+	var evblock = new Konva.Rect({
 		name:'evblock',
 		draggable:false,
 		x:0,
@@ -981,7 +981,7 @@ function makeEventList(state) {
 
 
 	var displaystr = (state.name).slice(0,10);
-	var nameobj = new Kinetic.Text({
+	var nameobj = new Konva.Text({
 		name:'evname',
 		draggable: false,
 		x:5,
@@ -993,7 +993,7 @@ function makeEventList(state) {
 	});
 
 	displaystr = (state.viewstate.name).slice(0,10);
-	var scrnameobj = new Kinetic.Text({
+	var scrnameobj = new Konva.Text({
 		name:'scrname',
 		draggable: false,
 		x:5,
