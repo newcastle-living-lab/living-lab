@@ -1,6 +1,11 @@
 # Living Lab Changelog
 
 
+## v1.8.0
+
+* Replaced canvas interaction library Kinetic JS with Konva.
+
+
 ## v1.7.4
 
 * Fixed play screen setup so that grouped objects can also be clickable for events, like regular objects.
