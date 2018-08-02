@@ -1232,7 +1232,7 @@ function newobj(isdesign, state) {
 
 	obj.setAttr('state', state);
 	obj.perfectDrawEnabled(false);
-	obj.strokeHitEnabled(false);
+	// obj.strokeHitEnabled(false);
 	obj.shadowForStrokeEnabled(false);
 	return obj;
 }
