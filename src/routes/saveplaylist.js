@@ -26,7 +26,7 @@ exports.handler = function(req, res) {
 	htmlstr = htmlstr + '<meta name="viewport" content="width=device-width, initial-scale=1" />';
 	htmlstr = htmlstr + '<link rel="stylesheet" href="../../playscreen.css">';
 	htmlstr = htmlstr + '<script src="../../jquery-2.1.1.min.js"></script>';
-	htmlstr = htmlstr + '<script src="../../kinetic-v5.1.0.min.js"></script>';
+	htmlstr = htmlstr + '<script src="../../konva.min.js"></script>';
 	htmlstr = htmlstr + '<script src="../../socket.io/socket.io.js"></script>';
 
 	htmlstr = htmlstr + '<script type="text/javascript" >';

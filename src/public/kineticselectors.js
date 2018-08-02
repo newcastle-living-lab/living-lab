@@ -340,7 +340,7 @@ function addAnchor(sel, x, y, name, id) {
 * Add an anchor to the selected object sel with the anchor at position x,y and the anchor name given by name
 */
 
-  var anchor = new Kinetic.Circle({
+  var anchor = new Konva.Circle({
     x: x,
     y: y,
     stroke: '#666',
@@ -394,7 +394,7 @@ function objectSelector()
 * Objectselector object which is a kineticjs group consisting of several anchors.
 */
 	  this.selectedObj = null;
-	  this.objSelGroup = new Kinetic.Group({
+	  this.objSelGroup = new Konva.Group({
 	  	 name:'Selector',
 	    draggable: true,
 	    visible: false

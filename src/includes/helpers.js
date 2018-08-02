@@ -99,7 +99,7 @@ var makeScreen = function(viewName) {
 
 	var htmlstr = '<!DOCTYPE HTML><html><head>';
 	htmlstr = htmlstr + '<meta name="viewport" content="width=device-width, initial-scale=1" />';
-	htmlstr = htmlstr + '<script type="text/javascript" src="kinetic-v5.1.0.min.js"></script>';
+	htmlstr = htmlstr + '<script type="text/javascript" src="konva.js"></script>';
 	htmlstr = htmlstr + '<script type="text/javascript" src="jquery-2.1.1.min.js"></script>';
 	htmlstr = htmlstr + '<script src="/socket.io/socket.io.js"></script>';
 	htmlstr = htmlstr + '<script src="llcore.js"></script>';

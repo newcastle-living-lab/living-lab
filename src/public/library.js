@@ -355,13 +355,13 @@ function setup()
 	loadResources();
 	//document.getElementById("resname").value = 'none';
 //setup designspace
-	stage = new Kinetic.Stage({
+	stage = new Konva.Stage({
           container: designspace,
           name:'designscreen',
           width: sw,
           height: sh
         });
-	layer = new Kinetic.Layer({name:"designlayer"});
+	layer = new Konva.Layer({name:"designlayer"});
 	stage.add(layer);
 	objSelector = new objectSelector();
 	layer.add(objSelector.objSelGroup);
@@ -379,13 +379,13 @@ function setup()
         });
 
 //setup objlist
-	objstage = new Kinetic.Stage({
+	objstage = new Konva.Stage({
           container: objectlist,
           name:'objscreen',
           width: libw,
           height: libh
         });
-	objlayer = new Kinetic.Layer({name:"objlayer"});
+	objlayer = new Konva.Layer({name:"objlayer"});
 	objstage.add(objlayer);
 	coreSetup();
    objlayer.add(libselector);

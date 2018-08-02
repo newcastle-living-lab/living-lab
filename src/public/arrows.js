@@ -59,7 +59,7 @@ function CurvedArrow(isdesign,state)
 /**
 * draws a quadratic Bezier curved arrow
 */
-	var curvedarrow = new Kinetic.Shape({
+	var curvedarrow = new Konva.Shape({
 			  name: state.name,
 			  id: UniqueId(),
 			  x: state.x,
@@ -71,7 +71,7 @@ function CurvedArrow(isdesign,state)
 
 	curvedarrow.setAttr('state',state);
 	curvedarrow.setAttr('portion',1.0);  //for animation
-	 // a Kinetic.Canvas renderer is passed into the drawFunc function
+	 // a Konva.Canvas renderer is passed into the drawFunc function
 	curvedarrow.sceneFunc(function(context) {
 	  	var p = this.getAttr('state');
 	  	p.portion = this.getAttr('portion');

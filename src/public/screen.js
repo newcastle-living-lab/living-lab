@@ -24,13 +24,13 @@ function initScreen() {
 	sw = $('#container').width();
 	sh = $('#container').height();
 
-	screenstage = new Kinetic.Stage({
+	screenstage = new Konva.Stage({
 		container: "container",
 		width: sw,
 		height: sh
 	});
 
-	screenlayer = new Kinetic.Layer({ name: 'screenlayer' });
+	screenlayer = new Konva.Layer({ name: 'screenlayer' });
 
 	screenstage.on('setupdone', function () { processNextio('setupdone'); });
 	screenstage.on('startdone', function () { processNextio('startdone'); });
@@ -67,7 +67,7 @@ var closeScreenIdentifier = function() {
 
 
 function addLayerAnimation(animlayer) {
-	var anim = new Kinetic.Animation(function (frame) {
+	var anim = new Konva.Animation(function (frame) {
 		var stopflag = true;
 		for (var i = 0; i < screenanimlist.length; i++) {
 			var action = screenanimlist[i];

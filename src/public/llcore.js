@@ -113,7 +113,7 @@ function makelistobj(id, objjsonstate, xpos, ypos) {
 	var newobjstate = objjsonstate;
 	var obj = null;
 	//console.log(objjsonstate);
-	var libobj = new Kinetic.Rect({
+	var libobj = new Konva.Rect({
 		draggable: false,
 		x: xpos,
 		y: ypos,
@@ -151,7 +151,7 @@ function makelistobj(id, objjsonstate, xpos, ypos) {
 
 	var displaystr = (obj.getAttr('name')).slice(0, 10);
 	//console.log(obj.getAttr('name'));
-	var nameobj = new Kinetic.Text({
+	var nameobj = new Konva.Text({
 		name: 'objname',
 		draggable: false,
 		x: xpos + 5,
@@ -771,7 +771,7 @@ function addtoTempGroup(isdesign, obj) {
 	if (obj.name() != 'Selector') {  //do not add the selectorobject
 
 		if (tgroupindicator == null) {  //if the tempgroup indicator does not exist then create it
-			tgroupindicator = new Kinetic.Rect({ name: 'groupindicator', fill: 'rgb(200,250,200)', stroke: 'rgb(0,250,250)', opacity: 0.5, strokeWidth: 4, dashEnabled: true, dash: [10, 5] });
+			tgroupindicator = new Konva.Rect({ name: 'groupindicator', fill: 'rgb(200,250,200)', stroke: 'rgb(0,250,250)', opacity: 0.5, strokeWidth: 4, dashEnabled: true, dash: [10, 5] });
 			var gxmin = 10000; //group width and height
 			var gxmax = 1;
 			var gymin = 10000;
@@ -920,6 +920,7 @@ function ungroupobjects() {
 }
 
 function objEvents(obj) {
+
 	/**
 	* Define the object events for a new object
 	*/
@@ -960,7 +961,7 @@ function objEvents(obj) {
 			}
 			//layer.add(objSelector.objSelGroup);
 			objSelector.drawSelector(this);
-			selectObject('kineticjs');
+			selectObject('canvas');
 			//console.log('kineticjs');
 
 		}
@@ -1066,7 +1067,7 @@ function newgroupobj(isdesign, editable, state) {
 	*/
 	if (state.id == 'none') { state.id = UniqueId(); }
 
-	var theGroup = new Kinetic.Group({
+	var theGroup = new Konva.Group({
 		name: state.name,
 		id: state.id,
 		x: state.x,
@@ -1119,7 +1120,7 @@ function newobj(isdesign, state) {
 
 		case 'Image':
 			var imageObj = new Image();
-			var obj = new Kinetic.Image({
+			var obj = new Konva.Image({
 				id: state.id,
 				image: imageObj,
 				draggable: isdesign
@@ -1134,21 +1135,21 @@ function newobj(isdesign, state) {
 
 			break;
 		case 'Rect':
-			var obj = new Kinetic.Rect({
+			var obj = new Konva.Rect({
 				id: state.id,
 				draggable: isdesign
 			});
 
 			break;
 		case 'Ellipse':
-			var obj = new Kinetic.Ellipse({
+			var obj = new Konva.Ellipse({
 				id: state.id,
 				draggable: isdesign
 			});
 
 			break;
 		case 'RegularPolygon':
-			var obj = new Kinetic.RegularPolygon({
+			var obj = new Konva.RegularPolygon({
 				id: state.id,
 				draggable: isdesign
 			});
@@ -1156,7 +1157,7 @@ function newobj(isdesign, state) {
 			break;
 
 		case 'Star':
-			var obj = new Kinetic.Star({
+			var obj = new Konva.Star({
 				id: state.id,
 				draggable: isdesign
 			});
@@ -1164,7 +1165,7 @@ function newobj(isdesign, state) {
 			break;
 
 		case 'Ring':
-			var obj = new Kinetic.Ring({
+			var obj = new Konva.Ring({
 				id: state.id,
 				draggable: isdesign
 			});
@@ -1172,7 +1173,7 @@ function newobj(isdesign, state) {
 			break;
 
 		case 'Text':
-			var obj = new Kinetic.Text({
+			var obj = new Konva.Text({
 				id: state.id,
 				draggable: isdesign
 			});
@@ -1180,7 +1181,7 @@ function newobj(isdesign, state) {
 			break;
 
 		case 'Line':
-			var obj = new Kinetic.Line({
+			var obj = new Konva.Line({
 				id: state.id,
 				points: [0, 0, state.lineLength, 0],
 				draggable: isdesign
@@ -1188,7 +1189,7 @@ function newobj(isdesign, state) {
 			break;
 
 		case 'PolyLine':
-			var obj = new Kinetic.Line({
+			var obj = new Konva.Line({
 				id: state.id,
 				draggable: isdesign
 			});
@@ -1199,7 +1200,7 @@ function newobj(isdesign, state) {
 			break;
 
 		case 'Figure':
-			var obj = new Kinetic.Line({
+			var obj = new Konva.Line({
 				id: state.id,
 				closed: true,
 				draggable: isdesign
@@ -1207,7 +1208,7 @@ function newobj(isdesign, state) {
 			break;
 
 		case 'Path':
-			var obj = new Kinetic.Path({
+			var obj = new Konva.Path({
 				id: state.id,
 				draggable: isdesign
 			});
@@ -1230,6 +1231,9 @@ function newobj(isdesign, state) {
 	}
 
 	obj.setAttr('state', state);
+	obj.perfectDrawEnabled(false);
+	obj.strokeHitEnabled(false);
+	obj.shadowForStrokeEnabled(false);
 	return obj;
 }
 
@@ -1331,6 +1335,6 @@ function coreSetup() {
 		//if (keycode == 17) { ctrlkey = false;}
 	});
 
-	libselector = new Kinetic.Rect({ name: 'libselector', visible: false, width: objwh, height: objwh, fill: '#ccccee', stroke: '#ccccee', strokeWidth: 1 });
+	libselector = new Konva.Rect({ name: 'libselector', visible: false, width: objwh, height: objwh, fill: '#ccccee', stroke: '#ccccee', strokeWidth: 1 });
 
 }
