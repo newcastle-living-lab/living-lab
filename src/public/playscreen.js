@@ -358,7 +358,7 @@ function updateViews() {
 		swline.find('.viewblock').height(newheight);
 	}
 
-	prstageh = viewYoffset + newheight + viewtextspace + prmargin;
+	prstageh = (viewYoffset * 2) + newheight + viewtextspace + prmargin;
 	playstage.height(prstageh);
 }
 
@@ -509,12 +509,13 @@ function screenSetup() {
 	*/
 	var ww = $(window).width();
 	var wh = $(window).height();
-	$('#page').css({ 'height': Math.round(0.98 * wh).toString() + 'px' });
-	$('#page').css({ 'width': Math.round(0.98 * ww).toString() + 'px' });
+	// $('#page').css({ 'height': Math.round(0.98 * wh).toString() + 'px' });
+	// $('#page').css({ 'width': Math.round(0.98 * ww).toString() + 'px' });
 	var ph = $('#page').height();
 	var pw = $('#page').width();
 	var fh = $('#functionbox').height();
-	$('#playspace').css({ 'height': Math.round(ph - fh - 10).toString() + 'px' });
+	// $('#playspace').css({ 'height': Math.round(ph - fh - 10).toString() + 'px' });
+	$("body").css({ "padding-top": (fh * 1.5) + "px", "padding-bottom": fh + "px" });
 	prh = $('#playspace').height();
 	prw = $('#playspace').width();
 

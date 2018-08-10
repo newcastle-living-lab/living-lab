@@ -75,7 +75,7 @@ var writePlayfileandImages = function(fname, htmlstr, imglist) {
 				// ignore the error if the folder already exists
 				for (var imn=0;imn<imglist.length;imn++) {
 					var imgfilename = imglist[imn],
-						srcFile = path.jon(resourcesDir, imgfilename),
+						srcFile = path.join(resourcesDir, imgfilename),
 						dstFile = path.join(playlistDir, "images", imgfilename);
 					copyFile(srcFile, dstFile);
 				}

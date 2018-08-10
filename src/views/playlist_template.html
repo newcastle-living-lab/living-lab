@@ -1,0 +1,48 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<link rel="stylesheet" href="../../playscreen.css">
+	<link rel="stylesheet" href="../../assets/css/living-lab.min.css">
+	<script src="../../jquery-2.1.1.min.js"></script>
+	<script src="../../konva.min.js"></script>
+	<script src="../../socket.io/socket.io.js"></script>
+
+	<script type="text/javascript">
+	peinfo={{ playstate | safe }}
+	</script>
+	<script src="../../playscreen.js"></script>
+</head>
+<body>
+
+	<div id="page">
+
+		<div id="functionbox">
+			<div class="container">
+				<div class="pure-form">
+					<div class="pure-g">
+						<div class="pure-u-1-2">
+							<button class="pure-button size-lg"  id="nextbutton" onclick="gonextEvent()">Next <i class="fa fa-fw fa-step-forward"></i></button>
+						</div>
+						<div class="pure-u-1-2">
+							<br>
+							<label><input type="checkbox" onchange="setPlaymode()"> Play mode</label>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="containerr">
+			<div class="pure-g">
+				<div class="pure-u-1">
+					<div id="playspace"></div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+</body>
+<script> $( document ).ready(setup());</script>
+</html>
