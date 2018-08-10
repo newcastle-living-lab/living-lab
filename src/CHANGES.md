@@ -1,6 +1,11 @@
 # Living Lab Changelog
 
 
+## v1.9.0
+
+* Updated UI on Playlist Play page.
+
+
 ## v1.8.0
 
 * Replaced canvas interaction library Kinetic JS with Konva.
