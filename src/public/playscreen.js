@@ -675,7 +675,11 @@ function ioUpdate(respdata) {
 
 
 function setPlaymode() {
-	playmode = $('#playaction').prop('checked');
+	var checkbox = $("#playaction");
+	if (checkbox.length === 0) {
+		checkbox = $("#functionbox input[type=checkbox]:first");
+	}
+	playmode = checkbox.prop('checked');
 }
 
 

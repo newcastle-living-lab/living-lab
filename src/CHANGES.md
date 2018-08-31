@@ -1,6 +1,11 @@
 # Living Lab Changelog
 
 
+## v1.9.1
+
+* Fixed issue with PLaylists not playing properly (object actions)
+
+
 ## v1.9.0
 
 * Updated UI on Playlist Play page.
