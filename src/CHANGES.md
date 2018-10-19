@@ -1,6 +1,12 @@
 # Living Lab Changelog
 
 
+## v1.10.0
+
+* Updated canvas so that its size is always displayed proportionally to the project's dimensions.
+* Updated colours on the Design screen to be less purple.
+
+
 ## v1.9.1
 
 * Fixed issue with PLaylists not playing properly (object actions)

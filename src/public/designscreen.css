@@ -25,7 +25,7 @@ select {
 	position: absolute;
 	width: 98%;
 	height: 98%;
-	border: 2px solid #8888bb;
+	border: 2px solid #bbb;
 }
 
 #screencontrol {
@@ -42,7 +42,7 @@ select {
 
 #rightcolumn {
 	position: absolute;
-	border-left: 1px solid #8888bb;
+	border-left: 1px solid #bbb;
 }
 
 #treespace {
@@ -50,14 +50,14 @@ select {
 	background-color: #ffffff;
 	font-size: 11px;
 	overflow: auto;
-	border-bottom: 1px solid #8888bb;
+	border-bottom: 1px solid #bbb;
 }
 
 #treemenu {
 	position: relative;
 	width: 99.8%;
 	height: 35px;
-	background-color: #bbbbee;
+	background-color: #F2F0F1;
 	display:block;
 	font-size: 11px;
 	font-family: Verdana;
@@ -126,7 +126,7 @@ select {
 
 #propedit {
 	position: relative;
-	background-color: #bbbbee;
+	background-color: #F2F0F1;
 	padding-left: 10px;
 	padding-top: 10px;
 	overflow: auto;
@@ -135,21 +135,42 @@ select {
 
 #designspace {
 	position: relative;
-	border-top: 1px solid #8888bb;
+	border-top: 1px solid #bbb;
+	background-color: #444;
+	padding: 10px;
+	box-sizing: border-box;
+}
+
+.canvas-table {
+	display: table;
+	width: 100%;
+	height: 100%;
+	/*outline: 1px solid lime;*/
+}
+
+.canvas-cell {
+	display: table-cell;
+	text-align: center;
+	vertical-align: middle;
+	/*outline: 1px solid cyan;*/
 }
 
 .screenspace {
-	position: absolute;
+	/*border: 1px dotted #ccc;*/
+	background: #fff;
+	text-align: center;
+	display: inline-block;
+	/*position: absolute;
 	left: 1px;
 	top: 1px;
-	border: 1px dashed #8888bb;
+	border: 1px dashed #8888bb;*/
 }
 
 #menu {
 	position: relative;
 	height: 35px;
 	width: 99.8%;
-	background-color: #bbbbee;
+	background-color: #F2F0F1;
 	display:block;
 	font-size: 11px;
 	font-family: Verdana;
@@ -173,9 +194,9 @@ select {
 	position: relative;
 	height: 35px;
 	width: 100%;
-	background-color: #ccccee;
+	background-color: #E4F1FB;
 	display:block;
-	border-top: 1px solid #ccccee;
+	border-top: 1px solid #E4F1FB;
 	font-family: Verdana;
 	font-size: 11px;
 }
@@ -183,7 +204,7 @@ select {
 #libpane {
 	position: relative;
 	background-color: #ffffff;
-	border-top: 1px solid #bbbbee;
+	border-top: 1px solid #bbb;
 	width: 99.8%;
 	overflow: auto;
 }
@@ -192,9 +213,9 @@ select {
 	position: relative;
 	height: 35px;
 	width: 100%;
-	background-color: #ccccee;
+	background-color: #E4F1FB;
 	display:block;
-	border-top: 1px solid #ccccee;
+	border-top: 1px solid #E4F1FB;
 	font-family: Verdana;
 	font-size: 11px;
 }
@@ -202,7 +223,7 @@ select {
 #actionpane {
 	position: relative;
 	background-color: #ffffff;
-	border-top: 1px solid #ccccee;
+	border-top: 1px solid #bbb;
 /*	width: 99.8%; */
 	overflow: auto;
 }
@@ -290,8 +311,8 @@ select {
 .tabs {
     width:99.8%;
     display:inline-block;
-    background-color: #bbbbee;
-    /*border-top: 1px solid #8888bb; */
+    background-color: #F2F0F1;
+    border-top: 1px solid #bbb;
 }
 
     /*----- Tab Links -----*/
@@ -303,13 +324,15 @@ select {
     }
  */
     .tab-links {
-    	height: 10px;
-
+    	margin: 10px 0 0 10px;
+    	padding: 0;
+    	/*height: 10px;*/
     }
 
     .tab-links li {
         margin:0px 5px;
-        float:left;
+        /*float:left;*/
+        display: inline-block;
         list-style:none;
     }
 
@@ -317,7 +340,7 @@ select {
             padding:5px 5px;
             display:inline-block;
             border-width: 1px 1px 0px 1px;
-            border-color: #bbbbee;
+            border-color: #bbb;
             border-style: solid;
             border-radius:5px 5px 0px 0px;
             background:#fff;
@@ -329,20 +352,22 @@ select {
         }
 
         .tab-links a:hover {
-            background:#8888bb;
+            background:#003965;
             text-decoration:none;
+            color: #fff;
         }
 
     li.active a, li.active a:hover {
-        background:#ccccee;
-        color:#000;
+        background:#003965;
+        color:#fff;
     }
 
     /*----- Content of Tabs -----*/
     .tab-content {
+    	border-top: 1px solid #bbb;
         padding:0px;
         /*box-shadow:-1px 1px 1px rgba(0,0,0,0.15); */
-        background:#aff;
+        /*background:#aff;*/
     }
 
      .tab {
