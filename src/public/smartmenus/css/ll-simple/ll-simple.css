@@ -124,8 +124,8 @@
 	 	/*color: #555555;*/
 	 }
 	 .ll-simple a:hover, .ll-simple a:focus, .ll-simple a:active, .ll-simple a.highlighted {
-		background:#ccccee;
-		color:#000;
+		background:#003965;
+		color:#fff;
 	 }
 	 .ll-simple a.current {
 	 	background: #555555;

@@ -1187,7 +1187,69 @@ function setCastmode() {
 	castmode = $('#castaction').prop('checked');
 }
 
+
 function stageDims() {
+	return stageDimsV2();
+}
+
+
+function stageDimsV2() {
+
+	// Set the width/height of the stage container
+	var hwratio = project.screenheight / project.screenwidth;
+	var vh = sh - 4;
+	var vw = sw - 4;
+	var vhwratio = vh / vw;
+	if (vhwratio > hwratio) {
+		var stw = vw;
+		var sth = Math.round(vw * hwratio);
+	} else {
+		var sth = vh;
+		var stw = Math.round(vh / hwratio);
+	}
+
+	$('#designstage').height(sth);
+	$('#designstage').width(stw);
+	stage.width(stw);
+	stage.height(sth);
+	// txscale = project.screenwidth / stw;
+
+	var ratio = 0,
+		maxWidth = stw,
+		maxHeight = sth,
+		width = project.screenwidth,
+		height = project.screenheight;
+
+	if (width > maxWidth) {
+		ratio = maxWidth / width;
+		var newWidth = maxWidth;
+		var newHeight = height * ratio;
+		stage.width(newWidth);
+		stage.height(newHeight);
+		height = height * ratio;
+		width = width * ratio;
+	}
+
+	if (height > maxHeight) {
+		ratio = maxHeight / height;
+		var newHeight = maxHeight;
+		var newWidth = width * ratio;
+		stage.width(newWidth);
+		stage.height(newHeight);
+		width = width * ratio;
+	}
+
+	var scale = {
+		x: newWidth / project.screenwidth,
+		y: newHeight / project.screenheight
+	};
+
+	stage.scale(scale);
+	stage.draw();
+}
+
+
+function stageDimsV1() {
 	var hwratio = project.screenheight / project.screenwidth;
 	var vh = sh - 4;
 	var vw = sw - 4;
@@ -1954,9 +2016,15 @@ function setup() {
 		handles: 's',
 		// restrict the height range
 		minHeight: 50,
-		maxHeight: 650,
+		// ghost: true,
+		// maxHeight: 650,
 		// resize handler updates the content panel height
-		resize: function (event, ui) {
+		start: function(event, ui) {
+			stage.clear();
+			$("#designstage").css("visibility", "hidden");
+		},
+		stop: function(event, ui) {
+			$("#designstage").css("visibility", "visible");
 			var currentHeight = ui.size.height;
 
 			// this accounts for padding in the panels +
@@ -1988,10 +2056,9 @@ function setup() {
 				layer.draw();
 				var id = layer.id();
 				treecontainer.jstree('select_node', id);
-
 			}
-
 		}
+
 	});
 
 	$(window).focus(function () {
