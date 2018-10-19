@@ -6,6 +6,7 @@ var sw, sh;
 var socket = null;
 var ioqueue = [];
 var screenIdTimeout = null;
+var screenDims = { width: 1000, height: 1000 };
 
 //var serverurl = 'http://127.0.0.1:1337';
 var serverurl = 'http://' + window.location.hostname + ':' + window.location.port;
@@ -17,17 +18,10 @@ var screenscaling = 1.0;
 
 function initScreen() {
 
-	var vpw = $(window).width();
-	var vph = $(window).height();
-	$('#container').css({ 'height': Math.round(1.0 * vph).toString() + 'px' });
-	$('#container').css({ 'width': Math.round(1.0 * vpw).toString() + 'px' });
-	sw = $('#container').width();
-	sh = $('#container').height();
-
 	screenstage = new Konva.Stage({
 		container: "container",
-		width: sw,
-		height: sh
+		width: 0,
+		height: 0
 	});
 
 	screenlayer = new Konva.Layer({ name: 'screenlayer' });
@@ -40,6 +34,8 @@ function initScreen() {
 	screenstage.add(screenlayer);
 
 	showScreenIdentifier(5);
+
+	scaleScreen();
 
 }
 
@@ -129,29 +125,79 @@ function setupEvents(obj) {
 }
 
 
-function makeScreen(screenstate) {
-	// console.log("makeScreen");
-	// console.log(screenstate);
-	screenstage.clear();
-	screenlayer.destroyChildren();
+function scaleScreen() {
 
-
-	screenstate.container = 'container';
-
-	var hwratio = screenstate.screenheight / screenstate.screenwidth;
-	var vh = sh;
-	var vw = sw;
+	// Set the width/height of the stage container
+	var hwratio = screenDims.height / screenDims.width;
+	var vh = $(".page").height();
+	var vw = $(".page").width();
 	var vhwratio = vh / vw;
 	if (vhwratio > hwratio) {
 		var stw = vw;
 		var sth = Math.round(vw * hwratio);
-		screenscaling = screenstate.txscale * vw / screenstate.screenwidth;
 	} else {
 		var sth = vh;
 		var stw = Math.round(vh / hwratio);
-		screenscaling = vh / screenstate.screenheight;
-		screenscaling = screenstate.txscale * vh / screenstate.screenheight;
 	}
+
+	$('#container').height(sth);
+	$('#container').width(stw);
+	screenstage.width(stw);
+	screenstage.height(sth);
+	// txscale = project.screenwidth / stw;
+
+	var ratio = 0,
+		maxWidth = stw,
+		maxHeight = sth,
+		width = screenDims.width,
+		height = screenDims.height;
+
+	if (width > maxWidth) {
+		ratio = maxWidth / width;
+		var newWidth = maxWidth;
+		var newHeight = height * ratio;
+		screenstage.width(newWidth);
+		screenstage.height(newHeight);
+		height = height * ratio;
+		width = width * ratio;
+	}
+
+	if (height > maxHeight) {
+		ratio = maxHeight / height;
+		var newHeight = maxHeight;
+		var newWidth = width * ratio;
+		screenstage.width(newWidth);
+		screenstage.height(newHeight);
+		width = width * ratio;
+	}
+
+	var scale = {
+		x: newWidth / screenDims.width,
+		y: newHeight / screenDims.height
+	};
+
+	screenstage.scale(scale);
+	screenstage.draw();
+}
+
+
+function makeScreen(screenstate) {
+
+	// console.log("makeScreen");
+	// console.log(screenstate);
+
+	// Grab the project screen size - store in vars for use by `scaleScreen()`
+	screenDims.width = screenstate.screenwidth;
+	screenDims.height = screenstate.screenheight;
+
+	screenstage.clear();
+	screenlayer.destroyChildren();
+
+	scaleScreen();
+
+	screenstate.container = 'container';
+
+	// screenscaling = 1.0;
 
 	//console.log(screenstate);
 
@@ -338,6 +384,10 @@ $(document).ready(function () {
 	$("body").on("click", ".screen-identifier", function() {
 		closeScreenIdentifier();
 	});
+
+	window.onresize = function(){
+		scaleScreen();
+	}
 
 	if (USEIO) {
 		socket = io(serverurl);

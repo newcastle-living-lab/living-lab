@@ -1,10 +1,11 @@
 body {
-	margin: 0px;
-	padding: 0px;
+	margin: 0;
+	padding: 0;
+	background: #ccc;
 }
 
-#container {
-	position: relative;
+html, body {
+	height: 100%;
 }
 
 #message {
@@ -22,4 +23,39 @@ body {
 	color: #ffdc00;
 	transform: translate(-50%, -50%);
 	font-family: Verdana, Geneva, sans-serif;
+}
+
+.page {
+	display: block;
+	position: absolute;
+	background: #fff;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	overflow: hidden;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+.canvas-table {
+	position: relative;
+	box-sizing: border-box;
+	display: table;
+	width: 100%;
+	height: 100%;
+}
+
+.canvas-cell {
+	box-sizing: border-box;
+	display: table-cell;
+	text-align: center;
+	vertical-align: middle;
+}
+
+.screenspace {
+	box-sizing: border-box;
+	background: #fff;
+	text-align: center;
+	display: inline-block;
 }
