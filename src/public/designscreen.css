@@ -136,13 +136,34 @@ select {
 #designspace {
 	position: relative;
 	border-top: 1px solid #8888bb;
+	background-color: #444;
+	padding: 10px;
+	box-sizing: border-box;
+}
+
+.canvas-table {
+	display: table;
+	width: 100%;
+	height: 100%;
+	/*outline: 1px solid lime;*/
+}
+
+.canvas-cell {
+	display: table-cell;
+	text-align: center;
+	vertical-align: middle;
+	/*outline: 1px solid cyan;*/
 }
 
 .screenspace {
-	position: absolute;
+	/*border: 1px dotted #ccc;*/
+	background: #fff;
+	text-align: center;
+	display: inline-block;
+	/*position: absolute;
 	left: 1px;
 	top: 1px;
-	border: 1px dashed #8888bb;
+	border: 1px dashed #8888bb;*/
 }
 
 #menu {
