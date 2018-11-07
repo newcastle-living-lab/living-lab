@@ -1226,6 +1226,16 @@ function newobj(isdesign, state) {
 		obj.setAttr(propkey, propval);
 	}
 
+	// Ensure correct scaling is applied for Figures when creating them, if present
+	if (objtype == "Figure" && state.scaleSize) {
+		var scaleValue = state.scaleSize;
+		var scaledpoints = new Array();
+		for (var i = 0; i < state.points.length; i++) {
+			scaledpoints.push(Math.round(state.points[i] * scaleValue));
+		}
+		obj.points(scaledpoints);
+	}
+
 	if (isdesign) {
 		objEvents(obj);
 	}
