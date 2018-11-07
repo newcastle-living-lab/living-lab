@@ -1,6 +1,11 @@
 # Living Lab Changelog
 
 
+## v1.10.1
+
+* Fixed an issue when using/copying Figure objects so that the scaleSize is applied immediately.
+
+
 ## v1.10.0
 
 * Updated canvas so that its size is always displayed proportionally to the project's dimensions.
