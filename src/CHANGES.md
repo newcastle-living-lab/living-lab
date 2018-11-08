@@ -1,6 +1,11 @@
 # Living Lab Changelog
 
 
+## v1.10.2
+
+* Fixed view screen scaling issue when window width/height is greater than project dimensions.
+
+
 ## v1.10.1
 
 * Fixed an issue when using/copying Figure objects so that the scaleSize is applied immediately.
