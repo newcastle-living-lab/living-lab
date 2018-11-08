@@ -171,10 +171,19 @@ function scaleScreen() {
 		width = width * ratio;
 	}
 
-	var scale = {
-		x: newWidth / screenDims.width,
-		y: newHeight / screenDims.height
-	};
+	if (ratio === 0) {
+		// No scaling *down* required
+		var scale = {
+			x: stw / screenDims.width,
+			y: sth / screenDims.height
+		};
+	} else {
+		// scale down to the calculated sizes
+		var scale = {
+			x: newWidth / screenDims.width,
+			y: newHeight / screenDims.height
+		};
+	}
 
 	screenstage.scale(scale);
 	screenstage.draw();
@@ -183,7 +192,7 @@ function scaleScreen() {
 
 function makeScreen(screenstate) {
 
-	// console.log("makeScreen");
+	console.log("makeScreen");
 	// console.log(screenstate);
 
 	// Grab the project screen size - store in vars for use by `scaleScreen()`
@@ -208,17 +217,17 @@ function makeScreen(screenstate) {
 		// console.log(objstate);
 		if (objstate.type == 'Group') {
 			var obj = newgroupobj(false, false, objstate);
-			obj.x(objstate.x * screenscaling);
-			obj.y(objstate.y * screenscaling);
-			obj.scale({ x: screenscaling, y: screenscaling });
+			obj.x(objstate.x);
+			obj.y(objstate.y);
+			// obj.scale({ x: screenscaling, y: screenscaling });
 			screenlayer.add(obj);
 			setupEvents(obj);
 			//console.log('added group');
 		} else {
 			var obj = newobj(false, objstate);
-			obj.x(objstate.x * screenscaling);
-			obj.y(objstate.y * screenscaling);
-			obj.scale({ x: screenscaling, y: screenscaling });
+			obj.x(objstate.x);
+			obj.y(objstate.y);
+			// obj.scale({ x: screenscaling, y: screenscaling });
 			screenlayer.add(obj);
 			//console.log('added obj');
 
