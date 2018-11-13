@@ -7,6 +7,7 @@ var socket = null;
 var ioqueue = [];
 var screenIdTimeout = null;
 var screenDims = { width: 1000, height: 1000 };
+var isPlaying = false;
 
 //var serverurl = 'http://127.0.0.1:1337';
 var serverurl = 'http://' + window.location.hostname + ':' + window.location.port;
@@ -28,7 +29,11 @@ function initScreen() {
 
 	screenstage.on('setupdone', function () { processNextio('setupdone'); });
 	screenstage.on('startdone', function () { processNextio('startdone'); });
-	screenstage.on('playdone', function () { processNextio('playdone'); });
+
+	screenstage.on('playdone', function () {
+		isPlaying = false;
+		processNextio('playdone');
+	});
 
 	addLayerAnimation(screenlayer);
 	screenstage.add(screenlayer);
@@ -337,6 +342,7 @@ function play() {
 	/**
 	* Plays actions as cast to the screen
 	*/
+	isPlaying = true;
 	screenanimlist = screenlayer.getAttr('actionlist');
 	//console.log(screenanimlist);
 	var anim = screenlayer.getAttr('animation');
@@ -359,7 +365,7 @@ function ioUpdate(respdata) {
 	var viewcommand = JSON.parse(respdata);
 	var command = viewcommand.command;
 
-	// console.log(command);
+	console.log(command);
 	switch (command) {
 		case 'update':
 			var viewstate = viewcommand.info;
@@ -380,7 +386,7 @@ function ioUpdate(respdata) {
 }
 
 function processNextio(ev) {
-	if (ioqueue.length > 0) {
+	if (ioqueue.length > 0 && ! isPlaying) {
 		var msg = ioqueue.shift();
 		ioUpdate(msg);
 	}
