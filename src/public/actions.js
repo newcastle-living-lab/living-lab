@@ -298,6 +298,70 @@ anim.start();
 }
 }
 
+
+function goNextEvent() {
+
+	var events = [];
+	// Find the event boxes in the lower panel
+	var eventgroups = actlayer.find('.eventgroup');
+	var selectedData = null;
+
+	for (var i = 0; i < eventgroups.length; i++) {
+
+		var box = eventgroups[i],
+			boxState = box.getAttr('state'),
+			isSelected = (activeactobj != null && activeactobj == box);
+
+		if (boxState.name == "actionbox") {
+			continue;
+		}
+
+		var data = { pos: box.position(), id: box.id(), index: i, isSlected: isSelected, name: boxState.name };
+		events.push(data);
+
+		if (isSelected) {
+			selectedData = data;
+		}
+	}
+
+	// Sort events by their x position (already determined elsewhere.)
+	// The order of `eventgroups` is *not* the order they appear in.
+	events.sort(function(a, b) {
+		if (a.pos.x < b.pos.x) return -1;
+		if (a.pos.x > b.pos.x) return 1;
+		return 0;
+	});
+
+	if (events.length === 0) {
+		console.warn("Next event: no events!");
+		return;
+	}
+
+	var currentIdx = 0,
+		nextIdx = 0;
+
+	if (selectedData === null) {
+		// No current selected item, start at 0
+		selectedData = events[0];
+		currentIdx = events.indexOf(selectedData);
+		nextIdx = 0;
+	} else {
+		// Otherwise, get index of selected item and +1 to get next
+		currentIdx = events.indexOf(selectedData);
+		nextIdx = currentIdx + 1;
+	}
+
+	// Reached end? Reset to start
+	if (nextIdx === events.length) {
+		nextIdx = 0;
+	}
+
+	// Using the index of the next item, target it and fire mousedown event to "click" it.
+	var index = events[nextIdx].index;
+	eventgroups[index].fire("mousedown");
+}
+
+
 function playPEEvents(ind)
 {
 	if (ind>-1) {

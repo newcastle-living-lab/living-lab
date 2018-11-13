@@ -1,6 +1,13 @@
 # Living Lab Changelog
 
 
+## v1.11.0
+
+* Added project name to generated Playlists.
+* Added a 'Next' button to the Design screen to cycle through clicking the event boxes in the actions panel.
+* Updated screen pages so they will wait until animations are complete before starting the next.
+
+
 ## v1.10.2
 
 * Fixed view screen scaling issue when window width/height is greater than project dimensions.
