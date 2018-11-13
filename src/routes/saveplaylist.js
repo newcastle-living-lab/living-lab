@@ -25,7 +25,8 @@ exports.handler = function(req, res) {
 	//
 
 	var htmlstr = nunjucks.render('playlist_template.html', {
-		playstate: playstate
+		playstate: playstate,
+		project_name: fname,
 	});
 
 	var baseDir = fs.realpathSync(__dirname + "/../data/playlists/");
