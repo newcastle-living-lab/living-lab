@@ -1,6 +1,13 @@
 # Living Lab Changelog
 
 
+## v1.12.0
+
+* Added ordering and created-date display to list of Playlists.
+* Added ability to delete playlists.
+* Added Headway release notes widget.
+
+
 ## v1.11.0
 
 * Added project name to generated Playlists.
