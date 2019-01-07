@@ -9,7 +9,7 @@ var express = require("express"),
 	passport = require("passport"),
 	Strategy = require("passport-local").Strategy,
 	session = require("express-session"),
-	SQLiteStore = require('connect-sqlite3')(session),
+	// SQLiteStore = require('connect-sqlite3')(session),
 	cookieParser = require("cookie-parser"),
 	bodyParser = require("body-parser"),
 	init = require("./includes/init.js"),
@@ -61,7 +61,7 @@ var initServers = function() {
 
 	if (config.require_auth) {
 		app.use(session({
-			store: new SQLiteStore,
+			// store: new SQLiteStore,
 			secret: config.secret,
 			resave: false,
 			saveUninitialized: false
