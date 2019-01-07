@@ -1,5 +1,6 @@
 var qs = require("querystring"),
 	bodyParser = require("body-parser"),
+	projectHelper = require("../includes/projectHelper.js"),
 	database = require("../includes/database.js");
 
 exports.method = "post";
@@ -55,6 +56,12 @@ handlers.push(function(req, res, next) {
 				}
 
 				insid = pid;
+
+				projectHelper.createPlayerEntry({
+					name: pname,
+					id: pid
+				});
+
 				res.send(insid.toString());
 			});
 
@@ -79,6 +86,12 @@ handlers.push(function(req, res, next) {
 				db.each("SELECT last_insert_rowid() AS id FROM Projects", function(err, row) {
 					insid = row.id;
 				}, function(err, rows) {
+
+					projectHelper.createPlayerEntry({
+						name: pname,
+						id: insid
+					});
+
 					res.send(insid.toString());
 				});
 

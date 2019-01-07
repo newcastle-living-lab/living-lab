@@ -30,21 +30,25 @@ Database.prototype.getDb = function() {
 
 Database.prototype.createTables = function() {
 
-	if (this.dbExists) return;
-
 	var db = this.getDb();
 
 	db.serialize(function() {
 
-		db.run("CREATE TABLE Projects (id INTEGER PRIMARY KEY, name TEXT, createdate TEXT, lastdate TEXT, creator TEXT, json TEXT)", function(err) {
+		db.run("CREATE TABLE IF NOT EXISTS Projects (id INTEGER PRIMARY KEY, name TEXT, createdate TEXT, lastdate TEXT, creator TEXT, json TEXT)", function(err) {
 			if (err) {
 				console.error('Database Projects error', err);
 			}
 		});
 
-		db.run("CREATE TABLE Resources (id INTEGER PRIMARY KEY, name TEXT, type TEXT, jsonstate TEXT)", function(err) {
+		db.run("CREATE TABLE IF NOT EXISTS Resources (id INTEGER PRIMARY KEY, name TEXT, type TEXT, jsonstate TEXT)", function(err) {
 			if (err) {
 				console.error('Database Resources error', err);
+			}
+		});
+
+		db.run("CREATE TABLE IF NOT EXISTS `Players` (`project_id` INTEGER, `name` TEXT)", function(err) {
+			if (err) {
+				console.error('Database Players error', err);
 			}
 		});
 

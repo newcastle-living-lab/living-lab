@@ -1,0 +1,27 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<script type="text/javascript" src="/konva.js"></script>
+		<script type="text/javascript" src="/jquery-2.1.1.min.js"></script>
+		<script src="/socket.io/socket.io.js"></script>
+		<script src="/llcore.js"></script>
+		<script src="/arrows.js"></script>
+		<script src="/actions.js"></script>
+		<script src="/screen.js"></script>
+		<link rel="stylesheet" href="/screen.css">
+		<script type="text/javascript">
+		var socketmessage = "{{ viewName | safe }}";
+		window.screen_name = "{{ viewName | safe }}";
+		</script>
+	</head>
+	<body>
+		<div class="page">
+			<div class="canvas-table">
+				<div class="canvas-cell">
+					<div id="container" class="screenspace"></div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

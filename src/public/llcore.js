@@ -1131,7 +1131,7 @@ function newobj(isdesign, state) {
 					objlayer.draw();
 				}
 			}
-			imageObj.src = state.path;
+			imageObj.src = "/" + state.path;
 
 			break;
 		case 'Rect':

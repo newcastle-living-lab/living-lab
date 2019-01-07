@@ -110,11 +110,21 @@ var userHasRole = function(user, roleName) {
 }
 
 
+var slugify = function(text) {
+	return text.toString().toLowerCase()
+		.replace(/\s+/g, '-')		// Replace spaces with -
+		.replace(/[^\w\-]+/g, '')		// Remove all non-word chars
+		.replace(/\-\-+/g, '-')		// Replace multiple - with single -
+		.replace(/^-+/, '')		// Trim - from start of text
+		.replace(/-+$/, '');		// Trim - from end of text
+}
+
 
 module.exports = {
 	getIPAddress: getIPAddress,
 	copyFile: copyFile,
 	writePlayfileandImages: writePlayfileandImages,
 	makeScreen: makeScreen,
-	userHasRole: userHasRole
+	userHasRole: userHasRole,
+	slugify: slugify,
 };
