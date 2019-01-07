@@ -1,4 +1,4 @@
-var database = require("../includes/database.js");
+var projectHelper = require("../includes/projectHelper.js");
 
 exports.method = "get";
 exports.route = "/getproject/:projectId";
@@ -6,14 +6,19 @@ exports.route = "/getproject/:projectId";
 exports.handler = function(req, res) {
 
 	var projectId = req.params.projectId;
-	var db = database.getDb();
 
-	var sql = "SELECT id,name,createdate,lastdate,creator,json FROM Projects WHERE id = ?";
+	projectHelper.load(projectId, function(err, project) {
 
-	db.get(sql, [projectId], function(err, row) {
-		var proj = row;
-		proj.json = JSON.parse(row.json);
-		res.send(proj);
+		projectHelper.createPlayerEntry(project, function(_err, _data) {
+			// Don't fail on error
+		});
+
+		if (err) {
+			return res.status(500).send({ "error": err });
+		}
+
+		res.send(project);
+
 	});
 
 };
