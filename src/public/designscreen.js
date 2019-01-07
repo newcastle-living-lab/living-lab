@@ -1506,6 +1506,39 @@ function findLayerImages(objstates) {
 	return imgobjs;
 }
 
+/**
+ * Parse the startstate objects whilst looking for click events to attach to them.
+ * Click events might not be included in the startstate JSON.
+ *
+ * Look for objects in the layer children. If obj has "event" prop, store it.
+ * Look at all objs in startstate - if there is a matching obj that has event, update it.
+ *
+ */
+function populateEvents(params) {
+
+	var startstate = params.startstate,
+		objs = params.children,
+		obj;
+
+	var events = {};
+
+	for (var i = 0; i < objs.length; i++) {
+		obj = objs[i];
+		if (obj.event && obj.event.length > 0) {
+			events[ obj.id ] = obj.event;
+		}
+	}
+
+	for (var i = 0; i < startstate.length; i++) {
+		obj = startstate[i];
+		if (events && events[obj.id]) {
+			obj.event = events[obj.id];
+		}
+	}
+
+	return startstate;
+}
+
 function compileViews() {
 	var pelayerobjstates = [];  // snapshot state of objects and actions on each layer on start of each presentevent
 	var playimages = [];
@@ -1522,7 +1555,11 @@ function compileViews() {
 				alert('layer startstates are not defined');
 				return;
 			}
-			var layerobjs = JSON.parse(layerstate);
+
+			var layerobjs = populateEvents({
+				startstate: JSON.parse(layerstate),
+				children: stlayer.getAttr('state').children,
+			});
 			//if the objects are image objects we need to package the image resources as well and change the image paths
 
 			var playimgs = findLayerImages(layerobjs);
