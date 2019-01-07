@@ -38,44 +38,49 @@ function createPlayerEntry(project, cb) {
 
 	var db = database.getDb();
 
-	// Check for existing row
-	var sql = "SELECT name FROM Players WHERE project_id = $id";
-	var params = { $id: project.id };
+	db.serialize(function() {
 
-	// Slugify project name for Players entry
-	var name = helpers.slugify(project.name);
+		// Check for existing row
+		var sql = "SELECT name FROM Players WHERE project_id = $id";
+		var params = { $id: project.id };
 
-	db.each(sql, params, function (error, row) {
-		// console.log(row.name);
-	}, function(err, rows) {
+		// Slugify project name for Players entry
+		var name = helpers.slugify(project.name);
 
-		if (rows > 0) {
+		console.log("Setting project ID " + project.id + " to " + name);
 
-			sql = "UPDATE Players SET name = $name WHERE project_id = $id";
+		db.each(sql, params, function (error, row) {
+			// console.log(row.name);
+		}, function(err, rows) {
 
-			params = {
-				$name: name,
-				$projectId: project.id
-			};
+			if (rows > 0) {
 
-			db.run(sql, params, function(error) {
-				cb(error, { "project_id": project.id, "name": name });
-			});
+				sql = "UPDATE Players SET name = $name WHERE project_id = $projectId";
 
-		} else {
+				params = {
+					$name: name,
+					$projectId: project.id
+				};
 
-			sql = "INSERT INTO Players (project_id, name) VALUES ($projectId, $name)";
+				db.run(sql, params, function(error) {
+					cb(error, { "project_id": project.id, "name": name });
+				});
 
-			params = {
-				$name: name,
-				$projectId: project.id
-			};
+			} else {
 
-			db.run(sql, params, function(error) {
-				cb(error, { "project_id": project.id, "name": name });
-			});
-		}
+				sql = "INSERT INTO Players (project_id, name) VALUES ($projectId, $name)";
 
+				params = {
+					$name: name,
+					$projectId: project.id
+				};
+
+				db.run(sql, params, function(error) {
+					cb(error, { "project_id": project.id, "name": name });
+				});
+			}
+
+		});
 	});
 }
 
