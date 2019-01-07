@@ -9,7 +9,7 @@ exports.handler = function(req, res) {
 
 	projectHelper.load(projectId, function(err, project) {
 
-		projectHelper.createPlayerEntry(project, function() {
+		projectHelper.createPlayerEntry(project, function(_err, _data) {
 			// Don't fail on error
 		});
 

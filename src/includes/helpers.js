@@ -98,7 +98,8 @@ var writePlayfileandImages = function(fname, htmlstr, imglist) {
 
 var makeScreen = function(viewName) {
 	return nunjucks.render('screen_template.html', {
-		viewName: viewName
+		viewName: viewName,
+		project: null,
 	});
 }
 

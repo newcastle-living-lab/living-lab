@@ -60,6 +60,8 @@ handlers.push(function(req, res, next) {
 				projectHelper.createPlayerEntry({
 					name: pname,
 					id: pid
+				}, function(err, data) {
+					//
 				});
 
 				res.send(insid.toString());
@@ -90,6 +92,8 @@ handlers.push(function(req, res, next) {
 					projectHelper.createPlayerEntry({
 						name: pname,
 						id: insid
+					}, function(err, data) {
+						//
 					});
 
 					res.send(insid.toString());

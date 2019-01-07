@@ -44,18 +44,16 @@ function showProject(req, res, next) {
 		return next();
 	}
 
-	// return res.send("<h1>Project " + req.params.projectName);
-
-	var playerProject = projectHelper.toPlayer(req.project);
-	if (playerProject.errors.length > 0) {
-		var errstr = playerProject.errors.join("; ");
-		return res.send("<h1>Errors</h1><p>" + errstr + "</p>");
-	}
-
 	// Render the player page
 	return res.render('player/project.html', {
-		playstate: JSON.stringify(playerProject.data),
-		project: req.project
+		project: {
+			id: req.project.id,
+			name: req.project.name,
+			slug: req.params.projectName,
+			createdate: req.project.createdate,
+			lastdate: req.project.lastdate,
+			creator: req.project.creator
+		}
 	});
 
 }
@@ -66,8 +64,11 @@ function showProject(req, res, next) {
  *
  */
 function showView(req, res, next) {
+	// Make a namespaced view name player:project:view
+	var viewName = "player:" + req.params.projectName + ":" + req.params.viewName;
 	return res.render("player/screen.html", {
-		viewName: req.params.viewName
+		viewName: viewName,
+		project: req.params.projectName,
 	});
 }
 

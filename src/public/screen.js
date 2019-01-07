@@ -47,7 +47,17 @@ function initScreen() {
 
 var showScreenIdentifier = function(len) {
 	var $container = $("<div class='screen-identifier'>");
-	var $span = $("<span>").text(window.screen_name);
+
+	var screenLabel = window.screen_name;
+
+	// Check if the screen name is namespaced (player:project:view)
+	// If it is, just get the last part
+	if (window.screen_name.match(/:/)) {
+		var items = window.screen_name.split(':');
+		screenLabel = items[items.length-1];
+	}
+
+	var $span = $("<span>").text(screenLabel);
 	$span.appendTo($container);
 	$container.appendTo($("body"));
 
@@ -120,6 +130,7 @@ function setupEvents(obj) {
 	obj.on('mousedown', function() {
 		// On click: ask the parent screen (Design or Playlist) to trigger the event by ID
 		var msg = {
+			project: window.project,
 			command: 'clickEvent',
 			info: this.getAttr("event"),
 			src: this.getAttr("id")
