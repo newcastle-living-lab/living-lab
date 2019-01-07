@@ -9,6 +9,7 @@ var express = require("express"),
 	passport = require("passport"),
 	Strategy = require("passport-local").Strategy,
 	session = require("express-session"),
+	SQLiteStore = require('connect-sqlite3')(session),
 	cookieParser = require("cookie-parser"),
 	bodyParser = require("body-parser"),
 	init = require("./includes/init.js"),
@@ -59,7 +60,12 @@ var initServers = function() {
 	app.use("/playlists", express.static(path.join(__dirname, "data", "playlists")));
 
 	if (config.require_auth) {
-		app.use(session({ secret: config.secret, resave: false, saveUninitialized: false }));
+		app.use(session({
+			store: new SQLiteStore,
+			secret: config.secret,
+			resave: false,
+			saveUninitialized: false
+		}));
 		app.use(cookieParser()),
 		app.use(bodyParser.urlencoded({ extended: true, limit: 50 * 1024 * 1024 }));
 		app.use(passport.initialize());
