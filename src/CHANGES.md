@@ -1,6 +1,11 @@
 # Living Lab Changelog
 
 
+## v1.13.0
+
+* Added new 'Player' feature to view projects on their own.
+
+
 ## v1.12.0
 
 * Added ordering and created-date display to list of Playlists.
