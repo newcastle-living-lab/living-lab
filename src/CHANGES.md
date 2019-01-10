@@ -1,6 +1,47 @@
 # Living Lab Changelog
 
 
+## v1.14.0
+
+* Updated "Player" project page to inherit the global style.
+* Added documentation support for Player Project page.
+* Updated logos and their configuration.
+
+
+### Project Player documentation
+
+The player "project" page contains a placeholder to display documentation, controlled by
+the presence of specifically-named files in Markdown format.
+
+The following file locations are checked, in order:
+
+- `data/doc/(project-name).md`
+- `data/doc/living-lab.md`
+
+`(project-name)` is an example, and would be replaced by the name in the URL of the player.
+Do not include brackets in the document filename.
+
+The first file found will be displayed. If none are found, no documentation will be displayed.
+
+
+### Logos configuration
+
+The footer logos are sourced from the `config/logos.json` file. This specifies the name,
+image file, title and optional URL.
+
+By default, all logos will be shown. To customise the logos that are displayed edit
+the `config/config.json` file, adding the following key:
+
+```
+...
+"logos": ["nclacuk", "northumbria"]
+...
+```
+
+The `logos` key should be a JSON array of logo names as specified in the `logos.json` file.
+In the example, only the two logos named "nclacuk" and "northumbria" would be displayed.
+
+
 ## v1.13.0
 
 * Added new 'Player' feature to view projects on their own.

@@ -1,68 +1,57 @@
-<!DOCTYPE HTML>
-<html>
-<head>
-	<meta name="viewport" content="width=device-width, initial-scale=1" />
-	<link rel="stylesheet" href="/player.css">
-	<link rel="stylesheet" href="/assets/css/living-lab.min.css">
-	<script src="/jquery-2.1.1.min.js"></script>
-	<script src="/konva.min.js"></script>
-	<script src="/socket.io/socket.io.js"></script>
-	<script type="text/javascript">
-	project={{ project | dump | safe }};
-	</script>
-	<script src="/player.js"></script>
-</head>
-<body>
+{% set body_class = "player-project" %}
+{% set page_title = project.name %}
+{% extends "../layouts/player.html" %}
 
-	<div id="page">
+{% block content %}
 
-		<div id="functionbox">
-			<div class="title">
-				<div class="container">
-					<div class="pure-g">
-						<div class="pure-u-1">
-							<h1 class="project-name">Living Lab Player: {{ project.name }}</h1>
-						</div>
+<div class="wrapper wrapper-shaded" data-player="{{ project.slug }}" data-projectname="{{ project.name }}">
+
+	<div class="container">
+		<div class="pure-g">
+
+			{% if documentation %}
+			<div class="pure-u-1 pure-u-md-3-5">
+				<div class="box box-white">
+					<div class="box-content">
+						{{ documentation | safe }}
 					</div>
 				</div>
 			</div>
-			<div class="controls">
-				<div class="container">
-					<div class="pure-g">
-						<div class="pure-u-1">
-							<button class="pure-button size-lg"  id="startbutton" onclick="goStartEvent()"><i class="fa fa-fw fa-play"></i> Start </button>
-							<button class="pure-button size-lg"  id="prevbutton" onclick="goPrevEvent()"><i class="fa fa-fw fa-step-backward"></i> Back </button>
-							<button class="pure-button size-lg"  id="nextbutton" onclick="goNextEvent()">Next <i class="fa fa-fw fa-step-forward"></i></button>
-						</div>
+			{% endif %}
+
+			<div class="pure-u-1 pure-u-md-2-5">
+
+				<div class="box box-white">
+					<div class="box-content">
+						<h3 class="box-title">Controls</h3>
+						<button class="pure-button" data-ui="btnStart"><i class="fa fa-fw fa-play"></i> Start </button>
+						<button class="pure-button" data-ui="btnPrev"><i class="fa fa-fw fa-step-backward"></i> Back </button>
+						<button class="pure-button" data-ui="btnNext">Next <i class="fa fa-fw fa-step-forward"></i></button>
+					</div>
+				</div>
+
+				<div class="box box-white">
+					<div class="box-content">
+						<h3 class="box-title">Views</h3>
+						<nav class="pure-menu views-menu">
+							<ul class="pure-menu-list" data-ui="views">
+								<div data-ui="loading"><br><p>Loading...</p></div>
+							</ul>
+						</nav>
 					</div>
 				</div>
 			</div>
+
 		</div>
-
-		<div class="views">
-
-			<div class="container">
-				<div class="pure-g">
-					<div class="pure-u-1">
-						<h1>Views</h1>
-						<div data-ui="loading">Loading project...</div>
-						<div class="pure-g" data-ui="views">
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-
-		<div class="container">
-			<div class="pure-g">
-				<div class="pure-u-1">
-					<div id="playspace"></div>
-				</div>
-			</div>
-		</div>
-
 	</div>
 
-</body>
-<script> $( document ).ready(setup());</script>
-</html>
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+<script src="/jquery-2.1.1.min.js"></script>
+<script src="/socket.io/socket.io.js"></script>
+<script src="/player-widget.js"></script>
+{% endblock %}
+

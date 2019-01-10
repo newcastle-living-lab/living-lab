@@ -1,9 +1,47 @@
-[
-	{ "filename": "ncl-ac-uk-logo.svg", "title": "Newcastle University", "url": "http://www.ncl.ac.uk/" },
-	{ "filename": "northumbria-university-ncl.png", "title": "Northumbria University Newcastle", "url": "http://www.ncl.ac.uk/business-school/" },
-	{ "filename": "epsrc.png", "title": "EPSRC", "url": "https://www.epsrc.ac.uk/" },
-	{ "filename": "hefce.gif", "title": "HEFCE", "url": "http://www.hefce.ac.uk/" },
-	{ "filename": "enoll.png", "title": " ENoLL", "url": "http://www.openlivinglabs.eu/" },
-	{ "filename": "ersc.jpg", "title": "ERSC", "url": "http://www.esrc.ac.uk/" },
-	{ "filename": "kite_logo.png", "title": "KITE", "url": "http://www.ncl.ac.uk/kite/" }
-]
+{
+	"nclacuk": {
+		"filename": "ncl-ac-uk-logo.svg",
+		"title": "Newcastle University",
+		"url": "http://www.ncl.ac.uk/"
+	},
+	"northumbria": {
+		"filename": "northumbria-university-ncl.png",
+		"title": "Northumbria University Newcastle",
+		"url": "https://www.northumbria.ac.uk/"
+	},
+	"epsrc": {
+		"filename": "epsrc.png",
+		"title": "EPSRC",
+		"url": "https://www.epsrc.ac.uk/"
+	},
+	"hefce": {
+		"filename": "hefce.gif",
+		"title": "HEFCE",
+		"url": "http://www.hefce.ac.uk/"
+	},
+	"enoll": {
+		"filename": "enoll.png",
+		"title": " ENoLL",
+		"url": "http://www.openlivinglabs.eu/"
+	},
+	"ersc": {
+		"filename": "ersc.jpg",
+		"title": "ERSC",
+		"url": "http://www.esrc.ac.uk/"
+	},
+	"kite": {
+		"filename": "kite_logo.png",
+		"title": "KITE",
+		"url": "http://www.ncl.ac.uk/kite/"
+	},
+	"cosie": {
+		"filename": "cosie-logo.png",
+		"title": "CoSIE",
+		"url": false
+	},
+	"h2020": {
+		"filename": "h-2020.png",
+		"title": "Horizon 2020",
+		"url": false
+	}
+}

@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>{{ page_title }} [Living Lab]</title>
+	<link rel="stylesheet" href="/assets/css/living-lab.min.css">
+	<script type="text/javascript">
+	project={{ project | dump | safe }};
+	</script>
+	<link href="https://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet">
+</head>
+
+<body class="page {{ body_class }}">
+
+	<header class="page-header">
+		<div class="container">
+			<div class="pure-g">
+				<div class="pure-u-1 pure-u-md-1-2">
+					<div class="logo"><span>Living Lab Player: {{ project.name }}</span></div>
+				</div>
+			</div>
+		</div>
+	</header>
+
+	{% block content %}{% endblock %}
+
+	<footer class="page-footer">
+		<div class="container">
+			<div class="pure-g">
+				<div class="pure-u-1 pure-u-md-1-2">
+					Living Lab version <a href="/changelog">{{ app_version }}</a>.
+					<div class="headway-wrapper">
+						<div>Changes</div>
+						<div class="headway-widget"></div>
+					</div>
+				</div>
+				<div class="pure-u-1 pure-u-md-1-2">
+					<div class="footer-logos align-right">
+						<a class="footer-logo-item" href="https://www.clouddataservice.co.uk/" target="_blank">
+							<img class="pure-img footer-logo-img" src="/images/logos/cds-transparent-light-sm.png" alt="Cloud Data Service logo">
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</footer>
+
+	<footer class="logo-footer">
+		<div class="container">
+			<div class="pure-g">
+				<div class="pure-u-1">
+					<div class="footer-logos">
+						{% for logo in logos %}
+							{% if logo.url %}
+								{% set open_tag %}<a class="footer-logo-item" href="{{ logo.url }}" target="_blank" title="{{ logo.title|e }}">{% endset %}
+								{% set close_tag %}</a>{% endset %}
+							{% else %}
+								{% set open_tag %}<li class="footer-logo-item" title="{{ logo.title|e }}">{% endset %}
+								{% set close_tag %}</li>{% endset %}
+							{% endif %}
+
+							{{ open_tag|safe }}
+							<img class="pure-img footer-logo-img" src="/images/logos/{{ logo.filename }}" alt="{{ logo.title|e }} logo" title="{{ logo.title|e }}">
+							{{ close_tag|safe }}
+						{% endfor %}
+					</div>
+				</div>
+			</div>
+	</footer>
+
+	<script type="text/javascript" src="jquery-2.1.1.min.js"></script>
+	{% block scripts %}{% endblock scripts %}
+	<script>
+	var HW_config = {
+		selector: ".headway-widget",
+		account:  "yZGeVx"
+	}
+	</script>
+	<script async src="https://cdn.headwayapp.co/widget.js"></script>
+	<style>
+	.headway-wrapper {
+		display: block;
+		line-height: 32px;
+		height: 32px;
+	}
+	.headway-wrapper > div {
+		display: inline-block;
+		line-height: 32px;
+		height: 32px;
+	}
+	.headway-widget {
+		vertical-align: middle;
+	}
+	</style>
+
+</body>
+</html>
