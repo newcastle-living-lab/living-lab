@@ -3,6 +3,7 @@
 	var $document = $(document);
 
 	var $widget,
+		$views,
 		$projectName,
 		$btnStart,
 		$btnPrev,
@@ -44,6 +45,7 @@
 	function findElements() {
 
 		$widget = $("[data-player]");
+		$views = $widget.find("[data-ui='views']");
 		$projectName = $widget.find("[data-ui='projectName']");
 		$btnStart = $widget.find("[data-ui='btnStart']");
 		$btnPrev = $widget.find("[data-ui='btnPrev']");
@@ -114,29 +116,84 @@
 			var pestate = evlists[0];
 			var peviews = pestate.peviews;
 
+			for (var vi = 0; vi < peviews.length; vi++) {
+				// Create UI element for view
+				makeView(peviews[vi].viewstate);
+				// views.push(view);
+			}
+
 			for (var pei = 0; pei < evlists.length; pei++) {
 				presentEvents.push(evlists[pei]);
 			}
 		}
 
-		// Update page title
-		var screenLabel = viewName + "";
-		if (screenLabel.match(/:/)) {
-			var items = screenLabel.split(":");
-			screenLabel = items[items.length-1];
+		// Only do these on view pages:
+		if (viewName && viewName.length > 0) {
+
+			// Update window/document title
+			var screenLabel = viewName + "";
+			if (screenLabel.match(/:/)) {
+				var items = screenLabel.split(":");
+				screenLabel = items[items.length-1];
+			}
+			document.title = screenLabel + " | " + projectName + " | Living Lab";
+
+			// Update & show Widget UI
+			$projectName.text(projectName);
+			$widget.fadeIn("fast");
+
+			// Toggle widget on double-click of page
+			$("body").on("dblclick", function() {
+				$widget.toggle();
+			});
 		}
-		document.title = screenLabel + " | " + projectName + " | Living Lab";
 
-		// Widget UI
-		$projectName.text(projectName);
-		$widget.fadeIn("fast");
-
-		$("body").on("dblclick", function() {
-			$widget.toggle();
-		});
 
 	}
 
+
+	/**
+	 * Create the HTML element for each view link
+	 *
+	 */
+	function makeView(state) {
+
+		// If we don't have a views container, don't render them
+		if ($views.length != 1) {
+			return;
+		}
+
+		/*
+		Template:
+		<li class="pure-menu-item">
+			<a class="pure-menu-link" href="#" target='_blank'>
+				<span class="menu-item-icon"><i class="fa fa-lg fa-desktop"></i></span>
+				<span class="menu-item-title">view0</span>
+			</a>
+		</li>
+		*/
+
+		var $icon = $("<i class='fa fa-lg fa-desktop'></i>");
+		var $iconEl = $("<span>").addClass("menu-item-icon").html($icon);
+		var $nameEl = $("<span>").addClass("menu-item-title").text(state.name);
+
+		var $linkEl = $("<a>");
+		$linkEl.attr({
+			"href": serverurl + "/player/" + project.slug + "/" + state.name,
+			"target": "_blank",
+			"data-view": state.name,
+			"class": "pure-menu-link"
+		});
+
+		$itemEl = $("<li>").addClass("pure-menu-item");
+
+		$iconEl.appendTo($linkEl);
+		$nameEl.appendTo($linkEl);
+		$linkEl.appendTo($itemEl);
+		$itemEl.appendTo($views);
+
+		console.log("Created element for view '" + state.name + "'.");
+	}
 
 
 	function playEventIdx(idx) {
@@ -309,8 +366,6 @@
 		var viewcommand = JSON.parse(respdata);
 		var command = viewcommand.command;
 
-		console.log("viewcommand");
-		console.log(viewcommand);
 		switch (command) {
 			case "clickEvent":
 				// Parse viewName

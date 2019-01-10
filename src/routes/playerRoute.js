@@ -1,4 +1,6 @@
-var helpers = require("../includes/helpers"),
+var fs = require("fs"),
+	showdown = require('showdown'),
+	helpers = require("../includes/helpers"),
 	projectHelper = require("../includes/projectHelper");
 
 exports.method = "get";
@@ -44,8 +46,31 @@ function showProject(req, res, next) {
 		return next();
 	}
 
+	// Find documentation
+	var contentMd,
+		contentHtml = null;
+
+	var tryFiles = [
+		__dirname + "/../data/doc/" + req.params.projectName + ".md",
+		__dirname + "/../data/doc/living-lab.md"
+	];
+
+	for (var i = 0; i < tryFiles.length; i++) {
+		if (fs.existsSync(tryFiles[i])) {
+			console.log(tryFiles[i] + " exists");
+			contentMd = fs.readFileSync(tryFiles[i], "utf-8");
+			break;
+		}
+	}
+
+	if (contentMd && contentMd.length > 0) {
+		var converter = new showdown.Converter();
+		contentHtml = converter.makeHtml(contentMd);
+	}
+
 	// Render the player page
 	return res.render('player/project.html', {
+		documentation: contentHtml,
 		project: {
 			id: req.project.id,
 			name: req.project.name,
