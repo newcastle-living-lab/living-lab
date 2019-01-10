@@ -268,6 +268,14 @@ function ioUpdate(respdata) {
 				txClickEvent(viewcommand.info);
 			}
 		break;
+
+		case "newEventIdx":
+			if (viewcommand.project == project.slug) {
+				// It's us!
+				console.log("Updating local active index to " + viewcommand.newEventIdx + " from other screen " + viewcommand.view);
+				activeIdx = viewcommand.newEventIdx;
+			}
+		break;
 	}
 
 }

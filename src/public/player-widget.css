@@ -1,0 +1,27 @@
+.functionbox {
+	display: none;
+	background: #F2F0F1;
+	padding: 10px;
+	color: #444;
+	z-index: 10;
+	position: absolute;
+}
+
+.title, .controls {
+	display: inline-block;
+	padding: 0 5px;
+}
+
+.project-name {
+	font-size: 15px;
+	font-weight: normal;
+	line-height: 1;
+	display: block;
+	margin: 0;
+}
+
+
+.controls .pure-button {
+	margin-right: 1em;
+	padding: 5px;
+}

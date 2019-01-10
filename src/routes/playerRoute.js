@@ -68,7 +68,14 @@ function showView(req, res, next) {
 	var viewName = "player:" + req.params.projectName + ":" + req.params.viewName;
 	return res.render("player/screen.html", {
 		viewName: viewName,
-		project: req.params.projectName,
+		project: {
+			id: req.project.id,
+			name: req.project.name,
+			slug: req.params.projectName,
+			createdate: req.project.createdate,
+			lastdate: req.project.lastdate,
+			creator: req.project.creator
+		}
 	});
 }
 

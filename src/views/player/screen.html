@@ -2,6 +2,9 @@
 <html>
 	<head>
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="stylesheet" href="/assets/css/living-lab.min.css">
+		<link rel="stylesheet" href="/screen.css">
+		<link rel="stylesheet" href="/player-widget.css">
 		<script type="text/javascript" src="/konva.js"></script>
 		<script type="text/javascript" src="/jquery-2.1.1.min.js"></script>
 		<script src="/socket.io/socket.io.js"></script>
@@ -9,7 +12,7 @@
 		<script src="/arrows.js"></script>
 		<script src="/actions.js"></script>
 		<script src="/screen.js"></script>
-		<link rel="stylesheet" href="/screen.css">
+		<script src="/player-widget.js"></script>
 		<script type="text/javascript">
 		var socketmessage = "{{ viewName | safe }}";
 		window.screen_name = "{{ viewName | safe }}";
@@ -17,6 +20,16 @@
 		</script>
 	</head>
 	<body>
+		<div class="functionbox" data-player="{{ project.slug }}" data-view="{{ viewName | safe }}" data-projectname="{{ project.name }}">
+			<div class="title">
+				<h1 class="project-name">Living Lab Player: <span data-ui="projectName"></span></h1>
+			</div>
+			<div class="controls">
+				<button class="pure-button size-xs" data-ui="btnStart"><i class="fa fa-fw fa-play"></i> Start </button>
+				<button class="pure-button size-xs" data-ui="btnPrev"><i class="fa fa-fw fa-step-backward"></i> Back </button>
+				<button class="pure-button size-xs" data-ui="btnNext">Next <i class="fa fa-fw fa-step-forward"></i></button>
+			</div>
+		</div>
 		<div class="page">
 			<div class="canvas-table">
 				<div class="canvas-cell">

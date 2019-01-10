@@ -130,7 +130,7 @@ function setupEvents(obj) {
 	obj.on('mousedown', function() {
 		// On click: ask the parent screen (Design or Playlist) to trigger the event by ID
 		var msg = {
-			project: window.project,
+			project: (window.project ? window.project.slug : null),
 			command: 'clickEvent',
 			info: this.getAttr("event"),
 			src: this.getAttr("id")
