@@ -80,6 +80,7 @@ var initServers = function() {
 	});
 
 	app.use(function(req, res, next) {
+
 		res.locals.app_version = VERSION;
 		res.locals.user = (req.user ? req.user : null);
 		res.locals.require_auth = config.require_auth;
@@ -87,7 +88,19 @@ var initServers = function() {
 		res.locals.auto_save = config.auto_save;
 		res.locals.single_instance = config.single_instance;
 		res.locals.userHasRole = function(role) { return helpers.userHasRole(req.user, role) }
-		res.locals.logos = require("./config/logos.json");
+
+		// Logo config
+		var allLogos = require("./config/logos.json");
+		var hasList = (config.logos && config.logos.length);
+		var logos = [];
+		for (var name in allLogos) {
+			var isVisible = (hasList && config.logos.indexOf(name) !== -1) || !hasList;
+			if (isVisible) {
+				logos.push(allLogos[name]);
+			}
+		}
+		res.locals.logos = logos;
+
 		next();
 	});
 
