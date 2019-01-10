@@ -1,4 +1,5 @@
 @icon-size: 3em;
+@icon-size-sm: 45px;
 
 .tasks-menu {
 	display: block;
@@ -46,6 +47,61 @@
 		width: @icon-size;
 		height: @icon-size;
 		line-height: @icon-size;
+		text-align: center;
+		background: @red;
+		color: contrast(@red);
+		.border-radius(50%);
+	}
+}
+
+
+
+.views-menu {
+	display: block;
+
+	.pure-menu-list {
+		margin: 0;
+		padding: 0;
+		border-top: 1px solid @grey-medium;
+	}
+
+	.pure-menu-item {
+		margin: 0;
+		padding: 0;
+	}
+
+	.pure-menu-link {
+		position: relative;
+		margin: 0;
+		padding: @padding/2;
+		border-bottom: 1px solid @grey-medium;
+		padding-left: @icon-size-sm * 1.5;
+		text-decoration: none;
+		color: inherit;
+	}
+
+	.menu-item-title,
+	.menu-item-hint {
+		display: inline-block;
+	}
+
+	.menu-item-title {
+		font-size: @size-md;
+		font-weight: @weight-bold;
+		line-height: @icon-size-sm;
+		max-height: @icon-size-sm;
+		padding: 0;
+		margin: 0;
+	}
+
+	.menu-item-icon {
+		position: absolute;
+		display: block;
+		left: @padding/2;
+		top: @padding/2;
+		width: @icon-size-sm;
+		height: @icon-size-sm;
+		line-height: @icon-size-sm;
 		text-align: center;
 		background: @red;
 		color: contrast(@red);
