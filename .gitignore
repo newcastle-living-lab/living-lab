@@ -3,6 +3,7 @@ src/data/*/*
 !src/data/*/.gitkeep
 src/data/*.*
 !src/data/.gitkeep
+!src/data/doc/living-lab.md
 src/node_modules
 src/config/config.json
 src/config/users.json

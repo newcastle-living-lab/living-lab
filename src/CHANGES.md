@@ -1,6 +1,11 @@
 # Living Lab Changelog
 
 
+## v1.14.1
+
+* Added default global documentation for Player pages.
+
+
 ## v1.14.0
 
 * Updated "Player" project page to inherit the global style.
