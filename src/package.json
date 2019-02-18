@@ -4,6 +4,22 @@
   "private": true,
   "description": "Living Lab project",
   "main": "server.js",
+  "bin": "server.js",
+  "pkg": {
+    "scripts": [
+    	"routes/*.js",
+    	"includes/*.js"
+    ],
+    "assets": [
+    	"views/**/*",
+    	"public/**/*",
+    	"node_modules/sqlite3/lib/binding/**/*"
+    ]
+  },
+  "scripts": {
+  	"pkg-all": "pkg . --out-path ../pkg/",
+  	"pkg-win": "pkg . --targets win --out-path ../pkg/"
+  },
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.18.2",

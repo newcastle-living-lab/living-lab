@@ -56,8 +56,8 @@ var initServers = function() {
 
 	app = express();
 	app.use(express.static(path.join(__dirname, "public")));
-	app.use("/resources", express.static(path.join(__dirname, "data", "resources")));
-	app.use("/playlists", express.static(path.join(__dirname, "data", "playlists")));
+	app.use("/resources", express.static(path.join(process.cwd(), "data", "resources")));
+	app.use("/playlists", express.static(path.join(process.cwd(), "data", "playlists")));
 
 	if (config.require_auth) {
 		app.use(session({
@@ -72,7 +72,7 @@ var initServers = function() {
 		app.use(passport.session());
 	}
 
-	var nunjucksEnv = nunjucks.configure('views', {
+	var nunjucksEnv = nunjucks.configure(path.join(__dirname, 'views'), {
 		// watch: true,
 		noCache: true,
 		autoescape: true,
@@ -90,7 +90,7 @@ var initServers = function() {
 		res.locals.userHasRole = function(role) { return helpers.userHasRole(req.user, role) }
 
 		// Logo config
-		var allLogos = require("./config/logos.json");
+		var allLogos = require(path.join(process.cwd(), "config", "logos.json"));
 		var hasList = (config.logos && config.logos.length);
 		var logos = [];
 		for (var name in allLogos) {

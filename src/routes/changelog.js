@@ -1,4 +1,5 @@
 var fs = require("fs"),
+	path = require("path"),
 	showdown = require('showdown');
 
 exports.method = "get";
@@ -6,7 +7,7 @@ exports.route = "/changelog";
 
 exports.handler = function(req, res) {
 
-	var changesFile = __dirname + "/../CHANGES.md";
+	var changesFile = path.join(__dirname, "..", "CHANGES.md");
 
 	fs.readFile(changesFile, "utf-8", function(err, data) {
 

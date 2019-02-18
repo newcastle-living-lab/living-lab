@@ -60,8 +60,8 @@ var copyFile = function(source, target) {
 
 var writePlayfileandImages = function(fname, htmlstr, imglist) {
 
-	var playlistDir = fs.realpathSync(__dirname + "/../data/playlists/" + fname);
-	var resourcesDir = fs.realpathSync(__dirname + "/../data/resources/");
+	var playlistDir = fs.realpathSync(path.join(process.cwd(), "data", "playlists", fname));
+	var resourcesDir = fs.realpathSync(path.join(process.cwd(), "data", "resources"));
 
 	fs.writeFile(path.join(playlistDir, fname + ".html"), htmlstr,  function(err) {
 		if (err) {

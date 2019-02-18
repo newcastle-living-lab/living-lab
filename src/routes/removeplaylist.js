@@ -19,7 +19,7 @@ exports.handler = function(req, res) {
 	}
 
 	try {
-		var path = fs.realpathSync(__dirname + "/../data/playlists/" + playlistName);
+		var path = fs.realpathSync(path.join(process.cwd(), "data", "playlists", playlistName));
 	} catch (e) {
 		res.send({ "error": "Playlist folder does not exist.", "deleted": false });
 		return;

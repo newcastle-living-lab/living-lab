@@ -1,4 +1,6 @@
-var config = require("../config/config.json");
+var path = require("path");
+
+var config = require(path.join(process.cwd(), "config", "config.json"));
 var useAuth = (config && config.require_auth);
 
 /**

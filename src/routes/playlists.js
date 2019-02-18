@@ -1,4 +1,5 @@
 var fs = require("fs"),
+	path = require("path"),
 	auth = require("../includes/auth.js"),
 	dateFormat = require("dateformat");
 
@@ -7,7 +8,7 @@ exports.route = "/playlist";
 
 exports.handler = [auth.ensureLoggedIn(), auth.ensureRole("view"), function(req, res) {
 
-	var baseDir = fs.realpathSync(__dirname + "/../data/playlists/");
+	var baseDir = fs.realpathSync(path.join(process.cwd(), "data", "playlists"));
 
 	var files = fs.readdirSync(baseDir)
 		.map(function(v) {
