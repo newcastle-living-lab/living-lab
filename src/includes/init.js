@@ -1,15 +1,16 @@
 var fs = require("fs"),
+	path = require("path"),
 	database = require("./database.js");
 
 
 var makeDirs = function() {
 
-	var baseDir = fs.realpathSync(__dirname + "/../") + "/";
+	var baseDir = process.cwd();
 
 	var dirs = [
-		baseDir + "data/",
-		baseDir + "data/resources/",
-		baseDir + "data/playlists/",
+		path.join(baseDir, "data"),
+		path.join(baseDir, "data", "resources"),
+		path.join(baseDir, "data", "playlists"),
 	];
 
 	for (var d in dirs) {

@@ -29,7 +29,7 @@ exports.handler = function(req, res) {
 		project_name: fname,
 	});
 
-	var baseDir = fs.realpathSync(__dirname + "/../data/playlists/");
+	var baseDir = fs.realpathSync(path.join(process.cwd(), "data", "playlists"));
 
 	fs.mkdir(path.join(baseDir, fname), function(err) {
 		if (err) {

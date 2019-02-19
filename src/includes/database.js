@@ -1,27 +1,32 @@
 var fs = require("fs"),
-	sqlite3 = require("sqlite3").verbose(),
-	config = require("../config/config.json");
+	path = require("path"),
+	sqlite3 = require("sqlite3").verbose();
 
-
-var Database = function(params) {
-
-	var baseDir = fs.realpathSync(__dirname + "/../") + "/";
-
-	this.dbPath = baseDir + params.db_path;
-	console.log("Database path: " + this.dbPath);
+var Database = function() {
 }
 
 
 Database.prototype.init = function() {
-	this.dbExists = fs.existsSync(this.dbPath);
+	this.dbPath = null;
+	this.dbExists = fs.existsSync(this.getPath());
 	this.db = null;
 	this.createTables();
 }
 
 
+Database.prototype.getPath = function() {
+	if (this.dbPath == null) {
+		var config = require(path.join(process.cwd(), "config", "config.json"));
+		this.dbPath = path.join(process.cwd(), config.db_path);
+		console.log("Database path: " + this.dbPath);
+	}
+	return this.dbPath;
+}
+
+
 Database.prototype.getDb = function() {
 	if (this.db === null || ! this.db.open) {
-		this.db = new sqlite3.Database(this.dbPath);
+		this.db = new sqlite3.Database(this.getPath());
 		console.log("Database opened");
 	}
 	return this.db;
@@ -66,24 +71,4 @@ Database.prototype.closeDb = function() {
 }
 
 
-module.exports = (new Database({ db_path: config.db_path }));
-
-/*
-var dbfile = "livlab.sqlite";
-var dbexists = fs.existsSync(dbfile);
-var db = new sqlite3.Database(dbfile);  //create or open if exists
-
-db.serialize(function() {
-	console.log(dbexists);
-	if ( ! dbexists) {
-		db.run("CREATE TABLE Projects (id INTEGER PRIMARY KEY, name TEXT, createdate TEXT, lastdate TEXT, creator TEXT, json TEXT)", function(err) {
-			console.log('Projects',err);
-		});
-		db.run("CREATE TABLE Resources (id INTEGER PRIMARY KEY, name TEXT, type TEXT, jsonstate TEXT)", function(err) {
-			console.log('Resources',err);
-		});//library table
-	}
-});
-
-db.close();
-*/
+module.exports = (new Database());

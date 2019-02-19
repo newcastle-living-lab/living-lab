@@ -1,9 +1,10 @@
 var fs = require("fs"),
+	path = require("path"),
 	bcrypt = require("bcryptjs");
 
 
 var Users = function(params) {
-	this.usersFile = fs.realpathSync(__dirname + "/../config/users.json");
+	this.usersFile = fs.realpathSync(path.join(process.cwd(), "config", "users.json"));
 }
 
 

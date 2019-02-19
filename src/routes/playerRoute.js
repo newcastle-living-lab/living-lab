@@ -1,4 +1,5 @@
 var fs = require("fs"),
+	path = require("path"),
 	showdown = require('showdown'),
 	helpers = require("../includes/helpers"),
 	projectHelper = require("../includes/projectHelper");
@@ -51,8 +52,8 @@ function showProject(req, res, next) {
 		contentHtml = null;
 
 	var tryFiles = [
-		__dirname + "/../data/doc/" + req.params.projectName + ".md",
-		__dirname + "/../data/doc/living-lab.md"
+		path.join(process.cwd(), "data", "doc", req.params.projectName + ".md"),
+		path.join(process.cwd(), "data", "doc", "living-lab.md")
 	];
 
 	for (var i = 0; i < tryFiles.length; i++) {
