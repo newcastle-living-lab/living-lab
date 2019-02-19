@@ -1,6 +1,35 @@
 # Living Lab Changelog
 
 
+## v1.15.0
+
+* Added support for [pkg](https://www.npmjs.com/package/pkg).
+
+### Pkg support
+
+The Living Lab project can now be built as a standalone runtime using `pkg`.
+
+To build Living Lab, run `npm run pkg-win` or `npm run pkg-mac` from the `src` directory.
+The runtimes will be built into the respective platform directories in `../pkg/`.
+
+When installed with the Living Lab project, the sqlite3 module installs a driver for the
+given platform at install-time. This can't be bundled in the `pkg` process and must be
+copied manually to the pkg platform directory.
+
+The file will be here: `src\node_modules\sqlite3\lib\binding\{platform}\node_sqlite3.node`
+
+When the standalone Living Lab is ran, it will use `config` and `data` folders that are in
+the same level as the executable. For example:
+
+```
+|-- pkg
+    |-- data
+    |-- config
+    |-- living-lab.exe
+    |-- node_sqlite3.node
+```
+
+
 ## v1.14.1
 
 * Added default global documentation for Player pages.
