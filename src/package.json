@@ -12,13 +12,12 @@
     ],
     "assets": [
     	"views/**/*",
-    	"public/**/*",
-    	"node_modules/sqlite3/lib/binding/**/*"
+    	"public/**/*"
     ]
   },
   "scripts": {
-  	"pkg-all": "pkg . --out-path ../pkg/",
-  	"pkg-win": "pkg . --targets win --out-path ../pkg/"
+  	"pkg-mac": "pkg . --targets macos --out-path ../pkg/macos/",
+  	"pkg-win": "pkg . --targets win --out-path ../pkg/win/"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
