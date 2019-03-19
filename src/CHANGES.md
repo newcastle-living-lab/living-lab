@@ -1,6 +1,12 @@
 # Living Lab Changelog
 
 
+## v1.16.0
+
+* Added internal event logging functionality. See `events` table in the SQLite database.
+* Fixed issue with removing playlists.
+
+
 ## v1.15.0
 
 * Added support for [pkg](https://www.npmjs.com/package/pkg).
