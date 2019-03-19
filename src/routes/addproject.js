@@ -1,7 +1,9 @@
 var qs = require("querystring"),
 	bodyParser = require("body-parser"),
 	projectHelper = require("../includes/projectHelper.js"),
-	database = require("../includes/database.js");
+	database = require("../includes/database.js"),
+	eventLog = require("../includes/event-log"),
+	eventType = require("../includes/event-types");
 
 exports.method = "post";
 exports.route = "/addproject";
@@ -64,6 +66,12 @@ handlers.push(function(req, res, next) {
 					//
 				});
 
+				eventLog.log({
+					"type": eventType.UPDATE_PROJECT,
+					"req": req,
+					"data": { project_id: pid, project_name: pname }
+				});
+
 				res.send(insid.toString());
 			});
 
@@ -94,6 +102,12 @@ handlers.push(function(req, res, next) {
 						id: insid
 					}, function(err, data) {
 						//
+					});
+
+					eventLog.log({
+						"type": eventType.ADD_PROJECT,
+						"req": req,
+						"data": { project_id: insid, project_name: pname }
 					});
 
 					res.send(insid.toString());

@@ -4,7 +4,9 @@ var url = require("url"),
 	path = require("path"),
 	nunjucks = require("nunjucks"),
 	database = require("../includes/database.js"),
-	helpers = require("../includes/helpers");
+	helpers = require("../includes/helpers"),
+	eventLog = require("../includes/event-log"),
+	eventType = require("../includes/event-types");
 
 exports.method = "post";
 exports.route = "/saveplaylist";
@@ -36,12 +38,24 @@ exports.handler = function(req, res) {
 			if (err.code == 'EEXIST') {
 				// ignore the error if the folder already exists
 				helpers.writePlayfileandImages(fname,htmlstr,imglist);
+
+				eventLog.log({
+					"type": eventType.SAVE_PLAYLIST,
+					"req": req,
+					"data": { name: fname }
+				});
 			} else {
 				console.log(err); // something else went wrong
 			}
 		} else {
 			// successfully created folder
 			helpers.writePlayfileandImages(fname,htmlstr,imglist);
+
+			eventLog.log({
+				"type": eventType.SAVE_PLAYLIST,
+				"req": req,
+				"data": { name: fname }
+			});
 		}
 	});
 
