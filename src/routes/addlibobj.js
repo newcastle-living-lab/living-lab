@@ -1,5 +1,7 @@
 var url = require("url"),
-	database = require("../includes/database.js");
+	database = require("../includes/database.js"),
+	eventLog = require("../includes/event-log"),
+	eventType = require("../includes/event-types");
 
 exports.method = "get";
 exports.route = "/addlibobj";
@@ -22,6 +24,13 @@ exports.handler = function(req, res) {
 
 	db.run(sql, params, function (error) {
 		// db.close();
+
+		eventLog.log({
+			"type": eventType.ADD_RESOURCE,
+			"req": req,
+			"data": { name: rname, type: rtype }
+		});
+
 		res.end();
 	});
 
