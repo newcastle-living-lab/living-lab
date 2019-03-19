@@ -1,4 +1,6 @@
-var projectHelper = require("../includes/projectHelper.js");
+var projectHelper = require("../includes/projectHelper.js"),
+	eventLog = require("../includes/event-log"),
+	eventType = require("../includes/event-types");
 
 exports.method = "get";
 exports.route = "/getproject/:projectId";
@@ -16,6 +18,12 @@ exports.handler = function(req, res) {
 		if (err) {
 			return res.status(500).send({ "error": err });
 		}
+
+		eventLog.log({
+			"type": eventType.OPEN_PROJECT,
+			"req": req,
+			"data": { project_id: projectId, project_name: project.name }
+		});
 
 		res.send(project);
 

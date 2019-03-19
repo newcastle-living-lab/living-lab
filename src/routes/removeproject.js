@@ -1,5 +1,7 @@
 var url = require("url"),
-	database = require("../includes/database.js");
+	database = require("../includes/database.js"),
+	eventLog = require("../includes/event-log"),
+	eventType = require("../includes/event-types");
 
 exports.method = "get";
 exports.route = "/removeproject";
@@ -13,6 +15,11 @@ exports.handler = function (req, res) {
 	db.run(sql, [pid], function (error) {
 		console.log(error);
 		console.log('Deleted project ' + pid);
+		eventLog.log({
+			"type": eventType.DELETE_PROJECT,
+			"req": req,
+			"data": { project_id: pid }
+		});
 		// db.close();
 		res.end();
 	});
