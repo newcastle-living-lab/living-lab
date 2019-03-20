@@ -1,6 +1,11 @@
 # Living Lab Changelog
 
 
+## v1.16.1
+
+* Fixed issues with auth, sessions, events when `require_auth` config is false.
+
+
 ## v1.16.0
 
 * Added internal event logging functionality. See `events` table in the SQLite database.

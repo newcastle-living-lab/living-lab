@@ -1,23 +1,23 @@
 {
   "name": "living-lab",
-  "version": "1.16.0",
+  "version": "1.16.1",
   "private": true,
   "description": "Living Lab project",
   "main": "server.js",
   "bin": "server.js",
   "pkg": {
     "scripts": [
-    	"routes/*.js",
-    	"includes/*.js"
+      "routes/*.js",
+      "includes/*.js"
     ],
     "assets": [
-    	"views/**/*",
-    	"public/**/*"
+      "views/**/*",
+      "public/**/*"
     ]
   },
   "scripts": {
-  	"pkg-mac": "pkg . --targets macos --out-path ../pkg/macos/",
-  	"pkg-win": "pkg . --targets win --out-path ../pkg/win/"
+    "pkg-mac": "pkg . --targets macos --out-path ../pkg/macos/",
+    "pkg-win": "pkg . --targets win --out-path ../pkg/win/"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",

@@ -6,7 +6,7 @@ exports.route = "/";
 var handlers = [];
 
 handlers.push(function(req, res, next) {
-	if (req.session.username) {
+	if (req.session && req.session.username) {
 		delete req.session.username;
 	}
 	next();

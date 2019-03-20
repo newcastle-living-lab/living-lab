@@ -12,6 +12,8 @@ function Eventlog() {};
 
 Eventlog.prototype.init = function() {
 	this.db = database.getDb();
+	var config = require(path.join(process.cwd(), "config", "config.json"));
+	this.require_auth = config.require_auth;
 }
 
 
@@ -21,12 +23,17 @@ Eventlog.prototype.log = function(input) {
 		this.init();
 	}
 
+
 	var ip = (input.req.headers['x-forwarded-for'] || '').split(',')[0] || input.req.connection.remoteAddress;
 	var browser = input.req.headers['user-agent'];
 
-	var user = input.req.user.username;
-	if (input.user) {
-		user = input.user.username;
+	var user = null;
+
+	if (this.require_auth) {
+		var user = input.req.user.username;
+		if (input.user) {
+			user = input.user.username;
+		}
 	}
 
 	var data = JSON.stringify(input.data ? input.data : {});
