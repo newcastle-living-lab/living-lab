@@ -251,6 +251,15 @@ select {
 	font-size: 12px;
 }
 
+.menubutton-link,
+a.menubutton-link {
+	color: #003965;
+	height: 30px;
+	line-height: 10px;
+	width: 60px;
+	font-size: 12px;
+}
+
 .actionmenubutton {
 	height: 30px;
 	line-height: 10px;
@@ -377,3 +386,98 @@ select {
      .tab.active {
          display:block;
      }
+
+
+
+.toggle-check {
+
+}
+
+.toggle-content {
+	display: none;
+}
+.toggle-check:checked ~ .toggle-content {
+	display: block;
+}
+
+.toggle-check:checked ~ .modal {
+	display: flex;
+    opacity: 1;
+    z-index: 400;
+}
+.toggle-check:checked ~ .modal.active .modal-overlay {
+background: rgba(247, 248, 249, 0.75);
+      bottom: 0;
+      cursor: default;
+      display: block;
+      left: 0;
+      position: absolute;
+      right: 0;
+      top: 0;
+}
+
+.modal .layer-data {
+	width: 100%;
+	height: 150px;
+}
+
+
+.modal {
+  align-items: center;
+  bottom: 0;
+  display: none;
+  justify-content: center;
+  left: 0;
+  opacity: 0;
+  overflow: hidden;
+  padding: 1rem;
+  position: fixed;
+  right: 0;
+  top: 0; }
+  .modal:target, .modal.active {
+    display: flex;
+    opacity: 1;
+    z-index: 400; }
+    .modal:target .modal-overlay, .modal.active .modal-overlay {
+      background: rgba(247, 248, 249, 0.75);
+      bottom: 0;
+      cursor: default;
+      display: block;
+      left: 0;
+      position: absolute;
+      right: 0;
+      top: 0; }
+    .modal:target .modal-container, .modal.active .modal-container {
+      -webkit-animation: slide-down .2s ease 1;
+              animation: slide-down .2s ease 1;
+      z-index: 1; }
+  .modal.modal-sm .modal-container {
+    max-width: 320px;
+    padding: 0 0.4rem; }
+  .modal.modal-lg .modal-overlay {
+    background: #fff; }
+  .modal.modal-lg .modal-container {
+    box-shadow: none;
+    max-width: 960px; }
+
+.modal-container {
+  box-shadow: 0 0.2rem 0.5rem rgba(48, 55, 66, 0.3);
+  background: #fff;
+  border-radius: 0.1rem;
+  display: flex;
+  flex-direction: column;
+  max-height: 75vh;
+  max-width: 640px;
+  padding: 0 0.8rem;
+  width: 100%; }
+  .modal-container.modal-fullheight {
+    max-height: 100vh; }
+  .modal-container .modal-header {
+    color: #303742;
+    padding: 0.8rem; }
+  .modal-container .modal-body {
+    overflow-y: auto;
+    padding: 0.8rem;
+    position: relative; }
+  .modal-container .modal-footer {
+    padding: 0.8rem; }

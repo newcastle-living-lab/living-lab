@@ -553,7 +553,10 @@ function createLayer(layerstate) {
 	* Creates a new layer on the active stage/view
 	*/
 	if (layer != null) { layer.clear(); }
-	if (layerstate.id == 'none') { layerstate.id = UniqueId(); }
+	if (layerstate.id == 'none') {
+		layerstate.id = UniqueId();
+		console.log("generating new layer id " + layerstate.id);
+	}
 	var newlayer = new Konva.Layer({ name: layerstate.name, id: layerstate.id });
 	newlayer.setAttr('state', layerstate);
 	stage.add(newlayer);
@@ -624,6 +627,106 @@ function newProject() {
 }
 
 
+/**
+ * Given source data about a layer with its state + children, introduce it into the design.
+ *
+ */
+function populateLayer(params) {
+
+	var projectId = params.projectId || null,
+		layerstate = params.layerstate || {},
+		resetIds = params.resetIds || false,
+		name = params.name || null;
+
+	var idLookup = {};
+
+	if (name && name.length > 0) {
+		layerstate.name = name;
+	}
+
+	if (resetIds) {
+		var oldId = layerstate.id + "";
+		idLookup[oldId] = null;
+		layerstate.id = 'none';
+	}
+
+	var newlayer = createLayer(layerstate);
+
+	if (resetIds) {
+		idLookup[oldId] = newlayer.id();
+	}
+
+	stage.add(newlayer);
+	layer = newlayer;
+
+	nodelist.push({ parentid: projectId, nodeid: newlayer.id(), nodestate: layerstate });
+
+	var objects = layerstate.children;
+	for (var k = 0; k < objects.length; k++) {
+
+		var objstate = objects[k];
+
+		if (resetIds) {
+			var oldId = objstate.id + "";
+			idLookup[oldId] = null;
+			objstate.id = 'none';
+		}
+
+		if (objstate.type == 'Group') {
+			var obj = newgroupobj(true, false, objstate);
+			layer.add(obj);
+		} else {
+			var obj = newobj(true, objstate);
+			layer.add(obj);
+		}
+
+		if (resetIds) {
+			idLookup[oldId] = obj.id();
+		}
+
+		layer.draw();
+		nodelist.push({ parentid: newlayer.id(), nodeid: obj.id(), nodestate: objstate });
+	}
+
+	//add actions for the object
+	actlayer = layer.getAttr('actionlayer');
+	var eventlists = layerstate.eventlists;
+	for (var m = 0; m < eventlists.length; m++) {
+		var eventliststate = eventlists[m];
+		eventliststate.id = UniqueId();
+		var evobj = makeEventList(eventliststate);
+		actlayer.add(evobj);
+		// console.log(evobj);
+		if (evobj.getAttr('state').name == 'actionbox') {
+			actlayer.setAttr('actionbox', evobj);
+		}
+		for (var ai = 0; ai < eventliststate.actions.length; ai++) {
+			var actstate = eventliststate.actions[ai];
+			var actobj = actionobj(actstate, evobj);
+		}
+	}
+
+	if (resetIds) {
+		var newstartstate = layerstate.startstate + "";
+
+		$.each(idLookup, function(k, v) {
+			var regex = new RegExp(k, "g");
+			newstartstate = newstartstate.replace(regex, v);
+		});
+
+		var layerState = newlayer.getAttr('state');
+		layerState.startstate = newstartstate;
+		newlayer.setAttr('state', layerState);
+	}
+
+	return {
+		layer: newlayer,
+		id: newlayer.id(),
+		state: newlayer.getAttr('state'),
+	};
+}
+
+
 function populateProject(proj) {
 	/**
 	* Populate the project with objects according to its projectstate
@@ -631,44 +734,10 @@ function populateProject(proj) {
 	*/
 	var layers = proj.layers;
 	for (var j = 0; j < layers.length; j++) {
-		var layerstate = layers[j];
-		var newlayer = createLayer(layerstate);
-		stage.add(newlayer);
-		layer = newlayer;
-		nodelist.push({ parentid: proj.id, nodeid: newlayer.id(), nodestate: layerstate });
-		var objects = layerstate.children;
-		for (var k = 0; k < objects.length; k++) {
-			var objstate = objects[k];
-			if (objstate.type == 'Group') {
-				var obj = newgroupobj(true, false, objstate);
-				layer.add(obj);
-			}
-			else {
-				var obj = newobj(true, objstate);
-				layer.add(obj);
-			}
-			layer.draw();
-			nodelist.push({ parentid: newlayer.id(), nodeid: obj.id(), nodestate: objstate });
-
-		}
-		//add actions for the object
-		actlayer = layer.getAttr('actionlayer');
-		var eventlists = layerstate.eventlists;
-		for (var m = 0; m < eventlists.length; m++) {
-			var eventliststate = eventlists[m];
-			var evobj = makeEventList(eventliststate);
-			actlayer.add(evobj);
-			//console.log(evobj);
-			if (evobj.getAttr('state').name == 'actionbox') {
-				actlayer.setAttr('actionbox', evobj);
-			}
-			for (var ai = 0; ai < eventliststate.actions.length; ai++) {
-				var actstate = eventliststate.actions[ai];
-				var actobj = actionobj(actstate, evobj);
-			}
-
-		}
-
+		populateLayer({
+			projectId: proj.id,
+			layerstate: layers[j],
+		});
 	}
 	//info to generate presentscreen views and presentevents
 	eventliststates = [];
@@ -815,6 +884,51 @@ function packageProject() {
 
 
 	return projstate;
+}
+
+
+function packageLayer(vlayer) {
+
+	var layerstate = vlayer.getAttr('state');
+	var lchildren = vlayer.getChildren().toArray();
+
+	var objstatearr = [];
+	for (var lch = 0; lch < lchildren.length; lch++) {
+		var lchild = lchildren[lch];
+		if (lchild.name() != 'Selector') {  //get rid of selector before saving
+			var childstate = lchild.getAttr('state');
+			objstatearr.push(childstate);
+		}
+	}
+	layerstate.children = objstatearr;
+
+	var actionlayer = vlayer.getAttr('actionlayer');
+	var layereventlists = actionlayer.find('.eventgroup');
+	var eventliststatearr = [];
+	for (var evi = 0; evi < layereventlists.length; evi++) {
+		var evlistactions = layereventlists[evi].find('.action');
+		actionstatearr = [];
+		for (var ai = 0; ai < evlistactions.length; ai++) {
+			var actstate = evlistactions[ai].getAttr('state');
+			actionstatearr.push(actstate);
+		}
+		var evstate = layereventlists[evi].getAttr('state');
+		evstate.actions = actionstatearr;
+		eventliststatearr.push(evstate);
+
+	}
+
+	layerstate.eventlists = eventliststatearr;
+
+	console.log(layerstate);
+	console.log(eventliststates);
+
+	return layerstate;
+}
+
+
+function packagePresentEvents(layerId) {
+	$.map(present)
 }
 
 
@@ -1008,6 +1122,123 @@ function deleteLayer() {
 		}
 	}
 
+}
+
+function duplicateLayer() {
+
+	if (activeobject == null || selectednode.type != 'Layer') {
+		return;
+	}
+
+	var layerData = JSON.stringify(packageLayer(layer));
+	// console.log(layerData);
+	importLayer(JSON.parse(layerData));
+	return;
+}
+
+
+function showImportLayer() {
+	location.hash = "#modal_layer_import";
+	$("#modal_layer_import").find(".layer-data").focus();
+}
+
+function showExportLayer() {
+	if (layer == null) {
+		alert("Please select a layer.");
+		return;
+	}
+
+	location.hash = "#modal_layer_export";
+	var layerData = JSON.stringify(packageLayer(layer));
+	layerData = btoa(layerData);
+	$("#modal_layer_export").find(".layer-data").val(layerData).focus().select();
+}
+
+function uiHandleImport() {
+	var $textarea = $("#modal_layer_import").find("textarea");
+	var layerData = $textarea.val();
+	if (layerData.length === 0) {
+		alert("No data to import.");
+		return;
+	}
+
+	layerData = atob(layerData);
+
+	try {
+		var parsed = JSON.parse(layerData);
+	} catch (e) {
+		alert("There was an error in the pasted data: " + e);
+		return;
+	}
+
+	importLayer(parsed);
+	$textarea.val("");
+	location.hash = "#";
+}
+
+function uiHandleExportCopy() {
+	$("#modal_layer_export").find(".layer-data").focus().select();
+	document.execCommand('copy');
+}
+
+function exportLayer() {
+
+	if (activeobject == null || selectednode.type != 'Layer') {
+		return;
+	}
+
+	var layerData = JSON.stringify(packageLayer(layer));
+
+	$("<textarea>").val(layerData).appendTo($("body"));
+
+}
+
+
+function generateLayerName(layerData) {
+	var name = layerData.name;
+	var childlayers = stage.getLayers().toArray();
+	var nameindex = 1;
+	var nameused = true;
+	while (nameused == true) {
+		nameused = false;
+		for (var i = 0; i < childlayers.length; i++) {
+			child = childlayers[i];
+			if (child.name() == name + nameindex.toString()) { nameused = true; }
+		}
+		if (nameused == true) { nameindex++; }
+
+	}
+	var layername = name + nameindex.toString();
+	return layername;
+}
+
+
+function importLayer(layerData) {
+
+	openedproject = true;
+
+	listcounter = nodelist.length+1;
+
+	var res = populateLayer({
+		projectId: project.id,
+		layerstate: layerData,
+		resetIds: true,
+		name: generateLayerName(layerData),
+	});
+
+	if (objSelector == null) {
+		objSelector = new objectSelector();
+	} else {
+		clearActiveObject();
+	}
+
+	// console.log(res);
+	// console.log(nodelist);
+
+	res.layer.add(objSelector.objSelGroup);
+
+	addTreeNode(project.id, res.layer.id(), res.state);
+	txLayers();
 }
 
 function makeObjectListOptions() {

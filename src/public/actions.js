@@ -82,17 +82,26 @@ function makeActionTypeOptions(obj) {
 	var htmlstr = '';
 	if (obj != null) {
 		var objtype = obj.getAttr('state').type;
-		var acttypekeys = Object.keys(actiontypes);
-		for (var i=0;i<acttypekeys.length;i++) {
-			var acttype = acttypekeys[i];
-			if (acttype != 'arrowflow') {
-				htmlstr = htmlstr + '<option value="'+acttype+'">'+acttype+'</option>';
-			}
-			else {
-				if (objtype == 'CurvedArrow') {
+
+		if (objtype == "Audio") {
+
+			htmlstr = htmlstr + '<option value="audio_play">play</option>';
+			htmlstr = htmlstr + '<option value="audio_stop">stop</option>';
+
+		} else {
+
+			var acttypekeys = Object.keys(actiontypes);
+			for (var i=0;i<acttypekeys.length;i++) {
+				var acttype = acttypekeys[i];
+				if (acttype != 'arrowflow') {
 					htmlstr = htmlstr + '<option value="'+acttype+'">'+acttype+'</option>';
+				} else {
+					if (objtype == 'CurvedArrow') {
+						htmlstr = htmlstr + '<option value="'+acttype+'">'+acttype+'</option>';
+					}
 				}
 			}
+
 		}
 	}
 	return htmlstr;
@@ -275,6 +284,7 @@ function playActionEvent()
 {
 
 	if (activeactobj != null) {
+
 		var playlist = new Array();
 		if (activeactobj.name() == 'eventgroup') {
 			var actchildren = activeactobj.find('.action');
@@ -679,6 +689,26 @@ function newAction()
 				duration:1.0
 			};
 			actobj = actionobj(state,actionbox);
+			break;
+
+			case 'audio_play':
+				var state = {
+					descriptor: '',
+					parentobjectid: activeobject.id(),
+					id: 'none',
+					actiontype: acttype
+				}
+				actobj = actionobj(state, actionbox);
+			break;
+
+			case 'audio_stop':
+				var state = {
+					descriptor: '',
+					parentobjectid: activeobject.id(),
+					id: 'none',
+					actiontype: acttype
+				}
+				actobj = actionobj(state, actionbox);
 			break;
 		}
 

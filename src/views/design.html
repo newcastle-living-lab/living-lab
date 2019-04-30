@@ -31,114 +31,166 @@
 </head>
 <body>
 <div id="page">
-<div id="leftcolumn">
-		<ul id="treemenu" class="sm ll-simple">
-		  <li><a href="#">Project</a>
-		    <ul>
-		      <li><a href="javascript:newProject()">new</a></li>
-		      <li><a href="javascript:loadProjects()">projects</a></li>
-		      <li><a href="javascript:saveProject()">save</a></li>
-		      <li><a href="javascript:saveasnewProject()">save as new</a></li>
-		      <li id="playlist"><a href="javascript:compileViews()">save playlist</a></li>
-		    </ul>
-		  </li>
-<!--		  <li><a href="#">Views</a>
-		    <ul>
-		      <li onclick="addView()"><a href="#">add view</a></li>
-		      <li onclick="deleteView()"><a href="#">delete view</a></li>
-		    </ul>
-		  </li>  -->
-		  <li><a href="#">Layers</a>
-		    <ul>
-		      <li onclick="addLayer()"><a href="#">add layer</a></li>
-		      <li onclick="deleteLayer()"><a href="#">delete layer</a></li>
-		    </ul>
-		  </li>
-		</ul>
-	<div id="treespace">
-		<div id="tree">
-		</div>
-		<div id="projects">
-		</div>
-	</div>
-	<div id="propedit">
-		<table id="proptable">
-		</table>
-	</div>
-
-</div>
-<div id="rightcolumn">
-	<div id="menu">
-		<div class="buttonbox">new object:</div>
-		<div class="buttonbox"><select id="objecttypeselect"></select></div>
-		<div class="buttonbox"><button id="createbutton" class="menubutton" title="create" onclick="createObject()">create</button></div>
-		<div class="buttonbox"><button id="copybutton" class="menubutton" title="copy" onclick="copyObject()">copy</button></div>
-		<div class="buttonbox"><button id="deletebutton" class="menubutton" title="delete" onclick="delObject()">delete</button></div>
-		<div class="buttonbox"><button id="ungroupbutton" class="menubutton" title="ungroup" onclick="ungroupObjects()">ungroup</button></div>
-		<div class="buttonbox"><button id="multiselectbutton" class="menubutton" title="multiselect" onclick="togMultiselect()">group select</button></div>
-		<div class="buttonbox"><button id="groupbutton" class="menubutton" title="group" onclick="groupObjects()">group</button></div>
-<!--		<div class="buttonbox"><button id="arrowbutton" class="menubutton" title="arrow" onclick="makeCurvedArrow()">arrow</button></div> -->
-
-		<div id="screencontrol">
-			<div class="buttonbox"><button id="showallbutton" class="menubutton" title="show all" onclick="togShowall()">show all</button></div>
-			<div class="buttonbox"><button id="txscrbutton" class="menubutton" title="layer start state" onclick="setLayerStartState()">layer start</button></div>
-			<div class="buttonbox"><button id="fullscrbutton" class="menubutton" title="toggle fullscreen" onclick="togFullscreen()">full screen</button></div>
-		</div>
-	</div>
-	<div id="designspace">
-
-		<div class="canvas-table">
-			<div class="canvas-cell">
-				<div id="designstage" class="screenspace"></div>
+	<div id="leftcolumn">
+			<ul id="treemenu" class="sm ll-simple">
+			  <li><a href="#">Project</a>
+			    <ul>
+			      <li><a href="javascript:newProject()">new</a></li>
+			      <li><a href="javascript:loadProjects()">projects</a></li>
+			      <li><a href="javascript:saveProject()">save</a></li>
+			      <li><a href="javascript:saveasnewProject()">save as new</a></li>
+			      <li id="playlist"><a href="javascript:compileViews()">save playlist</a></li>
+			    </ul>
+			  </li>
+	<!--		  <li><a href="#">Views</a>
+			    <ul>
+			      <li onclick="addView()"><a href="#">add view</a></li>
+			      <li onclick="deleteView()"><a href="#">delete view</a></li>
+			    </ul>
+			  </li>  -->
+			  <li><a href="#">Layers</a>
+			    <ul>
+			      <li onclick="addLayer()"><a href="#">add layer</a></li>
+			      <li onclick="deleteLayer()"><a href="#">delete layer</a></li>
+			      <li onclick="duplicateLayer()"><a href="#">duplicate layer</a></li>
+			      <li onclick="showExportLayer()"><a href="javascript:;">export layer</a></li>
+			      <li onclick="showImportLayer()"><a href="javascript:;">import layer</a></li>
+			    </ul>
+			  </li>
+			</ul>
+		<div id="treespace">
+			<div id="tree">
+			</div>
+			<div id="projects">
 			</div>
 		</div>
+		<div id="propedit">
+			<table id="proptable">
+			</table>
+		</div>
 
 	</div>
-	<div class="tabs">
-	    <ul class="tab-links">
-	        <li class="active"><a href="#tab1">Library</a></li>
-	        <li><a href="#tab2">Actions</a></li>
-	    </ul>
+	<div id="rightcolumn">
+		<div id="menu">
+			<div class="buttonbox">new object:</div>
+			<div class="buttonbox"><select id="objecttypeselect"></select></div>
+			<div class="buttonbox"><button id="createbutton" class="menubutton" title="create" onclick="createObject()">create</button></div>
+			<div class="buttonbox"><button id="copybutton" class="menubutton" title="copy" onclick="copyObject()">copy</button></div>
+			<div class="buttonbox"><button id="deletebutton" class="menubutton" title="delete" onclick="delObject()">delete</button></div>
+			<div class="buttonbox"><button id="ungroupbutton" class="menubutton" title="ungroup" onclick="ungroupObjects()">ungroup</button></div>
+			<div class="buttonbox"><button id="multiselectbutton" class="menubutton" title="multiselect" onclick="togMultiselect()">group select</button></div>
+			<div class="buttonbox"><button id="groupbutton" class="menubutton" title="group" onclick="groupObjects()">group</button></div>
+	<!--		<div class="buttonbox"><button id="arrowbutton" class="menubutton" title="arrow" onclick="makeCurvedArrow()">arrow</button></div> -->
 
-	    <div class="tab-content">
-	        <div id="tab1" class="tab active">
-				<div id="libmenu" >
-					<div class="buttonbox"><button class="menubutton" title="use" onclick="libuse()">use</button></div>
-					<div id="filterpanel">filter string
-						<input type="text" id="filtername" size="10">
-						<input type="button" value="filter" onclick="filterlib()">
-						<input type="button" value="reset" onclick="resetlib()">
+			<div id="screencontrol">
+				<div class="buttonbox"><button id="showallbutton" class="menubutton" title="show all" onclick="togShowall()">show all</button></div>
+				<div class="buttonbox"><button id="txscrbutton" class="menubutton" title="layer start state" onclick="setLayerStartState()">layer start</button></div>
+				<div class="buttonbox"><button id="fullscrbutton" class="menubutton" title="toggle fullscreen" onclick="togFullscreen()">full screen</button></div>
+			</div>
+		</div>
+		<div id="designspace">
+
+			<div class="canvas-table">
+				<div class="canvas-cell">
+					<div id="designstage" class="screenspace"></div>
+				</div>
+			</div>
+
+		</div>
+		<div class="tabs">
+		    <ul class="tab-links">
+		        <li class="active"><a href="#tab1">Library</a></li>
+		        <li><a href="#tab2">Actions</a></li>
+		    </ul>
+
+		    <div class="tab-content">
+		        <div id="tab1" class="tab active">
+					<div id="libmenu" >
+						<div class="buttonbox"><button class="menubutton" title="use" onclick="libuse()">use</button></div>
+						<div id="filterpanel">filter string
+							<input type="text" id="filtername" size="10">
+							<input type="button" value="filter" onclick="filterlib()">
+							<input type="button" value="reset" onclick="resetlib()">
+						</div>
 					</div>
-				</div>
-				<div id="libpane">
-				</div>
-	        </div>
+					<div id="libpane">
+					</div>
+		        </div>
 
-	        <div id="tab2" class="tab">
-				<div id="actionmenu" >
-					<div class="buttonbox">action type:</div>
-					<div class="buttonbox"><select id="actiontypeselect" onchange="actionselect()"></select></div>
-					<div class="buttonbox"><button class="actionmenubutton" title="new action" onclick="newAction()">create </button></div>
-					<div class="buttonbox"><button class="actionmenubutton" title="delete action" onclick="deleteAction()">delete</button></div>
-					<div class="buttonbox"><button class="actionmenubutton" title="start" onclick="startActionEvent()">start</button></div>
-					<div class="buttonbox"><button class="actionmenubutton" title="end" onclick="endActionEvent()">end</button></div>
-					<div class="buttonbox"><button class="actionmenubutton" title="play" onclick="playActionEvent()">play</button></div>
-					<div class="buttonbox"><input id="castaction" type="checkbox" onchange="setCastmode()" >play mode</div>
-					<div class="buttonbox"><button class="actionmenubutton" title="next" onclick="goNextEvent()">next</button></div>
+		        <div id="tab2" class="tab">
+					<div id="actionmenu" >
+						<div class="buttonbox">action type:</div>
+						<div class="buttonbox"><select id="actiontypeselect" onchange="actionselect()"></select></div>
+						<div class="buttonbox"><button class="actionmenubutton" title="new action" onclick="newAction()">create </button></div>
+						<div class="buttonbox"><button class="actionmenubutton" title="delete action" onclick="deleteAction()">delete</button></div>
+						<div class="buttonbox"><button class="actionmenubutton" title="start" onclick="startActionEvent()">start</button></div>
+						<div class="buttonbox"><button class="actionmenubutton" title="end" onclick="endActionEvent()">end</button></div>
+						<div class="buttonbox"><button class="actionmenubutton" title="play" onclick="playActionEvent()">play</button></div>
+						<div class="buttonbox"><input id="castaction" type="checkbox" onchange="setCastmode()" >play mode</div>
+						<div class="buttonbox"><button class="actionmenubutton" title="next" onclick="goNextEvent()">next</button></div>
 
-				</div>
-				<div id="actionpane">
-				</div>
-	        </div>
-	    </div>
+					</div>
+					<div id="actionpane">
+					</div>
+		        </div>
+		    </div>
+		</div>
+
 	</div>
 
-</div>
+
 </div>
 
 <div id="instanceError" style="text-align:center; padding:50px; display: none">
 	<h3>Only one design screen can be open at a time.</h3>
 </div>
+
+
+<section>
+	<div class="modal" id="modal_layer_export">
+		<a href="#" class="modal-overlay" aria-label="Close"></a>
+		<div class="modal-container">
+			<div class="modal-header">
+				<h3>Export layer</h3>
+				<h6>Copy the layer data from the box below.</h6>
+			</div>
+			<div class="modal-body">
+				<div class="content">
+					<textarea class='layer-data' readonly></textarea>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button class="menubutton" onclick="uiHandleExportCopy()" style="width:auto">Copy to clipboard</button>
+				<a class="menubutton menubutton-link" href="#">Close</a>
+			</div>
+		</div>
+	</div>
+</section>
+<section>
+	<div class="modal" id="modal_layer_import">
+		<a href="#" class="modal-overlay" aria-label="Close"></a>
+		<div class="modal-container">
+			<div class="modal-header">
+				<h3>Import Layer</h3>
+				<h6>Paste the layer data below and click Import.</h6>
+			</div>
+			<div class="modal-body">
+				<div class="content">
+					<textarea class='layer-data'></textarea>
+					<!-- <br>
+					<label for="import_events_actions" style="font-size:80%">
+						<input type="checkbox" name="import_actions" value="1" id="import_events_actions">
+						Include events and actions
+					</label> -->
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button class="menubutton" onclick="uiHandleImport()">Import</button>
+				<a class="menubutton menubutton-link" href="#">Cancel</a>
+			</div>
+		</div>
+	</div>
+</section>
 
 <script>
 var auto_save = {% if auto_save %}true{% else %}false{% endif %};

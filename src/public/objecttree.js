@@ -21,12 +21,12 @@ function makeTree(projobj)
 				var anode = allselnodes[n];
 				if (selbotnodes.indexOf(anode) == -1)
 				{
-					treecontainer.jstree(true).deselect_node(anode);			
+					treecontainer.jstree(true).deselect_node(anode);
 				}
 			}
 		}
 		selectObject('jstree');
-			
+
 	})
 	.on('deselect_node.jstree', function (e, data) {
 		selbotnodes = treecontainer.jstree(true).get_bottom_selected();
@@ -38,12 +38,12 @@ function makeTree(projobj)
 				var anode = allselnodes[n];
 				if (selbotnodes.indexOf(anode) == -1)
 				{
-					treecontainer.jstree(true).deselect_node(anode);			
+					treecontainer.jstree(true).deselect_node(anode);
 				}
 			}
 		}
-		selectObject('jstree');		
-	})	
+		selectObject('jstree');
+	})
 	.on('create_node.jstree', function (e, data) {
 			//console.log(data);
 		if (openedproject) {
@@ -68,10 +68,11 @@ function makeTree(projobj)
 
 	})
 	.on('ready.jstree', function () {
+		console.log("tree ready");
 		treecontainer.jstree(true).select_node('#'+project.id);
 		if (openedproject) {
 			var nodeinfo = fetchnextProjectNode();
-			//console.log(nodeinfo);
+			console.log(nodeinfo);
 			if (nodeinfo != null) {
 				addTreeNode(nodeinfo.parentid,nodeinfo.nodeid,nodeinfo.nodestate);
 			}
@@ -89,7 +90,7 @@ function makeTree(projobj)
     ],
     'themes' : {
       "variant" : "small"
-    },    
+    },
     'check_callback': function(operation, node, node_parent, node_position) {
     	//console.log(operation, node, node_parent, node_position);
     	//var parenttype;
@@ -100,8 +101,8 @@ function makeTree(projobj)
 
   "types" : {
     "#" : {
-      "max_children" : 1, 
-      "max_depth" : 10, 
+      "max_children" : 1,
+      "max_depth" : 10,
       "valid_children" : ["Project"]
     },
     "Project" : {
@@ -113,7 +114,7 @@ function makeTree(projobj)
     },
     "Layer" : {
       "icon" : "images/layer.png",
-      "valid_children" : ["Group","Rect","Ellipse","Figure","Ring","Text","Star","RegularPolygon","Image","Line","PolyLine","CurvedArrow"]
+      "valid_children" : ["Group","Rect","Ellipse","Figure","Ring","Text","Star","RegularPolygon","Image","Line","PolyLine","CurvedArrow", "Audio"]
     },
     "Group" : {
       "icon" : "images/group.png",
@@ -150,7 +151,7 @@ function makeTree(projobj)
    "Text" : {
       "icon" : "images/text.png",
       "valid_children" : []
-    },    
+    },
     "Line" : {
       "icon" : "images/line.png",
       "valid_children" : []
@@ -162,6 +163,10 @@ function makeTree(projobj)
     "CurvedArrow" : {
       "icon" : "images/arrow.png",
       "valid_children" : []
+    },
+    "Audio": {
+    	"icon": "images/audio-sm.png",
+    	"valid_children": []
     }
   },
   "dnd" : {
@@ -175,23 +180,25 @@ function makeTree(projobj)
       		default:
      				approval = true;
       		break;
-      		
+
       	}
       	return approval;
       }
-      
+
   },
-  "plugins" : ["types","dnd"]	
-	
-	});	  	
+  "plugins" : ["types","dnd"]
+
+	});
 
 }
 
-function addTreeNode(parentid,objid,objstate)
-{
+
 /**
-* Adds a tree node with state information
-*/	
+ * Adds a tree node with state information
+ */
+function addTreeNode(parentid,objid,objstate) {
+	console.log("addTreeNode");
+	console.log([ parentid, objid, objstate ]);
 	var ref = treecontainer.jstree(true);
 	sel = ref.create_node(parentid,{ "id" : objid, "parent" : parentid, "text" : objstate.name, "type":objstate.type,"li_attr" : {"data-obj":objstate} });
 	//console.log(parentid,objid,objstate,sel,ref);

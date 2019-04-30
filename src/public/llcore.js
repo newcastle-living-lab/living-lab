@@ -1214,6 +1214,23 @@ function newobj(isdesign, state) {
 			});
 			break;
 
+		case 'Audio':
+			var imageObj = new Image();
+			var obj = new Konva.Image({
+				id: state.id,
+				image: imageObj,
+				draggable: isdesign
+			});
+			imageObj.onload = function () {
+				var objlayer = obj.getLayer();
+				if (objlayer != null) {
+					objlayer.draw();
+				}
+			}
+			imageObj.src = state.path;
+
+			break;
+
 	}
 
 	//add stroke dash property
@@ -1319,6 +1336,24 @@ function addobj(objtype) {
 			activebutton = 'ffig';
 			obj = newobj(true, { name: 'none', id: 'none', type: 'Figure', x: xpos + 30, y: ypos + 30, fill: defcolour, rotation: 0, stroke: defstroke, strokeWidth: defstrokewidth, dashEnabled: false, tension: 0, points: [0, 0, -3.5, 1, -7.5, 5, -9, 10, -6.7, 16, -2, 19, -3, 22, -9, 22, -23, 54, -21, 55, -19, 57, -16, 56, -10, 40, -15, 70, -10, 70, -10, 90, -8, 93, -4.5, 93, -3, 90, -3, 70, 3, 70, 3, 90, 4.5, 93, 8, 93, 10, 90, 10, 70, 15, 70, 10, 40, 16, 56, 19, 57, 21, 55, 23, 54, 9, 22, 3, 22, 2, 19, 6.7, 16, 9, 10, 7.5, 5, 3.5, 1, 0, 0], scaleSize: 1.0, visible: true, opacity: 1.0 });
 			break;
+
+		case 'Audio':
+			activebutton = 'audio';
+			obj = newobj(true, {
+				"name": "none",
+				"id": "none",
+				"type": "Audio",
+				"x": xpos + 30,
+				"y": ypos + 30,
+				"type": "Audio",
+				"path": '/images/audio.png',
+				"width": 60,
+				"height": 60,
+				"lockaspect": true,
+				"rotation": 0,
+				"visible": true,
+				"opacity": 1.0,
+			});
 	}
 
 	layer.add(obj);
