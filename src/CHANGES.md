@@ -1,6 +1,28 @@
 # Living Lab Changelog
 
 
+## v1.17.0
+
+* Added Layer Export/Import functionality.
+* Started adding support for Audio files to Library/Design.
+
+### Export Layers
+
+Layers and their child objects can be exported from the Layers menu. This will produce a
+block of encoded text which can be copied, pasted, saved or transported, and allows the
+layer and its child objects to imported into another project.
+
+In future releases, this functionality will be expanded to include associated events and
+actions.
+
+Exported layers can be imported into the same project, or a different project on the same
+Living Lab instance.
+
+**Note:** Importing the layer into _another Living lab instance_ may result in
+inconsistencies or missing links to any local Library resources if used in the source
+project.
+
+
 ## v1.16.1
 
 * Fixed issues with auth, sessions, events when `require_auth` config is false.
