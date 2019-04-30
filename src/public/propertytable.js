@@ -205,7 +205,7 @@ function updatePropDisp() {
 
 		var propval = state[key];
 
-		if (key == 'path' || key == 'type') {
+		if (key == 'path' || key == 'type' || key == 'src') {
 
 			if (propval.length < tbltxtoverflow) {
 				$("#proptable").append('<tr><td class="tablekey">' + key + '</td><td colspan="2" class="tableval" style="text-align:left">' + propval + '</td></tr>');

@@ -696,7 +696,7 @@ function populateLayer(params) {
 		eventliststate.id = UniqueId();
 		var evobj = makeEventList(eventliststate);
 		actlayer.add(evobj);
-		console.log(evobj);
+		// console.log(evobj);
 		if (evobj.getAttr('state').name == 'actionbox') {
 			actlayer.setAttr('actionbox', evobj);
 		}
@@ -1147,6 +1147,7 @@ function showExportLayer() {
 		alert("Please select a layer.");
 		return;
 	}
+
 	location.hash = "#modal_layer_export";
 	var layerData = JSON.stringify(packageLayer(layer));
 	layerData = btoa(layerData);

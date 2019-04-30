@@ -114,7 +114,7 @@ function makeTree(projobj)
     },
     "Layer" : {
       "icon" : "images/layer.png",
-      "valid_children" : ["Group","Rect","Ellipse","Figure","Ring","Text","Star","RegularPolygon","Image","Line","PolyLine","CurvedArrow"]
+      "valid_children" : ["Group","Rect","Ellipse","Figure","Ring","Text","Star","RegularPolygon","Image","Line","PolyLine","CurvedArrow", "Audio"]
     },
     "Group" : {
       "icon" : "images/group.png",
@@ -163,6 +163,10 @@ function makeTree(projobj)
     "CurvedArrow" : {
       "icon" : "images/arrow.png",
       "valid_children" : []
+    },
+    "Audio": {
+    	"icon": "images/audio-sm.png",
+    	"valid_children": []
     }
   },
   "dnd" : {
@@ -188,13 +192,13 @@ function makeTree(projobj)
 
 }
 
-function addTreeNode(parentid,objid,objstate)
-{
+
+/**
+ * Adds a tree node with state information
+ */
+function addTreeNode(parentid,objid,objstate) {
 	console.log("addTreeNode");
 	console.log([ parentid, objid, objstate ]);
-/**
-* Adds a tree node with state information
-*/
 	var ref = treecontainer.jstree(true);
 	sel = ref.create_node(parentid,{ "id" : objid, "parent" : parentid, "text" : objstate.name, "type":objstate.type,"li_attr" : {"data-obj":objstate} });
 	//console.log(parentid,objid,objstate,sel,ref);
