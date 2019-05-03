@@ -409,9 +409,12 @@ function actionobj(state,eventlistobj)
 {
 	var tspace = 10;
 	var obj = null;
-
+	// console.log("actionobj");
+	// console.log(state);
+	// console.log('#'+state.parentobjectid);
 	var parentobject = layer.find('#'+state.parentobjectid)[0];
 	if (parentobject === undefined) {
+		// console.log("not found");
 		return null;
 	}
 

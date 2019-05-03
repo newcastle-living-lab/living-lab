@@ -691,23 +691,37 @@ function populateLayer(params) {
 
 	//add actions for the object
 	actlayer = layer.getAttr('actionlayer');
+
 	var eventlists = layerstate.eventlists;
+
 	for (var m = 0; m < eventlists.length; m++) {
 		var eventliststate = eventlists[m];
-		eventliststate.id = UniqueId();
+		if (resetIds) {
+			var newId = UniqueId();
+			idLookup[eventliststate.id] = newId;
+			eventliststate.id = newId;
+		}
 		var evobj = makeEventList(eventliststate);
 		actlayer.add(evobj);
-		// console.log(evobj);
 		if (evobj.getAttr('state').name == 'actionbox') {
 			actlayer.setAttr('actionbox', evobj);
 		}
-		for (var ai = 0; ai < eventliststate.actions.length; ai++) {
-			var actstate = eventliststate.actions[ai];
-			var actobj = actionobj(actstate, evobj);
+
+		// @TODO: Only do this on initial proj loading.
+		if ( ! resetIds) {
+			for (var ai = 0; ai < eventliststate.actions.length; ai++) {
+				var actstate = eventliststate.actions[ai];
+				// if (resetIds) {
+				// 	actstate.id = "none";
+				// 	actstate.parentobjectid = idLookup[actstate.parentobjectid];
+				// }
+				var actobj = actionobj(actstate, evobj);
+			}
 		}
 	}
 
 	if (resetIds) {
+
 		var newstartstate = layerstate.startstate + "";
 
 		$.each(idLookup, function(k, v) {
@@ -1240,6 +1254,7 @@ function importLayer(layerData) {
 
 	addTreeNode(project.id, res.layer.id(), res.state);
 	txLayers();
+	updateEventSwimList();
 }
 
 function makeObjectListOptions() {

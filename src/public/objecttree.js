@@ -197,8 +197,8 @@ function makeTree(projobj)
  * Adds a tree node with state information
  */
 function addTreeNode(parentid,objid,objstate) {
-	console.log("addTreeNode");
-	console.log([ parentid, objid, objstate ]);
+	// console.log("addTreeNode");
+	// console.log([ parentid, objid, objstate ]);
 	var ref = treecontainer.jstree(true);
 	sel = ref.create_node(parentid,{ "id" : objid, "parent" : parentid, "text" : objstate.name, "type":objstate.type,"li_attr" : {"data-obj":objstate} });
 	//console.log(parentid,objid,objstate,sel,ref);

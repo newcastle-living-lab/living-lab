@@ -1,9 +1,4 @@
 {
-	"nclacuk": {
-		"filename": "ncl-ac-uk-logo.svg",
-		"title": "Newcastle University",
-		"url": "http://www.ncl.ac.uk/"
-	},
 	"northumbria": {
 		"filename": "northumbria-university-ncl.png",
 		"title": "Northumbria University Newcastle",
@@ -37,11 +32,16 @@
 	"cosie": {
 		"filename": "cosie-logo.png",
 		"title": "CoSIE",
-		"url": false
+		"url": "https://cosie.turkuamk.fi/"
 	},
 	"h2020": {
 		"filename": "h-2020.png",
 		"title": "Horizon 2020",
 		"url": false
+	},
+	"nclacuk": {
+		"filename": "ncl-ac-uk-logo.svg",
+		"title": "Newcastle University",
+		"url": "http://www.ncl.ac.uk/"
 	}
 }

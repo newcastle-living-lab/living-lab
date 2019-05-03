@@ -1,6 +1,12 @@
 # Living Lab Changelog
 
 
+## v1.18.1
+
+* Fixed an issue loading the events/actions when opening a Project.
+* Updated logos.
+
+
 ## v1.18.0
 
 * Added collapsable left column functionality to Design screen.
