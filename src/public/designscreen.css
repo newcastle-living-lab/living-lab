@@ -1,22 +1,26 @@
+html, button, input, select, textarea {
+	font-family: 'Lato', sans-serif;
+	font-weight: normal;
+	font-size: 13px;
+}
+
 
 html {
 
 }
 
 body {
-	font-family: Verdana;
-
+	/*font-family: Verdana;*/
 }
 
 input {
-	font-family: Verdana;
-	font-size: 11px;
-
+	/*font-family: Verdana;*/
+	/*font-size: 11px;*/
 }
 
 select {
-	font-family: Verdana;
-	font-size: 12px;
+	/*font-family: Verdana;*/
+	/*font-size: 12px;*/
 	height: 30px;
 
 }
@@ -37,8 +41,27 @@ select {
 	position: absolute;
 	left: 0px;
 	top: 0px;
-
 }
+
+#showleft {
+	position: absolute;
+	left: 0;
+	top: 0;
+}
+	#showleft a {
+		display: block;
+		padding: 9px 10px;
+		background: #F2F0F1;
+		color: #000;
+	}
+	#showleft a:hover {
+		background: #003965;
+		color: #fff;
+	}
+	#showleft .feather {
+		width: 11px;
+		height: 11px;
+	}
 
 #rightcolumn {
 	position: absolute;
@@ -48,7 +71,7 @@ select {
 #treespace {
 	position: relative;
 	background-color: #ffffff;
-	font-size: 11px;
+	font-size: 95%;
 	overflow: auto;
 	border-bottom: 1px solid #bbb;
 }
@@ -59,8 +82,8 @@ select {
 	height: 35px;
 	background-color: #F2F0F1;
 	display:block;
-	font-size: 11px;
-	font-family: Verdana;
+	/*font-size: 11px;*/
+	/*font-family: Verdana;*/
 
 }
 
@@ -68,8 +91,8 @@ select {
 	display: inline-block;
 	width: 100%;
 	height: 30px;
-	font-size: 10px;
-	font-family: Verdana;
+	/*font-size: 10px;*/
+	/*font-family: Verdana;*/
 }
 
 .projectrowname {
@@ -96,8 +119,9 @@ select {
 	padding: 2px;
 	width: auto;
 	float:right;
-	font-size: 10px;
-	font-family: Verdana;
+	font-size: 90%;
+	/*font-size: 10px;*/
+	/*font-family: Verdana;*/
 }
 
 .projectrowbutton:hover {
@@ -110,7 +134,7 @@ select {
 	height: 50px;
 	padding: 10px;
 	text-align: center;
-	font-size: 10px;
+	/*font-size: 10px;*/
 	/*background-image: url('images/proj.png');*/
 }
 
@@ -121,7 +145,7 @@ select {
 .projectname {
 	position: relative;
 	text-align: center;
-	font-size: 10px;
+	/*font-size: 10px;*/
 }
 
 #propedit {
@@ -130,7 +154,7 @@ select {
 	padding-left: 10px;
 	padding-top: 10px;
 	overflow: auto;
-	font-size: 11px;
+	/*font-size: 11px;*/
 }
 
 #designspace {
@@ -172,21 +196,21 @@ select {
 	width: 99.8%;
 	background-color: #F2F0F1;
 	display:block;
-	font-size: 11px;
-	font-family: Verdana;
+	/*font-size: 11px;*/
+	/*font-family: Verdana;*/
 }
 
 #objecttypeselect {
 	width: 10em;
-	font-size: 11px;
-	font-family: Verdana;
+	/*font-size: 11px;*/
+	/*font-family: Verdana;*/
 
 }
 
 #actiontypeselect {
 	width: 10em;
-	font-size: 11px;
-	font-family: Verdana;
+	/*font-size: 11px;*/
+	/*font-family: Verdana;*/
 
 }
 
@@ -197,8 +221,8 @@ select {
 	background-color: #E4F1FB;
 	display:block;
 	border-top: 1px solid #E4F1FB;
-	font-family: Verdana;
-	font-size: 11px;
+	/*font-family: Verdana;*/
+	/*font-size: 11px;*/
 }
 
 #libpane {
@@ -216,8 +240,8 @@ select {
 	background-color: #E4F1FB;
 	display:block;
 	border-top: 1px solid #E4F1FB;
-	font-family: Verdana;
-	font-size: 11px;
+	/*font-family: Verdana;*/
+	/*font-size: 11px;*/
 }
 
 #actionpane {
@@ -232,23 +256,23 @@ select {
 	float:right;
 	width: 380px;
 	padding: 3px;
-	font-size: 11px;
-	font-family: Verdana;
+	/*font-size: 11px;*/
+	/*font-family: Verdana;*/
 }
 
 .buttonbox {
 	float:left;
 	vertical-align: middle;
 	padding: 3px;
-	font-size: 11px;
-	font-family: Verdana;
+	/*font-size: 11px;*/
+	/*font-family: Verdana;*/
 }
 
 .menubutton {
 	height: 30px;
 	line-height: 10px;
 	width: 60px;
-	font-size: 12px;
+	/*font-size: 12px;*/
 }
 
 .menubutton-link,
@@ -257,21 +281,21 @@ a.menubutton-link {
 	height: 30px;
 	line-height: 10px;
 	width: 60px;
-	font-size: 12px;
+	/*font-size: 12px;*/
 }
 
 .actionmenubutton {
 	height: 30px;
 	line-height: 10px;
 	width: 60px;
-	font-size: 12px;
+	/* font-size: 12px; */
 }
 
 .tablebutton {
 	height: 25px;
 	line-height: 10px;
 	width: 100px;
-	font-size: 12px;
+	/*font-size: 12px;*/
 }
 
 .tablekey {
@@ -302,15 +326,15 @@ a.menubutton-link {
 }
 
 .tablegui {
-	font-size: 10px;
+	/*font-size: 10px;*/
 	width: 50%;
 	vertical-align: middle;
 }
 
 .tablenudge {
 	height: 20px;
-	width: 10px;
-	font-size: 12px;
+	/*width: 10px;*/
+	/*font-size: 12px;*/
 	vertical-align: middle;
 	text-align: center;
 }
@@ -353,7 +377,7 @@ a.menubutton-link {
             border-style: solid;
             border-radius:5px 5px 0px 0px;
             background:#fff;
-            font-size:11px;
+            /*font-size:11px;*/
             text-decoration:none;
             font-weight:normal;
             color:#4c4c4c;
@@ -386,6 +410,16 @@ a.menubutton-link {
      .tab.active {
          display:block;
      }
+
+
+.ll-simple > li.treemenu-left-toggle {
+	float: right;
+}
+
+	.treemenu-left-toggle .feather {
+		width: 11px;
+		height: 11px;
+	}
 
 
 

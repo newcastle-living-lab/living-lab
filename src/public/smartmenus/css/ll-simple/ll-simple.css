@@ -51,7 +51,6 @@
 	background: rgba(179, 179, 179, 0.1);
 }
 .ll-simple ul a, .ll-simple ul a:hover, .ll-simple ul a:focus, .ll-simple ul a:active {
-	// font-size: 14px;
 	border-left: 8px solid transparent;
 }
 .ll-simple ul ul a,

@@ -8,6 +8,7 @@
 	<!-- "sm-blue" menu theme (optional, you can use your own CSS, too) -->
 	<link href='smartmenus/css/ll-simple/ll-simple.css' rel='stylesheet' type='text/css' />
 	<link rel="stylesheet" href="jquery-ui.min.css">
+	<link href="https://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet">
 	<script src="jquery-2.1.1.min.js"></script>
 	<script src="jquery-ui.min.js"></script>
 	<script src="smartmenus/jquery.smartmenus.min.js" type="text/javascript"></script>
@@ -52,6 +53,9 @@
 						<li onclick="showImportLayer()"><a href="javascript:;">import layer</a></li>
 					</ul>
 				</li>
+				<li class="treemenu-left-toggle">
+					<a href="javascript:toggleSidebar(false)"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevrons-left"><polyline points="11 17 6 12 11 7"></polyline><polyline points="18 17 13 12 18 7"></polyline></svg></a>
+				</li>
 			</ul>
 			<div id="treespace">
 				<div id="tree">
@@ -63,6 +67,9 @@
 				<table id="proptable">
 				</table>
 			</div>
+		</div>
+		<div id="showleft">
+			<a href="javascript:toggleSidebar(true)"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevrons-right"><polyline points="13 17 18 12 13 7"></polyline><polyline points="6 17 11 12 6 7"></polyline></svg></a>
 		</div>
 		<div id="rightcolumn">
 			<div id="menu">

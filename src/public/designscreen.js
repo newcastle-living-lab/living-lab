@@ -13,6 +13,7 @@ var serverurl = 'http://' + window.location.hostname + ':' + window.location.por
 var txscale = 1.0;
 var last_saved_project_hash = null;
 var saving_project = false;
+var showLeftCol = true;
 serverurl = serverurl.replace(/:$/, '');
 
 function makeCurvedArrow() {
@@ -1502,28 +1503,42 @@ function stageDimsV1() {
 
 }
 
+/**
+ * Set up the various panels in the screen according to the screen mode and size
+ *
+ */
 function screenSetup() {
-	/**
-	* Set up the various panels in the screen according to the screen mode and size
-	*/
+
 	var ww = $(window).width();
 	var wh = $(window).height();
 	$('#page').css({ 'height': Math.round(0.98 * wh).toString() + 'px' });
 	$('#page').css({ 'width': Math.round(0.98 * ww).toString() + 'px' });
 	var ph = $('#page').height();
 	var pw = $('#page').width();
+
+	var leftColumnWidth = 32;
+	if (showLeftCol) {
+		leftColumnWidth = Math.round(0.3 * pw);	//.toString() + "px";
+		$("#leftcolumn").css({ "display": "block" });
+		$("#showleft").hide();
+	} else {
+		$("#leftcolumn").css({ "display": "none" });
+		$("#showleft").show();
+	}
+
 	$('#leftcolumn').css({ 'height': Math.round(1.0 * ph).toString() + 'px' });
-	$('#leftcolumn').css({ 'width': Math.round(0.3 * pw).toString() + 'px' });
-	$('#rightcolumn').css({ 'left': Math.round(0.3 * pw).toString() + 'px' });
+	$('#leftcolumn').css({ 'width': leftColumnWidth.toString() + "px" });
+	$('#rightcolumn').css({ 'left': leftColumnWidth.toString() + "px" });
 	$('#rightcolumn').css({ 'height': Math.round(1.0 * ph).toString() + 'px' });
-	$('#rightcolumn').css({ 'width': Math.round(0.7 * pw).toString() + 'px' });
+
+	$('#rightcolumn').css({ 'width': Math.round(pw - leftColumnWidth).toString() + "px" });
 
 	$('#treespace').css({ 'height': Math.round(0.5 * ph).toString() + 'px' });
 	$('#designspace').css({ 'height': Math.round(0.7 * ph - 10).toString() + 'px' });
 	//$('#designspace').height(Math.round(0.7*ph-10));
 	$('#libpane').css({ 'height': Math.round(0.3 * ph - 110).toString() + 'px' });
 	$('#actionpane').css({ 'height': Math.round(0.3 * ph - 110).toString() + 'px' });
-	$('#actionpane').css({ 'width': Math.round(0.7 * pw - 2).toString() + 'px' });
+	$('#actionpane').css({ 'width': Math.round(pw - leftColumnWidth - 2).toString() + 'px' });
 	$('#propedit').css({ 'height': Math.round(0.5 * ph - 48).toString() + 'px' });
 	libw = $('#libpane').width();
 	libh = $('#libpane').height();
@@ -1545,6 +1560,12 @@ function resizeStages() {
 		actlayer.draw();
 	}
 
+}
+
+
+function toggleSidebar(state) {
+	showLeftCol = state;
+	screenSetup();
 }
 
 function setLayerStartState() {
