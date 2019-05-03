@@ -1,6 +1,13 @@
 # Living Lab Changelog
 
 
+## v1.18.0
+
+* Added collapsable left column functionality to Design screen.
+* Added "unsupported browser" notification.
+* Updated other UI aspects of the Design screen.
+
+
 ## v1.17.0
 
 * Added Layer Export/Import functionality.
