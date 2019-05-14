@@ -696,6 +696,7 @@ function newAction()
 
 			case 'audio_play':
 				var state = {
+					is_audio: true,
 					descriptor: '',
 					parentobjectid: activeobject.id(),
 					id: 'none',
@@ -706,6 +707,7 @@ function newAction()
 
 			case 'audio_stop':
 				var state = {
+					is_audio: true,
 					descriptor: '',
 					parentobjectid: activeobject.id(),
 					id: 'none',

@@ -8,6 +8,7 @@ exports.route = "/uploadresource";
 exports.handler = function (req, res) {
 
 	var form = new formidable.IncomingForm();
+	form.uploadDir = fs.realpathSync(path.join(process.cwd(), "data"));
 	form.keepExtensions = true;
 	form.parse(req);
 
