@@ -19,8 +19,9 @@ exports.handler = function(req, res) {
 	var playstate = decodedBody.playlist;
 	var playobj = JSON.parse(playstate);
 	var imglist = playobj.playimages;
+	var audiolist = playobj.playsounds;
 
-	console.log(fname,imglist);
+	console.log(fname,imglist,audiolist);
 	// 		var imglistobj = JSON.parse(imglist);
 	//console.log(playstate);
 	//serveraddr = getIPAddress();
@@ -37,7 +38,7 @@ exports.handler = function(req, res) {
 		if (err) {
 			if (err.code == 'EEXIST') {
 				// ignore the error if the folder already exists
-				helpers.writePlayfileandImages(fname,htmlstr,imglist);
+				helpers.writePlayfileandImages(fname,htmlstr,imglist,audiolist);
 
 				eventLog.log({
 					"type": eventType.SAVE_PLAYLIST,
@@ -49,7 +50,7 @@ exports.handler = function(req, res) {
 			}
 		} else {
 			// successfully created folder
-			helpers.writePlayfileandImages(fname,htmlstr,imglist);
+			helpers.writePlayfileandImages(fname,htmlstr,imglist,audiolist);
 
 			eventLog.log({
 				"type": eventType.SAVE_PLAYLIST,

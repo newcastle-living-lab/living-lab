@@ -40,40 +40,44 @@ function makeLayerAnimation(actionlayer)
 		var objlayer = this.getLayers()[0];
 		var alayer = objlayer.getAttr('actionlayer');
 		var animlist = alayer.getAttr('playlist');
-		for (var i=0;i<animlist.length;i++) {
+
+		// console.log(animlist);
+		for (var i = 0; i < animlist.length; i++) {
 			var action = animlist[i];
+			// console.log(action);
+			if (action.targetType == "audio") {
+				// Skip audio
+				continue;
+			}
 			var prop = action.interpolateProp(frame);
 			var obj = action.parentobject;
 			var objstate = obj.getAttr('state');
-			obj.setAttr(action.property,prop);
+			obj.setAttr(action.property, prop);
+
 			if (action.property == 'position') {
 				objstate.x = prop.x;
 				objstate.y = prop.y;
-			}
-			else {
+			} else {
 				objstate[action.property] = prop;
 			}
 
 			if ((frame.time-action.starttime*1000)>action.animDuration*1000) {
 				stopflag = stopflag && true;   //if many objects wait until last one is finished
-			}
-			else {
+			} else {
 				stopflag = stopflag && false;
 			}
 			//console.log(this.isRunning());
 		}
+
 		if (stopflag == true) {
 			this.stop();
 			frame.time = 0.0;
-	   	//console.log('stopped',this.isRunning());
-	   }
-
-
+			//console.log('stopped',this.isRunning());
+		}
 
 	}, animlayer);
 
 	actionlayer.setAttr('animation',anim);
-
 
 }
 
@@ -127,20 +131,29 @@ var actionlist = new Array();
 	return actionlist;
 }
 
+
+/**
+ * Action that animates the change of an object from a startstate to the endstate
+ * Animation is from startstate to endstate of the property.
+ */
 function Action(parentobject,id,actiontype,startval,endval,starttime,duration)
 {
-/**
-Action that animates the change of an object from a startstate to the endstate
-Animation is from startstate to endstate of the property.
-*/
-this.parentobject = parentobject;
-this.id = id;
-this.starttime = starttime;
+	this.parentobject = parentobject;
+	this.id = id;
+	this.starttime = starttime;
 	this.animDuration = duration;   //default 1 second
 	this.actiontype = actiontype;
 	this.property = actiontypes[actiontype];
 	this.startstate = startval;
 	this.endstate = endval;
+
+	this.targetType = 'visual';
+	this.src = null;
+
+	if (actiontype == 'audio_play' || actiontype == 'audio_stop') {
+		this.targetType = 'audio';
+		this.src = this.parentobject.getAttr('src');
+	}
 
 	this.interpolateProp = function(frame) {
 		var frac = 0.0;
@@ -280,32 +293,79 @@ function endActionEvent()
 	}
 }
 
-function playActionEvent()
-{
+function playActionEvent() {
 
 	if (activeactobj != null) {
 
 		var playlist = new Array();
+
 		if (activeactobj.name() == 'eventgroup') {
 			var actchildren = activeactobj.find('.action');
 			for (var i=0;i<actchildren.length;i++) {
 				var action = actchildren[i].getAttr('action');
 				playlist.push(action);
 			}
-		}
-		else if (activeactobj.name() == 'action') {
+		} else if (activeactobj.name() == 'action') {
 			var action = activeactobj.getAttr('action');
 			playlist.push(action);
 		}
+
 		var alayer = activeactobj.getLayer();
-		alayer.setAttr('playlist',playlist);
+		alayer.setAttr('playlist', playlist);
+
 		var objlayer = alayer.getAttr('parentlayer');
-	//console.log(objlayer);
-	var anim = alayer.getAttr('animation');
-	//objlayer.draw();
-//	console.log(anim);
-anim.start();
+		//console.log(objlayer);
+
+		var anim = alayer.getAttr('animation');
+		//objlayer.draw();
+		// console.log(anim);
+
+		anim.start();
+
+		// Do audio
+		for (var i = 0; i < playlist.length; i++) {
+			var action = playlist[i];
+			var id = action.parentobject.getAttr("id");
+			switch (action.actiontype) {
+				case "audio_play":
+					audioAction("play", id, action.src);
+				break;
+
+				case "audio_stop":
+					audioAction("stop", id, action.src);
+				break;
+			}
+		}
+	}
 }
+
+
+function audioAction(action, id, src) {
+
+	$audio = $("audio[data-id='" + id + "']");
+
+	if ($audio.length === 0) {
+		$audio = $("<audio data-id='" + id + "'>");
+		$audio.attr({ "preload": "none" });
+		$audio.appendTo($("body"));
+	}
+
+	if ($audio.find(".ll_audio_src").length === 0) {
+		$audio.append("<source class='ll_audio_src' src='" + src + "' type='" + getFileMime(src) + "'>");
+	}
+
+	$audio.trigger("load");
+
+	switch (action) {
+		case "play":
+			$audio.trigger("play");
+		break;
+
+		case "stop":
+			$audio.trigger("pause");
+			$audio.prop("currentTime", 0);
+		break;
+	}
 }
 
 
@@ -696,7 +756,6 @@ function newAction()
 
 			case 'audio_play':
 				var state = {
-					is_audio: true,
 					descriptor: '',
 					parentobjectid: activeobject.id(),
 					id: 'none',
@@ -707,7 +766,6 @@ function newAction()
 
 			case 'audio_stop':
 				var state = {
-					is_audio: true,
 					descriptor: '',
 					parentobjectid: activeobject.id(),
 					id: 'none',
@@ -799,16 +857,20 @@ function updateEventactions()
 			var peview = peviews[pei];
 			if (peview.layerid != 'none') {
 				peview.actions = [];
-				var evlist = actstage.find('#'+peview.id)[0];
-				var actionlist = evlist.find('.action');
-				for (var ai=0;ai<actionlist.length;ai++) {
-					var act = actionlist[ai];
-					var actstate = act.getAttr('state');
-					//console.log(actstate);
-					peview.actions.push({id:actstate.id, name:actstate.descriptor});
+				if (actstage) {
+					var evlist = actstage.find('#'+peview.id)[0];
+					if (evlist) {
+						var actionlist = evlist.find('.action');
+						for (var ai=0;ai<actionlist.length;ai++) {
+							var act = actionlist[ai];
+							var actstate = act.getAttr('state');
+							//console.log(actstate);
+							peview.actions.push({id:actstate.id, name:actstate.descriptor});
+						}
+						eventliststates[i].peviews[pei] = peview;
+						//console.log(eventliststates);
+					}
 				}
-				eventliststates[i].peviews[pei] = peview;
-				//console.log(eventliststates);
 			}
 		}
 	}
