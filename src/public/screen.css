@@ -25,6 +25,18 @@ html, body {
 	font-family: Verdana, Geneva, sans-serif;
 }
 
+.audio-enabler {
+	position: absolute;
+	bottom: 32px;
+	right: 32px;
+	color: #999;
+	font-style: italic;
+	font-size: 16px;
+	/*font-weight: 600;*/
+	z-index: 1000;
+	font-family: Verdana, Geneva, sans-serif;
+}
+
 .page {
 	display: block;
 	position: absolute;

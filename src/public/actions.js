@@ -25,6 +25,7 @@ var activeactiontype = ''
 var eventliststates = [];
 var eventlistgap = 5;
 var eventlistXoffset = 150;
+var sounds = window.sounds || {};
 
 function actionselect()
 {
@@ -342,30 +343,22 @@ function playActionEvent() {
 
 function audioAction(action, id, src) {
 
-	$audio = $("audio[data-id='" + id + "']");
-
-	if ($audio.length === 0) {
-		$audio = $("<audio data-id='" + id + "'>");
-		$audio.attr({ "preload": "none" });
-		$audio.appendTo($("body"));
+	if ( ! sounds.hasOwnProperty(id)) {
+		sounds[id] = new Howl({
+			src: [src]
+		});
 	}
-
-	if ($audio.find(".ll_audio_src").length === 0) {
-		$audio.append("<source class='ll_audio_src' src='" + src + "' type='" + getFileMime(src) + "'>");
-	}
-
-	$audio.trigger("load");
 
 	switch (action) {
 		case "play":
-			$audio.trigger("play");
+			sounds[id].play();
 		break;
-
 		case "stop":
-			$audio.trigger("pause");
-			$audio.prop("currentTime", 0);
+			sounds[id].stop();
 		break;
 	}
+
+	return;
 }
 
 

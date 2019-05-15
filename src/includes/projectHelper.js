@@ -131,6 +131,30 @@ function findLayerImages(objstates) {
 }
 
 
+/**
+* Finds all audio objects on a layer
+*
+*/
+function findLayerAudio(objstates) {
+
+	var sndobjs = [],
+		obj = null;
+
+	for (var chi = 0; chi < objstates.length; chi++) {
+		obj = objstates[chi];
+		if (obj.type == 'Group') {
+			findLayerAudio(obj.children);
+		} else {
+			if (obj.type == 'Audio') {
+				sndobjs.push(obj);
+			}
+		}
+	}
+
+	return sndobjs;
+}
+
+
 function findIndexByKey(params) {
 	var found = false,
 		i = 0,
@@ -253,6 +277,7 @@ function toPlayer(project) {
 
 	var pelayerobjstates = [];  // snapshot state of objects and actions on each layer on start of each presentevent
 	var playimages = [];
+	var playsounds = [];
 
 	var layers = data.layers;
 	var layerstates = [];
@@ -272,11 +297,18 @@ function toPlayer(project) {
 			children: stlayer.children
 		});
 
-		//if the objects are image objects we need to package the image resources as well and change the image paths
+		//if the objects are image objects we need to package the image resources
 		var playimgs = findLayerImages(layerobjs);
 		for (var imn = 0; imn < playimgs.length; imn++) {
 			var imgobj = playimgs[imn];
 			playimages.push(imgobj.path);
+		}
+
+		//if the objects are audio objects we need to package the audio resources
+		var playsnds = findLayerAudio(layerobjs);
+		for (var imn = 0; imn < playsnds.length; imn++) {
+			var sndobj = playsnds[imn];
+			playsounds.push(sndobj.src);
 		}
 
 		//objstates are object states and layeractions are action definitions/states for each action applied on that presentevent
@@ -395,7 +427,8 @@ function toPlayer(project) {
 		txscale: 1.0,
 		layersnapshots: pelayerobjstates,
 		pestates: eventliststates,
-		playimages: playimages
+		playimages: playimages,
+		playsounds: playsounds
 	};
 
 	out.data = compiledViews;

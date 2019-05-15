@@ -8,6 +8,7 @@
 		<script type="text/javascript" src="/konva.js"></script>
 		<script type="text/javascript" src="/jquery-2.1.1.min.js"></script>
 		<script src="/socket.io/socket.io.js"></script>
+		<script src="/howler.core.min.js"></script>
 		<script src="/llcore.js"></script>
 		<script src="/arrows.js"></script>
 		<script src="/actions.js"></script>
@@ -20,6 +21,7 @@
 		</script>
 	</head>
 	<body>
+		<div class="audio-enabler">Click anywhere on this page to allow audio playback on this screen.</div>
 		<div class="functionbox" data-player="{{ project.slug }}" data-view="{{ viewName | safe }}" data-projectname="{{ project.name }}">
 			<div class="title">
 				<h1 class="project-name">Living Lab Player: <span data-ui="projectName"></span></h1>

@@ -30,6 +30,7 @@
 	// Project info
 	var screenwidth, screenheight, txscale;
 	var peinfo;
+	var sounds = {};
 
 	//
 
@@ -58,6 +59,31 @@
 		projectSlug = $widget.data("player");
 		projectName = $widget.data("projectname");
 		viewName = $widget.data("view");
+	}
+
+
+	/**
+	 * On load: build a list of audio objects and initialise the Howl sound player objects.
+	 *
+	 */
+	function soundSetup(peinfo) {
+
+		var snapshots = peinfo.layersnapshots;
+		for (var snapIdx = 0; snapIdx < snapshots.length; snapIdx++) {
+			var snap = snapshots[snapIdx];
+			for (var layerIdx = 0; layerIdx < snap.length; layerIdx++) {
+				var objs = snap[layerIdx].objstates;
+				for (var objIdx = 0; objIdx < objs.length; objIdx++) {
+					var obj = objs[objIdx];
+					if (obj.type == 'Audio' && ! sounds.hasOwnProperty(obj.id)) {
+						sounds[obj.id] = new Howl({
+							src: ["/" + obj.src]
+						});
+					}
+				}
+			}
+		}
+
 	}
 
 
@@ -148,6 +174,7 @@
 			});
 		}
 
+		soundSetup(peinfo);
 
 	}
 
@@ -257,6 +284,27 @@
 				};
 				var scrjson = JSON.stringify(scrcommand);
 				socket.emit('screenmsg', scrjson);
+			}
+		}
+
+		var snapstate = snapshots[idx];
+		var actions = snapstate[0].layeractions;
+
+		for (var actIdx = 0; actIdx < actions.length; actIdx++) {
+			var action = actions[actIdx];
+			// Audio actions?
+			if (action.actiontype == 'audio_play' || action.actiontype == 'audio_stop') {
+				// Got sound for this ID?
+				if (sounds.hasOwnProperty(action.parentobjectid)) {
+					switch (action.actiontype) {
+						case 'audio_play':
+							sounds[action.parentobjectid].play();
+						break;
+						case 'audio_stop':
+							sounds[action.parentobjectid].stop();
+						break;
+					}
+				}
 			}
 		}
 	}

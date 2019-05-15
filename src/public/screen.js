@@ -8,6 +8,8 @@ var ioqueue = [];
 var screenIdTimeout = null;
 var screenDims = { width: 1000, height: 1000 };
 var isPlaying = false;
+// Default audio playback will be local playlist. 'screen' if this should be responsible for playing.
+var audiodev = "local";
 
 //var serverurl = 'http://127.0.0.1:1337';
 var serverurl = 'http://' + window.location.hostname + ':' + window.location.port;
@@ -78,34 +80,39 @@ var closeScreenIdentifier = function() {
 
 
 function addLayerAnimation(animlayer) {
-	var anim = new Konva.Animation(function (frame) {
+
+	var anim = new Konva.Animation(function(frame) {
+
 		var stopflag = true;
+
 		for (var i = 0; i < screenanimlist.length; i++) {
+
 			var action = screenanimlist[i];
+			if (action.targetType == "audio") {
+				// Skip audio
+				continue;
+			}
+
 			var prop = action.interpolateProp(frame);
 			var obj = action.parentobject;
 			obj.setAttr(action.property, prop);
 
 			if ((frame.time - action.starttime * 1000) > action.animDuration * 1000) {
 				stopflag = stopflag && true;   //if many objects wait until last one is finished
-			}
-			else {
+			} else {
 				stopflag = stopflag && false;
 			}
 		}
+
 		if (stopflag == true) {
 			this.stop();
 			frame.time = 0.0;
 			screenstage.fire('playdone');
-
 		}
-
-
 
 	}, animlayer);
 
 	animlayer.setAttr('animation', anim);
-
 }
 
 
@@ -349,19 +356,38 @@ function setObjstoStartstate() {
 }
 
 
+/**
+ * Plays actions as cast to the screen
+ *
+ */
 function play() {
-	/**
-	* Plays actions as cast to the screen
-	*/
 	isPlaying = true;
 	screenanimlist = screenlayer.getAttr('actionlist');
-	//console.log(screenanimlist);
+	// console.log(screenanimlist);
 	var anim = screenlayer.getAttr('animation');
 	screenlayer.draw();
 	anim.start();
 
+	// If audio device playback is set to 'screen', we need to play audio if there is any.
+	if (audiodev === 'screen') {
+
+		for (var i = 0; i < screenanimlist.length; i++) {
+			var action = screenanimlist[i];
+			var id = action.parentobject.getAttr('id');
+			switch (action.actiontype) {
+				case 'audio_play':
+					audioAction('play', id, action.src);
+				break;
+
+				case 'audio_stop':
+					audioAction('stop', id, action.src);
+				break;
+			}
+		}
+	}
 
 }
+
 
 function selectLayer(layername) {
 	screenstage.clear();
@@ -392,6 +418,11 @@ function ioUpdate(respdata) {
 			play();
 			break;
 
+		case 'audiodev':
+			audiodev = viewcommand.info;
+			// console.log("Setting audio playback device to " + viewcommand.info);
+			break;
+
 	}
 
 }
@@ -411,6 +442,10 @@ $(document).ready(function () {
 		closeScreenIdentifier();
 	});
 
+	$(document).one("click", function() {
+		$(".audio-enabler").hide();
+	});
+
 	window.onresize = function(){
 		scaleScreen();
 	}
@@ -423,11 +458,11 @@ $(document).ready(function () {
 		});
 
 		socket.on(socketmessage, function(respdata) {
+			$(".audio-enabler").hide();
 			if (ioqueue.length == 0) {
 				ioqueue.push(respdata);
 				processNextio('incoming');
-			}
-			else {
+			} else {
 				ioqueue.push(respdata);
 			}
 		});

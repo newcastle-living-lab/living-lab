@@ -1774,14 +1774,13 @@ function findLayerImages(objstates) {
 }
 
 /**
- * Finds all image objects on a layer
+ * Finds all sound objects on a layer
  *
  */
 function findLayerAudio(objstates) {
 	soundobjs = [];
 	for (var chi = 0; chi < objstates.length; chi++) {
 		var obj = objstates[chi];
-		console.log(obj);
 		if (obj.type == 'Group') {
 			var children = obj.children;
 			findLayerAudio(children);
