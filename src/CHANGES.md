@@ -1,5 +1,39 @@
 # Living Lab Changelog
 
+## v1.19.0
+
+* Added support for audio objects and playback actions.
+
+### Audio
+
+Audio can be played in a similar way to existing visual actions like animations and visiblity.
+
+First, upload sound files using the Library in the same way image resources would be added.
+Create a new Audio resource type (using the button with the sound icon), and selecting the
+uploaded sound file. Save this as a resource.
+
+In the Design screen, find audio objects in the Library tab, and click Use. They will appear
+on the stage as regular objects with a speaker icon. These can be hidden by setting the
+opacity to 0.
+
+_Note: these objects must also be included in the "Layer Start."_
+
+Available actions for sound objects are Play and Stop, which will control playback of the
+sound object in a similar way to visual objects that can be shown and hidden. These can be
+chosen from the "Action type" dropdown box in the Actions tab, and then dragged to the
+appropriate event boxes.
+
+When in presentation mode from a Playlist, the playback of audio can either be done from
+the playlist page itself, or the individual screen that the audio object gets added to.
+
+_Note:_ By default, audio will play from the Playlist page. To have it play on screens,
+make sure the screen pages are loaded first, before toggling the playback device preference.
+This is useful when operating the playlist from a mobile device, for example.
+
+When viewing a project using the Player feature (v1.14.0), the audio will be played from
+the page where the navigation is operated from. This is either from the Player welcome page
+or from the screens using the navigation widget overlay.
+
 
 ## v1.18.1
 
