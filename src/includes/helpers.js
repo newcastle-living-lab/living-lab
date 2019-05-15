@@ -58,7 +58,7 @@ var copyFile = function(source, target) {
 
 
 
-var writePlayfileandImages = function(fname, htmlstr, imglist) {
+var writePlayfileandImages = function(fname, htmlstr, imglist, audiolist) {
 
 	var playlistDir = fs.realpathSync(path.join(process.cwd(), "data", "playlists", fname));
 	var resourcesDir = fs.realpathSync(path.join(process.cwd(), "data", "resources"));
@@ -89,6 +89,31 @@ var writePlayfileandImages = function(fname, htmlstr, imglist) {
 				var imgfilename = imglist[imn],
 					srcFile = path.join(resourcesDir, imgfilename),
 					dstFile = path.join(playlistDir, "images", imgfilename);
+				copyFile(srcFile, dstFile);
+			}
+		 }
+ 	});
+
+ 	//make audio directory
+	fs.mkdir(path.join(playlistDir, "audio"), function(err) {
+		if (err) {
+			if (err.code == 'EEXIST') {
+				// ignore the error if the folder already exists
+				for (var sndn=0;sndn<audiolist.length;sndn++) {
+					var sndfilename = audiolist[sndn],
+						srcFile = path.join(resourcesDir, sndfilename),
+						dstFile = path.join(playlistDir, "audio", sndfilename);
+					copyFile(srcFile, dstFile);
+				}
+		 	} else {
+		 		console.log(err); // something else went wrong
+		 	}
+	 	} else {
+	 		// successfully created folder
+			for (var sndn=0;sndn<audiolist.length;sndn++) {
+				var sndfilename = audiolist[sndn],
+					srcFile = path.join(resourcesDir, sndfilename),
+					dstFile = path.join(playlistDir, "audio", sndfilename);
 				copyFile(srcFile, dstFile);
 			}
 		 }

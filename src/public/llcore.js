@@ -22,6 +22,15 @@ var dashdef = [10, 5];
 var usedefaults = true;
 var objdefaults = {};
 
+var extToMimes = {
+	'aac': 'audio/aac',
+	'mp3': 'audio/mpeg',
+	'oga': 'audio/ogg',
+	'ogg': 'audio/ogg',
+	'wav': 'audio/wav',
+	'weba': 'audio/webm',
+};
+
 hostaddr = hostaddr.replace(/:$/, '');
 
 function UniqueId() {
@@ -33,6 +42,18 @@ function UniqueId() {
 	//console.log(unumstr);
 	return unumstr;
 
+}
+
+
+function getFileMime(filename) {
+
+	var ext = filename.slice((filename.lastIndexOf(".") - 1 >>> 0) + 2);
+
+	if (extToMimes.hasOwnProperty(ext)) {
+		return extToMimes[ext];
+	}
+
+	return false;
 }
 
 function uniqueNameonLayer(obj) {

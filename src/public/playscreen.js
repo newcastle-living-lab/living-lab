@@ -38,6 +38,8 @@ var sspeevnonselcol = '#ccddcc';
 var sspeevselectcol = '#aaaaff';
 var snapshots;  //snapshots of object states at start and end of each presentevent
 var screenwidth, screenheight, txscale;
+var audiodev = 'local';
+var sounds = {};
 
 serverurl = serverurl.replace(/:$/, '');
 
@@ -462,6 +464,33 @@ function createPEandViews(peinfo) {
 	}
 }
 
+
+/**
+ * On load: build a list of audio objects and initialise the Howl sound player objects.
+ *
+ */
+function soundSetup(peinfo) {
+
+	var snapshots = peinfo.layersnapshots;
+	for (var snapIdx = 0; snapIdx < snapshots.length; snapIdx++) {
+		var snap = snapshots[snapIdx];
+		for (var layerIdx = 0; layerIdx < snap.length; layerIdx++) {
+			var objs = snap[layerIdx].objstates;
+			for (var objIdx = 0; objIdx < objs.length; objIdx++) {
+				var obj = objs[objIdx];
+				if (obj.type == 'Audio' && ! sounds.hasOwnProperty(obj.id)) {
+					sounds[obj.id] = new Howl({
+						src: ["/" + obj.src]
+					});
+				}
+			}
+		}
+	}
+
+}
+
+
+
 function togFullscreen() {
 	/**
 	* Toggle full screen mode
@@ -536,6 +565,7 @@ function gonextEvent() {
 function txplayEventtoScreens(peobj) {
 	//message to screens to play event
 	var ind = playentevents.indexOf(peobj);
+	// console.log(peobj);
 	//message to screen to play
 	var pevstate = peobj.getAttr('state');
 	for (var pei = 0; pei < pevstate.peviews.length; pei++) {
@@ -546,8 +576,30 @@ function txplayEventtoScreens(peobj) {
 			var scrcommand = { view: scrname, scrtxmsg: { command: 'play', info: '' } };
 			var scrjson = JSON.stringify(scrcommand);
 			socket.emit('screenmsg', scrjson);
-
 		}
+	}
+
+	if (audiodev === 'local') {
+		var snapstate = snapshots[ind];
+		var actions = snapstate[0].layeractions;
+		for (var actIdx = 0; actIdx < actions.length; actIdx++) {
+			var action = actions[actIdx];
+			// Audio actions?
+			if (action.actiontype == 'audio_play' || action.actiontype == 'audio_stop') {
+				// Got sound for this ID?
+				if (sounds.hasOwnProperty(action.parentobjectid)) {
+					switch (action.actiontype) {
+						case 'audio_play':
+							sounds[action.parentobjectid].play();
+						break;
+						case 'audio_stop':
+							sounds[action.parentobjectid].stop();
+						break;
+					}
+				}
+			}
+		}
+		// console.log(actions);
 	}
 }
 
@@ -625,6 +677,22 @@ function txClickEvent(eventId) {
 }
 
 
+function txAudioDevice() {
+	for (var idx = 0; idx < views.length; idx++) {
+		var viewstate = views[idx].getAttr('state');
+		var scrcommand = {
+			view: viewstate.name,
+			scrtxmsg: {
+				command: "audiodev",
+				info: audiodev
+			}
+		}
+		var scrjson = JSON.stringify(scrcommand);
+		socket.emit('screenmsg', scrjson);
+	}
+}
+
+
 function findEventById(eventId) {
 	var indexes = $.map(playentevents, function(obj, idx) {
 		var state = obj.getAttr("state");
@@ -683,6 +751,12 @@ function setPlaymode() {
 }
 
 
+function setAudioDevice() {
+	audiodev = $("[name='audio_device']:checked").val();
+	txAudioDevice();
+}
+
+
 function setup() {
 	/**
 	* Initial set up
@@ -723,6 +797,7 @@ function setup() {
 	}, false);
 
 	screenSetup();
+	soundSetup(peinfo);
 	$('#playaction').prop('checked', playmode);
 	createPEandViews(peinfo);
 
