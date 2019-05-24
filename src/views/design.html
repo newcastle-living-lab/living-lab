@@ -43,6 +43,8 @@
 						<li><a href="javascript:saveProject()">save</a></li>
 						<li><a href="javascript:saveasnewProject()">save as new</a></li>
 						<li id="playlist"><a href="javascript:compileViews()">save playlist</a></li>
+						<!-- <li><a href="javascript:showExportProject()">export</a></li>
+						<li><a href="javascript:showImportProject()">import</a></li> -->
 					</ul>
 				</li>
 				<li><a href="#">Layers</a>
@@ -149,12 +151,32 @@
 
 
 	<section>
+		<div class="modal" id="modal_project_export">
+			<a href="#" class="modal-overlay" aria-label="Close"></a>
+			<div class="modal-container">
+				<div class="modal-header">
+					<h3>Export project</h3>
+				</div>
+				<div class="modal-body">
+					<div class="content">
+						<p>Processing...</p>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<!-- <button class="menubutton" onclick="uiHandleExportCopy()" style="width:auto">Copy to clipboard</button> -->
+					<a class="menubutton menubutton-link" href="#">Close</a>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section>
 		<div class="modal" id="modal_layer_export">
 			<a href="#" class="modal-overlay" aria-label="Close"></a>
 			<div class="modal-container">
 				<div class="modal-header">
 					<h3>Export layer</h3>
-					<h6>Copy the layer data from the box below.</h6>
+					<p>Copy the layer data from the box below.</p>
 				</div>
 				<div class="modal-body">
 					<div class="content">
@@ -168,13 +190,14 @@
 			</div>
 		</div>
 	</section>
+
 	<section>
 		<div class="modal" id="modal_layer_import">
 			<a href="#" class="modal-overlay" aria-label="Close"></a>
 			<div class="modal-container">
 				<div class="modal-header">
 					<h3>Import Layer</h3>
-					<h6>Paste the layer data below and click Import.</h6>
+					<p>Paste the layer data below and click Import.</p>
 				</div>
 				<div class="modal-body">
 					<div class="content">

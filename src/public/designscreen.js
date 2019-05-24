@@ -1257,6 +1257,49 @@ function importLayer(layerData) {
 	updateEventSwimList();
 }
 
+
+/**
+ * Project Export/Import
+ *
+ */
+
+
+function showExportProject() {
+
+	if ( ! projectopened) {
+		alert("Please open a project first.");
+		return;
+	}
+
+	var projectId = parseInt(project.id, 10);
+	if (isNaN(projectId)) {
+		alert("Project must be saved before it can be exported.");
+		return;
+	}
+
+	location.hash = "#modal_project_export";
+
+	$.ajax({
+		url: hostaddr + "/export_project/" + project.id,
+		type: "POST"
+	})
+	.success(function(res) {
+		console.log(res);
+		$(document).trigger("export_complete", {
+			success: true,
+			res: res
+		});
+	})
+	.fail(function(res) {
+		console.log(res);
+		$(document).trigger("export_complete", {
+			success: false,
+			message: "Unknown error"
+		});
+	});
+}
+
+
 function makeObjectListOptions() {
 	var objtypes = ['Rect', 'Ellipse', 'RegularPolygon', 'Star', 'Ring', 'Text', 'Line', 'PolyLine', 'CurvedArrow'];
 	var htmlstr = '';
@@ -2428,4 +2471,20 @@ function setup() {
 			awayTimeout: 2000
 		}).start();
 	}
+
+
+	$(document).on("export_complete", function(data) {
+
+		location.hash = "#modal_project_export";
+		$content = $("#modal_project_export").find(".content");
+
+		if ( ! data.success) {
+			$content.html("Error: " + data.message);
+			return;
+		}
+
+		console.log(data);
+	});
+
+
 }
