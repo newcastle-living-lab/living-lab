@@ -1298,6 +1298,39 @@ function showExportProject() {
 }
 
 
+function uiHandleProjectUpload() {
+
+	var fdata = new FormData();
+	var fileid = document.getElementById("projectfile");
+	var files = fileid.files;
+
+	for (var i=0;i<files.length;i++) {
+		var ifile = files[i];
+		fdata.append("projectfile", ifile);
+	}
+
+	$.ajax({
+		url: hostaddr + '/import_project',
+		type: 'POST',
+		data: fdata,
+		processData: false,  // tell jQuery not to process the data
+		contentType: false,  // tell jQuery not to set contentType
+	})
+	.success(function(res) {
+		console.log(res);
+	})
+	.fail(function(res) {
+		var data = res.responseJSON;
+		if (data.error) {
+			alert(data.error);
+		} else {
+			alert('Sorry, there was an error uploading the file.');
+		}
+		console.log(data);
+	});
+}
+
+
 function makeObjectListOptions() {
 	var objtypes = ['Rect', 'Ellipse', 'RegularPolygon', 'Star', 'Ring', 'Text', 'Line', 'PolyLine', 'CurvedArrow'];
 	var htmlstr = '';

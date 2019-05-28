@@ -44,7 +44,7 @@
 						<li><a href="javascript:saveasnewProject()">save as new</a></li>
 						<li id="playlist"><a href="javascript:compileViews()">save playlist</a></li>
 						<li><a href="javascript:showExportProject()">export</a></li>
-						<li><a href="javascript:showImportProject()">import</a></li>
+						<li><a href="#modal_project_import">import</a></li>
 					</ul>
 				</li>
 				<li><a href="#">Layers</a>
@@ -151,6 +151,30 @@
 
 
 	<section>
+		<div class="modal" id="modal_project_import">
+			<a href="#" class="modal-overlay" aria-label="Close"></a>
+			<div class="modal-container">
+				<form id="uploadform" enctype="multipart/form-data" method="post">
+					<div class="modal-header">
+						<h3>Import project</h3>
+					</div>
+					<div class="modal-body">
+						<div class="content">
+							<input type="file" name="projectfile" id="projectfile">
+							<br><br>
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button class="menubutton" type="button" onclick="uiHandleProjectUpload()" style="width:auto">Upload File</button>
+						&nbsp;
+						<a class="menubutton menubutton-link" href="#">Cancel</a>
+					</div>
+				</form>
+			</div>
+		</div>
+	</section>
+
+	<section>
 		<div class="modal" id="modal_project_export">
 			<a href="#" class="modal-overlay" aria-label="Close"></a>
 			<div class="modal-container">
@@ -206,15 +230,15 @@
 						<input type="checkbox" name="import_actions" value="1" id="import_events_actions">
 						Include events and actions
 					</label> -->
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button class="menubutton" onclick="uiHandleImport()">Import</button>
+					<a class="menubutton menubutton-link" href="#">Cancel</a>
 				</div>
 			</div>
-			<div class="modal-footer">
-				<button class="menubutton" onclick="uiHandleImport()">Import</button>
-				<a class="menubutton menubutton-link" href="#">Cancel</a>
-			</div>
 		</div>
-	</div>
-</section>
+	</section>
 
 <script>
 	var auto_save = {% if auto_save %}true{% else %}false{% endif %};
