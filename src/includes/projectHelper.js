@@ -24,6 +24,9 @@ function load(projectId, cb) {
 			proj = row;
 			proj.json = JSON.parse(row.json);
 		}
+		if ( ! row) {
+			err = "Not found";
+		}
 		cb(err, proj);
 	});
 
@@ -455,4 +458,6 @@ module.exports = {
 	"createPlayerEntry": createPlayerEntry,
 	"toPlayer": toPlayer,
 	"exportProject": exportProject,
+	"findLayerImages": findLayerImages,
+	"findLayerAudio": findLayerAudio,
 };

@@ -1294,7 +1294,7 @@ function showExportProject() {
 		console.log(res);
 		$(document).trigger("export_complete", {
 			success: false,
-			message: "Unknown error"
+			err: res.error
 		});
 	});
 }

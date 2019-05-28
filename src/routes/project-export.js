@@ -1,4 +1,5 @@
 var projectHelper = require("../includes/projectHelper.js"),
+	ProjectExporter = require("../includes/ProjectExporter"),
 	eventLog = require("../includes/event-log"),
 	eventType = require("../includes/event-types");
 
@@ -12,19 +13,21 @@ exports.handler = function(req, res) {
 	projectHelper.load(projectId, function(err, project) {
 
 		if (err) {
-			return res.status(500).send({ "error": err });
+			return res.status(500).send({ 'success': false, 'error': err });
 		}
 
-		projectHelper.exportProject(project, function(err, data) {
+		ProjectExporter.init(project);
+
+		ProjectExporter.export(function(err, data) {
 
 			if (err) {
-				return res.status(500).send({ "error": err });
+				return res.status(500).send({ 'success': false, 'error': err });
 			}
 
 			eventLog.log({
-				"type": eventType.EXPORT_PROJECT,
-				"req": req,
-				"data": { project_id: projectId, project_name: project.name }
+				'type': eventType.EXPORT_PROJECT,
+				'req': req,
+				'data': { project_id: projectId, project_name: project.name }
 			});
 
 			res.send(data);
