@@ -1267,34 +1267,32 @@ function importLayer(layerData) {
 function showExportProject() {
 
 	if ( ! projectopened) {
-		alert("Please open a project first.");
+		alert('Please open a project first.');
 		return;
 	}
 
 	var projectId = parseInt(project.id, 10);
 	if (isNaN(projectId)) {
-		alert("Project must be saved before it can be exported.");
+		alert('Project must be saved before it can be exported.');
 		return;
 	}
 
-	location.hash = "#modal_project_export";
+	location.hash = '#modal_project_export';
 
 	$.ajax({
-		url: hostaddr + "/export_project/" + project.id,
-		type: "POST"
+		url: hostaddr + '/export_project/' + project.id,
+		type: 'POST'
 	})
 	.success(function(res) {
-		console.log(res);
-		$(document).trigger("export_complete", {
-			success: true,
+		$.event.trigger({
+			type: 'export_complete',
 			res: res
 		});
 	})
 	.fail(function(res) {
-		console.log(res);
-		$(document).trigger("export_complete", {
-			success: false,
-			err: res.error
+		$.event.trigger({
+			type: 'export_complete',
+			res: res
 		});
 	});
 }
@@ -2473,17 +2471,24 @@ function setup() {
 	}
 
 
-	$(document).on("export_complete", function(data) {
+	$(document).on("export_complete", function(e) {
+
+		var data = e.res;
 
 		location.hash = "#modal_project_export";
-		$content = $("#modal_project_export").find(".content");
+		$content = $("#modal_project_export .content");
 
 		if ( ! data.success) {
-			$content.html("Error: " + data.message);
+			$content.html("Error: " + data.error);
 			return;
 		}
 
-		console.log(data);
+		if (data.zip) {
+			var $a = $("<a>").attr({ 'href': '/export/' + data.zip.file }).html("<strong>Download " + data.zip.file + "</strong>");
+			$content.html("");
+			$a.appendTo($content);
+		}
+
 	});
 
 
