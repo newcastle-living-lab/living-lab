@@ -2484,7 +2484,7 @@ function setup() {
 		}
 
 		if (data.zip) {
-			var $a = $("<a>").attr({ 'href': '/export/' + data.zip.file }).html("<strong>Download " + data.zip.file + "</strong>");
+			var $a = $("<a>").attr({ 'href': '/export/' + data.zip.file }).html("<strong>Download " + data.zip.file + "</strong><br><br>");
 			$content.html("");
 			$a.appendTo($content);
 		}
