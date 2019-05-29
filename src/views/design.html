@@ -44,7 +44,7 @@
 						<li><a href="javascript:saveasnewProject()">save as new</a></li>
 						<li id="playlist"><a href="javascript:compileViews()">save playlist</a></li>
 						<li><a href="javascript:showExportProject()">export</a></li>
-						<li><a href="#modal_project_import">import</a></li>
+						<li><a href="javascript:showImportProject()">import</a></li>
 					</ul>
 				</li>
 				<li><a href="#">Layers</a>
@@ -151,23 +151,35 @@
 
 
 	<section>
-		<div class="modal" id="modal_project_import">
-			<a href="#" class="modal-overlay" aria-label="Close"></a>
+		<input id="toggle_loading" type="checkbox" class="toggle-check">
+		<div class="modal modal-sm" data-modal="loading">
+			<div class="modal-overlay"></div>
+			<div class="modal-container">
+				<div class="modal-header">
+					<h2 data-ui="content">Loading...</h2>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section>
+		<input id="toggle_projectImport" type="checkbox" class="toggle-check">
+		<div class="modal" data-modal="projectImport">
+			<label class="modal-overlay" aria-label="Close" for="toggle_projectImport"></label>
 			<div class="modal-container">
 				<form id="uploadform" enctype="multipart/form-data" method="post">
 					<div class="modal-header">
 						<h3>Import project</h3>
 					</div>
 					<div class="modal-body">
-						<div class="content">
+						<p>
 							<input type="file" name="projectfile" id="projectfile">
-							<br><br>
-						</div>
+						</p>
 					</div>
 					<div class="modal-footer">
 						<button class="menubutton" type="button" onclick="uiHandleProjectUpload()" style="width:auto">Upload File</button>
 						&nbsp;
-						<a class="menubutton menubutton-link" href="#">Cancel</a>
+						<label class="menubutton menubutton-link" for="toggle_projectImport">Cancel</a>
 					</div>
 				</form>
 			</div>
@@ -175,8 +187,29 @@
 	</section>
 
 	<section>
-		<div class="modal" id="modal_project_export">
-			<a href="#" class="modal-overlay" aria-label="Close"></a>
+		<input id="toggle_projectImportComplete" type="checkbox" class="toggle-check">
+		<div class="modal" data-modal="projectImportComplete">
+			<label class="modal-overlay" aria-label="Close" for="toggle_projectImportComplete"></label>
+			<div class="modal-container">
+				<div class="modal-header">
+					<h3>Project imported!</h3>
+				</div>
+				<div class="modal-body">
+					<p>The project <span data-ui="projectname"></span> has been imported.</p>
+				</div>
+				<div class="modal-footer">
+					<button class="menubutton" type="button" onclick="openProject(this)" style="width:auto" data-ui="openproj">Open project</button>
+					&nbsp;
+					<label class="menubutton menubutton-link" for="toggle_projectImportComplete">Close</a>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section>
+		<input id="toggle_projectExport" type="checkbox" class="toggle-check">
+		<div class="modal" data-modal="projectExport">
+			<label for="toggle_projectExport" class="modal-overlay" aria-label="Close"></label>
 			<div class="modal-container">
 				<div class="modal-header">
 					<h3>Export project</h3>
@@ -187,7 +220,7 @@
 					</div>
 				</div>
 				<div class="modal-footer">
-					<a class="menubutton menubutton-link" href="#">Close</a>
+					<label for="toggle_projectExport" class="menubutton menubutton-link">Close</a>
 				</div>
 			</div>
 		</div>

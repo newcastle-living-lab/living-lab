@@ -16,6 +16,21 @@ var saving_project = false;
 var showLeftCol = true;
 serverurl = serverurl.replace(/:$/, '');
 
+
+
+function showLoading(text) {
+	$("[data-modal='loading'] [data-ui='content']").text(text);
+	activateModal('loading');
+}
+
+function activateModal(ref) {
+	$("input.toggle-check").prop('checked', false).removeAttr('checked');
+	if (ref && ref.length) {
+		$("input#toggle_" + ref).prop('checked', 'checked');
+	}
+}
+
+
 function makeCurvedArrow() {
 	if (layer != null) {
 		var obj = addobj('CurvedArrow');
@@ -790,6 +805,7 @@ function openProject(pj) {
 	*/
 
 	var projid = pj.getAttribute('data-projid');
+	showLoading('Loading project...');
 
 	$.getJSON(hostaddr + "/getproject/" + projid, function (data) {
 
@@ -817,6 +833,8 @@ function openProject(pj) {
 		stageDims();
 
 		last_saved_project_hash = null;
+
+		activateModal();
 
 		setTimeout(function () {
 			if (layer == null) {
@@ -1277,7 +1295,8 @@ function showExportProject() {
 		return;
 	}
 
-	location.hash = '#modal_project_export';
+	activateModal('projectExport');
+	$("[data-modal='projectExport'] .content").html("<p>Processing...</p>");
 
 	$.ajax({
 		url: hostaddr + '/export_project/' + project.id,
@@ -1295,6 +1314,11 @@ function showExportProject() {
 			res: res
 		});
 	});
+}
+
+
+function showImportProject() {
+	activateModal('projectImport');
 }
 
 
@@ -1318,15 +1342,17 @@ function uiHandleProjectUpload() {
 	})
 	.success(function(res) {
 		console.log(res);
+		$.event.trigger({
+			type: 'import_complete',
+			res: res
+		});
 	})
 	.fail(function(res) {
 		var data = res.responseJSON;
-		if (data.error) {
-			alert(data.error);
-		} else {
-			alert('Sorry, there was an error uploading the file.');
-		}
-		console.log(data);
+		$.event.trigger({
+			type: 'import_complete',
+			res: data
+		});
 	});
 }
 
@@ -2508,8 +2534,10 @@ function setup() {
 
 		var data = e.res;
 
-		location.hash = "#modal_project_export";
-		$content = $("#modal_project_export .content");
+		activateModal('projectExport');
+
+		var $modal = $("[data-modal='projectExport']"),
+			$content = $modal.find(".content");
 
 		if ( ! data.success) {
 			$content.html("Error: " + data.error);
@@ -2524,5 +2552,27 @@ function setup() {
 
 	});
 
+
+	$(document).on("import_complete", function(e) {
+
+		var data = e.res;
+
+		if ( ! data.success) {
+			if (data.error) {
+				alert(data.error);
+			} else {
+				alert('Sorry, there was an error uploading the file.');
+			}
+			return;
+		}
+
+		if (data.success && data.project) {
+			activateModal('projectImportComplete');
+			var $modal = $("[data-modal='projectImportComplete']");
+			$modal.find("[data-ui='projectname']").text(data.project.name);
+			$modal.find("[data-ui='openproj']").attr({ 'data-projid': data.project.id});
+		}
+
+	});
 
 }
