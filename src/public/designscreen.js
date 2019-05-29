@@ -16,6 +16,21 @@ var saving_project = false;
 var showLeftCol = true;
 serverurl = serverurl.replace(/:$/, '');
 
+
+
+function showLoading(text) {
+	$("[data-modal='loading'] [data-ui='content']").text(text);
+	activateModal('loading');
+}
+
+function activateModal(ref) {
+	$("input.toggle-check").prop('checked', false).removeAttr('checked');
+	if (ref && ref.length) {
+		$("input#toggle_" + ref).prop('checked', 'checked');
+	}
+}
+
+
 function makeCurvedArrow() {
 	if (layer != null) {
 		var obj = addobj('CurvedArrow');
@@ -790,6 +805,7 @@ function openProject(pj) {
 	*/
 
 	var projid = pj.getAttribute('data-projid');
+	showLoading('Loading project...');
 
 	$.getJSON(hostaddr + "/getproject/" + projid, function (data) {
 
@@ -817,6 +833,8 @@ function openProject(pj) {
 		stageDims();
 
 		last_saved_project_hash = null;
+
+		activateModal();
 
 		setTimeout(function () {
 			if (layer == null) {
@@ -1256,6 +1274,88 @@ function importLayer(layerData) {
 	txLayers();
 	updateEventSwimList();
 }
+
+
+/**
+ * Project Export/Import
+ *
+ */
+
+
+function showExportProject() {
+
+	if ( ! projectopened) {
+		alert('Please open a project first.');
+		return;
+	}
+
+	var projectId = parseInt(project.id, 10);
+	if (isNaN(projectId)) {
+		alert('Project must be saved before it can be exported.');
+		return;
+	}
+
+	activateModal('projectExport');
+	$("[data-modal='projectExport'] .content").html("<p>Processing...</p>");
+
+	$.ajax({
+		url: hostaddr + '/export_project/' + project.id,
+		type: 'POST'
+	})
+	.success(function(res) {
+		$.event.trigger({
+			type: 'export_complete',
+			res: res
+		});
+	})
+	.fail(function(res) {
+		$.event.trigger({
+			type: 'export_complete',
+			res: res
+		});
+	});
+}
+
+
+function showImportProject() {
+	activateModal('projectImport');
+}
+
+
+function uiHandleProjectUpload() {
+
+	var fdata = new FormData();
+	var fileid = document.getElementById("projectfile");
+	var files = fileid.files;
+
+	for (var i=0;i<files.length;i++) {
+		var ifile = files[i];
+		fdata.append("projectfile", ifile);
+	}
+
+	$.ajax({
+		url: hostaddr + '/import_project',
+		type: 'POST',
+		data: fdata,
+		processData: false,  // tell jQuery not to process the data
+		contentType: false,  // tell jQuery not to set contentType
+	})
+	.success(function(res) {
+		console.log(res);
+		$.event.trigger({
+			type: 'import_complete',
+			res: res
+		});
+	})
+	.fail(function(res) {
+		var data = res.responseJSON;
+		$.event.trigger({
+			type: 'import_complete',
+			res: data
+		});
+	});
+}
+
 
 function makeObjectListOptions() {
 	var objtypes = ['Rect', 'Ellipse', 'RegularPolygon', 'Star', 'Ring', 'Text', 'Line', 'PolyLine', 'CurvedArrow'];
@@ -2428,4 +2528,51 @@ function setup() {
 			awayTimeout: 2000
 		}).start();
 	}
+
+
+	$(document).on("export_complete", function(e) {
+
+		var data = e.res;
+
+		activateModal('projectExport');
+
+		var $modal = $("[data-modal='projectExport']"),
+			$content = $modal.find(".content");
+
+		if ( ! data.success) {
+			$content.html("Error: " + data.error);
+			return;
+		}
+
+		if (data.zip) {
+			var $a = $("<a>").attr({ 'href': '/export/' + data.zip.file }).html("<strong>Download " + data.zip.file + "</strong><br><br>");
+			$content.html("");
+			$a.appendTo($content);
+		}
+
+	});
+
+
+	$(document).on("import_complete", function(e) {
+
+		var data = e.res;
+
+		if ( ! data.success) {
+			if (data.error) {
+				alert(data.error);
+			} else {
+				alert('Sorry, there was an error uploading the file.');
+			}
+			return;
+		}
+
+		if (data.success && data.project) {
+			activateModal('projectImportComplete');
+			var $modal = $("[data-modal='projectImportComplete']");
+			$modal.find("[data-ui='projectname']").text(data.project.name);
+			$modal.find("[data-ui='openproj']").attr({ 'data-projid': data.project.id});
+		}
+
+	});
+
 }

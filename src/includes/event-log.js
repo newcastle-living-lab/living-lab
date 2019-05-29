@@ -30,7 +30,10 @@ Eventlog.prototype.log = function(input) {
 	var user = null;
 
 	if (this.require_auth) {
-		var user = input.req.user.username;
+		var user = null;
+		if (input.req.user && input.req.user.username) {
+			user = input.req.user.username;
+		}
 		if (input.user) {
 			user = input.user.username;
 		}

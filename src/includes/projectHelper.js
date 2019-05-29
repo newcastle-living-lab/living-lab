@@ -20,9 +20,12 @@ function load(projectId, cb) {
 
 	db.get(sql, [projectId], function(err, row) {
 		var proj = {};
-		if ( ! err) {
+		if ( ! err && row) {
 			proj = row;
 			proj.json = JSON.parse(row.json);
+		}
+		if ( ! row) {
+			err = "Not found";
 		}
 		cb(err, proj);
 	});
@@ -437,9 +440,24 @@ function toPlayer(project) {
 }
 
 
+function exportProject(project, cb) {
+
+	var db = database.getDb();
+
+	cb(null, {
+		success: true,
+		url: "",
+		filename: ""
+	});
+}
+
+
 module.exports = {
 	"load": load,
 	"loadByName": loadByName,
 	"createPlayerEntry": createPlayerEntry,
 	"toPlayer": toPlayer,
+	"exportProject": exportProject,
+	"findLayerImages": findLayerImages,
+	"findLayerAudio": findLayerAudio,
 };

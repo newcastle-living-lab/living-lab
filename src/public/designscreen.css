@@ -423,39 +423,6 @@ a.menubutton-link {
 
 
 
-.toggle-check {
-
-}
-
-.toggle-content {
-	display: none;
-}
-.toggle-check:checked ~ .toggle-content {
-	display: block;
-}
-
-.toggle-check:checked ~ .modal {
-	display: flex;
-    opacity: 1;
-    z-index: 400;
-}
-.toggle-check:checked ~ .modal.active .modal-overlay {
-background: rgba(247, 248, 249, 0.75);
-      bottom: 0;
-      cursor: default;
-      display: block;
-      left: 0;
-      position: absolute;
-      right: 0;
-      top: 0;
-}
-
-.modal .layer-data {
-	width: 100%;
-	height: 150px;
-}
-
-
 .modal {
   align-items: center;
   bottom: 0;
@@ -515,3 +482,42 @@ background: rgba(247, 248, 249, 0.75);
     position: relative; }
   .modal-container .modal-footer {
     padding: 0.8rem; }
+
+
+
+
+.toggle-check {
+
+}
+
+.toggle-content {
+	display: none;
+}
+.toggle-check:checked ~ .toggle-content {
+	display: block;
+}
+
+.toggle-check:checked ~ .modal {
+	display: flex;
+    opacity: 1;
+    z-index: 400;
+}
+.toggle-check:checked ~ .modal .modal-overlay {
+	background: rgba(247, 248, 249, 0.75);
+	bottom: 0;
+	cursor: default;
+	display: block;
+	left: 0;
+	position: absolute;
+	right: 0;
+	top: 0;
+}
+
+.toggle-check:checked ~ .modal .modal-container {
+	z-index: 1;
+}
+
+.modal .layer-data {
+	width: 100%;
+	height: 150px;
+}

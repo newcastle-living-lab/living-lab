@@ -1,5 +1,28 @@
 # Living Lab Changelog
 
+## v1.20.0
+
+* Added Project Export/Import feature.
+* Changed size of drag handles to be larger.
+
+### Project Export/Import
+
+It is now possible to export/import projects between instances. When a project is open in
+the Design screen, use the Project > Export menu item. This will build a zip file which
+includes all project data, as well as any image or audio resources used.
+
+Use the Project > Import menu item to import a previously exported project zip file. The
+project will be imported under the same name, and any resources will be added to the local
+filesystem.
+
+_Note: if resource files already exist with the same name, the will be overwritten with the imported ones._
+
+Only resources with images and audio will be added to the _Library_. Resources in the project
+based on simple elements or shapes - like stars, rectangles, lines - will not be added to
+the library. This is due to projects using the _properties_ of resource objects to create
+unique instances when they are used; rather than referencing a 'shared' object in the library.
+
+
 ## v1.19.0
 
 * Added support for audio objects and playback actions.

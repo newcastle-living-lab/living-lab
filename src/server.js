@@ -58,6 +58,7 @@ var initServers = function() {
 	app.use(express.static(path.join(__dirname, "public")));
 	app.use("/resources", express.static(path.join(process.cwd(), "data", "resources")));
 	app.use("/playlists", express.static(path.join(process.cwd(), "data", "playlists")));
+	app.use("/export", express.static(path.join(process.cwd(), "data", "export")));
 
 	if (config.require_auth) {
 		app.use(session({
