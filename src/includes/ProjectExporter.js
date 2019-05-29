@@ -207,6 +207,7 @@ function saveProjectResources(data) {
 			srcFile,
 			dstFile,
 			rows = [],
+			promises = [],
 			resFilename;
 
 		for (i = 0; i < data.files.length; i++) {
@@ -215,15 +216,21 @@ function saveProjectResources(data) {
 			filename = file.replace("resources/", "");
 			srcFile = path.join(process.cwd(), "data", "resources", filename);
 			dstFile = path.join(process.cwd(), "data", "export", getDirName(), "resources", filename);
-			helpers.copyFile(srcFile, dstFile);
+			promises.push(helpers.copyFile(srcFile, dstFile));
 		}
 
-		resFilename = path.join(process.cwd(), "data", "export", getDirName(), "resources.json");
-		return fs.writeFile(resFilename, JSON.stringify(data),  function(err) {
-			if (err) {
-				return reject(err);
-			}
-			return resolve();
+		promises.push(new Promise(function(res, rej) {
+			resFilename = path.join(process.cwd(), "data", "export", getDirName(), "resources.json");
+			return fs.writeFile(resFilename, JSON.stringify(data),  function(err) {
+				if (err) {
+					return rej(err);
+				}
+				return res();
+			});
+		}));
+
+		Promise.all(promises).then(function() {
+			resolve();
 		});
 
 	});
