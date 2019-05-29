@@ -17,8 +17,11 @@ var project = null,
 
 
 function init(_file) {
+
 	file = _file;
-	tmpDir = path.join(process.cwd(), "data", "tmp", file.name.replace(".zip", ""));
+
+	var dirName = path.basename(file.path).replace('.zip', '');
+	tmpDir = path.join(process.cwd(), "data", "tmp", dirName);
 	db = database.getDb();
 }
 
@@ -37,7 +40,7 @@ function mkdir(dir) {
 
 
 /**
- * Create temporary dirs that will be zipped up.
+ * Create temporary dirs where files will be extracted to.
  *
  */
 function createDirs() {
@@ -45,18 +48,172 @@ function createDirs() {
 }
 
 
+/**
+ * Extract the zip contents to temp dir
+ *
+ */
 function extractZip() {
-	return fs.createReadStream(file.path)
-		.pipe(unzipper.Extract({ path: tmpDir }));
+	return new Promise(function(resolve, reject) {
+		return fs.createReadStream(file.path)
+			.pipe(unzipper.Extract({ path: tmpDir }))
+			.on('close', function() {
+				return resolve();
+			});
+	});
 }
 
 
+/**
+ * Check that the extracted contents contains the files we expect.
+ *
+ */
 function verifyUpload() {
+
+	return new Promise(function(resolve, reject) {
+		var hasProjectData = fs.existsSync(path.join(tmpDir, "project.json")),
+			hasProjectJson = fs.existsSync(path.join(tmpDir, "project-data.json")),
+			hasResources = fs.existsSync(path.join(tmpDir, "resources.json"));
+
+		if (hasProjectData && hasProjectJson && hasResources) {
+			return resolve();
+		} else {
+			return reject("No project data found in zip file.");
+		}
+	});
+
+}
+
+
+/**
+ * Create a new Project entry in the DB for this imported project.
+ *
+ */
+function createProject() {
+
+	return new Promise(function(resolve, reject) {
+
+		var proj = require(path.join(tmpDir, "project.json"));
+		var projData = require(path.join(tmpDir, "project-data.json"));
+
+		var sql,
+			params,
+			insid;
+
+		sql = "INSERT INTO Projects (name, createdate, lastdate, creator, json) VALUES ($name, $createdate, $lastdate, $creator, $state)";
+
+		params = {
+			$name: proj.name,
+			$createdate: proj.createdate,
+			$lastdate: proj.lastdate,
+			$creator: proj.creator,
+			$state: JSON.stringify(projData)
+		};
+
+		return db.run(sql, params, function(error) {
+
+			if (error) {
+				return reject(error);
+			}
+
+			db.each("SELECT last_insert_rowid() AS id FROM Projects", function(err, row) {
+				insid = row.id;
+			}, function(err, rows) {
+
+				if (err) {
+					return reject(err);
+				}
+
+				projectHelper.createPlayerEntry({
+					name: proj.name,
+					id: insid
+				}, function(err, data) {
+					//
+				});
+
+				project = proj;
+				project.id = insid;
+
+				return resolve();
+
+			});
+
+		});
+
+	});
+
+}
+
+
+/**
+ * Insert any resources we have into the database.
+ *
+ */
+function insertResources() {
+
+	return new Promise(function(resolve, reject) {
+
+		var resData = require(path.join(tmpDir, "resources.json")),
+			res;
+
+		var sql,
+			params;
+
+		var sql = "INSERT INTO Resources (name, type, jsonstate) VALUES ($name, $type, $state)";
+
+		db.serialize(function() {
+
+			for (var i = 0; i < resData.resources.length; i++) {
+
+				res = resData.resources[i];
+
+				var params = {
+					$name: res.name,
+					$type: res.type,
+					$state: res.jsonstate,
+				};
+
+				db.run(sql, params);
+			}
+
+		});
+
+		return resolve();
+
+	});
+
+}
+
+
+function copyResources() {
+
+	return new Promise(function(resolve, reject) {
+
+		var resData = require(path.join(tmpDir, "resources.json")),
+			file,
+			i,
+			p,
+			promises = [];
+
+		for (i = 0; i < resData.files.length; i++) {
+			// Copy file
+			file = resData.files[i];
+			filename = file.replace("resources/", "");
+			srcFile = path.join(tmpDir, "resources", filename);
+			dstFile = path.join(process.cwd(), "data", "resources", filename);
+			promises.push(helpers.copyFile(srcFile, dstFile));
+		}
+
+		Promise.all(promises).then(function() {
+			resolve();
+		});
+
+	});
 
 }
 
 
 function cleanup() {
+	rimraf(file.path, function(err) {});
 	rimraf(tmpDir, function(err) {});
 }
 
@@ -70,16 +227,30 @@ function importProject(cb) {
 		.then(function() {
 			return extractZip();
 		})
-		.then(function(zip) {
-			// cleanup();
+		.then(function() {
+			return verifyUpload();
+		})
+		.then(function() {
+			return createProject();
+		})
+		.then(function() {
+			return insertResources();
+		})
+		.then(function() {
+			return copyResources();
+		})
+		.then(function() {
+			cleanup();
 			cb(null, {
-				success: true,
+				'success': true,
+				'project': project,
 			});
 		})
 		.catch(function(err) {
+			cleanup();
 			console.log(err);
-			cb(err, { success: false });
-		})
+			cb(err, { 'success': false, 'error': err });
+		});
 }
 
 
