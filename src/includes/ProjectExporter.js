@@ -140,6 +140,12 @@ function findProjectResources() {
 
 		}
 
+		// Remove duplicates
+		data.files = data.files.filter(function(elem, pos) {
+			return data.files.indexOf(elem) == pos;
+		});
+
+		// Skip looking for resources if we have no files
 		if (data.files.length === 0) {
 			return resolve(data);
 		}
@@ -213,7 +219,7 @@ function saveProjectResources(data) {
 		}
 
 		resFilename = path.join(process.cwd(), "data", "export", getDirName(), "resources.json");
-		return fs.writeFile(resFilename, JSON.stringify(data.resources),  function(err) {
+		return fs.writeFile(resFilename, JSON.stringify(data),  function(err) {
 			if (err) {
 				return reject(err);
 			}
@@ -225,6 +231,10 @@ function saveProjectResources(data) {
 }
 
 
+/**
+ * Add all necessary files to the zip.
+ *
+ */
 function buildZip() {
 
 	return new Promise(function(resolve, reject) {
@@ -250,6 +260,7 @@ function buildZip() {
 		archive.pipe(output);
 		archive.directory(path.join(process.cwd(), "data", "export", getDirName()), false);
 		archive.finalize();
+
 	});
 
 }
