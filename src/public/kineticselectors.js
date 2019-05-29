@@ -346,7 +346,7 @@ function addAnchor(sel, x, y, name, id) {
     stroke: '#666',
     fill: '#ddd',
     strokeWidth: 2,
-    radius: 3,
+    radius: 10,
     name: name,
     id : id,
     draggable: true,
