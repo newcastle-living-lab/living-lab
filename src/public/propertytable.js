@@ -193,6 +193,7 @@ function updatePropDisp() {
 
 	if (validTypeForEvents) {
 		state.event = (state.event === undefined ? "" : state.event);
+		state.url = (state.url === undefined ? "" : state.url);
 	}
 
 	for (var key in state) {
@@ -254,7 +255,7 @@ function updatePropDisp() {
 						$("#proptable").append('<tr><td class="tablekey">' + key + '</td><td class="tableval"><input id="prop' + key + '" type="text" style="text-align:left" size="7" onchange="changeCallback({' + key + ':this.value})"></td><td class="tablegui"><input class="tablegui" type="color" value="' + propval + '" onchange="colorPropValue({' + key + ':this.value})"></td></tr>');
 						$("#prop" + key).val(propval);
 					} else {
-						$("#proptable").append('<tr><td class="tablekey">' + key + '</td><td class="tableval"><input id="prop' + key + '" type="text" style="text-align:left" size="7" onchange="changeCallback({' + key + ':this.value})"></td><td class="tablegui"></td></tr>');
+						$("#proptable").append('<tr><td class="tablekey">' + key + '</td><td class="tableval" colspan="2"><input id="prop' + key + '" type="text" style="text-align:left" size="7" onchange="changeCallback({' + key + ':this.value})"></td></tr>');
 						$("#prop" + key).val(propval);
 					}
 					break;
