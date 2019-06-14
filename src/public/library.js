@@ -41,6 +41,7 @@ function uploadFile() {
 function loadResources() {
 
 	$('#iconlist').empty();
+	$("#delete_resource").empty();
 
 	$.getJSON( hostaddr+"/getresources", function( data ) {
 		//var items = [];
@@ -80,7 +81,9 @@ function renderItem(item) {
 	});
 
 	$div.on("click", function() {
-		setToResource(this)
+		setToResource(this);
+		$(this).addClass("isactive");
+		$(this).siblings().removeClass("isactive");
 	});
 
 	var $img = $("<img>", {
@@ -212,9 +215,58 @@ function setToResource(sel) {
 			break;
 
 		}
+	} else {
+		showDeleteFile(sel)
 	}
 }
 
+
+function showDeleteFile(sel) {
+
+	$deleteContainer = $("#delete_resource");
+	$deleteContainer.empty();
+
+	var filename = $(sel).data('filename');
+	filename = filename.replace(/^resources\//, '');
+
+	var $button = $("<button>", {
+		'type': 'button',
+		'class': 'delete_btn',
+		'data-filename': filename,
+	});
+	$button.text("Delete resource");
+	$button.on("click", function(e) {
+		fileRemove(filename);
+	});
+	$button.appendTo($deleteContainer);
+}
+
+
+function fileRemove(filename) {
+
+	var ans = confirm('Are you sure you want to delete the selected file "' + filename + '"?');
+
+	if (ans == true) {
+
+		$.ajax({
+			url: hostaddr+"/removeresource",
+			type: "POST",
+			data: {
+				filename: filename
+			}
+		})
+		.done(function() {
+			// loadResources();
+		})
+		.success(function() {
+			$(".resourceicon[data-filename='resources/" + filename + "']").remove();
+			$("#delete_resource").empty();
+		})
+		.fail(function() {
+			alert('Error deleting the file');
+		});
+	}
+}
 
 
 /**
@@ -377,7 +429,7 @@ function updateObjState(prop) {
 function screenSetup() {
 
 	var ww = $(window).width();
-	var wh = $(window).height();
+	var wh = $(window).height() - 20;
 	$('#mainpanel').css({'height': Math.round(1.0*wh).toString() + 'px'});
 	$('#mainpanel').css({'width': Math.round(0.70*ww).toString() + 'px'});
 	//	$('#resourcepanel').css({'left': Math.round(0.25*ww).toString() + 'px'});

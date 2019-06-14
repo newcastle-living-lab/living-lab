@@ -88,7 +88,7 @@ function addLayerAnimation(animlayer) {
 		for (var i = 0; i < screenanimlist.length; i++) {
 
 			var action = screenanimlist[i];
-			if (action.targetType == "audio") {
+			if (action.targetType == 'audio' || action.targetType == 'url') {
 				// Skip audio
 				continue;
 			}
@@ -368,22 +368,34 @@ function play() {
 	screenlayer.draw();
 	anim.start();
 
-	// If audio device playback is set to 'screen', we need to play audio if there is any.
-	if (audiodev === 'screen') {
+	for (var i = 0; i < screenanimlist.length; i++) {
+		var action = screenanimlist[i];
+		var id = action.parentobject.getAttr('id');
 
-		for (var i = 0; i < screenanimlist.length; i++) {
-			var action = screenanimlist[i];
-			var id = action.parentobject.getAttr('id');
-			switch (action.actiontype) {
-				case 'audio_play':
+		console.log(action);
+
+		switch (action.actiontype) {
+			case 'audio_play':
+				if (audiodev === 'screen') {
 					audioAction('play', id, action.src);
-				break;
+				}
+			break;
 
-				case 'audio_stop':
+			case 'audio_stop':
+				if (audiodev === 'screen') {
 					audioAction('stop', id, action.src);
-				break;
-			}
+				}
+			break;
+
+			case 'url_open':
+				urlAction('open', id, action.url);
+			break;
+
+			case 'url_close':
+				urlAction('close', id, action.url);
+			break;
 		}
+
 	}
 
 }

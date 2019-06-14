@@ -26,6 +26,7 @@ var eventliststates = [];
 var eventlistgap = 5;
 var eventlistXoffset = 150;
 var sounds = window.sounds || {};
+var urlWindow = {};		// ref to window for URL opens
 
 function actionselect()
 {
@@ -45,9 +46,9 @@ function makeLayerAnimation(actionlayer)
 		// console.log(animlist);
 		for (var i = 0; i < animlist.length; i++) {
 			var action = animlist[i];
-			// console.log(action);
-			if (action.targetType == "audio") {
-				// Skip audio
+			console.log(action);
+			if (action.targetType == "audio" || action.targetType == "url") {
+				// Skip audio and URLs
 				continue;
 			}
 			var prop = action.interpolateProp(frame);
@@ -107,6 +108,9 @@ function makeActionTypeOptions(obj) {
 				}
 			}
 
+			htmlstr = htmlstr + '<option value="url_open">open url</option>';
+			htmlstr = htmlstr + '<option value="url_close">close url</option>';
+
 		}
 	}
 	return htmlstr;
@@ -154,6 +158,11 @@ function Action(parentobject,id,actiontype,startval,endval,starttime,duration)
 	if (actiontype == 'audio_play' || actiontype == 'audio_stop') {
 		this.targetType = 'audio';
 		this.src = this.parentobject.getAttr('src');
+	}
+
+	if (actiontype == 'url_open' || actiontype == 'url_close') {
+		this.targetType = 'url';
+		this.url = this.parentobject.getAttr('url');
 	}
 
 	this.interpolateProp = function(frame) {
@@ -335,6 +344,14 @@ function playActionEvent() {
 				case "audio_stop":
 					audioAction("stop", id, action.src);
 				break;
+
+				case "url_open":
+					urlAction("open", id, action.url);
+				break;
+
+				case "url_close":
+					urlAction("close", id, action.url);
+				break;
 			}
 		}
 	}
@@ -359,6 +376,50 @@ function audioAction(action, id, src) {
 	}
 
 	return;
+}
+
+
+function urlAction(action, id, url) {
+
+	// console.log("URL: " + action + " for " + id + " with URL " + url);
+	var refName = "urlWindow" + id;
+
+	if (action == 'open') {
+
+		var properties = {
+			menubar: 'no',
+			location: 'no',
+			resizable: 'no',
+			scrollbars: 'no',
+			status: 'no',
+			channelmode: 1,
+			screenX: 0,
+			screenY: 0,
+			left: 0,
+			top: 0,
+			fullscreen: 'yes',
+			width: (screen.availWidth-5),
+			height: (screen.availHeight-(55)),
+		};
+
+		var params = [],
+			windowFeatures = '';
+
+		for (var property in properties) {
+			params.push([property, properties[property]].join('='));
+		}
+
+		windowFeatures = params.join(',');
+
+		urlWindow[refName] = window.open(url, refName, windowFeatures);
+
+	} else {
+
+		if (urlWindow[refName] && ! urlWindow[refName].closed) {
+			urlWindow[refName].close();
+		}
+
+	}
 }
 
 
@@ -763,6 +824,17 @@ function newAction()
 					parentobjectid: activeobject.id(),
 					id: 'none',
 					actiontype: acttype
+				}
+				actobj = actionobj(state, actionbox);
+			break;
+
+			case 'url_open':
+			case 'url_close':
+				var state = {
+					descriptor: '',
+					parentobjectid: activeobject.id(),
+					id: 'none',
+					actiontype: acttype,
 				}
 				actobj = actionobj(state, actionbox);
 			break;
