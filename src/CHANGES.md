@@ -1,5 +1,26 @@
 # Living Lab Changelog
 
+
+## v1.21.0
+
+* Added support for 'URL' object actions: opening/closing any URL in a new browser window.
+* Added support for deleting resource files in the Library.
+
+### URL actions
+
+It is possible to create actions that open (and close) new browser windows that point to
+a specific web address (URL).
+
+In the Design screen, select an object (image, text, shape) on the canvas.
+In the property panel, enter a URL in the "URL" field.
+
+_Note: these objects, along with the URL property set, must be included in the "Layer Start."_
+
+Available actions for these objects will include Open and Close, which controls the opening
+and closing of a new browser window showing the URL. These can be chosen from the
+"Action type" dropdown box in the Actions tab, and then dragged to the appropriate event boxes.
+
+
 ## v1.20.0
 
 * Added Project Export/Import feature.
