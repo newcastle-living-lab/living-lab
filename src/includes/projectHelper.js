@@ -16,7 +16,7 @@ function load(projectId, cb) {
 
 	var db = database.getDb();
 
-	var sql = "SELECT id,name,createdate,lastdate,creator,json FROM Projects WHERE id = ?";
+	var sql = "SELECT id,name,folder,createdate,lastdate,creator,json FROM Projects WHERE id = ?";
 
 	db.get(sql, [projectId], function(err, row) {
 		var proj = {};

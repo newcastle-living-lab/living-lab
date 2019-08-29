@@ -487,7 +487,14 @@ a.menubutton-link {
 
 
 .toggle-check {
-
+	border: 0!important;
+	clip: rect(0 0 0 0)!important;
+	height: 1px!important;
+	margin: -1px!important;
+	overflow: hidden!important;
+	padding: 0!important;
+	position: absolute!important;
+	width: 1px!important;
 }
 
 .toggle-content {
@@ -521,3 +528,121 @@ a.menubutton-link {
 	width: 100%;
 	height: 150px;
 }
+
+
+
+.accordion input:checked ~ .accordion-header .icon, .accordion[open] .accordion-header .icon {
+  -webkit-transform: rotate(90deg);
+          transform: rotate(90deg); }
+
+.accordion input:checked ~ .accordion-body, .accordion[open] .accordion-body {
+  max-height: 50rem; }
+
+.accordion .accordion-header {
+  display: block;
+  padding: 0.2rem 0.4rem; }
+
+
+.accordion .accordion-body {
+  margin-bottom: 0;
+  max-height: 0;
+  overflow: hidden;}
+
+summary.accordion-header::-webkit-details-marker {
+  display: none; }
+
+
+.menu {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	z-index: 300;
+}
+
+	.menu .menu-item {
+		margin-top: 0;
+		padding: 0 8px;
+		position: relative;
+		text-decoration: none;
+	}
+
+    .menu .menu-item > a {
+		color: inherit;
+		display: block;
+		margin: 0 -4px;
+		padding: 4px 8px;
+		text-decoration: none;
+		line-height: 20px;
+	}
+
+	.menu .menu-item > a:focus,
+	.menu .menu-item > a:hover {
+		background: #99d0ff;
+		color: #0074d9;
+	}
+
+	.menu .menu-item > a:active,
+	.menu .menu-item > a.active {
+		background: #99d0ff;
+		color: #0074d9;
+	}
+
+    .menu .menu-item + .menu-item {
+    	margin-top: 4px;
+    }
+
+
+
+
+.pb-header {
+	padding: 2px 8px;
+	margin: 0 0 4px 0;
+	line-height: 20px;
+}
+	.pb-header + .pb-header {
+		margin-top: 2px;
+	}
+
+	.pb-header > svg {
+		line-height: 20px;
+		display: inline-block;
+		vertical-align: -5px;
+		margin-right: 6px;
+		/*outline: 1px dotted red;*/
+		width: 20px;
+		height: 20px;
+	}
+	.pb-header-title {
+		display: inline-block;
+		line-height: 20px;
+		/*outline: 1px dotted #ccc;*/
+	}
+
+
+.pb-items {
+	padding-left: 26px;
+}
+
+
+
+
+.pb-delete {
+	border: 0;
+	background: transparent;
+	padding: 0;
+	margin: 0;
+	line-height: 20px;
+	color: #777;
+	float: right;
+}
+
+	.pb-delete:focus,
+	.pb-delete:hover,
+	.pb-delete:active {
+		color: red;
+	}
+
+	.pb-delete > svg {
+		width: 16px;
+		height: 16px;
+	}

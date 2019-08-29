@@ -1,6 +1,7 @@
 var fs = require("fs"),
 	path = require("path"),
-	sqlite3 = require("sqlite3").verbose();
+	sqlite3 = require("sqlite3").verbose(),
+	_ = require('lodash');
 
 var Database = function() {
 }
@@ -11,6 +12,7 @@ Database.prototype.init = function() {
 	this.dbExists = fs.existsSync(this.getPath());
 	this.db = null;
 	this.createTables();
+	this.updateTables();
 }
 
 
@@ -39,7 +41,7 @@ Database.prototype.createTables = function() {
 
 	db.serialize(function() {
 
-		db.run("CREATE TABLE IF NOT EXISTS Projects (id INTEGER PRIMARY KEY, name TEXT, createdate TEXT, lastdate TEXT, creator TEXT, json TEXT)", function(err) {
+		db.run("CREATE TABLE IF NOT EXISTS Projects (id INTEGER PRIMARY KEY, name TEXT, folder TEXT, createdate TEXT, lastdate TEXT, creator TEXT, json TEXT)", function(err) {
 			if (err) {
 				console.error('Database Projects error', err);
 			}
@@ -64,6 +66,34 @@ Database.prototype.createTables = function() {
 		});
 
 	});
+}
+
+
+Database.prototype.updateTables = function() {
+
+	var db = this.getDb();
+
+	// Add 'folder' to projects
+	this.tableHasColumn('Projects', 'folder', function(colExists) {
+		if ( ! colExists) {
+			db.run('ALTER TABLE Projects ADD COLUMN folder TEXT');
+			console.log('Added "folder" column to Projects.');
+		}
+	});
+
+}
+
+
+Database.prototype.tableHasColumn = function(table, column, cb) {
+
+	var db = this.getDb(),
+		sql = 'PRAGMA table_info(' + table + ')';
+
+	db.all(sql, function (error, rows) {
+		var result = _.some(rows, {'name': column});
+		cb(result);
+	});
+
 }
 
 
