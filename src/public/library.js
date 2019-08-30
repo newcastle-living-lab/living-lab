@@ -392,7 +392,7 @@ function screenSetup() {
 	$('#resourcepanel').css({'height': Math.round(1.0*wh).toString() + 'px'});
 	$('#resourcepanel').css({'width': Math.round(0.27*ww).toString() + 'px'});
 	var rh = $('#resourcepanel').height();
-	$('#iconlist').css({'height': Math.round(1.0*rh-100-5).toString() + 'px'});
+	$('#iconlist').css({'height': Math.round(1.0*rh-100-5-30).toString() + 'px'});
 
 	var mh = $('#mainpanel').height();
 	var mw = $('#mainpanel').width();
@@ -433,7 +433,7 @@ function setup() {
 	// When a folder is navigated to
 	$(document).on('fx:navigate', function(evt, params) {
 		// store the path we are currently in
-		currentPath = params;
+		currentPath = params.path;
 		// hide Delete button
 		showDeleteFile(false);
 	});
@@ -447,6 +447,7 @@ function setup() {
 	});
 
 	var fileExplorer = new FileExplorer('#iconlist', hostaddr);
+	var fileToolbar = new FileToolbar('#toolbar', hostaddr);
 
 	stage = new Konva.Stage({
 		container: designspace,

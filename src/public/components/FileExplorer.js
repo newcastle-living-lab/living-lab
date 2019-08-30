@@ -12,6 +12,8 @@ function FileExplorer(container, hostaddr) {
 
 	this.document.on('fx:deleted', $.proxy(this, 'onFileDeleted'));
 	this.document.on('fx:uploaded', $.proxy(this, 'onFileUploaded'));
+	this.document.on('fx:folder_deleted', $.proxy(this, 'onFolderDeleted'));
+	this.document.on('fx:folder_created', $.proxy(this, 'onFolderCreated'));
 
 	this.loadResources('/');
 }
@@ -51,12 +53,31 @@ FileExplorer.prototype.onFileUploaded = function(evt) {
 	this.loadResources(this.currentPath);
 }
 
+
 /**
  * When a file is deleted, re-load the resources and re-navigate to last folder.
  *
  */
 FileExplorer.prototype.onFileDeleted = function(evt) {
 	this.loadResources(this.currentPath);
+}
+
+
+/**
+ * When a folder is created, re-load the resources and re-navigate to the one it was created in.
+ *
+ */
+FileExplorer.prototype.onFolderCreated = function(evt, params) {
+	this.loadResources(params.path);
+}
+
+
+/**
+ * When a folder is deleted, re-load the resources and re-navigate to its parent.
+ *
+ */
+FileExplorer.prototype.onFolderDeleted = function(evt, params) {
+	this.loadResources(params.parent);
 }
 
 
@@ -101,7 +122,7 @@ FileExplorer.prototype.navigate = function(path) {
 		this.container.append(this.renderFile(files[i]));
 	}
 
-	this.trigger('navigate', path);
+	this.trigger('navigate', { path: path, files: files });
 }
 
 
