@@ -1923,7 +1923,7 @@ function compileViews() {
 			//console.log(playimgs);
 			for (var imn = 0; imn < playimgs.length; imn++) {
 				var imgobj = playimgs[imn];
-				var imgfilename = (imgobj.path).substring((imgobj.path).lastIndexOf("/") + 1, (imgobj.path).length);
+				var imgfilename = imgobj.path.replace(/resources\//, '');
 				imgobj.path = 'playlists/' + project.name + '/images/' + imgfilename;
 				playimages.push(imgfilename);
 			}
@@ -1932,7 +1932,7 @@ function compileViews() {
 			// console.log(playsnds);
 			for (var sndn = 0; sndn < playsnds.length; sndn++) {
 				var sndobj = playsnds[sndn];
-				var audiofilename = (sndobj.src).substring((sndobj.src).lastIndexOf("/") + 1, (sndobj.src).length);
+				var audiofilename = sndobj.src.replace(/resources\//, '');
 				sndobj.src = 'playlists/' + project.name + '/audio/' + audiofilename;
 				playsounds.push(audiofilename);
 			}
