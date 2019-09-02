@@ -1,6 +1,12 @@
 # Living Lab Changelog
 
 
+## v1.22.0
+
+* Added support for Project folders. The folder name can be set with other Project properties once opened.
+* Added support for Resource folders. These can be managed in the Library page.
+
+
 ## v1.21.0
 
 * Added support for 'URL' object actions: opening/closing any URL in a new browser window.

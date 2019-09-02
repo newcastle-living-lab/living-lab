@@ -15,10 +15,15 @@ handlers.push(function(req, res, next) {
 	var decodedBody = req.body;
 	var pid = decodedBody.id;
 	var pname = decodedBody.name;
+	var pfolder = decodedBody.folder;
 	var pcdate = decodedBody.cdate;
 	var pldate = decodedBody.ldate;
 	var pcreator = decodedBody.creator;
 	var pstate = decodedBody.state;
+
+	if (pfolder.length === 0) {
+		pfolder = null;
+	}
 
 	/*  	  var pid = (url.parse(req.url,true)).query.id;
 	var pname = (url.parse(req.url,true)).query.name;
@@ -40,10 +45,11 @@ handlers.push(function(req, res, next) {
 
 		if (rows > 0) {
 
-			sql = "UPDATE Projects SET name = $name, createdate = $createdate, lastdate = $lastdate, creator = $creator, json = $state WHERE id = $id";
+			sql = "UPDATE Projects SET name = $name, folder = $folder, createdate = $createdate, lastdate = $lastdate, creator = $creator, json = $state WHERE id = $id";
 
 			params = {
 				$name: pname,
+				$folder: pfolder,
 				$createdate: pcdate,
 				$lastdate: pldate,
 				$creator: pcreator,
@@ -77,10 +83,11 @@ handlers.push(function(req, res, next) {
 
 		} else {
 
-			sql = "INSERT INTO Projects (name, createdate, lastdate, creator, json) VALUES ($name, $createdate, $lastdate, $creator, $state)";
+			sql = "INSERT INTO Projects (name, folder, createdate, lastdate, creator, json) VALUES ($name, $folder, $createdate, $lastdate, $creator, $state)";
 
 			params = {
 				$name: pname,
+				$folder: pfolder,
 				$createdate: pcdate,
 				$lastdate: pldate,
 				$creator: pcreator,

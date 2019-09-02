@@ -1,101 +1,43 @@
 
+// Current path that the file explorer has been navigated to.
+// This is retrieved when uploading a file to pass to the server.
+var currentPath = null;
 
 /**
 * Upload a file selected with an input file type element id="fimg" and do an ajax post to nodeio which will save it in the appropriate directory
 *
 */
 function uploadFile() {
+
 	var fdata = new FormData();
 	var fileid = document.getElementById("fimg");
 	var files = fileid.files;
-	for (var i=0;i<files.length;i++) {
-		var ifile = files[i];
-		fdata.append("imgfiles", ifile);
+
+	// Set path first, so the server processes the path first.
+	fdata.set('path', currentPath);
+
+	for (var i = 0; i < files.length; i++) {
+		fdata.append("imgfiles", files[i]);
 	}
+
 	$.ajax({
 		url: hostaddr+"/uploadresource",
 		type: "POST",
 		data: fdata,
 		processData: false,  // tell jQuery not to process the data
-		contentType: false
-	})   // tell jQuery not to set contentType
+		contentType: false, // tell jQuery not to set contentType
+	})
 	.done(function() {
-		//alert( "success" );
-		loadResources();
+		$(document).trigger('fx:uploaded');
 	})
 	.fail(function() {
-		alert( "error" );
+		alert('Error uploading file.');
 	})
 	.always(function() {
-		//alert( "complete" );
+		// Reset the file input
+		document.getElementById("fimg").value = '';
 	});
 
-}
-
-
-/**
- * Load the uploaded resources by doing a get ajax call to nodeio
- * Create an icon for each resource in the resource pane and attach a setToResource callback when the resource icon is clicked
- *
- */
-function loadResources() {
-
-	$('#iconlist').empty();
-	$("#delete_resource").empty();
-
-	$.getJSON( hostaddr+"/getresources", function( data ) {
-		//var items = [];
-		$.each(data, function(index, item) {
-			renderItem(item).appendTo("#iconlist");
-		});
-	});
-}
-
-
-function renderItem(item) {
-	var parts = item.split("."),
-		ext = parts[ parts.length-1 ].toLowerCase(),
-		name = item.replace("." + ext, "");
-
-	var src = "";
-
-	switch (ext) {
-		case "mp3":
-		case "wav":
-			src = "/images/audio.png";
-		break;
-
-		case "png":
-		case "jpg":
-		case "jpeg":
-		case "gif":
-		case "tiff":
-		case "bmp":
-			src = "resources/" + item;
-		break;
-	}
-
-	var $div = $("<div>", {
-		"class": "resourceicon",
-		'data-filename': "resources/" + item,
-	});
-
-	$div.on("click", function() {
-		setToResource(this);
-		$(this).addClass("isactive");
-		$(this).siblings().removeClass("isactive");
-	});
-
-	var $img = $("<img>", {
-		"class": "resourceimg",
-		"src": src,
-	});
-
-	$div.append($img);
-	$div.append(item);
-	return $div;
-
-	// return $("<div class='resourceicon' data-filename='resources/"+item+"' onclick='setToResource(this)'><img class='resourceimg' src='resources/"+item+"'/>"+item+"</div>" );
 }
 
 
@@ -122,6 +64,7 @@ function libuse() {
 
 /**
  * Remove a library object from the database by making an ajax call to nodeio
+ *
  */
 function libremove() {
 
@@ -149,8 +92,10 @@ function libremove() {
 	}
 }
 
+
 /**
  * Only load the library object which match the filter string
+ *
  */
 function filterlib() {
 	var filterstr = document.getElementById('filtername').value;
@@ -161,6 +106,7 @@ function filterlib() {
 
 /**
  * Load all the library objects
+ *
  */
 function resetlib() {
 	clearObjects();
@@ -170,14 +116,15 @@ function resetlib() {
 
 /**
  * The callback function from the resource icon which sets the image object source to the resource that is clicked on
+ *
  */
-function setToResource(sel) {
+function setToResource(data) {
 
-	console.log(sel);
+	// console.log(data);
 
 	if (activeobject != null) {
 
-		selectedresource = sel.getAttribute('data-filename');
+		selectedresource = data.filename;
 		var state = activeobject.getAttr('state');
 
 		switch (state.type) {
@@ -215,57 +162,66 @@ function setToResource(sel) {
 			break;
 
 		}
-	} else {
-		showDeleteFile(sel)
 	}
 }
 
 
-function showDeleteFile(sel) {
+/**
+ * Show or Hide the Delete Resource button.
+ * If data is not false, show.
+ * If data is false, hide.
+ *
+ */
+function showDeleteFile(data) {
 
 	$deleteContainer = $("#delete_resource");
 	$deleteContainer.empty();
 
-	var filename = $(sel).data('filename');
-	filename = filename.replace(/^resources\//, '');
+	if (data === false) {
+		return;
+	}
 
 	var $button = $("<button>", {
 		'type': 'button',
 		'class': 'delete_btn',
-		'data-filename': filename,
 	});
 	$button.text("Delete resource");
 	$button.on("click", function(e) {
-		fileRemove(filename);
+		fileRemove(data);
 	});
 	$button.appendTo($deleteContainer);
+
 }
 
 
-function fileRemove(filename) {
+/**
+ * Prompt user to delete resource, do AJAX POST on confirm.
+ *
+ */
+function fileRemove(data) {
 
-	var ans = confirm('Are you sure you want to delete the selected file "' + filename + '"?');
+	console.log(data);
 
-	if (ans == true) {
+	var ans = confirm('Are you sure you want to delete the selected file "' + data.name + '"?');
 
-		$.ajax({
-			url: hostaddr+"/removeresource",
-			type: "POST",
-			data: {
-				filename: filename
-			}
-		})
-		.done(function() {
-			// loadResources();
-		})
-		.success(function() {
-			$(".resourceicon[data-filename='resources/" + filename + "']").remove();
-			$("#delete_resource").empty();
-		})
-		.fail(function() {
-			alert('Error deleting the file');
-		});
+	if ( ! ans) {
+		return;
 	}
+
+	$.ajax({
+		url: hostaddr + "/removeresource",
+		type: "POST",
+		data: {
+			filename: data.path
+		}
+	})
+	.success(function() {
+		$(document).trigger('fx:deleted', data.id);
+	})
+	.fail(function() {
+		alert('Error deleting the file');
+	});
+
 }
 
 
@@ -436,7 +392,7 @@ function screenSetup() {
 	$('#resourcepanel').css({'height': Math.round(1.0*wh).toString() + 'px'});
 	$('#resourcepanel').css({'width': Math.round(0.27*ww).toString() + 'px'});
 	var rh = $('#resourcepanel').height();
-	$('#iconlist').css({'height': Math.round(1.0*rh-100-5).toString() + 'px'});
+	$('#iconlist').css({'height': Math.round(1.0*rh-100-5-30).toString() + 'px'});
 
 	var mh = $('#mainpanel').height();
 	var mw = $('#mainpanel').width();
@@ -470,18 +426,28 @@ function resizeStages() {
 function setup() {
 
 	screenSetup();
-	//var pw = $(window).width();
-	//var ph = $(window).height();
-	//$('#designpanel').css({'height': Math.round(1.0*ph-50-50-50-150-8).toString() + 'px'});
-	//$('#iconlist').css({'height': Math.round(1.0*ph-100-5).toString() + 'px'});
 
 	var sw = $('#designspace').width();
 	var sh = $('#designspace').height();
 
-	loadResources();
+	// When a folder is navigated to
+	$(document).on('fx:navigate', function(evt, params) {
+		// store the path we are currently in
+		currentPath = params.path;
+		// hide Delete button
+		showDeleteFile(false);
+	});
 
-	//document.getElementById("resname").value = 'none';
-	//setup designspace
+	// When a file is selected
+	$(document).on('fx:select', function(evt, params) {
+		// Show Delete button
+		showDeleteFile(params);
+		// Set file to resource
+		setToResource(params);
+	});
+
+	var fileExplorer = new FileExplorer('#iconlist', hostaddr);
+	var fileToolbar = new FileToolbar('#toolbar', hostaddr);
 
 	stage = new Konva.Stage({
 		container: designspace,

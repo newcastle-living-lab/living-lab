@@ -83,23 +83,27 @@ function updateprojPropDisp() {
 			if (key == 'type' || key == 'createdate' || key == 'lastdate') {
 				$("#proptable").append('<tr><td class="tablekey">' + key + '</td><td class="tableval" style="text-align:left">' + propval + '</td></tr>');
 
-			}
-			else {
-				if (isNaN(propval)) {
+			} else {
+
+				if (isNaN(propval) || propval === '') {
 					$("#proptable").append('<tr><td class="tablekey">' + key + '</td><td class="tableval"><input id="prop' + key + '" type="text" style="text-align:left" size="10" onchange="updateprojState({' + key + ':this.value})"></td></tr>');
 				}
 				else {
 					$("#proptable").append('<tr><td class="tablekey">' + key + '</td><td class="tableval"><input id="prop' + key + '" type="text" style="text-align:right" size="10" onchange="updateprojState({' + key + ':checkInput(this.value)})"></td></tr>');
 				}
+
 				var el = document.getElementById("prop" + key);
-				if (isNaN(propval)) {
+
+				if (isNaN(propval) || propval === '') {
 					$("#prop" + key).val(propval);
-				}
-				else {
+				} else {
 					var num = parseFloat(propval);
 					//console.log(propval,num);
-					if ((num % 1) == 0.0) { $("#prop" + key).val(propval.toFixed(0)); }
-					else { $("#prop" + key).val(propval.toFixed(2)); }
+					if ((num % 1) == 0.0) {
+						$("#prop" + key).val(propval.toFixed(0));
+					} else {
+						$("#prop" + key).val(propval.toFixed(2));
+					}
 				}
 			}
 		}
@@ -798,16 +802,16 @@ function fetchnextProjectNode() {
 }
 
 
-function openProject(pj) {
+function openProject(projectId) {
 	/**
 	* Opens a project and builds a tree from nodes in project state using nodelist, makeTree and populateProject
 	* using event driven sequence
 	*/
 
-	var projid = pj.getAttribute('data-projid');
+	// var projid = pj.getAttribute('data-projid');
 	showLoading('Loading project...');
 
-	$.getJSON(hostaddr + "/getproject/" + projid, function (data) {
+	$.getJSON(hostaddr + "/getproject/" + projectId, function (data) {
 
 		$("#projects").empty();
 
@@ -821,7 +825,8 @@ function openProject(pj) {
 		actstage.destroyChildren();
 
 		project = data.json;
-		project.id = projid;
+		project.id = projectId;
+		project.folder = data.folder === null ? '' : data.folder;
 		eventliststates = [];
 		Array.prototype.push.apply(eventliststates, project.presentevents);
 		nodelist = [];
@@ -992,7 +997,7 @@ function saveProject() {
 	$.ajax({
 		url: hostaddr + "/addproject",
 		type: "POST",
-		data: { id: project.id, name: project.name, cdate: project.createdate, ldate: ldate, creator: project.creator, state: projectjson }
+		data: { id: project.id, name: project.name, folder: project.folder, cdate: project.createdate, ldate: ldate, creator: project.creator, state: projectjson }
 	}).done(function (resp) {
 		//alert( "success" );
 		//console.log(resp);
@@ -1020,30 +1025,6 @@ function saveasnewProject() {
 	saveProject();
 }
 
-function showProjDetails(pj) {
-	/**
-	* Show project details in property table when the cursor hovers over the project icon when opening a project
-	*/
-	var projid = pj.getAttribute('data-projid');
-	var projstatestr = pj.getAttribute('data-project');
-	var projdetail = JSON.parse(projstatestr);
-	$("#proptable").empty();
-
-	$("#proptable").append('<tr><td class="tablekey">id</td><td class="tableval" style="text-align:left">' + projid + '</td></tr>');
-	$("#proptable").append('<tr><td class="tablekey">name</td><td class="tableval" style="text-align:left">' + projdetail.name + '</td></tr>');
-	$("#proptable").append('<tr><td class="tablekey">creator</td><td class="tableval" style="text-align:left">' + projdetail.creator + '</td></tr>');
-	$("#proptable").append('<tr><td class="tablekey">created</td><td class="tableval" style="text-align:left">' + projdetail.createdate + '</td></tr>');
-	$("#proptable").append('<tr><td class="tablekey">saved</td><td class="tableval" style="text-align:left">' + projdetail.lastdate + '</td></tr>');
-
-
-}
-
-function clearProps() {
-	/**
-	* Clears the property table panel
-	*/
-	$('#proptable').empty();
-}
 
 function loadProjects() {
 	/**
@@ -1052,26 +1033,13 @@ function loadProjects() {
 	$("#tree").empty();
 	$("#projects").empty();
 
-
 	$.getJSON(hostaddr + "/getprojects", function (data) {
-		$.each(data, function (index, item) {
-			//console.log(item);
-			var projid = item.id.toString();
-			var projectObj = item;
-			var projname = item.name;
-			var projectStr = JSON.stringify(item);
-			// var projstatestr = item.json;
-			//						$("<div class='projecticon' data-projid='"+projid+"' data-project='"+projstatestr+"' onclick='openProject(this)' onmouseover='showProjDetails(this)' onmouseout='clearProps()'><img src='images/proj.png' />"+projname+"</div>" ).appendTo( "#projects" );
-			var $row = $("<div class='projectrow' data-projid='" + projid + "' data-project='" + projectStr + "' onmouseover='showProjDetails(this)' onmouseout='clearProps()'>");
-			$("<div class='projectrowname'>" + projname + "</div>").appendTo($row);
-			var $buttons = $("<div class='projectbuttons'>");
-			$("<button type='button' class='projectrowbutton' data-projid='" + projid + "' onclick='openProject(this)'>open</button>").appendTo($buttons);
-			$("<button type='button' class='projectrowbutton' data-projid='" + projid + "' data-project='" + projectStr + "' onclick='removeProject(this)'>delete</button>").appendTo($buttons);
 
-			$buttons.appendTo($row);
-			$row.appendTo("#projects");
-
-		});
+		if ($('#projects').data('browser')) {
+			$('#projects').data('browser').setItems(data).render();
+		} else {
+			$('#projects').data('browser', new ProjectBrowser('#projects', data));
+		}
 	});
 }
 
@@ -1955,7 +1923,7 @@ function compileViews() {
 			//console.log(playimgs);
 			for (var imn = 0; imn < playimgs.length; imn++) {
 				var imgobj = playimgs[imn];
-				var imgfilename = (imgobj.path).substring((imgobj.path).lastIndexOf("/") + 1, (imgobj.path).length);
+				var imgfilename = imgobj.path.replace(/resources\//, '');
 				imgobj.path = 'playlists/' + project.name + '/images/' + imgfilename;
 				playimages.push(imgfilename);
 			}
@@ -1964,7 +1932,7 @@ function compileViews() {
 			// console.log(playsnds);
 			for (var sndn = 0; sndn < playsnds.length; sndn++) {
 				var sndobj = playsnds[sndn];
-				var audiofilename = (sndobj.src).substring((sndobj.src).lastIndexOf("/") + 1, (sndobj.src).length);
+				var audiofilename = sndobj.src.replace(/resources\//, '');
 				sndobj.src = 'playlists/' + project.name + '/audio/' + audiofilename;
 				playsounds.push(audiofilename);
 			}
@@ -2570,9 +2538,15 @@ function setup() {
 			activateModal('projectImportComplete');
 			var $modal = $("[data-modal='projectImportComplete']");
 			$modal.find("[data-ui='projectname']").text(data.project.name);
-			$modal.find("[data-ui='openproj']").attr({ 'data-projid': data.project.id});
+			$modal.find("[data-ui='openproj']").attr('data-projectid', data.project.id);
 		}
 
+	});
+
+	$(document).on('click', '[data-modal="projectImportComplete"] [data-ui="openproj"]', function() {
+		var el = $(this),
+			projectId = el.attr('data-projectid');
+		openProject(projectId);
 	});
 
 }

@@ -44,18 +44,17 @@ var getIPAddress = function(idx) {
 }
 
 
-
 var copyFile = function(source, target) {
-	return new Promise(function(resolve, reject) {
-		var rd = fs.createReadStream(source);
-		rd.on('error', reject);
-		var wr = fs.createWriteStream(target);
-		wr.on('error', reject);
-		wr.on('finish', resolve);
-		rd.pipe(wr);
-	});
-}
 
+	// console.log("Copying " + source + " to " + target);
+
+	var targetFolder = path.dirname(target);
+	if ( ! fs.existsSync(targetFolder)) {
+		fs.mkdirSync(targetFolder, { recursive: true });
+	}
+
+	fs.writeFileSync(target, fs.readFileSync(source));
+}
 
 
 var writePlayfileandImages = function(fname, htmlstr, imglist, audiolist) {
@@ -80,11 +79,11 @@ var writePlayfileandImages = function(fname, htmlstr, imglist, audiolist) {
 						dstFile = path.join(playlistDir, "images", imgfilename);
 					copyFile(srcFile, dstFile);
 				}
-		 	} else {
-		 		console.log(err); // something else went wrong
-		 	}
-	 	} else {
-	 		// successfully created folder
+			} else {
+				console.log(err); // something else went wrong
+			}
+		} else {
+			// successfully created folder
 			for (var imn=0;imn<imglist.length;imn++) {
 				var imgfilename = imglist[imn],
 					srcFile = path.join(resourcesDir, imgfilename),
@@ -92,9 +91,9 @@ var writePlayfileandImages = function(fname, htmlstr, imglist, audiolist) {
 				copyFile(srcFile, dstFile);
 			}
 		 }
- 	});
+	});
 
- 	//make audio directory
+	//make audio directory
 	fs.mkdir(path.join(playlistDir, "audio"), function(err) {
 		if (err) {
 			if (err.code == 'EEXIST') {
@@ -105,11 +104,11 @@ var writePlayfileandImages = function(fname, htmlstr, imglist, audiolist) {
 						dstFile = path.join(playlistDir, "audio", sndfilename);
 					copyFile(srcFile, dstFile);
 				}
-		 	} else {
-		 		console.log(err); // something else went wrong
-		 	}
-	 	} else {
-	 		// successfully created folder
+			} else {
+				console.log(err); // something else went wrong
+			}
+		} else {
+			// successfully created folder
 			for (var sndn=0;sndn<audiolist.length;sndn++) {
 				var sndfilename = audiolist[sndn],
 					srcFile = path.join(resourcesDir, sndfilename),
@@ -117,7 +116,7 @@ var writePlayfileandImages = function(fname, htmlstr, imglist, audiolist) {
 				copyFile(srcFile, dstFile);
 			}
 		 }
- 	});
+	});
 }
 
 
