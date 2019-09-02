@@ -21,6 +21,10 @@ handlers.push(function(req, res, next) {
 	var pcreator = decodedBody.creator;
 	var pstate = decodedBody.state;
 
+	if (pfolder.length === 0) {
+		pfolder = null;
+	}
+
 	/*  	  var pid = (url.parse(req.url,true)).query.id;
 	var pname = (url.parse(req.url,true)).query.name;
 	var pcdate = (url.parse(req.url,true)).query.cdate;
