@@ -2538,9 +2538,15 @@ function setup() {
 			activateModal('projectImportComplete');
 			var $modal = $("[data-modal='projectImportComplete']");
 			$modal.find("[data-ui='projectname']").text(data.project.name);
-			$modal.find("[data-ui='openproj']").attr({ 'data-projid': data.project.id});
+			$modal.find("[data-ui='openproj']").attr('data-projectid', data.project.id);
 		}
 
+	});
+
+	$(document).on('click', '[data-modal="projectImportComplete"] [data-ui="openproj"]', function() {
+		var el = $(this),
+			projectId = el.attr('data-projectid');
+		openProject(projectId);
 	});
 
 }
