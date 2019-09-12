@@ -15,7 +15,10 @@
 						<li class="pure-menu-item" data-playlist="{{ playlist.name }}">
 							<div class="pure-menu-content">
 								<a class="pure-menu-link" href="playlists/{{ playlist.name }}/{{ playlist.name }}.html" target="_blank">{{ playlist.name }}</a>
-								<div class="pure-menu-description">{{ playlist.date }}</div>
+								<div class="pure-menu-description">
+									<span><strong>Created</strong> {{ playlist.dateCreated }}</span>
+									<span><strong>Modified</strong> {{ playlist.dateModified }}</span>
+								</div>
 							</div>
 							<div class="pure-menu-actions">
 								<a class="pure-menu-action action-negative" href="javascript:;" data-playlist="{{ playlist.name }}" data-action="delete">delete</a>

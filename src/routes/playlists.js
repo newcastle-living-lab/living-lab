@@ -15,11 +15,16 @@ exports.handler = [auth.ensureLoggedIn(), auth.ensureRole("view"), function(req,
 			if (file === ".gitignore" || file === ".gitkeep") {
 				return result;
 			}
-			var dt = fs.statSync(baseDir + "/" + file).ctime.getTime();
+
+			var dtCreate = fs.statSync(baseDir + "/" + file).ctime.getTime(),
+				dtMod = fs.statSync(baseDir + "/" + file + "/" + file + ".html").mtime.getTime();
+
 			var item = {
 				name: file,
-				created: dt,
-				date: dateFormat(dt, "ddd dS mmm yyyy HH:MM")
+				created: dtCreate,
+				modified: dtMod,
+				dateCreated: dateFormat(dtCreate, "ddd dS mmm yyyy HH:MM"),
+				dateModified: dateFormat(dtMod, "ddd dS mmm yyyy HH:MM")
 			};
 			result.push(item);
 			return result;
