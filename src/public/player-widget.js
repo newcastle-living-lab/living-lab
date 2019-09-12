@@ -32,10 +32,18 @@
 	var peinfo;
 	var sounds = {};
 
+	var keys = {
+		LEFT: 37,
+		RIGHT: 39,
+		SPACE: 32,
+		ENTER: 13,
+	};
+
 	//
 
 	function init(event) {
 		findElements();
+		setupKeys();
 		loadProject();
 	}
 
@@ -59,6 +67,22 @@
 		projectSlug = $widget.data("player");
 		projectName = $widget.data("projectname");
 		viewName = $widget.data("view");
+	}
+
+
+	function setupKeys() {
+
+		$(document).on('keydown', function(e) {
+			switch (e.keyCode) {
+				case keys.ENTER:
+				case keys.RIGHT:
+					goNextEvent();
+				break;
+				case keys.LEFT:
+					goPrevEvent();
+				break;
+			}
+		});
 	}
 
 

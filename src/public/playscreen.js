@@ -41,6 +41,13 @@ var screenwidth, screenheight, txscale;
 var audiodev = 'local';
 var sounds = {};
 
+var keys = {
+	LEFT: 37,
+	RIGHT: 39,
+	SPACE: 32,
+	ENTER: 13,
+};
+
 serverurl = serverurl.replace(/:$/, '');
 
 
@@ -490,6 +497,23 @@ function soundSetup(peinfo) {
 }
 
 
+function keysSetup() {
+
+	$(document).on('keydown', function(e) {
+		switch (e.keyCode) {
+			case keys.ENTER:
+			case keys.RIGHT:
+				gonextEvent();
+			break;
+			case keys.LEFT:
+				goprevEvent();
+			break;
+		}
+	});
+
+}
+
+
 
 function togFullscreen() {
 	/**
@@ -557,6 +581,15 @@ function gonextEvent() {
 	var peevindex = playentevents.indexOf(activepeevobj);
 	peevindex = peevindex + 1;
 	if (peevindex == playentevents.length) { peevindex = 0; }
+	var peev = playentevents[peevindex];
+	peev.fire('mousedown');
+
+}
+
+function goprevEvent() {
+	var peevindex = playentevents.indexOf(activepeevobj);
+	peevindex = peevindex - 1;
+	if (peevindex == playentevents.length || peevindex < 0) { peevindex = 0; }
 	var peev = playentevents[peevindex];
 	peev.fire('mousedown');
 
@@ -798,6 +831,7 @@ function setup() {
 
 	screenSetup();
 	soundSetup(peinfo);
+	keysSetup();
 	$('#playaction').prop('checked', playmode);
 	createPEandViews(peinfo);
 
