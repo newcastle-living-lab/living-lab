@@ -31,6 +31,7 @@
 	var screenwidth, screenheight, txscale;
 	var peinfo;
 	var sounds = {};
+	var loopmode = false;
 
 	var keys = {
 		LEFT: 37,
@@ -59,10 +60,14 @@
 		$btnStart = $widget.find("[data-ui='btnStart']");
 		$btnPrev = $widget.find("[data-ui='btnPrev']");
 		$btnNext = $widget.find("[data-ui='btnNext']");
+		$loopMode = $widget.find("input[name='loop']");
 
 		$btnStart.on("click", goStartEvent);
 		$btnPrev.on("click", goPrevEvent);
 		$btnNext.on("click", goNextEvent);
+
+		$loopMode.on("change", updateLoopMode);
+		$loopMode.prop('checked', loopmode);
 
 		projectSlug = $widget.data("player");
 		projectName = $widget.data("projectname");
@@ -281,7 +286,11 @@
 	function goNextEvent() {
 		var newIdx = activeIdx + 1;
 		if (newIdx == presentEvents.length) {
-			newIdx = 0;
+			if (loopmode) {
+				newIdx = 0;
+			} else {
+				return;
+			}
 		}
 		playEventIdx(newIdx);
 	}
@@ -289,6 +298,11 @@
 
 	function goStartEvent() {
 		playEventIdx(0);
+	}
+
+
+	function updateLoopMode() {
+		loopmode = $loopMode.prop('checked');
 	}
 
 

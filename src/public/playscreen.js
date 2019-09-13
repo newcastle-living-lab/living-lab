@@ -34,6 +34,7 @@ var actobjgap = 2;
 var designready = false;
 var mousedown_action = false;
 var playmode = false;
+var loopmode = false;
 var sspeevnonselcol = '#ccddcc';
 var sspeevselectcol = '#aaaaff';
 var snapshots;  //snapshots of object states at start and end of each presentevent
@@ -580,7 +581,15 @@ function resizeStages() {
 function gonextEvent() {
 	var peevindex = playentevents.indexOf(activepeevobj);
 	peevindex = peevindex + 1;
-	if (peevindex == playentevents.length) { peevindex = 0; }
+	if (peevindex == playentevents.length) {
+		if (loopmode) {
+			// End of list
+			peevindex = 0;
+		} else {
+			return;
+		}
+	}
+
 	var peev = playentevents[peevindex];
 	peev.fire('mousedown');
 
@@ -784,6 +793,15 @@ function setPlaymode() {
 }
 
 
+function setLoopMode() {
+	var checkbox = $("#loopmode");
+	if (checkbox.length === 0) {
+		checkbox = $("#functionbox input[type=checkbox][name='loop']:first");
+	}
+	loopmode = checkbox.prop('checked');
+}
+
+
 function setAudioDevice() {
 	audiodev = $("[name='audio_device']:checked").val();
 	txAudioDevice();
@@ -833,6 +851,7 @@ function setup() {
 	soundSetup(peinfo);
 	keysSetup();
 	$('#playaction').prop('checked', playmode);
+	$('#loopmode').prop('checked', loopmode);
 	createPEandViews(peinfo);
 
 }
