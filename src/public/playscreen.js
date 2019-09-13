@@ -7,6 +7,7 @@ var prw, prh;
 var playstage, playlayer;
 var evbutspacewidth = 150;
 var views = [];  //list of viewobjects with state attributes linked to physical screens/browserpages
+var viewNames = [];  // names of views
 var layers = [];  //list of {layerid:id,layername:name} in designscreen
 var viewnonselcol = '#ddddee';
 var viewselectcol = '#ccddee';
@@ -34,12 +35,20 @@ var actobjgap = 2;
 var designready = false;
 var mousedown_action = false;
 var playmode = false;
+var loopmode = false;
 var sspeevnonselcol = '#ccddcc';
 var sspeevselectcol = '#aaaaff';
 var snapshots;  //snapshots of object states at start and end of each presentevent
 var screenwidth, screenheight, txscale;
 var audiodev = 'local';
 var sounds = {};
+
+var keys = {
+	LEFT: 37,
+	RIGHT: 39,
+	SPACE: 32,
+	ENTER: 13,
+};
 
 serverurl = serverurl.replace(/:$/, '');
 
@@ -451,6 +460,7 @@ function createPEandViews(peinfo) {
 		for (var vi = 0; vi < peviews.length; vi++) {
 			var view = makeView(peviews[vi].viewstate);
 			views.push(view);
+			viewNames.push(peviews[vi].viewstate.name);
 		}
 		//makeStartEvent(snapshots[0]);
 		// make PEs
@@ -462,8 +472,51 @@ function createPEandViews(peinfo) {
 		playlayer.draw();
 		openingProject = false;
 	}
+
+	createViewLinks();
 }
 
+
+function createViewLinks() {
+
+	if (viewNames.length == 0 || $('#views').length == 0) {
+		return;
+	}
+
+	var icon = $('<i class="fa fa-fw fa-external-link"></i>');
+	icon.css('margin', '0 .2em');
+
+	var allLink = $('<a class="pure-button button-min">');
+	allLink.attr({
+		href: 'javascript:;',
+	});
+	allLink.text('Open all');
+	allLink.append(icon.clone());
+	allLink.on('click', function() {
+		$(this).siblings('.view-link').each(function() {
+			window.open($(this).attr('href'), '_blank');
+		});
+	});
+
+	$('#views').append(allLink);
+
+	for (var i = 0; i < viewNames.length; i++) {
+
+		var viewLink = $('<a class="pure-button button-secondary button-min view-link">');
+		viewLink.attr({
+			href: serverurl + '/' + viewNames[i] + '.html',
+			target: '_blank',
+		});
+		viewLink.css('margin-left', '.5em');
+		viewLink.text(viewNames[i]);
+		viewLink.append(icon.clone());
+
+		$('#views').append(viewLink);
+
+	}
+
+
+}
 
 /**
  * On load: build a list of audio objects and initialise the Howl sound player objects.
@@ -486,6 +539,23 @@ function soundSetup(peinfo) {
 			}
 		}
 	}
+
+}
+
+
+function keysSetup() {
+
+	$(document).on('keydown', function(e) {
+		switch (e.keyCode) {
+			case keys.ENTER:
+			case keys.RIGHT:
+				gonextEvent();
+			break;
+			case keys.LEFT:
+				goprevEvent();
+			break;
+		}
+	});
 
 }
 
@@ -544,7 +614,7 @@ function screenSetup() {
 	var pw = $('#page').width();
 	var fh = $('#functionbox').height();
 	// $('#playspace').css({ 'height': Math.round(ph - fh - 10).toString() + 'px' });
-	$("body").css({ "padding-top": (fh * 1.5) + "px", "padding-bottom": fh + "px" });
+	$("body").css({ "padding-top": (fh * 1.2) + "px", "padding-bottom": fh + "px" });
 	prh = $('#playspace').height();
 	prw = $('#playspace').width();
 
@@ -556,7 +626,24 @@ function resizeStages() {
 function gonextEvent() {
 	var peevindex = playentevents.indexOf(activepeevobj);
 	peevindex = peevindex + 1;
-	if (peevindex == playentevents.length) { peevindex = 0; }
+	if (peevindex == playentevents.length) {
+		if (loopmode) {
+			// End of list
+			peevindex = 0;
+		} else {
+			return;
+		}
+	}
+
+	var peev = playentevents[peevindex];
+	peev.fire('mousedown');
+
+}
+
+function goprevEvent() {
+	var peevindex = playentevents.indexOf(activepeevobj);
+	peevindex = peevindex - 1;
+	if (peevindex == playentevents.length || peevindex < 0) { peevindex = 0; }
 	var peev = playentevents[peevindex];
 	peev.fire('mousedown');
 
@@ -751,6 +838,15 @@ function setPlaymode() {
 }
 
 
+function setLoopMode() {
+	var checkbox = $("#loopmode");
+	if (checkbox.length === 0) {
+		checkbox = $("#functionbox input[type=checkbox][name='loop']:first");
+	}
+	loopmode = checkbox.prop('checked');
+}
+
+
 function setAudioDevice() {
 	audiodev = $("[name='audio_device']:checked").val();
 	txAudioDevice();
@@ -798,7 +894,9 @@ function setup() {
 
 	screenSetup();
 	soundSetup(peinfo);
+	keysSetup();
 	$('#playaction').prop('checked', playmode);
+	$('#loopmode').prop('checked', loopmode);
 	createPEandViews(peinfo);
 
 }
