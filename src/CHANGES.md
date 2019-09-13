@@ -1,6 +1,19 @@
 # Living Lab Changelog
 
 
+## v1.23.0
+
+* Added support for Keyboard/presenter navigation in playlist.
+* Added Modified timestamp to Playlist listing.
+* Added Loop Playlist control.
+* Added views links to generated Playlist page.
+
+### Playlist changes
+
+Some of these changes will only be available on newly-created playlists, or when existing
+ones are updated or re-saved.
+
+
 ## v1.22.0
 
 * Added support for Project folders. The folder name can be set with other Project properties once opened.
