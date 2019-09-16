@@ -34,6 +34,8 @@
 	var loopmode = false;
 
 	var keys = {
+		PGUP: 33,
+		PGDN: 34,
 		LEFT: 37,
 		RIGHT: 39,
 		SPACE: 32,
@@ -81,9 +83,13 @@
 			switch (e.keyCode) {
 				case keys.ENTER:
 				case keys.RIGHT:
+				case keys.PGDN:
+					e.preventDefault();
 					goNextEvent();
 				break;
 				case keys.LEFT:
+				case keys.PGUP:
+					e.preventDefault();
 					goPrevEvent();
 				break;
 			}
