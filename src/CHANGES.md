@@ -1,6 +1,12 @@
 # Living Lab Changelog
 
 
+## v1.24.0
+
+* Added functionality to navigate to a URL at the end of Playlists.
+* Updated Playlist page to save settings to browser session storage.
+
+
 ## v1.23.1
 
 * Updated keyboard/presenter control to include PageUp/PageDown keys.

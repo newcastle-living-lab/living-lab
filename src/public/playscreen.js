@@ -598,7 +598,7 @@ function lastEventSetup() {
 
 	container.on('click', function(e) {
 		var currentValue = settings.get('lastEvent');
-		if (currentValue === false) {
+		if (currentValue === false || currentValue === null) {
 			currentValue = '';
 		}
 		var newAction = prompt('URL to navigate to after last event:', currentValue);
