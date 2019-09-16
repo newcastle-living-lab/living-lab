@@ -44,6 +44,8 @@ var audiodev = 'local';
 var sounds = {};
 
 var keys = {
+	PGUP: 33,
+	PGDN: 34,
 	LEFT: 37,
 	RIGHT: 39,
 	SPACE: 32,
@@ -549,9 +551,13 @@ function keysSetup() {
 		switch (e.keyCode) {
 			case keys.ENTER:
 			case keys.RIGHT:
+			case keys.PGDN:
+				e.preventDefault();
 				gonextEvent();
 			break;
 			case keys.LEFT:
+			case keys.PGUP:
+				e.preventDefault();
 				goprevEvent();
 			break;
 		}
