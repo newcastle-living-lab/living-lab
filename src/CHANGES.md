@@ -1,6 +1,11 @@
 # Living Lab Changelog
 
 
+## v1.23.1
+
+* Updated keyboard/presenter control to include PageUp/PageDown keys.
+
+
 ## v1.23.0
 
 * Added support for Keyboard/presenter navigation in playlist.
