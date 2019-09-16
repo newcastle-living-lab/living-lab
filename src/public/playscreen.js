@@ -34,14 +34,15 @@ var actobjh = 15;
 var actobjgap = 2;
 var designready = false;
 var mousedown_action = false;
-var playmode = false;
-var loopmode = false;
+// var playmode = false;
+// var loopmode = false;
 var sspeevnonselcol = '#ccddcc';
 var sspeevselectcol = '#aaaaff';
 var snapshots;  //snapshots of object states at start and end of each presentevent
 var screenwidth, screenheight, txscale;
 var audiodev = 'local';
 var sounds = {};
+var settings = null;
 
 var keys = {
 	PGUP: 33,
@@ -237,7 +238,8 @@ function makePresentEvent(state) {
 			playlayer.draw();
 			txstartStatetoScreens(activepeevobj);
 
-			if (playmode == true) {
+			// if (playmode == true) {
+			if (settings.get('playMode') == true) {
 				setTimeout(function () { txplayEventtoScreens(activepeevobj); }, 200);
 			}
 
@@ -566,6 +568,48 @@ function keysSetup() {
 }
 
 
+function lastEventSetup() {
+
+	var container = $('#last_event_action'),
+		labelText = 'After last event: ',
+		actionText = 'Do nothing';
+
+	container.empty();
+
+	var label = $('<span>');
+	label.text(labelText);
+	container.append(label);
+
+	var action = $('<span>');
+	action.text(actionText);
+	container.append(action);
+
+
+	function updateActionText(value) {
+		if (value && value.length) {
+			action.text('Go to URL');
+		} else {
+			action.text('Do nothing');
+		}
+	}
+
+	var lastEventVal = settings.get('lastEvent');
+	updateActionText(lastEventVal);
+
+	container.on('click', function(e) {
+		var currentValue = settings.get('lastEvent');
+		if (currentValue === false) {
+			currentValue = '';
+		}
+		var newAction = prompt('URL to navigate to after last event:', currentValue);
+		if (newAction === null) {
+			return;
+		}
+		settings.set('lastEvent', newAction);
+		updateActionText(newAction);
+	});
+}
+
 
 function togFullscreen() {
 	/**
@@ -633,7 +677,14 @@ function gonextEvent() {
 	var peevindex = playentevents.indexOf(activepeevobj);
 	peevindex = peevindex + 1;
 	if (peevindex == playentevents.length) {
-		if (loopmode) {
+		if (settings.get('lastEvent')) {
+			var val = settings.get('lastEvent');
+			if (val && val.length) {
+				top.location.href = val;
+				return;
+			}
+		}
+		if (settings.get('loopMode') == true) {
 			// End of list
 			peevindex = 0;
 		} else {
@@ -672,7 +723,7 @@ function txplayEventtoScreens(peobj) {
 		}
 	}
 
-	if (audiodev === 'local') {
+	if (settings.get('audioDev') === 'local') {
 		var snapstate = snapshots[ind];
 		var actions = snapstate[0].layeractions;
 		for (var actIdx = 0; actIdx < actions.length; actIdx++) {
@@ -760,10 +811,11 @@ function txClickEvent(eventId) {
 	if (eventIdx == playentevents.length) { eventIdx = 0; }
 
 	var peev = playentevents[eventIdx];
-	var prev_playmode = playmode;
-	playmode = true;
+	var prev_playmode = settings.get('playMode');
+	settings.set('playMode', true);
 	peev.fire('mousedown');
-	playmode = prev_playmode;
+	settings.set('playMode', prev_playmode)
+	// playmode = prev_playmode;
 
 	//txstartStatetoScreens(activepeevobj);
 	// setTimeout(function () { txplayEventtoScreens(activepeevobj); }, 200);
@@ -777,7 +829,7 @@ function txAudioDevice() {
 			view: viewstate.name,
 			scrtxmsg: {
 				command: "audiodev",
-				info: audiodev
+				info: settings.get('audioDev'),
 			}
 		}
 		var scrjson = JSON.stringify(scrcommand);
@@ -840,7 +892,7 @@ function setPlaymode() {
 	if (checkbox.length === 0) {
 		checkbox = $("#functionbox input[type=checkbox]:first");
 	}
-	playmode = checkbox.prop('checked');
+	settings.set('playMode', checkbox.prop('checked'));
 }
 
 
@@ -849,12 +901,13 @@ function setLoopMode() {
 	if (checkbox.length === 0) {
 		checkbox = $("#functionbox input[type=checkbox][name='loop']:first");
 	}
-	loopmode = checkbox.prop('checked');
+	settings.set('loopMode', checkbox.prop('checked'));
 }
 
 
 function setAudioDevice() {
 	audiodev = $("[name='audio_device']:checked").val();
+	settings.set('audioDev', audiodev);
 	txAudioDevice();
 }
 
@@ -880,9 +933,6 @@ function setup() {
 	playstage.add(playlayer);
 	playlayer.draw();
 
-
-
-
 	document.addEventListener("fullscreenchange", function () {
 		screenSetup();
 		resizeStages();
@@ -899,10 +949,24 @@ function setup() {
 	}, false);
 
 	screenSetup();
+
+	settings = new Settings({
+		playMode: false,
+		loopMode: false,
+		audioDev: 'local',		// local|screen
+		lastEvent: null,
+	});
+
 	soundSetup(peinfo);
 	keysSetup();
-	$('#playaction').prop('checked', playmode);
-	$('#loopmode').prop('checked', loopmode);
+
+	lastEventSetup();
+
+	$('#playaction').prop('checked', settings.get('playMode'));
+	$('#loopmode').prop('checked', settings.get('loopMode'));
+	var audioDevVal = settings.get('audioDev');
+	$('input[name="audio_device"][value="' + audioDevVal + '"]').prop('checked', true).trigger('change');
+
 	createPEandViews(peinfo);
 
 }

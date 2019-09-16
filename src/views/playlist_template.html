@@ -12,6 +12,7 @@
 	<script type="text/javascript">
 	peinfo={{ playstate | safe }}
 	</script>
+	<script src="../../components/Settings.js"></script>
 	<script src="../../playscreen.js"></script>
 </head>
 <body>
@@ -41,10 +42,11 @@
 								<label><input id="loopmode" type="checkbox" onchange="setLoopMode()"> Loop</label>
 							</div>
 							<div class="pure-u-1-2 pure-u-lg-1-2">
-								<br>
 								Audio plays from:
 								<label style="margin:1em"><input id="audio_local" type="radio" name="audio_device" value="local" onchange="setAudioDevice()" checked="checked"> This device</label>
 								<label><input id="audio_screen" type="radio" name="audio_device" value="screen" onchange="setAudioDevice()"> Screens</label>
+								<br>
+								<div id="last_event_action"></div>
 							</div>
 						</div>
 					</div>
