@@ -94,11 +94,10 @@ function updateprojPropDisp() {
 
 				var el = document.getElementById("prop" + key);
 
-				if (isNaN(propval) || propval === '') {
+				if (isNaN(propval) || propval === '' || propval === null) {
 					$("#prop" + key).val(propval);
 				} else {
 					var num = parseFloat(propval);
-					//console.log(propval,num);
 					if ((num % 1) == 0.0) {
 						$("#prop" + key).val(propval.toFixed(0));
 					} else {
@@ -424,6 +423,11 @@ function selectObject(source) {
 							layer.draw();
 							actstage.clear();
 							actlayer.draw();
+							$(document).trigger('object_selected', {
+								'source': 'jstree',
+								'type': 'layer',
+								'layer': layer,
+							});
 						}
 					}
 					break;
@@ -631,7 +635,21 @@ function newProject() {
 	* Create a new project and instantiate the tree
 	*/
 	var cdate = (new Date()).toLocaleDateString();
-	project = { id: 'project', name: 'Project', creator: 'unknown', type: 'Project', createdate: cdate, lastdate: cdate, screenheight: 1080, screenwidth: 1920, layers: [], presentevents: [], starteventviews: [], groups: [] };
+	project = {
+		id: 'project',
+		name: 'Project',
+		creator: 'unknown',
+		type: 'Project',
+		folder: null,
+		createdate: cdate,
+		lastdate: cdate,
+		screenheight: 1080,
+		screenwidth: 1920,
+		layers: [],
+		presentevents: [],
+		starteventviews: [],
+		groups: []
+	};
 
 	clearActiveObject();
 	stage.clear();
@@ -1651,16 +1669,6 @@ function toggleSidebar(state) {
 	screenSetup();
 }
 
-function setLayerStartState() {
-
-	if (layer != null) {
-		var layerstate = layer.getAttr('state');
-		var ststateobjs = getLayerObjects(layer);
-		layerstate.startstate = JSON.stringify(ststateobjs);  //only startstates of children
-		layer.setAttr('state', layerstate);
-
-	}
-}
 
 function getLayerObjects(sendlayer) {
 	/**
@@ -1905,17 +1913,27 @@ function compileViews() {
 		var layerstates = [];
 		for (var li = 0; li < layers.length; li++) {
 			var stlayer = layers[li];
+			var layerName = stlayer.getAttr('name');
 			var layerstate = stlayer.getAttr('state').startstate;
-			//console.log(layerstate);
-			if (layerstate == null) {
-				alert('layer startstates are not defined');
+
+			if (layerstate == null || layerstate == undefined) {
+				alert('Layer startstates are not defined on "' + layerName + '".');
+				return;
+			}
+
+			var startstate = null;
+			try {
+				startstate = JSON.parse(layerstate);
+			} catch (e) {
+				alert('Layer startstates are not defined on "' + layerName + '".');
 				return;
 			}
 
 			var layerobjs = populateEvents({
-				startstate: JSON.parse(layerstate),
-				children: stlayer.getAttr('state').children,
+				'startstate': startstate,
+				'children': stlayer.getAttr('state').children,
 			});
+
 			// console.log(layerobjs);
 			//if the objects are image objects we need to package the image resources as well and change the image paths
 
@@ -2547,6 +2565,23 @@ function setup() {
 		var el = $(this),
 			projectId = el.attr('data-projectid');
 		openProject(projectId);
+	});
+
+	new LayerStartButton($('#txscrbutton'));
+
+	// Set layer start state when button is clicked (from LayerStartButton.js)
+	$(document).on('ui:set_layer_start', function(evt) {
+		if (layer != null) {
+			var layerstate = layer.getAttr('state');
+			var ststateobjs = getLayerObjects(layer);
+			layerstate.startstate = JSON.stringify(ststateobjs);  //only startstates of children
+			layer.setAttr('state', layerstate);
+			$(document).trigger('object_selected', {
+				'source': 'after_update',
+				'type': 'layer',
+				'layer': layer,
+			});
+		}
 	});
 
 }
