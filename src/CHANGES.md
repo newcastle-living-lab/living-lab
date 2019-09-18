@@ -1,6 +1,13 @@
 # Living Lab Changelog
 
 
+## v1.24.1
+
+* Fixed Settings component on Playlists when loading from browser storage.
+* Added Project name to window title on Playlists.
+* Added Visual indicator for Layer Start State based on whether it is set or not.
+
+
 ## v1.24.0
 
 * Added functionality to navigate to a URL at the end of Playlists.
