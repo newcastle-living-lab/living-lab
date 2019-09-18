@@ -532,24 +532,29 @@ a.menubutton-link {
 
 
 .accordion input:checked ~ .accordion-header .icon, .accordion[open] .accordion-header .icon {
-  -webkit-transform: rotate(90deg);
-          transform: rotate(90deg); }
+	-webkit-transform: rotate(90deg);
+	transform: rotate(90deg);
+}
 
 .accordion input:checked ~ .accordion-body, .accordion[open] .accordion-body {
-  max-height: 50rem; }
+	max-height: none;
+}
 
 .accordion .accordion-header {
-  display: block;
-  padding: 0.2rem 0.4rem; }
+	display: block;
+	padding: 0.2rem 0.4rem;
+}
 
 
 .accordion .accordion-body {
-  margin-bottom: 0;
-  max-height: 0;
-  overflow: hidden;}
+	margin-bottom: 0;
+	max-height: 0;
+	overflow: hidden;
+}
 
 summary.accordion-header::-webkit-details-marker {
-  display: none; }
+	display: none;
+}
 
 
 .menu {
