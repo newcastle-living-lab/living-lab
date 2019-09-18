@@ -969,4 +969,8 @@ function setup() {
 
 	createPEandViews(peinfo);
 
+	if (document.title == '') {
+		document.title = $('.project-name').text();
+	}
+
 }
