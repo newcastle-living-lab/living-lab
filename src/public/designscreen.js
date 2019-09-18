@@ -94,11 +94,10 @@ function updateprojPropDisp() {
 
 				var el = document.getElementById("prop" + key);
 
-				if (isNaN(propval) || propval === '') {
+				if (isNaN(propval) || propval === '' || propval === null) {
 					$("#prop" + key).val(propval);
 				} else {
 					var num = parseFloat(propval);
-					//console.log(propval,num);
 					if ((num % 1) == 0.0) {
 						$("#prop" + key).val(propval.toFixed(0));
 					} else {
@@ -631,7 +630,21 @@ function newProject() {
 	* Create a new project and instantiate the tree
 	*/
 	var cdate = (new Date()).toLocaleDateString();
-	project = { id: 'project', name: 'Project', creator: 'unknown', type: 'Project', createdate: cdate, lastdate: cdate, screenheight: 1080, screenwidth: 1920, layers: [], presentevents: [], starteventviews: [], groups: [] };
+	project = {
+		id: 'project',
+		name: 'Project',
+		creator: 'unknown',
+		type: 'Project',
+		folder: null,
+		createdate: cdate,
+		lastdate: cdate,
+		screenheight: 1080,
+		screenwidth: 1920,
+		layers: [],
+		presentevents: [],
+		starteventviews: [],
+		groups: []
+	};
 
 	clearActiveObject();
 	stage.clear();
