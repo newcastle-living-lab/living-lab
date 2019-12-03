@@ -19,9 +19,20 @@ exports.handler = function(req, res) {
 	form.parse(req);
 
 	form.on('file', function(name, file) {
+		
+		var mimeMatch = false;
+		
+		switch (file.type) {
+			case 'application/zip':
+			case 'application/octet-stream':
+			case 'application/x-zip-compressed':
+			case 'multipart/x-zip':
+				mimeMatch = true;
+			break;
+		}
 
-		if (file.type !== 'application/x-zip-compressed') {
-			return res.status(500).send({ 'success': false, 'error': 'Uploaded file should be a zip file.' });
+		if ( ! mimeMatch) {
+			return res.status(500).send({ 'success': false, 'error': 'Uploaded file should be a zip file, not ' + file.type + '.' });
 		}
 
 		ProjectImporter.init(file);
