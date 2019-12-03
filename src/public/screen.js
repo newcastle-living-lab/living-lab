@@ -12,8 +12,7 @@ var isPlaying = false;
 var audiodev = "local";
 
 //var serverurl = 'http://127.0.0.1:1337';
-var serverurl = 'http://' + window.location.hostname + ':' + window.location.port;
-serverurl = serverurl.replace(/:$/, '');
+var serverurl = [window.location.protocol, '//', window.location.hostname, ':', window.location.port].join('').replace(/:$/, '')
 
 var screenanimlist = new Array();
 

@@ -9,12 +9,11 @@ var showall = false;
 var sw, sh;
 var USEIO = true;
 var socket;
-var serverurl = 'http://' + window.location.hostname + ':' + window.location.port;
+var serverurl = [window.location.protocol, '//', window.location.hostname, ':', window.location.port].join('').replace(/:$/, '');
 var txscale = 1.0;
 var last_saved_project_hash = null;
 var saving_project = false;
 var showLeftCol = true;
-serverurl = serverurl.replace(/:$/, '');
 
 
 

@@ -1,5 +1,10 @@
 # Living Lab Changelog
 
+## v1.24.2
+
+* Fixed issue with Project Import when uploading Zip files might fail.
+* Updated URL variables to remove hard-coded references to 'http' protocol; now detects dynamically.
+
 
 ## v1.24.1
 

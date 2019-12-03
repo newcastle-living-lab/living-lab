@@ -40,7 +40,7 @@ var PresentApp = Mn.Application.extend({
 		this._dispatchChannel = Radio.channel("dispatch");
 
 		if (config.use_io) {
-			var server_url = "http://" + window.location.hostname + ":" + window.location.port;
+			var server_url = [window.location.protocol, '//', window.location.hostname, ':', window.location.port].join('').replace(/:$/, '');
 			this._comms = new Comms({ url: server_url });
 		}
 

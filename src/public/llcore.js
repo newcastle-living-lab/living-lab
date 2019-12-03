@@ -1,4 +1,4 @@
-var hostaddr = 'http://' + window.location.hostname + ':' + window.location.port;
+var hostaddr = [window.location.protocol, '//', window.location.hostname, ':', window.location.port].join('').replace(/:$/, '');
 var stage = null; //active stage
 var layer = null;  //active layer
 var objstage = null;
@@ -30,8 +30,6 @@ var extToMimes = {
 	'wav': 'audio/wav',
 	'weba': 'audio/webm',
 };
-
-hostaddr = hostaddr.replace(/:$/, '');
 
 function UniqueId() {
 	/**

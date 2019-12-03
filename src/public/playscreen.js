@@ -1,6 +1,6 @@
 USEIO = true;
 var socket;
-var serverurl = 'http://' + window.location.hostname + ':' + window.location.port;
+var serverurl = [window.location.protocol, '//', window.location.hostname, ':', window.location.port].join('').replace(/:$/, '');
 var fullscreen = false;
 var maxviews = 4;
 var prw, prh;
@@ -52,8 +52,6 @@ var keys = {
 	SPACE: 32,
 	ENTER: 13,
 };
-
-serverurl = serverurl.replace(/:$/, '');
 
 
 function updatePresentEvent(pev) {
