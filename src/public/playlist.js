@@ -1,5 +1,4 @@
-var hostaddr = 'http://'+window.location.hostname+':'+window.location.port;
-hostaddr = hostaddr.replace(/:$/, '');
+var hostaddr = [window.location.protocol, '//', window.location.hostname, ':', window.location.port].join('').replace(/:$/, '');
 
 
 function uploadFile()

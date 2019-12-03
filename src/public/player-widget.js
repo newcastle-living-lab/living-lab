@@ -17,8 +17,7 @@
 	var USEIO = true;
 	var socket;
 	// URL
-	var serverurl = 'http://' + window.location.hostname + ':' + window.location.port,
-	serverurl = serverurl.replace(/:$/, '');
+	var serverurl = [window.location.protocol, '//', window.location.hostname, ':', window.location.port].join('').replace(/:$/, '');
 	//array of playent event objects
 	var playentevents = [];
 	// array of present event objects/data

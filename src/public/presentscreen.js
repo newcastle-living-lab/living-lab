@@ -1,6 +1,6 @@
 USEIO = true;
 var socket;
-var serverurl = 'http://' + window.location.hostname + ':' + window.location.port;
+var serverurl = [window.location.protocol, '//', window.location.hostname, ':', window.location.port].join('').replace(/:$/, '');
 var fullscreen = false;
 var maxviews = 4;
 var prw, prh;
@@ -37,8 +37,6 @@ var openingProject = false;
 var playmode = false;
 var sspeevnonselcol = '#ccddcc';
 var sspeevselectcol = '#aaaaff';
-
-serverurl = serverurl.replace(/:$/, '');
 
 
 function updateViewState(prop) {
