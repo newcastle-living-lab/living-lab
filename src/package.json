@@ -1,6 +1,6 @@
 {
   "name": "living-lab",
-  "version": "1.24.1",
+  "version": "1.24.2",
   "private": true,
   "description": "Living Lab project",
   "main": "server.js",
