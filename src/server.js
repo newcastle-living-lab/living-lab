@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 var express = require("express"),
 	io = require("socket.io"),
 	http = require("http"),

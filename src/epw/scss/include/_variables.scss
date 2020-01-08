@@ -1,0 +1,22 @@
+
+// EPW
+
+// Living Lab palette
+$grey-dark: #444;
+$grey: #666;
+$grey-medium: #bbb;
+$grey-light: #f2f0f1;
+$navy: #003965;
+$red: #d60724;
+
+// Spectre override
+$primary-color: $navy;
+// $secondary-color: $red;
+$dark-color: $grey-dark;
+
+$gray-color: #666;		//lighten($dark-color, 55%) !default;
+$gray-color-dark: #444;		//darken($gray-color, 30%) !default;
+$gray-color-medium: #bbb;
+$gray-color-light: #f2f0f1;		//lighten($gray-color, 20%) !default;
+
+$sidebar-width: 16rem;
