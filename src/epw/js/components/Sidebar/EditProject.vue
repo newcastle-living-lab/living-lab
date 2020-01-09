@@ -2,16 +2,13 @@
 
 	<div>
 
-		<h3>Edit project</h3>
-		<div class="form-group">
-			<label class="form-label" for="titleText">Name</label>
-			<textarea class="form-input" id="titleText" placeholder="" rows="2" v-model="nodes.title.text"></textarea>
-		</div>
-
-		<div class="form-group">
-			<label class="form-label" for="subtitleText">Subtitle</label>
-			<textarea class="form-input" id="subtitleText" placeholder="" rows="2" v-model="nodes.subtitle.text"></textarea>
-		</div>
+		<edit-details/>
+		<h3 class="sidebar-heading">Project Details</h3>
+		<h3 class="sidebar-heading">Projection</h3>
+		<h3 class="sidebar-heading">Goals and Targets</h3>
+		<h3 class="sidebar-heading">Initiators</h3>
+		<h3 class="sidebar-heading">Services</h3>
+		<h3 class="sidebar-heading">Social Media</h3>
 
 	</div>
 
@@ -19,23 +16,13 @@
 
 <script>
 
-import {appStore} from '../../store/app';
-import {nodeStore} from '../../store/nodes';
+import EditDetails from './Edit/Details.vue';
 
 export default {
 
-	data() {
-		return {
-			app: appStore.state,
-			nodes: nodeStore.state
-		}
+	components: {
+		EditDetails
 	},
-
-	methods: {
-		onSave() {
-			this.$emit('onSave');
-		}
-	}
 
 }
 </script>

@@ -3,7 +3,7 @@
 	<div ref="container">
 		<v-stage ref="stage" :config="stageSize">
 			<v-layer>
-				<v-text :config="nodes.title"/>
+				<v-text :config="projectTitleConfig"/>
 				<v-text :config="nodes.subtitle"/>
 				<v-rect :config="nodes.goalsBorder"/>
 				<!-- <v-rect :config="nodes.goalsTitle"/>
@@ -17,8 +17,7 @@
 
 <script>
 
-import {appStore} from '../store/app';
-import {nodeStore} from '../store/nodes';
+import { mapState, mapActions } from 'vuex';
 
 export default {
 
@@ -30,7 +29,32 @@ export default {
 				height: 480
 			},
 
-			nodes: nodeStore.state,
+			nodes: {
+				title: {
+					text: '',
+					fontSize: 16,
+					fontStyle: 'bold',
+					x: 20,
+					y: 20
+				},
+
+				subtitle: {
+					text: 'Goals',
+					fontSize: 16,
+					// fontStyle: 'bold',
+					x: 20,
+					y: 50
+				},
+
+				goalsBorder: {
+					x: 20,
+					y: 50,
+					width: 100,
+					height: 100,
+					// fill: 'red',
+					shadowBlur: 10
+				}
+			},
 
 			configCircle: {
 				x: 300,
@@ -39,10 +63,23 @@ export default {
 				fill: "#ff6400",
 				stroke: "#444444",
 				strokeWidth: 2
-			},
+			}
 
-			app: appStore.state,
 		}
+	},
+
+	computed: {
+		...mapState('projects', {
+			projectTitleConfig(state) {
+				return {
+					text: state.currentProject ? state.currentProject.name : '',
+					fontSize: 16,
+					fontStyle: 'bold',
+					x: 20,
+					y: 20
+				}
+			}
+		})
 	},
 
 	mounted() {
@@ -50,6 +87,10 @@ export default {
 			h = w / 1.4;
 		this.stageSize.width = w;
 		this.stageSize.height = Math.ceil(h);
+	},
+
+	created() {
+		console.log("Created");
 	}
 
 }

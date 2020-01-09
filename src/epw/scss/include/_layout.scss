@@ -16,7 +16,7 @@ body {
 }
 
 .app-toolbar {
-	padding: $unit-2;
+	padding: $unit-4;
 	border-bottom: $unit-o solid $border-color;
 }
 
@@ -39,10 +39,15 @@ body {
 		padding: $unit-2 $unit-4;
 		border: $unit-o solid $border-color;
 		border-width: $unit-o 0;
+		margin-bottom: -$unit-o;
 
 		&:first-child {
 			margin-top: -$unit-o;
 		}
+	}
+
+	.sidebar-content {
+		padding: $unit-2 $unit-4 $unit-8 $unit-4;
 	}
 }
 
@@ -54,6 +59,18 @@ body {
 }
 
 .app-content {
+}
+
+
+.form-group {
+	&:not(:last-child) {
+		margin-bottom: $layout-spacing * 2;
+	}
+	margin-bottom: $layout-spacing * 2;
+}
+
+.form-actions {
+	padding-top: $control-padding-y;
 }
 
 /*

@@ -5,13 +5,14 @@ exports.route = "/epw/projects";
 
 exports.handler = function(req, res) {
 
-	var resp = new Array();
-	// var db = new sqlite3.Database(dbfile);
 	var db = database.getDb();
-	var sql = "SELECT id,name,createdate,lastdate,creator,folder FROM Projects";
+	var sql = "SELECT id, name, created_at, modified_at, created_by, folder FROM eps";
 
 	db.all(sql, function(err, rows) {
-		res.send(rows);
+		res.send({
+			'success': true,
+			'projects': rows,
+		});
 	});
 
 };

@@ -613,7 +613,7 @@ mark {
 }
 
 blockquote {
-  border-left: 0.1rem solid #eaeaea;
+  border-left: 0.1rem solid #bbb;
   margin-left: 0;
   padding: 0.4rem 0.8rem;
 }
@@ -752,7 +752,7 @@ html:lang(ko),
 
 .table td,
 .table th {
-  border-bottom: 0.05rem solid #eaeaea;
+  border-bottom: 0.05rem solid #bbb;
   padding: 0.6rem 0.4rem;
 }
 
@@ -1051,7 +1051,7 @@ legend {
           appearance: none;
   background: #fff;
   background-image: none;
-  border: 0.05rem solid #d0d0d0;
+  border: 0.05rem solid #a2a2a2;
   border-radius: 0.1rem;
   color: #515151;
   display: block;
@@ -1140,7 +1140,7 @@ textarea.form-input.input-sm {
   -webkit-appearance: none;
      -moz-appearance: none;
           appearance: none;
-  border: 0.05rem solid #d0d0d0;
+  border: 0.05rem solid #a2a2a2;
   border-radius: 0.1rem;
   color: inherit;
   font-size: 0.8rem;
@@ -1262,7 +1262,7 @@ textarea.form-input.input-sm {
 .form-checkbox .form-icon,
 .form-radio .form-icon,
 .form-switch .form-icon {
-  border: 0.05rem solid #d0d0d0;
+  border: 0.05rem solid #a2a2a2;
   cursor: pointer;
   display: inline-block;
   position: absolute;
@@ -1396,7 +1396,7 @@ textarea.form-input.input-sm {
 
 .input-group .input-group-addon {
   background: white;
-  border: 0.05rem solid #d0d0d0;
+  border: 0.05rem solid #a2a2a2;
   border-radius: 0.1rem;
   line-height: 1.2rem;
   padding: 0.25rem 0.4rem;
@@ -2618,7 +2618,7 @@ summary.accordion-header::-webkit-details-marker {
 
 .card {
   background: #fff;
-  border: 0.05rem solid #eaeaea;
+  border: 0.05rem solid #bbb;
   border-radius: 0.1rem;
   display: -webkit-box;
   display: flex;
@@ -3011,7 +3011,7 @@ summary.accordion-header::-webkit-details-marker {
 }
 
 .panel {
-  border: 0.05rem solid #eaeaea;
+  border: 0.05rem solid #bbb;
   border-radius: 0.1rem;
   display: -webkit-box;
   display: flex;
@@ -3163,7 +3163,7 @@ summary.accordion-header::-webkit-details-marker {
 }
 
 .step .step-item.active ~ .step-item::before {
-  background: #eaeaea;
+  background: #bbb;
 }
 
 .step .step-item.active ~ .step-item a {
@@ -3171,13 +3171,13 @@ summary.accordion-header::-webkit-details-marker {
 }
 
 .step .step-item.active ~ .step-item a::before {
-  background: #eaeaea;
+  background: #bbb;
 }
 
 .tab {
   -webkit-box-align: center;
           align-items: center;
-  border-bottom: 0.05rem solid #eaeaea;
+  border-bottom: 0.05rem solid #bbb;
   display: -webkit-box;
   display: flex;
   flex-wrap: wrap;
@@ -3713,7 +3713,7 @@ a.text-error:visited {
 }
 
 .divider {
-  border-top: 0.05rem solid #fefefe;
+  border-top: 0.05rem solid #cfcfcf;
   height: 0.05rem;
   margin: 0.4rem 0;
 }
@@ -3728,7 +3728,7 @@ a.text-error:visited {
 }
 
 .divider-vert::before {
-  border-left: 0.05rem solid #eaeaea;
+  border-left: 0.05rem solid #bbb;
   bottom: 0.4rem;
   content: "";
   display: block;
@@ -4101,14 +4101,14 @@ body {
 }
 
 .app-toolbar {
-  padding: 0.4rem;
-  border-bottom: 0.05rem solid #eaeaea;
+  padding: 0.8rem;
+  border-bottom: 0.05rem solid #bbb;
 }
 
 .app-sidebar {
   display: block;
   width: 16rem;
-  border-right: 0.05rem solid #eaeaea;
+  border-right: 0.05rem solid #bbb;
   overflow-y: auto;
   height: 100%;
 }
@@ -4117,12 +4117,17 @@ body {
   background: #f2f0f1;
   font-size: 0.8rem;
   padding: 0.4rem 0.8rem;
-  border: 0.05rem solid #eaeaea;
+  border: 0.05rem solid #bbb;
   border-width: 0.05rem 0;
+  margin-bottom: -0.05rem;
 }
 
 .app-sidebar .sidebar-heading:first-child {
   margin-top: -0.05rem;
+}
+
+.app-sidebar .sidebar-content {
+  padding: 0.4rem 0.8rem 1.6rem 0.8rem;
 }
 
 .app-main {
@@ -4132,6 +4137,18 @@ body {
   -webkit-box-direction: normal;
           flex-direction: row;
   height: 100%;
+}
+
+.form-group {
+  margin-bottom: 0.8rem;
+}
+
+.form-group:not(:last-child) {
+  margin-bottom: 0.8rem;
+}
+
+.form-actions {
+  padding-top: 0.25rem;
 }
 
 /*

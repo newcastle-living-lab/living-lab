@@ -2,40 +2,36 @@
 
 	<section class="app-toolbar">
 
-		<div class="container">
-			<div class="columns">
-				<div class="column col-6">
+		<nav class="navbar">
 
-					<button class='btn btn-link'
-						@click="onNew"
-					>New</button>
+			<section class="navbar-section">
 
-					<button class='btn btn-link'
-						@click="onOpen"
-					>Open...</button>
+				<button class='btn btn-primary navbar-brand mr-4'
+					@click="doWelcome"
+				>{{ appName }}</button>
 
-					<button class='btn btn-link'
-						@click="onEdit"
-					>Edit</button>
+				<button class='btn btn-link'
+					@click="doNew"
+				>New</button>
 
-				</div>
-				<div class="column col-6 text-right">
-					<div v-if="project">
-						<router-link :to="projectionUrl" class="btn btn-link" :class="activeTab == 'projection' ? 'active' : ''">Projection</router-link>
-						<router-link :to="socialUrl" class="btn btn-link">Social Media</router-link>
-					</div>
-				</div>
-					<!-- <ul class="tab">
-						<li class="tab-item active">
-							<router-link to="/123/projection" class="btn btn-link">Projection</router-link>
-						</li>
-						<li class="tab-item">
-							<router-link to="/123/social" class="btn btn-link">Social Media</router-link>
-						</li>
-					</ul>
-									</div> -->
-			</div>
-		</div>
+				<button class='btn btn-link'
+					@click="doOpen"
+				>Open...</button>
+
+				<button class='btn btn-link'
+					v-if="currentProject"
+					@click="doEdit"
+				>Edit</button>
+
+			</section>
+
+			<section class="navbar-section" v-if="currentProject">
+				<span v-if="currentProject" class="btn btn-link text-bold mr-4">{{ currentProject.name }}</span>
+				<router-link :to="projectionUrl" class="btn btn-link" :class="activeTab == 'projection' ? 'active' : ''">Projection</router-link>
+				<router-link :to="socialUrl" class="btn btn-link">Social Media</router-link>
+			</section>
+
+		</nav>
 
 	</section>
 
@@ -43,48 +39,35 @@
 
 <script>
 
-import {appStore} from '../store/app';
-import {nodeStore} from '../store/nodes';
+import { mapState, mapActions } from 'vuex';
 
 export default {
 
-	props: {
-		project: Object
-	},
-
 	computed: {
-		projectionUrl: function() {
-			return `/${this.project.id}/projection`;
-		},
-		socialUrl: function() {
-			return `/${this.project.id}/social`;
-		},
 		activeTab: function() {
 			return this.$route.name;
-		}
+		},
+		...mapState('app', [
+        	'appName',
+		]),
+		...mapState('projects', {
+			currentProject: 'currentProject',
+			projectionUrl(state) {
+				return `/${state.currentProject.id}/projection`;
+			},
+			socialUrl(state) {
+				return `/${state.currentProject.id}/social`;
+			}
+		}),
+
 	},
 
-	data() {
-		return {
-			app: appStore.state,
-			nodes: nodeStore.state
-		}
-	},
-
-	methods: {
-		onNew() {
-			this.$emit('onNew');
-		},
-		onOpen() {
-			this.$emit('onOpen');
-		},
-		onSave() {
-			this.$emit('onSave');
-		},
-		onEdit() {
-			this.$emit('onEdit');
-		}
-	}
+	methods: mapActions('app', [
+		'doWelcome',
+		'doNew',
+		'doOpen',
+		'doEdit',
+	]),
 
 }
 </script>

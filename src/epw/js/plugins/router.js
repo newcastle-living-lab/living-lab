@@ -5,14 +5,25 @@ import ProjectionStage from '../components/ProjectionStage.vue';
 
 Vue.use(VueRouter);
 
-const Projects = { template: '<div>Projectlist</div>' }
-// const Projection = { template: '<div>Projection canvas</div>' }
 const SocialMedia = { template: '<div>Social media</div>' }
 
 const routes = [
-	{ path: '/projects', component: Projects,  name: 'projects', },
-	{ path: '/:id/projection', component: ProjectionStage, name: 'projection' },
-	{ path: '/:id/social', component: SocialMedia, name: 'social' }
+	{
+		name: 'home',
+		path: '/',
+	},
+	{
+		name: 'projection',
+		path: '/:id/projection',
+		component: ProjectionStage,
+		props: true,
+	},
+	{
+		name: 'social',
+		path: '/:id/social',
+		component: SocialMedia,
+		props: true,
+	},
 ]
 
 const router = new VueRouter({

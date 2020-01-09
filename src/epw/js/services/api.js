@@ -1,7 +1,5 @@
-import Vue from 'vue';
+// import Vue from 'vue';
 import axios from 'axios';
-
-import {appStore} from '../store/app';
 
 var baseURL = '/epw/';
 
@@ -9,34 +7,39 @@ const http = axios.create({
 	baseURL: baseURL
 });
 
-var apiEnabled = (window.location.protocol !== 'file:');
-
 const api = {
 
 	getProjects() {
 
 		var endpoint = 'projects';
 
-		return axios.get(endpoint).then(res => {
-			return res.data
-		});
+		return http.get(endpoint)
+			.then(res => {
+				return res.data.projects
+			});
 	},
 
 	getProject(id) {
 
-		var endpoint = `project/${id}`;
+		var endpoint = `projects/${id}`;
 
-		return axios.get(endpoint).then(res => {
-			return res.data
-		});
+		return http.get(endpoint)
+			.then((res) => {
+				return res.data.project
+			});
 	},
 
-	saveProject() {
-		return http.post('event', data)
+	createProject(params) {
+		return http.post('projects', params)
 			.then((res) => {
-				if (res && res.data && res.data.session_key) {
-					appStore.setSessionKey(res.data.session_key);
-				}
+				return res.data.id;
+			});
+	},
+
+	saveProject(id, params) {
+		return http.put(`projects/${id}`, params)
+			.then((res) => {
+				return res.success;
 			})
 			.catch((e) => {
 				console.error(e);
@@ -45,6 +48,6 @@ const api = {
 
 }
 
-Vue.prototype.$api = api;
+// Vue.prototype.$api = api;
 
 export default api;

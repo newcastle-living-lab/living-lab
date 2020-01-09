@@ -71,6 +71,7 @@ var initServers = function() {
 		}));
 		app.use(cookieParser()),
 		app.use(bodyParser.urlencoded({ extended: true, limit: 50 * 1024 * 1024 }));
+		app.use(bodyParser.json());
 		app.use(passport.initialize());
 		app.use(passport.session());
 	}

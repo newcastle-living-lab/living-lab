@@ -19,27 +19,13 @@
 
 <script>
 
-import {appStore} from '../../store/app';
-import {nodeStore} from '../../store/nodes';
+import { mapState, mapActions } from 'vuex';
 
 export default {
 
-	props: {
-		projects: Array,
-	},
-
-	data() {
-		return {
-			app: appStore.state,
-			nodes: nodeStore.state
-		}
-	},
-
-	methods: {
-		onSave() {
-			this.$emit('onSave');
-		}
-	}
+	computed: mapState('projects', {
+		projects: 'all'
+	}),
 
 }
 </script>

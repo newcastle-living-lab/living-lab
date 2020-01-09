@@ -4,7 +4,12 @@
 
 		<h3 class="sidebar-heading">Project Details</h3>
 
-		{{ project.name }}
+		<div class="sidebar-content">
+			<h5>{{ currentProject.name }}</h5>
+			<!-- <p>{{ currentProject.created_at }}</p>
+			<p>{{ currentProject.modified_at }}</p>
+			<p>{{ currentProject.created_by }}</p> -->
+		</div>
 
 	</div>
 
@@ -12,26 +17,12 @@
 
 <script>
 
-import {appStore} from '../../store/app';
-import {nodeStore} from '../../store/nodes';
+import { mapState, mapActions } from 'vuex';
 
 export default {
 
-	props: {
-		project: Object,
-	},
-
-	data() {
-		return {
-			app: appStore.state,
-			nodes: nodeStore.state
-		}
-	},
-
-	methods: {
-		onSave() {
-			this.$emit('onSave');
-		}
+	computed: {
+		...mapState('projects', ['currentProject']),
 	}
 
 }

@@ -65,6 +65,12 @@ Database.prototype.createTables = function() {
 			}
 		});
 
+		db.run("CREATE TABLE IF NOT EXISTS `eps` (id INTEGER PRIMARY KEY, name TEXT, folder TEXT, created_at TEXT, modified_at TEXT, created_by TEXT, data TEXT)", function(err) {
+			if (err) {
+				console.error("Database EPs creation error");
+			}
+		});
+
 	});
 }
 
