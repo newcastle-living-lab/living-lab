@@ -23,6 +23,7 @@ body {
 .app-sidebar {
 	display: block;
 	width: $sidebar-width;
+	min-width: $sidebar-width;
 	// padding: $unit-4;
 	border-right: $unit-o solid $border-color;
 	overflow-y: auto;
@@ -40,14 +41,27 @@ body {
 		border: $unit-o solid $border-color;
 		border-width: $unit-o 0;
 		margin-bottom: -$unit-o;
+		cursor: default;
 
 		&:first-child {
 			margin-top: -$unit-o;
 		}
+
+		&.clickable {
+			&:hover {
+				background: darken($gray-color-light, 7%);
+			}
+		}
 	}
 
 	.sidebar-content {
-		padding: $unit-2 $unit-4 $unit-8 $unit-4;
+		padding: $unit-2 $unit-4 $unit-4 $unit-4;
+	}
+
+	.sidebar-footer {
+		margin: 0;
+		border-top: $unit-o solid $border-color;
+		padding: $unit-6 $unit-4 $unit-6 $unit-4;
 	}
 }
 
@@ -55,10 +69,23 @@ body {
 	display: flex;
 	flex-direction: row;
 	height: 100%;
+	flex: 1 1 auto;
 	// background: $gray-color-light;
 }
 
 .app-content {
+	background: $grey-dark;
+	padding: $unit-4;
+	width: 100%;
+	overflow: auto;
+	// flex-grow: inherit;
+}
+
+.canvas-container {
+}
+
+.konvajs-content {
+	background: #fff;
 }
 
 
@@ -70,7 +97,8 @@ body {
 }
 
 .form-actions {
-	padding-top: $control-padding-y;
+	// border-top: $unit-o solid $border-color;
+	// padding-top: $control-padding-y * 3;
 }
 
 /*

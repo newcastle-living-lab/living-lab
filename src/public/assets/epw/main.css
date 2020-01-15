@@ -4108,6 +4108,7 @@ body {
 .app-sidebar {
   display: block;
   width: 16rem;
+  min-width: 16rem;
   border-right: 0.05rem solid #bbb;
   overflow-y: auto;
   height: 100%;
@@ -4120,14 +4121,25 @@ body {
   border: 0.05rem solid #bbb;
   border-width: 0.05rem 0;
   margin-bottom: -0.05rem;
+  cursor: default;
 }
 
 .app-sidebar .sidebar-heading:first-child {
   margin-top: -0.05rem;
 }
 
+.app-sidebar .sidebar-heading.clickable:hover {
+  background: #e1dddf;
+}
+
 .app-sidebar .sidebar-content {
-  padding: 0.4rem 0.8rem 1.6rem 0.8rem;
+  padding: 0.4rem 0.8rem 0.8rem 0.8rem;
+}
+
+.app-sidebar .sidebar-footer {
+  margin: 0;
+  border-top: 0.05rem solid #bbb;
+  padding: 1.2rem 0.8rem 1.2rem 0.8rem;
 }
 
 .app-main {
@@ -4137,6 +4149,19 @@ body {
   -webkit-box-direction: normal;
           flex-direction: row;
   height: 100%;
+  -webkit-box-flex: 1;
+          flex: 1 1 auto;
+}
+
+.app-content {
+  background: #444;
+  padding: 0.8rem;
+  width: 100%;
+  overflow: auto;
+}
+
+.konvajs-content {
+  background: #fff;
 }
 
 .form-group {
@@ -4145,10 +4170,6 @@ body {
 
 .form-group:not(:last-child) {
   margin-bottom: 0.8rem;
-}
-
-.form-actions {
-  padding-top: 0.25rem;
 }
 
 /*
@@ -4191,6 +4212,68 @@ body {
 .menu.simple-menu .menu-item > a {
   padding-left: 0.8rem;
   padding-right: 0.8rem;
+}
+
+.btn {
+  touch-action: manipulation;
+}
+
+.btn.btn-secondary {
+  background: #25a0ff;
+  border-color: #1699ff;
+  color: #fff;
+}
+
+.btn.btn-secondary:focus {
+  box-shadow: 0 0 0 0.1rem rgba(37, 160, 255, 0.2);
+}
+
+.btn.btn-secondary:focus,
+.btn.btn-secondary:hover {
+  background: #1b9cff;
+  border-color: #0c95ff;
+  color: #fff;
+}
+
+.btn.btn-secondary:active,
+.btn.btn-secondary.active {
+  background: #0291ff;
+  border-color: #0088f1;
+  color: #fff;
+}
+
+.btn.btn-secondary.loading::after {
+  border-bottom-color: #fff;
+  border-left-color: #fff;
+}
+
+.btn.btn-dark {
+  background: #444;
+  border-color: #3c3c3c;
+  color: #fff;
+}
+
+.btn.btn-dark:focus {
+  box-shadow: 0 0 0 0.1rem rgba(68, 68, 68, 0.2);
+}
+
+.btn.btn-dark:focus,
+.btn.btn-dark:hover {
+  background: #3f3f3f;
+  border-color: #373737;
+  color: #fff;
+}
+
+.btn.btn-dark:active,
+.btn.btn-dark.active {
+  background: #323232;
+  border-color: #2b2b2b;
+  color: #fff;
+}
+
+.btn.btn-dark.loading::after {
+  border-bottom-color: #fff;
+  border-left-color: #fff;
 }
 
 .m-4 {

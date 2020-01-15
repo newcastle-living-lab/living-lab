@@ -11,11 +11,11 @@
 import Vue from 'vue';
 import { mapState, mapActions } from 'vuex';
 
-import Projects from './Sidebar/Projects';
-import ProjectInfo from './Sidebar/ProjectInfo';
-import EditProject from './Sidebar/EditProject';
-import NewProject from './Sidebar/NewProject';
-import Welcome from './Sidebar/Welcome';
+import Projects from './sidebar/Projects';
+import ProjectInfo from './sidebar/ProjectInfo';
+import EditProject from './sidebar/EditProject';
+import NewProject from './sidebar/NewProject';
+import Welcome from './sidebar/Welcome';
 
 Vue.component('sidebar-projects', Projects);
 Vue.component('sidebar-info', ProjectInfo);

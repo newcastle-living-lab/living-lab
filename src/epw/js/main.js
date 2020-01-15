@@ -12,6 +12,11 @@ import store from './store';
 Vue.use(VueKonva);
 
 
+// General components
+import SidebarHeading from './components/sidebar/partials/Heading';
+Vue.component('sidebar-heading', SidebarHeading);
+
+
 new Vue({
 	el: '#app',
 	template: '<App/>',

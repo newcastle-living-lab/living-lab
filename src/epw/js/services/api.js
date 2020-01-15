@@ -25,7 +25,17 @@ const api = {
 
 		return http.get(endpoint)
 			.then((res) => {
-				return res.data.project
+				var proj = res.data.project;
+				if (proj && proj.data && proj.data.goals === undefined) {
+					proj.data.goals = '';
+				}
+				if (proj && proj.data && typeof proj.data.goals == 'string') {
+					proj.data.goals = {
+						label: '',
+						body: proj.data.goals
+					}
+				}
+				return proj;
 			});
 	},
 

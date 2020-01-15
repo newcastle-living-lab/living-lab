@@ -1,0 +1,13 @@
+.btn {
+
+	touch-action: manipulation;
+
+	&.btn-secondary {
+		@include button-variant($secondary-color);
+	}
+
+	&.btn-dark {
+		@include button-variant($grey-dark);
+	}
+
+}
