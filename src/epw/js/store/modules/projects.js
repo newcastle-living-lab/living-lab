@@ -39,7 +39,7 @@ const actions = {
 			.then(project => {
 				// commit('setCurrentProject', project);
 				dispatch('project/setProject', project, { root: true });
-				dispatch('app/doInfo', null, { root: true });
+				dispatch('app/projectLoaded', null, { root: true });
 			});
 	},
 

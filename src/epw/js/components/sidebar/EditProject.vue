@@ -2,10 +2,11 @@
 
 	<div>
 
-		<edit-details/>
-		<edit-projection/>
-		<edit-beneficiary/>
-		<edit-services/>
+		<edit-details />
+		<edit-projection />
+		<edit-beneficiary />
+		<edit-services />
+		<edit-social />
 		<!-- <h3 class="sidebar-heading">Goals and Targets</h3>
 		<h3 class="sidebar-heading">Initiators</h3>
 		<h3 class="sidebar-heading">Services</h3>
@@ -21,6 +22,7 @@ import EditDetails from './edit/Details.vue';
 import EditProjection from './edit/Projection.vue';
 import EditServices from './edit/Services.vue';
 import EditBeneficiary from './edit/Beneficiary.vue';
+import EditSocial from './edit/Social.vue';
 
 export default {
 
@@ -29,6 +31,7 @@ export default {
 		EditProjection,
 		EditServices,
 		EditBeneficiary,
+		EditSocial,
 	},
 
 }

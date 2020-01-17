@@ -71,6 +71,14 @@ const getters = {
 		return getField(state.project.data);
 	},
 
+	social(state) {
+		if (state.project && Array.isArray(state.project.data.social)) {
+			return state.project.data.social;
+		}
+
+		return [];
+	}
+
 };
 
 
@@ -154,6 +162,13 @@ const mutations = {
 
 	deleteService(state, service) {
 		state.project.data.services.splice(state.project.data.services.indexOf(service), 1)
+	},
+
+	addSocial(state, social) {
+		if ( ! Array.isArray(state.project.data.social)) {
+			Vue.set(state.project.data, 'social', []);
+		}
+		state.project.data.social.push(social);
 	},
 
 	touchModifiedDate(state) {

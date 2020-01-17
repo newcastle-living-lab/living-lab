@@ -46,11 +46,17 @@ const actions = {
 	doEdit({ commit }) {
 		commit('sidebarView', 'edit');
 	},
-	doInfo({ commit }) {
+	doInfo({ commit, state }) {
 		commit('sidebarView', 'info');
 	},
 	doToast({ commit }, params) {
 		commit('setToast', params);
+	},
+	projectLoaded({ commit, state }) {
+		if (state.sidebarView == 'edit' || state.sidebarView == 'projects') {
+			return;
+		}
+		commit('sidebarView', 'info');
 	}
 };
 

@@ -60,6 +60,19 @@ body {
 		}
 	}
 
+	.sidebar-top {
+		margin-bottom: $unit-4;
+		.tab {
+			margin: 0;
+			.tab-item {
+				font-size: $font-size-sm;
+				a {
+					color: inherit;
+				}
+			}
+		}
+	}
+
 	.sidebar-content {
 		padding: $unit-2 $unit-4 $unit-4 $unit-4;
 	}
@@ -152,4 +165,21 @@ body {
 			vertical-align: -50%;
 		}
 	}
+}
+
+
+
+.item-twitter-bg {
+	background: #1da1f2;
+	color: #f5f8fa;
+}
+
+.item-facebook-bg {
+	background: #3b5998;
+	color: #fff;
+}
+
+.item-instagram-bg {
+	background: #c32aa3;
+	color: #fff;
 }

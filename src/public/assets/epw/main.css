@@ -4142,6 +4142,22 @@ body {
   background: #e1dddf;
 }
 
+.app-sidebar .sidebar-top {
+  margin-bottom: 0.8rem;
+}
+
+.app-sidebar .sidebar-top .tab {
+  margin: 0;
+}
+
+.app-sidebar .sidebar-top .tab .tab-item {
+  font-size: 0.7rem;
+}
+
+.app-sidebar .sidebar-top .tab .tab-item a {
+  color: inherit;
+}
+
 .app-sidebar .sidebar-content {
   padding: 0.4rem 0.8rem 0.8rem 0.8rem;
 }
@@ -4219,6 +4235,21 @@ body {
 .user-chip .avatar .feather {
   color: #7fc7ff;
   vertical-align: -50%;
+}
+
+.item-twitter-bg {
+  background: #1da1f2;
+  color: #f5f8fa;
+}
+
+.item-facebook-bg {
+  background: #3b5998;
+  color: #fff;
+}
+
+.item-instagram-bg {
+  background: #c32aa3;
+  color: #fff;
 }
 
 .menu.simple-menu {
