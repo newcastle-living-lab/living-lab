@@ -146,7 +146,7 @@ const mutations = {
 
 	addService(state, service) {
 		if ( ! Array.isArray(state.project.data.services)) {
-			state.project.data.services = [];
+			Vue.set(state.project.data, 'services', []);
 		}
 		delete service.isNew;
 		state.project.data.services.push(service);

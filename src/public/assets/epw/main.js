@@ -2419,7 +2419,7 @@ var mutations = {
   },
   addService: function addService(state, service) {
     if (!Array.isArray(state.project.data.services)) {
-      state.project.data.services = [];
+      vue__WEBPACK_IMPORTED_MODULE_0___default.a.set(state.project.data, 'services', []);
     }
 
     delete service.isNew;
