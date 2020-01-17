@@ -28,11 +28,6 @@ body {
 	border-right: $unit-o solid $border-color;
 	overflow-y: auto;
 	height: 100%;
-	// background: #eee;
-
-	// .is-editing & {
-	// 	display: block;
-	// }
 
 	.sidebar-heading {
 		background: $gray-color-light;
@@ -60,7 +55,7 @@ body {
 
 	.sidebar-footer {
 		margin: 0;
-		border-top: $unit-o solid $border-color;
+		// border-top: $unit-o solid $border-color;
 		padding: $unit-6 $unit-4 $unit-6 $unit-4;
 	}
 }
@@ -100,33 +95,3 @@ body {
 	// border-top: $unit-o solid $border-color;
 	// padding-top: $control-padding-y * 3;
 }
-
-/*
-
-.off-canvas {
-
-	.off-canvas-sidebar {
-		width: $sidebar-width;
-		border-right: $unit-o solid $gray-color-medium;
-	}
-
-	.off-canvas-content {
-		padding: 0
-	}
-
-}
-
-
-.app-content {
-	flex: 1 1 auto;
-	padding: $unit-4;
-	width: calc(100vw - $sidebar-width);
-
-	& > .container {
-		// margin-left: 0;
-		// max-width: 800px;
-		// padding-bottom: 1.5rem;
-	}
-
-}
- */

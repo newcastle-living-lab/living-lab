@@ -4,6 +4,7 @@
 
 		<edit-details/>
 		<edit-projection/>
+		<edit-beneficiary/>
 		<edit-services/>
 		<!-- <h3 class="sidebar-heading">Goals and Targets</h3>
 		<h3 class="sidebar-heading">Initiators</h3>
@@ -19,6 +20,7 @@
 import EditDetails from './edit/Details.vue';
 import EditProjection from './edit/Projection.vue';
 import EditServices from './edit/Services.vue';
+import EditBeneficiary from './edit/Beneficiary.vue';
 
 export default {
 
@@ -26,6 +28,7 @@ export default {
 		EditDetails,
 		EditProjection,
 		EditServices,
+		EditBeneficiary,
 	},
 
 }

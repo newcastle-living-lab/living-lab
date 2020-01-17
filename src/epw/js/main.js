@@ -20,6 +20,7 @@ Vue.component('sidebar-heading', SidebarHeading);
 new Vue({
 	el: '#app',
 	template: '<App/>',
+	user: window.user,
 	i18n,
 	router,
 	store,

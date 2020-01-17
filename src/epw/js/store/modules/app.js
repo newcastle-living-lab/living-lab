@@ -10,6 +10,7 @@ const state = {
 	loading: false,
 	sidebarView: 'welcome',
 	editPanel: 'details',
+	user: null,
 };
 
 
@@ -66,6 +67,9 @@ const mutations = {
 	},
 	editPanel(state, panelName) {
 		state.editPanel = panelName;
+	},
+	setUser(state, user) {
+		state.user = user;
 	}
 };
 

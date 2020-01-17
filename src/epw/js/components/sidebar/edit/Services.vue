@@ -8,12 +8,18 @@
 
 			<div class="form-group">
 				<label class="form-label" for="servicesLabel">Services label</label>
-				<input class="form-input" id="servicesLabel" v-model="servicesLabel" maxlength="255"></textarea>
+				<input
+					:value="projectData.servicesLabel"
+					@input="updateValue({ prop: 'servicesLabel', value: $event.target.value })"
+					class="form-input"
+					id="servicesLabel"
+					maxlength="255"
+				></textarea>
 			</div>
 
 			<div class="form-group">
 				<label class="form-label">Services</label>
-				<button class="btn btn-dark btn-sm">+ Add new service...</button>
+				<button class="btn btn-dark btn-sm" @click="newService">+ Add new service...</button>
 			</div>
 
 		</div>
@@ -22,8 +28,26 @@
 			<button
 				type="button"
 				class="btn btn-success"
-				@click="save()"
-			>Save</button>
+				@click="next()"
+			>Next</button>
+		</div>
+
+		<div class="modal" :class="modalActive ? 'active' : ''">
+			<div class="modal-overlay" aria-label="Close" @click="closeModal"></div>
+			<div class="modal-container">
+				<div class="modal-header">
+					<button @click="closeModal" class="btn btn-clear float-right" aria-label="Close"></button>
+					<div class="modal-title h5">Add New Service</div>
+				</div>
+				<div class="modal-body">
+					<div class="content">
+
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button class="btn btn-primary">Add</button>
+				</div>
+			</div>
 		</div>
 
 	</div>
@@ -32,19 +56,15 @@
 
 <script>
 
-import { mapState, mapActions } from 'vuex';
-
-import { createHelpers } from 'vuex-map-fields';
-const { mapFields } = createHelpers({
-	getterType: 'projects/getCurrentProjectDataField',
-	mutationType: 'projects/updateCurrentProjectDataField',
-});
+import { mapState, mapMutations } from 'vuex';
 
 export default {
 
 	data() {
 		return {
-			panelName: 'services'
+			panelName: 'services',
+			modalActive: false,
+			service: {}
 		};
 	},
 
@@ -54,14 +74,32 @@ export default {
 				return state.editPanel == this.panelName
 			},
 		}),
-		...mapFields({
-			servicesLabel: 'servicesLabel',
+		...mapState('project', {
+			projectData: state => state.project.data
 		}),
 	},
 
 	methods: {
-		save() {
-			this.$store.dispatch('projects/saveCurrentProject');
+		...mapMutations('project', [
+			'updateValue',
+			// 'updateServices',
+		]),
+		getBlankService() {
+			return {
+				label: '',
+				url: '',
+			};
+		},
+		newService() {
+			this.service = this.getBlankService();
+			this.modalActive = true;
+		},
+		closeModal() {
+			this.service = this.getBlankService();
+			this.modalActive = false;
+		},
+		next() {
+			// this.$store.dispatch('app/setEdit', 'beneficiary');
 		}
 	}
 

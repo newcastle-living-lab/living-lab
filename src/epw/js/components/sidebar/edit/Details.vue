@@ -22,8 +22,8 @@
 			<button
 				type="button"
 				class="btn btn-success"
-				@click="save()"
-			>Save</button>
+				@click="next()"
+			>Next</button>
 		</div>
 
 	</div>
@@ -49,16 +49,15 @@ export default {
 				return state.editPanel == this.panelName
 			},
 		}),
-		...mapState('projects', ['currentProject']),
-		...mapFields('projects', [
-			'currentProject.name',
-			'currentProject.created_by',
+		...mapFields('project', [
+			'project.name',
+			'project.created_by',
 		]),
 	},
 
 	methods: {
-		save() {
-			this.$store.dispatch('projects/saveCurrentProject');
+		next() {
+			this.$store.dispatch('app/setEdit', 'projection');
 		}
 	}
 

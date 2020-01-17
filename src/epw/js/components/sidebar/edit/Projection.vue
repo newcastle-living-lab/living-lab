@@ -8,17 +8,36 @@
 
 			<div class="form-group">
 				<label class="form-label" for="title">Title</label>
-				<textarea class="form-input" id="title" rows="3" v-model="title" maxlength="255"></textarea>
+				<textarea
+					:value="projectData.title"
+					@input="updateValue({ prop: 'title', value: $event.target.value })"
+					class="form-input"
+					id="title"
+					rows="3"
+					maxlength="255"
+				></textarea>
 			</div>
 
 			<div class="form-group">
 				<label class="form-label" for="goalsLabel">Goals and targets label</label>
-				<input class="form-input" id="goalsLabel" v-model="goalsLabel" maxlength="255"></textarea>
+				<input
+					:value="projectData.goals.label"
+					@input="updateGoals({ prop: 'label', value: $event.target.value })"
+					class="form-input"
+					id="goalsLabel"
+					maxlength="255
+				"></textarea>
 			</div>
 
 			<div class="form-group">
 				<label class="form-label" for="goalsBody">Goals and targets</label>
-				<textarea class="form-input" id="goalsBody" rows="6" v-model="goalsBody"></textarea>
+				<textarea
+					:value="projectData.goals.body"
+					@input="updateGoals({ prop: 'body', value: $event.target.value })"
+					class="form-input"
+					id="goalsBody"
+					rows="6"
+				></textarea>
 			</div>
 
 		</div>
@@ -27,8 +46,8 @@
 			<button
 				type="button"
 				class="btn btn-success"
-				@click="save()"
-			>Save</button>
+				@click="next()"
+			>Next</button>
 		</div>
 
 	</div>
@@ -37,13 +56,7 @@
 
 <script>
 
-import { mapState, mapActions } from 'vuex';
-
-import { createHelpers } from 'vuex-map-fields';
-const { mapFields } = createHelpers({
-	getterType: 'projects/getCurrentProjectDataField',
-	mutationType: 'projects/updateCurrentProjectDataField',
-});
+import { mapState, mapMutations } from 'vuex';
 
 export default {
 
@@ -59,16 +72,18 @@ export default {
 				return state.editPanel == this.panelName
 			},
 		}),
-		...mapFields({
-			title: 'title',
-			goalsLabel: 'goals.label',
-			goalsBody: 'goals.body',
+		...mapState('project', {
+			projectData: state => state.project.data
 		}),
 	},
 
 	methods: {
-		save() {
-			this.$store.dispatch('projects/saveCurrentProject');
+		...mapMutations('project', [
+			'updateValue',
+			'updateGoals',
+		]),
+		next() {
+			this.$store.dispatch('app/setEdit', 'beneficiary');
 		}
 	}
 

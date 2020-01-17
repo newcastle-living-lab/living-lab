@@ -7,5 +7,17 @@ exports.handler = function(req, res) {
 	if (req.path === '/epw') {
 		return res.redirect('/epw/');
 	}
-	res.render('epw.html');
+
+	// (req.user && req.user.roles
+	var user = null;
+	if (req.user) {
+		user = {
+			username: req.user.username,
+			roles: req.user.roles,
+		}
+	}
+
+	return res.render('epw.html', {
+		user: user
+	});
 };

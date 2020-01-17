@@ -5,42 +5,17 @@
 		<v-stage ref="stage" :config="stageSize">
 			<v-layer>
 
-				<v-text ref="projectTitle" :config="projectTitleConfig"/>
+				<group-title ref="projectTitleGroup" :dimensions="dimensions" />
 
-				<v-text ref="goalsLabel" :config="goalsLabelConfig"/>
-				<v-text ref="goalsBody" :config="goalsBodyConfig"/>
-				<v-rect ref="goalsBorder" :config="goalsBorderConfig"/>
+				<group-goals ref="goalsGroup" :dimensions="dimensions" />
 
-				<v-rect ref="servicesBorder" :config="servicesBorderConfig"/>
-				<v-text ref="servicesLabel" :config="servicesLabelConfig"/>
+				<group-services ref="servicesGroup" :dimensions="dimensions" />
 
-				<v-group>
-					<v-line :config="staticNodes.structuralLineOuter"/>
-					<v-line :config="staticNodes.structuralLineInner"/>
-					<v-text :config="staticNodes.structuralText"/>
-				</v-group>
-
-				<v-group>
-					<v-line :config="staticNodes.infrastructuralLineOuter"/>
-					<v-line :config="staticNodes.infrastructuralLineInner"/>
-					<v-text :config="staticNodes.infrastructuralText"/>
-				</v-group>
-
-				<v-group>
-					<v-regular-polygon :config="staticNodes.resourcesShape"/>
-					<v-text :config="staticNodes.resourcesText"/>
-				</v-group>
-
-				<v-group>
-					<v-rect :config="staticNodes.lawShape"/>
-					<v-text :config="staticNodes.lawText"/>
-				</v-group>
-
-				<v-group>
-					<v-rect :config="staticNodes.ethosShape"/>
-					<v-text :config="staticNodes.ethosText"/>
-				</v-group>
-
+				<group-ethos />
+				<group-resources />
+				<group-law />
+				<group-structural />
+				<group-infrastructural />
 
 			</v-layer>
 		</v-stage>
@@ -50,38 +25,45 @@
 
 <script>
 
-import { mapState, mapActions } from 'vuex';
-import colours from 'colors.css';
-import staticNodes from '../data/staticNodes';
+import { mapState } from 'vuex';
 
-import { createHelpers } from 'vuex-map-fields';
-const { mapFields } = createHelpers({
-	getterType: 'projects/getCurrentProjectDataField',
-	mutationType: 'projects/updateCurrentProjectDataField',
-});
+import GroupEthos from './projection/Ethos.vue';
+import GroupResources from './projection/Resources.vue';
+import GroupLaw from './projection/Law.vue';
+import GroupStructural from './projection/Structural.vue';
+import GroupInfrastructural from './projection/Infrastructural.vue';
+
+import GroupTitle from './projection/Title.vue';
+import GroupGoals from './projection/Goals.vue';
+import GroupServices from './projection/Services.vue';
+
+let nodeRefs = {};
 
 export default {
+
+	components: {
+		GroupTitle,
+		GroupGoals,
+		GroupEthos,
+		GroupResources,
+		GroupLaw,
+		GroupStructural,
+		GroupInfrastructural,
+		GroupServices,
+	},
 
 	data() {
 
 		return {
 
-			nodeRefs: {
-				projectTitle: null,
-				goalsBody: null,
-			},
-
-			nodeConfigs: {
-				projectTitle: null,
+			dimensions: {
+				projectTitle: {},
 				goalsBorder: {},
 				goalsLabel: {},
 				goalsBody: {},
 				servicesLabel: {},
+				servicesBorder: {},
 			},
-
-			staticNodes: staticNodes,
-
-			colours: colours,
 
 			stageSize: {
 				width: 1260,
@@ -93,130 +75,71 @@ export default {
 
 
 	watch: {
-		'title': 'refreshPositions',
-		'goals.label': 'refreshPositions',
-		'goals.body': 'refreshPositions',
-		'servicesLabel': 'refreshPositions',
-		'services': 'refreshPositions',
+		'projectData.title': 'refreshPositions',
+		'projectData.goals.label': 'refreshPositions',
+		'projectData.goals.body': 'refreshPositions',
+		'projectData.goals': 'refreshPositions',
+		'projectData.servicesLabel': 'refreshPositions',
+		// 'projectData.services': 'refreshPositions',
 	},
 
 	computed: {
-		...mapFields([
-			'title',
-			'goals',
-			'servicesLabel',
-		]),
-		projectTitleConfig() {
-			return {
-				text: this.title,
-				fontSize: 20,
-				fontStyle: 'bold',
-				lineHeight: 1.3,
-				x: 20,
-				y: 20,
-				width: 400,
-			}
-		},
-		goalsLabelConfig() {
-			return {
-				text: typeof this.goals == 'object' ? this.goals.label : '',
-				fontSize: 14,
-				fontStyle: 'bold',
-				lineHeight: 1.3,
-				align: 'center',
-				x: this.nodeConfigs.goalsLabel.x,
-				y: this.nodeConfigs.goalsLabel.y,
-				width: 400 - 20 - 20,
-			}
-		},
-		goalsBodyConfig() {
-			return {
-				text: typeof this.goals == 'object' ? this.goals.body : '',
-				fontSize: 12,
-				lineHeight: 1.3,
-				x: this.nodeConfigs.goalsBody.x,
-				y: this.nodeConfigs.goalsBody.y,
-				width: 400 - 20 - 20,
-			}
-		},
-		goalsBorderConfig() {
-			return {
-				x: this.nodeConfigs.goalsBorder.x,
-				y: this.nodeConfigs.goalsBorder.y,
-				width: 400,
-				height: this.nodeConfigs.goalsBorder.height,
-				stroke: colours.black,
-				strokeWidth: 1
-			}
-		},
-		servicesBorderConfig() {
-			return {
-				x: 20,
-				y: 1030 - 250 - 20,
-				width: 510,
-				height: 250,
-				stroke: colours.orange,
-				strokeWidth: 1
-			};
-		},
-		servicesLabelConfig() {
-			return {
-				text: this.servicesLabel,
-				fontSize: 14,
-				fontStyle: 'bold',
-				lineHeight: 1.3,
-				align: 'center',
-				x: this.nodeConfigs.servicesLabel.x,
-				y: this.nodeConfigs.servicesLabel.y,
-				width: 510 - 10 - 10,
-			}
-		}
+		...mapState('project', {
+			projectData: state => state.project.data
+		}),
 	},
 
 	methods: {
+
 		refreshPositions() {
+
 			this.$nextTick(() => {
 
 				// console.log('Refreshing');
-				// console.log(this.nodeRefs.projectTitle.getNode().getClientRect());
 
-				// Goals
-
-				this.nodeConfigs.goalsBorder = {
-					x: this.nodeRefs.projectTitle.getNode().absolutePosition().x,
-					y: this.nodeRefs.projectTitle.getNode().absolutePosition().y + this.nodeRefs.projectTitle.getNode().getClientRect().height + 20,
-					height: (10 + 10 + 10
-					         + this.nodeRefs.goalsBody.getNode().getClientRect().height
-					         + this.nodeRefs.goalsLabel.getNode().getClientRect().height)
+				this.dimensions.goalsBorder = {
+					x: nodeRefs.projectTitle.getNode().absolutePosition().x,
+					y: nodeRefs.projectTitle.getNode().absolutePosition().y + nodeRefs.projectTitle.getNode().getClientRect().height + 20,
+					height: ( 10 + 10 + nodeRefs.goalsLabel.getNode().getClientRect().height + nodeRefs.goalsBody.getNode().getClientRect().height),
+					width: nodeRefs.projectTitle.getNode().getClientRect().width,
 				};
 
-				this.nodeConfigs.goalsLabel = {
-					x: 20 + 10,
-					y: this.nodeConfigs.goalsBorder.y + 10,
+				this.dimensions.goalsLabel = {
+					x: nodeRefs.projectTitle.getNode().absolutePosition().x,
+					y: this.dimensions.goalsBorder.y + 10,
+					width: nodeRefs.projectTitle.getNode().getClientRect().width,
 				};
 
-				this.nodeConfigs.goalsBody = {
-					x: 20 + 10,
-					y: this.nodeConfigs.goalsLabel.y + this.nodeRefs.goalsLabel.getNode().getClientRect().height + 10,
+				this.dimensions.goalsBody = {
+					x: nodeRefs.projectTitle.getNode().absolutePosition().x,
+					y: this.dimensions.goalsLabel.y + nodeRefs.goalsLabel.getNode().getClientRect().height,
+					width: nodeRefs.projectTitle.getNode().getClientRect().width,
 				};
 
-				// Services
+				this.dimensions.servicesBorder = {
+					x: nodeRefs.projectTitle.getNode().absolutePosition().x,
+					y: this.stageSize.height - 250 - 20,
+					height: 250,
+					width: 510,
+				};
 
-				this.nodeConfigs.servicesLabel = {
-					x: 20 + 10,
-					y: this.nodeRefs.servicesBorder.getNode().absolutePosition().y + 10
-				}
+				this.dimensions.servicesLabel = {
+					x: nodeRefs.projectTitle.getNode().absolutePosition().x,
+					y: nodeRefs.servicesBorder.getNode().absolutePosition().y + 10,
+					width: 510,
+				};
 			});
 
 		}
 	},
 
 	mounted() {
-		this.nodeRefs.projectTitle = this.$refs.projectTitle;
-		this.nodeRefs.goalsBody = this.$refs.goalsBody;
-		this.nodeRefs.goalsLabel = this.$refs.goalsLabel;
-		this.nodeRefs.servicesBorder = this.$refs.servicesBorder;
+		nodeRefs.projectTitle = this.$refs.projectTitleGroup.$refs.title;
+		nodeRefs.goalsBody = this.$refs.goalsGroup.$refs.body;
+		nodeRefs.goalsLabel = this.$refs.goalsGroup.$refs.label;
+		nodeRefs.servicesBorder = this.$refs.servicesGroup.$refs.border;
 		this.refreshPositions();
+		// this.updatePositions();
 	}
 
 }

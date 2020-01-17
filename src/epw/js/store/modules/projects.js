@@ -7,22 +7,6 @@ import { getField, updateField } from 'vuex-map-fields';
  */
 const state = {
 	all: [],
-	currentProject: {
-		name: '',
-		created_by: '',
-		created_at: '',
-		modified_at: '',
-		data: {
-			title: '',
-			goals: {
-				label: '',
-				body: '',
-			},
-			services: [],
-			initiators: [],
-		}
-	},
-	modified: false,
 };
 
 
@@ -31,10 +15,9 @@ const state = {
  *
  */
 const getters = {
+
 	getField,
-	getCurrentProjectDataField(state) {
-		return getField(state.currentProject.data);
-	}
+
 };
 
 
@@ -43,19 +26,23 @@ const getters = {
  *
  */
 const actions = {
+
 	getAllProjects({ commit }) {
 		api.getProjects()
 			.then(projects => {
 				commit('setProjects', projects);
 			});
 	},
+
 	getProject({ commit, dispatch }, id) {
 		api.getProject(id)
 			.then(project => {
-				commit('setCurrentProject', project);
+				// commit('setCurrentProject', project);
+				dispatch('project/setProject', project, { root: true });
 				dispatch('app/doInfo', null, { root: true });
 			});
 	},
+
 	createNewProject({ commit }, newProject) {
 		return api.createProject(newProject)
 			.then(id => {
@@ -65,13 +52,6 @@ const actions = {
 				reject(err);
 			});
 	},
-	saveCurrentProject({ commit, state }) {
-		commit('touchModifiedDate');
-		api.saveProject(state.currentProject.id, state.currentProject)
-			.then(res => {
-				return res;
-			});
-	}
 };
 
 
@@ -80,21 +60,11 @@ const actions = {
  *
  */
 const mutations = {
-	setModified(state, isModified) {
-		state.modified = isModified;
-	},
+
 	setProjects(state, projects) {
 		state.all = projects
 	},
-	setCurrentProject(state, project) {
-		state.currentProject = project;
-	},
-	updateCurrentProjectDataField(state, field) {
-		return updateField(state.currentProject.data, field);
-	},
-	touchModifiedDate(state) {
-		state.modified_at = (new Date()).toLocaleDateString();
-	},
+
 	updateField,
 };
 

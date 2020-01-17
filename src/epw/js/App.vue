@@ -59,6 +59,7 @@ export default {
 	},
 
 	created() {
+		this.$store.commit('app/setUser', this.$root.$options.user);
 		this.fetchProject();
 	}
 

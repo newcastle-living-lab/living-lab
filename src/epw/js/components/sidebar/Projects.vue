@@ -27,5 +27,9 @@ export default {
 		projects: 'all'
 	}),
 
+	activated() {
+		// this.$router.push('/').catch((e) => {});
+	}
+
 }
 </script>
