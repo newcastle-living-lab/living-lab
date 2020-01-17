@@ -4171,6 +4171,25 @@ body {
   margin-bottom: 0.8rem;
 }
 
+.tile-list-services .tile {
+  padding-top: 0.4rem;
+  padding-bottom: 0.4rem;
+  border-bottom: 0.05rem solid #f2f0f1;
+}
+
+.tile-list-services .tile-title {
+  font-weight: bold;
+}
+
+.tile-list-services .tile-subtitle {
+  font-size: 0.7rem;
+  color: #666;
+}
+
+.tile-list-services .tile-action .btn {
+  opacity: 0.8;
+}
+
 .menu.simple-menu {
   border: 0;
   margin: 0;
@@ -4243,6 +4262,10 @@ body {
 .btn.btn-dark.loading::after {
   border-bottom-color: #fff;
   border-left-color: #fff;
+}
+
+.btn .feather {
+  vertical-align: -15%;
 }
 
 .m-4 {

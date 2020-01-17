@@ -95,3 +95,26 @@ body {
 	// border-top: $unit-o solid $border-color;
 	// padding-top: $control-padding-y * 3;
 }
+
+
+
+
+.tile-list-services {
+
+	.tile {
+		padding-top: $unit-2;
+		padding-bottom: $unit-2;
+		border-bottom: $unit-o solid $gray-color-light;
+	}
+	.tile-title {
+		font-weight: bold;
+	}
+	.tile-subtitle {
+		font-size: $font-size-sm;
+		color: $gray-color;
+	}
+
+	.tile-action .btn {
+		opacity: 0.8;
+	}
+}

@@ -8,12 +8,36 @@
 
 			<div class="form-group">
 				<label class="form-label" for="label">Label</label>
-				<input class="form-input" id="label" v-model="labelModel" maxlength="255">
+				<input
+					:value="beneficiary.label"
+					@input="updateBeneficiary({ prop: 'label', value: $event.target.value })"
+					class="form-input"
+					id="label"
+					maxlength="255"
+				>
+			</div>
+
+			<div class="form-group">
+				<label class="form-label" for="shape">Shape</label>
+				<select
+					class="form-select"
+					:value="beneficiary.shape"
+					@change="updateBeneficiary({ prop: 'shape', value: $event.target.value })"
+				>
+					<option v-for="shape in shapes"
+						:key="shape.value"
+						:value="shape.value">{{ shape.label }}
+					</option>
+				</select>
 			</div>
 
 			<div class="form-group">
 				<label class="form-label" for="colour">Colour</label>
-				<select class="form-select" v-model="colourModel">
+				<select
+					class="form-select"
+					:value="beneficiary.colour"
+					@change="updateBeneficiary({ prop: 'colour', value: $event.target.value })"
+				>
 					<option v-for="colour in filteredColours"
 						:key="colour.name"
 						:value="colour.value">{{ colour.name }}
@@ -23,7 +47,13 @@
 
 			<div class="form-group">
 				<label class="form-label" for="comment">Comment</label>
-				<textarea class="form-input" id="comment" rows="3" v-model="commentModel"></textarea>
+				<textarea
+					:value="beneficiary.comment"
+					@input="updateBeneficiary({ prop: 'comment', value: $event.target.value })"
+					class="form-input"
+					id="comment"
+					rows="3"
+				></textarea>
 			</div>
 
 		</div>
@@ -42,8 +72,7 @@
 
 <script>
 
-import { mapState, mapGetters } from 'vuex';
-import { mapPropsModels } from '../../../helpers/map-props-models.js';
+import { mapState, mapGetters, mapMutations } from 'vuex';
 import filteredColours from '../../../data/filteredColours.js';
 
 export default {
@@ -52,7 +81,11 @@ export default {
 		return {
 			none: 'none',
 			panelName: 'beneficiary',
-			filteredColours: filteredColours
+			filteredColours: filteredColours,
+			shapes: [
+				{value: 'male', label: 'Male'},
+				{value: 'female', label: 'Female'},
+			]
 		};
 	},
 
@@ -63,15 +96,12 @@ export default {
 			},
 		}),
 		...mapGetters('project', ['beneficiary']),
-		...mapPropsModels(['label', 'colour', 'comment'], {
-			object: 'beneficiary'
-		}),
 	},
 
 	methods: {
-		updateValue(prop, value) {
-			this.$store.commit('project/updateBeneficiary', { prop, value });
-		},
+		...mapMutations('project', [
+			'updateBeneficiary',
+		]),
 		next() {
 			this.$store.dispatch('app/setEdit', 'services');
 		}

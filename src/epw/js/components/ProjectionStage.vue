@@ -11,6 +11,8 @@
 
 				<group-services ref="servicesGroup" :dimensions="dimensions" />
 
+				<group-beneficiary ref="beneficiaryGroup" :dimensions="dimensions" />
+
 				<group-ethos />
 				<group-resources />
 				<group-law />
@@ -36,6 +38,7 @@ import GroupInfrastructural from './projection/Infrastructural.vue';
 import GroupTitle from './projection/Title.vue';
 import GroupGoals from './projection/Goals.vue';
 import GroupServices from './projection/Services.vue';
+import GroupBeneficiary from './projection/Beneficiary.vue';
 
 let nodeRefs = {};
 
@@ -50,6 +53,7 @@ export default {
 		GroupStructural,
 		GroupInfrastructural,
 		GroupServices,
+		GroupBeneficiary,
 	},
 
 	data() {

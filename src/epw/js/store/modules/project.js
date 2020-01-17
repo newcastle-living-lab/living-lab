@@ -1,3 +1,4 @@
+import Vue from 'vue';
 import api from '../../services/api';
 import { getField, updateField } from 'vuex-map-fields';
 
@@ -51,15 +52,19 @@ const getters = {
 	},
 
 	beneficiary(state) {
-		if (state.project && typeof state.project.data.beneficiary === 'object') {
-			return state.project.data.beneficiary;
-		}
 
-		return {
-			label: 'test!',
+		let value = {
+			label: '',
 			colour: '',
 			comment: '',
+			shape: '',
+		};
+
+		if (state.project && typeof state.project.data.beneficiary === 'object') {
+			value = Object.assign({}, value, state.project.data.beneficiary);
 		}
+
+		return value;
 	},
 
 	getDataField(state) {
@@ -96,7 +101,7 @@ const mutations = {
 	updateField,
 
 	setProject(state, project) {
-		console.log(project);
+		// console.log(project);
 		state.project = { ...project };
 	},
 
@@ -106,27 +111,44 @@ const mutations = {
 
 	updateValue(state, field) {
 
-		console.log(field);
+		// console.log(field);
 
 		if (field.prop in state.project.data) {
 			state.project.data[field.prop] = field.value;
 		} else {
-			let newVal = {};
-			newVal[field.prop] = field.value;
-			state.project.data = Object.assign({}, state.project.data, newVal);	//[field.prop] = field.value;
+			// let newVal = {};
+			// newVal[field.prop] = field.value;
+			// state.project.data = Object.assign({}, state.project.data, newVal);	//[field.prop] = field.value;
+			Vue.set(state.project.data, field.prop, field.value);
 		}
 	},
 
 	updateBeneficiary(state, field) {
-		let newVal = {};
-		newVal[field.prop] = field.value;
-		state.project.data.beneficiary = Object.assign({}, state.project.data.beneficiary, newVal);
+		if (typeof state.project.data.beneficiary != 'object') {
+			Vue.set(state.project.data, 'beneficiary', {});
+		}
+
+		Vue.set(state.project.data.beneficiary, field.prop, field.value);
 	},
 
 	updateGoals(state, field) {
-		let newVal = {};
-		newVal[field.prop] = field.value;
-		state.project.data.goals = Object.assign({}, state.project.data.goals, newVal);
+		if (typeof state.project.data.goals != 'object') {
+			Vue.set(state.project.data, 'goals', {});
+		}
+
+		Vue.set(state.project.data.goals, field.prop, field.value);
+	},
+
+	addService(state, service) {
+		if ( ! Array.isArray(state.project.data.services)) {
+			state.project.data.services = [];
+		}
+		delete service.isNew;
+		state.project.data.services.push(service);
+	},
+
+	deleteService(state, service) {
+		state.project.data.services.splice(state.project.data.services.indexOf(service), 1)
 	},
 
 	touchModifiedDate(state) {

@@ -30,38 +30,6 @@ export default {
 			}
 		}
 
-	},
-
-	watch: {
-		// 'projectData.title': 'sendDims',
-	},
-
-	methods: {
-
-		sendDims() {
-
-			return;
-
-			this.$nextTick(() => {
-
-				var node = this.$refs.projectTitle.getNode();
-
-				let dims = {
-					x: node.absolutePosition().x,
-					y: node.absolutePosition().y,
-					height: node.getClientRect().height,
-					width: node.getClientRect().width,
-				};
-
-				this.$emit('update-dims', {
-					source: 'title',
-					data: dims,
-				});
-
-			});
-
-		}
-
 	}
 
 }
