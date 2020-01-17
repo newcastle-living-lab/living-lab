@@ -11,6 +11,7 @@ const state = {
 	sidebarView: 'welcome',
 	editPanel: 'details',
 	user: null,
+	toast: {},
 };
 
 
@@ -47,6 +48,9 @@ const actions = {
 	},
 	doInfo({ commit }) {
 		commit('sidebarView', 'info');
+	},
+	doToast({ commit }, params) {
+		commit('setToast', params);
 	}
 };
 
@@ -70,6 +74,18 @@ const mutations = {
 	},
 	setUser(state, user) {
 		state.user = user;
+	},
+	setToast(state, params) {
+		if (params === false) {
+			params = { active: false };
+		} else {
+			params.active = true;
+		}
+		state.toast = params;
+	},
+	clearToast(state, params) {
+		params.active = false;
+		state.toast = {};
 	}
 };
 

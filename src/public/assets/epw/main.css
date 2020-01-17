@@ -4190,6 +4190,13 @@ body {
   opacity: 0.8;
 }
 
+.app-toast {
+  position: absolute;
+  bottom: 0.8rem;
+  left: 0.8rem;
+  max-width: 320px;
+}
+
 .menu.simple-menu {
   border: 0;
   margin: 0;

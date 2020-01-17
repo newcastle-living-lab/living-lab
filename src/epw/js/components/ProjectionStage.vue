@@ -120,10 +120,11 @@ export default {
 					width: nodeRefs.projectTitle.getNode().getClientRect().width,
 				};
 
+				var servicesHeight = 210;
 				this.dimensions.servicesBorder = {
 					x: nodeRefs.projectTitle.getNode().absolutePosition().x,
-					y: this.stageSize.height - 250 - 20,
-					height: 250,
+					y: this.stageSize.height - servicesHeight - 20,
+					height: servicesHeight,
 					width: 510,
 				};
 

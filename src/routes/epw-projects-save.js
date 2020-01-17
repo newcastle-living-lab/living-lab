@@ -16,6 +16,13 @@ exports.handler = function(req, res, next) {
 		$data: JSON.stringify(decodedBody.data),
 	};
 
+	if ( ! params.$id) {
+		return res.status(500).send({
+			'success': false,
+			'reason': 'No ID',
+		});
+	}
+
 	var db = database.getDb();
 	var sql = "UPDATE `eps` SET name = $name, modified_at = $modified_at, data = $data WHERE id = $id";
 

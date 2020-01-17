@@ -82,11 +82,16 @@ const actions = {
 	setProject({ commit }, project) {
 		commit('setProject', project);
 	},
-	saveProject({ commit, state }) {
+	saveProject({ commit, dispatch, state }) {
 		commit('touchModifiedDate');
 		api.saveProject(state.project.id, state.project)
 			.then(res => {
-				return res;
+				if (res && res.success) {
+					dispatch('app/doToast', { 'type': 'success', 'content': 'Saved!', seconds: 2}, { root: true });
+				} else {
+					dispatch('app/doToast', { 'type': 'error', 'content': 'Error saving project: ' + res.reason, seconds: 5}, { root: true });
+				}
+				return res.success;
 			});
 	}
 };

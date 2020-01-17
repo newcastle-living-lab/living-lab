@@ -48,11 +48,11 @@ const api = {
 
 	saveProject(id, params) {
 		return http.put(`projects/${id}`, params)
-			.then((res) => {
-				return res.success;
+			.then(res => {
+				return res.data;
 			})
-			.catch((e) => {
-				console.error(e);
+			.catch(e => {
+				return e && e.response && e.response.data ? e.response.data : false;
 			});
 	}
 

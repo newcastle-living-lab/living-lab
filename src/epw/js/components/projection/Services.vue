@@ -1,8 +1,15 @@
 <template>
 
 	<v-group>
-		<v-rect ref="border" :config="border"/>
-		<v-text ref="label" :config="label"/>
+		<v-rect ref="border" :config="border" />
+		<v-text ref="label" :config="label" />
+
+		<shape-service v-for="(service, index) in services"
+			:key="service.id"
+			:service="service"
+			:dimensions="dimensions"
+			:index="index"
+		/>
 	</v-group>
 
 </template>
@@ -12,8 +19,14 @@
 import { mapState } from 'vuex';
 import colours from 'colors.css';
 
+import ShapeService from './Service.vue';
+
 export default {
 
+	components: {
+		ShapeService,
+	},
+/*
 	data() {
 		return {
 			calculatedDims: {
@@ -21,7 +34,7 @@ export default {
 				label: { x : 0, y: 0, width: 0, height: 0 },
 			}
 		}
-	},
+	},*/
 
 	props: {
 		dimensions: Object,
@@ -30,7 +43,8 @@ export default {
 	computed: {
 
 		...mapState('project', {
-			projectData: state => state.project.data
+			projectData: state => state.project.data,
+			services: state => state.project.data.services,
 		}),
 
 		label() {

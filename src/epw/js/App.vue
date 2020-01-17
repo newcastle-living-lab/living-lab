@@ -3,6 +3,7 @@
 	<div class="app-container" :class="editing ? 'is-editing' : ''">
 
 		<Toolbar/>
+		<Toast/>
 
 		<section class="app-main">
 
@@ -23,6 +24,7 @@
 
 <script>
 
+import Toast from './components/Toast';
 import Toolbar from './components/Toolbar';
 import Sidebar from './components/Sidebar';
 
@@ -33,6 +35,7 @@ export default {
 	components: {
 		Toolbar,
 		Sidebar,
+		Toast,
 	},
 
 	computed: {
