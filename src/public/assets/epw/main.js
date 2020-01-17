@@ -4703,6 +4703,11 @@ var timer = null;
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+/* harmony import */ var vue_feather_icons_icons_PlusIcon__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue-feather-icons/icons/PlusIcon */ "./node_modules/vue-feather-icons/icons/PlusIcon.js");
+/* harmony import */ var vue_feather_icons_icons_EditIcon__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vue-feather-icons/icons/EditIcon */ "./node_modules/vue-feather-icons/icons/EditIcon.js");
+/* harmony import */ var vue_feather_icons_icons_FolderIcon__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! vue-feather-icons/icons/FolderIcon */ "./node_modules/vue-feather-icons/icons/FolderIcon.js");
+/* harmony import */ var vue_feather_icons_icons_SaveIcon__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! vue-feather-icons/icons/SaveIcon */ "./node_modules/vue-feather-icons/icons/SaveIcon.js");
+/* harmony import */ var vue_feather_icons_icons_UserIcon__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! vue-feather-icons/icons/UserIcon */ "./node_modules/vue-feather-icons/icons/UserIcon.js");
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
@@ -4758,8 +4763,24 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+
+
+
+
+
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+  components: {
+    PlusIcon: vue_feather_icons_icons_PlusIcon__WEBPACK_IMPORTED_MODULE_1__["default"],
+    FolderIcon: vue_feather_icons_icons_FolderIcon__WEBPACK_IMPORTED_MODULE_3__["default"],
+    EditIcon: vue_feather_icons_icons_EditIcon__WEBPACK_IMPORTED_MODULE_2__["default"],
+    SaveIcon: vue_feather_icons_icons_SaveIcon__WEBPACK_IMPORTED_MODULE_4__["default"],
+    UserIcon: vue_feather_icons_icons_UserIcon__WEBPACK_IMPORTED_MODULE_5__["default"]
+  },
   computed: _objectSpread({
     activeTab: function activeTab() {
       return this.$route.name;
@@ -19771,6 +19792,59 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/vue-feather-icons/icons/FolderIcon.js":
+/*!************************************************************!*\
+  !*** ./node_modules/vue-feather-icons/icons/FolderIcon.js ***!
+  \************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var babel_helper_vue_jsx_merge_props__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! babel-helper-vue-jsx-merge-props */ "./node_modules/babel-helper-vue-jsx-merge-props/index.js");
+/* harmony import */ var babel_helper_vue_jsx_merge_props__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(babel_helper_vue_jsx_merge_props__WEBPACK_IMPORTED_MODULE_0__);
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: 'FolderIcon',
+  props: {
+    size: {
+      type: String,
+      default: '24',
+      validator: function validator(s) {
+        return !isNaN(s) || s.length >= 2 && !isNaN(s.slice(0, s.length - 1)) && s.slice(-1) === 'x';
+      }
+    }
+  },
+  functional: true,
+  render: function render(h, ctx) {
+    var size = ctx.props.size.slice(-1) === 'x' ? ctx.props.size.slice(0, ctx.props.size.length - 1) + 'em' : parseInt(ctx.props.size) + 'px';
+    var attrs = ctx.data.attrs || {};
+    attrs.width = attrs.width || size;
+    attrs.height = attrs.height || size;
+    ctx.data.attrs = attrs;
+    return h("svg", babel_helper_vue_jsx_merge_props__WEBPACK_IMPORTED_MODULE_0___default()([{
+      attrs: {
+        xmlns: "http://www.w3.org/2000/svg",
+        width: "24",
+        height: "24",
+        viewBox: "0 0 24 24",
+        fill: "none",
+        stroke: "currentColor",
+        "stroke-width": "2",
+        "stroke-linecap": "round",
+        "stroke-linejoin": "round"
+      },
+      "class": "feather feather-folder"
+    }, ctx.data]), [h("path", {
+      attrs: {
+        d: "M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"
+      }
+    })]);
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/vue-feather-icons/icons/PlusIcon.js":
 /*!**********************************************************!*\
   !*** ./node_modules/vue-feather-icons/icons/PlusIcon.js ***!
@@ -19827,6 +19901,67 @@ __webpack_require__.r(__webpack_exports__);
         y1: "12",
         x2: "19",
         y2: "12"
+      }
+    })]);
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/vue-feather-icons/icons/SaveIcon.js":
+/*!**********************************************************!*\
+  !*** ./node_modules/vue-feather-icons/icons/SaveIcon.js ***!
+  \**********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var babel_helper_vue_jsx_merge_props__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! babel-helper-vue-jsx-merge-props */ "./node_modules/babel-helper-vue-jsx-merge-props/index.js");
+/* harmony import */ var babel_helper_vue_jsx_merge_props__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(babel_helper_vue_jsx_merge_props__WEBPACK_IMPORTED_MODULE_0__);
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: 'SaveIcon',
+  props: {
+    size: {
+      type: String,
+      default: '24',
+      validator: function validator(s) {
+        return !isNaN(s) || s.length >= 2 && !isNaN(s.slice(0, s.length - 1)) && s.slice(-1) === 'x';
+      }
+    }
+  },
+  functional: true,
+  render: function render(h, ctx) {
+    var size = ctx.props.size.slice(-1) === 'x' ? ctx.props.size.slice(0, ctx.props.size.length - 1) + 'em' : parseInt(ctx.props.size) + 'px';
+    var attrs = ctx.data.attrs || {};
+    attrs.width = attrs.width || size;
+    attrs.height = attrs.height || size;
+    ctx.data.attrs = attrs;
+    return h("svg", babel_helper_vue_jsx_merge_props__WEBPACK_IMPORTED_MODULE_0___default()([{
+      attrs: {
+        xmlns: "http://www.w3.org/2000/svg",
+        width: "24",
+        height: "24",
+        viewBox: "0 0 24 24",
+        fill: "none",
+        stroke: "currentColor",
+        "stroke-width": "2",
+        "stroke-linecap": "round",
+        "stroke-linejoin": "round"
+      },
+      "class": "feather feather-save"
+    }, ctx.data]), [h("path", {
+      attrs: {
+        d: "M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"
+      }
+    }), h("polyline", {
+      attrs: {
+        points: "17 21 17 13 7 13 7 21"
+      }
+    }), h("polyline", {
+      attrs: {
+        points: "7 3 7 8 15 8"
       }
     })]);
   }
@@ -19898,6 +20033,65 @@ __webpack_require__.r(__webpack_exports__);
         y1: "11",
         x2: "14",
         y2: "17"
+      }
+    })]);
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/vue-feather-icons/icons/UserIcon.js":
+/*!**********************************************************!*\
+  !*** ./node_modules/vue-feather-icons/icons/UserIcon.js ***!
+  \**********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var babel_helper_vue_jsx_merge_props__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! babel-helper-vue-jsx-merge-props */ "./node_modules/babel-helper-vue-jsx-merge-props/index.js");
+/* harmony import */ var babel_helper_vue_jsx_merge_props__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(babel_helper_vue_jsx_merge_props__WEBPACK_IMPORTED_MODULE_0__);
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: 'UserIcon',
+  props: {
+    size: {
+      type: String,
+      default: '24',
+      validator: function validator(s) {
+        return !isNaN(s) || s.length >= 2 && !isNaN(s.slice(0, s.length - 1)) && s.slice(-1) === 'x';
+      }
+    }
+  },
+  functional: true,
+  render: function render(h, ctx) {
+    var size = ctx.props.size.slice(-1) === 'x' ? ctx.props.size.slice(0, ctx.props.size.length - 1) + 'em' : parseInt(ctx.props.size) + 'px';
+    var attrs = ctx.data.attrs || {};
+    attrs.width = attrs.width || size;
+    attrs.height = attrs.height || size;
+    ctx.data.attrs = attrs;
+    return h("svg", babel_helper_vue_jsx_merge_props__WEBPACK_IMPORTED_MODULE_0___default()([{
+      attrs: {
+        xmlns: "http://www.w3.org/2000/svg",
+        width: "24",
+        height: "24",
+        viewBox: "0 0 24 24",
+        fill: "none",
+        stroke: "currentColor",
+        "stroke-width": "2",
+        "stroke-linecap": "round",
+        "stroke-linejoin": "round"
+      },
+      "class": "feather feather-user"
+    }, ctx.data]), [h("path", {
+      attrs: {
+        d: "M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"
+      }
+    }), h("circle", {
+      attrs: {
+        cx: "12",
+        cy: "7",
+        r: "4"
       }
     })]);
   }
@@ -22510,7 +22704,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("section", { staticClass: "app-toolbar" }, [
     _c("nav", { staticClass: "navbar" }, [
-      _c("section", { staticClass: "navbar-section" }, [
+      _c("section", { staticClass: "navbar-section navbar-buttons" }, [
         _c(
           "button",
           {
@@ -22523,20 +22717,23 @@ var render = function() {
         _c(
           "button",
           { staticClass: "btn btn-link", on: { click: _vm.doNew } },
-          [_vm._v("New")]
+          [_c("plus-icon", { attrs: { size: "16" } }), _vm._v("New")],
+          1
         ),
         _vm._v(" "),
         _c(
           "button",
           { staticClass: "btn btn-link", on: { click: _vm.doOpen } },
-          [_vm._v("Open...")]
+          [_c("folder-icon", { attrs: { size: "16" } }), _vm._v("Open...")],
+          1
         ),
         _vm._v(" "),
         _vm.hasProject
           ? _c(
               "button",
               { staticClass: "btn btn-link", on: { click: _vm.doEdit } },
-              [_vm._v("Edit")]
+              [_c("edit-icon", { attrs: { size: "16" } }), _vm._v("Edit")],
+              1
             )
           : _vm._e(),
         _vm._v(" "),
@@ -22544,7 +22741,8 @@ var render = function() {
           ? _c(
               "button",
               { staticClass: "btn btn-link", on: { click: _vm.saveProject } },
-              [_vm._v("Save")]
+              [_c("save-icon", { attrs: { size: "16" } }), _vm._v("Save")],
+              1
             )
           : _vm._e()
       ]),
@@ -22582,8 +22780,16 @@ var render = function() {
         _vm._v(" "),
         _vm.hasUser
           ? _c("div", { staticClass: "ml-16" }, [
-              _c("span", { staticClass: "btn btn-link" }, [
-                _vm._v(_vm._s(_vm.user.username))
+              _c("span", { staticClass: "chip user-chip" }, [
+                _c(
+                  "span",
+                  { staticClass: "avatar avatar-sm" },
+                  [_c("user-icon", { attrs: { size: "16" } })],
+                  1
+                ),
+                _vm._v(
+                  "\n\t\t\t\t\t" + _vm._s(_vm.user.username) + "\n\t\t\t\t"
+                )
               ])
             ])
           : _vm._e()

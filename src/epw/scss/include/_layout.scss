@@ -18,6 +18,17 @@ body {
 .app-toolbar {
 	padding: $unit-4;
 	border-bottom: $unit-o solid $border-color;
+
+	.navbar-buttons {
+		.btn-link {
+			color: $dark-color;
+			margin-right: $unit-2;
+			.feather {
+				margin-right: $unit-1;
+				vertical-align: -10%;
+			}
+		}
+	}
 }
 
 .app-sidebar {
@@ -126,4 +137,19 @@ body {
 	bottom: $layout-spacing-lg;
 	left: $layout-spacing-lg;
 	max-width: $control-width-sm;
+}
+
+
+
+// Chips
+.user-chip {
+	background: darken($bg-color-dark, 10%);
+	.avatar {
+		background: $primary-color;	//darken($bg-color-dark, 20%);
+		text-align: center;
+		.feather {
+			color: lighten($primary-color, 55%);	//$dark-color;
+			vertical-align: -50%;
+		}
+	}
 }

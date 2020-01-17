@@ -4,7 +4,7 @@
 
 		<nav class="navbar">
 
-			<section class="navbar-section">
+			<section class="navbar-section navbar-buttons">
 
 				<button class='btn btn-primary navbar-brand mr-4'
 					@click="doWelcome"
@@ -12,21 +12,21 @@
 
 				<button class='btn btn-link'
 					@click="doNew"
-				>New</button>
+				><plus-icon size="16" />New</button>
 
 				<button class='btn btn-link'
 					@click="doOpen"
-				>Open...</button>
+				><folder-icon size="16" />Open...</button>
 
 				<button class='btn btn-link'
 					v-if="hasProject"
 					@click="doEdit"
-				>Edit</button>
+				><edit-icon size="16" />Edit</button>
 
 				<button class='btn btn-link'
 					v-if="hasProject"
 					@click="saveProject"
-				>Save</button>
+				><save-icon size="16" />Save</button>
 
 			</section>
 
@@ -37,7 +37,11 @@
 					<router-link :to="socialUrl" class="btn btn-link">Social Media</router-link>
 				</div>
 				<div v-if="hasUser" class="ml-16">
-					<span class="btn btn-link">{{ user.username }}</span>
+					<span class="chip user-chip">
+						<span class="avatar avatar-sm"><user-icon size="16" /></span>
+						{{ user.username }}
+					</span>
+					<!-- <span class="btn btn-link">{{ user.username }}</span> -->
 				</div>
 			</section>
 
@@ -51,7 +55,21 @@
 
 import { mapState, mapActions } from 'vuex';
 
+import PlusIcon from 'vue-feather-icons/icons/PlusIcon';
+import EditIcon from 'vue-feather-icons/icons/EditIcon';
+import FolderIcon from 'vue-feather-icons/icons/FolderIcon';
+import SaveIcon from 'vue-feather-icons/icons/SaveIcon';
+import UserIcon from 'vue-feather-icons/icons/UserIcon';
+
 export default {
+
+	components: {
+		PlusIcon,
+		FolderIcon,
+		EditIcon,
+		SaveIcon,
+		UserIcon,
+	},
 
 	computed: {
 		activeTab: function() {

@@ -4105,6 +4105,16 @@ body {
   border-bottom: 0.05rem solid #bbb;
 }
 
+.app-toolbar .navbar-buttons .btn-link {
+  color: #444;
+  margin-right: 0.4rem;
+}
+
+.app-toolbar .navbar-buttons .btn-link .feather {
+  margin-right: 0.2rem;
+  vertical-align: -10%;
+}
+
 .app-sidebar {
   display: block;
   width: 16rem;
@@ -4195,6 +4205,20 @@ body {
   bottom: 0.8rem;
   left: 0.8rem;
   max-width: 320px;
+}
+
+.user-chip {
+  background: #dedede;
+}
+
+.user-chip .avatar {
+  background: #003965;
+  text-align: center;
+}
+
+.user-chip .avatar .feather {
+  color: #7fc7ff;
+  vertical-align: -50%;
 }
 
 .menu.simple-menu {
