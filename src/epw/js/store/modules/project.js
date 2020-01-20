@@ -87,9 +87,11 @@ const getters = {
  *
  */
 const actions = {
+
 	setProject({ commit }, project) {
 		commit('setProject', project);
 	},
+
 	saveProject({ commit, dispatch, state }) {
 		commit('touchModifiedDate');
 		api.saveProject(state.project.id, state.project)
@@ -101,7 +103,16 @@ const actions = {
 				}
 				return res.success;
 			});
-	}
+	},
+
+	removeSocial({ commit }, item) {
+		commit('removeSocial', item);
+	},
+
+	editSocial({ commit }, { item, value }) {
+		commit('editSocial', { item, value: value });
+	},
+
 };
 
 
@@ -164,11 +175,22 @@ const mutations = {
 		state.project.data.services.splice(state.project.data.services.indexOf(service), 1)
 	},
 
-	addSocial(state, social) {
+	addSocial(state, item) {
 		if ( ! Array.isArray(state.project.data.social)) {
 			Vue.set(state.project.data, 'social', []);
 		}
-		state.project.data.social.push(social);
+		state.project.data.social.push(item);
+	},
+
+	editSocial(state, { item, value = social.value }) {
+		item.value = value;
+	},
+
+	removeSocial(state, item) {
+		if (state.project.data.social.indexOf(item) > -1) {
+			state.project.data.social.splice(state.project.data.social.indexOf(item), 1);
+		}
+		return;
 	},
 
 	touchModifiedDate(state) {

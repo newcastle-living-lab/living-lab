@@ -19,33 +19,68 @@
 		</div>
 
 		<div class="sidebar-content" v-show="activeTab == 'twitter' && visible">
-			<p>Enter a Twitter hashtag, with or without the #. Press enter to add.</p>
+			<p class="text-gray-medium text-small">Enter a Twitter hashtag, with or without the #. Press enter to add.</p>
+			<p class="text-gray-medium text-small">Double-click an item to edit it, and enter to save.</p>
 			<div class="form-group">
 				<input
 					@keyup.enter="addItem({ event: $event, network: 'twitter' })"
+					v-focus="activeTab == 'twitter'"
 					class="form-input"
 					autofocus
 					autocomplete="off"
 				>
 			</div>
-			<ul>
+			<ul class="menu social-edit-menu">
 				<social-item
 					v-for="(item, index) in twitter"
 					:key="index"
 					:item="item"
-					:network="twitter"
+					network="twitter"
 				/>
 			</ul>
-
 		</div>
 
 		<div class="sidebar-content" v-show="activeTab == 'facebook' && visible">
-			<p>Add full links (URLs) to Facebook groups or pages.</p>
+			<p class="text-gray-medium text-small">Add full links (URLs) to Facebook groups or pages.</p>
+			<p class="text-gray-medium text-small">Double-click an item to edit it, and enter to save.</p>
+			<div class="form-group">
+				<input
+					@keyup.enter="addItem({ event: $event, network: 'facebook' })"
+					v-focus="activeTab == 'facebook'"
+					class="form-input"
+					autocomplete="off"
+				>
+			</div>
+			<ul class="menu social-edit-menu">
+				<social-item
+					v-for="(item, index) in facebook"
+					:key="index"
+					:item="item"
+					network="facebook"
+				/>
+			</ul>
 		</div>
 
 		<div class="sidebar-content" v-show="activeTab == 'instagram' && visible">
-			<p>Add Instagram hashtags, with or without the #.</p>
+			<p class="text-gray-medium text-small">Enter an Instagram hashtag, with or without the #. Press enter to add.</p>
+			<p class="text-gray-medium text-small">Double-click an item to edit it, and enter to save.</p>
 			<!-- https://www.instagram.com/explore/tags/websearch/ -->
+			<div class="form-group">
+				<input
+					@keyup.enter="addItem({ event: $event, network: 'instagram' })"
+					v-focus="activeTab == 'instagram'"
+					class="form-input"
+					autocomplete="off"
+				>
+			</div>
+			<ul class="menu social-edit-menu">
+				<social-item
+					v-for="(item, index) in instagram"
+					:key="index"
+					:item="item"
+					network="instagram"
+				/>
+			</ul>
 		</div>
 
 	</div>
@@ -63,6 +98,16 @@ export default {
 
 	components: {
 		SocialItem,
+	},
+
+	directives: {
+		focus (el, { value }, { context }) {
+			if (value) {
+				context.$nextTick(() => {
+					el.focus()
+				})
+			}
+		}
 	},
 
 	data() {
@@ -84,6 +129,12 @@ export default {
 		...mapGetters('project', ['social']),
 		twitter() {
 			return this.social.filter(item => item.network == 'twitter');
+		},
+		facebook() {
+			return this.social.filter(item => item.network == 'facebook');
+		},
+		instagram() {
+			return this.social.filter(item => item.network == 'instagram');
 		},
 	},
 

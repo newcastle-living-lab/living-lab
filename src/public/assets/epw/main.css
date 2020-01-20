@@ -4182,6 +4182,7 @@ body {
   background: #444;
   padding: 0.8rem;
   width: 100%;
+  height: 100%;
   overflow: auto;
 }
 
@@ -4250,6 +4251,44 @@ body {
 .item-instagram-bg {
   background: #c32aa3;
   color: #fff;
+}
+
+.social-edit-menu {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  box-shadow: none;
+}
+
+.social-edit-menu .menu-item {
+  padding-left: 0;
+  padding-right: 0;
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.social-edit-menu .hashtag {
+  color: #999999;
+  margin-right: 0.2rem;
+}
+
+.text-gray-medium {
+  color: #bbb !important;
+}
+
+a.text-gray-medium:focus,
+a.text-gray-medium:hover {
+  color: #aeaeae;
+}
+
+a.text-gray-medium:visited {
+  color: #c8c8c8;
+}
+
+.text-small {
+  font-size: 0.7rem;
 }
 
 .menu.simple-menu {
@@ -4328,6 +4367,10 @@ body {
 
 .btn .feather {
   vertical-align: -15%;
+}
+
+.btn.btn-sm .feather {
+  vertical-align: -10%;
 }
 
 .m-4 {
