@@ -67,6 +67,57 @@ const getters = {
 		return value;
 	},
 
+	policyDef(state) {
+
+		let propName = 'policyDef';
+
+		let value = {
+			label: '',
+			colour: '',
+			type: '',
+		};
+
+		if (state.project && typeof state.project.data[propName] === 'object') {
+			value = Object.assign({}, value, state.project.data[propName]);
+		}
+
+		return value;
+	},
+
+	specDes(state) {
+
+		let propName = 'specDes';
+
+		let value = {
+			label: '',
+			colour: '',
+			type: '',
+		};
+
+		if (state.project && typeof state.project.data[propName] === 'object') {
+			value = Object.assign({}, value, state.project.data[propName]);
+		}
+
+		return value;
+	},
+
+	deployment(state) {
+
+		let propName = 'deployment';
+
+		let value = {
+			label: '',
+			colour: '',
+			type: '',
+		};
+
+		if (state.project && typeof state.project.data[propName] === 'object') {
+			value = Object.assign({}, value, state.project.data[propName]);
+		}
+
+		return value;
+	},
+
 	getDataField(state) {
 		return getField(state.project.data);
 	},
@@ -153,6 +204,33 @@ const mutations = {
 		}
 
 		Vue.set(state.project.data.beneficiary, field.prop, field.value);
+	},
+
+	updatePolicyDef(state, field) {
+		let propName = 'policyDef';
+		if (typeof state.project.data[propName] != 'object') {
+			Vue.set(state.project.data, propName, {});
+		}
+
+		Vue.set(state.project.data[propName], field.prop, field.value);
+	},
+
+	updateSpecDes(state, field) {
+		let propName = 'specDes';
+		if (typeof state.project.data[propName] != 'object') {
+			Vue.set(state.project.data, propName, {});
+		}
+
+		Vue.set(state.project.data[propName], field.prop, field.value);
+	},
+
+	updateDeployment(state, field) {
+		let propName = 'deployment';
+		if (typeof state.project.data[propName] != 'object') {
+			Vue.set(state.project.data, propName, {});
+		}
+
+		Vue.set(state.project.data[propName], field.prop, field.value);
 	},
 
 	updateGoals(state, field) {

@@ -4,7 +4,13 @@
 
 		<edit-details />
 		<edit-projection />
-		<edit-beneficiary />
+		<edit-drivers />
+		<edit-policydef />
+		<edit-specdes />
+		<edit-deployment />
+
+
+		<!-- <edit-beneficiary /> -->
 		<edit-services />
 		<edit-social />
 		<!-- <h3 class="sidebar-heading">Goals and Targets</h3>
@@ -20,8 +26,13 @@
 
 import EditDetails from './edit/Details.vue';
 import EditProjection from './edit/Projection.vue';
-import EditServices from './edit/Services.vue';
+import EditDrivers from './edit/Drivers.vue';
+import EditPolicydef from './edit/PolicyDef.vue';
+import EditSpecdes from './edit/SpecDes.vue';
+import EditDeployment from './edit/Deployment.vue';
+
 import EditBeneficiary from './edit/Beneficiary.vue';
+import EditServices from './edit/Services.vue';
 import EditSocial from './edit/Social.vue';
 
 export default {
@@ -29,8 +40,13 @@ export default {
 	components: {
 		EditDetails,
 		EditProjection,
-		EditServices,
+		EditDrivers,
+		EditPolicydef,
+		EditSpecdes,
+		EditDeployment,
+
 		EditBeneficiary,
+		EditServices,
 		EditSocial,
 	},
 

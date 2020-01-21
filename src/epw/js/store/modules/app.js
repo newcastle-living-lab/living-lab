@@ -12,6 +12,9 @@ const state = {
 	editPanel: 'details',
 	user: null,
 	toast: {},
+	options: {
+		fontFamily: '-apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif',
+	}
 };
 
 
@@ -57,6 +60,30 @@ const actions = {
 			return;
 		}
 		commit('sidebarView', 'info');
+	},
+
+	/**
+	 * Go to the next 'edit' item in the list based on supplied 'current' panel.
+	 *
+	 */
+	doEditNext({ commit }, source) {
+
+		let order = [
+			'details',
+			'projection',
+			'drivers',
+			'policydef',
+			'specdes',
+			'deployment',
+			'services',
+			'social',
+		];
+
+		let idx = order.indexOf(source);
+
+		if (idx >= 0) {
+			commit('editPanel', order[idx + 1]);
+		}
 	}
 };
 

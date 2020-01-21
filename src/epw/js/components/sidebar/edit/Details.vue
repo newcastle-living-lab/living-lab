@@ -57,7 +57,7 @@ export default {
 
 	methods: {
 		next() {
-			this.$store.dispatch('app/setEdit', 'projection');
+			this.$store.dispatch('app/doEditNext', this.panelName);
 		}
 	}
 

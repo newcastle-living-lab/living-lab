@@ -216,3 +216,14 @@ body {
 .text-small {
 	font-size: $font-size-sm;
 }
+
+
+
+.form-input-hint {
+	display: block;
+	padding: 0;
+	margin: 0;
+	margin-bottom: $control-padding-y * 2;	//+ ($border-width * 2);
+	font-size: $font-size-sm;
+	color: $gray-color-medium;
+}

@@ -4291,6 +4291,15 @@ a.text-gray-medium:visited {
   font-size: 0.7rem;
 }
 
+.form-input-hint {
+  display: block;
+  padding: 0;
+  margin: 0;
+  margin-bottom: 0.5rem;
+  font-size: 0.7rem;
+  color: #bbb;
+}
+
 .menu.simple-menu {
   border: 0;
   margin: 0;
@@ -4367,10 +4376,6 @@ a.text-gray-medium:visited {
 
 .btn .feather {
   vertical-align: -15%;
-}
-
-.btn.btn-sm .feather {
-  vertical-align: -10%;
 }
 
 .m-4 {

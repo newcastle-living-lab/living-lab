@@ -2,11 +2,7 @@
 
 	<li class="menu-item">
 
-		<div v-show="!editing" @dblclick="editing = true" v-html="formattedValue">
-			{{ formattedValue }}
-			<span class="hashtag" v-show="showHashtag">#</span> {{ formattedValue }}
-			}
-		</div>
+		<div v-show="!editing" @dblclick="editing = true" v-html="formattedValue"></div>
 		<div v-show="editing">
 			<div class="form-group">
 				<input

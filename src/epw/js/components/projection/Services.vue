@@ -1,6 +1,6 @@
 <template>
 
-	<v-group>
+	<v-group :config="groupConfig">
 		<v-rect ref="border" :config="border" />
 		<v-text ref="label" :config="label" />
 
@@ -26,15 +26,6 @@ export default {
 	components: {
 		ShapeService,
 	},
-/*
-	data() {
-		return {
-			calculatedDims: {
-				border: { x : 0, y: 0, width: 0, height: 0 },
-				label: { x : 0, y: 0, width: 0, height: 0 },
-			}
-		}
-	},*/
 
 	props: {
 		dimensions: Object,
@@ -42,54 +33,50 @@ export default {
 
 	computed: {
 
+		...mapState('app', ['options']),
+
 		...mapState('project', {
 			projectData: state => state.project.data,
 			services: state => state.project.data.services,
 		}),
 
-		label() {
-
+		groupConfig() {
 			let pos = {
 				x: 0,
 				y: 0,
-				width: 510 - 10 - 10,
+				width: 510,
+				height: 210,
 			};
 
-			if (this.dimensions.servicesLabel) {
-				pos = this.dimensions.servicesLabel;
+			if (this.dimensions.servicesGroup) {
+				pos = this.dimensions.servicesGroup;
 			};
 
+			return pos;
+		},
+
+		label() {
 			return {
-				x: pos.x,
-				y: pos.y,
-				width: pos.width,
+				x: 0,
+				y: 0,
+				width: 510,
 				text: typeof this.projectData.servicesLabel == 'string' ? this.projectData.servicesLabel : '',
 				fontSize: 14,
 				fontStyle: 'bold',
+				fontFamily: this.options.fontFamily,
 				lineHeight: 1.3,
-				align: 'center',
+				align: 'left',
+				padding: 10,
 			}
 		},
 
 		border() {
-
-			let pos = {
+			return {
 				x: 0,
 				y: 0,
-				width: 0,
-				height: 0,
-			};
-
-			if (this.dimensions.servicesBorder) {
-				pos = this.dimensions.servicesBorder;
-			};
-
-			return {
-				x: pos.x,
-				y: pos.y,
-				width: pos.width,
-				height: pos.height,
-				stroke: colours.orange,
+				width: 510,
+				height: 210,
+				stroke: colours.black,
 				strokeWidth: 1
 			}
 		}

@@ -178,7 +178,7 @@ export default {
 		},
 
 		next() {
-			this.$store.dispatch('app/setEdit', 'social');
+			this.$store.dispatch('app/doEditNext', this.panelName);
 		}
 	}
 

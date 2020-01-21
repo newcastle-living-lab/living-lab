@@ -13,7 +13,7 @@ import { mapState } from 'vuex';
 export default {
 
 	computed: {
-
+		...mapState('app', ['options']),
 		...mapState('project', {
 			projectData: state => state.project.data
 		}),
@@ -23,6 +23,7 @@ export default {
 				text: this.projectData.title,
 				fontSize: 20,
 				fontStyle: 'bold',
+				fontFamily: this.options.fontFamily,
 				lineHeight: 1.3,
 				x: 20,
 				y: 20,

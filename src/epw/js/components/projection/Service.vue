@@ -1,6 +1,6 @@
 <template>
 
-	<v-group>
+	<v-group :config="groupConfig">
 		<v-text :config="label" />
 		<v-rect :config="rect" @mousemove="onMousemove" @mouseout="onMouseout" @click="launchUrl" @tap="launchUrl" />
 		<a :href="service.url" target="_blank" ref="link"></a>
@@ -10,6 +10,7 @@
 
 <script>
 
+import { mapState } from 'vuex';
 import colours from 'colors.css';
 
 const size = {
@@ -35,7 +36,9 @@ export default {
 
 	computed: {
 
-		pos() {
+		...mapState('app', ['options']),
+
+		groupConfig() {
 
 			var row = 0,
 				col = 0;
@@ -43,13 +46,13 @@ export default {
 			col = (this.index % cols);
 			row = Math.floor(this.index / cols);
 
-			let x = this.dimensions.servicesBorder.x;
-			let y = this.dimensions.servicesLabel.y + 20;
+			let x = 0;
+			let y = 30;
 
 			x += col * (size.width + 10);
 			y += row * (size.height + 10);
 
-			x += 10 + 10;
+			x += 15;
 			y += 10;
 
 			return {
@@ -60,8 +63,8 @@ export default {
 
 		rect() {
 			return {
-				x: this.pos.x,
-				y: this.pos.y,
+				x: 0,
+				y: 0,
 				width: size.width,
 				height: size.height,
 				cornerRadius: size.height / 4,
@@ -73,14 +76,15 @@ export default {
 
 		label() {
 			return {
-				x: this.pos.x,
-				y: this.pos.y,
+				x: 0,
+				y: 0,
 				width: size.width,
 				height: size.height,
 				padding: 5,
 				text: this.service.label,
 				fontSize: 12,
 				fontStyle: 'bold',
+				fontFamily: this.options.fontFamily,
 				lineHeight: 1.3,
 				align: 'center',
 				verticalAlign: 'middle',

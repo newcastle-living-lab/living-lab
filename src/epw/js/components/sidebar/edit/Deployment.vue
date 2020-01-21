@@ -2,15 +2,15 @@
 
 	<div class="sidebar-item">
 
-		<sidebar-heading :name="panelName" title="Beneficiary" />
+		<sidebar-heading :name="panelName" title="Deployer" />
 
 		<div class="sidebar-content" v-show="visible">
 
 			<div class="form-group">
 				<label class="form-label" for="label">Label</label>
 				<input
-					:value="beneficiary.label"
-					@input="updateBeneficiary({ prop: 'label', value: $event.target.value })"
+					:value="deployment.label"
+					@input="updateDeployment({ prop: 'label', value: $event.target.value })"
 					class="form-input"
 					id="label"
 					maxlength="255"
@@ -18,15 +18,15 @@
 			</div>
 
 			<div class="form-group">
-				<label class="form-label" for="shape">Shape</label>
+				<label class="form-label" for="type">Type</label>
 				<select
 					class="form-select"
-					:value="beneficiary.shape"
-					@change="updateBeneficiary({ prop: 'shape', value: $event.target.value })"
+					:value="deployment.type"
+					@change="updateDeployment({ prop: 'type', value: $event.target.value })"
 				>
-					<option v-for="shape in shapes"
-						:key="shape.value"
-						:value="shape.value">{{ shape.label }}
+					<option v-for="type in activityTypes"
+						:key="type.value"
+						:value="type.value">{{ type.label }}
 					</option>
 				</select>
 			</div>
@@ -35,25 +35,14 @@
 				<label class="form-label" for="colour">Colour</label>
 				<select
 					class="form-select"
-					:value="beneficiary.colour"
-					@change="updateBeneficiary({ prop: 'colour', value: $event.target.value })"
+					:value="deployment.colour"
+					@change="updateDeployment({ prop: 'colour', value: $event.target.value })"
 				>
 					<option v-for="colour in filteredColours"
 						:key="colour.name"
 						:value="colour.value">{{ colour.name }}
 					</option>
 				</select>
-			</div>
-
-			<div class="form-group">
-				<label class="form-label" for="comment">Comment</label>
-				<textarea
-					:value="beneficiary.comment"
-					@input="updateBeneficiary({ prop: 'comment', value: $event.target.value })"
-					class="form-input"
-					id="comment"
-					rows="3"
-				></textarea>
 			</div>
 
 		</div>
@@ -74,17 +63,15 @@
 
 import { mapState, mapGetters, mapMutations } from 'vuex';
 import filteredColours from '../../../data/filteredColours.js';
+import activityTypes from '../../../data/activityTypes.json';
 
 export default {
 
 	data() {
 		return {
-			panelName: 'beneficiary',
+			panelName: 'deployment',
 			filteredColours: filteredColours,
-			shapes: [
-				{value: 'male', label: 'Male'},
-				{value: 'female', label: 'Female'},
-			]
+			activityTypes: activityTypes,
 		};
 	},
 
@@ -94,15 +81,15 @@ export default {
 				return state.editPanel == this.panelName
 			},
 		}),
-		...mapGetters('project', ['beneficiary']),
+		...mapGetters('project', ['deployment']),
 	},
 
 	methods: {
 		...mapMutations('project', [
-			'updateBeneficiary',
+			'updateDeployment',
 		]),
 		next() {
-			this.$store.dispatch('app/setEdit', 'services');
+			this.$store.dispatch('app/doEditNext', this.panelName);
 		}
 	}
 
