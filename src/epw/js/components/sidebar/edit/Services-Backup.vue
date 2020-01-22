@@ -2,15 +2,15 @@
 
 	<div class="sidebar-item">
 
-		<sidebar-heading :name="panelName" :title="title" />
+		<sidebar-heading :name="panelName" title="Services" />
 
 		<div class="sidebar-content" v-show="visible">
 
 			<div class="form-group">
-				<label class="form-label" for="label">Label</label>
+				<label class="form-label" for="servicesLabel">Services label</label>
 				<input
-					:value="labelValue"
-					@input="updateValue({ prop: labelProp, value: $event.target.value })"
+					:value="projectData.servicesLabel"
+					@input="updateValue({ prop: 'servicesLabel', value: $event.target.value })"
 					class="form-input"
 					id="servicesLabel"
 					maxlength="255"
@@ -18,19 +18,19 @@
 			</div>
 
 			<div class="form-group">
-				<label class="form-label">Items</label>
-				<button class="btn btn-primary btn-sm" @click="newItem"><plus-icon size="18"/> Add new item...</button>
+				<label class="form-label">Services</label>
+				<button class="btn btn-primary btn-sm" @click="newService"><plus-icon size="18"/> Add new service</button>
 			</div>
 
 			<div class="tile-list tile-list-services">
-				<div class="tile tile-centered" v-for="service in filteredServices">
+				<div class="tile tile-centered" v-for="service in services">
 					<div class="tile-content">
 						<div class="tile-title">{{ service.label }}</div>
 						<a class="tile-subtitle" :href="service.url" target="_blank" v-if="service.url">{{ service.url }}</a>
 					</div>
 					<div class="tile-action">
-						<button class="btn btn-link btn-action tooltip text-dark" data-tooltip="Edit" @click="editItem(service)"><edit-icon size="18" /></button>
-						<button class="btn btn-link btn-action tooltip text-error" data-tooltip="Delete" @click="deleteItem(service)"><trash-2-icon size="18" /></button>
+						<button class="btn btn-link btn-action tooltip text-dark" data-tooltip="Edit" @click="editService(service)"><edit-icon size="18" /></button>
+						<button class="btn btn-link btn-action tooltip text-error" data-tooltip="Delete" @click="deleteService(service)"><trash-2-icon size="18" /></button>
 					</div>
 				</div>
 			</div>
@@ -51,8 +51,8 @@
 				<div class="modal-header">
 					<button @click="closeModal" class="btn btn-clear float-right" aria-label="Close"></button>
 					<div class="modal-title h5">
-						<span v-show="mode == 'edit'">Edit</span>
-						<span v-show="mode == 'add'">Add New</span>
+						<span v-show="mode == 'edit'">Edit Service</span>
+						<span v-show="mode == 'add'">Add New Service</span>
 					</div>
 				</div>
 				<div class="modal-body">
@@ -60,7 +60,7 @@
 						<div class="form-group">
 							<label class="form-label" for="label">Label</label>
 							<input
-								v-model="item.label"
+								v-model="service.label"
 								type="text"
 								class="form-input"
 								id="label"
@@ -70,7 +70,7 @@
 						<div class="form-group">
 							<label class="form-label" for="url">Web address</label>
 							<input
-								v-model="item.url"
+								v-model="service.url"
 								placeholder="https://"
 								type="url"
 								class="form-input"
@@ -81,8 +81,8 @@
 					</div>
 				</div>
 				<div class="modal-footer">
-					<button class="btn btn-primary" v-show="mode == 'add'" @click="saveItem">Add</button>
-					<button class="btn btn-primary" v-show="mode == 'edit'" @click="saveItem">Save</button>
+					<button class="btn btn-primary" v-show="mode == 'add'" @click="saveService">Add</button>
+					<button class="btn btn-primary" v-show="mode == 'edit'" @click="saveService">Save</button>
 				</div>
 			</div>
 		</div>
@@ -107,54 +107,24 @@ export default {
 		Trash2Icon,
 	},
 
-	props: {
-		title: String,
-		type: String,
-		labelProp: String,
-	},
-
 	data() {
 		return {
+			panelName: 'services',
 			mode: false,
-			item: {}
+			service: {}
 		};
 	},
 
 	computed: {
-
-		panelName() {
-			return `services-${this.type}`;
-		},
-
 		...mapState('app', {
 			visible(state) {
 				return state.editPanel == this.panelName
 			},
 		}),
-
-
-		...mapState('project', {
-			projectData: state => state.project.data
-		}),
-
-		...mapGetters('project', ['services']),
-
-		filteredServices() {
-			return this.services.filter(item => item.type == this.type);
-		},
-
-		labelValue() {
-			return this.projectData[this.labelProp];
-		},
-
-		/*
 		...mapState('project', {
 			projectData: state => state.project.data,
 			services: state => state.project.data.services,
-			labelValue() {
-
-			}
-		}),*/
+		}),
 		// ...mapGetters('project', ['services']),
 	},
 
@@ -167,43 +137,42 @@ export default {
 		]),
 
 
-		getBlankItem() {
+		getBlankService() {
 			return {
 				isNew: true,
 				id: Date.now(),
-				type: this.type,
 				label: '',
 				url: '',
 			};
 		},
 
-		deleteItem(item) {
-			if (confirm('Are you sure you want to delete this item?')) {
-				this.$store.commit('project/deleteService', item);
+		deleteService(service) {
+			if (confirm('Are you sure you want to delete this service?')) {
+				this.$store.commit('project/deleteService', service);
 				this.closeModal();
 			}
 		},
 
-		editItem(item) {
-			this.item = Object.assign({}, item);
+		editService(service) {
+			this.service = service;
 			this.mode = 'edit';
 		},
 
-		newItem() {
-			this.item = this.getBlankItem();
+		newService() {
+			this.service = this.getBlankService();
 			this.mode = 'add';
 		},
 
 		closeModal() {
-			this.item = this.getBlankItem();
+			this.service = this.getBlankService();
 			this.mode = false;
 		},
 
-		saveItem() {
-			if (this.item.isNew) {
-				this.$store.commit('project/addService', this.item);
+		saveService() {
+			if (this.service.isNew) {
+				this.$store.commit('project/addService', this.service);
 			} else {
-				this.$store.commit('project/editService', this.item);
+				this.$store.commit('project/updateService', this.service);
 			}
 			this.closeModal();
 		},
