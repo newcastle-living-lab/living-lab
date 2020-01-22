@@ -1,6 +1,6 @@
 <template>
 
-	<v-group>
+	<v-group :config="groupConfig">
 		<v-text ref="label" :config="label" />
 		<v-text ref="body" :config="body" />
 		<v-rect ref="border" :config="border" />
@@ -13,20 +13,22 @@
 import { mapState } from 'vuex';
 import colours from 'colors.css';
 
-export default {
+let nodeRefs = {};
 
-	data() {
-		return {
-			calculatedDims: {
-				border: { x : 0, y: 0, width: 0, height: 0 },
-				label: { x : 0, y: 0, width: 0, height: 0 },
-				body: { x : 0, y: 0, width: 0, height: 0 },
-			}
-		}
-	},
+export default {
 
 	props: {
 		dimensions: Object,
+	},
+
+	data() {
+		return {
+			height: 0,
+		}
+	},
+
+	watch: {
+		'projectData.goals.body': 'refreshPositions',
 	},
 
 	computed: {
@@ -37,47 +39,42 @@ export default {
 			projectData: state => state.project.data
 		}),
 
-		label() {
+		groupConfig() {
 
 			let pos = {
 				x: 0,
 				y: 0,
-				width: 0,
+				width: 400,
+				height: 0,
 			};
 
-			if (this.dimensions.goalsLabel) {
-				pos = this.dimensions.goalsLabel;
+			if (this.dimensions.goalsGroup) {
+				pos = this.dimensions.goalsGroup;
 			};
 
+			return pos;
+		},
+
+		label() {
 			return {
-				x: pos.x,
-				y: pos.y,
-				width: pos.width,
+				x: 0,
+				y: 0,
+				width: 400,
 				text: typeof this.projectData.goals == 'object' ? this.projectData.goals.label : '',
 				fontSize: 14,
 				fontStyle: 'bold',
 				fontFamily: this.options.fontFamily,
 				lineHeight: 1.3,
-				align: 'center',
+				padding: 10,
+				align: 'left',
 			}
 		},
 
 		body() {
-
-			let pos = {
-				x: 0,
-				y: 0,
-				width: 0,
-			};
-
-			if (this.dimensions.goalsBody) {
-				pos = this.dimensions.goalsBody;
-			};
-
 			return {
-				x: pos.x,
-				y: pos.y,
-				width: pos.width,
+				x: 0,
+				y: 20,
+				width: 400,
 				text: typeof this.projectData.goals == 'object' ? this.projectData.goals.body : '',
 				fontFamily: this.options.fontFamily,
 				fontSize: 12,
@@ -87,28 +84,33 @@ export default {
 		},
 
 		border() {
-
-			let pos = {
+			return {
 				x: 0,
 				y: 0,
-				width: 0,
-				height: 0,
-			};
-
-			if (this.dimensions.goalsBorder) {
-				pos = this.dimensions.goalsBorder;
-			};
-
-			return {
-				x: pos.x,
-				y: pos.y,
-				width: pos.width,
-				height: pos.height,
+				width: 400,
+				height: this.height,
 				stroke: colours.black,
 				strokeWidth: 1
 			}
 		}
 
+	},
+
+	methods: {
+		refreshPositions() {
+			this.$nextTick(() => {
+				if (nodeRefs.body) {
+					this.height = nodeRefs.body.getNode().getClientRect().height
+						+ nodeRefs.label.getNode().getClientRect().height
+						- 20;
+				}
+			});
+		}
+	},
+
+	mounted() {
+		nodeRefs.label = this.$refs.label;
+		nodeRefs.body = this.$refs.body;
 	}
 
 }

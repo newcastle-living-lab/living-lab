@@ -1,6 +1,6 @@
 <template>
 
-	<div ref="container" class="canvas-container">
+	<div ref="container" class="canvas-container scrollable scr-x scr-y">
 
 		<v-stage ref="stage" :config="stageConfig">
 			<v-layer>
@@ -72,12 +72,13 @@ export default {
 
 			dimensions: {
 				projectTitle: {},
-				goalsBorder: {},
-				goalsLabel: {},
-				goalsBody: {},
-				servicesLabel: {},
+				// goalsBorder: {},
+				// goalsLabel: {},
+				// goalsBody: {},
+				// servicesLabel: {},
 				servicesBorder: {},
 				servicesGroup: {},
+				goalsGroup: {},
 			},
 
 			stageConfig: {
@@ -99,6 +100,7 @@ export default {
 		'projectData.goals.body': 'refreshPositions',
 		'projectData.goals': 'refreshPositions',
 		'projectData.servicesLabel': 'refreshPositions',
+		'scale': 'resize',
 		// 'projectData.services': 'refreshPositions',
 	},
 
@@ -106,6 +108,7 @@ export default {
 		...mapState('project', {
 			projectData: state => state.project.data
 		}),
+		...mapState('app', ['scale']),
 	},
 
 	methods: {
@@ -114,25 +117,9 @@ export default {
 
 			this.$nextTick(() => {
 
-				// console.log('Refreshing');
-
-				this.dimensions.goalsBorder = {
-					x: nodeRefs.projectTitle.getNode().absolutePosition().x,
+				this.dimensions.goalsGroup = {
+					x: 20,
 					y: nodeRefs.projectTitle.getNode().absolutePosition().y + nodeRefs.projectTitle.getNode().getClientRect().height + 20,
-					height: ( 10 + 10 + nodeRefs.goalsLabel.getNode().getClientRect().height + nodeRefs.goalsBody.getNode().getClientRect().height),
-					width: nodeRefs.projectTitle.getNode().getClientRect().width,
-				};
-
-				this.dimensions.goalsLabel = {
-					x: nodeRefs.projectTitle.getNode().absolutePosition().x,
-					y: this.dimensions.goalsBorder.y + 10,
-					width: nodeRefs.projectTitle.getNode().getClientRect().width,
-				};
-
-				this.dimensions.goalsBody = {
-					x: nodeRefs.projectTitle.getNode().absolutePosition().x,
-					y: this.dimensions.goalsLabel.y + nodeRefs.goalsLabel.getNode().getClientRect().height,
-					width: nodeRefs.projectTitle.getNode().getClientRect().width,
 				};
 
 				var servicesHeight = 210;
@@ -142,48 +129,47 @@ export default {
 					width: 510,
 					height: servicesHeight,
 				};
-/*
-				var servicesHeight = 210;
-				this.dimensions.servicesBorder = {
-					x: nodeRefs.projectTitle.getNode().absolutePosition().x,
-					y: this.stageConfig.height,	// - servicesHeight - 20,
-					height: servicesHeight,
-					width: 510,
-				};
-
-				this.dimensions.servicesLabel = {
-					x: nodeRefs.projectTitle.getNode().absolutePosition().x,
-					y: nodeRefs.servicesBorder.getNode().absolutePosition().y + 10,
-					width: 510,
-				};*/
 			});
 
 		},
 
 		resize() {
 
-			var container = this.$refs.container;
-			// now we need to fit stage into parent
-			var containerWidth = container.offsetWidth;
-			// to do this we need to scale the stage
-			var scale = containerWidth / stageSize.width;
-
-			var newWidth = stageSize.width * scale,
-				newHeight = stageSize.height * scale;
-
 			var stage = this.$refs.stage.getStage();
 
-			this.stageConfig.scale = {
-				x: scale,
-				y: scale
-			};
-			this.stageConfig.width = newWidth;
-			this.stageConfig.height = newHeight;
+			if ( ! this.scale) {
 
-			stage.width(newWidth);
-			stage.height(newHeight);
-			stage.scale({ x: scale, y: scale });
-			stage.draw({ x: scale, y: scale });
+				stage.width(stageSize.width);
+				stage.height(stageSize.height);
+				stage.scale({ x: 1, y: 1 });
+				stage.draw();
+
+			} else {
+
+				var container = this.$refs.container;
+				// now we need to fit stage into parent
+				var containerWidth = container.offsetWidth;
+				// to do this we need to scale the stage
+				var scale = containerWidth / stageSize.width;
+
+				var newWidth = stageSize.width * scale,
+					newHeight = stageSize.height * scale;
+
+				this.stageConfig.scale = {
+					x: scale,
+					y: scale
+				};
+				this.stageConfig.width = newWidth;
+				this.stageConfig.height = newHeight;
+
+				stage.width(newWidth);
+				stage.height(newHeight);
+				stage.scale({ x: scale, y: scale });
+				stage.draw();
+
+			}
+
+			// this.refreshPositions();
 
 			// stage.width();
 			// stage.height(stageHeight * scale);
@@ -194,11 +180,11 @@ export default {
 
 	mounted() {
 		nodeRefs.projectTitle = this.$refs.projectTitleGroup.$refs.title;
-		nodeRefs.goalsBody = this.$refs.goalsGroup.$refs.body;
-		nodeRefs.goalsLabel = this.$refs.goalsGroup.$refs.label;
-		nodeRefs.servicesBorder = this.$refs.servicesGroup.$refs.border;
-		this.resize();
+		// nodeRefs.goalsBody = this.$refs.goalsGroup.$refs.body;
+		// nodeRefs.goalsLabel = this.$refs.goalsGroup.$refs.label;
+		nodeRefs.servicesGroup = this.$refs.servicesGroup.$refs.border;
 		this.refreshPositions();
+		this.resize();
 		// this.updatePositions();
 	}
 

@@ -2,18 +2,18 @@
 
 	<div class="app-container" :class="editing ? 'is-editing' : ''">
 
-		<Toolbar/>
 		<Toast/>
+		<Toolbar/>
 
 		<section class="app-main">
 
 			<Sidebar/>
 
-			<div class="app-content">
+			<main class="app-content">
 				<keep-alive>
 					<router-view></router-view>
 				</keep-alive>
-			</div>
+			</main>
 
 		</section>
 

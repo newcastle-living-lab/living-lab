@@ -1,9 +1,11 @@
 <template>
-	<div class="app-sidebar">
-		<keep-alive>
-			<component v-bind:is="currentView"></component>
-		</keep-alive>
-	</div>
+	<aside class="app-sidebar">
+		<div class="scrollable scr-y">
+			<keep-alive>
+				<component v-bind:is="currentView"></component>
+			</keep-alive>
+		</div>
+	</aside>
 </template>
 
 <script>

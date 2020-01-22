@@ -2702,6 +2702,8 @@ var debug = "development" !== 'production';
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _services_api__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../services/api */ "./js/services/api.js");
+/* harmony import */ var vuex_map_fields__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vuex-map-fields */ "./node_modules/vuex-map-fields/dist/index.esm.js");
+
 
 /**
  * Initial state
@@ -2715,6 +2717,7 @@ var state = {
   sidebarView: 'welcome',
   editPanel: 'details',
   user: null,
+  scale: false,
   toast: {},
   options: {
     fontFamily: '-apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif'
@@ -2725,7 +2728,9 @@ var state = {
  *
  */
 
-var getters = {};
+var getters = {
+  getField: vuex_map_fields__WEBPACK_IMPORTED_MODULE_1__["getField"]
+};
 /**
  * Actions
  *
@@ -2800,6 +2805,7 @@ var actions = {
  */
 
 var mutations = {
+  updateField: vuex_map_fields__WEBPACK_IMPORTED_MODULE_1__["updateField"],
   isEditing: function isEditing(state, _isEditing) {
     state.editing = _isEditing;
   },
@@ -5217,12 +5223,13 @@ var stageSize = {
     return {
       dimensions: {
         projectTitle: {},
-        goalsBorder: {},
-        goalsLabel: {},
-        goalsBody: {},
-        servicesLabel: {},
+        // goalsBorder: {},
+        // goalsLabel: {},
+        // goalsBody: {},
+        // servicesLabel: {},
         servicesBorder: {},
-        servicesGroup: {}
+        servicesGroup: {},
+        goalsGroup: {}
       },
       stageConfig: {
         width: stageSize.width,
@@ -5239,36 +5246,45 @@ var stageSize = {
     'projectData.goals.label': 'refreshPositions',
     'projectData.goals.body': 'refreshPositions',
     'projectData.goals': 'refreshPositions',
-    'projectData.servicesLabel': 'refreshPositions' // 'projectData.services': 'refreshPositions',
+    'projectData.servicesLabel': 'refreshPositions',
+    'scale': 'resize' // 'projectData.services': 'refreshPositions',
 
   },
   computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapState"])('project', {
     projectData: function projectData(state) {
       return state.project.data;
     }
-  })),
+  }), {}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapState"])('app', ['scale'])),
   methods: {
     refreshPositions: function refreshPositions() {
       var _this = this;
 
       this.$nextTick(function () {
         // console.log('Refreshing');
-        _this.dimensions.goalsBorder = {
-          x: nodeRefs.projectTitle.getNode().absolutePosition().x,
-          y: nodeRefs.projectTitle.getNode().absolutePosition().y + nodeRefs.projectTitle.getNode().getClientRect().height + 20,
-          height: 10 + 10 + nodeRefs.goalsLabel.getNode().getClientRect().height + nodeRefs.goalsBody.getNode().getClientRect().height,
-          width: nodeRefs.projectTitle.getNode().getClientRect().width
+        _this.dimensions.goalsGroup = {
+          x: 20,
+          y: nodeRefs.projectTitle.getNode().absolutePosition().y + nodeRefs.projectTitle.getNode().getClientRect().height + 20
         };
-        _this.dimensions.goalsLabel = {
-          x: nodeRefs.projectTitle.getNode().absolutePosition().x,
-          y: _this.dimensions.goalsBorder.y + 10,
-          width: nodeRefs.projectTitle.getNode().getClientRect().width
-        };
-        _this.dimensions.goalsBody = {
-          x: nodeRefs.projectTitle.getNode().absolutePosition().x,
-          y: _this.dimensions.goalsLabel.y + nodeRefs.goalsLabel.getNode().getClientRect().height,
-          width: nodeRefs.projectTitle.getNode().getClientRect().width
-        };
+        console.log(nodeRefs.projectTitle.getNode().absolutePosition());
+        /*				this.dimensions.goalsBorder = {
+        					x: nodeRefs.projectTitle.getNode().absolutePosition().x,
+        					y: nodeRefs.projectTitle.getNode().absolutePosition().y + nodeRefs.projectTitle.getNode().getClientRect().height + 20,
+        					height: ( 10 + 10 + nodeRefs.goalsLabel.getNode().getClientRect().height + nodeRefs.goalsBody.getNode().getClientRect().height),
+        					width: nodeRefs.projectTitle.getNode().getClientRect().width,
+        				};
+        
+        				this.dimensions.goalsLabel = {
+        					x: nodeRefs.projectTitle.getNode().absolutePosition().x,
+        					y: this.dimensions.goalsBorder.y + 10,
+        					width: nodeRefs.projectTitle.getNode().getClientRect().width,
+        				};
+        
+        				this.dimensions.goalsBody = {
+        					x: nodeRefs.projectTitle.getNode().absolutePosition().x,
+        					y: this.dimensions.goalsLabel.y + nodeRefs.goalsLabel.getNode().getClientRect().height,
+        					width: nodeRefs.projectTitle.getNode().getClientRect().width,
+        				};*/
+
         var servicesHeight = 210;
         _this.dimensions.servicesGroup = {
           x: nodeRefs.projectTitle.getNode().absolutePosition().x,
@@ -5293,42 +5309,52 @@ var stageSize = {
       });
     },
     resize: function resize() {
-      var container = this.$refs.container; // now we need to fit stage into parent
-
-      var containerWidth = container.offsetWidth; // to do this we need to scale the stage
-
-      var scale = containerWidth / stageSize.width;
-      var newWidth = stageSize.width * scale,
-          newHeight = stageSize.height * scale;
       var stage = this.$refs.stage.getStage();
-      this.stageConfig.scale = {
-        x: scale,
-        y: scale
-      };
-      this.stageConfig.width = newWidth;
-      this.stageConfig.height = newHeight;
-      stage.width(newWidth);
-      stage.height(newHeight);
-      stage.scale({
-        x: scale,
-        y: scale
-      });
-      stage.draw({
-        x: scale,
-        y: scale
-      }); // stage.width();
+
+      if (!this.scale) {
+        stage.width(stageSize.width);
+        stage.height(stageSize.height);
+        stage.scale({
+          x: 1,
+          y: 1
+        });
+        stage.draw();
+      } else {
+        var container = this.$refs.container; // now we need to fit stage into parent
+
+        var containerWidth = container.offsetWidth; // to do this we need to scale the stage
+
+        var scale = containerWidth / stageSize.width;
+        var newWidth = stageSize.width * scale,
+            newHeight = stageSize.height * scale;
+        this.stageConfig.scale = {
+          x: scale,
+          y: scale
+        };
+        this.stageConfig.width = newWidth;
+        this.stageConfig.height = newHeight;
+        stage.width(newWidth);
+        stage.height(newHeight);
+        stage.scale({
+          x: scale,
+          y: scale
+        });
+        stage.draw();
+      } // this.refreshPositions();
+      // stage.width();
       // stage.height(stageHeight * scale);
       // stage.scale({ x: scale, y: scale });
       // stage.draw();
+
     }
   },
   mounted: function mounted() {
-    nodeRefs.projectTitle = this.$refs.projectTitleGroup.$refs.title;
-    nodeRefs.goalsBody = this.$refs.goalsGroup.$refs.body;
-    nodeRefs.goalsLabel = this.$refs.goalsGroup.$refs.label;
-    nodeRefs.servicesBorder = this.$refs.servicesGroup.$refs.border;
-    this.resize();
-    this.refreshPositions(); // this.updatePositions();
+    nodeRefs.projectTitle = this.$refs.projectTitleGroup.$refs.title; // nodeRefs.goalsBody = this.$refs.goalsGroup.$refs.body;
+    // nodeRefs.goalsLabel = this.$refs.goalsGroup.$refs.label;
+
+    nodeRefs.servicesGroup = this.$refs.servicesGroup.$refs.border;
+    this.refreshPositions();
+    this.resize(); // this.updatePositions();
   }
 });
 
@@ -5351,6 +5377,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _sidebar_EditProject__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./sidebar/EditProject */ "./js/components/sidebar/EditProject.vue");
 /* harmony import */ var _sidebar_NewProject__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./sidebar/NewProject */ "./js/components/sidebar/NewProject.vue");
 /* harmony import */ var _sidebar_Welcome__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./sidebar/Welcome */ "./js/components/sidebar/Welcome.vue");
+//
+//
 //
 //
 //
@@ -5880,79 +5908,58 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 
 
+var nodeRefs = {};
 /* harmony default export */ __webpack_exports__["default"] = ({
-  data: function data() {
-    return {
-      calculatedDims: {
-        border: {
-          x: 0,
-          y: 0,
-          width: 0,
-          height: 0
-        },
-        label: {
-          x: 0,
-          y: 0,
-          width: 0,
-          height: 0
-        },
-        body: {
-          x: 0,
-          y: 0,
-          width: 0,
-          height: 0
-        }
-      }
-    };
-  },
   props: {
     dimensions: Object
+  },
+  data: function data() {
+    return {
+      height: 0
+    };
+  },
+  watch: {
+    'projectData.goals.body': 'refreshPositions'
   },
   computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapState"])('app', ['options']), {}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapState"])('project', {
     projectData: function projectData(state) {
       return state.project.data;
     }
   }), {
-    label: function label() {
+    groupConfig: function groupConfig() {
       var pos = {
         x: 0,
         y: 0,
-        width: 0
+        width: 400,
+        height: 0
       };
 
-      if (this.dimensions.goalsLabel) {
-        pos = this.dimensions.goalsLabel;
+      if (this.dimensions.goalsGroup) {
+        pos = this.dimensions.goalsGroup;
       }
 
       ;
+      return pos;
+    },
+    label: function label() {
       return {
-        x: pos.x,
-        y: pos.y,
-        width: pos.width,
+        x: 0,
+        y: 0,
+        width: 400,
         text: _typeof(this.projectData.goals) == 'object' ? this.projectData.goals.label : '',
         fontSize: 14,
         fontStyle: 'bold',
         fontFamily: this.options.fontFamily,
         lineHeight: 1.3,
-        align: 'center'
+        padding: 10,
+        align: 'left'
       };
     },
     body: function body() {
-      var pos = {
-        x: 0,
-        y: 0,
-        width: 0
-      };
-
-      if (this.dimensions.goalsBody) {
-        pos = this.dimensions.goalsBody;
-      }
-
-      ;
       return {
-        x: pos.x,
-        y: pos.y,
-        width: pos.width,
+        x: 0,
+        y: 20,
+        width: 400,
         text: _typeof(this.projectData.goals) == 'object' ? this.projectData.goals.body : '',
         fontFamily: this.options.fontFamily,
         fontSize: 12,
@@ -5961,28 +5968,31 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       };
     },
     border: function border() {
-      var pos = {
+      return {
         x: 0,
         y: 0,
-        width: 0,
-        height: 0
-      };
-
-      if (this.dimensions.goalsBorder) {
-        pos = this.dimensions.goalsBorder;
-      }
-
-      ;
-      return {
-        x: pos.x,
-        y: pos.y,
-        width: pos.width,
-        height: pos.height,
+        width: 400,
+        height: this.height,
         stroke: colors_css__WEBPACK_IMPORTED_MODULE_1___default.a.black,
         strokeWidth: 1
       };
     }
-  })
+  }),
+  methods: {
+    refreshPositions: function refreshPositions() {
+      var _this = this;
+
+      this.$nextTick(function () {
+        if (nodeRefs.body) {
+          _this.height = nodeRefs.body.getNode().getClientRect().height + nodeRefs.label.getNode().getClientRect().height - 20;
+        }
+      });
+    }
+  },
+  mounted: function mounted() {
+    nodeRefs.label = this.$refs.label;
+    nodeRefs.body = this.$refs.body;
+  }
 });
 
 /***/ }),
@@ -7152,6 +7162,13 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -7164,7 +7181,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     visible: function visible(state) {
       return state.editPanel == this.panelName;
     }
-  }), {}, Object(vuex_map_fields__WEBPACK_IMPORTED_MODULE_1__["mapFields"])('project', ['project.name', 'project.created_by'])),
+  }), {}, Object(vuex_map_fields__WEBPACK_IMPORTED_MODULE_1__["mapFields"])('app', ['scale']), {}, Object(vuex_map_fields__WEBPACK_IMPORTED_MODULE_1__["mapFields"])('project', ['project.name', 'project.created_by'])),
   methods: {
     next: function next() {
       this.$store.dispatch('app/doEditNext', this.panelName);
@@ -24114,9 +24131,9 @@ var render = function() {
     "div",
     { staticClass: "app-container", class: _vm.editing ? "is-editing" : "" },
     [
-      _c("Toolbar"),
-      _vm._v(" "),
       _c("Toast"),
+      _vm._v(" "),
+      _c("Toolbar"),
       _vm._v(" "),
       _c(
         "section",
@@ -24125,7 +24142,7 @@ var render = function() {
           _c("Sidebar"),
           _vm._v(" "),
           _c(
-            "div",
+            "main",
             { staticClass: "app-content" },
             [_c("keep-alive", [_c("router-view")], 1)],
             1
@@ -24161,7 +24178,10 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { ref: "container", staticClass: "canvas-container" },
+    {
+      ref: "container",
+      staticClass: "canvas-container scrollable scr-x scr-y"
+    },
     [
       _c(
         "v-stage",
@@ -24252,12 +24272,14 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { staticClass: "app-sidebar" },
-    [_c("keep-alive", [_c(_vm.currentView, { tag: "component" })], 1)],
-    1
-  )
+  return _c("aside", { staticClass: "app-sidebar" }, [
+    _c(
+      "div",
+      { staticClass: "scrollable scr-y" },
+      [_c("keep-alive", [_c(_vm.currentView, { tag: "component" })], 1)],
+      1
+    )
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -24576,6 +24598,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "v-group",
+    { attrs: { config: _vm.groupConfig } },
     [
       _c("v-text", { ref: "label", attrs: { config: _vm.label } }),
       _vm._v(" "),
@@ -25655,6 +25678,51 @@ var render = function() {
                 }
               }
             })
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "form-group" }, [
+            _c("label", { staticClass: "form-switch" }, [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.scale,
+                    expression: "scale"
+                  }
+                ],
+                attrs: { type: "checkbox" },
+                domProps: {
+                  checked: Array.isArray(_vm.scale)
+                    ? _vm._i(_vm.scale, null) > -1
+                    : _vm.scale
+                },
+                on: {
+                  change: function($event) {
+                    var $$a = _vm.scale,
+                      $$el = $event.target,
+                      $$c = $$el.checked ? true : false
+                    if (Array.isArray($$a)) {
+                      var $$v = null,
+                        $$i = _vm._i($$a, $$v)
+                      if ($$el.checked) {
+                        $$i < 0 && (_vm.scale = $$a.concat([$$v]))
+                      } else {
+                        $$i > -1 &&
+                          (_vm.scale = $$a
+                            .slice(0, $$i)
+                            .concat($$a.slice($$i + 1)))
+                      }
+                    } else {
+                      _vm.scale = $$c
+                    }
+                  }
+                }
+              }),
+              _vm._v(" "),
+              _c("i", { staticClass: "form-icon" }),
+              _vm._v(" Scale to fit\n\t\t\t")
+            ])
           ])
         ]
       ),
