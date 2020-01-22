@@ -118,6 +118,40 @@ const getters = {
 		return value;
 	},
 
+	delivery(state) {
+
+		let propName = 'delivery';
+
+		let value = {
+			label: '',
+			colour: '',
+			type: '',
+		};
+
+		if (state.project && typeof state.project.data[propName] === 'object') {
+			value = Object.assign({}, value, state.project.data[propName]);
+		}
+
+		return value;
+	},
+
+	evaluation(state) {
+
+		let propName = 'evaluation';
+
+		let value = {
+			label: '',
+			colour: '',
+			type: '',
+		};
+
+		if (state.project && typeof state.project.data[propName] === 'object') {
+			value = Object.assign({}, value, state.project.data[propName]);
+		}
+
+		return value;
+	},
+
 	getDataField(state) {
 		return getField(state.project.data);
 	},
@@ -226,6 +260,24 @@ const mutations = {
 
 	updateDeployment(state, field) {
 		let propName = 'deployment';
+		if (typeof state.project.data[propName] != 'object') {
+			Vue.set(state.project.data, propName, {});
+		}
+
+		Vue.set(state.project.data[propName], field.prop, field.value);
+	},
+
+	updateDelivery(state, field) {
+		let propName = 'delivery';
+		if (typeof state.project.data[propName] != 'object') {
+			Vue.set(state.project.data, propName, {});
+		}
+
+		Vue.set(state.project.data[propName], field.prop, field.value);
+	},
+
+	updateEvaluation(state, field) {
+		let propName = 'evaluation';
 		if (typeof state.project.data[propName] != 'object') {
 			Vue.set(state.project.data, propName, {});
 		}

@@ -12,9 +12,19 @@
 				<group-services ref="servicesGroup" :dimensions="dimensions" />
 
 				<!-- <group-beneficiary ref="beneficiaryGroup" :dimensions="dimensions" /> -->
-				<group-activity ref="policyDefGroup" :dimensions="dimensions" :x="740" :y="100" prop="policyDef" />
-				<group-activity ref="specDesGroup" :dimensions="dimensions" :x="640" :y="240" prop="specDes" />
-				<group-activity ref="deploymentGroup" :dimensions="dimensions" :x="840" :y="240" prop="deployment" />
+
+				<v-group :config="activitiesA">
+					<group-activity ref="policyDefGroup" :dimensions="dimensions" :x="100" :y="0" prop="policyDef" />
+					<group-activity ref="specDesGroup" :dimensions="dimensions" :x="0" :y="140" prop="specDes" />
+					<group-activity ref="deploymentGroup" :dimensions="dimensions" :x="200" :y="140" prop="deployment" />
+				</v-group>
+
+				<v-line :config="splitterConfig" />
+
+				<v-group :config="activitiesB">
+					<group-activity ref="deliveryGroup" :dimensions="dimensions" :x="0" :y="0" prop="delivery" />
+					<group-activity ref="evaluationGroup" :dimensions="dimensions" :x="0" :y="140" prop="evaluation" />
+				</v-group>
 
 				<group-ethos />
 				<group-resources />
@@ -31,6 +41,7 @@
 <script>
 
 import { mapState } from 'vuex';
+import colours from 'colors.css';
 
 import GroupEthos from './projection/Ethos.vue';
 import GroupResources from './projection/Resources.vue';
@@ -72,11 +83,6 @@ export default {
 
 			dimensions: {
 				projectTitle: {},
-				// goalsBorder: {},
-				// goalsLabel: {},
-				// goalsBody: {},
-				// servicesLabel: {},
-				servicesBorder: {},
 				servicesGroup: {},
 				goalsGroup: {},
 			},
@@ -88,6 +94,23 @@ export default {
 					x: 1,
 					y: 1,
 				}
+			},
+
+			activitiesA: {
+				x: 640,
+				y: 100,
+			},
+
+			activitiesB: {
+				x: 1000,
+				y: 100,
+			},
+
+			splitterConfig: {
+				points: [970, 100, 970, 540],
+				stroke: colours.olive,
+				strokeWidth: 2,
+				dash: [6, 4]
 			}
 
 		}
