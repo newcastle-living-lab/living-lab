@@ -3,15 +3,22 @@
 	<div ref="container" class="canvas-container scrollable scr-x scr-y">
 
 		<v-stage ref="stage" :config="stageConfig">
+
 			<v-layer>
+
+				<v-rect :config="backgroundConfig" />
+
+				<v-shape ref="structLine" :config="structLine" />
+				<v-shape ref="infraLine" :config="infraLine" />
+
+				<group-lozenge v-bind="serviceDefinitionConfig" />
+				<group-lozenge v-bind="serviceDeliveryConfig" />
 
 				<group-title ref="projectTitleGroup" :dimensions="dimensions" />
 
 				<group-goals ref="goalsGroup" :dimensions="dimensions" />
 
 				<group-services ref="servicesGroup" :dimensions="dimensions" />
-
-				<!-- <group-beneficiary ref="beneficiaryGroup" :dimensions="dimensions" /> -->
 
 				<v-group :config="activitiesA">
 					<group-activity ref="policyDefGroup" :dimensions="dimensions" :x="100" :y="0" prop="policyDef" />
@@ -24,13 +31,19 @@
 				<v-group :config="activitiesB">
 					<group-activity ref="deliveryGroup" :dimensions="dimensions" :x="0" :y="0" prop="delivery" />
 					<group-activity ref="evaluationGroup" :dimensions="dimensions" :x="0" :y="140" prop="evaluation" />
+					<group-activity ref="userGroup" :dimensions="dimensions" :x="170" :y="0" prop="user" />
+					<group-activity ref="beneficiaryGroup" :dimensions="dimensions" :x="170" :y="140" prop="beneficiary" />
 				</v-group>
 
-				<group-ethos />
-				<group-resources />
-				<group-law />
-				<!-- <group-structural />
-				<group-infrastructural /> -->
+				<group-activity ref="initiatorGroup"
+					:dimensions="dimensions"
+					:x="350"
+					:y="500"
+					:circle="true"
+					prop="initiator"
+				/>
+
+				<group-inputs v-bind="inputsConfig" />
 
 			</v-layer>
 		</v-stage>
@@ -43,11 +56,11 @@
 import { mapState } from 'vuex';
 import colours from 'colors.css';
 
-import GroupEthos from './projection/Ethos.vue';
-import GroupResources from './projection/Resources.vue';
-import GroupLaw from './projection/Law.vue';
 import GroupStructural from './projection/Structural.vue';
 import GroupInfrastructural from './projection/Infrastructural.vue';
+
+import GroupLozenge from './projection/StaticLozenge.vue';
+import GroupInputs from './projection/Inputs.vue';
 
 import GroupTitle from './projection/Title.vue';
 import GroupGoals from './projection/Goals.vue';
@@ -58,8 +71,8 @@ import GroupActivity from './projection/Activity.vue';
 let nodeRefs = {};
 
 let stageSize = {
-	width: 2010,
-	height: 1030,
+	width: 1400,
+	height: 1100,
 };
 
 export default {
@@ -67,14 +80,13 @@ export default {
 	components: {
 		GroupTitle,
 		GroupGoals,
-		GroupEthos,
-		GroupResources,
-		GroupLaw,
 		GroupStructural,
 		GroupInfrastructural,
 		GroupServices,
 		GroupBeneficiary,
 		GroupActivity,
+		GroupLozenge,
+		GroupInputs,
 	},
 
 	data() {
@@ -96,8 +108,16 @@ export default {
 				}
 			},
 
+			backgroundConfig: {
+				fill: '#ffffff',
+				x: 0,
+				y: 0,
+				width: stageSize.width,
+				height: stageSize.height
+			},
+
 			activitiesA: {
-				x: 640,
+				x: 600,
 				y: 100,
 			},
 
@@ -106,11 +126,30 @@ export default {
 				y: 100,
 			},
 
+			inputsConfig: {
+				x: 100,
+				y: 520 + (25/2),
+			},
+
 			splitterConfig: {
-				points: [970, 100, 970, 540],
+				points: [ (470 + 460) - 10 , 50, (470 + 460) - 10, 580],
 				stroke: colours.olive,
 				strokeWidth: 2,
-				dash: [6, 4]
+				dash: [9, 3]
+			},
+
+			serviceDefinitionConfig: {
+				x: 470,
+				y: 520,
+				width: 460,
+				label: "Service Definition and Development Platform",
+			},
+
+			serviceDeliveryConfig: {
+				x: 920 - (25 / 2),
+				y: 520,
+				width: 460,
+				label: "Service Delivery Platform",
 			}
 
 		}
@@ -132,6 +171,64 @@ export default {
 			projectData: state => state.project.data
 		}),
 		...mapState('app', ['scale']),
+
+		structLine() {
+			let width = 125,
+				height = 450;
+
+			let pts = {
+				st: [width, 0],
+				ct: [
+					width, height/4,
+					width, height
+				],
+				en: [0, height]
+			};
+
+			return {
+				x: 460,
+				y: (520 - height),
+				stroke: colours.olive,
+				strokeWidth: 2,
+				lineCap: 'round',
+				dash: [9, 6],
+				sceneFunc: function(context) {
+					context.beginPath();
+					context.moveTo(...pts.st);
+					context.bezierCurveTo(...pts.ct,...pts.en);
+					context.strokeShape(this);
+				}
+			}
+		},
+
+		infraLine() {
+			let width = 125,
+				height = 450;
+
+			let pts = {
+				st: [0, 0],
+				ct: [
+					width, 0,
+					width, height/4
+				],
+				en: [width, height]
+			};
+
+			return {
+				x: 460,
+				y: 520 + 50 + 4,
+				stroke: colours.olive,
+				strokeWidth: 2,
+				lineCap: 'round',
+				dash: [9, 6],
+				sceneFunc: function(context) {
+					context.beginPath();
+					context.moveTo(...pts.st);
+					context.bezierCurveTo(...pts.ct,...pts.en);
+					context.strokeShape(this);
+				}
+			}
+		}
 	},
 
 	methods: {

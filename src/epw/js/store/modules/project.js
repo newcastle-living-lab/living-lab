@@ -25,6 +25,9 @@ const state = {
 				colour: '',
 				comment: '',
 			},
+			extSvcLabel: '',
+			infSvcLabel: '',
+			extOrgLabel: '',
 			services: [],
 			initiators: [],
 		}
@@ -49,22 +52,6 @@ const getters = {
 			label: '',
 			body: '',
 		}
-	},
-
-	beneficiary(state) {
-
-		let value = {
-			label: '',
-			colour: '',
-			comment: '',
-			shape: '',
-		};
-
-		if (state.project && typeof state.project.data.beneficiary === 'object') {
-			value = Object.assign({}, value, state.project.data.beneficiary);
-		}
-
-		return value;
 	},
 
 	policyDef(state) {
@@ -152,6 +139,57 @@ const getters = {
 		return value;
 	},
 
+	user(state) {
+
+		let propName = 'user';
+
+		let value = {
+			label: '',
+			colour: '',
+			type: '',
+		};
+
+		if (state.project && typeof state.project.data[propName] === 'object') {
+			value = Object.assign({}, value, state.project.data[propName]);
+		}
+
+		return value;
+	},
+
+	beneficiary(state) {
+
+		let propName = 'beneficiary';
+
+		let value = {
+			label: '',
+			colour: '',
+			type: '',
+		};
+
+		if (state.project && typeof state.project.data[propName] === 'object') {
+			value = Object.assign({}, value, state.project.data[propName]);
+		}
+
+		return value;
+	},
+
+	initiator(state) {
+
+		let propName = 'initiator';
+
+		let value = {
+			label: '',
+			colour: '',
+			type: '',
+		};
+
+		if (state.project && typeof state.project.data[propName] === 'object') {
+			value = Object.assign({}, value, state.project.data[propName]);
+		}
+
+		return value;
+	},
+
 	getDataField(state) {
 		return getField(state.project.data);
 	},
@@ -159,6 +197,14 @@ const getters = {
 	social(state) {
 		if (state.project && Array.isArray(state.project.data.social)) {
 			return state.project.data.social;
+		}
+
+		return [];
+	},
+
+	services(state) {
+		if (state.project && Array.isArray(state.project.data.services)) {
+			return state.project.data.services;
 		}
 
 		return [];
@@ -198,6 +244,14 @@ const actions = {
 		commit('editSocial', { item, value: value });
 	},
 
+	removeService({ commit }, item) {
+		commit('removeService', item);
+	},
+
+	editService({ commit }, { item, label, url }) {
+		commit('editService', { item, label: label, url: url });
+	},
+
 };
 
 
@@ -230,14 +284,6 @@ const mutations = {
 			// state.project.data = Object.assign({}, state.project.data, newVal);	//[field.prop] = field.value;
 			Vue.set(state.project.data, field.prop, field.value);
 		}
-	},
-
-	updateBeneficiary(state, field) {
-		if (typeof state.project.data.beneficiary != 'object') {
-			Vue.set(state.project.data, 'beneficiary', {});
-		}
-
-		Vue.set(state.project.data.beneficiary, field.prop, field.value);
 	},
 
 	updatePolicyDef(state, field) {
@@ -285,6 +331,33 @@ const mutations = {
 		Vue.set(state.project.data[propName], field.prop, field.value);
 	},
 
+	updateUser(state, field) {
+		let propName = 'user';
+		if (typeof state.project.data[propName] != 'object') {
+			Vue.set(state.project.data, propName, {});
+		}
+
+		Vue.set(state.project.data[propName], field.prop, field.value);
+	},
+
+	updateBeneficiary(state, field) {
+		let propName = 'beneficiary';
+		if (typeof state.project.data[propName] != 'object') {
+			Vue.set(state.project.data, propName, {});
+		}
+
+		Vue.set(state.project.data[propName], field.prop, field.value);
+	},
+
+	updateInitiator(state, field) {
+		let propName = 'initiator';
+		if (typeof state.project.data[propName] != 'object') {
+			Vue.set(state.project.data, propName, {});
+		}
+
+		Vue.set(state.project.data[propName], field.prop, field.value);
+	},
+
 	updateGoals(state, field) {
 		if (typeof state.project.data.goals != 'object') {
 			Vue.set(state.project.data, 'goals', {});
@@ -292,7 +365,7 @@ const mutations = {
 
 		Vue.set(state.project.data.goals, field.prop, field.value);
 	},
-
+/*
 	addService(state, service) {
 		if ( ! Array.isArray(state.project.data.services)) {
 			Vue.set(state.project.data, 'services', []);
@@ -303,7 +376,7 @@ const mutations = {
 
 	deleteService(state, service) {
 		state.project.data.services.splice(state.project.data.services.indexOf(service), 1)
-	},
+	},*/
 
 	addSocial(state, item) {
 		if ( ! Array.isArray(state.project.data.social)) {
@@ -312,13 +385,33 @@ const mutations = {
 		state.project.data.social.push(item);
 	},
 
-	editSocial(state, { item, value = social.value }) {
+	editSocial(state, { item, value = item.value }) {
 		item.value = value;
 	},
 
 	removeSocial(state, item) {
 		if (state.project.data.social.indexOf(item) > -1) {
 			state.project.data.social.splice(state.project.data.social.indexOf(item), 1);
+		}
+		return;
+	},
+
+	addService(state, item) {
+		if ( ! Array.isArray(state.project.data.services)) {
+			Vue.set(state.project.data, 'services', []);
+		}
+		delete item.isNew;
+		state.project.data.services.push(item);
+	},
+
+	editService(state, { item, label = item.label, url = item.url }) {
+		item.label = label;
+		item.url = url;
+	},
+
+	removeService(state, item) {
+		if (state.project.data.services.indexOf(item) > -1) {
+			state.project.data.services.splice(state.project.data.services.indexOf(item), 1);
 		}
 		return;
 	},

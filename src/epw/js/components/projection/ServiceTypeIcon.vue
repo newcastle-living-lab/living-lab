@@ -1,6 +1,6 @@
 <template>
 
-	<v-group>
+	<v-group ref="group">
 
 		<v-group v-if="type == 'user'" :config="groupConfig">
 			<v-path ref="user" :config="user" />

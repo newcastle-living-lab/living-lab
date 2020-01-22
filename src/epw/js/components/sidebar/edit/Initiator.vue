@@ -2,15 +2,15 @@
 
 	<div class="sidebar-item">
 
-		<sidebar-heading :name="panelName" title="Beneficiary" />
+		<sidebar-heading :name="panelName" title="Initiator" />
 
 		<div class="sidebar-content" v-show="visible">
 
 			<div class="form-group">
 				<label class="form-label" for="label">Label</label>
 				<input
-					:value="beneficiary.label"
-					@input="updateBeneficiary({ prop: 'label', value: $event.target.value })"
+					:value="initiator.label"
+					@input="updateInitiator({ prop: 'label', value: $event.target.value })"
 					class="form-input"
 					id="label"
 					maxlength="255"
@@ -21,8 +21,8 @@
 				<label class="form-label" for="type">Type</label>
 				<select
 					class="form-select"
-					:value="beneficiary.type"
-					@change="updateBeneficiary({ prop: 'type', value: $event.target.value })"
+					:value="initiator.type"
+					@change="updateInitiator({ prop: 'type', value: $event.target.value })"
 				>
 					<option v-for="type in activityTypes"
 						:key="type.value"
@@ -35,8 +35,8 @@
 				<label class="form-label" for="colour">Colour</label>
 				<select
 					class="form-select"
-					:value="beneficiary.colour"
-					@change="updateBeneficiary({ prop: 'colour', value: $event.target.value })"
+					:value="initiator.colour"
+					@change="updateInitiator({ prop: 'colour', value: $event.target.value })"
 				>
 					<option v-for="colour in filteredColours"
 						:key="colour.name"
@@ -69,7 +69,7 @@ export default {
 
 	data() {
 		return {
-			panelName: 'beneficiary',
+			panelName: 'initiator',
 			filteredColours: filteredColours,
 			activityTypes: activityTypes,
 		};
@@ -81,12 +81,12 @@ export default {
 				return state.editPanel == this.panelName
 			},
 		}),
-		...mapGetters('project', ['beneficiary']),
+		...mapGetters('project', ['initiator']),
 	},
 
 	methods: {
 		...mapMutations('project', [
-			'updateBeneficiary',
+			'updateInitiator',
 		]),
 		next() {
 			this.$store.dispatch('app/doEditNext', this.panelName);

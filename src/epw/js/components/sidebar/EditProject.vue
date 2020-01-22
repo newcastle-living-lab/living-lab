@@ -10,15 +10,16 @@
 		<edit-deployment />
 		<edit-delivery />
 		<edit-evaluation />
+		<edit-user />
+		<edit-beneficiary />
+		<edit-initiator />
 
 
-		<!-- <edit-beneficiary /> -->
-		<edit-services />
+		<edit-services title="External Technical Services" type="extsvc" labelProp="extSvcLabel" />
+		<edit-services title="External Organisations" type="extorg" labelProp="extSvcLabel" />
+		<edit-services title="Infrastructural Services" type="infsvc" labelProp="extSvcLabel" />
+
 		<edit-social />
-		<!-- <h3 class="sidebar-heading">Goals and Targets</h3>
-		<h3 class="sidebar-heading">Initiators</h3>
-		<h3 class="sidebar-heading">Services</h3>
-		<h3 class="sidebar-heading">Social Media</h3> -->
 
 	</div>
 
@@ -34,8 +35,10 @@ import EditSpecdes from './edit/SpecDes.vue';
 import EditDeployment from './edit/Deployment.vue';
 import EditDelivery from './edit/Delivery.vue';
 import EditEvaluation from './edit/Evaluation.vue';
-
+import EditUser from './edit/User.vue';
 import EditBeneficiary from './edit/Beneficiary.vue';
+import EditInitiator from './edit/Initiator.vue';
+
 import EditServices from './edit/Services.vue';
 import EditSocial from './edit/Social.vue';
 
@@ -50,8 +53,10 @@ export default {
 		EditDeployment,
 		EditDelivery,
 		EditEvaluation,
-
+		EditUser,
 		EditBeneficiary,
+		EditInitiator,
+
 		EditServices,
 		EditSocial,
 	},
