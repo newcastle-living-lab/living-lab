@@ -3221,6 +3221,11 @@ var routes = [{
   component: _components_ProjectionStage_vue__WEBPACK_IMPORTED_MODULE_2__["default"],
   props: true
 }, {
+  name: 'livinglab',
+  path: '/:id/livinglab',
+  component: _components_ProjectionStage_vue__WEBPACK_IMPORTED_MODULE_2__["default"],
+  props: true
+}, {
   name: 'social',
   path: '/:id/social',
   component: _components_SocialMedia_vue__WEBPACK_IMPORTED_MODULE_3__["default"],
@@ -6618,7 +6623,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   }), {}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapState"])('project', {
     project: 'project',
     projectionUrl: function projectionUrl(state) {
-      return "/".concat(state.project.id, "/projection");
+      return "/".concat(state.project.id, "/livinglab");
     },
     socialUrl: function socialUrl(state) {
       return "/".concat(state.project.id, "/social");
@@ -8176,9 +8181,6 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-//
-//
-//
 //
 //
 //
@@ -26751,7 +26753,7 @@ var render = function() {
                     class: _vm.activeTab == "projection" ? "active" : "",
                     attrs: { to: _vm.projectionUrl }
                   },
-                  [_vm._v("Projection")]
+                  [_vm._v("Living Lab")]
                 ),
                 _vm._v(" "),
                 _c(
@@ -27614,7 +27616,7 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c("h3", { staticClass: "sidebar-heading" }, [_vm._v("Project Details")]),
+    _c("h3", { staticClass: "sidebar-heading" }, [_vm._v("Living Lab")]),
     _vm._v(" "),
     _c("div", { staticClass: "sidebar-content" }, [
       _c("h5", [_vm._v(_vm._s(_vm.project.name))])
@@ -27656,7 +27658,7 @@ var render = function() {
           [
             _c(
               "router-link",
-              { attrs: { to: "/" + project.id + "/projection" } },
+              { attrs: { to: "/" + project.id + "/livinglab" } },
               [_vm._v(_vm._s(project.name))]
             )
           ],
@@ -29332,9 +29334,7 @@ var render = function() {
     "div",
     { staticClass: "sidebar-item" },
     [
-      _c("sidebar-heading", {
-        attrs: { name: _vm.panelName, title: "Projection" }
-      }),
+      _c("sidebar-heading", { attrs: { name: _vm.panelName, title: "Model" } }),
       _vm._v(" "),
       _c(
         "div",

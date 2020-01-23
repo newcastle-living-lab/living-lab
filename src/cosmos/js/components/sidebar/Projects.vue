@@ -9,7 +9,7 @@
 				v-for="project in projects"
 				:key="project.id"
 			>
-				<router-link :to="'/' + project.id + '/projection'">{{ project.name }}</router-link>
+				<router-link :to="'/' + project.id + '/livinglab'">{{ project.name }}</router-link>
 			</li>
 		</ul>
 

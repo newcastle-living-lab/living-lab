@@ -33,7 +33,7 @@
 			<section class="navbar-section navbar-tabs">
 				<div v-if="hasProject">
 					<span v-if="hasProject" class="btn btn-link text-bold btn-empty mr-2">{{ project.name }}</span>
-					<router-link :to="projectionUrl" class="btn btn-link" :class="activeTab == 'projection' ? 'active' : ''">Projection</router-link>
+					<router-link :to="projectionUrl" class="btn btn-link" :class="activeTab == 'projection' ? 'active' : ''">Living Lab</router-link>
 					<router-link :to="socialUrl" class="btn btn-link">Social Media</router-link>
 				</div>
 				<div v-if="hasUser" class="ml-16">
@@ -85,7 +85,7 @@ export default {
 		...mapState('project', {
 			project: 'project',
 			projectionUrl(state) {
-				return `/${state.project.id}/projection`;
+				return `/${state.project.id}/livinglab`;
 			},
 			socialUrl(state) {
 				return `/${state.project.id}/social`;

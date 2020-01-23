@@ -2,7 +2,7 @@
 
 	<div class="sidebar-item">
 
-		<sidebar-heading :name="panelName" title="Projection" />
+		<sidebar-heading :name="panelName" title="Model" />
 
 		<div class="sidebar-content" v-show="visible">
 

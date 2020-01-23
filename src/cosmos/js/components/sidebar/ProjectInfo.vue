@@ -2,13 +2,10 @@
 
 	<div>
 
-		<h3 class="sidebar-heading">Project Details</h3>
+		<h3 class="sidebar-heading">Living Lab</h3>
 
 		<div class="sidebar-content">
 			<h5>{{ project.name }}</h5>
-			<!-- <p>{{ currentProject.created_at }}</p>
-			<p>{{ currentProject.modified_at }}</p>
-			<p>{{ currentProject.created_by }}</p> -->
 		</div>
 
 	</div>

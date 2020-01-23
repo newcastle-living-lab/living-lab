@@ -18,6 +18,12 @@ const routes = [
 		props: true,
 	},
 	{
+		name: 'livinglab',
+		path: '/:id/livinglab',
+		component: ProjectionStage,
+		props: true,
+	},
+	{
 		name: 'social',
 		path: '/:id/social',
 		component: SocialMedia,
