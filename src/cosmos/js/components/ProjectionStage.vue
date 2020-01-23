@@ -1,8 +1,8 @@
 <template>
 
-	<main ref="container" class="app-content dark">
+	<main class="app-content dark">
 
-		<div class="canvas-container scrollable scr-x scr-y">
+		<div ref="container" class="canvas-container scrollable scr-x scr-y">
 
 			<v-stage ref="stage" :config="stageConfig">
 

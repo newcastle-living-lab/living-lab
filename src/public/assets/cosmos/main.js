@@ -3206,7 +3206,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.esm.js");
 /* harmony import */ var _components_ProjectionStage_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/ProjectionStage.vue */ "./js/components/ProjectionStage.vue");
-/* harmony import */ var _components_SocialMedia_vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../components/SocialMedia.vue */ "./js/components/SocialMedia.vue");
+/* harmony import */ var _components_SocialMedia_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components/SocialMedia.vue */ "./js/components/SocialMedia.vue");
 
 
 
@@ -3223,7 +3223,7 @@ var routes = [{
 }, {
   name: 'social',
   path: '/:id/social',
-  component: _components_SocialMedia_vue__WEBPACK_IMPORTED_MODULE_4__["default"],
+  component: _components_SocialMedia_vue__WEBPACK_IMPORTED_MODULE_3__["default"],
   props: true
 }];
 var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
@@ -26286,10 +26286,13 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("main", { ref: "container", staticClass: "app-content dark" }, [
+  return _c("main", { staticClass: "app-content dark" }, [
     _c(
       "div",
-      { staticClass: "canvas-container scrollable scr-x scr-y" },
+      {
+        ref: "container",
+        staticClass: "canvas-container scrollable scr-x scr-y"
+      },
       [
         _c(
           "v-stage",

@@ -4870,7 +4870,7 @@ body {
   top: 0.8rem;
   left: 0.8rem;
   bottom: 0.8rem;
-  right: 0.8rem;
+  right: 0;
 }
 
 .konvajs-content {
