@@ -1,7 +1,7 @@
 // import Vue from 'vue';
 import axios from 'axios';
 
-var baseURL = '/epw/';
+var baseURL = '/cosmos/';
 
 const http = axios.create({
 	baseURL: baseURL

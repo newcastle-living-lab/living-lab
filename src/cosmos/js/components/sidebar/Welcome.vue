@@ -2,7 +2,7 @@
 
 	<div>
 
-		<h3 class="sidebar-heading">Enterprise Projection Wizard</h3>
+		<h3 class="sidebar-heading">COSMOS</h3>
 
 		<div class="sidebar-content">
 			<p class="text-center mt-4 mb-4">To get started, choose one of the options below.</p>
@@ -22,11 +22,7 @@ export default {
 	methods: mapActions('app', [
 		'doNew',
 		'doOpen',
-	]),
-
-	activated() {
-		// this.$router.push('/').catch((e) => {});
-	}
+	])
 }
 
 </script>

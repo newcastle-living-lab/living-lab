@@ -29,6 +29,18 @@ body {
 			}
 		}
 	}
+
+	.navbar-tabs {
+		.btn-link {
+			padding-left: 0;
+			padding-right: 0;
+			margin-left: $control-padding-x;
+			margin-right: $control-padding-x;
+			&.router-link-active {
+				border-bottom: $unit-h solid $clrs-blue;
+			}
+		}
+	}
 }
 
 
