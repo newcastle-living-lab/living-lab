@@ -296,3 +296,54 @@ body {
 		margin-right: $unit-1;
 	}
 }
+
+
+
+
+.colour-picker {
+	.colour-picker-item {
+		border: 0;
+		display: inline-block;
+		margin: 0 $unit-1 $unit-1 0;
+
+		input[type=radio] {
+			clip: rect(0, 0, 0, 0);
+			height: 1px;
+			margin: -1px;
+			overflow: hidden;
+			position: absolute;
+			width: 1px;
+			&:focus + .colour-picker-icon,
+			&:checked + .colour-picker-icon {
+				span {
+					display: block;
+				}
+			}
+		}
+
+		&:hover {
+			.colour-picker-icon {
+				span {
+					display: block;
+				}
+			}
+		}
+
+		.colour-picker-icon {
+			// border: $unit-2 solid #fff;
+			display: block;
+			width: $unit-5;
+			height: $unit-5;
+			border-radius: 50%;
+			padding: $unit-1;
+			span {
+				width: 100%;
+				height: 100%;
+				display: none;
+				border: $unit-h solid #fff;
+				border-radius: 50%;
+			}
+		}
+
+	}
+}

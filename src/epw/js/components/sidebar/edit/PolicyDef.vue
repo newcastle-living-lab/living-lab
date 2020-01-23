@@ -24,30 +24,17 @@
 
 			<div class="form-group">
 				<label class="form-label" for="type">Type</label>
-				<select
-					class="form-select"
-					:value="policyDef.type"
-					@change="updatePolicyDef({ prop: 'type', value: $event.target.value })"
-				>
-					<option v-for="type in activityTypes"
-						:key="type.value"
-						:value="type.value">{{ type.label }}
-					</option>
-				</select>
+				<button-group :options="activityTypes" :value="policyDef.type" @change="updatePolicyDef({ prop: 'type', value: arguments[0] })" />
 			</div>
 
 			<div class="form-group">
 				<label class="form-label" for="colour">Colour</label>
-				<select
-					class="form-select"
+				<colour-picker
+					name="policyDef"
+					:colours="filteredColours"
 					:value="policyDef.colour"
-					@change="updatePolicyDef({ prop: 'colour', value: $event.target.value })"
-				>
-					<option v-for="colour in filteredColours"
-						:key="colour.name"
-						:value="colour.value">{{ colour.name }}
-					</option>
-				</select>
+					@change="updatePolicyDef({ prop: 'colour', value: arguments[0] })"
+				/>
 			</div>
 
 		</div>

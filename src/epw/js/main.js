@@ -15,8 +15,13 @@ Vue.use(VueKonva);
 // General components
 import SidebarHeading from './components/sidebar/partials/Heading';
 import EditHint from './components/sidebar/partials/EditHint';
+import ButtonGroup from './components/partials/ButtonGroup';
+import ColourPicker from './components/partials/ColourPicker';
+
 Vue.component('sidebar-heading', SidebarHeading);
 Vue.component('edit-hint', EditHint);
+Vue.component('button-group', ButtonGroup);
+Vue.component('colour-picker', ColourPicker);
 
 
 new Vue({

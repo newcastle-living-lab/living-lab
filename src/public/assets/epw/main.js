@@ -431,6 +431,144 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./js/components/partials/ButtonGroup.vue":
+/*!************************************************!*\
+  !*** ./js/components/partials/ButtonGroup.vue ***!
+  \************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _ButtonGroup_vue_vue_type_template_id_9f9e101e___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ButtonGroup.vue?vue&type=template&id=9f9e101e& */ "./js/components/partials/ButtonGroup.vue?vue&type=template&id=9f9e101e&");
+/* harmony import */ var _ButtonGroup_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ButtonGroup.vue?vue&type=script&lang=js& */ "./js/components/partials/ButtonGroup.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _ButtonGroup_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _ButtonGroup_vue_vue_type_template_id_9f9e101e___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _ButtonGroup_vue_vue_type_template_id_9f9e101e___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "js/components/partials/ButtonGroup.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./js/components/partials/ButtonGroup.vue?vue&type=script&lang=js&":
+/*!*************************************************************************!*\
+  !*** ./js/components/partials/ButtonGroup.vue?vue&type=script&lang=js& ***!
+  \*************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ButtonGroup_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./ButtonGroup.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./js/components/partials/ButtonGroup.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ButtonGroup_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./js/components/partials/ButtonGroup.vue?vue&type=template&id=9f9e101e&":
+/*!*******************************************************************************!*\
+  !*** ./js/components/partials/ButtonGroup.vue?vue&type=template&id=9f9e101e& ***!
+  \*******************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ButtonGroup_vue_vue_type_template_id_9f9e101e___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./ButtonGroup.vue?vue&type=template&id=9f9e101e& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./js/components/partials/ButtonGroup.vue?vue&type=template&id=9f9e101e&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ButtonGroup_vue_vue_type_template_id_9f9e101e___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ButtonGroup_vue_vue_type_template_id_9f9e101e___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./js/components/partials/ColourPicker.vue":
+/*!*************************************************!*\
+  !*** ./js/components/partials/ColourPicker.vue ***!
+  \*************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _ColourPicker_vue_vue_type_template_id_48138726___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ColourPicker.vue?vue&type=template&id=48138726& */ "./js/components/partials/ColourPicker.vue?vue&type=template&id=48138726&");
+/* harmony import */ var _ColourPicker_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ColourPicker.vue?vue&type=script&lang=js& */ "./js/components/partials/ColourPicker.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _ColourPicker_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _ColourPicker_vue_vue_type_template_id_48138726___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _ColourPicker_vue_vue_type_template_id_48138726___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "js/components/partials/ColourPicker.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./js/components/partials/ColourPicker.vue?vue&type=script&lang=js&":
+/*!**************************************************************************!*\
+  !*** ./js/components/partials/ColourPicker.vue?vue&type=script&lang=js& ***!
+  \**************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ColourPicker_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./ColourPicker.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./js/components/partials/ColourPicker.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ColourPicker_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./js/components/partials/ColourPicker.vue?vue&type=template&id=48138726&":
+/*!********************************************************************************!*\
+  !*** ./js/components/partials/ColourPicker.vue?vue&type=template&id=48138726& ***!
+  \********************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ColourPicker_vue_vue_type_template_id_48138726___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./ColourPicker.vue?vue&type=template&id=48138726& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./js/components/partials/ColourPicker.vue?vue&type=template&id=48138726&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ColourPicker_vue_vue_type_template_id_48138726___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ColourPicker_vue_vue_type_template_id_48138726___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
 /***/ "./js/components/projection/Activity.vue":
 /*!***********************************************!*\
   !*** ./js/components/projection/Activity.vue ***!
@@ -2805,6 +2943,11 @@ var keys = Object.keys(colors_css__WEBPACK_IMPORTED_MODULE_0___default.a);
 
 for (var _i = 0, _keys = keys; _i < _keys.length; _i++) {
   var key = _keys[_i];
+
+  if (colors_css__WEBPACK_IMPORTED_MODULE_0___default.a[key] == '#ffffff') {
+    continue;
+  }
+
   filtered.push({
     name: key.charAt(0).toUpperCase() + key.slice(1),
     value: colors_css__WEBPACK_IMPORTED_MODULE_0___default.a[key]
@@ -2847,7 +2990,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _services_api__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./services/api */ "./js/services/api.js");
 /* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./store */ "./js/store/index.js");
 /* harmony import */ var _components_sidebar_partials_Heading__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./components/sidebar/partials/Heading */ "./js/components/sidebar/partials/Heading.vue");
-/* harmony import */ var _components_sidebar_partials_EditHint__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./components/sidebar/partials/EditHint */ "./js/components/sidebar/partials/EditHint.vue");
+/* harmony import */ var _components_sidebar_partials_EditHint__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./components/sidebar/partials/EditHint */ "./js/components/sidebar/partials/EditHint.vue");
+/* harmony import */ var _components_partials_ButtonGroup__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./components/partials/ButtonGroup */ "./js/components/partials/ButtonGroup.vue");
+/* harmony import */ var _components_partials_ColourPicker__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./components/partials/ColourPicker */ "./js/components/partials/ColourPicker.vue");
 
 
 
@@ -2860,8 +3005,12 @@ vue__WEBPACK_IMPORTED_MODULE_1___default.a.use(vue_konva__WEBPACK_IMPORTED_MODUL
 
 
 
+
+
 vue__WEBPACK_IMPORTED_MODULE_1___default.a.component('sidebar-heading', _components_sidebar_partials_Heading__WEBPACK_IMPORTED_MODULE_8__["default"]);
-vue__WEBPACK_IMPORTED_MODULE_1___default.a.component('edit-hint', _components_sidebar_partials_EditHint__WEBPACK_IMPORTED_MODULE_10__["default"]);
+vue__WEBPACK_IMPORTED_MODULE_1___default.a.component('edit-hint', _components_sidebar_partials_EditHint__WEBPACK_IMPORTED_MODULE_9__["default"]);
+vue__WEBPACK_IMPORTED_MODULE_1___default.a.component('button-group', _components_partials_ButtonGroup__WEBPACK_IMPORTED_MODULE_10__["default"]);
+vue__WEBPACK_IMPORTED_MODULE_1___default.a.component('colour-picker', _components_partials_ColourPicker__WEBPACK_IMPORTED_MODULE_11__["default"]);
 new vue__WEBPACK_IMPORTED_MODULE_1___default.a({
   el: '#app',
   template: '<App/>',
@@ -6231,6 +6380,69 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./js/components/partials/ButtonGroup.vue?vue&type=script&lang=js&":
+/*!*********************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./js/components/partials/ButtonGroup.vue?vue&type=script&lang=js& ***!
+  \*********************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: ['options', 'value']
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./js/components/partials/ColourPicker.vue?vue&type=script&lang=js&":
+/*!**********************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./js/components/partials/ColourPicker.vue?vue&type=script&lang=js& ***!
+  \**********************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: ['name', 'colours', 'value']
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./js/components/projection/Activity.vue?vue&type=script&lang=js&":
 /*!********************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./js/components/projection/Activity.vue?vue&type=script&lang=js& ***!
@@ -7794,19 +8006,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 
@@ -7851,19 +8050,6 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -7962,19 +8148,6 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -8294,19 +8467,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 
@@ -8404,19 +8564,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 
@@ -8461,19 +8608,6 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -9261,19 +9395,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 
@@ -9319,19 +9440,6 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -25991,6 +26099,104 @@ render._withStripped = true
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./js/components/partials/ButtonGroup.vue?vue&type=template&id=9f9e101e&":
+/*!*************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./js/components/partials/ButtonGroup.vue?vue&type=template&id=9f9e101e& ***!
+  \*************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { staticClass: "btn-group btn-group-block" },
+    _vm._l(_vm.options, function(option) {
+      return _c(
+        "button",
+        {
+          key: option.value,
+          staticClass: "btn btn-sm",
+          class: option.value == _vm.value ? "active" : "",
+          on: {
+            click: function($event) {
+              return _vm.$emit("change", option.value)
+            }
+          }
+        },
+        [_vm._v(_vm._s(option.label))]
+      )
+    }),
+    0
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./js/components/partials/ColourPicker.vue?vue&type=template&id=48138726&":
+/*!**************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./js/components/partials/ColourPicker.vue?vue&type=template&id=48138726& ***!
+  \**************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { staticClass: "colour-picker" },
+    _vm._l(_vm.colours, function(item) {
+      return _c(
+        "label",
+        { key: item.value, staticClass: "colour-picker-item" },
+        [
+          _c("input", {
+            attrs: { type: "radio", name: _vm.name },
+            domProps: { value: _vm.value, checked: _vm.value == item.value },
+            on: {
+              change: function($event) {
+                return _vm.$emit("change", item.value)
+              }
+            }
+          }),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass: "colour-picker-icon",
+              style: { backgroundColor: item.value }
+            },
+            [_c("span")]
+          )
+        ]
+      )
+    }),
+    0
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./js/components/projection/Activity.vue?vue&type=template&id=02b4065e&":
 /*!************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./js/components/projection/Activity.vue?vue&type=template&id=02b4065e& ***!
@@ -26880,67 +27086,62 @@ var render = function() {
             })
           ]),
           _vm._v(" "),
-          _c("div", { staticClass: "form-group" }, [
-            _c("label", { staticClass: "form-label", attrs: { for: "type" } }, [
-              _vm._v("Type")
-            ]),
-            _vm._v(" "),
-            _c(
-              "select",
-              {
-                staticClass: "form-select",
-                domProps: { value: _vm.beneficiary.type },
+          _c(
+            "div",
+            { staticClass: "form-group" },
+            [
+              _c(
+                "label",
+                { staticClass: "form-label", attrs: { for: "type" } },
+                [_vm._v("Type")]
+              ),
+              _vm._v(" "),
+              _c("button-group", {
+                attrs: {
+                  options: _vm.activityTypes,
+                  value: _vm.beneficiary.type
+                },
                 on: {
                   change: function($event) {
                     return _vm.updateBeneficiary({
                       prop: "type",
-                      value: $event.target.value
+                      value: arguments[0]
                     })
                   }
                 }
-              },
-              _vm._l(_vm.activityTypes, function(type) {
-                return _c(
-                  "option",
-                  { key: type.value, domProps: { value: type.value } },
-                  [_vm._v(_vm._s(type.label) + "\n\t\t\t\t")]
-                )
-              }),
-              0
-            )
-          ]),
+              })
+            ],
+            1
+          ),
           _vm._v(" "),
-          _c("div", { staticClass: "form-group" }, [
-            _c(
-              "label",
-              { staticClass: "form-label", attrs: { for: "colour" } },
-              [_vm._v("Colour")]
-            ),
-            _vm._v(" "),
-            _c(
-              "select",
-              {
-                staticClass: "form-select",
-                domProps: { value: _vm.beneficiary.colour },
+          _c(
+            "div",
+            { staticClass: "form-group" },
+            [
+              _c(
+                "label",
+                { staticClass: "form-label", attrs: { for: "colour" } },
+                [_vm._v("Colour")]
+              ),
+              _vm._v(" "),
+              _c("colour-picker", {
+                attrs: {
+                  name: "beneficiary",
+                  colours: _vm.filteredColours,
+                  value: _vm.beneficiary.colour
+                },
                 on: {
                   change: function($event) {
                     return _vm.updateBeneficiary({
                       prop: "colour",
-                      value: $event.target.value
+                      value: arguments[0]
                     })
                   }
                 }
-              },
-              _vm._l(_vm.filteredColours, function(colour) {
-                return _c(
-                  "option",
-                  { key: colour.name, domProps: { value: colour.value } },
-                  [_vm._v(_vm._s(colour.name) + "\n\t\t\t\t")]
-                )
-              }),
-              0
-            )
-          ])
+              })
+            ],
+            1
+          )
         ]
       ),
       _vm._v(" "),
@@ -27074,67 +27275,59 @@ var render = function() {
             })
           ]),
           _vm._v(" "),
-          _c("div", { staticClass: "form-group" }, [
-            _c("label", { staticClass: "form-label", attrs: { for: "type" } }, [
-              _vm._v("Type")
-            ]),
-            _vm._v(" "),
-            _c(
-              "select",
-              {
-                staticClass: "form-select",
-                domProps: { value: _vm.delivery.type },
+          _c(
+            "div",
+            { staticClass: "form-group" },
+            [
+              _c(
+                "label",
+                { staticClass: "form-label", attrs: { for: "type" } },
+                [_vm._v("Type")]
+              ),
+              _vm._v(" "),
+              _c("button-group", {
+                attrs: { options: _vm.activityTypes, value: _vm.delivery.type },
                 on: {
                   change: function($event) {
                     return _vm.updateDelivery({
                       prop: "type",
-                      value: $event.target.value
+                      value: arguments[0]
                     })
                   }
                 }
-              },
-              _vm._l(_vm.activityTypes, function(type) {
-                return _c(
-                  "option",
-                  { key: type.value, domProps: { value: type.value } },
-                  [_vm._v(_vm._s(type.label) + "\n\t\t\t\t")]
-                )
-              }),
-              0
-            )
-          ]),
+              })
+            ],
+            1
+          ),
           _vm._v(" "),
-          _c("div", { staticClass: "form-group" }, [
-            _c(
-              "label",
-              { staticClass: "form-label", attrs: { for: "colour" } },
-              [_vm._v("Colour")]
-            ),
-            _vm._v(" "),
-            _c(
-              "select",
-              {
-                staticClass: "form-select",
-                domProps: { value: _vm.delivery.colour },
+          _c(
+            "div",
+            { staticClass: "form-group" },
+            [
+              _c(
+                "label",
+                { staticClass: "form-label", attrs: { for: "colour" } },
+                [_vm._v("Colour")]
+              ),
+              _vm._v(" "),
+              _c("colour-picker", {
+                attrs: {
+                  name: "delivery",
+                  colours: _vm.filteredColours,
+                  value: _vm.delivery.colour
+                },
                 on: {
                   change: function($event) {
                     return _vm.updateDelivery({
                       prop: "colour",
-                      value: $event.target.value
+                      value: arguments[0]
                     })
                   }
                 }
-              },
-              _vm._l(_vm.filteredColours, function(colour) {
-                return _c(
-                  "option",
-                  { key: colour.name, domProps: { value: colour.value } },
-                  [_vm._v(_vm._s(colour.name) + "\n\t\t\t\t")]
-                )
-              }),
-              0
-            )
-          ])
+              })
+            ],
+            1
+          )
         ]
       ),
       _vm._v(" "),
@@ -27268,67 +27461,62 @@ var render = function() {
             })
           ]),
           _vm._v(" "),
-          _c("div", { staticClass: "form-group" }, [
-            _c("label", { staticClass: "form-label", attrs: { for: "type" } }, [
-              _vm._v("Type")
-            ]),
-            _vm._v(" "),
-            _c(
-              "select",
-              {
-                staticClass: "form-select",
-                domProps: { value: _vm.deployment.type },
+          _c(
+            "div",
+            { staticClass: "form-group" },
+            [
+              _c(
+                "label",
+                { staticClass: "form-label", attrs: { for: "type" } },
+                [_vm._v("Type")]
+              ),
+              _vm._v(" "),
+              _c("button-group", {
+                attrs: {
+                  options: _vm.activityTypes,
+                  value: _vm.deployment.type
+                },
                 on: {
                   change: function($event) {
                     return _vm.updateDeployment({
                       prop: "type",
-                      value: $event.target.value
+                      value: arguments[0]
                     })
                   }
                 }
-              },
-              _vm._l(_vm.activityTypes, function(type) {
-                return _c(
-                  "option",
-                  { key: type.value, domProps: { value: type.value } },
-                  [_vm._v(_vm._s(type.label) + "\n\t\t\t\t")]
-                )
-              }),
-              0
-            )
-          ]),
+              })
+            ],
+            1
+          ),
           _vm._v(" "),
-          _c("div", { staticClass: "form-group" }, [
-            _c(
-              "label",
-              { staticClass: "form-label", attrs: { for: "colour" } },
-              [_vm._v("Colour")]
-            ),
-            _vm._v(" "),
-            _c(
-              "select",
-              {
-                staticClass: "form-select",
-                domProps: { value: _vm.deployment.colour },
+          _c(
+            "div",
+            { staticClass: "form-group" },
+            [
+              _c(
+                "label",
+                { staticClass: "form-label", attrs: { for: "colour" } },
+                [_vm._v("Colour")]
+              ),
+              _vm._v(" "),
+              _c("colour-picker", {
+                attrs: {
+                  name: "specDes",
+                  colours: _vm.filteredColours,
+                  value: _vm.deployment.colour
+                },
                 on: {
                   change: function($event) {
                     return _vm.updateDeployment({
                       prop: "colour",
-                      value: $event.target.value
+                      value: arguments[0]
                     })
                   }
                 }
-              },
-              _vm._l(_vm.filteredColours, function(colour) {
-                return _c(
-                  "option",
-                  { key: colour.name, domProps: { value: colour.value } },
-                  [_vm._v(_vm._s(colour.name) + "\n\t\t\t\t")]
-                )
-              }),
-              0
-            )
-          ])
+              })
+            ],
+            1
+          )
         ]
       ),
       _vm._v(" "),
@@ -27800,67 +27988,62 @@ var render = function() {
             })
           ]),
           _vm._v(" "),
-          _c("div", { staticClass: "form-group" }, [
-            _c("label", { staticClass: "form-label", attrs: { for: "type" } }, [
-              _vm._v("Type")
-            ]),
-            _vm._v(" "),
-            _c(
-              "select",
-              {
-                staticClass: "form-select",
-                domProps: { value: _vm.evaluation.type },
+          _c(
+            "div",
+            { staticClass: "form-group" },
+            [
+              _c(
+                "label",
+                { staticClass: "form-label", attrs: { for: "type" } },
+                [_vm._v("Type")]
+              ),
+              _vm._v(" "),
+              _c("button-group", {
+                attrs: {
+                  options: _vm.activityTypes,
+                  value: _vm.evaluation.type
+                },
                 on: {
                   change: function($event) {
                     return _vm.updateEvaluation({
                       prop: "type",
-                      value: $event.target.value
+                      value: arguments[0]
                     })
                   }
                 }
-              },
-              _vm._l(_vm.activityTypes, function(type) {
-                return _c(
-                  "option",
-                  { key: type.value, domProps: { value: type.value } },
-                  [_vm._v(_vm._s(type.label) + "\n\t\t\t\t")]
-                )
-              }),
-              0
-            )
-          ]),
+              })
+            ],
+            1
+          ),
           _vm._v(" "),
-          _c("div", { staticClass: "form-group" }, [
-            _c(
-              "label",
-              { staticClass: "form-label", attrs: { for: "colour" } },
-              [_vm._v("Colour")]
-            ),
-            _vm._v(" "),
-            _c(
-              "select",
-              {
-                staticClass: "form-select",
-                domProps: { value: _vm.evaluation.colour },
+          _c(
+            "div",
+            { staticClass: "form-group" },
+            [
+              _c(
+                "label",
+                { staticClass: "form-label", attrs: { for: "colour" } },
+                [_vm._v("Colour")]
+              ),
+              _vm._v(" "),
+              _c("colour-picker", {
+                attrs: {
+                  name: "evaluation",
+                  colours: _vm.filteredColours,
+                  value: _vm.evaluation.colour
+                },
                 on: {
                   change: function($event) {
                     return _vm.updateEvaluation({
                       prop: "colour",
-                      value: $event.target.value
+                      value: arguments[0]
                     })
                   }
                 }
-              },
-              _vm._l(_vm.filteredColours, function(colour) {
-                return _c(
-                  "option",
-                  { key: colour.name, domProps: { value: colour.value } },
-                  [_vm._v(_vm._s(colour.name) + "\n\t\t\t\t")]
-                )
-              }),
-              0
-            )
-          ])
+              })
+            ],
+            1
+          )
         ]
       ),
       _vm._v(" "),
@@ -27994,67 +28177,62 @@ var render = function() {
             })
           ]),
           _vm._v(" "),
-          _c("div", { staticClass: "form-group" }, [
-            _c("label", { staticClass: "form-label", attrs: { for: "type" } }, [
-              _vm._v("Type")
-            ]),
-            _vm._v(" "),
-            _c(
-              "select",
-              {
-                staticClass: "form-select",
-                domProps: { value: _vm.initiator.type },
+          _c(
+            "div",
+            { staticClass: "form-group" },
+            [
+              _c(
+                "label",
+                { staticClass: "form-label", attrs: { for: "type" } },
+                [_vm._v("Type")]
+              ),
+              _vm._v(" "),
+              _c("button-group", {
+                attrs: {
+                  options: _vm.activityTypes,
+                  value: _vm.initiator.type
+                },
                 on: {
                   change: function($event) {
                     return _vm.updateInitiator({
                       prop: "type",
-                      value: $event.target.value
+                      value: arguments[0]
                     })
                   }
                 }
-              },
-              _vm._l(_vm.activityTypes, function(type) {
-                return _c(
-                  "option",
-                  { key: type.value, domProps: { value: type.value } },
-                  [_vm._v(_vm._s(type.label) + "\n\t\t\t\t")]
-                )
-              }),
-              0
-            )
-          ]),
+              })
+            ],
+            1
+          ),
           _vm._v(" "),
-          _c("div", { staticClass: "form-group" }, [
-            _c(
-              "label",
-              { staticClass: "form-label", attrs: { for: "colour" } },
-              [_vm._v("Colour")]
-            ),
-            _vm._v(" "),
-            _c(
-              "select",
-              {
-                staticClass: "form-select",
-                domProps: { value: _vm.initiator.colour },
+          _c(
+            "div",
+            { staticClass: "form-group" },
+            [
+              _c(
+                "label",
+                { staticClass: "form-label", attrs: { for: "colour" } },
+                [_vm._v("Colour")]
+              ),
+              _vm._v(" "),
+              _c("colour-picker", {
+                attrs: {
+                  name: "initiator",
+                  colours: _vm.filteredColours,
+                  value: _vm.initiator.colour
+                },
                 on: {
                   change: function($event) {
                     return _vm.updateInitiator({
                       prop: "colour",
-                      value: $event.target.value
+                      value: arguments[0]
                     })
                   }
                 }
-              },
-              _vm._l(_vm.filteredColours, function(colour) {
-                return _c(
-                  "option",
-                  { key: colour.name, domProps: { value: colour.value } },
-                  [_vm._v(_vm._s(colour.name) + "\n\t\t\t\t")]
-                )
-              }),
-              0
-            )
-          ])
+              })
+            ],
+            1
+          )
         ]
       ),
       _vm._v(" "),
@@ -28188,67 +28366,62 @@ var render = function() {
             })
           ]),
           _vm._v(" "),
-          _c("div", { staticClass: "form-group" }, [
-            _c("label", { staticClass: "form-label", attrs: { for: "type" } }, [
-              _vm._v("Type")
-            ]),
-            _vm._v(" "),
-            _c(
-              "select",
-              {
-                staticClass: "form-select",
-                domProps: { value: _vm.policyDef.type },
+          _c(
+            "div",
+            { staticClass: "form-group" },
+            [
+              _c(
+                "label",
+                { staticClass: "form-label", attrs: { for: "type" } },
+                [_vm._v("Type")]
+              ),
+              _vm._v(" "),
+              _c("button-group", {
+                attrs: {
+                  options: _vm.activityTypes,
+                  value: _vm.policyDef.type
+                },
                 on: {
                   change: function($event) {
                     return _vm.updatePolicyDef({
                       prop: "type",
-                      value: $event.target.value
+                      value: arguments[0]
                     })
                   }
                 }
-              },
-              _vm._l(_vm.activityTypes, function(type) {
-                return _c(
-                  "option",
-                  { key: type.value, domProps: { value: type.value } },
-                  [_vm._v(_vm._s(type.label) + "\n\t\t\t\t")]
-                )
-              }),
-              0
-            )
-          ]),
+              })
+            ],
+            1
+          ),
           _vm._v(" "),
-          _c("div", { staticClass: "form-group" }, [
-            _c(
-              "label",
-              { staticClass: "form-label", attrs: { for: "colour" } },
-              [_vm._v("Colour")]
-            ),
-            _vm._v(" "),
-            _c(
-              "select",
-              {
-                staticClass: "form-select",
-                domProps: { value: _vm.policyDef.colour },
+          _c(
+            "div",
+            { staticClass: "form-group" },
+            [
+              _c(
+                "label",
+                { staticClass: "form-label", attrs: { for: "colour" } },
+                [_vm._v("Colour")]
+              ),
+              _vm._v(" "),
+              _c("colour-picker", {
+                attrs: {
+                  name: "policyDef",
+                  colours: _vm.filteredColours,
+                  value: _vm.policyDef.colour
+                },
                 on: {
                   change: function($event) {
                     return _vm.updatePolicyDef({
                       prop: "colour",
-                      value: $event.target.value
+                      value: arguments[0]
                     })
                   }
                 }
-              },
-              _vm._l(_vm.filteredColours, function(colour) {
-                return _c(
-                  "option",
-                  { key: colour.name, domProps: { value: colour.value } },
-                  [_vm._v(_vm._s(colour.name) + "\n\t\t\t\t")]
-                )
-              }),
-              0
-            )
-          ])
+              })
+            ],
+            1
+          )
         ]
       ),
       _vm._v(" "),
@@ -29212,67 +29385,59 @@ var render = function() {
             })
           ]),
           _vm._v(" "),
-          _c("div", { staticClass: "form-group" }, [
-            _c("label", { staticClass: "form-label", attrs: { for: "type" } }, [
-              _vm._v("Type")
-            ]),
-            _vm._v(" "),
-            _c(
-              "select",
-              {
-                staticClass: "form-select",
-                domProps: { value: _vm.specDes.type },
+          _c(
+            "div",
+            { staticClass: "form-group" },
+            [
+              _c(
+                "label",
+                { staticClass: "form-label", attrs: { for: "type" } },
+                [_vm._v("Type")]
+              ),
+              _vm._v(" "),
+              _c("button-group", {
+                attrs: { options: _vm.activityTypes, value: _vm.specDes.type },
                 on: {
                   change: function($event) {
                     return _vm.updateSpecDes({
                       prop: "type",
-                      value: $event.target.value
+                      value: arguments[0]
                     })
                   }
                 }
-              },
-              _vm._l(_vm.activityTypes, function(type) {
-                return _c(
-                  "option",
-                  { key: type.value, domProps: { value: type.value } },
-                  [_vm._v(_vm._s(type.label) + "\n\t\t\t\t")]
-                )
-              }),
-              0
-            )
-          ]),
+              })
+            ],
+            1
+          ),
           _vm._v(" "),
-          _c("div", { staticClass: "form-group" }, [
-            _c(
-              "label",
-              { staticClass: "form-label", attrs: { for: "colour" } },
-              [_vm._v("Colour")]
-            ),
-            _vm._v(" "),
-            _c(
-              "select",
-              {
-                staticClass: "form-select",
-                domProps: { value: _vm.specDes.colour },
+          _c(
+            "div",
+            { staticClass: "form-group" },
+            [
+              _c(
+                "label",
+                { staticClass: "form-label", attrs: { for: "colour" } },
+                [_vm._v("Colour")]
+              ),
+              _vm._v(" "),
+              _c("colour-picker", {
+                attrs: {
+                  name: "specDes",
+                  colours: _vm.filteredColours,
+                  value: _vm.specDes.colour
+                },
                 on: {
                   change: function($event) {
                     return _vm.updateSpecDes({
                       prop: "colour",
-                      value: $event.target.value
+                      value: arguments[0]
                     })
                   }
                 }
-              },
-              _vm._l(_vm.filteredColours, function(colour) {
-                return _c(
-                  "option",
-                  { key: colour.name, domProps: { value: colour.value } },
-                  [_vm._v(_vm._s(colour.name) + "\n\t\t\t\t")]
-                )
-              }),
-              0
-            )
-          ])
+              })
+            ],
+            1
+          )
         ]
       ),
       _vm._v(" "),
@@ -29400,67 +29565,56 @@ var render = function() {
             })
           ]),
           _vm._v(" "),
-          _c("div", { staticClass: "form-group" }, [
-            _c("label", { staticClass: "form-label", attrs: { for: "type" } }, [
-              _vm._v("Type")
-            ]),
-            _vm._v(" "),
-            _c(
-              "select",
-              {
-                staticClass: "form-select",
-                domProps: { value: _vm.user.type },
+          _c(
+            "div",
+            { staticClass: "form-group" },
+            [
+              _c(
+                "label",
+                { staticClass: "form-label", attrs: { for: "type" } },
+                [_vm._v("Type")]
+              ),
+              _vm._v(" "),
+              _c("button-group", {
+                attrs: { options: _vm.activityTypes, value: _vm.user.type },
                 on: {
                   change: function($event) {
-                    return _vm.updateUser({
-                      prop: "type",
-                      value: $event.target.value
-                    })
+                    return _vm.updateUser({ prop: "type", value: arguments[0] })
                   }
                 }
-              },
-              _vm._l(_vm.activityTypes, function(type) {
-                return _c(
-                  "option",
-                  { key: type.value, domProps: { value: type.value } },
-                  [_vm._v(_vm._s(type.label) + "\n\t\t\t\t")]
-                )
-              }),
-              0
-            )
-          ]),
+              })
+            ],
+            1
+          ),
           _vm._v(" "),
-          _c("div", { staticClass: "form-group" }, [
-            _c(
-              "label",
-              { staticClass: "form-label", attrs: { for: "colour" } },
-              [_vm._v("Colour")]
-            ),
-            _vm._v(" "),
-            _c(
-              "select",
-              {
-                staticClass: "form-select",
-                domProps: { value: _vm.user.colour },
+          _c(
+            "div",
+            { staticClass: "form-group" },
+            [
+              _c(
+                "label",
+                { staticClass: "form-label", attrs: { for: "colour" } },
+                [_vm._v("Colour")]
+              ),
+              _vm._v(" "),
+              _c("colour-picker", {
+                attrs: {
+                  name: "user",
+                  colours: _vm.filteredColours,
+                  value: _vm.user.colour
+                },
                 on: {
                   change: function($event) {
                     return _vm.updateUser({
                       prop: "colour",
-                      value: $event.target.value
+                      value: arguments[0]
                     })
                   }
                 }
-              },
-              _vm._l(_vm.filteredColours, function(colour) {
-                return _c(
-                  "option",
-                  { key: colour.name, domProps: { value: colour.value } },
-                  [_vm._v(_vm._s(colour.name) + "\n\t\t\t\t")]
-                )
-              }),
-              0
-            )
-          ])
+              })
+            ],
+            1
+          )
         ]
       ),
       _vm._v(" "),
