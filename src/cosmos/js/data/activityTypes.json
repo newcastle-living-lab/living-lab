@@ -1,0 +1,5 @@
+[
+	{ "value": "user", "label": "User" },
+	{ "value": "organisation", "label": "Organisation" },
+	{ "value": "service", "label": "Service" }
+]

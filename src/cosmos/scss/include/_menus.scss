@@ -1,0 +1,18 @@
+.menu {
+
+	&.simple-menu {
+		border: 0;
+		margin: 0;
+		padding: 0;
+		box-shadow: none;
+
+		.menu-item {
+
+			& > a {
+				padding-left: $unit-4;
+				padding-right: $unit-4;
+			}
+		}
+	}
+
+}
