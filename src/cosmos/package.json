@@ -1,8 +1,8 @@
 {
-	"name": "ll-enterprise-projection-wizard",
+	"name": "ll-cosmos",
 	"version": "1.0.0",
 	"private": true,
-	"description": "Enterprise Projection Wizard",
+	"description": "Living Lab COSMOS",
 	"main": "main.js",
 	"scripts": {
 		"dev": "npm run development",

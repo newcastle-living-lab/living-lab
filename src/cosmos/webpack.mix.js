@@ -11,14 +11,14 @@ let mix = require('laravel-mix');
  |
  */
 
-var basename = 'epw';
+var basename = 'cosmos';
 
 if (mix.inProduction()) {
-	var jsOutput = `assets/epw/main.min.js`;
-	var cssOutput = `assets/epw/main.min.css`;
+	var jsOutput = `assets/cosmos/main.min.js`;
+	var cssOutput = `assets/cosmos/main.min.css`;
 } else {
-	var jsOutput = `assets/epw/main.js`;
-	var cssOutput = `assets/epw/main.css`;
+	var jsOutput = `assets/cosmos/main.js`;
+	var cssOutput = `assets/cosmos/main.css`;
 }
 
 mix.setPublicPath('../public');

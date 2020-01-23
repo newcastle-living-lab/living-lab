@@ -30,9 +30,9 @@
 
 			</section>
 
-			<section class="navbar-section">
+			<section class="navbar-section navbar-tabs">
 				<div v-if="hasProject">
-					<span v-if="hasProject" class="btn btn-link text-bold mr-2">{{ project.name }}</span>
+					<span v-if="hasProject" class="btn btn-link text-bold btn-empty mr-2">{{ project.name }}</span>
 					<router-link :to="projectionUrl" class="btn btn-link" :class="activeTab == 'projection' ? 'active' : ''">Projection</router-link>
 					<router-link :to="socialUrl" class="btn btn-link">Social Media</router-link>
 				</div>

@@ -11,7 +11,6 @@ import store from './store';
 
 Vue.use(VueKonva);
 
-
 // General components
 import SidebarHeading from './components/sidebar/partials/Heading';
 import EditHint from './components/sidebar/partials/EditHint';
@@ -23,6 +22,7 @@ Vue.component('edit-hint', EditHint);
 Vue.component('button-group', ButtonGroup);
 Vue.component('colour-picker', ColourPicker);
 
+Vue.config.productionTip = false;
 
 new Vue({
 	el: '#app',

@@ -3011,6 +3011,7 @@ vue__WEBPACK_IMPORTED_MODULE_1___default.a.component('sidebar-heading', _compone
 vue__WEBPACK_IMPORTED_MODULE_1___default.a.component('edit-hint', _components_sidebar_partials_EditHint__WEBPACK_IMPORTED_MODULE_9__["default"]);
 vue__WEBPACK_IMPORTED_MODULE_1___default.a.component('button-group', _components_partials_ButtonGroup__WEBPACK_IMPORTED_MODULE_10__["default"]);
 vue__WEBPACK_IMPORTED_MODULE_1___default.a.component('colour-picker', _components_partials_ColourPicker__WEBPACK_IMPORTED_MODULE_11__["default"]);
+vue__WEBPACK_IMPORTED_MODULE_1___default.a.config.productionTip = false;
 new vue__WEBPACK_IMPORTED_MODULE_1___default.a({
   el: '#app',
   template: '<App/>',
@@ -3108,7 +3109,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
 // import Vue from 'vue';
 
-var baseURL = '/epw/';
+var baseURL = '/cosmos/';
 var http = axios__WEBPACK_IMPORTED_MODULE_0___default.a.create({
   baseURL: baseURL
 });
@@ -7966,9 +7967,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  methods: Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])('app', ['doNew', 'doOpen']),
-  activated: function activated() {// this.$router.push('/').catch((e) => {});
-  }
+  methods: Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])('app', ['doNew', 'doOpen'])
 });
 
 /***/ }),
@@ -26177,15 +26176,17 @@ var render = function() {
           : _vm._e()
       ]),
       _vm._v(" "),
-      _c("section", { staticClass: "navbar-section" }, [
+      _c("section", { staticClass: "navbar-section navbar-tabs" }, [
         _vm.hasProject
           ? _c(
               "div",
               [
                 _vm.hasProject
-                  ? _c("span", { staticClass: "btn btn-link text-bold mr-2" }, [
-                      _vm._v(_vm._s(_vm.project.name))
-                    ])
+                  ? _c(
+                      "span",
+                      { staticClass: "btn btn-link text-bold btn-empty mr-2" },
+                      [_vm._v(_vm._s(_vm.project.name))]
+                    )
                   : _vm._e(),
                 _vm._v(" "),
                 _c(
@@ -27105,9 +27106,7 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c("h3", { staticClass: "sidebar-heading" }, [
-      _vm._v("Enterprise Projection Wizard")
-    ]),
+    _c("h3", { staticClass: "sidebar-heading" }, [_vm._v("COSMOS")]),
     _vm._v(" "),
     _c("div", { staticClass: "sidebar-content" }, [
       _c("p", { staticClass: "text-center mt-4 mb-4" }, [
@@ -46331,8 +46330,8 @@ module.exports = g;
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! K:\Web\projects\livinglab\src\epw\js\main.js */"./js/main.js");
-module.exports = __webpack_require__(/*! K:\Web\projects\livinglab\src\epw\scss\main.scss */"./scss/main.scss");
+__webpack_require__(/*! K:\Web\projects\livinglab\src\cosmos\js\main.js */"./js/main.js");
+module.exports = __webpack_require__(/*! K:\Web\projects\livinglab\src\cosmos\scss\main.scss */"./scss/main.scss");
 
 
 /***/ })

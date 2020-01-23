@@ -4748,6 +4748,17 @@ body {
   vertical-align: -10%;
 }
 
+.app-toolbar .navbar-tabs .btn-link {
+  padding-left: 0;
+  padding-right: 0;
+  margin-left: 0.4rem;
+  margin-right: 0.4rem;
+}
+
+.app-toolbar .navbar-tabs .btn-link.router-link-active {
+  border-bottom: 0.1rem solid #0074d9;
+}
+
 .scrollable {
   position: absolute;
   top: 0;
@@ -5109,6 +5120,10 @@ a.text-gray-medium:visited {
 
 .btn .feather {
   vertical-align: -15%;
+}
+
+.btn.btn-empty {
+  cursor: default;
 }
 
 .m-4 {
