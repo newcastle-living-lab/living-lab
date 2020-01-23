@@ -6,7 +6,7 @@ import { getField, updateField } from 'vuex-map-fields';
  *
  */
 const state = {
-	appName: 'EPW',
+	appName: 'COSMOS',
 	editing: false,
 	loading: false,
 	sidebarView: 'welcome',

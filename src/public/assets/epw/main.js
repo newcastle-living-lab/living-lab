@@ -3208,7 +3208,7 @@ __webpack_require__.r(__webpack_exports__);
  */
 
 var state = {
-  appName: 'EPW',
+  appName: 'COSMOS',
   editing: false,
   loading: false,
   sidebarView: 'welcome',
@@ -5762,9 +5762,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     currentRoute: function currentRoute() {
       return this.$route;
     }
-  }, Object(vuex__WEBPACK_IMPORTED_MODULE_3__["mapState"])('app', ['editing', 'loading'])),
+  }, Object(vuex__WEBPACK_IMPORTED_MODULE_3__["mapState"])('app', ['appName', 'editing', 'loading']), {}, Object(vuex__WEBPACK_IMPORTED_MODULE_3__["mapState"])('project', ['project'])),
   watch: {
-    '$route': 'fetchProject'
+    '$route': 'fetchProject',
+    'project': 'updateTitle'
   },
   methods: {
     fetchProject: function fetchProject() {
@@ -5773,11 +5774,20 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       }
 
       this.$store.dispatch('projects/getProject', this.$route.params.id);
+    },
+    updateTitle: function updateTitle() {
+      if (this.project && this.project.name) {
+        document.title = "".concat(this.project.name, " | ").concat(this.appName, " [Living Lab]");
+        return;
+      }
+
+      document.title = "".concat(this.appName, " [Living Lab]");
     }
   },
   created: function created() {
     this.$store.commit('app/setUser', this.$root.$options.user);
     this.fetchProject();
+    this.updateTitle();
   }
 });
 

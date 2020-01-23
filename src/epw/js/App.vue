@@ -43,13 +43,18 @@ export default {
 			return this.$route
 		},
 		...mapState('app', [
+			'appName',
 			'editing',
 			'loading',
-		])
+		]),
+		...mapState('project', [
+			'project',
+		]),
 	},
 
 	watch: {
-		'$route': 'fetchProject'
+		'$route': 'fetchProject',
+		'project': 'updateTitle',
 	},
 
 	methods: {
@@ -58,12 +63,20 @@ export default {
 				return;
 			}
 			this.$store.dispatch('projects/getProject', this.$route.params.id);
+		},
+		updateTitle() {
+			if (this.project && this.project.name) {
+				document.title = `${this.project.name} | ${this.appName} [Living Lab]`;
+				return;
+			}
+			document.title = `${this.appName} [Living Lab]`;
 		}
 	},
 
 	created() {
 		this.$store.commit('app/setUser', this.$root.$options.user);
 		this.fetchProject();
+		this.updateTitle();
 	}
 
 }
