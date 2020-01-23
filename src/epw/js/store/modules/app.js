@@ -79,7 +79,14 @@ const actions = {
 			'policydef',
 			'specdes',
 			'deployment',
-			'services',
+			'delivery',
+			'evaluation',
+			'user',
+			'beneficiary',
+			'initiator',
+			'services-extsvc',
+			'services-extorg',
+			'services-infsvc',
 			'social',
 		];
 

@@ -3067,7 +3067,7 @@ var actions = {
    */
   doEditNext: function doEditNext(_ref10, source) {
     var commit = _ref10.commit;
-    var order = ['details', 'projection', 'drivers', 'policydef', 'specdes', 'deployment', 'services', 'social'];
+    var order = ['details', 'projection', 'drivers', 'policydef', 'specdes', 'deployment', 'delivery', 'evaluation', 'user', 'beneficiary', 'initiator', 'services-extsvc', 'services-extorg', 'services-infsvc', 'social'];
     var idx = order.indexOf(source);
 
     if (idx >= 0) {
