@@ -2639,6 +2639,75 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./js/components/sidebar/partials/EditHint.vue":
+/*!*****************************************************!*\
+  !*** ./js/components/sidebar/partials/EditHint.vue ***!
+  \*****************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _EditHint_vue_vue_type_template_id_de2b4b2c___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./EditHint.vue?vue&type=template&id=de2b4b2c& */ "./js/components/sidebar/partials/EditHint.vue?vue&type=template&id=de2b4b2c&");
+/* harmony import */ var _EditHint_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./EditHint.vue?vue&type=script&lang=js& */ "./js/components/sidebar/partials/EditHint.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _EditHint_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _EditHint_vue_vue_type_template_id_de2b4b2c___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _EditHint_vue_vue_type_template_id_de2b4b2c___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "js/components/sidebar/partials/EditHint.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./js/components/sidebar/partials/EditHint.vue?vue&type=script&lang=js&":
+/*!******************************************************************************!*\
+  !*** ./js/components/sidebar/partials/EditHint.vue?vue&type=script&lang=js& ***!
+  \******************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_EditHint_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./EditHint.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./js/components/sidebar/partials/EditHint.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_EditHint_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./js/components/sidebar/partials/EditHint.vue?vue&type=template&id=de2b4b2c&":
+/*!************************************************************************************!*\
+  !*** ./js/components/sidebar/partials/EditHint.vue?vue&type=template&id=de2b4b2c& ***!
+  \************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_EditHint_vue_vue_type_template_id_de2b4b2c___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./EditHint.vue?vue&type=template&id=de2b4b2c& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./js/components/sidebar/partials/EditHint.vue?vue&type=template&id=de2b4b2c&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_EditHint_vue_vue_type_template_id_de2b4b2c___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_EditHint_vue_vue_type_template_id_de2b4b2c___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
 /***/ "./js/components/sidebar/partials/Heading.vue":
 /*!****************************************************!*\
   !*** ./js/components/sidebar/partials/Heading.vue ***!
@@ -2778,6 +2847,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _services_api__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./services/api */ "./js/services/api.js");
 /* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./store */ "./js/store/index.js");
 /* harmony import */ var _components_sidebar_partials_Heading__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./components/sidebar/partials/Heading */ "./js/components/sidebar/partials/Heading.vue");
+/* harmony import */ var _components_sidebar_partials_EditHint__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./components/sidebar/partials/EditHint */ "./js/components/sidebar/partials/EditHint.vue");
 
 
 
@@ -2789,7 +2859,9 @@ __webpack_require__.r(__webpack_exports__);
 vue__WEBPACK_IMPORTED_MODULE_1___default.a.use(vue_konva__WEBPACK_IMPORTED_MODULE_2___default.a); // General components
 
 
+
 vue__WEBPACK_IMPORTED_MODULE_1___default.a.component('sidebar-heading', _components_sidebar_partials_Heading__WEBPACK_IMPORTED_MODULE_8__["default"]);
+vue__WEBPACK_IMPORTED_MODULE_1___default.a.component('edit-hint', _components_sidebar_partials_EditHint__WEBPACK_IMPORTED_MODULE_10__["default"]);
 new vue__WEBPACK_IMPORTED_MODULE_1___default.a({
   el: '#app',
   template: '<App/>',
@@ -7404,6 +7476,23 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -7713,6 +7802,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
 
 
 
@@ -7757,6 +7851,11 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+//
+//
+//
+//
+//
 //
 //
 //
@@ -7863,6 +7962,11 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+//
+//
+//
+//
+//
 //
 //
 //
@@ -8088,6 +8192,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -8132,6 +8241,11 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+//
+//
+//
+//
+//
 //
 //
 //
@@ -8298,6 +8412,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
 
 
 
@@ -8342,6 +8461,11 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+//
+//
+//
+//
+//
 //
 //
 //
@@ -8688,6 +8812,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -8709,7 +8838,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   props: {
     title: String,
     type: String,
-    labelProp: String
+    labelProp: String,
+    hintMain: String
   },
   data: function data() {
     return {
@@ -9139,6 +9269,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
 
 
 
@@ -9245,6 +9380,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
 
 
 
@@ -9266,6 +9406,34 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       this.$store.dispatch('app/doEditNext', this.panelName);
     }
   })
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./js/components/sidebar/partials/EditHint.vue?vue&type=script&lang=js&":
+/*!**************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./js/components/sidebar/partials/EditHint.vue?vue&type=script&lang=js& ***!
+  \**************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var vue_feather_icons_icons_InfoIcon__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue-feather-icons/icons/InfoIcon */ "./node_modules/vue-feather-icons/icons/InfoIcon.js");
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  components: {
+    InfoIcon: vue_feather_icons_icons_InfoIcon__WEBPACK_IMPORTED_MODULE_0__["default"]
+  }
 });
 
 /***/ }),
@@ -22700,6 +22868,75 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/vue-feather-icons/icons/InfoIcon.js":
+/*!**********************************************************!*\
+  !*** ./node_modules/vue-feather-icons/icons/InfoIcon.js ***!
+  \**********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var babel_helper_vue_jsx_merge_props__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! babel-helper-vue-jsx-merge-props */ "./node_modules/babel-helper-vue-jsx-merge-props/index.js");
+/* harmony import */ var babel_helper_vue_jsx_merge_props__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(babel_helper_vue_jsx_merge_props__WEBPACK_IMPORTED_MODULE_0__);
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: 'InfoIcon',
+  props: {
+    size: {
+      type: String,
+      default: '24',
+      validator: function validator(s) {
+        return !isNaN(s) || s.length >= 2 && !isNaN(s.slice(0, s.length - 1)) && s.slice(-1) === 'x';
+      }
+    }
+  },
+  functional: true,
+  render: function render(h, ctx) {
+    var size = ctx.props.size.slice(-1) === 'x' ? ctx.props.size.slice(0, ctx.props.size.length - 1) + 'em' : parseInt(ctx.props.size) + 'px';
+    var attrs = ctx.data.attrs || {};
+    attrs.width = attrs.width || size;
+    attrs.height = attrs.height || size;
+    ctx.data.attrs = attrs;
+    return h("svg", babel_helper_vue_jsx_merge_props__WEBPACK_IMPORTED_MODULE_0___default()([{
+      attrs: {
+        xmlns: "http://www.w3.org/2000/svg",
+        width: "24",
+        height: "24",
+        viewBox: "0 0 24 24",
+        fill: "none",
+        stroke: "currentColor",
+        "stroke-width": "2",
+        "stroke-linecap": "round",
+        "stroke-linejoin": "round"
+      },
+      "class": "feather feather-info"
+    }, ctx.data]), [h("circle", {
+      attrs: {
+        cx: "12",
+        cy: "12",
+        r: "10"
+      }
+    }), h("line", {
+      attrs: {
+        x1: "12",
+        y1: "16",
+        x2: "12",
+        y2: "12"
+      }
+    }), h("line", {
+      attrs: {
+        x1: "12",
+        y1: "8",
+        x2: "12",
+        y2: "8"
+      }
+    })]);
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/vue-feather-icons/icons/PlusIcon.js":
 /*!**********************************************************!*\
   !*** ./node_modules/vue-feather-icons/icons/PlusIcon.js ***!
@@ -26267,7 +26504,9 @@ var render = function() {
         attrs: {
           title: "External Technical Services",
           type: "extsvc",
-          labelProp: "extSvcLabel"
+          labelProp: "extSvcLabel",
+          hintMain:
+            "What reusable facilities, (technical and human) resources, services and sources of information were developed and used in support of these service definition and development processes? What external resources and services (e.g. communications and social media) were/are used?"
         }
       }),
       _vm._v(" "),
@@ -26275,7 +26514,9 @@ var render = function() {
         attrs: {
           title: "External Organisations",
           type: "extorg",
-          labelProp: "extOrgLabel"
+          labelProp: "extOrgLabel",
+          hintMain:
+            "Are there any relevant actors, stakeholders or agencies which are relevant to the pilot, but which remain outside its vision and ethos?"
         }
       }),
       _vm._v(" "),
@@ -26283,7 +26524,9 @@ var render = function() {
         attrs: {
           title: "Infrastructural Services",
           type: "infsvc",
-          labelProp: "infSvcLabel"
+          labelProp: "infSvcLabel",
+          hintMain:
+            "What external services, channels and facilities do you make use of in the delivery of your service(s)? What information sources do you make use of? What information do you publish, to whom and using what channels and media?"
         }
       }),
       _vm._v(" "),
@@ -26570,6 +26813,37 @@ var render = function() {
         attrs: { name: _vm.panelName, title: "Beneficiary" }
       }),
       _vm._v(" "),
+      _c("edit-hint", {
+        directives: [
+          {
+            name: "show",
+            rawName: "v-show",
+            value: _vm.visible,
+            expression: "visible"
+          }
+        ],
+        scopedSlots: _vm._u([
+          {
+            key: "main",
+            fn: function() {
+              return [
+                _vm._v(
+                  "Are there beneficiaries other than the direct user/participants? If so, who are they?"
+                )
+              ]
+            },
+            proxy: true
+          },
+          {
+            key: "details",
+            fn: function() {
+              return undefined
+            },
+            proxy: true
+          }
+        ])
+      }),
+      _vm._v(" "),
       _c(
         "div",
         {
@@ -26733,6 +27007,37 @@ var render = function() {
         attrs: { name: _vm.panelName, title: "Deliverer" }
       }),
       _vm._v(" "),
+      _c("edit-hint", {
+        directives: [
+          {
+            name: "show",
+            rawName: "v-show",
+            value: _vm.visible,
+            expression: "visible"
+          }
+        ],
+        scopedSlots: _vm._u([
+          {
+            key: "main",
+            fn: function() {
+              return [
+                _vm._v(
+                  "Who is responsible for the delivery mechanism(s), channels and roles in your pilot?"
+                )
+              ]
+            },
+            proxy: true
+          },
+          {
+            key: "details",
+            fn: function() {
+              return undefined
+            },
+            proxy: true
+          }
+        ])
+      }),
+      _vm._v(" "),
       _c(
         "div",
         {
@@ -26894,6 +27199,37 @@ var render = function() {
     [
       _c("sidebar-heading", {
         attrs: { name: _vm.panelName, title: "Deployer" }
+      }),
+      _vm._v(" "),
+      _c("edit-hint", {
+        directives: [
+          {
+            name: "show",
+            rawName: "v-show",
+            value: _vm.visible,
+            expression: "visible"
+          }
+        ],
+        scopedSlots: _vm._u([
+          {
+            key: "main",
+            fn: function() {
+              return [
+                _vm._v(
+                  "Who deploys / deployed and activates / activated those processes and resources?"
+                )
+              ]
+            },
+            proxy: true
+          },
+          {
+            key: "details",
+            fn: function() {
+              return undefined
+            },
+            proxy: true
+          }
+        ])
       }),
       _vm._v(" "),
       _c(
@@ -27241,6 +27577,37 @@ var render = function() {
         attrs: { name: _vm.panelName, title: "Drivers and Motivations" }
       }),
       _vm._v(" "),
+      _c("edit-hint", {
+        directives: [
+          {
+            name: "show",
+            rawName: "v-show",
+            value: _vm.visible,
+            expression: "visible"
+          }
+        ],
+        scopedSlots: _vm._u([
+          {
+            key: "main",
+            fn: function() {
+              return [
+                _vm._v(
+                  "What were / are the drivers and motivations of the project? Was it a statutory requirement, recognition of a need or demand, seizing an opportunity, addressing an inequality?"
+                )
+              ]
+            },
+            proxy: true
+          },
+          {
+            key: "details",
+            fn: function() {
+              return undefined
+            },
+            proxy: true
+          }
+        ])
+      }),
+      _vm._v(" "),
       _c(
         "div",
         {
@@ -27366,6 +27733,35 @@ var render = function() {
     [
       _c("sidebar-heading", {
         attrs: { name: _vm.panelName, title: "Evaluator" }
+      }),
+      _vm._v(" "),
+      _c("edit-hint", {
+        directives: [
+          {
+            name: "show",
+            rawName: "v-show",
+            value: _vm.visible,
+            expression: "visible"
+          }
+        ],
+        scopedSlots: _vm._u([
+          {
+            key: "main",
+            fn: function() {
+              return [
+                _vm._v("Who is the evaluator(s) and governors of the service?")
+              ]
+            },
+            proxy: true
+          },
+          {
+            key: "details",
+            fn: function() {
+              return undefined
+            },
+            proxy: true
+          }
+        ])
       }),
       _vm._v(" "),
       _c(
@@ -27531,6 +27927,37 @@ var render = function() {
         attrs: { name: _vm.panelName, title: "Initiator" }
       }),
       _vm._v(" "),
+      _c("edit-hint", {
+        directives: [
+          {
+            name: "show",
+            rawName: "v-show",
+            value: _vm.visible,
+            expression: "visible"
+          }
+        ],
+        scopedSlots: _vm._u([
+          {
+            key: "main",
+            fn: function() {
+              return [
+                _vm._v(
+                  "Who are, or were, the instigators who initiated your pilot activity?"
+                )
+              ]
+            },
+            proxy: true
+          },
+          {
+            key: "details",
+            fn: function() {
+              return undefined
+            },
+            proxy: true
+          }
+        ])
+      }),
+      _vm._v(" "),
       _c(
         "div",
         {
@@ -27692,6 +28119,37 @@ var render = function() {
     [
       _c("sidebar-heading", {
         attrs: { name: _vm.panelName, title: "Policy Definer" }
+      }),
+      _vm._v(" "),
+      _c("edit-hint", {
+        directives: [
+          {
+            name: "show",
+            rawName: "v-show",
+            value: _vm.visible,
+            expression: "visible"
+          }
+        ],
+        scopedSlots: _vm._u([
+          {
+            key: "main",
+            fn: function() {
+              return [
+                _vm._v(
+                  "Who are, or were, the definers of the service policies and the principles under which the service operates?"
+                )
+              ]
+            },
+            proxy: true
+          },
+          {
+            key: "details",
+            fn: function() {
+              return undefined
+            },
+            proxy: true
+          }
+        ])
       }),
       _vm._v(" "),
       _c(
@@ -28105,6 +28563,33 @@ var render = function() {
     [
       _c("sidebar-heading", {
         attrs: { name: _vm.panelName, title: _vm.title }
+      }),
+      _vm._v(" "),
+      _c("edit-hint", {
+        directives: [
+          {
+            name: "show",
+            rawName: "v-show",
+            value: _vm.visible && _vm.hintMain,
+            expression: "visible && hintMain"
+          }
+        ],
+        scopedSlots: _vm._u([
+          {
+            key: "main",
+            fn: function() {
+              return [_vm._v(_vm._s(_vm.hintMain))]
+            },
+            proxy: true
+          },
+          {
+            key: "details",
+            fn: function() {
+              return undefined
+            },
+            proxy: true
+          }
+        ])
       }),
       _vm._v(" "),
       _c(
@@ -28660,6 +29145,37 @@ var render = function() {
         attrs: { name: _vm.panelName, title: "Specifier and Designer" }
       }),
       _vm._v(" "),
+      _c("edit-hint", {
+        directives: [
+          {
+            name: "show",
+            rawName: "v-show",
+            value: _vm.visible,
+            expression: "visible"
+          }
+        ],
+        scopedSlots: _vm._u([
+          {
+            key: "main",
+            fn: function() {
+              return [
+                _vm._v(
+                  "Who specifies / specified and designs / designed the service delivery processes and resources?"
+                )
+              ]
+            },
+            proxy: true
+          },
+          {
+            key: "details",
+            fn: function() {
+              return undefined
+            },
+            proxy: true
+          }
+        ])
+      }),
+      _vm._v(" "),
       _c(
         "div",
         {
@@ -28821,6 +29337,33 @@ var render = function() {
     [
       _c("sidebar-heading", { attrs: { name: _vm.panelName, title: "User" } }),
       _vm._v(" "),
+      _c("edit-hint", {
+        directives: [
+          {
+            name: "show",
+            rawName: "v-show",
+            value: _vm.visible,
+            expression: "visible"
+          }
+        ],
+        scopedSlots: _vm._u([
+          {
+            key: "main",
+            fn: function() {
+              return [_vm._v("Who is the direct user of the service?")]
+            },
+            proxy: true
+          },
+          {
+            key: "details",
+            fn: function() {
+              return undefined
+            },
+            proxy: true
+          }
+        ])
+      }),
+      _vm._v(" "),
       _c(
         "div",
         {
@@ -28952,6 +29495,35 @@ var render = function() {
       )
     ],
     1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./js/components/sidebar/partials/EditHint.vue?vue&type=template&id=de2b4b2c&":
+/*!******************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./js/components/sidebar/partials/EditHint.vue?vue&type=template&id=de2b4b2c& ***!
+  \******************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { staticClass: "sidebar-hint" },
+    [_c("info-icon", { attrs: { size: "16" } }), _vm._v(" "), _vm._t("main")],
+    2
   )
 }
 var staticRenderFns = []

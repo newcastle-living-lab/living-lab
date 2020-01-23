@@ -4,6 +4,11 @@
 
 		<sidebar-heading :name="panelName" title="Policy Definer" />
 
+		<edit-hint v-show="visible">
+			<template v-slot:main>Who are, or were, the definers of the service policies and the principles under which the service operates?</template>
+			<template v-slot:details></template>
+		</edit-hint>
+
 		<div class="sidebar-content" v-show="visible">
 
 			<div class="form-group">

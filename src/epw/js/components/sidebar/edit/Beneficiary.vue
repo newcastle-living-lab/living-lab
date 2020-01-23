@@ -4,6 +4,11 @@
 
 		<sidebar-heading :name="panelName" title="Beneficiary" />
 
+		<edit-hint v-show="visible">
+			<template v-slot:main>Are there beneficiaries other than the direct user/participants? If so, who are they?</template>
+			<template v-slot:details></template>
+		</edit-hint>
+
 		<div class="sidebar-content" v-show="visible">
 
 			<div class="form-group">

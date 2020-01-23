@@ -4,6 +4,11 @@
 
 		<sidebar-heading :name="panelName" :title="title" />
 
+		<edit-hint v-show="visible && hintMain">
+			<template v-slot:main>{{ hintMain }}</template>
+			<template v-slot:details></template>
+		</edit-hint>
+
 		<div class="sidebar-content" v-show="visible">
 
 			<div class="form-group">
@@ -79,6 +84,7 @@ export default {
 		title: String,
 		type: String,
 		labelProp: String,
+		hintMain: String,
 	},
 
 	data() {

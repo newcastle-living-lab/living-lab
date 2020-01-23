@@ -4,6 +4,11 @@
 
 		<sidebar-heading :name="panelName" title="Specifier and Designer" />
 
+		<edit-hint v-show="visible">
+			<template v-slot:main>Who specifies / specified and designs / designed the service delivery processes and resources?</template>
+			<template v-slot:details></template>
+		</edit-hint>
+
 		<div class="sidebar-content" v-show="visible">
 
 			<div class="form-group">

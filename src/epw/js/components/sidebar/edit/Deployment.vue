@@ -4,6 +4,11 @@
 
 		<sidebar-heading :name="panelName" title="Deployer" />
 
+		<edit-hint v-show="visible">
+			<template v-slot:main>Who deploys / deployed and activates / activated those processes and resources?</template>
+			<template v-slot:details></template>
+		</edit-hint>
+
 		<div class="sidebar-content" v-show="visible">
 
 			<div class="form-group">

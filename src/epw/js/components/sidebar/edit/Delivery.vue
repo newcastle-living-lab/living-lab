@@ -4,6 +4,11 @@
 
 		<sidebar-heading :name="panelName" title="Deliverer" />
 
+		<edit-hint v-show="visible">
+			<template v-slot:main>Who is responsible for the delivery mechanism(s), channels and roles in your pilot?</template>
+			<template v-slot:details></template>
+		</edit-hint>
+
 		<div class="sidebar-content" v-show="visible">
 
 			<div class="form-group">

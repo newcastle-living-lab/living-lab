@@ -102,8 +102,20 @@ body {
 
 	.sidebar-footer {
 		margin: 0;
-		// border-top: $unit-o solid $border-color;
 		padding: $unit-6 $unit-4 $unit-6 $unit-4;
+	}
+
+	.sidebar-hint {
+		margin-bottom: $unit-2;
+		// margin-top: $unit-2;
+		background: lighten($clrs-blue, 50%);
+		padding: $unit-2 $unit-4;
+		border-top: $unit-o solid $border-color;
+		font-size: $font-size-sm;
+		color: darken($clrs-blue, 20%);
+		.feather {
+			vertical-align: -15%;
+		}
 	}
 }
 

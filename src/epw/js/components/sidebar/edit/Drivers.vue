@@ -4,6 +4,11 @@
 
 		<sidebar-heading :name="panelName" title="Drivers and Motivations" />
 
+		<edit-hint v-show="visible">
+			<template v-slot:main>What were / are the drivers and motivations of the project? Was it a statutory requirement, recognition of a need or demand, seizing an opportunity, addressing an inequality?</template>
+			<template v-slot:details></template>
+		</edit-hint>
+
 		<div class="sidebar-content" v-show="visible">
 
 			<div class="form-group">

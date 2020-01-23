@@ -1,6 +1,26 @@
 
 // EPW
 
+// Colors.css
+$clrs-navy: #001f3f;
+$clrs-blue: #0074d9;
+$clrs-aqua: #7fdbff;
+$clrs-teal: #39cccc;
+$clrs-olive: #3d9970;
+$clrs-green: #2ecc40;
+$clrs-lime: #01ff70;
+$clrs-yellow: #ffdc00;
+$clrs-orange: #ff851b;
+$clrs-red: #ff4136;
+$clrs-fuchsia: #f012be;
+$clrs-purple: #b10dc9;
+$clrs-maroon: #85144b;
+$clrs-white: #ffffff;
+$clrs-gray: #aaaaaa;
+$clrs-grey: $clrs-gray;
+$clrs-silver: #dddddd;
+$clrs-black: #111111;
+
 // Living Lab palette
 $grey-dark: #444;
 $grey: #666;
@@ -20,3 +40,4 @@ $gray-color-light: #f2f0f1;		//lighten($gray-color, 20%) !default;
 
 $sidebar-width: 16rem;
 $border-color: $gray-color-medium;
+

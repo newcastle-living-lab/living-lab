@@ -4,6 +4,11 @@
 
 		<sidebar-heading :name="panelName" title="Evaluator" />
 
+		<edit-hint v-show="visible">
+			<template v-slot:main>Who is the evaluator(s) and governors of the service?</template>
+			<template v-slot:details></template>
+		</edit-hint>
+
 		<div class="sidebar-content" v-show="visible">
 
 			<div class="form-group">

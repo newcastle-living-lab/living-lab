@@ -4,6 +4,11 @@
 
 		<sidebar-heading :name="panelName" title="Initiator" />
 
+		<edit-hint v-show="visible">
+			<template v-slot:main>Who are, or were, the instigators who initiated your pilot activity?</template>
+			<template v-slot:details></template>
+		</edit-hint>
+
 		<div class="sidebar-content" v-show="visible">
 
 			<div class="form-group">

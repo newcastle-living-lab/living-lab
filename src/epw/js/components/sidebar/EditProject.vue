@@ -15,9 +15,26 @@
 		<edit-initiator />
 
 
-		<edit-services title="External Technical Services" type="extsvc" labelProp="extSvcLabel" />
-		<edit-services title="External Organisations" type="extorg" labelProp="extOrgLabel" />
-		<edit-services title="Infrastructural Services" type="infsvc" labelProp="infSvcLabel" />
+		<edit-services
+			title="External Technical Services"
+			type="extsvc"
+			labelProp="extSvcLabel"
+			hintMain="What reusable facilities, (technical and human) resources, services and sources of information were developed and used in support of these service definition and development processes? What external resources and services (e.g. communications and social media) were/are used?"
+		/>
+
+		<edit-services
+			title="External Organisations"
+			type="extorg"
+			labelProp="extOrgLabel"
+			hintMain="Are there any relevant actors, stakeholders or agencies which are relevant to the pilot, but which remain outside its vision and ethos?"
+		/>
+
+		<edit-services
+			title="Infrastructural Services"
+			type="infsvc"
+			labelProp="infSvcLabel"
+			hintMain="What external services, channels and facilities do you make use of in the delivery of your service(s)? What information sources do you make use of? What information do you publish, to whom and using what channels and media?"
+		/>
 
 		<edit-social />
 

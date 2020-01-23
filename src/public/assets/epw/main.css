@@ -4817,6 +4817,19 @@ body {
   padding: 1.2rem 0.8rem 1.2rem 0.8rem;
 }
 
+.app-sidebar .sidebar-hint {
+  margin-bottom: 0.4rem;
+  background: #d9edff;
+  padding: 0.4rem 0.8rem;
+  border-top: 0.05rem solid #bbb;
+  font-size: 0.7rem;
+  color: #003d73;
+}
+
+.app-sidebar .sidebar-hint .feather {
+  vertical-align: -15%;
+}
+
 .app-main {
   display: -webkit-box;
   display: flex;
