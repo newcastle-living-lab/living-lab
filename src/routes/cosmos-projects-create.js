@@ -3,7 +3,7 @@ var database = require("../includes/database.js"),
 	eventType = require("../includes/event-types");
 
 exports.method = "post";
-exports.route = "/epw/projects";
+exports.route = "/cosmos/projects";
 
 exports.handler = function(req, res, next) {
 
@@ -18,7 +18,7 @@ exports.handler = function(req, res, next) {
 	};
 
 	var db = database.getDb();
-	var sql = "INSERT INTO `eps` (name, created_at, modified_at, created_by, data) VALUES ($name, $created_at, $modified_at, $created_by, $data)";
+	var sql = "INSERT INTO `cosmos` (name, created_at, modified_at, created_by, data) VALUES ($name, $created_at, $modified_at, $created_by, $data)";
 
 	db.run(sql, params, function(error) {
 
@@ -31,7 +31,7 @@ exports.handler = function(req, res, next) {
 
 		var insid = 0;
 
-		db.each("SELECT last_insert_rowid() AS id FROM `eps`", function(err, row) {
+		db.each("SELECT last_insert_rowid() AS id FROM `cosmos`", function(err, row) {
 			insid = row.id;
 		}, function(err, rows) {
 

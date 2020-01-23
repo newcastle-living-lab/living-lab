@@ -3,7 +3,7 @@ var database = require("../includes/database.js"),
 	eventType = require("../includes/event-types");
 
 exports.method = "put";
-exports.route = "/epw/projects/:projectId";
+exports.route = "/cosmos/projects/:projectId";
 
 exports.handler = function(req, res, next) {
 
@@ -24,7 +24,7 @@ exports.handler = function(req, res, next) {
 	}
 
 	var db = database.getDb();
-	var sql = "UPDATE `eps` SET name = $name, modified_at = $modified_at, data = $data WHERE id = $id";
+	var sql = "UPDATE `cosmos` SET name = $name, modified_at = $modified_at, data = $data WHERE id = $id";
 
 	db.run(sql, params, function(error) {
 

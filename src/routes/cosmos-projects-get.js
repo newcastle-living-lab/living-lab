@@ -3,14 +3,14 @@ var database = require("../includes/database.js"),
 	eventType = require("../includes/event-types");
 
 exports.method = "get";
-exports.route = "/epw/projects/:projectId";
+exports.route = "/cosmos/projects/:projectId";
 
 exports.handler = function(req, res) {
 
 	var projectId = req.params.projectId;
 
 	var db = database.getDb();
-	var sql = "SELECT id, name, created_at, modified_at, created_by, folder, data FROM eps WHERE id = ?";
+	var sql = "SELECT id, name, created_at, modified_at, created_by, folder, data FROM cosmos WHERE id = ?";
 
 	db.get(sql, [projectId], function(err, row) {
 
