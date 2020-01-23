@@ -1,5 +1,10 @@
 # Living Lab Changelog
 
+## v1.25.0
+
+* Added COSMOS feature, available at /cosmos/ URL.
+
+
 ## v1.24.2
 
 * Fixed issue with Project Import when uploading Zip files might fail.
