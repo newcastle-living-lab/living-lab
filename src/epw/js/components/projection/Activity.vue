@@ -71,7 +71,7 @@ export default {
 
 		circleConfig() {
 			return {
-				visible: this.circle,
+				visible: this.circle && this.value.label ? true : false,
 				x: this.circlePos.x,
 				y: this.circlePos.y,
 				radius: this.circlePos.radius,
@@ -115,18 +115,24 @@ export default {
 				return;
 			}
 			this.$nextTick(() => {
-				if (nodeRefs.label && nodeRefs.icon) {
-					let labelHeight = nodeRefs.label.getNode().getClientRect().height;
-					let iconHeight = nodeRefs.icon.getNode().getClientRect().height;
-					this.circlePos = {
-						x: this.pos.width / 2,
-						y: Math.floor((iconHeight + labelHeight) / 2),	//Math.floor((this.pos.icon + labelHeight) / 2),
-						radius: {
-							x: this.pos.width * 0.75,
-							y: (iconHeight + 15),
-						}
+
+				let labelHeight = 15;
+				let iconHeight = 70;
+
+				if (nodeRefs.label && nodeRefs.icon && this.value.label && this.value.type) {
+					labelHeight = nodeRefs.label.getNode().getClientRect().height;
+					iconHeight = nodeRefs.icon.getNode().getClientRect().height;
+				}
+
+				this.circlePos = {
+					x: this.pos.width / 2,
+					y: Math.floor((iconHeight + labelHeight) / 2),	//Math.floor((this.pos.icon + labelHeight) / 2),
+					radius: {
+						x: this.pos.width * 0.75,
+						y: (iconHeight + 15),
 					}
 				}
+
 			});
 		}
 	},

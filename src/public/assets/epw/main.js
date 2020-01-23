@@ -6237,7 +6237,7 @@ var nodeRefs = {};
     },
     circleConfig: function circleConfig() {
       return {
-        visible: this.circle,
+        visible: this.circle && this.value.label ? true : false,
         x: this.circlePos.x,
         y: this.circlePos.y,
         radius: this.circlePos.radius,
@@ -6280,19 +6280,23 @@ var nodeRefs = {};
       }
 
       this.$nextTick(function () {
-        if (nodeRefs.label && nodeRefs.icon) {
-          var labelHeight = nodeRefs.label.getNode().getClientRect().height;
-          var iconHeight = nodeRefs.icon.getNode().getClientRect().height;
-          _this.circlePos = {
-            x: _this.pos.width / 2,
-            y: Math.floor((iconHeight + labelHeight) / 2),
-            //Math.floor((this.pos.icon + labelHeight) / 2),
-            radius: {
-              x: _this.pos.width * 0.75,
-              y: iconHeight + 15
-            }
-          };
+        var labelHeight = 15;
+        var iconHeight = 70;
+
+        if (nodeRefs.label && nodeRefs.icon && _this.value.label && _this.value.type) {
+          labelHeight = nodeRefs.label.getNode().getClientRect().height;
+          iconHeight = nodeRefs.icon.getNode().getClientRect().height;
         }
+
+        _this.circlePos = {
+          x: _this.pos.width / 2,
+          y: Math.floor((iconHeight + labelHeight) / 2),
+          //Math.floor((this.pos.icon + labelHeight) / 2),
+          radius: {
+            x: _this.pos.width * 0.75,
+            y: iconHeight + 15
+          }
+        };
       });
     }
   },
