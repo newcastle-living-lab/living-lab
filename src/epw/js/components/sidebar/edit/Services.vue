@@ -7,33 +7,36 @@
 		<div class="sidebar-content" v-show="visible">
 
 			<div class="form-group">
-				<label class="form-label" for="label">Label</label>
+				<label class="form-label" :for="panelName + '_label'">Label</label>
 				<input
+					:id="panelName + '_label'"
 					:value="labelValue"
 					@input="updateValue({ prop: labelProp, value: $event.target.value })"
 					class="form-input"
-					id="servicesLabel"
 					maxlength="255"
 				>
 			</div>
 
 			<div class="form-group">
-				<label class="form-label">Items</label>
-				<button class="btn btn-primary btn-sm" @click="newItem"><plus-icon size="18"/> Add new item...</button>
+				<label class="form-label" :for="panelName + '_new'">Add new item</label>
+				<span class="form-input-hint">Type the name below and press enter.</span>
+				<input
+					:id="panelName + '_new'"
+					@keyup.enter="addItem({ event: $event })"
+					class="form-input"
+					autocomplete="off"
+				>
 			</div>
 
-			<div class="tile-list tile-list-services">
-				<div class="tile tile-centered" v-for="service in filteredServices">
-					<div class="tile-content">
-						<div class="tile-title">{{ service.label }}</div>
-						<a class="tile-subtitle" :href="service.url" target="_blank" v-if="service.url">{{ service.url }}</a>
-					</div>
-					<div class="tile-action">
-						<button class="btn btn-link btn-action tooltip text-dark" data-tooltip="Edit" @click="editItem(service)"><edit-icon size="18" /></button>
-						<button class="btn btn-link btn-action tooltip text-error" data-tooltip="Delete" @click="deleteItem(service)"><trash-2-icon size="18" /></button>
-					</div>
-				</div>
-			</div>
+			<service-item
+				v-for="(item, index) in filteredServices"
+				:key="index"
+				:index="index"
+				:item="item"
+				:type="type"
+				:editingItem="editingItem"
+				@edit-item="setEditItem"
+			/>
 
 		</div>
 
@@ -45,47 +48,6 @@
 			>Next</button>
 		</div>
 
-		<div class="modal modal-sm" :class="mode == 'edit' || mode == 'add' ? 'active' : ''">
-			<div class="modal-overlay" aria-label="Close" @click="closeModal"></div>
-			<div class="modal-container">
-				<div class="modal-header">
-					<button @click="closeModal" class="btn btn-clear float-right" aria-label="Close"></button>
-					<div class="modal-title h5">
-						<span v-show="mode == 'edit'">Edit</span>
-						<span v-show="mode == 'add'">Add New</span>
-					</div>
-				</div>
-				<div class="modal-body">
-					<div class="content">
-						<div class="form-group">
-							<label class="form-label" for="label">Label</label>
-							<input
-								v-model="item.label"
-								type="text"
-								class="form-input"
-								id="label"
-								maxlength="255"
-							>
-						</div>
-						<div class="form-group">
-							<label class="form-label" for="url">Web address</label>
-							<input
-								v-model="item.url"
-								placeholder="https://"
-								type="url"
-								class="form-input"
-								id="url"
-								maxlength="255"
-							>
-						</div>
-					</div>
-				</div>
-				<div class="modal-footer">
-					<button class="btn btn-primary" v-show="mode == 'add'" @click="saveItem">Add</button>
-					<button class="btn btn-primary" v-show="mode == 'edit'" @click="saveItem">Save</button>
-				</div>
-			</div>
-		</div>
 
 	</div>
 
@@ -95,16 +57,22 @@
 
 import { mapState, mapGetters, mapMutations } from 'vuex';
 
-import PlusIcon from 'vue-feather-icons/icons/PlusIcon';
-import EditIcon from 'vue-feather-icons/icons/EditIcon';
-import Trash2Icon from 'vue-feather-icons/icons/Trash2Icon';
+import ServiceItem from './ServiceItem.vue';
 
 export default {
 
 	components: {
-		PlusIcon,
-		EditIcon,
-		Trash2Icon,
+		ServiceItem,
+	},
+
+	directives: {
+		focus (el, { value }, { context }) {
+			if (value) {
+				context.$nextTick(() => {
+					el.focus()
+				})
+			}
+		}
 	},
 
 	props: {
@@ -115,8 +83,7 @@ export default {
 
 	data() {
 		return {
-			mode: false,
-			item: {}
+			editingItem: null,
 		};
 	},
 
@@ -132,7 +99,6 @@ export default {
 			},
 		}),
 
-
 		...mapState('project', {
 			projectData: state => state.project.data
 		}),
@@ -147,25 +113,28 @@ export default {
 			return this.projectData[this.labelProp];
 		},
 
-		/*
-		...mapState('project', {
-			projectData: state => state.project.data,
-			services: state => state.project.data.services,
-			labelValue() {
-
-			}
-		}),*/
-		// ...mapGetters('project', ['services']),
 	},
 
 	methods: {
 
-		// For 'serviceLabel'
+		// For 'label'
 		...mapMutations('project', [
 			'updateValue',
-			// 'updateServices',
 		]),
 
+		addItem({ event }) {
+			let label = event.target.value;
+			if (label.trim()) {
+				let item = this.getBlankItem();
+				item.label = label;
+				this.$store.commit('project/addService', item);
+			}
+			event.target.value = '';
+		},
+
+		setEditItem(item) {
+			this.editingItem = item;
+		},
 
 		getBlankItem() {
 			return {
@@ -175,37 +144,6 @@ export default {
 				label: '',
 				url: '',
 			};
-		},
-
-		deleteItem(item) {
-			if (confirm('Are you sure you want to delete this item?')) {
-				this.$store.commit('project/deleteService', item);
-				this.closeModal();
-			}
-		},
-
-		editItem(item) {
-			this.item = Object.assign({}, item);
-			this.mode = 'edit';
-		},
-
-		newItem() {
-			this.item = this.getBlankItem();
-			this.mode = 'add';
-		},
-
-		closeModal() {
-			this.item = this.getBlankItem();
-			this.mode = false;
-		},
-
-		saveItem() {
-			if (this.item.isNew) {
-				this.$store.commit('project/addService', this.item);
-			} else {
-				this.$store.commit('project/editService', this.item);
-			}
-			this.closeModal();
 		},
 
 		next() {

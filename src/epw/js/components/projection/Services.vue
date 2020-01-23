@@ -4,11 +4,11 @@
 		<v-rect ref="border" :config="border" />
 		<v-text ref="label" :config="label" />
 
-		<shape-service v-for="(service, index) in services"
-			:key="service.id"
-			:service="service"
-			:dimensions="dimensions"
+		<shape-service v-for="(item, index) in filteredServices"
+			:key="item.id"
+			:item="item"
 			:index="index"
+			:colour="colour"
 		/>
 	</v-group>
 
@@ -16,7 +16,7 @@
 
 <script>
 
-import { mapState } from 'vuex';
+import { mapState, mapGetters } from 'vuex';
 import colours from 'colors.css';
 
 import ShapeService from './Service.vue';
@@ -29,6 +29,9 @@ export default {
 
 	props: {
 		dimensions: Object,
+		type: String,
+		labelProp: String,
+		colour: String,
 	},
 
 	computed: {
@@ -37,8 +40,17 @@ export default {
 
 		...mapState('project', {
 			projectData: state => state.project.data,
-			services: state => state.project.data.services,
 		}),
+
+		...mapGetters('project', ['services']),
+
+		filteredServices() {
+			return this.services.filter(item => item.type == this.type);
+		},
+
+		labelValue() {
+			return this.projectData[this.labelProp] ? this.projectData[this.labelProp] : '';
+		},
 
 		groupConfig() {
 			let pos = {
@@ -48,8 +60,8 @@ export default {
 				height: 210,
 			};
 
-			if (this.dimensions.servicesGroup) {
-				pos = this.dimensions.servicesGroup;
+			if (this.dimensions[this.type + "Group"]) {
+				pos = this.dimensions[this.type + "Group"];
 			};
 
 			return pos;
@@ -60,7 +72,7 @@ export default {
 				x: 0,
 				y: 0,
 				width: 510,
-				text: typeof this.projectData.servicesLabel == 'string' ? this.projectData.servicesLabel : '',
+				text: this.labelValue,
 				fontSize: 14,
 				fontStyle: 'bold',
 				fontFamily: this.options.fontFamily,

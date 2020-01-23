@@ -63,7 +63,8 @@ body {
 
 	.sidebar-heading {
 		background: $gray-color-light;
-		font-size: $font-size;
+		font-size: $font-size-sm;
+		font-weight: normal;
 		padding: $unit-2 $unit-4;
 		border: $unit-o solid $border-color;
 		border-width: $unit-o 0;
@@ -253,4 +254,33 @@ body {
 	margin-bottom: $control-padding-y * 2;	//+ ($border-width * 2);
 	font-size: $font-size-sm;
 	color: $gray-color-medium;
+}
+
+
+
+.accordion-service {
+
+	input:checked ~,
+	&[open] {
+		& .accordion-body {
+			max-height: none;
+			height: auto;
+		}
+	}
+
+	.accordion-header {
+		display: block;
+		padding: $unit-1 0;
+	}
+
+	.accordion-body {
+		max-height: 0;
+		height: 0;
+		transition: none;
+	}
+
+	.icon {
+		color: lighten($gray-color, 20%);
+		margin-right: $unit-1;
+	}
 }

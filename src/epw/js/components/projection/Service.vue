@@ -3,7 +3,7 @@
 	<v-group :config="groupConfig">
 		<v-text :config="label" />
 		<v-rect :config="rect" @mousemove="onMousemove" @mouseout="onMouseout" @click="launchUrl" @tap="launchUrl" />
-		<a :href="service.url" target="_blank" ref="link"></a>
+		<a :href="item.url" target="_blank" ref="link"></a>
 	</v-group>
 
 </template>
@@ -23,9 +23,10 @@ const cols = 4;
 export default {
 
 	props: {
-		service: Object,
+		item: Object,
 		dimensions: Object,
 		index: Number,
+		colour: String,
 	},
 
 	data() {
@@ -70,7 +71,7 @@ export default {
 				cornerRadius: size.height / 4,
 				// stroke: colours.black,
 				strokeWidth: 1,
-				stroke: this.hover && this.service.url ? colours.olive : colours.black,
+				stroke: this.colour,	//this.hover && this.item.url ? colours.olive : colours.black,
 			}
 		},
 
@@ -81,7 +82,7 @@ export default {
 				width: size.width,
 				height: size.height,
 				padding: 5,
-				text: this.service.label,
+				text: this.item.label,
 				fontSize: 12,
 				fontStyle: 'bold',
 				fontFamily: this.options.fontFamily,
@@ -95,7 +96,9 @@ export default {
 
 	methods: {
 		launchUrl() {
-			this.$refs.link.click();
+			if (this.item.url) {
+				this.$refs.link.click();
+			}
 		},
 		onMousemove(e) {
 			this.hover = true;

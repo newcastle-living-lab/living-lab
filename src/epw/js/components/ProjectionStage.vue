@@ -8,42 +8,70 @@
 
 				<v-rect :config="backgroundConfig" />
 
-				<v-shape ref="structLine" :config="structLine" />
-				<v-shape ref="infraLine" :config="infraLine" />
+				<v-group :config="mainGroupConfig">
 
-				<group-lozenge v-bind="serviceDefinitionConfig" />
-				<group-lozenge v-bind="serviceDeliveryConfig" />
+					<v-shape ref="structLine" :config="structLine" />
+					<v-text ref="structText" :config="structText" />
+
+					<v-shape ref="infraLine" :config="infraLine" />
+					<v-text ref="infraText" :config="infraText" />
+
+
+					<group-lozenge v-bind="serviceDefinitionConfig" />
+					<group-lozenge v-bind="serviceDeliveryConfig" />
+
+					<v-group :config="activitiesA">
+						<group-activity ref="policyDefGroup" :dimensions="dimensions" :x="115" :y="0" prop="policyDef" />
+						<group-activity ref="specDesGroup" :dimensions="dimensions" :x="0" :y="140" prop="specDes" />
+						<group-activity ref="deploymentGroup" :dimensions="dimensions" :x="230" :y="140" prop="deployment" />
+					</v-group>
+
+					<v-line :config="splitterConfig" />
+
+					<v-group :config="activitiesB">
+						<group-activity ref="deliveryGroup" :dimensions="dimensions" :x="0" :y="0" prop="delivery" />
+						<group-activity ref="evaluationGroup" :dimensions="dimensions" :x="0" :y="140" prop="evaluation" />
+						<group-activity ref="userGroup" :dimensions="dimensions" :x="185" :y="0" prop="user" />
+						<group-activity ref="beneficiaryGroup" :dimensions="dimensions" :x="185" :y="140" prop="beneficiary" />
+					</v-group>
+
+					<group-activity ref="initiatorGroup"
+						:dimensions="dimensions"
+						:x="350"
+						:y="500"
+						:circle="true"
+						prop="initiator"
+					/>
+
+					<group-inputs v-bind="inputsConfig" />
+
+				</v-group>
 
 				<group-title ref="projectTitleGroup" :dimensions="dimensions" />
 
 				<group-goals ref="goalsGroup" :dimensions="dimensions" />
 
-				<group-services ref="servicesGroup" :dimensions="dimensions" />
-
-				<v-group :config="activitiesA">
-					<group-activity ref="policyDefGroup" :dimensions="dimensions" :x="100" :y="0" prop="policyDef" />
-					<group-activity ref="specDesGroup" :dimensions="dimensions" :x="0" :y="140" prop="specDes" />
-					<group-activity ref="deploymentGroup" :dimensions="dimensions" :x="200" :y="140" prop="deployment" />
-				</v-group>
-
-				<v-line :config="splitterConfig" />
-
-				<v-group :config="activitiesB">
-					<group-activity ref="deliveryGroup" :dimensions="dimensions" :x="0" :y="0" prop="delivery" />
-					<group-activity ref="evaluationGroup" :dimensions="dimensions" :x="0" :y="140" prop="evaluation" />
-					<group-activity ref="userGroup" :dimensions="dimensions" :x="170" :y="0" prop="user" />
-					<group-activity ref="beneficiaryGroup" :dimensions="dimensions" :x="170" :y="140" prop="beneficiary" />
-				</v-group>
-
-				<group-activity ref="initiatorGroup"
+				<group-services ref="externalServicesGroup"
 					:dimensions="dimensions"
-					:x="350"
-					:y="500"
-					:circle="true"
-					prop="initiator"
+					:colour="colours.green"
+					type="extsvc"
+					labelProp="extSvcLabel"
 				/>
 
-				<group-inputs v-bind="inputsConfig" />
+				<group-services ref="externalOrganisationsGroup"
+					:dimensions="dimensions"
+					:colour="colours.fuchsia"
+					type="extorg"
+					labelProp="extOrgLabel"
+				/>
+
+				<group-services ref="infrastructuralServicesGroup"
+					:dimensions="dimensions"
+					:colour="colours.blue"
+					type="infsvc"
+					labelProp="infSvcLabel"
+				/>
+
 
 			</v-layer>
 		</v-stage>
@@ -71,8 +99,8 @@ import GroupActivity from './projection/Activity.vue';
 let nodeRefs = {};
 
 let stageSize = {
-	width: 1400,
-	height: 1100,
+	width: 1500,
+	height: 980,
 };
 
 export default {
@@ -95,8 +123,10 @@ export default {
 
 			dimensions: {
 				projectTitle: {},
-				servicesGroup: {},
 				goalsGroup: {},
+				extsvcGroup: {},
+				extorgGroup: {},
+				infsvcGroup: {},
 			},
 
 			stageConfig: {
@@ -108,6 +138,13 @@ export default {
 				}
 			},
 
+			mainGroupConfig: {
+				x: 0,
+				y: 30,
+			},
+
+			colours: colours,
+
 			backgroundConfig: {
 				fill: '#ffffff',
 				x: 0,
@@ -118,12 +155,12 @@ export default {
 
 			activitiesA: {
 				x: 600,
-				y: 100,
+				y: 220,
 			},
 
 			activitiesB: {
-				x: 1000,
-				y: 100,
+				x: 1050,
+				y: 220,
 			},
 
 			inputsConfig: {
@@ -132,7 +169,10 @@ export default {
 			},
 
 			splitterConfig: {
-				points: [ (470 + 460) - 10 , 50, (470 + 460) - 10, 580],
+				points: [
+					(470 + 500) - 8, 200,
+					(470 + 500) - 8, 580
+				],
 				stroke: colours.olive,
 				strokeWidth: 2,
 				dash: [9, 3]
@@ -141,14 +181,14 @@ export default {
 			serviceDefinitionConfig: {
 				x: 470,
 				y: 520,
-				width: 460,
+				width: 500,
 				label: "Service Definition and Development Platform",
 			},
 
 			serviceDeliveryConfig: {
-				x: 920 - (25 / 2),
+				x: (470 + 500) - (25/1.5),
 				y: 520,
-				width: 460,
+				width: 500,
 				label: "Service Delivery Platform",
 			}
 
@@ -167,14 +207,16 @@ export default {
 	},
 
 	computed: {
+
 		...mapState('project', {
 			projectData: state => state.project.data
 		}),
-		...mapState('app', ['scale']),
+
+		...mapState('app', ['scale', 'options']),
 
 		structLine() {
 			let width = 125,
-				height = 450;
+				height = 320;
 
 			let pts = {
 				st: [width, 0],
@@ -201,9 +243,22 @@ export default {
 			}
 		},
 
+		structText() {
+			return {
+				x: 460 + 125 - 10,
+				y: 520-320 - 30,
+				text: 'Structural Relationships and Occasions',
+				fontSize: 16,
+				fontStyle: 'bold',
+				fontFamily: this.options.fontFamily,
+				fill: colours.red,
+				lineHeight: 1.3,
+			}
+		},
+
 		infraLine() {
 			let width = 125,
-				height = 450;
+				height = 320;
 
 			let pts = {
 				st: [0, 0],
@@ -228,12 +283,28 @@ export default {
 					context.strokeShape(this);
 				}
 			}
-		}
+		},
+
+		infraText() {
+			return {
+				x: 460 + 125 - 10,
+				y: 520 + 50 + 320 + 15,
+				text: 'Infrastructural Relationships, Recourses and Facilities',
+				fontSize: 16,
+				fontStyle: 'bold',
+				fontFamily: this.options.fontFamily,
+				fill: colours.red,
+				lineHeight: 1.3,
+			}
+		},
+
 	},
 
 	methods: {
 
 		refreshPositions() {
+
+			let stage = this.$refs.stage.getStage();
 
 			this.$nextTick(() => {
 
@@ -242,20 +313,38 @@ export default {
 					y: nodeRefs.projectTitle.getNode().absolutePosition().y + nodeRefs.projectTitle.getNode().getClientRect().height + 20,
 				};
 
-				var servicesHeight = 210;
-				this.dimensions.servicesGroup = {
+				stage.draw();
+
+				const servicesHeight = 210;
+
+				this.dimensions.extsvcGroup = {
 					x: nodeRefs.projectTitle.getNode().absolutePosition().x,
-					y: stageSize.height - servicesHeight - 20,
+					y: stageSize.height - servicesHeight - 20 - 45,
 					width: 510,
 					height: servicesHeight,
 				};
+
+				this.dimensions.extorgGroup = {
+					x: nodeRefs.projectTitle.getNode().absolutePosition().x,
+					y: stageSize.height - (servicesHeight*3.4) - 20,
+					width: 510,
+					height: servicesHeight,
+				};
+
+				this.dimensions.infsvcGroup = {
+					x: stageSize.width - 510 - 20,
+					y: stageSize.height - servicesHeight - 20 - 45,
+					width: 510,
+					height: servicesHeight,
+				};
+
 			});
 
 		},
 
 		resize() {
 
-			var stage = this.$refs.stage.getStage();
+			let stage = this.$refs.stage.getStage();
 
 			if ( ! this.scale) {
 
@@ -300,9 +389,11 @@ export default {
 
 	mounted() {
 		nodeRefs.projectTitle = this.$refs.projectTitleGroup.$refs.title;
+		nodeRefs.goalsGroup = this.$refs.goalsGroup;
+		nodeRefs.goalsBorder = this.$refs.goalsGroup.$refs.border;
 		// nodeRefs.goalsBody = this.$refs.goalsGroup.$refs.body;
 		// nodeRefs.goalsLabel = this.$refs.goalsGroup.$refs.label;
-		nodeRefs.servicesGroup = this.$refs.servicesGroup.$refs.border;
+		// nodeRefs.servicesGroup = this.$refs.servicesGroup.$refs.border;
 		this.refreshPositions();
 		this.resize();
 		// this.updatePositions();

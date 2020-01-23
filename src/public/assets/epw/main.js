@@ -2225,6 +2225,75 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./js/components/sidebar/edit/ServiceItem.vue":
+/*!****************************************************!*\
+  !*** ./js/components/sidebar/edit/ServiceItem.vue ***!
+  \****************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _ServiceItem_vue_vue_type_template_id_672c6ab7___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ServiceItem.vue?vue&type=template&id=672c6ab7& */ "./js/components/sidebar/edit/ServiceItem.vue?vue&type=template&id=672c6ab7&");
+/* harmony import */ var _ServiceItem_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ServiceItem.vue?vue&type=script&lang=js& */ "./js/components/sidebar/edit/ServiceItem.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _ServiceItem_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _ServiceItem_vue_vue_type_template_id_672c6ab7___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _ServiceItem_vue_vue_type_template_id_672c6ab7___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "js/components/sidebar/edit/ServiceItem.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./js/components/sidebar/edit/ServiceItem.vue?vue&type=script&lang=js&":
+/*!*****************************************************************************!*\
+  !*** ./js/components/sidebar/edit/ServiceItem.vue?vue&type=script&lang=js& ***!
+  \*****************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ServiceItem_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./ServiceItem.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./js/components/sidebar/edit/ServiceItem.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ServiceItem_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./js/components/sidebar/edit/ServiceItem.vue?vue&type=template&id=672c6ab7&":
+/*!***********************************************************************************!*\
+  !*** ./js/components/sidebar/edit/ServiceItem.vue?vue&type=template&id=672c6ab7& ***!
+  \***********************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ServiceItem_vue_vue_type_template_id_672c6ab7___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./ServiceItem.vue?vue&type=template&id=672c6ab7& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./js/components/sidebar/edit/ServiceItem.vue?vue&type=template&id=672c6ab7&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ServiceItem_vue_vue_type_template_id_672c6ab7___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ServiceItem_vue_vue_type_template_id_672c6ab7___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
 /***/ "./js/components/sidebar/edit/Services.vue":
 /*!*************************************************!*\
   !*** ./js/components/sidebar/edit/Services.vue ***!
@@ -5574,6 +5643,34 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -5587,8 +5684,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 var nodeRefs = {};
 var stageSize = {
-  width: 1400,
-  height: 1100
+  width: 1500,
+  height: 980
 };
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
@@ -5606,8 +5703,10 @@ var stageSize = {
     return {
       dimensions: {
         projectTitle: {},
-        servicesGroup: {},
-        goalsGroup: {}
+        goalsGroup: {},
+        extsvcGroup: {},
+        extorgGroup: {},
+        infsvcGroup: {}
       },
       stageConfig: {
         width: stageSize.width,
@@ -5617,6 +5716,11 @@ var stageSize = {
           y: 1
         }
       },
+      mainGroupConfig: {
+        x: 0,
+        y: 30
+      },
+      colours: colors_css__WEBPACK_IMPORTED_MODULE_1___default.a,
       backgroundConfig: {
         fill: '#ffffff',
         x: 0,
@@ -5626,18 +5730,18 @@ var stageSize = {
       },
       activitiesA: {
         x: 600,
-        y: 100
+        y: 220
       },
       activitiesB: {
-        x: 1000,
-        y: 100
+        x: 1050,
+        y: 220
       },
       inputsConfig: {
         x: 100,
         y: 520 + 25 / 2
       },
       splitterConfig: {
-        points: [470 + 460 - 10, 50, 470 + 460 - 10, 580],
+        points: [470 + 500 - 8, 200, 470 + 500 - 8, 580],
         stroke: colors_css__WEBPACK_IMPORTED_MODULE_1___default.a.olive,
         strokeWidth: 2,
         dash: [9, 3]
@@ -5645,13 +5749,13 @@ var stageSize = {
       serviceDefinitionConfig: {
         x: 470,
         y: 520,
-        width: 460,
+        width: 500,
         label: "Service Definition and Development Platform"
       },
       serviceDeliveryConfig: {
-        x: 920 - 25 / 2,
+        x: 470 + 500 - 25 / 1.5,
         y: 520,
-        width: 460,
+        width: 500,
         label: "Service Delivery Platform"
       }
     };
@@ -5669,10 +5773,10 @@ var stageSize = {
     projectData: function projectData(state) {
       return state.project.data;
     }
-  }), {}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapState"])('app', ['scale']), {
+  }), {}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapState"])('app', ['scale', 'options']), {
     structLine: function structLine() {
       var width = 125,
-          height = 450;
+          height = 320;
       var pts = {
         st: [width, 0],
         ct: [width, height / 4, width, height],
@@ -5693,9 +5797,21 @@ var stageSize = {
         }
       };
     },
+    structText: function structText() {
+      return {
+        x: 460 + 125 - 10,
+        y: 520 - 320 - 30,
+        text: 'Structural Relationships and Occasions',
+        fontSize: 16,
+        fontStyle: 'bold',
+        fontFamily: this.options.fontFamily,
+        fill: colors_css__WEBPACK_IMPORTED_MODULE_1___default.a.red,
+        lineHeight: 1.3
+      };
+    },
     infraLine: function infraLine() {
       var width = 125,
-          height = 450;
+          height = 320;
       var pts = {
         st: [0, 0],
         ct: [width, 0, width, height / 4],
@@ -5715,21 +5831,47 @@ var stageSize = {
           context.strokeShape(this);
         }
       };
+    },
+    infraText: function infraText() {
+      return {
+        x: 460 + 125 - 10,
+        y: 520 + 50 + 320 + 15,
+        text: 'Infrastructural Relationships, Recourses and Facilities',
+        fontSize: 16,
+        fontStyle: 'bold',
+        fontFamily: this.options.fontFamily,
+        fill: colors_css__WEBPACK_IMPORTED_MODULE_1___default.a.red,
+        lineHeight: 1.3
+      };
     }
   }),
   methods: {
     refreshPositions: function refreshPositions() {
       var _this = this;
 
+      var stage = this.$refs.stage.getStage();
       this.$nextTick(function () {
         _this.dimensions.goalsGroup = {
           x: 20,
           y: nodeRefs.projectTitle.getNode().absolutePosition().y + nodeRefs.projectTitle.getNode().getClientRect().height + 20
         };
+        stage.draw();
         var servicesHeight = 210;
-        _this.dimensions.servicesGroup = {
+        _this.dimensions.extsvcGroup = {
           x: nodeRefs.projectTitle.getNode().absolutePosition().x,
-          y: stageSize.height - servicesHeight - 20,
+          y: stageSize.height - servicesHeight - 20 - 45,
+          width: 510,
+          height: servicesHeight
+        };
+        _this.dimensions.extorgGroup = {
+          x: nodeRefs.projectTitle.getNode().absolutePosition().x,
+          y: stageSize.height - servicesHeight * 3.4 - 20,
+          width: 510,
+          height: servicesHeight
+        };
+        _this.dimensions.infsvcGroup = {
+          x: stageSize.width - 510 - 20,
+          y: stageSize.height - servicesHeight - 20 - 45,
           width: 510,
           height: servicesHeight
         };
@@ -5776,10 +5918,12 @@ var stageSize = {
     }
   },
   mounted: function mounted() {
-    nodeRefs.projectTitle = this.$refs.projectTitleGroup.$refs.title; // nodeRefs.goalsBody = this.$refs.goalsGroup.$refs.body;
+    nodeRefs.projectTitle = this.$refs.projectTitleGroup.$refs.title;
+    nodeRefs.goalsGroup = this.$refs.goalsGroup;
+    nodeRefs.goalsBorder = this.$refs.goalsGroup.$refs.border; // nodeRefs.goalsBody = this.$refs.goalsGroup.$refs.body;
     // nodeRefs.goalsLabel = this.$refs.goalsGroup.$refs.label;
+    // nodeRefs.servicesGroup = this.$refs.servicesGroup.$refs.border;
 
-    nodeRefs.servicesGroup = this.$refs.servicesGroup.$refs.border;
     this.refreshPositions();
     this.resize(); // this.updatePositions();
   }
@@ -6670,9 +6814,10 @@ var size = {
 var cols = 4;
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
-    service: Object,
+    item: Object,
     dimensions: Object,
-    index: Number
+    index: Number,
+    colour: String
   },
   data: function data() {
     return {
@@ -6705,7 +6850,8 @@ var cols = 4;
         cornerRadius: size.height / 4,
         // stroke: colours.black,
         strokeWidth: 1,
-        stroke: this.hover && this.service.url ? colors_css__WEBPACK_IMPORTED_MODULE_1___default.a.olive : colors_css__WEBPACK_IMPORTED_MODULE_1___default.a.black
+        stroke: this.colour //this.hover && this.item.url ? colours.olive : colours.black,
+
       };
     },
     label: function label() {
@@ -6715,7 +6861,7 @@ var cols = 4;
         width: size.width,
         height: size.height,
         padding: 5,
-        text: this.service.label,
+        text: this.item.label,
         fontSize: 12,
         fontStyle: 'bold',
         fontFamily: this.options.fontFamily,
@@ -6727,7 +6873,9 @@ var cols = 4;
   }),
   methods: {
     launchUrl: function launchUrl() {
-      this.$refs.link.click();
+      if (this.item.url) {
+        this.$refs.link.click();
+      }
     },
     onMousemove: function onMousemove(e) {
       this.hover = true;
@@ -6958,16 +7106,26 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     ShapeService: _Service_vue__WEBPACK_IMPORTED_MODULE_2__["default"]
   },
   props: {
-    dimensions: Object
+    dimensions: Object,
+    type: String,
+    labelProp: String,
+    colour: String
   },
   computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapState"])('app', ['options']), {}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapState"])('project', {
     projectData: function projectData(state) {
       return state.project.data;
-    },
-    services: function services(state) {
-      return state.project.data.services;
     }
-  }), {
+  }), {}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])('project', ['services']), {
+    filteredServices: function filteredServices() {
+      var _this = this;
+
+      return this.services.filter(function (item) {
+        return item.type == _this.type;
+      });
+    },
+    labelValue: function labelValue() {
+      return this.projectData[this.labelProp] ? this.projectData[this.labelProp] : '';
+    },
     groupConfig: function groupConfig() {
       var pos = {
         x: 0,
@@ -6976,8 +7134,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         height: 210
       };
 
-      if (this.dimensions.servicesGroup) {
-        pos = this.dimensions.servicesGroup;
+      if (this.dimensions[this.type + "Group"]) {
+        pos = this.dimensions[this.type + "Group"];
       }
 
       ;
@@ -6988,7 +7146,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         x: 0,
         y: 0,
         width: 510,
-        text: typeof this.projectData.servicesLabel == 'string' ? this.projectData.servicesLabel : '',
+        text: this.labelValue,
         fontSize: 14,
         fontStyle: 'bold',
         fontFamily: this.options.fontFamily,
@@ -8341,6 +8499,119 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./js/components/sidebar/edit/ServiceItem.vue?vue&type=script&lang=js&":
+/*!*************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./js/components/sidebar/edit/ServiceItem.vue?vue&type=script&lang=js& ***!
+  \*************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  directives: {
+    focus: function focus(el, _ref, _ref2) {
+      var value = _ref.value;
+      var context = _ref2.context;
+
+      if (value) {
+        context.$nextTick(function () {
+          el.focus();
+        });
+      }
+    }
+  },
+  props: ['index', 'item', 'type', 'editingItem'],
+  computed: {
+    editing: function editing() {
+      return this.item == this.editingItem;
+    }
+  },
+  methods: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])('project', ['editService', 'removeService']), {
+    doEdit: function doEdit() {
+      if (this.editingItem == this.item) {
+        this.$emit('edit-item', null);
+        return;
+      }
+
+      this.$emit('edit-item', this.item);
+    },
+    doneEdit: function doneEdit() {
+      var label = this.$refs.label.value.trim();
+      var url = this.$refs.url.value.trim();
+      var item = this.item;
+
+      if (!label) {
+        this.removeService(item);
+      } else {
+        this.editService({
+          item: item,
+          label: label,
+          url: url
+        });
+        this.$emit('edit-item', null);
+      }
+    },
+    cancelEdit: function cancelEdit(e) {
+      this.$refs.label.value = this.item.label;
+      this.$refs.url.value = this.item.url;
+      this.$emit('edit-item', null);
+    }
+  })
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./js/components/sidebar/edit/Services.vue?vue&type=script&lang=js&":
 /*!**********************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./js/components/sidebar/edit/Services.vue?vue&type=script&lang=js& ***!
@@ -8351,9 +8622,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
-/* harmony import */ var vue_feather_icons_icons_PlusIcon__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue-feather-icons/icons/PlusIcon */ "./node_modules/vue-feather-icons/icons/PlusIcon.js");
-/* harmony import */ var vue_feather_icons_icons_EditIcon__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vue-feather-icons/icons/EditIcon */ "./node_modules/vue-feather-icons/icons/EditIcon.js");
-/* harmony import */ var vue_feather_icons_icons_Trash2Icon__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! vue-feather-icons/icons/Trash2Icon */ "./node_modules/vue-feather-icons/icons/Trash2Icon.js");
+/* harmony import */ var _ServiceItem_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ServiceItem.vue */ "./js/components/sidebar/edit/ServiceItem.vue");
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
@@ -8415,53 +8684,23 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
-    PlusIcon: vue_feather_icons_icons_PlusIcon__WEBPACK_IMPORTED_MODULE_1__["default"],
-    EditIcon: vue_feather_icons_icons_EditIcon__WEBPACK_IMPORTED_MODULE_2__["default"],
-    Trash2Icon: vue_feather_icons_icons_Trash2Icon__WEBPACK_IMPORTED_MODULE_3__["default"]
+    ServiceItem: _ServiceItem_vue__WEBPACK_IMPORTED_MODULE_1__["default"]
+  },
+  directives: {
+    focus: function focus(el, _ref, _ref2) {
+      var value = _ref.value;
+      var context = _ref2.context;
+
+      if (value) {
+        context.$nextTick(function () {
+          el.focus();
+        });
+      }
+    }
   },
   props: {
     title: String,
@@ -8470,8 +8709,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   },
   data: function data() {
     return {
-      mode: false,
-      item: {}
+      editingItem: null
     };
   },
   computed: _objectSpread({
@@ -8497,18 +8735,23 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     labelValue: function labelValue() {
       return this.projectData[this.labelProp];
     }
-    /*
-    ...mapState('project', {
-    	projectData: state => state.project.data,
-    	services: state => state.project.data.services,
-    	labelValue() {
-    			}
-    }),*/
-    // ...mapGetters('project', ['services']),
-
   }),
-  methods: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapMutations"])('project', ['updateValue' // 'updateServices',
-  ]), {
+  methods: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapMutations"])('project', ['updateValue']), {
+    addItem: function addItem(_ref3) {
+      var event = _ref3.event;
+      var label = event.target.value;
+
+      if (label.trim()) {
+        var item = this.getBlankItem();
+        item.label = label;
+        this.$store.commit('project/addService', item);
+      }
+
+      event.target.value = '';
+    },
+    setEditItem: function setEditItem(item) {
+      this.editingItem = item;
+    },
     getBlankItem: function getBlankItem() {
       return {
         isNew: true,
@@ -8517,33 +8760,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         label: '',
         url: ''
       };
-    },
-    deleteItem: function deleteItem(item) {
-      if (confirm('Are you sure you want to delete this item?')) {
-        this.$store.commit('project/deleteService', item);
-        this.closeModal();
-      }
-    },
-    editItem: function editItem(item) {
-      this.item = Object.assign({}, item);
-      this.mode = 'edit';
-    },
-    newItem: function newItem() {
-      this.item = this.getBlankItem();
-      this.mode = 'add';
-    },
-    closeModal: function closeModal() {
-      this.item = this.getBlankItem();
-      this.mode = false;
-    },
-    saveItem: function saveItem() {
-      if (this.item.isNew) {
-        this.$store.commit('project/addService', this.item);
-      } else {
-        this.$store.commit('project/editService', this.item);
-      }
-
-      this.closeModal();
     },
     next: function next() {
       this.$store.dispatch('app/doEditNext', this.panelName);
@@ -22604,77 +22820,6 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./node_modules/vue-feather-icons/icons/Trash2Icon.js":
-/*!************************************************************!*\
-  !*** ./node_modules/vue-feather-icons/icons/Trash2Icon.js ***!
-  \************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var babel_helper_vue_jsx_merge_props__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! babel-helper-vue-jsx-merge-props */ "./node_modules/babel-helper-vue-jsx-merge-props/index.js");
-/* harmony import */ var babel_helper_vue_jsx_merge_props__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(babel_helper_vue_jsx_merge_props__WEBPACK_IMPORTED_MODULE_0__);
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-  name: 'Trash2Icon',
-  props: {
-    size: {
-      type: String,
-      default: '24',
-      validator: function validator(s) {
-        return !isNaN(s) || s.length >= 2 && !isNaN(s.slice(0, s.length - 1)) && s.slice(-1) === 'x';
-      }
-    }
-  },
-  functional: true,
-  render: function render(h, ctx) {
-    var size = ctx.props.size.slice(-1) === 'x' ? ctx.props.size.slice(0, ctx.props.size.length - 1) + 'em' : parseInt(ctx.props.size) + 'px';
-    var attrs = ctx.data.attrs || {};
-    attrs.width = attrs.width || size;
-    attrs.height = attrs.height || size;
-    ctx.data.attrs = attrs;
-    return h("svg", babel_helper_vue_jsx_merge_props__WEBPACK_IMPORTED_MODULE_0___default()([{
-      attrs: {
-        xmlns: "http://www.w3.org/2000/svg",
-        width: "24",
-        height: "24",
-        viewBox: "0 0 24 24",
-        fill: "none",
-        stroke: "currentColor",
-        "stroke-width": "2",
-        "stroke-linecap": "round",
-        "stroke-linejoin": "round"
-      },
-      "class": "feather feather-trash-2"
-    }, ctx.data]), [h("polyline", {
-      attrs: {
-        points: "3 6 5 6 21 6"
-      }
-    }), h("path", {
-      attrs: {
-        d: "M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"
-      }
-    }), h("line", {
-      attrs: {
-        x1: "10",
-        y1: "11",
-        x2: "10",
-        y2: "17"
-      }
-    }), h("line", {
-      attrs: {
-        x1: "14",
-        y1: "11",
-        x2: "14",
-        y2: "17"
-      }
-    })]);
-  }
-});
-
-/***/ }),
-
 /***/ "./node_modules/vue-feather-icons/icons/UserIcon.js":
 /*!**********************************************************!*\
   !*** ./node_modules/vue-feather-icons/icons/UserIcon.js ***!
@@ -25207,24 +25352,153 @@ var render = function() {
             [
               _c("v-rect", { attrs: { config: _vm.backgroundConfig } }),
               _vm._v(" "),
-              _c("v-shape", {
-                ref: "structLine",
-                attrs: { config: _vm.structLine }
-              }),
-              _vm._v(" "),
-              _c("v-shape", {
-                ref: "infraLine",
-                attrs: { config: _vm.infraLine }
-              }),
-              _vm._v(" "),
               _c(
-                "group-lozenge",
-                _vm._b({}, "group-lozenge", _vm.serviceDefinitionConfig, false)
-              ),
-              _vm._v(" "),
-              _c(
-                "group-lozenge",
-                _vm._b({}, "group-lozenge", _vm.serviceDeliveryConfig, false)
+                "v-group",
+                { attrs: { config: _vm.mainGroupConfig } },
+                [
+                  _c("v-shape", {
+                    ref: "structLine",
+                    attrs: { config: _vm.structLine }
+                  }),
+                  _vm._v(" "),
+                  _c("v-text", {
+                    ref: "structText",
+                    attrs: { config: _vm.structText }
+                  }),
+                  _vm._v(" "),
+                  _c("v-shape", {
+                    ref: "infraLine",
+                    attrs: { config: _vm.infraLine }
+                  }),
+                  _vm._v(" "),
+                  _c("v-text", {
+                    ref: "infraText",
+                    attrs: { config: _vm.infraText }
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "group-lozenge",
+                    _vm._b(
+                      {},
+                      "group-lozenge",
+                      _vm.serviceDefinitionConfig,
+                      false
+                    )
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "group-lozenge",
+                    _vm._b(
+                      {},
+                      "group-lozenge",
+                      _vm.serviceDeliveryConfig,
+                      false
+                    )
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "v-group",
+                    { attrs: { config: _vm.activitiesA } },
+                    [
+                      _c("group-activity", {
+                        ref: "policyDefGroup",
+                        attrs: {
+                          dimensions: _vm.dimensions,
+                          x: 115,
+                          y: 0,
+                          prop: "policyDef"
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c("group-activity", {
+                        ref: "specDesGroup",
+                        attrs: {
+                          dimensions: _vm.dimensions,
+                          x: 0,
+                          y: 140,
+                          prop: "specDes"
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c("group-activity", {
+                        ref: "deploymentGroup",
+                        attrs: {
+                          dimensions: _vm.dimensions,
+                          x: 230,
+                          y: 140,
+                          prop: "deployment"
+                        }
+                      })
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c("v-line", { attrs: { config: _vm.splitterConfig } }),
+                  _vm._v(" "),
+                  _c(
+                    "v-group",
+                    { attrs: { config: _vm.activitiesB } },
+                    [
+                      _c("group-activity", {
+                        ref: "deliveryGroup",
+                        attrs: {
+                          dimensions: _vm.dimensions,
+                          x: 0,
+                          y: 0,
+                          prop: "delivery"
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c("group-activity", {
+                        ref: "evaluationGroup",
+                        attrs: {
+                          dimensions: _vm.dimensions,
+                          x: 0,
+                          y: 140,
+                          prop: "evaluation"
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c("group-activity", {
+                        ref: "userGroup",
+                        attrs: {
+                          dimensions: _vm.dimensions,
+                          x: 185,
+                          y: 0,
+                          prop: "user"
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c("group-activity", {
+                        ref: "beneficiaryGroup",
+                        attrs: {
+                          dimensions: _vm.dimensions,
+                          x: 185,
+                          y: 140,
+                          prop: "beneficiary"
+                        }
+                      })
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c("group-activity", {
+                    ref: "initiatorGroup",
+                    attrs: {
+                      dimensions: _vm.dimensions,
+                      x: 350,
+                      y: 500,
+                      circle: true,
+                      prop: "initiator"
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "group-inputs",
+                    _vm._b({}, "group-inputs", _vm.inputsConfig, false)
+                  )
+                ],
+                1
               ),
               _vm._v(" "),
               _c("group-title", {
@@ -25238,111 +25512,34 @@ var render = function() {
               }),
               _vm._v(" "),
               _c("group-services", {
-                ref: "servicesGroup",
-                attrs: { dimensions: _vm.dimensions }
-              }),
-              _vm._v(" "),
-              _c(
-                "v-group",
-                { attrs: { config: _vm.activitiesA } },
-                [
-                  _c("group-activity", {
-                    ref: "policyDefGroup",
-                    attrs: {
-                      dimensions: _vm.dimensions,
-                      x: 100,
-                      y: 0,
-                      prop: "policyDef"
-                    }
-                  }),
-                  _vm._v(" "),
-                  _c("group-activity", {
-                    ref: "specDesGroup",
-                    attrs: {
-                      dimensions: _vm.dimensions,
-                      x: 0,
-                      y: 140,
-                      prop: "specDes"
-                    }
-                  }),
-                  _vm._v(" "),
-                  _c("group-activity", {
-                    ref: "deploymentGroup",
-                    attrs: {
-                      dimensions: _vm.dimensions,
-                      x: 200,
-                      y: 140,
-                      prop: "deployment"
-                    }
-                  })
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c("v-line", { attrs: { config: _vm.splitterConfig } }),
-              _vm._v(" "),
-              _c(
-                "v-group",
-                { attrs: { config: _vm.activitiesB } },
-                [
-                  _c("group-activity", {
-                    ref: "deliveryGroup",
-                    attrs: {
-                      dimensions: _vm.dimensions,
-                      x: 0,
-                      y: 0,
-                      prop: "delivery"
-                    }
-                  }),
-                  _vm._v(" "),
-                  _c("group-activity", {
-                    ref: "evaluationGroup",
-                    attrs: {
-                      dimensions: _vm.dimensions,
-                      x: 0,
-                      y: 140,
-                      prop: "evaluation"
-                    }
-                  }),
-                  _vm._v(" "),
-                  _c("group-activity", {
-                    ref: "userGroup",
-                    attrs: {
-                      dimensions: _vm.dimensions,
-                      x: 170,
-                      y: 0,
-                      prop: "user"
-                    }
-                  }),
-                  _vm._v(" "),
-                  _c("group-activity", {
-                    ref: "beneficiaryGroup",
-                    attrs: {
-                      dimensions: _vm.dimensions,
-                      x: 170,
-                      y: 140,
-                      prop: "beneficiary"
-                    }
-                  })
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c("group-activity", {
-                ref: "initiatorGroup",
+                ref: "externalServicesGroup",
                 attrs: {
                   dimensions: _vm.dimensions,
-                  x: 350,
-                  y: 500,
-                  circle: true,
-                  prop: "initiator"
+                  colour: _vm.colours.green,
+                  type: "extsvc",
+                  labelProp: "extSvcLabel"
                 }
               }),
               _vm._v(" "),
-              _c(
-                "group-inputs",
-                _vm._b({}, "group-inputs", _vm.inputsConfig, false)
-              )
+              _c("group-services", {
+                ref: "externalOrganisationsGroup",
+                attrs: {
+                  dimensions: _vm.dimensions,
+                  colour: _vm.colours.fuchsia,
+                  type: "extorg",
+                  labelProp: "extOrgLabel"
+                }
+              }),
+              _vm._v(" "),
+              _c("group-services", {
+                ref: "infrastructuralServicesGroup",
+                attrs: {
+                  dimensions: _vm.dimensions,
+                  colour: _vm.colours.blue,
+                  type: "infsvc",
+                  labelProp: "infSvcLabel"
+                }
+              })
             ],
             1
           )
@@ -25796,10 +25993,7 @@ var render = function() {
         }
       }),
       _vm._v(" "),
-      _c("a", {
-        ref: "link",
-        attrs: { href: _vm.service.url, target: "_blank" }
-      })
+      _c("a", { ref: "link", attrs: { href: _vm.item.url, target: "_blank" } })
     ],
     1
   )
@@ -25912,10 +26106,10 @@ var render = function() {
       _vm._v(" "),
       _c("v-text", { ref: "label", attrs: { config: _vm.label } }),
       _vm._v(" "),
-      _vm._l(_vm.services, function(service, index) {
+      _vm._l(_vm.filteredServices, function(item, index) {
         return _c("shape-service", {
-          key: service.id,
-          attrs: { service: service, dimensions: _vm.dimensions, index: index }
+          key: item.id,
+          attrs: { item: item, index: index, colour: _vm.colour }
         })
       })
     ],
@@ -26077,7 +26271,7 @@ var render = function() {
         attrs: {
           title: "External Organisations",
           type: "extorg",
-          labelProp: "extSvcLabel"
+          labelProp: "extOrgLabel"
         }
       }),
       _vm._v(" "),
@@ -26085,7 +26279,7 @@ var render = function() {
         attrs: {
           title: "Infrastructural Services",
           type: "infsvc",
-          labelProp: "extSvcLabel"
+          labelProp: "infSvcLabel"
         }
       }),
       _vm._v(" "),
@@ -27737,6 +27931,155 @@ render._withStripped = true
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./js/components/sidebar/edit/ServiceItem.vue?vue&type=template&id=672c6ab7&":
+/*!*****************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./js/components/sidebar/edit/ServiceItem.vue?vue&type=template&id=672c6ab7& ***!
+  \*****************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    {
+      staticClass: "accordion accordion-service",
+      attrs: { open: _vm.editing }
+    },
+    [
+      _c(
+        "label",
+        { staticClass: "accordion-header", on: { click: _vm.doEdit } },
+        [
+          _c("i", { staticClass: "icon icon-arrow-right" }),
+          _vm._v(_vm._s(_vm.item.label))
+        ]
+      ),
+      _vm._v(" "),
+      _c("div", { staticClass: "accordion-body" }, [
+        _c("div", { staticClass: "card" }, [
+          _c("div", { staticClass: "card-body" }, [
+            _c("div", { staticClass: "form-group" }, [
+              _c(
+                "label",
+                {
+                  staticClass: "form-label label-sm",
+                  attrs: { for: "label" + _vm.type + _vm.index }
+                },
+                [_vm._v("Label")]
+              ),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "focus",
+                    rawName: "v-focus",
+                    value: _vm.editing,
+                    expression: "editing"
+                  }
+                ],
+                ref: "label",
+                staticClass: "form-input input-sm",
+                attrs: {
+                  id: "label" + _vm.type + _vm.index,
+                  type: "text",
+                  maxlength: "255"
+                },
+                domProps: { value: _vm.item.label },
+                on: {
+                  keyup: [
+                    function($event) {
+                      if (
+                        !$event.type.indexOf("key") &&
+                        _vm._k($event.keyCode, "enter", 13, $event.key, "Enter")
+                      ) {
+                        return null
+                      }
+                      return _vm.doneEdit($event)
+                    },
+                    function($event) {
+                      if (
+                        !$event.type.indexOf("key") &&
+                        _vm._k($event.keyCode, "esc", 27, $event.key, [
+                          "Esc",
+                          "Escape"
+                        ])
+                      ) {
+                        return null
+                      }
+                      return _vm.cancelEdit($event)
+                    }
+                  ]
+                }
+              })
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "form-group" }, [
+              _c(
+                "label",
+                {
+                  staticClass: "form-label label-sm",
+                  attrs: { for: "url" + _vm.type + _vm.index }
+                },
+                [_vm._v("Web address")]
+              ),
+              _vm._v(" "),
+              _c("input", {
+                ref: "url",
+                staticClass: "form-input input-sm",
+                attrs: {
+                  id: "url" + _vm.type + _vm.index,
+                  type: "text",
+                  maxlength: "255",
+                  placeholder: "https://"
+                },
+                domProps: { value: _vm.item.url },
+                on: {
+                  keyup: [
+                    function($event) {
+                      if (
+                        !$event.type.indexOf("key") &&
+                        _vm._k($event.keyCode, "enter", 13, $event.key, "Enter")
+                      ) {
+                        return null
+                      }
+                      return _vm.doneEdit($event)
+                    },
+                    function($event) {
+                      if (
+                        !$event.type.indexOf("key") &&
+                        _vm._k($event.keyCode, "esc", 27, $event.key, [
+                          "Esc",
+                          "Escape"
+                        ])
+                      ) {
+                        return null
+                      }
+                      return _vm.cancelEdit($event)
+                    }
+                  ]
+                }
+              })
+            ])
+          ])
+        ])
+      ])
+    ]
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./js/components/sidebar/edit/Services.vue?vue&type=template&id=c3f0c2c2&":
 /*!**************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./js/components/sidebar/edit/Services.vue?vue&type=template&id=c3f0c2c2& ***!
@@ -27777,13 +28120,16 @@ var render = function() {
           _c("div", { staticClass: "form-group" }, [
             _c(
               "label",
-              { staticClass: "form-label", attrs: { for: "label" } },
+              {
+                staticClass: "form-label",
+                attrs: { for: _vm.panelName + "_label" }
+              },
               [_vm._v("Label")]
             ),
             _vm._v(" "),
             _c("input", {
               staticClass: "form-input",
-              attrs: { id: "servicesLabel", maxlength: "255" },
+              attrs: { id: _vm.panelName + "_label", maxlength: "255" },
               domProps: { value: _vm.labelValue },
               on: {
                 input: function($event) {
@@ -27797,80 +28143,50 @@ var render = function() {
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "form-group" }, [
-            _c("label", { staticClass: "form-label" }, [_vm._v("Items")]),
-            _vm._v(" "),
             _c(
-              "button",
+              "label",
               {
-                staticClass: "btn btn-primary btn-sm",
-                on: { click: _vm.newItem }
+                staticClass: "form-label",
+                attrs: { for: _vm.panelName + "_new" }
               },
-              [
-                _c("plus-icon", { attrs: { size: "18" } }),
-                _vm._v(" Add new item...")
-              ],
-              1
-            )
+              [_vm._v("Add new item")]
+            ),
+            _vm._v(" "),
+            _c("span", { staticClass: "form-input-hint" }, [
+              _vm._v("Type the name below and press enter.")
+            ]),
+            _vm._v(" "),
+            _c("input", {
+              staticClass: "form-input",
+              attrs: { id: _vm.panelName + "_new", autocomplete: "off" },
+              on: {
+                keyup: function($event) {
+                  if (
+                    !$event.type.indexOf("key") &&
+                    _vm._k($event.keyCode, "enter", 13, $event.key, "Enter")
+                  ) {
+                    return null
+                  }
+                  return _vm.addItem({ event: $event })
+                }
+              }
+            })
           ]),
           _vm._v(" "),
-          _c(
-            "div",
-            { staticClass: "tile-list tile-list-services" },
-            _vm._l(_vm.filteredServices, function(service) {
-              return _c("div", { staticClass: "tile tile-centered" }, [
-                _c("div", { staticClass: "tile-content" }, [
-                  _c("div", { staticClass: "tile-title" }, [
-                    _vm._v(_vm._s(service.label))
-                  ]),
-                  _vm._v(" "),
-                  service.url
-                    ? _c(
-                        "a",
-                        {
-                          staticClass: "tile-subtitle",
-                          attrs: { href: service.url, target: "_blank" }
-                        },
-                        [_vm._v(_vm._s(service.url))]
-                      )
-                    : _vm._e()
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "tile-action" }, [
-                  _c(
-                    "button",
-                    {
-                      staticClass: "btn btn-link btn-action tooltip text-dark",
-                      attrs: { "data-tooltip": "Edit" },
-                      on: {
-                        click: function($event) {
-                          return _vm.editItem(service)
-                        }
-                      }
-                    },
-                    [_c("edit-icon", { attrs: { size: "18" } })],
-                    1
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "button",
-                    {
-                      staticClass: "btn btn-link btn-action tooltip text-error",
-                      attrs: { "data-tooltip": "Delete" },
-                      on: {
-                        click: function($event) {
-                          return _vm.deleteItem(service)
-                        }
-                      }
-                    },
-                    [_c("trash-2-icon", { attrs: { size: "18" } })],
-                    1
-                  )
-                ])
-              ])
-            }),
-            0
-          )
-        ]
+          _vm._l(_vm.filteredServices, function(item, index) {
+            return _c("service-item", {
+              key: index,
+              attrs: {
+                index: index,
+                item: item,
+                type: _vm.type,
+                editingItem: _vm.editingItem
+              },
+              on: { "edit-item": _vm.setEditItem }
+            })
+          })
+        ],
+        2
       ),
       _vm._v(" "),
       _c(
@@ -27900,168 +28216,6 @@ var render = function() {
             },
             [_vm._v("Next")]
           )
-        ]
-      ),
-      _vm._v(" "),
-      _c(
-        "div",
-        {
-          staticClass: "modal modal-sm",
-          class: _vm.mode == "edit" || _vm.mode == "add" ? "active" : ""
-        },
-        [
-          _c("div", {
-            staticClass: "modal-overlay",
-            attrs: { "aria-label": "Close" },
-            on: { click: _vm.closeModal }
-          }),
-          _vm._v(" "),
-          _c("div", { staticClass: "modal-container" }, [
-            _c("div", { staticClass: "modal-header" }, [
-              _c("button", {
-                staticClass: "btn btn-clear float-right",
-                attrs: { "aria-label": "Close" },
-                on: { click: _vm.closeModal }
-              }),
-              _vm._v(" "),
-              _c("div", { staticClass: "modal-title h5" }, [
-                _c(
-                  "span",
-                  {
-                    directives: [
-                      {
-                        name: "show",
-                        rawName: "v-show",
-                        value: _vm.mode == "edit",
-                        expression: "mode == 'edit'"
-                      }
-                    ]
-                  },
-                  [_vm._v("Edit")]
-                ),
-                _vm._v(" "),
-                _c(
-                  "span",
-                  {
-                    directives: [
-                      {
-                        name: "show",
-                        rawName: "v-show",
-                        value: _vm.mode == "add",
-                        expression: "mode == 'add'"
-                      }
-                    ]
-                  },
-                  [_vm._v("Add New")]
-                )
-              ])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "modal-body" }, [
-              _c("div", { staticClass: "content" }, [
-                _c("div", { staticClass: "form-group" }, [
-                  _c(
-                    "label",
-                    { staticClass: "form-label", attrs: { for: "label" } },
-                    [_vm._v("Label")]
-                  ),
-                  _vm._v(" "),
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.item.label,
-                        expression: "item.label"
-                      }
-                    ],
-                    staticClass: "form-input",
-                    attrs: { type: "text", id: "label", maxlength: "255" },
-                    domProps: { value: _vm.item.label },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.$set(_vm.item, "label", $event.target.value)
-                      }
-                    }
-                  })
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-group" }, [
-                  _c(
-                    "label",
-                    { staticClass: "form-label", attrs: { for: "url" } },
-                    [_vm._v("Web address")]
-                  ),
-                  _vm._v(" "),
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.item.url,
-                        expression: "item.url"
-                      }
-                    ],
-                    staticClass: "form-input",
-                    attrs: {
-                      placeholder: "https://",
-                      type: "url",
-                      id: "url",
-                      maxlength: "255"
-                    },
-                    domProps: { value: _vm.item.url },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.$set(_vm.item, "url", $event.target.value)
-                      }
-                    }
-                  })
-                ])
-              ])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "modal-footer" }, [
-              _c(
-                "button",
-                {
-                  directives: [
-                    {
-                      name: "show",
-                      rawName: "v-show",
-                      value: _vm.mode == "add",
-                      expression: "mode == 'add'"
-                    }
-                  ],
-                  staticClass: "btn btn-primary",
-                  on: { click: _vm.saveItem }
-                },
-                [_vm._v("Add")]
-              ),
-              _vm._v(" "),
-              _c(
-                "button",
-                {
-                  directives: [
-                    {
-                      name: "show",
-                      rawName: "v-show",
-                      value: _vm.mode == "edit",
-                      expression: "mode == 'edit'"
-                    }
-                  ],
-                  staticClass: "btn btn-primary",
-                  on: { click: _vm.saveItem }
-                },
-                [_vm._v("Save")]
-              )
-            ])
-          ])
         ]
       )
     ],

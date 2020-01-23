@@ -16,8 +16,8 @@
 
 
 		<edit-services title="External Technical Services" type="extsvc" labelProp="extSvcLabel" />
-		<edit-services title="External Organisations" type="extorg" labelProp="extSvcLabel" />
-		<edit-services title="Infrastructural Services" type="infsvc" labelProp="extSvcLabel" />
+		<edit-services title="External Organisations" type="extorg" labelProp="extOrgLabel" />
+		<edit-services title="Infrastructural Services" type="infsvc" labelProp="infSvcLabel" />
 
 		<edit-social />
 
