@@ -3216,6 +3216,7 @@ var state = {
   user: null,
   scale: false,
   toast: {},
+  stageHover: false,
   options: {
     fontFamily: '-apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif'
   }
@@ -3332,6 +3333,12 @@ var mutations = {
   clearToast: function clearToast(state, params) {
     params.active = false;
     state.toast = {};
+  },
+  setHover: function setHover(value) {
+    state.stageHover = true;
+  },
+  unsetHover: function unsetHover() {
+    state.stageHover = false;
   }
 };
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -5987,14 +5994,15 @@ var stageSize = {
     'projectData.goals.body': 'refreshPositions',
     'projectData.goals': 'refreshPositions',
     'projectData.servicesLabel': 'refreshPositions',
-    'scale': 'resize' // 'projectData.services': 'refreshPositions',
+    'scale': 'resize',
+    'stageHover': 'updateCursor' // 'projectData.services': 'refreshPositions',
 
   },
   computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapState"])('project', {
     projectData: function projectData(state) {
       return state.project.data;
     }
-  }), {}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapState"])('app', ['scale', 'options']), {
+  }), {}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapState"])('app', ['scale', 'options', 'stageHover']), {
     structLine: function structLine() {
       var width = 125,
           height = 320;
@@ -6130,12 +6138,10 @@ var stageSize = {
           y: scale
         });
         stage.draw();
-      } // this.refreshPositions();
-      // stage.width();
-      // stage.height(stageHeight * scale);
-      // stage.scale({ x: scale, y: scale });
-      // stage.draw();
-
+      }
+    },
+    updateCursor: function updateCursor() {
+      this.$refs.stage.getStage().container().style.cursor = this.stageHover ? 'pointer' : 'default';
     }
   },
   mounted: function mounted() {
@@ -6472,6 +6478,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
 
 
 
@@ -6512,6 +6519,9 @@ var nodeRefs = {};
   }), {
     value: function value() {
       return this.$store.getters["project/".concat(this.prop)];
+    },
+    url: function url() {
+      return this.value.url ? this.value.url : false;
     },
     groupConfig: function groupConfig() {
       return {
@@ -6555,7 +6565,22 @@ var nodeRefs = {};
       };
     }
   }),
-  methods: {
+  methods: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapMutations"])('app', ['setHover', 'unsetHover']), {
+    mousemove: function mousemove() {
+      if (this.url) {
+        this.setHover();
+      }
+    },
+    mouseout: function mouseout() {
+      if (this.url) {
+        this.unsetHover();
+      }
+    },
+    launchUrl: function launchUrl() {
+      if (this.url) {
+        this.$refs.link.click();
+      }
+    },
     refreshPositions: function refreshPositions() {
       var _this = this;
 
@@ -6583,7 +6608,7 @@ var nodeRefs = {};
         };
       });
     }
-  },
+  }),
   mounted: function mounted() {
     nodeRefs.label = this.$refs.label;
     nodeRefs.icon = this.$refs.icon.$refs.group;
@@ -7159,19 +7184,23 @@ var cols = 4;
       };
     }
   }),
-  methods: {
+  methods: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapMutations"])('app', ['setHover', 'unsetHover']), {
     launchUrl: function launchUrl() {
       if (this.item.url) {
         this.$refs.link.click();
       }
     },
-    onMousemove: function onMousemove(e) {
-      this.hover = true;
+    mousemove: function mousemove() {
+      if (this.item.url) {
+        this.setHover();
+      }
     },
-    onMouseout: function onMouseout() {
-      this.hover = false;
+    mouseout: function mouseout() {
+      if (this.item.url) {
+        this.unsetHover();
+      }
     }
-  }
+  })
 });
 
 /***/ }),
@@ -8006,6 +8035,18 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -8050,6 +8091,18 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -8148,6 +8201,18 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -8467,6 +8532,18 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -8564,6 +8641,18 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -8608,6 +8697,18 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -9395,6 +9496,18 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -9440,6 +9553,18 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -26214,7 +26339,15 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "v-group",
-    { attrs: { config: _vm.groupConfig } },
+    {
+      attrs: { config: _vm.groupConfig },
+      on: {
+        mousemove: _vm.mousemove,
+        mouseout: _vm.mouseout,
+        click: _vm.launchUrl,
+        tap: _vm.launchUrl
+      }
+    },
     [
       _c("v-ellipse", { ref: "circle", attrs: { config: _vm.circleConfig } }),
       _vm._v(" "),
@@ -26223,7 +26356,9 @@ var render = function() {
       _c(
         "service-type-icon",
         _vm._b({ ref: "icon" }, "service-type-icon", _vm.icon, false)
-      )
+      ),
+      _vm._v(" "),
+      _c("a", { ref: "link", attrs: { href: _vm.url, target: "_blank" } })
     ],
     1
   )
@@ -26426,19 +26561,19 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "v-group",
-    { attrs: { config: _vm.groupConfig } },
+    {
+      attrs: { config: _vm.groupConfig },
+      on: {
+        mousemove: _vm.mousemove,
+        mouseout: _vm.mouseout,
+        click: _vm.launchUrl,
+        tap: _vm.launchUrl
+      }
+    },
     [
       _c("v-text", { attrs: { config: _vm.label } }),
       _vm._v(" "),
-      _c("v-rect", {
-        attrs: { config: _vm.rect },
-        on: {
-          mousemove: _vm.onMousemove,
-          mouseout: _vm.onMouseout,
-          click: _vm.launchUrl,
-          tap: _vm.launchUrl
-        }
-      }),
+      _c("v-rect", { attrs: { config: _vm.rect } }),
       _vm._v(" "),
       _c("a", { ref: "link", attrs: { href: _vm.item.url, target: "_blank" } })
     ],
@@ -27141,7 +27276,27 @@ var render = function() {
               })
             ],
             1
-          )
+          ),
+          _vm._v(" "),
+          _c("div", { staticClass: "form-group" }, [
+            _c("label", { staticClass: "form-label", attrs: { for: "url" } }, [
+              _vm._v("Web address")
+            ]),
+            _vm._v(" "),
+            _c("input", {
+              staticClass: "form-input",
+              attrs: { id: "url", maxlength: "255", placeholder: "https://" },
+              domProps: { value: _vm.beneficiary.url },
+              on: {
+                input: function($event) {
+                  return _vm.updateBeneficiary({
+                    prop: "url",
+                    value: $event.target.value
+                  })
+                }
+              }
+            })
+          ])
         ]
       ),
       _vm._v(" "),
@@ -27327,7 +27482,27 @@ var render = function() {
               })
             ],
             1
-          )
+          ),
+          _vm._v(" "),
+          _c("div", { staticClass: "form-group" }, [
+            _c("label", { staticClass: "form-label", attrs: { for: "url" } }, [
+              _vm._v("Web address")
+            ]),
+            _vm._v(" "),
+            _c("input", {
+              staticClass: "form-input",
+              attrs: { id: "url", maxlength: "255", placeholder: "https://" },
+              domProps: { value: _vm.delivery.url },
+              on: {
+                input: function($event) {
+                  return _vm.updateDelivery({
+                    prop: "url",
+                    value: $event.target.value
+                  })
+                }
+              }
+            })
+          ])
         ]
       ),
       _vm._v(" "),
@@ -27516,7 +27691,27 @@ var render = function() {
               })
             ],
             1
-          )
+          ),
+          _vm._v(" "),
+          _c("div", { staticClass: "form-group" }, [
+            _c("label", { staticClass: "form-label", attrs: { for: "url" } }, [
+              _vm._v("Web address")
+            ]),
+            _vm._v(" "),
+            _c("input", {
+              staticClass: "form-input",
+              attrs: { id: "url", maxlength: "255", placeholder: "https://" },
+              domProps: { value: _vm.deployment.url },
+              on: {
+                input: function($event) {
+                  return _vm.updateDeployment({
+                    prop: "url",
+                    value: $event.target.value
+                  })
+                }
+              }
+            })
+          ])
         ]
       ),
       _vm._v(" "),
@@ -28043,7 +28238,27 @@ var render = function() {
               })
             ],
             1
-          )
+          ),
+          _vm._v(" "),
+          _c("div", { staticClass: "form-group" }, [
+            _c("label", { staticClass: "form-label", attrs: { for: "url" } }, [
+              _vm._v("Web address")
+            ]),
+            _vm._v(" "),
+            _c("input", {
+              staticClass: "form-input",
+              attrs: { id: "url", maxlength: "255", placeholder: "https://" },
+              domProps: { value: _vm.evaluation.url },
+              on: {
+                input: function($event) {
+                  return _vm.updateEvaluation({
+                    prop: "url",
+                    value: $event.target.value
+                  })
+                }
+              }
+            })
+          ])
         ]
       ),
       _vm._v(" "),
@@ -28232,7 +28447,27 @@ var render = function() {
               })
             ],
             1
-          )
+          ),
+          _vm._v(" "),
+          _c("div", { staticClass: "form-group" }, [
+            _c("label", { staticClass: "form-label", attrs: { for: "url" } }, [
+              _vm._v("Web address")
+            ]),
+            _vm._v(" "),
+            _c("input", {
+              staticClass: "form-input",
+              attrs: { id: "url", maxlength: "255", placeholder: "https://" },
+              domProps: { value: _vm.initiator.url },
+              on: {
+                input: function($event) {
+                  return _vm.updateInitiator({
+                    prop: "url",
+                    value: $event.target.value
+                  })
+                }
+              }
+            })
+          ])
         ]
       ),
       _vm._v(" "),
@@ -28421,7 +28656,27 @@ var render = function() {
               })
             ],
             1
-          )
+          ),
+          _vm._v(" "),
+          _c("div", { staticClass: "form-group" }, [
+            _c("label", { staticClass: "form-label", attrs: { for: "url" } }, [
+              _vm._v("Web address")
+            ]),
+            _vm._v(" "),
+            _c("input", {
+              staticClass: "form-input",
+              attrs: { id: "url", maxlength: "255", placeholder: "https://" },
+              domProps: { value: _vm.policyDef.url },
+              on: {
+                input: function($event) {
+                  return _vm.updatePolicyDef({
+                    prop: "url",
+                    value: $event.target.value
+                  })
+                }
+              }
+            })
+          ])
         ]
       ),
       _vm._v(" "),
@@ -29437,7 +29692,27 @@ var render = function() {
               })
             ],
             1
-          )
+          ),
+          _vm._v(" "),
+          _c("div", { staticClass: "form-group" }, [
+            _c("label", { staticClass: "form-label", attrs: { for: "url" } }, [
+              _vm._v("Web address")
+            ]),
+            _vm._v(" "),
+            _c("input", {
+              staticClass: "form-input",
+              attrs: { id: "url", maxlength: "255", placeholder: "https://" },
+              domProps: { value: _vm.specDes.url },
+              on: {
+                input: function($event) {
+                  return _vm.updateSpecDes({
+                    prop: "url",
+                    value: $event.target.value
+                  })
+                }
+              }
+            })
+          ])
         ]
       ),
       _vm._v(" "),
@@ -29614,7 +29889,27 @@ var render = function() {
               })
             ],
             1
-          )
+          ),
+          _vm._v(" "),
+          _c("div", { staticClass: "form-group" }, [
+            _c("label", { staticClass: "form-label", attrs: { for: "url" } }, [
+              _vm._v("Web address")
+            ]),
+            _vm._v(" "),
+            _c("input", {
+              staticClass: "form-input",
+              attrs: { id: "url", maxlength: "255", placeholder: "https://" },
+              domProps: { value: _vm.user.url },
+              on: {
+                input: function($event) {
+                  return _vm.updateUser({
+                    prop: "url",
+                    value: $event.target.value
+                  })
+                }
+              }
+            })
+          ])
         ]
       ),
       _vm._v(" "),

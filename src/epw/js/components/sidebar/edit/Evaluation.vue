@@ -37,6 +37,18 @@
 				/>
 			</div>
 
+			<div class="form-group">
+				<label class="form-label" for="url">Web address</label>
+				<input
+					:value="evaluation.url"
+					@input="updateEvaluation({ prop: 'url', value: $event.target.value })"
+					class="form-input"
+					id="url"
+					maxlength="255"
+					placeholder="https://"
+				>
+			</div>
+
 		</div>
 
 		<div class="sidebar-footer" v-show="visible">

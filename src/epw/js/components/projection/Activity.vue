@@ -1,16 +1,17 @@
 <template>
 
-	<v-group :config="groupConfig">
+	<v-group :config="groupConfig" @mousemove="mousemove" @mouseout="mouseout" @click="launchUrl" @tap="launchUrl">
 		<v-ellipse ref="circle" :config="circleConfig" />
 		<v-text ref="label" :config="label" />
 		<service-type-icon ref="icon" v-bind="icon" />
+		<a :href="url" target="_blank" ref="link"></a>
 	</v-group>
 
 </template>
 
 <script>
 
-import { mapState } from 'vuex';
+import { mapState, mapMutations } from 'vuex';
 import colours from 'colors.css';
 import ServiceTypeIcon from './ServiceTypeIcon.vue';
 
@@ -62,6 +63,10 @@ export default {
 			return this.$store.getters[`project/${this.prop}`];
 		},
 
+		url() {
+			return this.value.url ? this.value.url : false;
+		},
+
 		groupConfig() {
 			return {
 				x: this.x,
@@ -110,6 +115,30 @@ export default {
 	},
 
 	methods: {
+
+		...mapMutations('app', [
+			'setHover',
+			'unsetHover',
+		]),
+
+		mousemove() {
+			if (this.url) {
+				this.setHover();
+			}
+		},
+
+		mouseout() {
+			if (this.url) {
+				this.unsetHover();
+			}
+		},
+
+		launchUrl() {
+			if (this.url) {
+				this.$refs.link.click();
+			}
+		},
+
 		refreshPositions() {
 			if ( ! this.circle) {
 				return;

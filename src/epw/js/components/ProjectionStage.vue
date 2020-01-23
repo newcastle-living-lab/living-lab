@@ -203,6 +203,7 @@ export default {
 		'projectData.goals': 'refreshPositions',
 		'projectData.servicesLabel': 'refreshPositions',
 		'scale': 'resize',
+		'stageHover': 'updateCursor',
 		// 'projectData.services': 'refreshPositions',
 	},
 
@@ -212,7 +213,11 @@ export default {
 			projectData: state => state.project.data
 		}),
 
-		...mapState('app', ['scale', 'options']),
+		...mapState('app', [
+			'scale',
+			'options',
+			'stageHover',
+		]),
 
 		structLine() {
 			let width = 125,
@@ -377,13 +382,10 @@ export default {
 				stage.draw();
 
 			}
+		},
 
-			// this.refreshPositions();
-
-			// stage.width();
-			// stage.height(stageHeight * scale);
-			// stage.scale({ x: scale, y: scale });
-			// stage.draw();
+		updateCursor() {
+			this.$refs.stage.getStage().container().style.cursor = this.stageHover ? 'pointer' : 'default';
 		}
 	},
 

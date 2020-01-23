@@ -1,8 +1,8 @@
 <template>
 
-	<v-group :config="groupConfig">
+	<v-group :config="groupConfig" @mousemove="mousemove" @mouseout="mouseout" @click="launchUrl" @tap="launchUrl">
 		<v-text :config="label" />
-		<v-rect :config="rect" @mousemove="onMousemove" @mouseout="onMouseout" @click="launchUrl" @tap="launchUrl" />
+		<v-rect :config="rect" />
 		<a :href="item.url" target="_blank" ref="link"></a>
 	</v-group>
 
@@ -10,7 +10,7 @@
 
 <script>
 
-import { mapState } from 'vuex';
+import { mapState, mapMutations } from 'vuex';
 import colours from 'colors.css';
 
 const size = {
@@ -95,16 +95,28 @@ export default {
 	},
 
 	methods: {
+
+		...mapMutations('app', [
+			'setHover',
+			'unsetHover',
+		]),
+
 		launchUrl() {
 			if (this.item.url) {
 				this.$refs.link.click();
 			}
 		},
-		onMousemove(e) {
-			this.hover = true;
+
+		mousemove() {
+			if (this.item.url) {
+				this.setHover();
+			}
 		},
-		onMouseout() {
-			this.hover = false;
+
+		mouseout() {
+			if (this.item.url) {
+				this.unsetHover();
+			}
 		},
 	}
 

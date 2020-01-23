@@ -14,6 +14,7 @@ const state = {
 	user: null,
 	scale: false,
 	toast: {},
+	stageHover: false,
 	options: {
 		fontFamily: '-apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif',
 	}
@@ -139,6 +140,14 @@ const mutations = {
 	clearToast(state, params) {
 		params.active = false;
 		state.toast = {};
+	},
+
+	setHover(value) {
+		state.stageHover = true;
+	},
+
+	unsetHover() {
+		state.stageHover = false;
 	}
 
 };
