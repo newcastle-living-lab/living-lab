@@ -4853,10 +4853,17 @@ body {
 }
 
 .app-content {
-  background: #444;
   padding: 0.8rem;
   position: relative;
   width: 100%;
+}
+
+.app-content.dark {
+  background: #444;
+}
+
+.app-content.light {
+  background: #fff;
 }
 
 .canvas-container.scrollable {
@@ -5042,6 +5049,21 @@ a.text-gray-medium:visited {
   display: none;
   border: 0.1rem solid #fff;
   border-radius: 50%;
+}
+
+.social-media .social-heading {
+  padding: 0.8rem;
+  font-weight: normal;
+  font-size: 0.96rem;
+}
+
+.social-media .social-heading .feather {
+  vertical-align: -20%;
+  margin-right: 0.4rem;
+}
+
+.social-media .menu {
+  height: 100%;
 }
 
 .menu.simple-menu {

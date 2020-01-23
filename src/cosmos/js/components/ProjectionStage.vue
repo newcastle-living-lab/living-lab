@@ -1,81 +1,84 @@
 <template>
 
-	<div ref="container" class="canvas-container scrollable scr-x scr-y">
+	<main ref="container" class="app-content dark">
 
-		<v-stage ref="stage" :config="stageConfig">
+		<div class="canvas-container scrollable scr-x scr-y">
 
-			<v-layer>
+			<v-stage ref="stage" :config="stageConfig">
 
-				<v-rect :config="backgroundConfig" />
+				<v-layer>
 
-				<v-group :config="mainGroupConfig">
+					<v-rect :config="backgroundConfig" />
 
-					<v-shape ref="structLine" :config="structLine" />
-					<v-text ref="structText" :config="structText" />
+					<v-group :config="mainGroupConfig">
 
-					<v-shape ref="infraLine" :config="infraLine" />
-					<v-text ref="infraText" :config="infraText" />
+						<v-shape ref="structLine" :config="structLine" />
+						<v-text ref="structText" :config="structText" />
+
+						<v-shape ref="infraLine" :config="infraLine" />
+						<v-text ref="infraText" :config="infraText" />
 
 
-					<group-lozenge v-bind="serviceDefinitionConfig" />
-					<group-lozenge v-bind="serviceDeliveryConfig" />
+						<group-lozenge v-bind="serviceDefinitionConfig" />
+						<group-lozenge v-bind="serviceDeliveryConfig" />
 
-					<v-group :config="activitiesA">
-						<group-activity ref="policyDefGroup" :dimensions="dimensions" :x="115" :y="0" prop="policyDef" />
-						<group-activity ref="specDesGroup" :dimensions="dimensions" :x="0" :y="140" prop="specDes" />
-						<group-activity ref="deploymentGroup" :dimensions="dimensions" :x="230" :y="140" prop="deployment" />
+						<v-group :config="activitiesA">
+							<group-activity ref="policyDefGroup" :dimensions="dimensions" :x="115" :y="0" prop="policyDef" />
+							<group-activity ref="specDesGroup" :dimensions="dimensions" :x="0" :y="140" prop="specDes" />
+							<group-activity ref="deploymentGroup" :dimensions="dimensions" :x="230" :y="140" prop="deployment" />
+						</v-group>
+
+						<v-line :config="splitterConfig" />
+
+						<v-group :config="activitiesB">
+							<group-activity ref="deliveryGroup" :dimensions="dimensions" :x="0" :y="0" prop="delivery" />
+							<group-activity ref="evaluationGroup" :dimensions="dimensions" :x="0" :y="140" prop="evaluation" />
+							<group-activity ref="userGroup" :dimensions="dimensions" :x="185" :y="0" prop="user" />
+							<group-activity ref="beneficiaryGroup" :dimensions="dimensions" :x="185" :y="140" prop="beneficiary" />
+						</v-group>
+
+						<group-activity ref="initiatorGroup"
+							:dimensions="dimensions"
+							:x="350"
+							:y="500"
+							:circle="true"
+							prop="initiator"
+						/>
+
+						<group-inputs v-bind="inputsConfig" />
+
 					</v-group>
 
-					<v-line :config="splitterConfig" />
+					<group-title ref="projectTitleGroup" :dimensions="dimensions" />
 
-					<v-group :config="activitiesB">
-						<group-activity ref="deliveryGroup" :dimensions="dimensions" :x="0" :y="0" prop="delivery" />
-						<group-activity ref="evaluationGroup" :dimensions="dimensions" :x="0" :y="140" prop="evaluation" />
-						<group-activity ref="userGroup" :dimensions="dimensions" :x="185" :y="0" prop="user" />
-						<group-activity ref="beneficiaryGroup" :dimensions="dimensions" :x="185" :y="140" prop="beneficiary" />
-					</v-group>
+					<group-goals ref="goalsGroup" :dimensions="dimensions" />
 
-					<group-activity ref="initiatorGroup"
+					<group-services ref="externalServicesGroup"
 						:dimensions="dimensions"
-						:x="350"
-						:y="500"
-						:circle="true"
-						prop="initiator"
+						:colour="colours.green"
+						type="extsvc"
+						labelProp="extSvcLabel"
 					/>
 
-					<group-inputs v-bind="inputsConfig" />
+					<group-services ref="externalOrganisationsGroup"
+						:dimensions="dimensions"
+						:colour="colours.fuchsia"
+						type="extorg"
+						labelProp="extOrgLabel"
+					/>
 
-				</v-group>
-
-				<group-title ref="projectTitleGroup" :dimensions="dimensions" />
-
-				<group-goals ref="goalsGroup" :dimensions="dimensions" />
-
-				<group-services ref="externalServicesGroup"
-					:dimensions="dimensions"
-					:colour="colours.green"
-					type="extsvc"
-					labelProp="extSvcLabel"
-				/>
-
-				<group-services ref="externalOrganisationsGroup"
-					:dimensions="dimensions"
-					:colour="colours.fuchsia"
-					type="extorg"
-					labelProp="extOrgLabel"
-				/>
-
-				<group-services ref="infrastructuralServicesGroup"
-					:dimensions="dimensions"
-					:colour="colours.blue"
-					type="infsvc"
-					labelProp="infSvcLabel"
-				/>
+					<group-services ref="infrastructuralServicesGroup"
+						:dimensions="dimensions"
+						:colour="colours.blue"
+						type="infsvc"
+						labelProp="infSvcLabel"
+					/>
 
 
-			</v-layer>
-		</v-stage>
-	</div>
+				</v-layer>
+			</v-stage>
+		</div>
+	</main>
 
 </template>
 

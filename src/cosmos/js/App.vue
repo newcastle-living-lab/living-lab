@@ -9,11 +9,9 @@
 
 			<Sidebar/>
 
-			<main class="app-content">
-				<keep-alive>
-					<router-view></router-view>
-				</keep-alive>
-			</main>
+			<keep-alive>
+				<router-view></router-view>
+			</keep-alive>
 
 		</section>
 

@@ -139,12 +139,18 @@ body {
 }
 
 .app-content {
-	background: $grey-dark;
+
 	padding: $unit-4;
 	position: relative;
 	width: 100%;
-	// height: 100%;
-	// overflow: auto;
+
+	&.dark {
+		background: $grey-dark;
+	}
+
+	&.light {
+		background: #fff;
+	}
 }
 
 .canvas-container {
@@ -357,5 +363,24 @@ body {
 			}
 		}
 
+	}
+}
+
+
+
+
+.social-media {
+	.social-heading {
+		padding: $unit-4;
+		font-weight: normal;
+		font-size: $font-size * 1.2;
+		.feather {
+			vertical-align: -20%;
+			margin-right: $unit-2;
+		}
+	}
+
+	.menu {
+		height: 100%;
 	}
 }

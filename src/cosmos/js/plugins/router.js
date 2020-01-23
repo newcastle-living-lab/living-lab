@@ -2,10 +2,9 @@ import Vue from 'vue';
 import VueRouter from 'vue-router';
 
 import ProjectionStage from '../components/ProjectionStage.vue';
+import SocialMedia from '../components/SocialMedia.vue';
 
 Vue.use(VueRouter);
-
-const SocialMedia = { template: '<div>Social media</div>' }
 
 const routes = [
 	{
