@@ -1,5 +1,11 @@
 # Living Lab Changelog
 
+## v1.25.1
+
+* COSMOS: Updated current user detection for new/edit functionality.
+* COSMOS: Updated activity icons visibility based on presence of label value.
+
+
 ## v1.25.0
 
 * Added COSMOS feature, available at /cosmos/ URL.
