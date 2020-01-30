@@ -1,5 +1,5 @@
 <template>
-	<aside class="app-sidebar">
+	<aside class="app-sidebar" v-show="showSidebar">
 		<div class="scrollable scr-y">
 			<keep-alive>
 				<component v-bind:is="currentView"></component>
@@ -11,7 +11,7 @@
 <script>
 
 import Vue from 'vue';
-import { mapState, mapActions } from 'vuex';
+import { mapState, mapGetters, mapActions } from 'vuex';
 
 import Projects from './sidebar/Projects';
 import ProjectInfo from './sidebar/ProjectInfo';
@@ -27,11 +27,37 @@ Vue.component('sidebar-welcome', Welcome);
 
 export default {
 
-	computed: mapState('app', {
-		currentView(state) {
-			return `sidebar-${state.sidebarView}`;
+	computed: {
+
+		...mapState('app', {
+
+			sidebarView: 'sidebarView',
+
+			currentView(state) {
+				return `sidebar-${state.sidebarView}`;
+			}
+		}),
+
+		...mapGetters('app', ['userCanEdit']),
+
+		...mapState('project', ['project']),
+
+		showSidebar() {
+
+			if (this.userCanEdit) {
+				return true;
+			} else {
+				if (this.sidebarView === 'welcome') {
+					return this.project !== null;
+				}
+				if (this.sidebarView === 'projects') {
+					return true;
+				}
+			}
+
+			return false;
 		}
-	})
+	}
 
 }
 </script>

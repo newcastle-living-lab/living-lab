@@ -26,7 +26,19 @@ const state = {
  *
  */
 const getters = {
-	getField
+
+	getField,
+
+	hasUser(state) {
+		return state.user !== null && typeof state.user === 'object' && state.user.username;
+	},
+
+	userCanEdit(state) {
+		var hasUser = state.user !== null && typeof state.user === 'object' && state.user.username;
+		var hasEditRole = (hasUser && state.user.roles.indexOf('edit') >= 0)
+		return (hasUser && hasEditRole);
+	}
+
 };
 
 
