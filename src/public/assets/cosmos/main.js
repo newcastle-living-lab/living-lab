@@ -3343,6 +3343,8 @@ var debug = "development" !== 'production';
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _services_api__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../services/api */ "./js/services/api.js");
 /* harmony import */ var vuex_map_fields__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vuex-map-fields */ "./node_modules/vuex-map-fields/dist/index.esm.js");
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
 
 
 /**
@@ -3370,7 +3372,15 @@ var state = {
  */
 
 var getters = {
-  getField: vuex_map_fields__WEBPACK_IMPORTED_MODULE_1__["getField"]
+  getField: vuex_map_fields__WEBPACK_IMPORTED_MODULE_1__["getField"],
+  hasUser: function hasUser(state) {
+    return state.user !== null && _typeof(state.user) === 'object' && state.user.username;
+  },
+  userCanEdit: function userCanEdit(state) {
+    var hasUser = state.user !== null && _typeof(state.user) === 'object' && state.user.username;
+    var hasEditRole = hasUser && state.user.roles.indexOf('edit') >= 0;
+    return hasUser && hasEditRole;
+  }
 };
 /**
  * Actions
@@ -6329,6 +6339,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _sidebar_EditProject__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./sidebar/EditProject */ "./js/components/sidebar/EditProject.vue");
 /* harmony import */ var _sidebar_NewProject__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./sidebar/NewProject */ "./js/components/sidebar/NewProject.vue");
 /* harmony import */ var _sidebar_Welcome__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./sidebar/Welcome */ "./js/components/sidebar/Welcome.vue");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 //
 //
 //
@@ -6352,9 +6368,26 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('sidebar-edit', _sidebar_Ed
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('sidebar-new', _sidebar_NewProject__WEBPACK_IMPORTED_MODULE_5__["default"]);
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('sidebar-welcome', _sidebar_Welcome__WEBPACK_IMPORTED_MODULE_6__["default"]);
 /* harmony default export */ __webpack_exports__["default"] = ({
-  computed: Object(vuex__WEBPACK_IMPORTED_MODULE_1__["mapState"])('app', {
+  computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_1__["mapState"])('app', {
+    sidebarView: 'sidebarView',
     currentView: function currentView(state) {
       return "sidebar-".concat(state.sidebarView);
+    }
+  }), {}, Object(vuex__WEBPACK_IMPORTED_MODULE_1__["mapGetters"])('app', ['userCanEdit']), {}, Object(vuex__WEBPACK_IMPORTED_MODULE_1__["mapState"])('project', ['project']), {
+    showSidebar: function showSidebar() {
+      if (this.userCanEdit) {
+        return true;
+      } else {
+        if (this.sidebarView === 'welcome') {
+          return this.project !== null;
+        }
+
+        if (this.sidebarView === 'projects') {
+          return true;
+        }
+      }
+
+      return false;
     }
   })
 });
@@ -6532,11 +6565,12 @@ var timer = null;
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
-/* harmony import */ var vue_feather_icons_icons_PlusIcon__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue-feather-icons/icons/PlusIcon */ "./node_modules/vue-feather-icons/icons/PlusIcon.js");
-/* harmony import */ var vue_feather_icons_icons_EditIcon__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vue-feather-icons/icons/EditIcon */ "./node_modules/vue-feather-icons/icons/EditIcon.js");
-/* harmony import */ var vue_feather_icons_icons_FolderIcon__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! vue-feather-icons/icons/FolderIcon */ "./node_modules/vue-feather-icons/icons/FolderIcon.js");
-/* harmony import */ var vue_feather_icons_icons_SaveIcon__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! vue-feather-icons/icons/SaveIcon */ "./node_modules/vue-feather-icons/icons/SaveIcon.js");
-/* harmony import */ var vue_feather_icons_icons_UserIcon__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! vue-feather-icons/icons/UserIcon */ "./node_modules/vue-feather-icons/icons/UserIcon.js");
+/* harmony import */ var vuex_map_fields__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vuex-map-fields */ "./node_modules/vuex-map-fields/dist/index.esm.js");
+/* harmony import */ var vue_feather_icons_icons_PlusIcon__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vue-feather-icons/icons/PlusIcon */ "./node_modules/vue-feather-icons/icons/PlusIcon.js");
+/* harmony import */ var vue_feather_icons_icons_EditIcon__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! vue-feather-icons/icons/EditIcon */ "./node_modules/vue-feather-icons/icons/EditIcon.js");
+/* harmony import */ var vue_feather_icons_icons_FolderIcon__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! vue-feather-icons/icons/FolderIcon */ "./node_modules/vue-feather-icons/icons/FolderIcon.js");
+/* harmony import */ var vue_feather_icons_icons_SaveIcon__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! vue-feather-icons/icons/SaveIcon */ "./node_modules/vue-feather-icons/icons/SaveIcon.js");
+/* harmony import */ var vue_feather_icons_icons_UserIcon__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! vue-feather-icons/icons/UserIcon */ "./node_modules/vue-feather-icons/icons/UserIcon.js");
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
@@ -6596,6 +6630,14 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+
 
 
 
@@ -6604,23 +6646,20 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
-    PlusIcon: vue_feather_icons_icons_PlusIcon__WEBPACK_IMPORTED_MODULE_1__["default"],
-    FolderIcon: vue_feather_icons_icons_FolderIcon__WEBPACK_IMPORTED_MODULE_3__["default"],
-    EditIcon: vue_feather_icons_icons_EditIcon__WEBPACK_IMPORTED_MODULE_2__["default"],
-    SaveIcon: vue_feather_icons_icons_SaveIcon__WEBPACK_IMPORTED_MODULE_4__["default"],
-    UserIcon: vue_feather_icons_icons_UserIcon__WEBPACK_IMPORTED_MODULE_5__["default"]
+    PlusIcon: vue_feather_icons_icons_PlusIcon__WEBPACK_IMPORTED_MODULE_2__["default"],
+    FolderIcon: vue_feather_icons_icons_FolderIcon__WEBPACK_IMPORTED_MODULE_4__["default"],
+    EditIcon: vue_feather_icons_icons_EditIcon__WEBPACK_IMPORTED_MODULE_3__["default"],
+    SaveIcon: vue_feather_icons_icons_SaveIcon__WEBPACK_IMPORTED_MODULE_5__["default"],
+    UserIcon: vue_feather_icons_icons_UserIcon__WEBPACK_IMPORTED_MODULE_6__["default"]
   },
   computed: _objectSpread({
     activeTab: function activeTab() {
       return this.$route.name;
     }
-  }, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapState"])('app', {
+  }, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])('app', ['userCanEdit', 'hasUser']), {}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapState"])('app', {
     appName: 'appName',
-    user: 'user',
-    hasUser: function hasUser(state) {
-      return state.user && state.user.username;
-    }
-  }), {}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapState"])('project', {
+    user: 'user'
+  }), {}, Object(vuex_map_fields__WEBPACK_IMPORTED_MODULE_1__["mapFields"])('app', ['scale']), {}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapState"])('project', {
     project: 'project',
     projectionUrl: function projectionUrl(state) {
       return "/".concat(state.project.id, "/livinglab");
@@ -6842,6 +6881,7 @@ var nodeRefs = {};
     },
     groupConfig: function groupConfig() {
       return {
+        visible: this.value && this.value.label && this.value.label.length ? true : false,
         x: this.x,
         y: this.y
       };
@@ -8252,6 +8292,12 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 //
 //
 //
@@ -8270,6 +8316,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+  computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])('app', ['userCanEdit'])),
   methods: Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])('app', ['doNew', 'doOpen'])
 });
 
@@ -26526,14 +26573,28 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("aside", { staticClass: "app-sidebar" }, [
-    _c(
-      "div",
-      { staticClass: "scrollable scr-y" },
-      [_c("keep-alive", [_c(_vm.currentView, { tag: "component" })], 1)],
-      1
-    )
-  ])
+  return _c(
+    "aside",
+    {
+      directives: [
+        {
+          name: "show",
+          rawName: "v-show",
+          value: _vm.showSidebar,
+          expression: "showSidebar"
+        }
+      ],
+      staticClass: "app-sidebar"
+    },
+    [
+      _c(
+        "div",
+        { staticClass: "scrollable scr-y" },
+        [_c("keep-alive", [_c(_vm.currentView, { tag: "component" })], 1)],
+        1
+      )
+    ]
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -26700,12 +26761,14 @@ var render = function() {
           [_vm._v(_vm._s(_vm.appName))]
         ),
         _vm._v(" "),
-        _c(
-          "button",
-          { staticClass: "btn btn-link", on: { click: _vm.doNew } },
-          [_c("plus-icon", { attrs: { size: "16" } }), _vm._v("New")],
-          1
-        ),
+        _vm.userCanEdit
+          ? _c(
+              "button",
+              { staticClass: "btn btn-link", on: { click: _vm.doNew } },
+              [_c("plus-icon", { attrs: { size: "16" } }), _vm._v("New")],
+              1
+            )
+          : _vm._e(),
         _vm._v(" "),
         _c(
           "button",
@@ -26714,7 +26777,7 @@ var render = function() {
           1
         ),
         _vm._v(" "),
-        _vm.hasProject
+        _vm.hasProject && _vm.userCanEdit
           ? _c(
               "button",
               { staticClass: "btn btn-link", on: { click: _vm.doEdit } },
@@ -26723,7 +26786,7 @@ var render = function() {
             )
           : _vm._e(),
         _vm._v(" "),
-        _vm.hasProject
+        _vm.hasProject && _vm.userCanEdit
           ? _c(
               "button",
               { staticClass: "btn btn-link", on: { click: _vm.saveProject } },
@@ -26734,6 +26797,56 @@ var render = function() {
       ]),
       _vm._v(" "),
       _c("section", { staticClass: "navbar-section navbar-tabs" }, [
+        !_vm.hasUser && _vm.hasProject
+          ? _c("div", { staticClass: "input-group input-inline mr-8" }, [
+              _c("label", { staticClass: "form-switch" }, [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.scale,
+                      expression: "scale"
+                    }
+                  ],
+                  attrs: { type: "checkbox" },
+                  domProps: {
+                    checked: Array.isArray(_vm.scale)
+                      ? _vm._i(_vm.scale, null) > -1
+                      : _vm.scale
+                  },
+                  on: {
+                    change: function($event) {
+                      var $$a = _vm.scale,
+                        $$el = $event.target,
+                        $$c = $$el.checked ? true : false
+                      if (Array.isArray($$a)) {
+                        var $$v = null,
+                          $$i = _vm._i($$a, $$v)
+                        if ($$el.checked) {
+                          $$i < 0 && (_vm.scale = $$a.concat([$$v]))
+                        } else {
+                          $$i > -1 &&
+                            (_vm.scale = $$a
+                              .slice(0, $$i)
+                              .concat($$a.slice($$i + 1)))
+                        }
+                      } else {
+                        _vm.scale = $$c
+                      }
+                    }
+                  }
+                }),
+                _vm._v(" "),
+                _c("i", { staticClass: "form-icon" }),
+                _vm._v(" "),
+                _c("span", { staticClass: "text-small text-gray" }, [
+                  _vm._v("Scale to fit")
+                ])
+              ])
+            ])
+          : _vm._e(),
+        _vm._v(" "),
         _vm.hasProject
           ? _c(
               "div",
@@ -27699,14 +27812,16 @@ var render = function() {
         _vm._v("To get started, choose one of the options below.")
       ]),
       _vm._v(" "),
-      _c(
-        "button",
-        {
-          staticClass: "mb-2 btn btn-block btn-primary",
-          on: { click: _vm.doNew }
-        },
-        [_vm._v("New Project")]
-      ),
+      _vm.userCanEdit
+        ? _c(
+            "button",
+            {
+              staticClass: "mb-2 btn btn-block btn-primary",
+              on: { click: _vm.doNew }
+            },
+            [_vm._v("New Project")]
+          )
+        : _vm._e(),
       _vm._v(" "),
       _c(
         "button",

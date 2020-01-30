@@ -69,6 +69,7 @@ export default {
 
 		groupConfig() {
 			return {
+				visible: this.value && this.value.label && this.value.label.length ? true : false,
 				x: this.x,
 				y: this.y
 			}

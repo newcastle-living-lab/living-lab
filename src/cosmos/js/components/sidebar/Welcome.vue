@@ -6,7 +6,7 @@
 
 		<div class="sidebar-content">
 			<p class="text-center mt-4 mb-4">To get started, choose one of the options below.</p>
-			<button @click="doNew" class="mb-2 btn btn-block btn-primary">New Project</button>
+			<button v-if="userCanEdit" @click="doNew" class="mb-2 btn btn-block btn-primary">New Project</button>
 			<button @click="doOpen" class="mb-2 btn btn-block btn-primary">Open Project</button>
 		</div>
 
@@ -16,13 +16,19 @@
 
 <script>
 
-import { mapState, mapActions } from 'vuex';
+import { mapGetters, mapActions } from 'vuex';
 
 export default {
+
+	computed: {
+		...mapGetters('app', ['userCanEdit']),
+	},
+
 	methods: mapActions('app', [
 		'doNew',
 		'doOpen',
-	])
+	]),
+
 }
 
 </script>
