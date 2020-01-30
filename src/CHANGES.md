@@ -1,5 +1,11 @@
 # Living Lab Changelog
 
+
+## v1.25.2
+
+* COSMOS: Added login button.
+
+
 ## v1.25.1
 
 * COSMOS: Updated current user detection for new/edit functionality.

@@ -4,20 +4,25 @@ exports.method = "get";
 exports.route = "/cosmos";
 
 exports.handler = function(req, res) {
+
 	if (req.path === '/cosmos') {
 		return res.redirect('/cosmos/');
 	}
 
-	// (req.user && req.user.roles
-	var user = null;
+	var config = {
+		user: null,
+		require_auth: res.locals.require_auth ? true : false,
+		version: res.locals.app_version,
+	};
+
 	if (req.user) {
-		user = {
+		config.user = {
 			username: req.user.username,
 			roles: req.user.roles,
 		}
 	}
 
 	return res.render('cosmos.html', {
-		user: user
+		config: config
 	});
 };

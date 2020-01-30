@@ -62,6 +62,9 @@ var initServers = function() {
 	app.use("/playlists", express.static(path.join(process.cwd(), "data", "playlists")));
 	app.use("/export", express.static(path.join(process.cwd(), "data", "export")));
 
+	app.use(bodyParser.json());
+	app.use(bodyParser.urlencoded({ extended: true, limit: 50 * 1024 * 1024 }));
+
 	if (config.require_auth) {
 		app.use(session({
 			// store: new SQLiteStore,
@@ -69,9 +72,7 @@ var initServers = function() {
 			resave: false,
 			saveUninitialized: false
 		}));
-		app.use(cookieParser()),
-		app.use(bodyParser.urlencoded({ extended: true, limit: 50 * 1024 * 1024 }));
-		app.use(bodyParser.json());
+		app.use(cookieParser());
 		app.use(passport.initialize());
 		app.use(passport.session());
 	}
