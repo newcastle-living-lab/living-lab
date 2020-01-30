@@ -50,6 +50,11 @@
 					</span>
 				</div>
 
+				<a v-if="!hasUser && requireAuth"
+					class="btn btn-dark btn-sm ml-16"
+					:href="loginUrl"
+				><key-icon size="16" /> Log in</a>
+
 			</section>
 
 		</nav>
@@ -68,6 +73,7 @@ import EditIcon from 'vue-feather-icons/icons/EditIcon';
 import FolderIcon from 'vue-feather-icons/icons/FolderIcon';
 import SaveIcon from 'vue-feather-icons/icons/SaveIcon';
 import UserIcon from 'vue-feather-icons/icons/UserIcon';
+import KeyIcon from 'vue-feather-icons/icons/KeyIcon';
 
 export default {
 
@@ -77,6 +83,7 @@ export default {
 		EditIcon,
 		SaveIcon,
 		UserIcon,
+		KeyIcon,
 	},
 
 	computed: {
@@ -88,11 +95,12 @@ export default {
 		...mapGetters('app', [
 			'userCanEdit',
 			'hasUser',
+			'requireAuth',
+			'user',
 		]),
 
 		...mapState('app', {
         	appName: 'appName',
-        	user: 'user',
         }),
 
 		...mapFields('app', [
@@ -116,6 +124,10 @@ export default {
 			},
 
 		}),
+
+		loginUrl() {
+			return '/login?ref=' + encodeURIComponent(`${top.location.pathname}${top.location.hash}`);
+		}
 
 	},
 

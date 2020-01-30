@@ -27,7 +27,7 @@ Vue.config.productionTip = false;
 new Vue({
 	el: '#app',
 	template: '<App/>',
-	user: window.user,
+	config: window.config,
 	i18n,
 	router,
 	store,

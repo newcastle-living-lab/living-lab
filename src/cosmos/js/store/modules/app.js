@@ -11,7 +11,11 @@ const state = {
 	loading: false,
 	sidebarView: 'welcome',
 	editPanel: 'details',
-	user: null,
+	config: {
+		user: null,
+		require_auth: true,
+		version: null,
+	},
 	scale: false,
 	toast: {},
 	stageHover: false,
@@ -29,14 +33,27 @@ const getters = {
 
 	getField,
 
+	requireAuth(state) {
+		return (state.config.require_auth === true);
+	},
+
 	hasUser(state) {
-		return state.user !== null && typeof state.user === 'object' && state.user.username;
+		return state.config.user !== null && typeof state.config.user === 'object' && state.config.user.username;
 	},
 
 	userCanEdit(state) {
-		var hasUser = state.user !== null && typeof state.user === 'object' && state.user.username;
-		var hasEditRole = (hasUser && state.user.roles.indexOf('edit') >= 0)
+
+		if (state.config.require_auth === false) {
+			return true;
+		}
+
+		var hasUser = state.config.user !== null && typeof state.config.user === 'object' && state.config.user.username;
+		var hasEditRole = (hasUser && state.config.user.roles.indexOf('edit') >= 0)
 		return (hasUser && hasEditRole);
+	},
+
+	user(state) {
+		return state.config.user;
 	}
 
 };
@@ -136,8 +153,8 @@ const mutations = {
 		state.editPanel = panelName;
 	},
 
-	setUser(state, user) {
-		state.user = user;
+	setConfig(state, config) {
+		state.config = config;
 	},
 
 	setToast(state, params) {

@@ -72,7 +72,7 @@ export default {
 	},
 
 	created() {
-		this.$store.commit('app/setUser', this.$root.$options.user);
+		this.$store.commit('app/setConfig', this.$root.$options.config);
 		this.fetchProject();
 		this.updateTitle();
 	}

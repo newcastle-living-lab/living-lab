@@ -3153,7 +3153,7 @@ vue__WEBPACK_IMPORTED_MODULE_1___default.a.config.productionTip = false;
 new vue__WEBPACK_IMPORTED_MODULE_1___default.a({
   el: '#app',
   template: '<App/>',
-  user: window.user,
+  config: window.config,
   i18n: _plugins_i18n__WEBPACK_IMPORTED_MODULE_4__["default"],
   router: _plugins_router__WEBPACK_IMPORTED_MODULE_5__["default"],
   store: _store__WEBPACK_IMPORTED_MODULE_7__["default"],
@@ -3358,7 +3358,11 @@ var state = {
   loading: false,
   sidebarView: 'welcome',
   editPanel: 'details',
-  user: null,
+  config: {
+    user: null,
+    require_auth: true,
+    version: null
+  },
   scale: false,
   toast: {},
   stageHover: false,
@@ -3373,13 +3377,23 @@ var state = {
 
 var getters = {
   getField: vuex_map_fields__WEBPACK_IMPORTED_MODULE_1__["getField"],
+  requireAuth: function requireAuth(state) {
+    return state.config.require_auth === true;
+  },
   hasUser: function hasUser(state) {
-    return state.user !== null && _typeof(state.user) === 'object' && state.user.username;
+    return state.config.user !== null && _typeof(state.config.user) === 'object' && state.config.user.username;
   },
   userCanEdit: function userCanEdit(state) {
-    var hasUser = state.user !== null && _typeof(state.user) === 'object' && state.user.username;
-    var hasEditRole = hasUser && state.user.roles.indexOf('edit') >= 0;
+    if (state.config.require_auth === false) {
+      return true;
+    }
+
+    var hasUser = state.config.user !== null && _typeof(state.config.user) === 'object' && state.config.user.username;
+    var hasEditRole = hasUser && state.config.user.roles.indexOf('edit') >= 0;
     return hasUser && hasEditRole;
+  },
+  user: function user(state) {
+    return state.config.user;
   }
 };
 /**
@@ -3469,8 +3483,8 @@ var mutations = {
   editPanel: function editPanel(state, panelName) {
     state.editPanel = panelName;
   },
-  setUser: function setUser(state, user) {
-    state.user = user;
+  setConfig: function setConfig(state, config) {
+    state.config = config;
   },
   setToast: function setToast(state, params) {
     if (params === false) {
@@ -5936,7 +5950,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     }
   },
   created: function created() {
-    this.$store.commit('app/setUser', this.$root.$options.user);
+    this.$store.commit('app/setConfig', this.$root.$options.config);
     this.fetchProject();
     this.updateTitle();
   }
@@ -6571,6 +6585,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue_feather_icons_icons_FolderIcon__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! vue-feather-icons/icons/FolderIcon */ "./node_modules/vue-feather-icons/icons/FolderIcon.js");
 /* harmony import */ var vue_feather_icons_icons_SaveIcon__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! vue-feather-icons/icons/SaveIcon */ "./node_modules/vue-feather-icons/icons/SaveIcon.js");
 /* harmony import */ var vue_feather_icons_icons_UserIcon__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! vue-feather-icons/icons/UserIcon */ "./node_modules/vue-feather-icons/icons/UserIcon.js");
+/* harmony import */ var vue_feather_icons_icons_KeyIcon__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! vue-feather-icons/icons/KeyIcon */ "./node_modules/vue-feather-icons/icons/KeyIcon.js");
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
@@ -6637,6 +6652,12 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+
 
 
 
@@ -6650,15 +6671,15 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     FolderIcon: vue_feather_icons_icons_FolderIcon__WEBPACK_IMPORTED_MODULE_4__["default"],
     EditIcon: vue_feather_icons_icons_EditIcon__WEBPACK_IMPORTED_MODULE_3__["default"],
     SaveIcon: vue_feather_icons_icons_SaveIcon__WEBPACK_IMPORTED_MODULE_5__["default"],
-    UserIcon: vue_feather_icons_icons_UserIcon__WEBPACK_IMPORTED_MODULE_6__["default"]
+    UserIcon: vue_feather_icons_icons_UserIcon__WEBPACK_IMPORTED_MODULE_6__["default"],
+    KeyIcon: vue_feather_icons_icons_KeyIcon__WEBPACK_IMPORTED_MODULE_7__["default"]
   },
   computed: _objectSpread({
     activeTab: function activeTab() {
       return this.$route.name;
     }
-  }, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])('app', ['userCanEdit', 'hasUser']), {}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapState"])('app', {
-    appName: 'appName',
-    user: 'user'
+  }, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])('app', ['userCanEdit', 'hasUser', 'requireAuth', 'user']), {}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapState"])('app', {
+    appName: 'appName'
   }), {}, Object(vuex_map_fields__WEBPACK_IMPORTED_MODULE_1__["mapFields"])('app', ['scale']), {}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapState"])('project', {
     project: 'project',
     projectionUrl: function projectionUrl(state) {
@@ -6670,7 +6691,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     hasProject: function hasProject(state) {
       return state.project && state.project.id;
     }
-  })),
+  }), {
+    loginUrl: function loginUrl() {
+      return '/login?ref=' + encodeURIComponent("".concat(top.location.pathname).concat(top.location.hash));
+    }
+  }),
   methods: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])('app', ['doWelcome', 'doNew', 'doOpen', 'doEdit']), {}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])('project', ['saveProject']))
 });
 
@@ -23651,6 +23676,59 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/vue-feather-icons/icons/KeyIcon.js":
+/*!*********************************************************!*\
+  !*** ./node_modules/vue-feather-icons/icons/KeyIcon.js ***!
+  \*********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var babel_helper_vue_jsx_merge_props__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! babel-helper-vue-jsx-merge-props */ "./node_modules/babel-helper-vue-jsx-merge-props/index.js");
+/* harmony import */ var babel_helper_vue_jsx_merge_props__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(babel_helper_vue_jsx_merge_props__WEBPACK_IMPORTED_MODULE_0__);
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: 'KeyIcon',
+  props: {
+    size: {
+      type: String,
+      default: '24',
+      validator: function validator(s) {
+        return !isNaN(s) || s.length >= 2 && !isNaN(s.slice(0, s.length - 1)) && s.slice(-1) === 'x';
+      }
+    }
+  },
+  functional: true,
+  render: function render(h, ctx) {
+    var size = ctx.props.size.slice(-1) === 'x' ? ctx.props.size.slice(0, ctx.props.size.length - 1) + 'em' : parseInt(ctx.props.size) + 'px';
+    var attrs = ctx.data.attrs || {};
+    attrs.width = attrs.width || size;
+    attrs.height = attrs.height || size;
+    ctx.data.attrs = attrs;
+    return h("svg", babel_helper_vue_jsx_merge_props__WEBPACK_IMPORTED_MODULE_0___default()([{
+      attrs: {
+        xmlns: "http://www.w3.org/2000/svg",
+        width: "24",
+        height: "24",
+        viewBox: "0 0 24 24",
+        fill: "none",
+        stroke: "currentColor",
+        "stroke-width": "2",
+        "stroke-linecap": "round",
+        "stroke-linejoin": "round"
+      },
+      "class": "feather feather-key"
+    }, ctx.data]), [h("path", {
+      attrs: {
+        d: "M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4"
+      }
+    })]);
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/vue-feather-icons/icons/PlusIcon.js":
 /*!**********************************************************!*\
   !*** ./node_modules/vue-feather-icons/icons/PlusIcon.js ***!
@@ -26893,6 +26971,18 @@ var render = function() {
                 )
               ])
             ])
+          : _vm._e(),
+        _vm._v(" "),
+        !_vm.hasUser && _vm.requireAuth
+          ? _c(
+              "a",
+              {
+                staticClass: "btn btn-dark btn-sm ml-16",
+                attrs: { href: _vm.loginUrl }
+              },
+              [_c("key-icon", { attrs: { size: "16" } }), _vm._v(" Log in")],
+              1
+            )
           : _vm._e()
       ])
     ])

@@ -22,7 +22,7 @@ handlers.push(function(req, res, next) {
 
 		if (!user) {
 			req.session.messages.push("Incorrect username/password");
-			return res.redirect('/login')
+			return res.redirect('/login');
 		}
 
 		req.logIn(user, {}, function(err) {
@@ -32,6 +32,10 @@ handlers.push(function(req, res, next) {
 				"req": req,
 				"user": user
 			});
+
+			if (req.body.ref && req.body.ref.length) {
+				return res.redirect(req.body.ref);
+			}
 
 			return res.redirect('/');
 		});
