@@ -42,21 +42,30 @@
 
 					<div class="form-group" v-if="images">
 						<label class="form-label label-sm" :for="'image' + type + index">Image</label>
-						<div class="dropbox" v-if="showUpload">
+						<div class="dropbox" v-if="showUpload" :class="dropClasses">
 							<input
 								type="file"
 								class="form-input input-sm"
 								:id="'image' + type + index"
 								:disabled="isUploading"
 								@change="filesChange($event.target.files)"
+								@dragstart="fileDragStart"
+								@dragover="fileDragStart"
+								@dragenter="fileDragStart"
+								@dragleave="fileDragStop"
+								@dragend="fileDragStop"
+								@drop="fileDragStop"
+
 								accept="image/*"
 							/>
 							<p v-if="isInitial">
 								Drag your image here to begin or click to browse
 							</p>
-							<p v-if="isUploading">
-								Uploading image...
-							</p>
+							<div v-if="isUploading">
+								<p>Uploading image...</p>
+								<div class="loading mb-2"></div>
+								<br>
+							</div>
 						</div>
 
 						<div v-if="images && imageUrl">
@@ -130,6 +139,7 @@ export default {
 			currentStatus: null,
 			modified: false,
 			itemImage: false,
+			dropping: false,
 		}
 	},
 
@@ -184,7 +194,13 @@ export default {
 				return false;
 			}
 			return `/images/thumb/${this.currentImage}`;
-		}
+		},
+
+		dropClasses() {
+			return {
+				'is-dropping': this.dropping ? true : false
+			}
+		},
 
 	},
 
@@ -279,7 +295,20 @@ export default {
 			}
 
 			this.modified = true;
-		}
+		},
+
+		fileDragStart() {
+			if (this.dropping) {
+				return;
+			}
+			this.dropping = true;
+		},
+		fileDragStop() {
+			if (!this.dropping) {
+				return;
+			}
+			this.dropping = false;
+		},
 
 	},
 

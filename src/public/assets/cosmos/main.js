@@ -10011,6 +10011,15 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 var STATUS_INITIAL = 0;
 var STATUS_SAVING = 1;
@@ -10037,7 +10046,8 @@ var STATUS_REMOVED = 4;
       uploadError: null,
       currentStatus: null,
       modified: false,
-      itemImage: false
+      itemImage: false,
+      dropping: false
     };
   },
   computed: {
@@ -10083,6 +10093,11 @@ var STATUS_REMOVED = 4;
       }
 
       return "/images/thumb/".concat(this.currentImage);
+    },
+    dropClasses: function dropClasses() {
+      return {
+        'is-dropping': this.dropping ? true : false
+      };
     }
   },
   methods: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])('project', ['editExternal', 'removeExternal']), {
@@ -10159,6 +10174,20 @@ var STATUS_REMOVED = 4;
       }
 
       this.modified = true;
+    },
+    fileDragStart: function fileDragStart() {
+      if (this.dropping) {
+        return;
+      }
+
+      this.dropping = true;
+    },
+    fileDragStop: function fileDragStop() {
+      if (!this.dropping) {
+        return;
+      }
+
+      this.dropping = false;
     }
   }),
   mounted: function mounted() {
@@ -10186,6 +10215,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+//
 //
 //
 //
@@ -30867,38 +30897,50 @@ var render = function() {
                   ),
                   _vm._v(" "),
                   _vm.showUpload
-                    ? _c("div", { staticClass: "dropbox" }, [
-                        _c("input", {
-                          staticClass: "form-input input-sm",
-                          attrs: {
-                            type: "file",
-                            id: "image" + _vm.type + _vm.index,
-                            disabled: _vm.isUploading,
-                            accept: "image/*"
-                          },
-                          on: {
-                            change: function($event) {
-                              return _vm.filesChange($event.target.files)
+                    ? _c(
+                        "div",
+                        { staticClass: "dropbox", class: _vm.dropClasses },
+                        [
+                          _c("input", {
+                            staticClass: "form-input input-sm",
+                            attrs: {
+                              type: "file",
+                              id: "image" + _vm.type + _vm.index,
+                              disabled: _vm.isUploading,
+                              accept: "image/*"
+                            },
+                            on: {
+                              change: function($event) {
+                                return _vm.filesChange($event.target.files)
+                              },
+                              dragstart: _vm.fileDragStart,
+                              dragover: _vm.fileDragStart,
+                              dragenter: _vm.fileDragStart,
+                              dragleave: _vm.fileDragStop,
+                              dragend: _vm.fileDragStop,
+                              drop: _vm.fileDragStop
                             }
-                          }
-                        }),
-                        _vm._v(" "),
-                        _vm.isInitial
-                          ? _c("p", [
-                              _vm._v(
-                                "\n\t\t\t\t\t\t\tDrag your image here to begin or click to browse\n\t\t\t\t\t\t"
-                              )
-                            ])
-                          : _vm._e(),
-                        _vm._v(" "),
-                        _vm.isUploading
-                          ? _c("p", [
-                              _vm._v(
-                                "\n\t\t\t\t\t\t\tUploading image...\n\t\t\t\t\t\t"
-                              )
-                            ])
-                          : _vm._e()
-                      ])
+                          }),
+                          _vm._v(" "),
+                          _vm.isInitial
+                            ? _c("p", [
+                                _vm._v(
+                                  "\n\t\t\t\t\t\t\tDrag your image here to begin or click to browse\n\t\t\t\t\t\t"
+                                )
+                              ])
+                            : _vm._e(),
+                          _vm._v(" "),
+                          _vm.isUploading
+                            ? _c("div", [
+                                _c("p", [_vm._v("Uploading image...")]),
+                                _vm._v(" "),
+                                _c("div", { staticClass: "loading mb-2" }),
+                                _vm._v(" "),
+                                _c("br")
+                              ])
+                            : _vm._e()
+                        ]
+                      )
                     : _vm._e(),
                   _vm._v(" "),
                   _vm.images && _vm.imageUrl
@@ -31061,6 +31103,14 @@ var render = function() {
             ]),
             _vm._v(" "),
             _c("input", {
+              directives: [
+                {
+                  name: "focus",
+                  rawName: "v-focus",
+                  value: _vm.visible,
+                  expression: "visible"
+                }
+              ],
               staticClass: "form-input",
               attrs: { id: _vm.panelName + "_new", autocomplete: "off" },
               on: {

@@ -19,6 +19,7 @@
 					@keyup.enter="addItem({ event: $event })"
 					class="form-input"
 					autocomplete="off"
+					v-focus="visible"
 				>
 			</div>
 
