@@ -83,6 +83,14 @@
 			</ul>
 		</div>
 
+		<div class="sidebar-footer" v-show="visible">
+			<button
+				type="button"
+				class="btn btn-success"
+				@click="next()"
+			>Next</button>
+		</div>
+
 	</div>
 
 </template>
@@ -150,7 +158,12 @@ export default {
 				this.$store.commit('project/addSocial', { network: network, value: value });
 			}
 			event.target.value = '';
-		}
+		},
+
+		next() {
+			this.$store.dispatch('app/doEditNext', this.panelName);
+		},
+
 	}
 
 }

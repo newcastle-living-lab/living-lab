@@ -3,7 +3,8 @@
 	<div class="app-container" :class="editing ? 'is-editing' : ''">
 
 		<Toast/>
-		<Toolbar/>
+		<AppToolbar/>
+		<ProjectToolbar/>
 
 		<section class="app-main">
 
@@ -23,7 +24,8 @@
 <script>
 
 import Toast from './components/Toast';
-import Toolbar from './components/Toolbar';
+import AppToolbar from './components/AppToolbar';
+import ProjectToolbar from './components/ProjectToolbar';
 import Sidebar from './components/Sidebar';
 
 import { mapState, mapActions } from 'vuex';
@@ -31,7 +33,8 @@ import { mapState, mapActions } from 'vuex';
 export default {
 
 	components: {
-		Toolbar,
+		AppToolbar,
+		ProjectToolbar,
 		Sidebar,
 		Toast,
 	},

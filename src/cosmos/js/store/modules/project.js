@@ -29,6 +29,7 @@ const state = {
 			infSvcLabel: '',
 			extOrgLabel: '',
 			services: [],
+			externals: [],
 			initiators: [],
 		}
 	}
@@ -208,7 +209,15 @@ const getters = {
 		}
 
 		return [];
-	}
+	},
+
+	externals(state) {
+		if (state.project && Array.isArray(state.project.data.externals)) {
+			return state.project.data.externals;
+		}
+
+		return [];
+	},
 
 };
 
@@ -250,6 +259,14 @@ const actions = {
 
 	editService({ commit }, { item, label, url }) {
 		commit('editService', { item, label: label, url: url });
+	},
+
+	removeExternal({ commit }, item) {
+		commit('removeExternal', item);
+	},
+
+	editExternal({ commit }, { item, label, url, image }) {
+		commit('editExternal', { item, label: label, url: url, image: image });
 	},
 
 };
@@ -412,6 +429,27 @@ const mutations = {
 	removeService(state, item) {
 		if (state.project.data.services.indexOf(item) > -1) {
 			state.project.data.services.splice(state.project.data.services.indexOf(item), 1);
+		}
+		return;
+	},
+
+	addExternal(state, item) {
+		if ( ! Array.isArray(state.project.data.externals)) {
+			Vue.set(state.project.data, 'externals', []);
+		}
+		delete item.isNew;
+		state.project.data.externals.push(item);
+	},
+
+	editExternal(state, { item, label = item.label, url = item.url, image = item.image }) {
+		item.label = label;
+		item.url = url;
+		item.image = image;
+	},
+
+	removeExternal(state, item) {
+		if (state.project.data.externals.indexOf(item) > -1) {
+			state.project.data.externals.splice(state.project.data.externals.indexOf(item), 1);
 		}
 		return;
 	},

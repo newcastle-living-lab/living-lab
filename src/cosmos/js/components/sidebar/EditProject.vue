@@ -36,7 +36,29 @@
 			hintMain="What external services, channels and facilities do you make use of in the delivery of your service(s)? What information sources do you make use of? What information do you publish, to whom and using what channels and media?"
 		/>
 
+		<edit-externals
+			title="Theory of Change"
+			type="toc"
+			hintMain="What is theory of change?"
+			:images="false"
+		/>
+
+		<edit-externals
+			title="Community Reporting"
+			type="comrep"
+			hintMain="What is Community Reporting?"
+			:images="false"
+		/>
+
 		<edit-social />
+
+		<edit-externals
+			title="Living Lab Models"
+			type="livlabmod"
+			hintMain="What are Living Lab Models?"
+			:images="true"
+		/>
+
 
 	</div>
 
@@ -55,8 +77,8 @@ import EditEvaluation from './edit/Evaluation.vue';
 import EditUser from './edit/User.vue';
 import EditBeneficiary from './edit/Beneficiary.vue';
 import EditInitiator from './edit/Initiator.vue';
-
 import EditServices from './edit/Services.vue';
+import EditExternals from './edit/Externals.vue';
 import EditSocial from './edit/Social.vue';
 
 export default {
@@ -73,8 +95,8 @@ export default {
 		EditUser,
 		EditBeneficiary,
 		EditInitiator,
-
 		EditServices,
+		EditExternals,
 		EditSocial,
 	},
 

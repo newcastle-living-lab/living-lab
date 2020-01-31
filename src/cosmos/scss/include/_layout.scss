@@ -16,28 +16,53 @@ body {
 }
 
 .app-toolbar {
-	padding: $unit-4;
+	background: $clrs-black;
+	color: $light-color;
+	padding: $unit-2 $unit-4;
 	border-bottom: $unit-o solid $border-color;
+
+	.btn-link {
+		color: inherit;
+		&:hover,
+		&:focus,
+		&:active {
+			color: inherit;
+		}
+	}
 
 	.navbar-buttons {
 		.btn-link {
-			color: $dark-color;
 			margin-right: $unit-2;
 			.feather {
 				margin-right: $unit-1;
 				vertical-align: -10%;
 			}
+			&:hover,
+			&:focus,
+			&:active {
+				color: inherit;
+				background: lighten($clrs-black, 10%);
+			}
 		}
 	}
 
+}
+
+.project-toolbar {
+	padding: $unit-1 $unit-2;
+	border-bottom: $unit-o solid $border-color;
+
 	.navbar-tabs {
+		padding-right: $unit-2;
 		.btn-link {
-			padding-left: 0;
-			padding-right: 0;
-			margin-left: $control-padding-x;
-			margin-right: $control-padding-x;
+			// padding-left: 0;
+			// padding-right: 0;
+			// margin-left: $control-padding-x;
+			// margin-right: $control-padding-x;
 			&.router-link-active {
-				border-bottom: $unit-h solid $clrs-blue;
+				// border-bottom: $unit-h solid $clrs-blue;
+				color: darken($secondary-color, 30%);
+				background: lighten($secondary-color, 30%);
 			}
 		}
 	}
@@ -211,23 +236,6 @@ body {
 	z-index: $zindex-2;
 }
 
-
-
-// Chips
-.user-chip {
-	background: darken($bg-color-dark, 10%);
-	.avatar {
-		background: $primary-color;	//darken($bg-color-dark, 20%);
-		text-align: center;
-		.feather {
-			color: lighten($primary-color, 55%);	//$dark-color;
-			vertical-align: -50%;
-		}
-	}
-}
-
-
-
 .item-twitter-bg {
 	background: #1da1f2;
 	color: #f5f8fa;
@@ -301,6 +309,7 @@ body {
 	.accordion-header {
 		display: block;
 		padding: $unit-1 0;
+		font-size: $font-size-sm;
 	}
 
 	.accordion-body {
@@ -382,5 +391,80 @@ body {
 
 	.menu {
 		height: 100%;
+	}
+}
+
+
+
+.external-items {
+	.column {
+		padding-bottom: $layout-spacing-lg;
+	}
+
+}
+
+.card-external {
+
+	height: 100%;
+
+	.card-header {
+		flex: 1 1 auto;
+	}
+
+	.card-title {
+		line-height: 1.3;
+
+		+ .card-subtitle {
+			margin-top: $unit-2;
+		}
+	}
+
+	.card-subtitle {
+		font-size: $font-size-sm;
+		color: $gray-color-medium;
+	}
+
+	.card-link {
+
+		text-decoration: none;
+		color: inherit;
+
+		&:visited {
+			color: inherit;
+		}
+
+		&:hover,
+		&:focus,
+		&:active {
+			text-decoration: none;
+			background: $gray-color-light;
+		}
+	}
+}
+
+
+
+.dropbox {
+	outline: $unit-h dashed $border-color;
+	outline-offset: -10px;
+	background: $gray-color-light;
+	color: $gray-color-dark;
+	padding: $unit-2;
+	min-height: $control-size * 3;
+	position: relative;
+	cursor: pointer;
+
+	.form-input {
+		opacity: 0;
+		width: 100%;
+		height: $control-size * 3;
+		position: absolute;
+		cursor: pointer;
+	}
+
+	p {
+		font-size: $font-size-sm;
+		text-align: center;
+		padding: $control-size 0;
 	}
 }

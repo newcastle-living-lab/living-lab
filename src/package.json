@@ -29,11 +29,13 @@
 		"body-parser": "^1.19.0",
 		"connect-ensure-login": "^0.1.1",
 		"cookie-parser": "^1.4.4",
+		"cross-env": "^6.0.3",
 		"dateformat": "^3.0.3",
 		"directory-tree": "^2.2.4",
 		"express": "^4.17.1",
 		"express-session": "^1.17.0",
 		"formidable": "^1.1.1",
+		"jimp": "^0.9.3",
 		"jquery": "^2.2.4",
 		"lodash": "^4.17.15",
 		"nunjucks": "^3.2.0",
@@ -43,8 +45,7 @@
 		"showdown": "^1.9.1",
 		"socket.io": "^2.3.0",
 		"sqlite3": "^3.1.13",
-		"unzipper": "^0.9.15",
-		"cross-env": "^6.0.3"
+		"unzipper": "^0.9.15"
 	},
 	"author": "Newcastle University",
 	"license": "MIT",

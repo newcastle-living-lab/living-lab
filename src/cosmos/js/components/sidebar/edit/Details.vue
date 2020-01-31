@@ -16,13 +16,6 @@
 				<input class="form-input" id="projectCreatedBy" v-model="created_by" type="text" maxlength="255"></textarea>
 			</div>
 
-			<div class="form-group">
-				<label class="form-switch">
-					<input type="checkbox" v-model="scale">
-					<i class="form-icon"></i> Scale to fit
-				</label>
-			</div>
-
 		</div>
 
 		<div class="sidebar-footer" v-show="visible">

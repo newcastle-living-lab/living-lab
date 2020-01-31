@@ -60,6 +60,7 @@ var initServers = function() {
 	app.use(express.static(path.join(__dirname, "public")));
 	app.use("/resources", express.static(path.join(process.cwd(), "data", "resources")));
 	app.use("/playlists", express.static(path.join(process.cwd(), "data", "playlists")));
+	app.use("/images", express.static(path.join(process.cwd(), "data", "images")));
 	app.use("/export", express.static(path.join(process.cwd(), "data", "export")));
 
 	app.use(bodyParser.json());
