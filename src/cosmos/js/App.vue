@@ -60,10 +60,10 @@ export default {
 
 	methods: {
 		fetchProject() {
-			if ( ! this.$route.params.id) {
-				return;
+			let id = this.$route.params.id;
+			if (id && id != this.project.id) {
+				this.$store.dispatch('projects/getProject', id);
 			}
-			this.$store.dispatch('projects/getProject', this.$route.params.id);
 		},
 		updateTitle() {
 			if (this.project && this.project.name) {

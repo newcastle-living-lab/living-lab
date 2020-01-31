@@ -21,12 +21,10 @@ exports.handler = function(req, res) {
 
 	form.on('end', function() {
 
-
 		var baseDir = fs.realpathSync(path.join(process.cwd(), 'data', 'images'));
 		var newFilename = Date.now() + '-' + file.name;
 		var newFilepath = path.join(baseDir, newFilename);
 		var newThumbpath = path.join(baseDir, 'thumb', newFilename)
-
 
 		var processImg = Jimp.read(file.path)
 			.then(function(img) {
@@ -34,7 +32,7 @@ exports.handler = function(req, res) {
 				return img;
 			})
 			.then(function(img) {
-				fs.rename(file.path, newFilepath , function (err) {
+				return fs.rename(file.path, newFilepath , function (err) {
 					if ( err ) { console.log('ERROR: ' + err); return false; }
 					return true;
 				});
@@ -47,37 +45,5 @@ exports.handler = function(req, res) {
 			});
 
 	});
-
-
-		/*fs.rename(file.path, newfname , function (err) {
-			if (err) {
-				return res.status(500).send({
-					'success': false,
-					'reason': err,
-				});
-			}
-		});
-
-		imageThumbnail(file.path)
-			.then(function(thumbnail) {
-
-				console.log(thumbnail);
-
-				var thumbPath = path.join(process.cwd(), "data", "images", "thumb", filename);
-				fs.writeFileSync(thumbPath, thumbnail);
-
-				return res.send({
-					'success': true,
-					'filename': filename,
-				});
-
-			})
-			.catch(function(err) {
-				return res.send({
-					'success': false,
-					'reason': err,
-				});
-			});
-*/
 
 };

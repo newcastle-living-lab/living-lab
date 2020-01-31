@@ -6506,11 +6506,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   },
   methods: {
     fetchProject: function fetchProject() {
-      if (!this.$route.params.id) {
-        return;
-      }
+      var id = this.$route.params.id;
 
-      this.$store.dispatch('projects/getProject', this.$route.params.id);
+      if (id && id != this.project.id) {
+        this.$store.dispatch('projects/getProject', id);
+      }
     },
     updateTitle: function updateTitle() {
       if (this.project && this.project.name) {
