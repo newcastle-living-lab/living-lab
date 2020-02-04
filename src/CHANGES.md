@@ -1,6 +1,12 @@
 # Living Lab Changelog
 
 
+## v1.25.3
+
+* COSMOS: Added YouTube support to Social Media section.
+* COSMOS: Added new sections for Theory of Change, Community Reporting and Living Lab Models.
+
+
 ## v1.25.2
 
 * COSMOS: Added login button.
