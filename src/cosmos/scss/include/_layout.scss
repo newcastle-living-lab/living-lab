@@ -251,6 +251,11 @@ body {
 	color: #fff;
 }
 
+.item-youtube-bg {
+	background: #ff0000;
+	color: #fff;
+}
+
 
 
 .social-edit-menu {
@@ -475,5 +480,14 @@ body {
 		font-size: $font-size-sm;
 		text-align: center;
 		padding: $control-size 0;
+	}
+}
+
+
+
+
+.tab-social {
+	.feather {
+		vertical-align: -20%;
 	}
 }

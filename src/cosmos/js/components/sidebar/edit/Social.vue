@@ -5,15 +5,18 @@
 		<sidebar-heading :name="panelName" title="Social Media" />
 
 		<div class="sidebar-top" v-show="visible">
-			<ul class="tab tab-block">
+			<ul class="tab tab-block tab-social">
 				<li class="tab-item item-twitter-bg" :class="activeTab == 'twitter' ? 'active' : ''">
-					<a href="javascript:;" @click="activateTab('twitter')">Twitter</a>
+					<a href="javascript:;" @click="activateTab('twitter')"><twitter-icon /></a>
 				</li>
 				<li class="tab-item item-facebook-bg" :class="activeTab == 'facebook' ? 'active' : ''">
-					<a href="javascript:;" @click="activateTab('facebook')">Facebook</a>
+					<a href="javascript:;" @click="activateTab('facebook')"><facebook-icon /></a>
 				</li>
 				<li class="tab-item item-instagram-bg" :class="activeTab == 'instagram' ? 'active' : ''">
-					<a href="javascript:;" @click="activateTab('instagram')">Instagram</a>
+					<a href="javascript:;" @click="activateTab('instagram')"><instagram-icon /></a>
+				</li>
+				<li class="tab-item item-youtube-bg" :class="activeTab == 'youtube' ? 'active' : ''">
+					<a href="javascript:;" @click="activateTab('youtube')"><youtube-icon /></a>
 				</li>
 			</ul>
 		</div>
@@ -83,6 +86,28 @@
 			</ul>
 		</div>
 
+		<div class="sidebar-content" v-show="activeTab == 'youtube' && visible">
+			<p class="text-gray-medium text-small">Enter a link to a YouTube video and press enter to add.</p>
+			<p class="text-gray-medium text-small">Double-click an item to edit it, and enter to save.</p>
+
+			<div class="form-group">
+				<input
+					@keyup.enter="addItem({ event: $event, network: 'youtube' })"
+					v-focus="activeTab == 'youtube'"
+					class="form-input"
+					autocomplete="off"
+				>
+			</div>
+			<ul class="menu social-edit-menu">
+				<social-item
+					v-for="(item, index) in youtube"
+					:key="index"
+					:item="item"
+					network="youtube"
+				/>
+			</ul>
+		</div>
+
 		<div class="sidebar-footer" v-show="visible">
 			<button
 				type="button"
@@ -99,6 +124,10 @@
 
 import { mapState, mapGetters, mapActions } from 'vuex';
 import { mapFields } from 'vuex-map-fields';
+import TwitterIcon from 'vue-feather-icons/icons/TwitterIcon';
+import FacebookIcon from 'vue-feather-icons/icons/FacebookIcon';
+import InstagramIcon from 'vue-feather-icons/icons/InstagramIcon';
+import YoutubeIcon from 'vue-feather-icons/icons/YoutubeIcon';
 
 import SocialItem from './SocialItem.vue';
 
@@ -106,6 +135,10 @@ export default {
 
 	components: {
 		SocialItem,
+		TwitterIcon,
+		FacebookIcon,
+		InstagramIcon,
+		YoutubeIcon,
 	},
 
 	directives: {
@@ -143,6 +176,9 @@ export default {
 		},
 		instagram() {
 			return this.social.filter(item => item.network == 'instagram');
+		},
+		youtube() {
+			return this.social.filter(item => item.network == 'youtube');
 		},
 	},
 

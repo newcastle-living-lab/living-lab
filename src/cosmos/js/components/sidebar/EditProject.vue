@@ -39,14 +39,14 @@
 		<edit-externals
 			title="Theory of Change"
 			type="toc"
-			hintMain="What is theory of change?"
+			hintMain="Please add any theories of change your project may have."
 			:images="false"
 		/>
 
 		<edit-externals
 			title="Community Reporting"
 			type="comrep"
-			hintMain="What is Community Reporting?"
+			hintMain="Please add any Community Reports your project may have."
 			:images="false"
 		/>
 
@@ -55,7 +55,7 @@
 		<edit-externals
 			title="Living Lab Models"
 			type="livlabmod"
-			hintMain="What are Living Lab Models?"
+			hintMain="Please add any Living Lab models your project may have."
 			:images="true"
 		/>
 

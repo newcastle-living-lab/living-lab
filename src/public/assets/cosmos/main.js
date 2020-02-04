@@ -7339,7 +7339,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue_feather_icons_icons_TwitterIcon__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vue-feather-icons/icons/TwitterIcon */ "./node_modules/vue-feather-icons/icons/TwitterIcon.js");
 /* harmony import */ var vue_feather_icons_icons_FacebookIcon__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! vue-feather-icons/icons/FacebookIcon */ "./node_modules/vue-feather-icons/icons/FacebookIcon.js");
 /* harmony import */ var vue_feather_icons_icons_InstagramIcon__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! vue-feather-icons/icons/InstagramIcon */ "./node_modules/vue-feather-icons/icons/InstagramIcon.js");
-/* harmony import */ var _partials_SocialLink_vue__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./partials/SocialLink.vue */ "./js/components/partials/SocialLink.vue");
+/* harmony import */ var vue_feather_icons_icons_YoutubeIcon__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! vue-feather-icons/icons/YoutubeIcon */ "./node_modules/vue-feather-icons/icons/YoutubeIcon.js");
+/* harmony import */ var _partials_SocialLink_vue__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./partials/SocialLink.vue */ "./js/components/partials/SocialLink.vue");
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
@@ -7387,6 +7388,17 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
 
 
 
@@ -7398,7 +7410,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     TwitterIcon: vue_feather_icons_icons_TwitterIcon__WEBPACK_IMPORTED_MODULE_2__["default"],
     FacebookIcon: vue_feather_icons_icons_FacebookIcon__WEBPACK_IMPORTED_MODULE_3__["default"],
     InstagramIcon: vue_feather_icons_icons_InstagramIcon__WEBPACK_IMPORTED_MODULE_4__["default"],
-    SocialLink: _partials_SocialLink_vue__WEBPACK_IMPORTED_MODULE_5__["default"]
+    YoutubeIcon: vue_feather_icons_icons_YoutubeIcon__WEBPACK_IMPORTED_MODULE_5__["default"],
+    SocialLink: _partials_SocialLink_vue__WEBPACK_IMPORTED_MODULE_6__["default"]
   },
   computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])('project', ['social']), {
     twitter: function twitter() {
@@ -7414,6 +7427,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     instagram: function instagram() {
       return this.social.filter(function (item) {
         return item.network == 'instagram';
+      });
+    },
+    youtube: function youtube() {
+      return this.social.filter(function (item) {
+        return item.network == 'youtube';
       });
     }
   })
@@ -7732,6 +7750,15 @@ __webpack_require__.r(__webpack_exports__);
         val = val.replace(/^#/, '');
         return "<span class='hashtag'>#</span>".concat(val);
       }
+
+      if (this.item.network == 'youtube') {
+        var regExp = /^.*(youtu\.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
+        var match = val.match(regExp);
+
+        if (match && match[2].length == 11) {
+          return match[2];
+        }
+      }
     },
     showHashtag: function showHashtag() {
       return this.item.network == 'twitter' || this.item.network == 'instagram';
@@ -7746,6 +7773,7 @@ __webpack_require__.r(__webpack_exports__);
           break;
 
         case 'facebook':
+        case 'youtube':
           return this.item.value;
           break;
 
@@ -10930,7 +10958,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
 /* harmony import */ var vuex_map_fields__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vuex-map-fields */ "./node_modules/vuex-map-fields/dist/index.esm.js");
-/* harmony import */ var _SocialItem_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./SocialItem.vue */ "./js/components/sidebar/edit/SocialItem.vue");
+/* harmony import */ var vue_feather_icons_icons_TwitterIcon__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vue-feather-icons/icons/TwitterIcon */ "./node_modules/vue-feather-icons/icons/TwitterIcon.js");
+/* harmony import */ var vue_feather_icons_icons_FacebookIcon__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! vue-feather-icons/icons/FacebookIcon */ "./node_modules/vue-feather-icons/icons/FacebookIcon.js");
+/* harmony import */ var vue_feather_icons_icons_InstagramIcon__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! vue-feather-icons/icons/InstagramIcon */ "./node_modules/vue-feather-icons/icons/InstagramIcon.js");
+/* harmony import */ var vue_feather_icons_icons_YoutubeIcon__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! vue-feather-icons/icons/YoutubeIcon */ "./node_modules/vue-feather-icons/icons/YoutubeIcon.js");
+/* harmony import */ var _SocialItem_vue__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./SocialItem.vue */ "./js/components/sidebar/edit/SocialItem.vue");
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
@@ -11034,12 +11066,45 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+
 
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
-    SocialItem: _SocialItem_vue__WEBPACK_IMPORTED_MODULE_2__["default"]
+    SocialItem: _SocialItem_vue__WEBPACK_IMPORTED_MODULE_6__["default"],
+    TwitterIcon: vue_feather_icons_icons_TwitterIcon__WEBPACK_IMPORTED_MODULE_2__["default"],
+    FacebookIcon: vue_feather_icons_icons_FacebookIcon__WEBPACK_IMPORTED_MODULE_3__["default"],
+    InstagramIcon: vue_feather_icons_icons_InstagramIcon__WEBPACK_IMPORTED_MODULE_4__["default"],
+    YoutubeIcon: vue_feather_icons_icons_YoutubeIcon__WEBPACK_IMPORTED_MODULE_5__["default"]
   },
   directives: {
     focus: function focus(el, _ref, _ref2) {
@@ -11081,6 +11146,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     instagram: function instagram() {
       return this.social.filter(function (item) {
         return item.network == 'instagram';
+      });
+    },
+    youtube: function youtube() {
+      return this.social.filter(function (item) {
+        return item.network == 'youtube';
       });
     }
   }),
@@ -11185,6 +11255,15 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       if (this.network == 'twitter' || this.network == 'instagram') {
         val = val.replace(/^#/, '');
         return "<span class='hashtag'>#</span>".concat(val);
+      }
+
+      if (this.network == 'youtube') {
+        var regExp = /^.*(youtu\.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
+        var match = val.match(regExp);
+
+        if (match && match[2].length == 11) {
+          return match[2];
+        }
       }
     },
     showHashtag: function showHashtag() {
@@ -25373,6 +25452,63 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/vue-feather-icons/icons/YoutubeIcon.js":
+/*!*************************************************************!*\
+  !*** ./node_modules/vue-feather-icons/icons/YoutubeIcon.js ***!
+  \*************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var babel_helper_vue_jsx_merge_props__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! babel-helper-vue-jsx-merge-props */ "./node_modules/babel-helper-vue-jsx-merge-props/index.js");
+/* harmony import */ var babel_helper_vue_jsx_merge_props__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(babel_helper_vue_jsx_merge_props__WEBPACK_IMPORTED_MODULE_0__);
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: 'YoutubeIcon',
+  props: {
+    size: {
+      type: String,
+      default: '24',
+      validator: function validator(s) {
+        return !isNaN(s) || s.length >= 2 && !isNaN(s.slice(0, s.length - 1)) && s.slice(-1) === 'x';
+      }
+    }
+  },
+  functional: true,
+  render: function render(h, ctx) {
+    var size = ctx.props.size.slice(-1) === 'x' ? ctx.props.size.slice(0, ctx.props.size.length - 1) + 'em' : parseInt(ctx.props.size) + 'px';
+    var attrs = ctx.data.attrs || {};
+    attrs.width = attrs.width || size;
+    attrs.height = attrs.height || size;
+    ctx.data.attrs = attrs;
+    return h("svg", babel_helper_vue_jsx_merge_props__WEBPACK_IMPORTED_MODULE_0___default()([{
+      attrs: {
+        xmlns: "http://www.w3.org/2000/svg",
+        width: "24",
+        height: "24",
+        viewBox: "0 0 24 24",
+        fill: "none",
+        stroke: "currentColor",
+        "stroke-width": "2",
+        "stroke-linecap": "round",
+        "stroke-linejoin": "round"
+      },
+      "class": "feather feather-youtube"
+    }, ctx.data]), [h("path", {
+      attrs: {
+        d: "M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"
+      }
+    }), h("polygon", {
+      attrs: {
+        points: "9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"
+      }
+    })]);
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/vue-i18n/dist/vue-i18n.esm.js":
 /*!****************************************************!*\
   !*** ./node_modules/vue-i18n/dist/vue-i18n.esm.js ***!
@@ -28438,7 +28574,7 @@ var render = function() {
     [
       _c("div", { staticClass: "container grid-xl" }, [
         _c("div", { staticClass: "columns" }, [
-          _c("div", { staticClass: "column col-4" }, [
+          _c("div", { staticClass: "column col-3" }, [
             _c(
               "h3",
               { staticClass: "social-heading item-twitter-bg" },
@@ -28456,7 +28592,7 @@ var render = function() {
             )
           ]),
           _vm._v(" "),
-          _c("div", { staticClass: "column col-4" }, [
+          _c("div", { staticClass: "column col-3" }, [
             _c(
               "h3",
               { staticClass: "social-heading item-facebook-bg" },
@@ -28474,7 +28610,7 @@ var render = function() {
             )
           ]),
           _vm._v(" "),
-          _c("div", { staticClass: "column col-4" }, [
+          _c("div", { staticClass: "column col-3" }, [
             _c(
               "h3",
               { staticClass: "social-heading item-instagram-bg" },
@@ -28486,6 +28622,24 @@ var render = function() {
               "ul",
               { staticClass: "menu" },
               _vm._l(_vm.instagram, function(item, index) {
+                return _c("social-link", { key: index, attrs: { item: item } })
+              }),
+              1
+            )
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "column col-3" }, [
+            _c(
+              "h3",
+              { staticClass: "social-heading item-youtube-bg" },
+              [_c("youtube-icon"), _vm._v("YouTube")],
+              1
+            ),
+            _vm._v(" "),
+            _c(
+              "ul",
+              { staticClass: "menu" },
+              _vm._l(_vm.youtube, function(item, index) {
                 return _c("social-link", { key: index, attrs: { item: item } })
               }),
               1
@@ -29337,7 +29491,7 @@ var render = function() {
         attrs: {
           title: "Theory of Change",
           type: "toc",
-          hintMain: "What is theory of change?",
+          hintMain: "Please add any theories of change your project may have.",
           images: false
         }
       }),
@@ -29346,7 +29500,7 @@ var render = function() {
         attrs: {
           title: "Community Reporting",
           type: "comrep",
-          hintMain: "What is Community Reporting?",
+          hintMain: "Please add any Community Reports your project may have.",
           images: false
         }
       }),
@@ -29357,7 +29511,7 @@ var render = function() {
         attrs: {
           title: "Living Lab Models",
           type: "livlabmod",
-          hintMain: "What are Living Lab Models?",
+          hintMain: "Please add any Living Lab models your project may have.",
           images: true
         }
       })
@@ -32063,7 +32217,7 @@ var render = function() {
           staticClass: "sidebar-top"
         },
         [
-          _c("ul", { staticClass: "tab tab-block" }, [
+          _c("ul", { staticClass: "tab tab-block tab-social" }, [
             _c(
               "li",
               {
@@ -32081,7 +32235,8 @@ var render = function() {
                       }
                     }
                   },
-                  [_vm._v("Twitter")]
+                  [_c("twitter-icon")],
+                  1
                 )
               ]
             ),
@@ -32103,7 +32258,8 @@ var render = function() {
                       }
                     }
                   },
-                  [_vm._v("Facebook")]
+                  [_c("facebook-icon")],
+                  1
                 )
               ]
             ),
@@ -32125,7 +32281,31 @@ var render = function() {
                       }
                     }
                   },
-                  [_vm._v("Instagram")]
+                  [_c("instagram-icon")],
+                  1
+                )
+              ]
+            ),
+            _vm._v(" "),
+            _c(
+              "li",
+              {
+                staticClass: "tab-item item-youtube-bg",
+                class: _vm.activeTab == "youtube" ? "active" : ""
+              },
+              [
+                _c(
+                  "a",
+                  {
+                    attrs: { href: "javascript:;" },
+                    on: {
+                      click: function($event) {
+                        return _vm.activateTab("youtube")
+                      }
+                    }
+                  },
+                  [_c("youtube-icon")],
+                  1
                 )
               ]
             )
@@ -32316,6 +32496,68 @@ var render = function() {
               return _c("social-item", {
                 key: index,
                 attrs: { item: item, network: "instagram" }
+              })
+            }),
+            1
+          )
+        ]
+      ),
+      _vm._v(" "),
+      _c(
+        "div",
+        {
+          directives: [
+            {
+              name: "show",
+              rawName: "v-show",
+              value: _vm.activeTab == "youtube" && _vm.visible,
+              expression: "activeTab == 'youtube' && visible"
+            }
+          ],
+          staticClass: "sidebar-content"
+        },
+        [
+          _c("p", { staticClass: "text-gray-medium text-small" }, [
+            _vm._v("Enter a link to a YouTube video and press enter to add.")
+          ]),
+          _vm._v(" "),
+          _c("p", { staticClass: "text-gray-medium text-small" }, [
+            _vm._v("Double-click an item to edit it, and enter to save.")
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "form-group" }, [
+            _c("input", {
+              directives: [
+                {
+                  name: "focus",
+                  rawName: "v-focus",
+                  value: _vm.activeTab == "youtube",
+                  expression: "activeTab == 'youtube'"
+                }
+              ],
+              staticClass: "form-input",
+              attrs: { autocomplete: "off" },
+              on: {
+                keyup: function($event) {
+                  if (
+                    !$event.type.indexOf("key") &&
+                    _vm._k($event.keyCode, "enter", 13, $event.key, "Enter")
+                  ) {
+                    return null
+                  }
+                  return _vm.addItem({ event: $event, network: "youtube" })
+                }
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _c(
+            "ul",
+            { staticClass: "menu social-edit-menu" },
+            _vm._l(_vm.youtube, function(item, index) {
+              return _c("social-item", {
+                key: index,
+                attrs: { item: item, network: "youtube" }
               })
             }),
             1

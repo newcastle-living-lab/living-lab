@@ -4948,6 +4948,11 @@ body {
   color: #fff;
 }
 
+.item-youtube-bg {
+  background: #ff0000;
+  color: #fff;
+}
+
 .social-edit-menu {
   margin: 0;
   padding: 0;
@@ -5147,6 +5152,10 @@ a.text-gray-medium:visited {
   font-size: 0.7rem;
   text-align: center;
   padding: 1.8rem 0;
+}
+
+.tab-social .feather {
+  vertical-align: -20%;
 }
 
 .menu.simple-menu {
