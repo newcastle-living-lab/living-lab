@@ -64,6 +64,14 @@ export default {
 				val = val.replace(/^#/, '');
 				return `<span class='hashtag'>#</span>${val}`;
 			}
+
+			if (this.network == 'youtube') {
+				let regExp = /^.*(youtu\.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
+				let match = val.match(regExp);
+				if (match && match[2].length == 11) {
+					return match[2];
+				}
+			}
 		},
 		showHashtag() {
 			return (this.network == 'twitter' || this.network == 'instagram');

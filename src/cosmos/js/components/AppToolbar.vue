@@ -6,25 +6,25 @@
 
 			<section class="navbar-section navbar-buttons">
 
-				<button class='btn btn-primary navbar-brand mr-4'
+				<button class='btn btn-secondary navbar-brand btn-sm mr-4'
 					@click="doWelcome"
 				>{{ appName }}</button>
 
-				<button class='btn btn-link'
+				<button class='btn btn-link btn-sm'
 					@click="doNew"
 					v-if="userCanEdit"
 				><plus-icon size="16" />New</button>
 
-				<button class='btn btn-link'
+				<button class='btn btn-link btn-sm'
 					@click="doOpen"
 				><folder-icon size="16" />Open...</button>
 
-				<button class='btn btn-link'
+				<button class='btn btn-link btn-sm'
 					v-if="hasProject && userCanEdit"
 					@click="doEdit"
 				><edit-icon size="16" />Edit</button>
 
-				<button class='btn btn-link'
+				<button class='btn btn-link btn-sm'
 					v-if="hasProject && userCanEdit"
 					@click="saveProject"
 				><save-icon size="16" />Save</button>
@@ -32,29 +32,13 @@
 			</section>
 
 			<section class="navbar-section navbar-tabs">
-				<div v-if="!hasUser && hasProject" class="input-group input-inline mr-8">
-					<label class="form-switch">
-						<input type="checkbox" v-model="scale">
-						<i class="form-icon"></i> <span class="text-small text-gray">Scale to fit</span>
-					</label>
-				</div>
-				<div v-if="hasProject">
-					<span v-if="hasProject" class="btn btn-link text-bold btn-empty mr-2">{{ project.name }}</span>
-					<router-link :to="projectionUrl" class="btn btn-link" :class="activeTab == 'projection' ? 'active' : ''">Living Lab</router-link>
-					<router-link :to="socialUrl" class="btn btn-link">Social Media</router-link>
-				</div>
-				<div v-if="hasUser" class="ml-16">
-					<span class="chip user-chip">
-						<span class="avatar avatar-sm"><user-icon size="16" /></span>
-						{{ user.username }}
-					</span>
-				</div>
-
+				<span v-if="hasUser"
+					class="btn btn-empty btn-sm"
+				><user-icon size="16" /> {{ user.username }}</span>
 				<a v-if="!hasUser && requireAuth"
-					class="btn btn-dark btn-sm ml-16"
+					class="btn btn-link btn-sm"
 					:href="loginUrl"
 				><key-icon size="16" /> Log in</a>
-
 			</section>
 
 		</nav>

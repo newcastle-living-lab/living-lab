@@ -1,4 +1,4 @@
-// import Vue from 'vue';
+import Vue from 'vue';
 import axios from 'axios';
 
 var baseURL = '/cosmos/';
@@ -54,10 +54,15 @@ const api = {
 			.catch(e => {
 				return e && e.response && e.response.data ? e.response.data : false;
 			});
+	},
+
+	uploadImage(formData) {
+		return axios.post('upload-image', formData)
+			.then(res => res.data);
 	}
 
 }
 
-// Vue.prototype.$api = api;
+Vue.prototype.$api = api;
 
 export default api;

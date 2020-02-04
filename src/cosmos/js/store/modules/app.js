@@ -117,7 +117,10 @@ const actions = {
 			'services-extsvc',
 			'services-extorg',
 			'services-infsvc',
+			'externals-toc',
+			'externals-comrep',
 			'social',
+			'externals-livlabmod',
 		];
 
 		let idx = order.indexOf(source);

@@ -35,6 +35,14 @@ export default {
 				val = val.replace(/^#/, '');
 				return `<span class='hashtag'>#</span>${val}`;
 			}
+
+			if (this.item.network == 'youtube') {
+				let regExp = /^.*(youtu\.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
+				let match = val.match(regExp);
+				if (match && match[2].length == 11) {
+					return match[2];
+				}
+			}
 		},
 
 		showHashtag() {
@@ -51,6 +59,7 @@ export default {
 					return `https://twitter.com/hashtag/${this.rawHashtag}`;
 				break;
 				case 'facebook':
+				case 'youtube':
 					return this.item.value;
 				break;
 				case 'instagram':

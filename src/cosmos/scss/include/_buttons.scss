@@ -22,6 +22,9 @@
 
 	&.btn-empty {
 		cursor: default;
+		color: inherit;
+		background: transparent;
+		border-color: transparent;
 	}
 
 }
