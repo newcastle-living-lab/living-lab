@@ -4,15 +4,20 @@ var fs = require("fs"),
 	_ = require('lodash');
 
 var Database = function() {
+	this.dbPath = null;
+	this.dbExists = null;
+	this.db = null;
 }
 
 
 Database.prototype.init = function() {
 	this.dbPath = null;
 	this.dbExists = fs.existsSync(this.getPath());
-	this.db = null;
+	this.db = new sqlite3.Database(this.getPath());
+	this.db.serialize();
 	this.createTables();
 	this.updateTables();
+	this.db.parallelize();
 }
 
 
@@ -27,59 +32,50 @@ Database.prototype.getPath = function() {
 
 
 Database.prototype.getDb = function() {
-	if (this.db === null || ! this.db.open) {
-		this.db = new sqlite3.Database(this.getPath());
-		console.log("Database opened");
-	}
 	return this.db;
 }
 
 
 Database.prototype.createTables = function() {
 
-	var db = this.getDb();
-
-	db.serialize(function() {
-
-		db.run("CREATE TABLE IF NOT EXISTS Projects (id INTEGER PRIMARY KEY, name TEXT, folder TEXT, createdate TEXT, lastdate TEXT, creator TEXT, json TEXT)", function(err) {
-			if (err) {
-				console.error('Database Projects error', err);
-			}
-		});
-
-		db.run("CREATE TABLE IF NOT EXISTS Resources (id INTEGER PRIMARY KEY, name TEXT, type TEXT, jsonstate TEXT)", function(err) {
-			if (err) {
-				console.error('Database Resources error', err);
-			}
-		});
-
-		db.run("CREATE TABLE IF NOT EXISTS `Players` (`project_id` INTEGER, `name` TEXT)", function(err) {
-			if (err) {
-				console.error('Database Players error', err);
-			}
-		});
-
-		db.run("CREATE TABLE IF NOT EXISTS `events` (id INTEGER PRIMARY KEY, datetime TEXT, user TEXT, type TEXT, ip TEXT, browser TEXT, data TEXT)", function(err) {
-			if (err) {
-				console.error("Database events creation error");
-			}
-		});
-
-		db.run("ALTER TABLE `eps` RENAME TO `cosmos`", function(err) {});
-
-		db.run("CREATE TABLE IF NOT EXISTS `cosmos` (id INTEGER PRIMARY KEY, name TEXT, folder TEXT, created_at TEXT, modified_at TEXT, created_by TEXT, data TEXT)", function(err) {
-			if (err) {
-				console.error("Database cosmos creation error");
-			}
-		});
-
+	this.db.run("CREATE TABLE IF NOT EXISTS Projects (id INTEGER PRIMARY KEY, name TEXT, folder TEXT, createdate TEXT, lastdate TEXT, creator TEXT, json TEXT)", function(err) {
+		if (err) {
+			console.error('Database Projects error', err);
+		}
 	});
+
+	this.db.run("CREATE TABLE IF NOT EXISTS Resources (id INTEGER PRIMARY KEY, name TEXT, type TEXT, jsonstate TEXT)", function(err) {
+		if (err) {
+			console.error('Database Resources error', err);
+		}
+	});
+
+	this.db.run("CREATE TABLE IF NOT EXISTS `Players` (`project_id` INTEGER, `name` TEXT)", function(err) {
+		if (err) {
+			console.error('Database Players error', err);
+		}
+	});
+
+	this.db.run("CREATE TABLE IF NOT EXISTS `events` (id INTEGER PRIMARY KEY, datetime TEXT, user TEXT, type TEXT, ip TEXT, browser TEXT, data TEXT)", function(err) {
+		if (err) {
+			console.error("Database events creation error");
+		}
+	});
+
+	this.db.run("ALTER TABLE `eps` RENAME TO `cosmos`", function(err) {});
+
+	this.db.run("CREATE TABLE IF NOT EXISTS `cosmos` (id INTEGER PRIMARY KEY, name TEXT, slug TEXT, folder TEXT, created_at TEXT, modified_at TEXT, created_by TEXT, data TEXT)", function(err) {
+		if (err) {
+			console.error("Database cosmos creation error");
+		}
+	});
+
 }
 
 
 Database.prototype.updateTables = function() {
 
-	var db = this.getDb();
+	var db = this.db;
 
 	// Add 'folder' to projects
 	this.tableHasColumn('Projects', 'folder', function(colExists) {
@@ -102,10 +98,9 @@ Database.prototype.updateTables = function() {
 
 Database.prototype.tableHasColumn = function(table, column, cb) {
 
-	var db = this.getDb(),
-		sql = 'PRAGMA table_info(' + table + ')';
+	var sql = 'PRAGMA table_info(' + table + ')';
 
-	db.all(sql, function (error, rows) {
+	this.db.all(sql, function (error, rows) {
 		var result = _.some(rows, {'name': column});
 		cb(result);
 	});
@@ -115,7 +110,7 @@ Database.prototype.tableHasColumn = function(table, column, cb) {
 
 Database.prototype.closeDb = function() {
 	if (this.db !== null && this.db.open) {
-		this.getDb().close();
+		this.db.close();
 		console.log("Database closed.");
 	} else {
 		console.log("Database was not open");
