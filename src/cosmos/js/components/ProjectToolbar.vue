@@ -81,14 +81,15 @@ export default {
 
 			urls(state) {
 
-				let id = state.project.id;
+				let id = state.project.id,
+					slug = state.project.slug;
 
 				return {
-					dashboard: `/${id}/dashboard`,
-					social: `/${id}/social`,
-					theoryofchange: `/${id}/theory-of-change`,
-					communityreporting: `/${id}/community-reporting`,
-					livinglabmodels: `/${id}/living-lab-models`,
+					dashboard: `/${id}/${slug}/dashboard`,
+					social: `/${id}/${slug}/social`,
+					theoryofchange: `/${id}/${slug}/theory-of-change`,
+					communityreporting: `/${id}/${slug}/community-reporting`,
+					livinglabmodels: `/${id}/${slug}/living-lab-models`,
 				}
 			},
 

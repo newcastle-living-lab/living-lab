@@ -89,6 +89,14 @@ Database.prototype.updateTables = function() {
 		}
 	});
 
+	// Add 'slug' to cosmos
+	this.tableHasColumn('cosmos', 'slug', function(colExists) {
+		if ( ! colExists) {
+			db.run('ALTER TABLE cosmos ADD COLUMN slug TEXT');
+			console.log('Added "slug" column to Cosmos.');
+		}
+	});
+
 }
 
 

@@ -3706,37 +3706,37 @@ var routes = [{
   path: '/'
 }, {
   name: 'projection',
-  path: '/:id/projection',
+  path: '/:id/:name?/projection',
   component: _components_ProjectionStage_vue__WEBPACK_IMPORTED_MODULE_2__["default"],
   props: true
 }, {
   name: 'livinglab',
-  path: '/:id/livinglab',
+  path: '/:id/:name?/livinglab',
   component: _components_ProjectionStage_vue__WEBPACK_IMPORTED_MODULE_2__["default"],
   props: true
 }, {
   name: 'dashboard',
-  path: '/:id/dashboard',
+  path: '/:id/:name?/dashboard',
   component: _components_ProjectionStage_vue__WEBPACK_IMPORTED_MODULE_2__["default"],
   props: true
 }, {
   name: 'theoryofchange',
-  path: '/:id/theory-of-change',
+  path: '/:id/:name?/theory-of-change',
   component: _components_TheoryOfChange_vue__WEBPACK_IMPORTED_MODULE_4__["default"],
   props: true
 }, {
   name: 'communityreporting',
-  path: '/:id/community-reporting',
+  path: '/:id/:name?/community-reporting',
   component: _components_CommunityReporting_vue__WEBPACK_IMPORTED_MODULE_5__["default"],
   props: true
 }, {
   name: 'livinglabmodels',
-  path: '/:id/living-lab-models',
+  path: '/:id/:name?/living-lab-models',
   component: _components_LivingLabModels_vue__WEBPACK_IMPORTED_MODULE_6__["default"],
   props: true
 }, {
   name: 'social',
-  path: '/:id/social',
+  path: '/:id/:name?/social',
   component: _components_SocialMedia_vue__WEBPACK_IMPORTED_MODULE_3__["default"],
   props: true
 }];
@@ -6501,15 +6501,19 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     }
   }, Object(vuex__WEBPACK_IMPORTED_MODULE_4__["mapState"])('app', ['appName', 'editing', 'loading']), {}, Object(vuex__WEBPACK_IMPORTED_MODULE_4__["mapState"])('project', ['project'])),
   watch: {
-    '$route': 'fetchProject',
+    '$route': 'onRouteChange',
     'project': 'updateTitle'
   },
   methods: {
-    fetchProject: function fetchProject() {
+    onRouteChange: function onRouteChange() {
       var id = this.$route.params.id;
 
       if (id && id != this.project.id) {
         this.$store.dispatch('projects/getProject', id);
+      }
+
+      if (typeof fathom !== 'undefined') {
+        fathom('trackPageview');
       }
     },
     updateTitle: function updateTitle() {
@@ -6523,7 +6527,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   },
   created: function created() {
     this.$store.commit('app/setConfig', this.$root.$options.config);
-    this.fetchProject();
+    this.onRouteChange();
     this.updateTitle();
   }
 });
@@ -6852,13 +6856,14 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   }), {}, Object(vuex_map_fields__WEBPACK_IMPORTED_MODULE_1__["mapFields"])('app', ['scale']), {}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapState"])('project', {
     project: 'project',
     urls: function urls(state) {
-      var id = state.project.id;
+      var id = state.project.id,
+          slug = state.project.slug;
       return {
-        dashboard: "/".concat(id, "/dashboard"),
-        social: "/".concat(id, "/social"),
-        theoryofchange: "/".concat(id, "/theory-of-change"),
-        communityreporting: "/".concat(id, "/community-reporting"),
-        livinglabmodels: "/".concat(id, "/living-lab-models")
+        dashboard: "/".concat(id, "/").concat(slug, "/dashboard"),
+        social: "/".concat(id, "/").concat(slug, "/social"),
+        theoryofchange: "/".concat(id, "/").concat(slug, "/theory-of-change"),
+        communityreporting: "/".concat(id, "/").concat(slug, "/community-reporting"),
+        livinglabmodels: "/".concat(id, "/").concat(slug, "/living-lab-models")
       };
     },
     hasProject: function hasProject(state) {
@@ -29704,7 +29709,11 @@ var render = function() {
           [
             _c(
               "router-link",
-              { attrs: { to: "/" + project.id + "/livinglab" } },
+              {
+                attrs: {
+                  to: "/" + project.id + "/" + project.slug + "/livinglab"
+                }
+              },
               [_vm._v(_vm._s(project.name))]
             )
           ],
