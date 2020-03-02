@@ -31,7 +31,7 @@
 	})(document, window, 'https://cdn.usefathom.com/tracker.js', 'fathom');
 	fathom('set', 'siteId', '{{ fathom_site_id }}');
 	fathom('trackPageview');
-	fathom('set', 'spa', 'hash');
+	fathom('set', 'spa', 'pushstate');
 	</script>
 	<!-- / Fathom -->
 	{% endif %}

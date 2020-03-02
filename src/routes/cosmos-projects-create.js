@@ -3,7 +3,7 @@ var database = require("../includes/database.js"),
 	eventType = require("../includes/event-types");
 
 exports.method = "post";
-exports.route = "/cosmos/projects";
+exports.route = "/cosmos-api/projects";
 
 exports.handler = function(req, res, next) {
 

@@ -3741,6 +3741,8 @@ var routes = [{
   props: true
 }];
 var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
+  base: '/cosmos/',
+  mode: 'history',
   routes: routes
 });
 /* harmony default export */ __webpack_exports__["default"] = (router);
@@ -3762,7 +3764,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
 
 
-var baseURL = '/cosmos/';
+var baseURL = '/cosmos-api/';
 var http = axios__WEBPACK_IMPORTED_MODULE_1___default.a.create({
   baseURL: baseURL
 });
@@ -6642,7 +6644,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     }
   }), {
     loginUrl: function loginUrl() {
-      return '/login?ref=' + encodeURIComponent("".concat(top.location.pathname).concat(top.location.hash));
+      var currentRoute = this.$route.path;
+      var path = top.location.pathname.replace(currentRoute, '');
+      return '/login?ref=' + encodeURIComponent(path + currentRoute);
     }
   }),
   methods: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])('app', ['doWelcome', 'doNew', 'doOpen', 'doEdit']), {}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])('project', ['saveProject']))

@@ -4,7 +4,7 @@ var database = require("../includes/database.js"),
 	slugify = require('slugify');
 
 exports.method = "get";
-exports.route = "/cosmos/projects/:projectId";
+exports.route = "/cosmos-api/projects/:projectId";
 
 exports.handler = function(req, res) {
 

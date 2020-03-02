@@ -1,13 +1,9 @@
 var auth = require("../includes/auth.js");
 
 exports.method = "get";
-exports.route = "/cosmos";
+exports.route = "/cosmos(/*)?";
 
 exports.handler = function(req, res) {
-
-	if (req.path === '/cosmos') {
-		return res.redirect('/cosmos/');
-	}
 
 	var config = {
 		user: null,

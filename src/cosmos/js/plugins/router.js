@@ -59,7 +59,9 @@ const routes = [
 ]
 
 const router = new VueRouter({
-	routes
+	base: '/cosmos/',
+	mode: 'history',
+	routes,
 });
 
 export default router;
