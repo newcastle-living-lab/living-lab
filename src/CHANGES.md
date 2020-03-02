@@ -1,6 +1,11 @@
 # Living Lab Changelog
 
 
+## v1.25.5
+
+* Fixed issues with database initialisation/migrations.
+
+
 ## v1.25.4
 
 * COSMOS: Added Fathom Analytics tracking code and updated routing/URL handling to support it.
