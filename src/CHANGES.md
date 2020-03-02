@@ -1,6 +1,11 @@
 # Living Lab Changelog
 
 
+## v1.25.4
+
+* COSMOS: Added Fathom Analytics tracking code and updated routing/URL handling to support it.
+
+
 ## v1.25.3
 
 * COSMOS: Added YouTube support to Social Media section.
