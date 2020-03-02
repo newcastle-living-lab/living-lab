@@ -4,7 +4,7 @@ var path = require("path"),
 	Jimp = require('jimp');
 
 exports.method = "post";
-exports.route = "/cosmos/upload-image";
+exports.route = "/cosmos-api/upload-image";
 
 exports.handler = function(req, res) {
 

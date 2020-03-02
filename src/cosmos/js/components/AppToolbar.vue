@@ -110,7 +110,9 @@ export default {
 		}),
 
 		loginUrl() {
-			return '/login?ref=' + encodeURIComponent(`${top.location.pathname}${top.location.hash}`);
+			let currentRoute = this.$route.path;
+			let path = top.location.pathname.replace(currentRoute, '');
+			return '/login?ref=' + encodeURIComponent(path + currentRoute);
 		}
 
 	},

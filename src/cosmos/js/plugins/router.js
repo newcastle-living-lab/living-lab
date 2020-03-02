@@ -16,50 +16,52 @@ const routes = [
 	},
 	{
 		name: 'projection',
-		path: '/:id/projection',
+		path: '/:id/:name?/projection',
 		component: ProjectionStage,
 		props: true,
 	},
 	{
 		name: 'livinglab',
-		path: '/:id/livinglab',
+		path: '/:id/:name?/livinglab',
 		component: ProjectionStage,
 		props: true,
 	},
 	{
 		name: 'dashboard',
-		path: '/:id/dashboard',
+		path: '/:id/:name?/dashboard',
 		component: ProjectionStage,
 		props: true,
 	},
 	{
 		name: 'theoryofchange',
-		path: '/:id/theory-of-change',
+		path: '/:id/:name?/theory-of-change',
 		component: TheoryOfChange,
 		props: true,
 	},
 	{
 		name: 'communityreporting',
-		path: '/:id/community-reporting',
+		path: '/:id/:name?/community-reporting',
 		component: CommunityReporting,
 		props: true,
 	},
 	{
 		name: 'livinglabmodels',
-		path: '/:id/living-lab-models',
+		path: '/:id/:name?/living-lab-models',
 		component: LivingLabModels,
 		props: true,
 	},
 	{
 		name: 'social',
-		path: '/:id/social',
+		path: '/:id/:name?/social',
 		component: SocialMedia,
 		props: true,
 	},
 ]
 
 const router = new VueRouter({
-	routes
+	base: '/cosmos/',
+	mode: 'history',
+	routes,
 });
 
 export default router;

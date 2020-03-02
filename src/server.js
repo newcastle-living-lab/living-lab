@@ -93,6 +93,7 @@ var initServers = function() {
 		res.locals.authenticated = (req.user);
 		res.locals.auto_save = config.auto_save;
 		res.locals.single_instance = config.single_instance;
+		res.locals.fathom_site_id = config.fathom_site_id ? config.fathom_site_id : false;
 		res.locals.userHasRole = function(role) {
 			if (config.require_auth === false) {
 				return true;

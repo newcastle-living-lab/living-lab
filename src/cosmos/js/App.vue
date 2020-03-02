@@ -54,15 +54,18 @@ export default {
 	},
 
 	watch: {
-		'$route': 'fetchProject',
+		'$route': 'onRouteChange',
 		'project': 'updateTitle',
 	},
 
 	methods: {
-		fetchProject() {
+		onRouteChange() {
 			let id = this.$route.params.id;
 			if (id && id != this.project.id) {
 				this.$store.dispatch('projects/getProject', id);
+			}
+			if (typeof fathom !== 'undefined') {
+				fathom('trackPageview');
 			}
 		},
 		updateTitle() {
@@ -76,7 +79,7 @@ export default {
 
 	created() {
 		this.$store.commit('app/setConfig', this.$root.$options.config);
-		this.fetchProject();
+		this.onRouteChange();
 		this.updateTitle();
 	}
 

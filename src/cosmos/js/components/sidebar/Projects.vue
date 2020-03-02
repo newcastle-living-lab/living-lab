@@ -9,7 +9,7 @@
 				v-for="project in projects"
 				:key="project.id"
 			>
-				<router-link :to="'/' + project.id + '/livinglab'">{{ project.name }}</router-link>
+				<router-link :to="'/' + project.id + '/' + project.slug + '/livinglab'">{{ project.name }}</router-link>
 			</li>
 		</ul>
 
@@ -19,7 +19,7 @@
 
 <script>
 
-import { mapState, mapActions } from 'vuex';
+import { mapState } from 'vuex';
 
 export default {
 
