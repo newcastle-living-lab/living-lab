@@ -1,6 +1,11 @@
 # Living Lab Changelog
 
 
+## v1.25.6
+
+* COSMOS: Fixed issue when uploading images (wrong API URL).
+
+
 ## v1.25.5
 
 * Fixed issues with database initialisation/migrations.
