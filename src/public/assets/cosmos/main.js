@@ -3807,7 +3807,7 @@ var api = {
     });
   },
   uploadImage: function uploadImage(formData) {
-    return axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('upload-image', formData).then(function (res) {
+    return http.post('upload-image', formData).then(function (res) {
       return res.data;
     });
   }
