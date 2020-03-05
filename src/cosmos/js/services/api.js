@@ -57,7 +57,7 @@ const api = {
 	},
 
 	uploadImage(formData) {
-		return axios.post('upload-image', formData)
+		return http.post('upload-image', formData)
 			.then(res => res.data);
 	}
 
