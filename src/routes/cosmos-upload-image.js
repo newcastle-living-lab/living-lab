@@ -21,27 +21,30 @@ exports.handler = function(req, res) {
 
 	form.on('end', function() {
 
+		console.log("Form upload finished.");
+
 		var baseDir = fs.realpathSync(path.join(process.cwd(), 'data', 'images'));
-		var newFilename = Date.now() + '-' + file.name;
+		var newFilename = Date.now() + '-' + file.name.toLowerCase();
 		newFilename = newFilename.replace(/[^a-zA-Z0-9\.]/g, '_');
 		var newFilepath = path.join(baseDir, newFilename);
 		var newThumbpath = path.join(baseDir, 'thumb', newFilename);
 
-		var processImg = Jimp.read(file.path)
+		Jimp.read(file.path)
 			.then(function(img) {
-				console.log("JIMP reading image");
-				return img.cover(400, 400).write(newThumbpath.toLowerCase());
+				console.log(img.getMIME());
+				console.log(img.getExtension());
+				console.log("Creating 400px thumbnail.");
+				return img.cover(400, 400).write(newThumbpath);
 			})
 			.then(function(img) {
-				console.log("Moving original file");
 				return new Promise(function(resolve, reject) {
-					fs.rename(file.path, newFilepath.toLowerCase() , function (err) {
+					fs.rename(file.path, newFilepath, function(err) {
 						if (err) {
-							console.log('Move error:');
+							console.log('Move error');
 							console.log(err);
 							reject(err);
 						}
-						console.log("Moved!");
+						console.log('Moved!');
 						resolve();
 					});
 				});
