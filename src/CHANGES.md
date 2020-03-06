@@ -1,6 +1,11 @@
 # Living Lab Changelog
 
 
+## v1.25.7
+
+* COSMOS: Logging and fixing issues with image uploads.
+
+
 ## v1.25.6
 
 * COSMOS: Fixed issue when uploading images (wrong API URL).
