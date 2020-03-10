@@ -329,6 +329,49 @@ body {
 	}
 }
 
+.accordion-external {
+
+	border: $unit-o solid $border-color;
+	border-radius: 0;
+	margin-bottom: -$unit-o;
+	background: $light-color;
+
+	&.is-open {
+		background: $gray-color-light;
+		& .accordion-header {
+			.icon {
+				transform: none;
+			}
+		}
+		& .accordion-body {
+			max-height: none;
+			height: auto;
+		}
+	}
+
+	.accordion-header {
+		display: block;
+		font-size: $font-size-sm;
+		padding: $layout-spacing $layout-spacing-lg;
+
+		.icon {
+			color: lighten($gray-color, 20%);
+		}
+	}
+
+	.accordion-body {
+		max-height: 0;
+		height: 0;
+		transition: none;
+		margin-bottom: 0;
+	}
+
+	.card {
+		border: 0;
+		background: transparent;
+	}
+}
+
 
 
 
@@ -452,7 +495,7 @@ body {
 .dropbox {
 	outline: $unit-h dashed $border-color;
 	outline-offset: -10px;
-	background: $gray-color-light;
+	// background: $gray-color-light;
 	color: $gray-color-dark;
 	padding: $unit-2 $unit-4;
 	min-height: $control-size * 3;
@@ -484,6 +527,9 @@ body {
 }
 
 
+.sortable-bg {
+	background: $highlight-color;
+}
 
 
 .tab-social {

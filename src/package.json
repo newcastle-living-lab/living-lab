@@ -1,6 +1,6 @@
 {
 	"name": "living-lab",
-	"version": "1.25.7",
+	"version": "1.25.8",
 	"private": true,
 	"description": "Living Lab project",
 	"main": "server.js",
@@ -34,8 +34,8 @@
 		"directory-tree": "^2.2.4",
 		"express": "^4.17.1",
 		"express-session": "^1.17.0",
-		"formidable": "^1.1.1",
-		"jimp": "^0.9.3",
+		"formidable": "^1.2.2",
+		"jimp": "^0.9.5",
 		"jquery": "^2.2.4",
 		"lodash": "^4.17.15",
 		"nunjucks": "^3.2.0",

@@ -1,6 +1,11 @@
 # Living Lab Changelog
 
 
+## v1.25.8
+
+* COSMOS: Added Drag and Drop re-ordering to certain items.
+
+
 ## v1.25.7
 
 * COSMOS: Logging and fixing issues with image uploads.

@@ -1,11 +1,22 @@
 <template>
 
-	<div class="accordion accordion-service" :open="editing">
+	<div class="accordion accordion-external" :open="editing" :class="editing ? 'is-open' : ''">
 
-		<label class="accordion-header" @click="doEdit"><i class="icon icon-arrow-right"></i>{{ item.label }}</label>
-		<div class="accordion-body" >
+		<label class="accordion-header" @click="doEdit">
+			<div class="tile tile-centered">
+				<div class="tile-content">
+					<div class="tile-title">{{ item.label }}</div>
+				</div>
+				<div class="tile-icon">
+					<i class="icon icon-menu c-move" v-handle v-if="showHandle"></i>
+				</div>
+			</div>
+		</label>
 
-			<div class="card">
+		<div class="accordion-body">
+
+			<div class="card card-edit">
+
 				<div class="card-body">
 
 					<div class="form-group">
@@ -14,10 +25,8 @@
 							ref="label"
 							:id="'label' + type + index"
 							:value="item.label"
-							v-focus="editing"
 							@keyup.enter="doneEdit"
 							@keyup.esc="cancelEdit"
-							@input="touchModified"
 							type="text"
 							class="form-input input-sm"
 							maxlength="255"
@@ -32,7 +41,6 @@
 							:value="item.url"
 							@keyup.enter="doneEdit"
 							@keyup.esc="cancelEdit"
-							@input="touchModified"
 							type="text"
 							class="form-input input-sm"
 							maxlength="255"
@@ -86,15 +94,21 @@
 
 					</div>
 
-					<div v-if="modified">
-						<button
-							type="button"
-							class="btn btn-sm btn-primary"
-							@click="doneEdit()"
-						>Save</button>
-					</div>
-
 				</div>
+
+				<div class="card-footer">
+					<button
+						type="button"
+						class="btn btn-sm btn-primary"
+						@click="doneEdit"
+					><i class="icon icon-check"></i> Save</button>
+					<button
+						type="button"
+						class="btn btn-sm btn-negative btn-action float-right"
+						@click="deleteItem"
+					><i class="icon icon-delete"></i></button>
+				</div>
+
 			</div>
 
 		</div>
@@ -105,6 +119,7 @@
 <script>
 
 import { mapActions } from 'vuex';
+import { ElementMixin, HandleDirective  } from 'vue-slicksort';
 
 const STATUS_INITIAL = 0;
 const STATUS_SAVING = 1;
@@ -114,14 +129,10 @@ const STATUS_REMOVED = 4;
 
 export default {
 
+	mixins: [ElementMixin],
+
 	directives: {
-		focus (el, { value }, { context }) {
-			if (value) {
-				context.$nextTick(() => {
-					el.focus()
-				})
-			}
-		}
+		handle: HandleDirective
 	},
 
 	props: [
@@ -129,7 +140,9 @@ export default {
 		'index',
 		'item',
 		'type',
+		'storeProperty',
 		'editingItem',
+		'showHandle',
 	],
 
 	data() {
@@ -208,7 +221,6 @@ export default {
 
 		...mapActions('project', [
 			'editExternal',
-			'removeExternal'
 		]),
 
 		doEdit() {
@@ -229,7 +241,7 @@ export default {
 			const { item } = this;
 
 			if ( ! label) {
-				this.removeExternal(item);
+				this.$emit('delete-item', this.item);
 			} else {
 				this.editExternal({
 					item,
@@ -273,7 +285,6 @@ export default {
 
 			this.$api.uploadImage(formData)
 				.then(res => {
-					this.touchModified();
 					this.uploadedFile = res;
 					this.currentStatus = STATUS_SUCCESS;
 				})
@@ -284,17 +295,12 @@ export default {
 		},
 
 		removeImage() {
-			this.touchModified();
 			this.resetUpload();
 			this.itemImage = false;
 		},
 
-		touchModified() {
-			if (this.modified) {
-				return;
-			}
-
-			this.modified = true;
+		deleteItem() {
+			this.$emit('delete-item', this.item);
 		},
 
 		fileDragStart() {

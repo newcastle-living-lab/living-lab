@@ -10,6 +10,11 @@
 		@include button-variant($grey-dark);
 	}
 
+
+	&.btn-negative {
+		@include button-variant($clrs-red);
+	}
+
 	.feather {
 		vertical-align: -15%;
 	}

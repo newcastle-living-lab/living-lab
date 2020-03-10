@@ -31,6 +31,9 @@ const state = {
 			services: [],
 			externals: [],
 			initiators: [],
+			theoryOfChange: [],
+			communityReporting: [],
+			livingLabModels: [],
 		}
 	}
 };
@@ -211,9 +214,25 @@ const getters = {
 		return [];
 	},
 
-	externals(state) {
-		if (state.project && Array.isArray(state.project.data.externals)) {
-			return state.project.data.externals;
+	livingLabModels(state) {
+		if (state.project && Array.isArray(state.project.data.livingLabModels)) {
+			return state.project.data.livingLabModels;
+		}
+
+		return [];
+	},
+
+	communityReporting(state) {
+		if (state.project && Array.isArray(state.project.data.communityReporting)) {
+			return state.project.data.communityReporting;
+		}
+
+		return [];
+	},
+
+	theoryOfChange(state) {
+		if (state.project && Array.isArray(state.project.data.theoryOfChange)) {
+			return state.project.data.theoryOfChange;
 		}
 
 		return [];
@@ -261,10 +280,6 @@ const actions = {
 		commit('editService', { item, label: label, url: url });
 	},
 
-	removeExternal({ commit }, item) {
-		commit('removeExternal', item);
-	},
-
 	editExternal({ commit }, { item, label, url, image }) {
 		commit('editExternal', { item, label: label, url: url, image: image });
 	},
@@ -281,7 +296,26 @@ const mutations = {
 	updateField,
 
 	setProject(state, project) {
-		// console.log(project);
+
+		let hasExternals = Array.isArray(project.data.externals);
+		let processComRep = ( ! Array.isArray(project.data.communityReporting) || project.data.communityReporting.length === 0);
+		let processToc = ( ! Array.isArray(project.data.theoryOfChange) || project.data.theoryOfChange.length === 0);
+		let processLivlabmod = ( ! Array.isArray(project.data.livingLabModels) || project.data.livingLabModels.length === 0);
+
+		if (hasExternals) {
+			if (processComRep) {
+				project.data.communityReporting = project.data.externals.filter(item => item.type == 'comrep');
+			}
+
+			if (processToc) {
+				project.data.theoryOfChange = project.data.externals.filter(item => item.type == 'toc');
+			}
+
+			if (processToc) {
+				project.data.livingLabModels = project.data.externals.filter(item => item.type == 'livlabmod');
+			}
+		}
+
 		state.project = { ...project };
 	},
 
@@ -447,11 +481,26 @@ const mutations = {
 		item.image = image;
 	},
 
-	removeExternal(state, item) {
-		if (state.project.data.externals.indexOf(item) > -1) {
-			state.project.data.externals.splice(state.project.data.externals.indexOf(item), 1);
+	livingLabModels(state, value) {
+		if ( ! Array.isArray(state.project.data.livingLabModels)) {
+			Vue.set(state.project.data, 'livingLabModels', []);
 		}
-		return;
+		state.project.data.livingLabModels = value;
+	},
+
+	theoryOfChange(state, value) {
+		if ( ! Array.isArray(state.project.data.theoryOfChange)) {
+			Vue.set(state.project.data, 'theoryOfChange', []);
+		}
+		state.project.data.theoryOfChange = value;
+	},
+
+	communityReporting(state, value) {
+		if ( ! Array.isArray(state.project.data.communityReporting)) {
+			Vue.set(state.project.data, 'communityReporting', []);
+		}
+
+		state.project.data.communityReporting = value;
 	},
 
 	touchModifiedDate(state) {

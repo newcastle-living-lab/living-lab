@@ -39,6 +39,7 @@
 		<edit-externals
 			title="Theory of Change"
 			type="toc"
+			storeProperty="theoryOfChange"
 			hintMain="Please add any theories of change your project may have."
 			:images="false"
 		/>
@@ -46,6 +47,7 @@
 		<edit-externals
 			title="Community Reporting"
 			type="comrep"
+			storeProperty="communityReporting"
 			hintMain="Please add any Community Reports your project may have."
 			:images="false"
 		/>
@@ -55,6 +57,7 @@
 		<edit-externals
 			title="Living Lab Models"
 			type="livlabmod"
+			storeProperty="livingLabModels"
 			hintMain="Please add any Living Lab models your project may have."
 			:images="true"
 		/>
