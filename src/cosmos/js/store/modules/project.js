@@ -481,20 +481,25 @@ const mutations = {
 		item.image = image;
 	},
 
-	updateExternalItemIndex(state, { item, idx = item.idx }) {
-		console.log("Setting " + item.label + " to index "+ idx);
-		item.idx = idx;
-	},
-
 	livingLabModels(state, value) {
+		if ( ! Array.isArray(state.project.data.livingLabModels)) {
+			Vue.set(state.project.data, 'livingLabModels', []);
+		}
 		state.project.data.livingLabModels = value;
 	},
 
 	theoryOfChange(state, value) {
+		if ( ! Array.isArray(state.project.data.theoryOfChange)) {
+			Vue.set(state.project.data, 'theoryOfChange', []);
+		}
 		state.project.data.theoryOfChange = value;
 	},
 
 	communityReporting(state, value) {
+		if ( ! Array.isArray(state.project.data.communityReporting)) {
+			Vue.set(state.project.data, 'communityReporting', []);
+		}
+
 		state.project.data.communityReporting = value;
 	},
 

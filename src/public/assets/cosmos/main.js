@@ -4548,20 +4548,25 @@ var mutations = {
     item.url = url;
     item.image = image;
   },
-  updateExternalItemIndex: function updateExternalItemIndex(state, _ref14) {
-    var item = _ref14.item,
-        _ref14$idx = _ref14.idx,
-        idx = _ref14$idx === void 0 ? item.idx : _ref14$idx;
-    console.log("Setting " + item.label + " to index " + idx);
-    item.idx = idx;
-  },
   livingLabModels: function livingLabModels(state, value) {
+    if (!Array.isArray(state.project.data.livingLabModels)) {
+      vue__WEBPACK_IMPORTED_MODULE_0___default.a.set(state.project.data, 'livingLabModels', []);
+    }
+
     state.project.data.livingLabModels = value;
   },
   theoryOfChange: function theoryOfChange(state, value) {
+    if (!Array.isArray(state.project.data.theoryOfChange)) {
+      vue__WEBPACK_IMPORTED_MODULE_0___default.a.set(state.project.data, 'theoryOfChange', []);
+    }
+
     state.project.data.theoryOfChange = value;
   },
   communityReporting: function communityReporting(state, value) {
+    if (!Array.isArray(state.project.data.communityReporting)) {
+      vue__WEBPACK_IMPORTED_MODULE_0___default.a.set(state.project.data, 'communityReporting', []);
+    }
+
     state.project.data.communityReporting = value;
   },
   touchModifiedDate: function touchModifiedDate(state) {
