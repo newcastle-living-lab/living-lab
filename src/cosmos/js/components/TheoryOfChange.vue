@@ -6,7 +6,7 @@
 
 			<div class="columns external-items ">
 				<external-item
-					v-for="(item, index) in filteredItems"
+					v-for="(item, index) in theoryOfChange"
 					:key="index"
 					:item="item"
 				/>
@@ -38,12 +38,8 @@ export default {
 	computed: {
 
 		...mapGetters('project', [
-			'externals',
+			'theoryOfChange',
 		]),
-
-		filteredItems() {
-			return this.externals.filter(item => item.type == this.type);
-		},
 
 	},
 

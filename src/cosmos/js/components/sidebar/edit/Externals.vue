@@ -15,25 +15,37 @@
 				<label class="form-label" :for="panelName + '_new'">Add new item</label>
 				<span class="form-input-hint">Type the name below and press enter.</span>
 				<input
+					ref="newInput"
 					:id="panelName + '_new'"
 					@keyup.enter="addItem({ event: $event })"
 					class="form-input"
 					autocomplete="off"
-					v-focus="visible"
 				>
 			</div>
 
-			<external-item
-				v-for="(item, index) in filteredItems"
-				:key="index"
-				:index="index"
-				:item="item"
-				:type="type"
-				:images="images"
-				:editingItem="editingItem"
-				@edit-item="setEditItem"
-			/>
+			<SortableList
+				lockAxis="y"
+				v-model="filteredItems"
+				:useDragHandle="true"
+				:lockToContainerEdges="true"
+				:transitionDuration="0"
+			>
 
+				<external-item
+					v-for="(item, index) in filteredItems"
+					:key="index"
+					:index="index"
+					:item="item"
+					:type="type"
+					:images="images"
+					:editingItem="editingItem"
+					:storeProperty="storeProperty"
+					:showHandle="true"
+					@edit-item="setEditItem"
+					@delete-item="deleteItem"
+				/>
+
+			</SortableList>
 		</div>
 
 		<div class="sidebar-footer" v-show="visible">
@@ -51,14 +63,22 @@
 
 <script>
 
+
 import { mapState, mapGetters, mapMutations } from 'vuex';
+import { ContainerMixin, ElementMixin } from 'vue-slicksort';
 
 import ExternalItem from './ExternalItem.vue';
+
+const SortableList = {
+	mixins: [ContainerMixin],
+	template: `<div class="sortable-bg"><slot /></div>`
+};
 
 export default {
 
 	components: {
 		ExternalItem,
+		SortableList
 	},
 
 	directives: {
@@ -74,8 +94,13 @@ export default {
 	props: {
 		title: String,
 		type: String,
+		storeProperty: String,
 		images: Boolean,
 		hintMain: String,
+	},
+
+	watch: {
+		'visible': 'onVisibleChange',
 	},
 
 	data() {
@@ -100,10 +125,20 @@ export default {
 			projectData: state => state.project.data
 		}),
 
-		...mapGetters('project', ['externals']),
+		...mapGetters('project', [
+			'communityReporting',
+			'theoryOfChange',
+			'livingLabModels',
+		]),
 
-		filteredItems() {
-			return this.externals.filter(item => item.type == this.type);
+		filteredItems: {
+			get() {
+				return this[this.storeProperty];
+			},
+			set(value) {
+				let mut = `project/${this.storeProperty}`;
+				this.$store.commit(mut, value);
+			}
 		}
 
 	},
@@ -111,13 +146,24 @@ export default {
 	methods: {
 
 		addItem({ event }) {
+			let items = this.filteredItems;
 			let label = event.target.value;
 			if (label.trim()) {
-				let item = this.getBlankItem();
-				item.label = label;
-				this.$store.commit('project/addExternal', item);
+				let newItem = this.getBlankItem();
+				newItem.label = label;
+				items.push(newItem);
+				this.filteredItems = items;
+				// this[this.storeProperty] = items;
 			}
 			event.target.value = '';
+		},
+
+		deleteItem(item) {
+			let items = this.filteredItems;	//[this.storeProperty];
+			if (items.indexOf(item) > -1) {
+				items.splice(items.indexOf(item), 1);
+				this.filteredItems = items;
+			}
 		},
 
 		setEditItem(item) {
@@ -135,10 +181,18 @@ export default {
 			};
 		},
 
+		onVisibleChange() {
+			if (this.visible) {
+				this.$nextTick(() => {
+					this.$refs.newInput.focus();
+				});
+			}
+		},
+
 		next() {
 			this.$store.dispatch('app/doEditNext', this.panelName);
 		}
-	}
+	},
 
 }
 </script>

@@ -4089,7 +4089,10 @@ var state = {
       extOrgLabel: '',
       services: [],
       externals: [],
-      initiators: []
+      initiators: [],
+      theoryOfChange: [],
+      communityReporting: [],
+      livingLabModels: []
     }
   }
 };
@@ -4239,9 +4242,23 @@ var getters = {
 
     return [];
   },
-  externals: function externals(state) {
-    if (state.project && Array.isArray(state.project.data.externals)) {
-      return state.project.data.externals;
+  livingLabModels: function livingLabModels(state) {
+    if (state.project && Array.isArray(state.project.data.livingLabModels)) {
+      return state.project.data.livingLabModels;
+    }
+
+    return [];
+  },
+  communityReporting: function communityReporting(state) {
+    if (state.project && Array.isArray(state.project.data.communityReporting)) {
+      return state.project.data.communityReporting;
+    }
+
+    return [];
+  },
+  theoryOfChange: function theoryOfChange(state) {
+    if (state.project && Array.isArray(state.project.data.theoryOfChange)) {
+      return state.project.data.theoryOfChange;
     }
 
     return [];
@@ -4312,16 +4329,12 @@ var actions = {
       url: url
     });
   },
-  removeExternal: function removeExternal(_ref9, item) {
+  editExternal: function editExternal(_ref9, _ref10) {
     var commit = _ref9.commit;
-    commit('removeExternal', item);
-  },
-  editExternal: function editExternal(_ref10, _ref11) {
-    var commit = _ref10.commit;
-    var item = _ref11.item,
-        label = _ref11.label,
-        url = _ref11.url,
-        image = _ref11.image;
+    var item = _ref10.item,
+        label = _ref10.label,
+        url = _ref10.url,
+        image = _ref10.image;
     commit('editExternal', {
       item: item,
       label: label,
@@ -4338,7 +4351,31 @@ var actions = {
 var mutations = {
   updateField: vuex_map_fields__WEBPACK_IMPORTED_MODULE_2__["updateField"],
   setProject: function setProject(state, project) {
-    // console.log(project);
+    var hasExternals = Array.isArray(project.data.externals);
+    var processComRep = !Array.isArray(project.data.communityReporting) || project.data.communityReporting.length === 0;
+    var processToc = !Array.isArray(project.data.theoryOfChange) || project.data.theoryOfChange.length === 0;
+    var processLivlabmod = !Array.isArray(project.data.livingLabModels) || project.data.livingLabModels.length === 0;
+
+    if (hasExternals) {
+      if (processComRep) {
+        project.data.communityReporting = project.data.externals.filter(function (item) {
+          return item.type == 'comrep';
+        });
+      }
+
+      if (processToc) {
+        project.data.theoryOfChange = project.data.externals.filter(function (item) {
+          return item.type == 'toc';
+        });
+      }
+
+      if (processToc) {
+        project.data.livingLabModels = project.data.externals.filter(function (item) {
+          return item.type == 'livlabmod';
+        });
+      }
+    }
+
     state.project = _objectSpread({}, project);
   },
   updateDataField: function updateDataField(state, field) {
@@ -4454,10 +4491,10 @@ var mutations = {
 
     state.project.data.social.push(item);
   },
-  editSocial: function editSocial(state, _ref12) {
-    var item = _ref12.item,
-        _ref12$value = _ref12.value,
-        value = _ref12$value === void 0 ? item.value : _ref12$value;
+  editSocial: function editSocial(state, _ref11) {
+    var item = _ref11.item,
+        _ref11$value = _ref11.value,
+        value = _ref11$value === void 0 ? item.value : _ref11$value;
     item.value = value;
   },
   removeSocial: function removeSocial(state, item) {
@@ -4475,12 +4512,12 @@ var mutations = {
     delete item.isNew;
     state.project.data.services.push(item);
   },
-  editService: function editService(state, _ref13) {
-    var item = _ref13.item,
-        _ref13$label = _ref13.label,
-        label = _ref13$label === void 0 ? item.label : _ref13$label,
-        _ref13$url = _ref13.url,
-        url = _ref13$url === void 0 ? item.url : _ref13$url;
+  editService: function editService(state, _ref12) {
+    var item = _ref12.item,
+        _ref12$label = _ref12.label,
+        label = _ref12$label === void 0 ? item.label : _ref12$label,
+        _ref12$url = _ref12.url,
+        url = _ref12$url === void 0 ? item.url : _ref12$url;
     item.label = label;
     item.url = url;
   },
@@ -4499,24 +4536,33 @@ var mutations = {
     delete item.isNew;
     state.project.data.externals.push(item);
   },
-  editExternal: function editExternal(state, _ref14) {
-    var item = _ref14.item,
-        _ref14$label = _ref14.label,
-        label = _ref14$label === void 0 ? item.label : _ref14$label,
-        _ref14$url = _ref14.url,
-        url = _ref14$url === void 0 ? item.url : _ref14$url,
-        _ref14$image = _ref14.image,
-        image = _ref14$image === void 0 ? item.image : _ref14$image;
+  editExternal: function editExternal(state, _ref13) {
+    var item = _ref13.item,
+        _ref13$label = _ref13.label,
+        label = _ref13$label === void 0 ? item.label : _ref13$label,
+        _ref13$url = _ref13.url,
+        url = _ref13$url === void 0 ? item.url : _ref13$url,
+        _ref13$image = _ref13.image,
+        image = _ref13$image === void 0 ? item.image : _ref13$image;
     item.label = label;
     item.url = url;
     item.image = image;
   },
-  removeExternal: function removeExternal(state, item) {
-    if (state.project.data.externals.indexOf(item) > -1) {
-      state.project.data.externals.splice(state.project.data.externals.indexOf(item), 1);
-    }
-
-    return;
+  updateExternalItemIndex: function updateExternalItemIndex(state, _ref14) {
+    var item = _ref14.item,
+        _ref14$idx = _ref14.idx,
+        idx = _ref14$idx === void 0 ? item.idx : _ref14$idx;
+    console.log("Setting " + item.label + " to index " + idx);
+    item.idx = idx;
+  },
+  livingLabModels: function livingLabModels(state, value) {
+    state.project.data.livingLabModels = value;
+  },
+  theoryOfChange: function theoryOfChange(state, value) {
+    state.project.data.theoryOfChange = value;
+  },
+  communityReporting: function communityReporting(state, value) {
+    state.project.data.communityReporting = value;
   },
   touchModifiedDate: function touchModifiedDate(state) {
     state.project.modified_at = new Date().toLocaleDateString();
@@ -6703,15 +6749,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       type: 'comrep'
     };
   },
-  computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])('project', ['externals']), {
-    filteredItems: function filteredItems() {
-      var _this = this;
-
-      return this.externals.filter(function (item) {
-        return item.type == _this.type;
-      });
-    }
-  })
+  computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])('project', ['communityReporting']))
 });
 
 /***/ }),
@@ -6765,15 +6803,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       type: 'livlabmod'
     };
   },
-  computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])('project', ['externals']), {
-    filteredItems: function filteredItems() {
-      var _this = this;
-
-      return this.externals.filter(function (item) {
-        return item.type == _this.type;
-      });
-    }
-  })
+  computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])('project', ['livingLabModels']))
 });
 
 /***/ }),
@@ -7497,15 +7527,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       type: 'toc'
     };
   },
-  computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])('project', ['externals']), {
-    filteredItems: function filteredItems() {
-      var _this = this;
-
-      return this.externals.filter(function (item) {
-        return item.type == _this.type;
-      });
-    }
-  })
+  computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])('project', ['theoryOfChange']))
 });
 
 /***/ }),
@@ -9105,6 +9127,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 
 
 
@@ -9947,6 +9972,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+/* harmony import */ var vue_slicksort__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue-slicksort */ "./node_modules/vue-slicksort/dist/vue-slicksort.umd.js");
+/* harmony import */ var vue_slicksort__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(vue_slicksort__WEBPACK_IMPORTED_MODULE_1__);
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
@@ -10057,6 +10084,21 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
 
 var STATUS_INITIAL = 0;
 var STATUS_SAVING = 1;
@@ -10064,19 +10106,11 @@ var STATUS_SUCCESS = 2;
 var STATUS_FAILED = 3;
 var STATUS_REMOVED = 4;
 /* harmony default export */ __webpack_exports__["default"] = ({
+  mixins: [vue_slicksort__WEBPACK_IMPORTED_MODULE_1__["ElementMixin"]],
   directives: {
-    focus: function focus(el, _ref, _ref2) {
-      var value = _ref.value;
-      var context = _ref2.context;
-
-      if (value) {
-        context.$nextTick(function () {
-          el.focus();
-        });
-      }
-    }
+    handle: vue_slicksort__WEBPACK_IMPORTED_MODULE_1__["HandleDirective"]
   },
-  props: ['images', 'index', 'item', 'type', 'editingItem'],
+  props: ['images', 'index', 'item', 'type', 'storeProperty', 'editingItem', 'showHandle'],
   data: function data() {
     return {
       uploadedFile: null,
@@ -10137,7 +10171,7 @@ var STATUS_REMOVED = 4;
       };
     }
   },
-  methods: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])('project', ['editExternal', 'removeExternal']), {
+  methods: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapActions"])('project', ['editExternal']), {
     doEdit: function doEdit() {
       if (this.editingItem == this.item) {
         this.$emit('edit-item', null);
@@ -10153,7 +10187,7 @@ var STATUS_REMOVED = 4;
       var item = this.item;
 
       if (!label) {
-        this.removeExternal(item);
+        this.$emit('delete-item', this.item);
       } else {
         this.editExternal({
           item: item,
@@ -10191,8 +10225,6 @@ var STATUS_REMOVED = 4;
       this.currentStatus = STATUS_SAVING;
       this.itemImage = false;
       this.$api.uploadImage(formData).then(function (res) {
-        _this.touchModified();
-
         _this.uploadedFile = res;
         _this.currentStatus = STATUS_SUCCESS;
       })["catch"](function (err) {
@@ -10201,16 +10233,11 @@ var STATUS_REMOVED = 4;
       });
     },
     removeImage: function removeImage() {
-      this.touchModified();
       this.resetUpload();
       this.itemImage = false;
     },
-    touchModified: function touchModified() {
-      if (this.modified) {
-        return;
-      }
-
-      this.modified = true;
+    deleteItem: function deleteItem() {
+      this.$emit('delete-item', this.item);
     },
     fileDragStart: function fileDragStart() {
       if (this.dropping) {
@@ -10245,7 +10272,9 @@ var STATUS_REMOVED = 4;
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
-/* harmony import */ var _ExternalItem_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ExternalItem.vue */ "./js/components/sidebar/edit/ExternalItem.vue");
+/* harmony import */ var vue_slicksort__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue-slicksort */ "./node_modules/vue-slicksort/dist/vue-slicksort.umd.js");
+/* harmony import */ var vue_slicksort__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(vue_slicksort__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _ExternalItem_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ExternalItem.vue */ "./js/components/sidebar/edit/ExternalItem.vue");
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
@@ -10303,11 +10332,29 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
+
+var SortableList = {
+  mixins: [vue_slicksort__WEBPACK_IMPORTED_MODULE_1__["ContainerMixin"]],
+  template: "<div class=\"sortable-bg\"><slot /></div>"
+};
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
-    ExternalItem: _ExternalItem_vue__WEBPACK_IMPORTED_MODULE_1__["default"]
+    ExternalItem: _ExternalItem_vue__WEBPACK_IMPORTED_MODULE_2__["default"],
+    SortableList: SortableList
   },
   directives: {
     focus: function focus(el, _ref, _ref2) {
@@ -10324,8 +10371,12 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   props: {
     title: String,
     type: String,
+    storeProperty: String,
     images: Boolean,
     hintMain: String
+  },
+  watch: {
+    'visible': 'onVisibleChange'
   },
   data: function data() {
     return {
@@ -10344,27 +10395,39 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     projectData: function projectData(state) {
       return state.project.data;
     }
-  }), {}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])('project', ['externals']), {
-    filteredItems: function filteredItems() {
-      var _this = this;
-
-      return this.externals.filter(function (item) {
-        return item.type == _this.type;
-      });
+  }), {}, Object(vuex__WEBPACK_IMPORTED_MODULE_0__["mapGetters"])('project', ['communityReporting', 'theoryOfChange', 'livingLabModels']), {
+    filteredItems: {
+      get: function get() {
+        return this[this.storeProperty];
+      },
+      set: function set(value) {
+        var mut = "project/".concat(this.storeProperty);
+        this.$store.commit(mut, value);
+      }
     }
   }),
   methods: {
     addItem: function addItem(_ref3) {
       var event = _ref3.event;
+      var items = this.filteredItems;
       var label = event.target.value;
 
       if (label.trim()) {
-        var item = this.getBlankItem();
-        item.label = label;
-        this.$store.commit('project/addExternal', item);
+        var newItem = this.getBlankItem();
+        newItem.label = label;
+        items.push(newItem);
+        this.filteredItems = items; // this[this.storeProperty] = items;
       }
 
       event.target.value = '';
+    },
+    deleteItem: function deleteItem(item) {
+      var items = this.filteredItems; //[this.storeProperty];
+
+      if (items.indexOf(item) > -1) {
+        items.splice(items.indexOf(item), 1);
+        this.filteredItems = items;
+      }
     },
     setEditItem: function setEditItem(item) {
       this.editingItem = item;
@@ -10378,6 +10441,15 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         url: '',
         image: false
       };
+    },
+    onVisibleChange: function onVisibleChange() {
+      var _this = this;
+
+      if (this.visible) {
+        this.$nextTick(function () {
+          _this.$refs.newInput.focus();
+        });
+      }
     },
     next: function next() {
       this.$store.dispatch('app/doEditNext', this.panelName);
@@ -28078,7 +28150,7 @@ var render = function() {
         _c(
           "div",
           { staticClass: "columns external-items " },
-          _vm._l(_vm.filteredItems, function(item, index) {
+          _vm._l(_vm.communityReporting, function(item, index) {
             return _c("external-item", { key: index, attrs: { item: item } })
           }),
           1
@@ -28122,7 +28194,7 @@ var render = function() {
         _c(
           "div",
           { staticClass: "columns external-items " },
-          _vm._l(_vm.filteredItems, function(item, index) {
+          _vm._l(_vm.livingLabModels, function(item, index) {
             return _c("external-item", { key: index, attrs: { item: item } })
           }),
           1
@@ -28691,7 +28763,7 @@ var render = function() {
         _c(
           "div",
           { staticClass: "columns external-items " },
-          _vm._l(_vm.filteredItems, function(item, index) {
+          _vm._l(_vm.theoryOfChange, function(item, index) {
             return _c("external-item", { key: index, attrs: { item: item } })
           }),
           1
@@ -29500,6 +29572,7 @@ var render = function() {
         attrs: {
           title: "Theory of Change",
           type: "toc",
+          storeProperty: "theoryOfChange",
           hintMain: "Please add any theories of change your project may have.",
           images: false
         }
@@ -29509,6 +29582,7 @@ var render = function() {
         attrs: {
           title: "Community Reporting",
           type: "comrep",
+          storeProperty: "communityReporting",
           hintMain: "Please add any Community Reports your project may have.",
           images: false
         }
@@ -29520,6 +29594,7 @@ var render = function() {
         attrs: {
           title: "Living Lab Models",
           type: "livlabmod",
+          storeProperty: "livingLabModels",
           hintMain: "Please add any Living Lab models your project may have.",
           images: true
         }
@@ -30931,7 +31006,8 @@ var render = function() {
   return _c(
     "div",
     {
-      staticClass: "accordion accordion-service",
+      staticClass: "accordion accordion-external",
+      class: _vm.editing ? "is-open" : "",
       attrs: { open: _vm.editing }
     },
     [
@@ -30939,13 +31015,27 @@ var render = function() {
         "label",
         { staticClass: "accordion-header", on: { click: _vm.doEdit } },
         [
-          _c("i", { staticClass: "icon icon-arrow-right" }),
-          _vm._v(_vm._s(_vm.item.label))
+          _c("div", { staticClass: "tile tile-centered" }, [
+            _c("div", { staticClass: "tile-content" }, [
+              _c("div", { staticClass: "tile-title" }, [
+                _vm._v(_vm._s(_vm.item.label))
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "tile-icon" }, [
+              _vm.showHandle
+                ? _c("i", {
+                    directives: [{ name: "handle", rawName: "v-handle" }],
+                    staticClass: "icon icon-menu c-move"
+                  })
+                : _vm._e()
+            ])
+          ])
         ]
       ),
       _vm._v(" "),
       _c("div", { staticClass: "accordion-body" }, [
-        _c("div", { staticClass: "card" }, [
+        _c("div", { staticClass: "card card-edit" }, [
           _c("div", { staticClass: "card-body" }, [
             _c("div", { staticClass: "form-group" }, [
               _c(
@@ -30958,14 +31048,6 @@ var render = function() {
               ),
               _vm._v(" "),
               _c("input", {
-                directives: [
-                  {
-                    name: "focus",
-                    rawName: "v-focus",
-                    value: _vm.editing,
-                    expression: "editing"
-                  }
-                ],
                 ref: "label",
                 staticClass: "form-input input-sm",
                 attrs: {
@@ -30997,8 +31079,7 @@ var render = function() {
                       }
                       return _vm.cancelEdit($event)
                     }
-                  ],
-                  input: _vm.touchModified
+                  ]
                 }
               })
             ]),
@@ -31046,8 +31127,7 @@ var render = function() {
                       }
                       return _vm.cancelEdit($event)
                     }
-                  ],
-                  input: _vm.touchModified
+                  ]
                 }
               })
             ]),
@@ -31159,25 +31239,29 @@ var render = function() {
                       ])
                     : _vm._e()
                 ])
-              : _vm._e(),
-            _vm._v(" "),
-            _vm.modified
-              ? _c("div", [
-                  _c(
-                    "button",
-                    {
-                      staticClass: "btn btn-sm btn-primary",
-                      attrs: { type: "button" },
-                      on: {
-                        click: function($event) {
-                          return _vm.doneEdit()
-                        }
-                      }
-                    },
-                    [_vm._v("Save")]
-                  )
-                ])
               : _vm._e()
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "card-footer" }, [
+            _c(
+              "button",
+              {
+                staticClass: "btn btn-sm btn-primary",
+                attrs: { type: "button" },
+                on: { click: _vm.doneEdit }
+              },
+              [_c("i", { staticClass: "icon icon-check" }), _vm._v(" Save")]
+            ),
+            _vm._v(" "),
+            _c(
+              "button",
+              {
+                staticClass: "btn btn-sm btn-negative btn-action float-right",
+                attrs: { type: "button" },
+                on: { click: _vm.deleteItem }
+              },
+              [_c("i", { staticClass: "icon icon-delete" })]
+            )
           ])
         ])
       ])
@@ -31270,14 +31354,7 @@ var render = function() {
             ]),
             _vm._v(" "),
             _c("input", {
-              directives: [
-                {
-                  name: "focus",
-                  rawName: "v-focus",
-                  value: _vm.visible,
-                  expression: "visible"
-                }
-              ],
+              ref: "newInput",
               staticClass: "form-input",
               attrs: { id: _vm.panelName + "_new", autocomplete: "off" },
               on: {
@@ -31294,21 +31371,45 @@ var render = function() {
             })
           ]),
           _vm._v(" "),
-          _vm._l(_vm.filteredItems, function(item, index) {
-            return _c("external-item", {
-              key: index,
+          _c(
+            "SortableList",
+            {
               attrs: {
-                index: index,
-                item: item,
-                type: _vm.type,
-                images: _vm.images,
-                editingItem: _vm.editingItem
+                lockAxis: "y",
+                useDragHandle: true,
+                lockToContainerEdges: true,
+                transitionDuration: 0
               },
-              on: { "edit-item": _vm.setEditItem }
-            })
-          })
+              model: {
+                value: _vm.filteredItems,
+                callback: function($$v) {
+                  _vm.filteredItems = $$v
+                },
+                expression: "filteredItems"
+              }
+            },
+            _vm._l(_vm.filteredItems, function(item, index) {
+              return _c("external-item", {
+                key: index,
+                attrs: {
+                  index: index,
+                  item: item,
+                  type: _vm.type,
+                  images: _vm.images,
+                  editingItem: _vm.editingItem,
+                  storeProperty: _vm.storeProperty,
+                  showHandle: true
+                },
+                on: {
+                  "edit-item": _vm.setEditItem,
+                  "delete-item": _vm.deleteItem
+                }
+              })
+            }),
+            1
+          )
         ],
-        2
+        1
       ),
       _vm._v(" "),
       _c(
@@ -36181,6 +36282,1099 @@ if (inBrowser && window.Vue) {
 }
 
 /* harmony default export */ __webpack_exports__["default"] = (VueRouter);
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-slicksort/dist/vue-slicksort.umd.js":
+/*!**************************************************************!*\
+  !*** ./node_modules/vue-slicksort/dist/vue-slicksort.umd.js ***!
+  \**************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+(function (global, factory) {
+	 true ? factory(exports) :
+	undefined;
+}(this, (function (exports) { 'use strict';
+
+// Export Sortable Element Component Mixin
+var ElementMixin = {
+  inject: ['manager'],
+  props: {
+    index: {
+      type: Number,
+      required: true
+    },
+    collection: {
+      type: [String, Number],
+      default: 'default'
+    },
+    disabled: {
+      type: Boolean,
+      default: false
+    }
+  },
+
+  mounted: function mounted() {
+    var _$props = this.$props,
+        collection = _$props.collection,
+        disabled = _$props.disabled,
+        index = _$props.index;
+
+
+    if (!disabled) {
+      this.setDraggable(collection, index);
+    }
+  },
+
+
+  watch: {
+    index: function index(newIndex) {
+      if (this.$el && this.$el.sortableInfo) {
+        this.$el.sortableInfo.index = newIndex;
+      }
+    },
+    disabled: function disabled(isDisabled) {
+      if (isDisabled) {
+        this.removeDraggable(this.collection);
+      } else {
+        this.setDraggable(this.collection, this.index);
+      }
+    },
+    collection: function collection(newCollection, oldCollection) {
+      this.removeDraggable(oldCollection);
+      this.setDraggable(newCollection, this.index);
+    }
+  },
+
+  beforeDestroy: function beforeDestroy() {
+    var collection = this.collection,
+        disabled = this.disabled;
+
+
+    if (!disabled) this.removeDraggable(collection);
+  },
+
+  methods: {
+    setDraggable: function setDraggable(collection, index) {
+      var node = this.$el;
+
+      node.sortableInfo = {
+        index: index,
+        collection: collection,
+        manager: this.manager
+      };
+
+      this.ref = { node: node };
+      this.manager.add(collection, this.ref);
+    },
+    removeDraggable: function removeDraggable(collection) {
+      this.manager.remove(collection, this.ref);
+    }
+  }
+};
+
+var classCallCheck = function (instance, Constructor) {
+  if (!(instance instanceof Constructor)) {
+    throw new TypeError("Cannot call a class as a function");
+  }
+};
+
+var createClass = function () {
+  function defineProperties(target, props) {
+    for (var i = 0; i < props.length; i++) {
+      var descriptor = props[i];
+      descriptor.enumerable = descriptor.enumerable || false;
+      descriptor.configurable = true;
+      if ("value" in descriptor) descriptor.writable = true;
+      Object.defineProperty(target, descriptor.key, descriptor);
+    }
+  }
+
+  return function (Constructor, protoProps, staticProps) {
+    if (protoProps) defineProperties(Constructor.prototype, protoProps);
+    if (staticProps) defineProperties(Constructor, staticProps);
+    return Constructor;
+  };
+}();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+var slicedToArray = function () {
+  function sliceIterator(arr, i) {
+    var _arr = [];
+    var _n = true;
+    var _d = false;
+    var _e = undefined;
+
+    try {
+      for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) {
+        _arr.push(_s.value);
+
+        if (i && _arr.length === i) break;
+      }
+    } catch (err) {
+      _d = true;
+      _e = err;
+    } finally {
+      try {
+        if (!_n && _i["return"]) _i["return"]();
+      } finally {
+        if (_d) throw _e;
+      }
+    }
+
+    return _arr;
+  }
+
+  return function (arr, i) {
+    if (Array.isArray(arr)) {
+      return arr;
+    } else if (Symbol.iterator in Object(arr)) {
+      return sliceIterator(arr, i);
+    } else {
+      throw new TypeError("Invalid attempt to destructure non-iterable instance");
+    }
+  };
+}();
+
+
+
+
+
+
+
+
+
+
+
+
+
+var toConsumableArray = function (arr) {
+  if (Array.isArray(arr)) {
+    for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) arr2[i] = arr[i];
+
+    return arr2;
+  } else {
+    return Array.from(arr);
+  }
+};
+
+var Manager = function () {
+  function Manager() {
+    classCallCheck(this, Manager);
+
+    this.refs = {};
+  }
+
+  createClass(Manager, [{
+    key: "add",
+    value: function add(collection, ref) {
+      if (!this.refs[collection]) {
+        this.refs[collection] = [];
+      }
+
+      this.refs[collection].push(ref);
+    }
+  }, {
+    key: "remove",
+    value: function remove(collection, ref) {
+      var index = this.getIndex(collection, ref);
+
+      if (index !== -1) {
+        this.refs[collection].splice(index, 1);
+      }
+    }
+  }, {
+    key: "isActive",
+    value: function isActive() {
+      return this.active;
+    }
+  }, {
+    key: "getActive",
+    value: function getActive() {
+      var _this = this;
+
+      return this.refs[this.active.collection].find(function (_ref) {
+        var node = _ref.node;
+        return node.sortableInfo.index == _this.active.index;
+      });
+    }
+  }, {
+    key: "getIndex",
+    value: function getIndex(collection, ref) {
+      return this.refs[collection].indexOf(ref);
+    }
+  }, {
+    key: "getOrderedRefs",
+    value: function getOrderedRefs() {
+      var collection = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : this.active.collection;
+
+      return this.refs[collection].sort(function (a, b) {
+        return a.node.sortableInfo.index - b.node.sortableInfo.index;
+      });
+    }
+  }]);
+  return Manager;
+}();
+
+function arrayMove(arr, previousIndex, newIndex) {
+  var array = arr.slice(0);
+  if (newIndex >= array.length) {
+    var k = newIndex - array.length;
+    while (k-- + 1) {
+      array.push(undefined);
+    }
+  }
+  array.splice(newIndex, 0, array.splice(previousIndex, 1)[0]);
+  return array;
+}
+
+var events = {
+  start: ['touchstart', 'mousedown'],
+  move: ['touchmove', 'mousemove'],
+  end: ['touchend', 'touchcancel', 'mouseup']
+};
+
+var vendorPrefix = function () {
+  if (typeof window === 'undefined' || typeof document === 'undefined') return ''; // server environment
+  // fix for:
+  //    https://bugzilla.mozilla.org/show_bug.cgi?id=548397
+  //    window.getComputedStyle() returns null inside an iframe with display: none
+  // in this case return an array with a fake mozilla style in it.
+  var styles = window.getComputedStyle(document.documentElement, '') || ['-moz-hidden-iframe'];
+  var pre = (Array.prototype.slice.call(styles).join('').match(/-(moz|webkit|ms)-/) || styles.OLink === '' && ['', 'o'])[1];
+
+  switch (pre) {
+    case 'ms':
+      return 'ms';
+    default:
+      return pre && pre.length ? pre[0].toUpperCase() + pre.substr(1) : '';
+  }
+}();
+
+function closest(el, fn) {
+  while (el) {
+    if (fn(el)) return el;
+    el = el.parentNode;
+  }
+}
+
+function limit(min, max, value) {
+  if (value < min) {
+    return min;
+  }
+  if (value > max) {
+    return max;
+  }
+  return value;
+}
+
+function getCSSPixelValue(stringValue) {
+  if (stringValue.substr(-2) === 'px') {
+    return parseFloat(stringValue);
+  }
+  return 0;
+}
+
+function getElementMargin(element) {
+  var style = window.getComputedStyle(element);
+
+  return {
+    top: getCSSPixelValue(style.marginTop),
+    right: getCSSPixelValue(style.marginRight),
+    bottom: getCSSPixelValue(style.marginBottom),
+    left: getCSSPixelValue(style.marginLeft)
+  };
+}
+
+// Export Sortable Container Component Mixin
+var ContainerMixin = {
+  data: function data() {
+    return {
+      sorting: false,
+      sortingIndex: null,
+      manager: new Manager(),
+      events: {
+        start: this.handleStart,
+        move: this.handleMove,
+        end: this.handleEnd
+      }
+    };
+  },
+
+
+  props: {
+    value: { type: Array, required: true },
+    axis: { type: String, default: 'y' }, // 'x', 'y', 'xy'
+    distance: { type: Number, default: 0 },
+    pressDelay: { type: Number, default: 0 },
+    pressThreshold: { type: Number, default: 5 },
+    useDragHandle: { type: Boolean, default: false },
+    useWindowAsScrollContainer: { type: Boolean, default: false },
+    hideSortableGhost: { type: Boolean, default: true },
+    lockToContainerEdges: { type: Boolean, default: false },
+    lockOffset: { type: [String, Number, Array], default: '50%' },
+    transitionDuration: { type: Number, default: 300 },
+    appendTo: { type: String, default: 'body' },
+    draggedSettlingDuration: { type: Number, default: null },
+    lockAxis: String,
+    helperClass: String,
+    contentWindow: Object,
+    shouldCancelStart: {
+      type: Function,
+      default: function _default(e) {
+        // Cancel sorting if the event target is an `input`, `textarea`, `select` or `option`
+        var disabledElements = ['input', 'textarea', 'select', 'option', 'button'];
+        return disabledElements.indexOf(e.target.tagName.toLowerCase()) !== -1;
+      }
+    },
+    getHelperDimensions: {
+      type: Function,
+      default: function _default(_ref) {
+        var node = _ref.node;
+        return {
+          width: node.offsetWidth,
+          height: node.offsetHeight
+        };
+      }
+    }
+  },
+
+  provide: function provide() {
+    return {
+      manager: this.manager
+    };
+  },
+  mounted: function mounted() {
+    var _this = this;
+
+    this.container = this.$el;
+    this.document = this.container.ownerDocument || document;
+    this._window = this.contentWindow || window;
+    this.scrollContainer = this.useWindowAsScrollContainer ? this.document.body : this.container;
+
+    var _loop = function _loop(key) {
+      if (_this.events.hasOwnProperty(key)) {
+        events[key].forEach(function (eventName) {
+          return _this.container.addEventListener(eventName, _this.events[key], false);
+        });
+      }
+    };
+
+    for (var key in this.events) {
+      _loop(key);
+    }
+  },
+  beforeDestroy: function beforeDestroy() {
+    var _this2 = this;
+
+    var _loop2 = function _loop2(key) {
+      if (_this2.events.hasOwnProperty(key)) {
+        events[key].forEach(function (eventName) {
+          return _this2.container.removeEventListener(eventName, _this2.events[key]);
+        });
+      }
+    };
+
+    for (var key in this.events) {
+      _loop2(key);
+    }
+  },
+
+
+  methods: {
+    handleStart: function handleStart(e) {
+      var _this3 = this;
+
+      var _$props = this.$props,
+          distance = _$props.distance,
+          shouldCancelStart = _$props.shouldCancelStart;
+
+
+      if (e.button === 2 || shouldCancelStart(e)) {
+        return false;
+      }
+
+      this._touched = true;
+      this._pos = {
+        x: e.pageX,
+        y: e.pageY
+      };
+
+      var node = closest(e.target, function (el) {
+        return el.sortableInfo != null;
+      });
+
+      if (node && node.sortableInfo && this.nodeIsChild(node) && !this.sorting) {
+        var useDragHandle = this.$props.useDragHandle;
+        var _node$sortableInfo = node.sortableInfo,
+            index = _node$sortableInfo.index,
+            collection = _node$sortableInfo.collection;
+
+
+        if (useDragHandle && !closest(e.target, function (el) {
+          return el.sortableHandle != null;
+        })) return;
+
+        this.manager.active = { index: index, collection: collection };
+
+        /*
+        * Fixes a bug in Firefox where the :active state of anchor tags
+        * prevent subsequent 'mousemove' events from being fired
+        * (see https://github.com/clauderic/react-sortable-hoc/issues/118)
+        */
+        if (e.target.tagName.toLowerCase() === 'a') {
+          e.preventDefault();
+        }
+
+        if (!distance) {
+          if (this.$props.pressDelay === 0) {
+            this.handlePress(e);
+          } else {
+            this.pressTimer = setTimeout(function () {
+              return _this3.handlePress(e);
+            }, this.$props.pressDelay);
+          }
+        }
+      }
+    },
+    nodeIsChild: function nodeIsChild(node) {
+      return node.sortableInfo.manager === this.manager;
+    },
+    handleMove: function handleMove(e) {
+      var _$props2 = this.$props,
+          distance = _$props2.distance,
+          pressThreshold = _$props2.pressThreshold;
+
+
+      if (!this.sorting && this._touched) {
+        this._delta = {
+          x: this._pos.x - e.pageX,
+          y: this._pos.y - e.pageY
+        };
+        var delta = Math.abs(this._delta.x) + Math.abs(this._delta.y);
+
+        if (!distance && (!pressThreshold || pressThreshold && delta >= pressThreshold)) {
+          clearTimeout(this.cancelTimer);
+          this.cancelTimer = setTimeout(this.cancel, 0);
+        } else if (distance && delta >= distance && this.manager.isActive()) {
+          this.handlePress(e);
+        }
+      }
+    },
+    handleEnd: function handleEnd() {
+      var distance = this.$props.distance;
+
+
+      this._touched = false;
+
+      if (!distance) {
+        this.cancel();
+      }
+    },
+    cancel: function cancel() {
+      if (!this.sorting) {
+        clearTimeout(this.pressTimer);
+        this.manager.active = null;
+      }
+    },
+    handlePress: function handlePress(e) {
+      var _this4 = this;
+
+      var active = this.manager.getActive();
+
+      if (active) {
+        var _$props3 = this.$props,
+            axis = _$props3.axis,
+            getHelperDimensions = _$props3.getHelperDimensions,
+            helperClass = _$props3.helperClass,
+            hideSortableGhost = _$props3.hideSortableGhost,
+            useWindowAsScrollContainer = _$props3.useWindowAsScrollContainer,
+            appendTo = _$props3.appendTo;
+        var node = active.node,
+            collection = active.collection;
+        var index = node.sortableInfo.index;
+
+        var margin = getElementMargin(node);
+
+        var containerBoundingRect = this.container.getBoundingClientRect();
+        var dimensions = getHelperDimensions({ index: index, node: node, collection: collection });
+
+        this.node = node;
+        this.margin = margin;
+        this.width = dimensions.width;
+        this.height = dimensions.height;
+        this.marginOffset = {
+          x: this.margin.left + this.margin.right,
+          y: Math.max(this.margin.top, this.margin.bottom)
+        };
+        this.boundingClientRect = node.getBoundingClientRect();
+        this.containerBoundingRect = containerBoundingRect;
+        this.index = index;
+        this.newIndex = index;
+
+        this._axis = {
+          x: axis.indexOf('x') >= 0,
+          y: axis.indexOf('y') >= 0
+        };
+        this.offsetEdge = this.getEdgeOffset(node);
+        this.initialOffset = this.getOffset(e);
+        this.initialScroll = {
+          top: this.scrollContainer.scrollTop,
+          left: this.scrollContainer.scrollLeft
+        };
+
+        this.initialWindowScroll = {
+          top: window.pageYOffset,
+          left: window.pageXOffset
+        };
+
+        var fields = node.querySelectorAll('input, textarea, select');
+        var clonedNode = node.cloneNode(true);
+        var clonedFields = [].concat(toConsumableArray(clonedNode.querySelectorAll('input, textarea, select'))); // Convert NodeList to Array
+
+        clonedFields.forEach(function (field, index) {
+          if (field.type !== 'file' && fields[index]) {
+            field.value = fields[index].value;
+          }
+        });
+
+        this.helper = this.document.querySelector(appendTo).appendChild(clonedNode);
+
+        this.helper.style.position = 'fixed';
+        this.helper.style.top = this.boundingClientRect.top - margin.top + 'px';
+        this.helper.style.left = this.boundingClientRect.left - margin.left + 'px';
+        this.helper.style.width = this.width + 'px';
+        this.helper.style.height = this.height + 'px';
+        this.helper.style.boxSizing = 'border-box';
+        this.helper.style.pointerEvents = 'none';
+
+        if (hideSortableGhost) {
+          this.sortableGhost = node;
+          node.style.visibility = 'hidden';
+          node.style.opacity = 0;
+        }
+
+        this.translate = {};
+        this.minTranslate = {};
+        this.maxTranslate = {};
+        if (this._axis.x) {
+          this.minTranslate.x = (useWindowAsScrollContainer ? 0 : containerBoundingRect.left) - this.boundingClientRect.left - this.width / 2;
+          this.maxTranslate.x = (useWindowAsScrollContainer ? this._window.innerWidth : containerBoundingRect.left + containerBoundingRect.width) - this.boundingClientRect.left - this.width / 2;
+        }
+        if (this._axis.y) {
+          this.minTranslate.y = (useWindowAsScrollContainer ? 0 : containerBoundingRect.top) - this.boundingClientRect.top - this.height / 2;
+          this.maxTranslate.y = (useWindowAsScrollContainer ? this._window.innerHeight : containerBoundingRect.top + containerBoundingRect.height) - this.boundingClientRect.top - this.height / 2;
+        }
+
+        if (helperClass) {
+          var _helper$classList;
+
+          (_helper$classList = this.helper.classList).add.apply(_helper$classList, toConsumableArray(helperClass.split(' ')));
+        }
+
+        this.listenerNode = e.touches ? node : this._window;
+        events.move.forEach(function (eventName) {
+          return _this4.listenerNode.addEventListener(eventName, _this4.handleSortMove, false);
+        });
+        events.end.forEach(function (eventName) {
+          return _this4.listenerNode.addEventListener(eventName, _this4.handleSortEnd, false);
+        });
+
+        this.sorting = true;
+        this.sortingIndex = index;
+
+        this.$emit('sort-start', { event: e, node: node, index: index, collection: collection });
+      }
+    },
+    handleSortMove: function handleSortMove(e) {
+      e.preventDefault(); // Prevent scrolling on mobile
+
+      this.updatePosition(e);
+      this.animateNodes();
+      this.autoscroll();
+
+      this.$emit('sort-move', { event: e });
+    },
+    handleSortEnd: function handleSortEnd(e) {
+      var _this5 = this;
+
+      var collection = this.manager.active.collection;
+
+      // Remove the event listeners if the node is still in the DOM
+
+      if (this.listenerNode) {
+        events.move.forEach(function (eventName) {
+          return _this5.listenerNode.removeEventListener(eventName, _this5.handleSortMove);
+        });
+        events.end.forEach(function (eventName) {
+          return _this5.listenerNode.removeEventListener(eventName, _this5.handleSortEnd);
+        });
+      }
+
+      var nodes = this.manager.refs[collection];
+
+      var onEnd = function onEnd() {
+        // Remove the helper from the DOM
+        _this5.helper.parentNode.removeChild(_this5.helper);
+
+        if (_this5.hideSortableGhost && _this5.sortableGhost) {
+          _this5.sortableGhost.style.visibility = '';
+          _this5.sortableGhost.style.opacity = '';
+        }
+
+        for (var i = 0, len = nodes.length; i < len; i++) {
+          var node = nodes[i];
+          var el = node.node;
+
+          // Clear the cached offsetTop / offsetLeft value
+          node.edgeOffset = null;
+
+          // Remove the transforms / transitions
+          el.style[vendorPrefix + 'Transform'] = '';
+          el.style[vendorPrefix + 'TransitionDuration'] = '';
+        }
+
+        // Stop autoscroll
+        clearInterval(_this5.autoscrollInterval);
+        _this5.autoscrollInterval = null;
+
+        // Update state
+        _this5.manager.active = null;
+
+        _this5.sorting = false;
+        _this5.sortingIndex = null;
+
+        _this5.$emit('sort-end', {
+          event: e,
+          oldIndex: _this5.index,
+          newIndex: _this5.newIndex,
+          collection: collection
+        });
+        _this5.$emit('input', arrayMove(_this5.value, _this5.index, _this5.newIndex));
+
+        _this5._touched = false;
+      };
+
+      if (this.$props.transitionDuration || this.$props.draggedSettlingDuration) {
+        this.transitionHelperIntoPlace(nodes).then(function () {
+          return onEnd();
+        });
+      } else {
+        onEnd();
+      }
+    },
+    transitionHelperIntoPlace: function transitionHelperIntoPlace(nodes) {
+      var _this6 = this;
+
+      if (this.$props.draggedSettlingDuration === 0) {
+        return Promise.resolve();
+      }
+
+      var deltaScroll = {
+        left: this.scrollContainer.scrollLeft - this.initialScroll.left,
+        top: this.scrollContainer.scrollTop - this.initialScroll.top
+      };
+      var indexNode = nodes[this.index].node;
+      var newIndexNode = nodes[this.newIndex].node;
+
+      var targetX = -deltaScroll.left;
+      if (this.translate && this.translate.x > 0) {
+        // Diff against right edge when moving to the right
+        targetX += newIndexNode.offsetLeft + newIndexNode.offsetWidth - (indexNode.offsetLeft + indexNode.offsetWidth);
+      } else {
+        targetX += newIndexNode.offsetLeft - indexNode.offsetLeft;
+      }
+
+      var targetY = -deltaScroll.top;
+      if (this.translate && this.translate.y > 0) {
+        // Diff against the bottom edge when moving down
+        targetY += newIndexNode.offsetTop + newIndexNode.offsetHeight - (indexNode.offsetTop + indexNode.offsetHeight);
+      } else {
+        targetY += newIndexNode.offsetTop - indexNode.offsetTop;
+      }
+
+      var duration = this.$props.draggedSettlingDuration !== null ? this.$props.draggedSettlingDuration : this.$props.transitionDuration;
+
+      this.helper.style[vendorPrefix + 'Transform'] = 'translate3d(' + targetX + 'px,' + targetY + 'px, 0)';
+      this.helper.style[vendorPrefix + 'TransitionDuration'] = duration + 'ms';
+
+      return new Promise(function (resolve) {
+        // Register an event handler to clean up styles when the transition
+        // finishes.
+        var cleanup = function cleanup(event) {
+          if (!event || event.propertyName === 'transform') {
+            clearTimeout(cleanupTimer);
+            _this6.helper.style[vendorPrefix + 'Transform'] = '';
+            _this6.helper.style[vendorPrefix + 'TransitionDuration'] = '';
+            resolve();
+          }
+        };
+        // Force cleanup in case 'transitionend' never fires
+        var cleanupTimer = setTimeout(cleanup, duration + 10);
+        _this6.helper.addEventListener('transitionend', cleanup, false);
+      });
+    },
+    getEdgeOffset: function getEdgeOffset(node) {
+      var offset = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : { top: 0, left: 0 };
+
+      // Get the actual offsetTop / offsetLeft value, no matter how deep the node is nested
+      if (node) {
+        var nodeOffset = {
+          top: offset.top + node.offsetTop,
+          left: offset.left + node.offsetLeft
+        };
+        if (node.parentNode !== this.container) {
+          return this.getEdgeOffset(node.parentNode, nodeOffset);
+        } else {
+          return nodeOffset;
+        }
+      }
+    },
+    getOffset: function getOffset(e) {
+      return {
+        x: e.touches ? e.touches[0].pageX : e.pageX,
+        y: e.touches ? e.touches[0].pageY : e.pageY
+      };
+    },
+    getLockPixelOffsets: function getLockPixelOffsets() {
+      var lockOffset = this.$props.lockOffset;
+
+
+      if (!Array.isArray(this.lockOffset)) {
+        lockOffset = [lockOffset, lockOffset];
+      }
+
+      if (lockOffset.length !== 2) {
+        throw new Error('lockOffset prop of SortableContainer should be a single value or an array of exactly two values. Given ' + lockOffset);
+      }
+
+      var _lockOffset = lockOffset,
+          _lockOffset2 = slicedToArray(_lockOffset, 2),
+          minLockOffset = _lockOffset2[0],
+          maxLockOffset = _lockOffset2[1];
+
+      return [this.getLockPixelOffset(minLockOffset), this.getLockPixelOffset(maxLockOffset)];
+    },
+    getLockPixelOffset: function getLockPixelOffset(lockOffset) {
+      var offsetX = lockOffset;
+      var offsetY = lockOffset;
+      var unit = 'px';
+
+      if (typeof lockOffset === 'string') {
+        var match = /^[+-]?\d*(?:\.\d*)?(px|%)$/.exec(lockOffset);
+
+        if (match === null) {
+          throw new Error('lockOffset value should be a number or a string of a number followed by "px" or "%". Given ' + lockOffset);
+        }
+
+        offsetX = offsetY = parseFloat(lockOffset);
+        unit = match[1];
+      }
+
+      if (!isFinite(offsetX) || !isFinite(offsetY)) {
+        throw new Error('lockOffset value should be a finite. Given ' + lockOffset);
+      }
+
+      if (unit === '%') {
+        offsetX = offsetX * this.width / 100;
+        offsetY = offsetY * this.height / 100;
+      }
+
+      return {
+        x: offsetX,
+        y: offsetY
+      };
+    },
+    updatePosition: function updatePosition(e) {
+      var _$props4 = this.$props,
+          lockAxis = _$props4.lockAxis,
+          lockToContainerEdges = _$props4.lockToContainerEdges;
+
+
+      var offset = this.getOffset(e);
+      var translate = {
+        x: offset.x - this.initialOffset.x,
+        y: offset.y - this.initialOffset.y
+      };
+      // Adjust for window scroll
+      translate.y -= window.pageYOffset - this.initialWindowScroll.top;
+      translate.x -= window.pageXOffset - this.initialWindowScroll.left;
+
+      this.translate = translate;
+
+      if (lockToContainerEdges) {
+        var _getLockPixelOffsets = this.getLockPixelOffsets(),
+            _getLockPixelOffsets2 = slicedToArray(_getLockPixelOffsets, 2),
+            minLockOffset = _getLockPixelOffsets2[0],
+            maxLockOffset = _getLockPixelOffsets2[1];
+
+        var minOffset = {
+          x: this.width / 2 - minLockOffset.x,
+          y: this.height / 2 - minLockOffset.y
+        };
+        var maxOffset = {
+          x: this.width / 2 - maxLockOffset.x,
+          y: this.height / 2 - maxLockOffset.y
+        };
+
+        translate.x = limit(this.minTranslate.x + minOffset.x, this.maxTranslate.x - maxOffset.x, translate.x);
+        translate.y = limit(this.minTranslate.y + minOffset.y, this.maxTranslate.y - maxOffset.y, translate.y);
+      }
+
+      if (lockAxis === 'x') {
+        translate.y = 0;
+      } else if (lockAxis === 'y') {
+        translate.x = 0;
+      }
+
+      this.helper.style[vendorPrefix + 'Transform'] = 'translate3d(' + translate.x + 'px,' + translate.y + 'px, 0)';
+    },
+    animateNodes: function animateNodes() {
+      var _$props5 = this.$props,
+          transitionDuration = _$props5.transitionDuration,
+          hideSortableGhost = _$props5.hideSortableGhost;
+
+      var nodes = this.manager.getOrderedRefs();
+      var deltaScroll = {
+        left: this.scrollContainer.scrollLeft - this.initialScroll.left,
+        top: this.scrollContainer.scrollTop - this.initialScroll.top
+      };
+      var sortingOffset = {
+        left: this.offsetEdge.left + this.translate.x + deltaScroll.left,
+        top: this.offsetEdge.top + this.translate.y + deltaScroll.top
+      };
+      var scrollDifference = {
+        top: window.pageYOffset - this.initialWindowScroll.top,
+        left: window.pageXOffset - this.initialWindowScroll.left
+      };
+      this.newIndex = null;
+
+      for (var i = 0, len = nodes.length; i < len; i++) {
+        var node = nodes[i].node;
+
+        var index = node.sortableInfo.index;
+        var width = node.offsetWidth;
+        var height = node.offsetHeight;
+        var offset = {
+          width: this.width > width ? width / 2 : this.width / 2,
+          height: this.height > height ? height / 2 : this.height / 2
+        };
+
+        var translate = {
+          x: 0,
+          y: 0
+        };
+        var edgeOffset = nodes[i].edgeOffset;
+
+        // If we haven't cached the node's offsetTop / offsetLeft value
+
+        if (!edgeOffset) {
+          nodes[i].edgeOffset = edgeOffset = this.getEdgeOffset(node);
+        }
+
+        // Get a reference to the next and previous node
+        var nextNode = i < nodes.length - 1 && nodes[i + 1];
+        var prevNode = i > 0 && nodes[i - 1];
+
+        // Also cache the next node's edge offset if needed.
+        // We need this for calculating the animation in a grid setup
+        if (nextNode && !nextNode.edgeOffset) {
+          nextNode.edgeOffset = this.getEdgeOffset(nextNode.node);
+        }
+
+        // If the node is the one we're currently animating, skip it
+        if (index === this.index) {
+          if (hideSortableGhost) {
+            /*
+            * With windowing libraries such as `react-virtualized`, the sortableGhost
+            * node may change while scrolling down and then back up (or vice-versa),
+            * so we need to update the reference to the new node just to be safe.
+            */
+            this.sortableGhost = node;
+            node.style.visibility = 'hidden';
+            node.style.opacity = 0;
+          }
+          continue;
+        }
+
+        if (transitionDuration) {
+          node.style[vendorPrefix + 'TransitionDuration'] = transitionDuration + 'ms';
+        }
+
+        if (this._axis.x) {
+          if (this._axis.y) {
+            // Calculations for a grid setup
+            if (index < this.index && (sortingOffset.left + scrollDifference.left - offset.width <= edgeOffset.left && sortingOffset.top + scrollDifference.top <= edgeOffset.top + offset.height || sortingOffset.top + scrollDifference.top + offset.height <= edgeOffset.top)) {
+              // If the current node is to the left on the same row, or above the node that's being dragged
+              // then move it to the right
+              translate.x = this.width + this.marginOffset.x;
+              if (edgeOffset.left + translate.x > this.containerBoundingRect.width - offset.width) {
+                // If it moves passed the right bounds, then animate it to the first position of the next row.
+                // We just use the offset of the next node to calculate where to move, because that node's original position
+                // is exactly where we want to go
+                translate.x = nextNode.edgeOffset.left - edgeOffset.left;
+                translate.y = nextNode.edgeOffset.top - edgeOffset.top;
+              }
+              if (this.newIndex === null) {
+                this.newIndex = index;
+              }
+            } else if (index > this.index && (sortingOffset.left + scrollDifference.left + offset.width >= edgeOffset.left && sortingOffset.top + scrollDifference.top + offset.height >= edgeOffset.top || sortingOffset.top + scrollDifference.top + offset.height >= edgeOffset.top + height)) {
+              // If the current node is to the right on the same row, or below the node that's being dragged
+              // then move it to the left
+              translate.x = -(this.width + this.marginOffset.x);
+              if (edgeOffset.left + translate.x < this.containerBoundingRect.left + offset.width) {
+                // If it moves passed the left bounds, then animate it to the last position of the previous row.
+                // We just use the offset of the previous node to calculate where to move, because that node's original position
+                // is exactly where we want to go
+                translate.x = prevNode.edgeOffset.left - edgeOffset.left;
+                translate.y = prevNode.edgeOffset.top - edgeOffset.top;
+              }
+              this.newIndex = index;
+            }
+          } else {
+            if (index > this.index && sortingOffset.left + scrollDifference.left + offset.width >= edgeOffset.left) {
+              translate.x = -(this.width + this.marginOffset.x);
+              this.newIndex = index;
+            } else if (index < this.index && sortingOffset.left + scrollDifference.left <= edgeOffset.left + offset.width) {
+              translate.x = this.width + this.marginOffset.x;
+              if (this.newIndex == null) {
+                this.newIndex = index;
+              }
+            }
+          }
+        } else if (this._axis.y) {
+          if (index > this.index && sortingOffset.top + scrollDifference.top + offset.height >= edgeOffset.top) {
+            translate.y = -(this.height + this.marginOffset.y);
+            this.newIndex = index;
+          } else if (index < this.index && sortingOffset.top + scrollDifference.top <= edgeOffset.top + offset.height) {
+            translate.y = this.height + this.marginOffset.y;
+            if (this.newIndex == null) {
+              this.newIndex = index;
+            }
+          }
+        }
+        node.style[vendorPrefix + 'Transform'] = 'translate3d(' + translate.x + 'px,' + translate.y + 'px,0)';
+      }
+
+      if (this.newIndex == null) {
+        this.newIndex = this.index;
+      }
+    },
+    autoscroll: function autoscroll() {
+      var _this7 = this;
+
+      var translate = this.translate;
+      var direction = {
+        x: 0,
+        y: 0
+      };
+      var speed = {
+        x: 1,
+        y: 1
+      };
+      var acceleration = {
+        x: 10,
+        y: 10
+      };
+
+      if (translate.y >= this.maxTranslate.y - this.height / 2) {
+        direction.y = 1; // Scroll Down
+        speed.y = acceleration.y * Math.abs((this.maxTranslate.y - this.height / 2 - translate.y) / this.height);
+      } else if (translate.x >= this.maxTranslate.x - this.width / 2) {
+        direction.x = 1; // Scroll Right
+        speed.x = acceleration.x * Math.abs((this.maxTranslate.x - this.width / 2 - translate.x) / this.width);
+      } else if (translate.y <= this.minTranslate.y + this.height / 2) {
+        direction.y = -1; // Scroll Up
+        speed.y = acceleration.y * Math.abs((translate.y - this.height / 2 - this.minTranslate.y) / this.height);
+      } else if (translate.x <= this.minTranslate.x + this.width / 2) {
+        direction.x = -1; // Scroll Left
+        speed.x = acceleration.x * Math.abs((translate.x - this.width / 2 - this.minTranslate.x) / this.width);
+      }
+
+      if (this.autoscrollInterval) {
+        clearInterval(this.autoscrollInterval);
+        this.autoscrollInterval = null;
+        this.isAutoScrolling = false;
+      }
+
+      if (direction.x !== 0 || direction.y !== 0) {
+        this.autoscrollInterval = setInterval(function () {
+          _this7.isAutoScrolling = true;
+          var offset = {
+            left: 1 * speed.x * direction.x,
+            top: 1 * speed.y * direction.y
+          };
+          _this7.scrollContainer.scrollTop += offset.top;
+          _this7.scrollContainer.scrollLeft += offset.left;
+          _this7.translate.x += offset.left;
+          _this7.translate.y += offset.top;
+          _this7.animateNodes();
+        }, 5);
+      }
+    }
+  }
+};
+
+// Export Sortable Element Handle Directive
+var HandleDirective = {
+  bind: function bind(el) {
+    el.sortableHandle = true;
+  }
+};
+
+var SlickList = {
+  name: 'slick-list',
+  mixins: [ContainerMixin],
+  render: function render(h) {
+    return h('div', this.$slots.default);
+  }
+};
+
+var SlickItem = {
+  name: 'slick-item',
+  mixins: [ElementMixin],
+  render: function render(h) {
+    return h('div', this.$slots.default);
+  }
+};
+
+exports.ElementMixin = ElementMixin;
+exports.ContainerMixin = ContainerMixin;
+exports.HandleDirective = HandleDirective;
+exports.SlickList = SlickList;
+exports.SlickItem = SlickItem;
+exports.arrayMove = arrayMove;
+
+Object.defineProperty(exports, '__esModule', { value: true });
+
+})));
 
 
 /***/ }),
