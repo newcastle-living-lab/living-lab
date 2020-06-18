@@ -1,6 +1,7 @@
 .btn {
 
 	touch-action: manipulation;
+	transition: none;
 
 	&.btn-secondary {
 		@include button-variant($secondary-color);

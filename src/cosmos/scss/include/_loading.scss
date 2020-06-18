@@ -1,0 +1,32 @@
+$loading-height: $unit-1;
+
+.loading-indicator {
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 1;
+
+	width: 100%;
+	height: $loading-height;
+
+	background: lighten($clrs-blue, 30%);
+	overflow: hidden;
+
+	&:before {
+		content: '';
+		position: absolute;
+		height: $loading-height;
+		width: 25%;
+		background-color: $clrs-blue;
+		animation: loading-animation 2s infinite ease-out;
+	}
+}
+
+@keyframes loading-animation {
+	0% {
+		left: -50%;
+	}
+	100% {
+		left: 100%;
+	}
+}

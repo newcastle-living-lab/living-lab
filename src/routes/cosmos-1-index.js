@@ -20,6 +20,7 @@ exports.handler = function(req, res) {
 	}
 
 	return res.render('cosmos.html', {
+		main: 'main.js',
 		config: config
 	});
 };

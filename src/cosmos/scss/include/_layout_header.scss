@@ -1,0 +1,55 @@
+
+.app-header {
+
+	background: $clrs-black;
+	color: $light-color;
+	padding: $layout-spacing $unit-4;
+	border-bottom: $unit-o solid $border-color;
+
+	.btn-link {
+		color: inherit;
+		&:hover,
+		&:focus,
+		&:active {
+			color: inherit;
+		}
+
+	}
+
+
+	.navbar-buttons {
+
+		.btn-link {
+
+			margin-right: $unit-2;
+
+			.feather {
+				margin-right: $unit-1;
+				vertical-align: -10%;
+			}
+
+			&:hover,
+			&:focus,
+			&:active {
+				color: inherit;
+				background: $clrs-blue;	//lighten($clrs-black, 10%);
+			}
+
+			&.navbar-brand {
+				padding-left: 0;
+				padding-right: 0;
+				margin-right: $unit-12;
+				font-size: $font-size-lg;
+				&:hover,
+				&:focus,
+				&:active {
+					color: $clrs-blue;
+					background: none;
+				}
+			}
+
+		}
+	}
+
+
+}

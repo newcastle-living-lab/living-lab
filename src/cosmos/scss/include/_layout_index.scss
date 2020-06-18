@@ -1,0 +1,54 @@
+
+.cosmos-index {
+
+	margin-top: $unit-12;
+
+	.card-title {
+		color: $clrs-blue;
+		font-weight: bold;
+		font-size: $font-size-lg;
+	}
+
+
+	.tile-empty {
+		padding-top: $layout-spacing * 2;
+		padding-bottom: $layout-spacing;
+		padding-left: $layout-spacing-lg;
+		padding-right: $layout-spacing-lg;
+		// border-bottom: $unit-o solid $border-color;
+		.tile-content {
+			text-align: center;
+		}
+	}
+
+	.tile-project {
+		// display: block;
+		padding-top: $layout-spacing;
+		padding-bottom: $layout-spacing;
+		padding-left: $layout-spacing-lg;
+		padding-right: $layout-spacing-lg;
+		border-bottom: $unit-o solid $border-color;
+
+		&:hover,
+		&:focus {
+			background: $bg-color;
+			text-decoration: none;
+		}
+
+		.tile-title {
+			font-weight: bold;
+			font-size: $font-size-sm;
+			margin: 0;
+			color: $dark-color;
+		}
+
+		.tile-subtitle {
+			font-size: $font-size-sm;
+			color: $gray-color;
+			margin: 0;
+		}
+
+
+	}
+
+}

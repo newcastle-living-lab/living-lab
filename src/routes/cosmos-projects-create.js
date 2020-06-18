@@ -11,6 +11,7 @@ exports.handler = function(req, res, next) {
 
 	var params = {
 		$name: decodedBody.name,
+		$template: decodedBody.template ? decodedBody.template : null,
 		$created_at: decodedBody.created_at,
 		$modified_at: decodedBody.modified_at,
 		$created_by: decodedBody.created_by,
@@ -18,7 +19,7 @@ exports.handler = function(req, res, next) {
 	};
 
 	var db = database.getDb();
-	var sql = "INSERT INTO `cosmos` (name, created_at, modified_at, created_by, data) VALUES ($name, $created_at, $modified_at, $created_by, $data)";
+	var sql = "INSERT INTO `cosmos` (name, template, created_at, modified_at, created_by, data) VALUES ($name, $template, $created_at, $modified_at, $created_by, $data)";
 
 	db.run(sql, params, function(error) {
 

@@ -12,6 +12,7 @@ exports.handler = function(req, res, next) {
 	var params = {
 		$id: decodedBody.id,
 		$name: decodedBody.name,
+		$template: decodedBody.template ? decodedBody.template : null,
 		$modified_at: decodedBody.modified_at,
 		$data: JSON.stringify(decodedBody.data),
 	};
@@ -24,7 +25,7 @@ exports.handler = function(req, res, next) {
 	}
 
 	var db = database.getDb();
-	var sql = "UPDATE `cosmos` SET name = $name, modified_at = $modified_at, data = $data WHERE id = $id";
+	var sql = "UPDATE `cosmos` SET name = $name, template = $template, modified_at = $modified_at, data = $data WHERE id = $id";
 
 	db.run(sql, params, function(error) {
 
