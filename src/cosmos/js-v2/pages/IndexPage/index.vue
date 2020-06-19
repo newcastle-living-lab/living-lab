@@ -163,7 +163,7 @@ export default {
 	mounted() {
 		this.fetchProjects();
 		this.setTitle();
-	}
+	},
 
 }
 

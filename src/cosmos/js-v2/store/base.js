@@ -12,6 +12,7 @@ export const state = {
 		version: null,
 	},
 	scale: false,
+	stageHover: false,
 	projects: [],
 	project: {},
 	toast: {
@@ -19,6 +20,9 @@ export const state = {
 		message: null,
 		type: null,
 		seconds: null
+	},
+	options: {
+		fontFamily: '-apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif',
 	}
 };
 
@@ -90,6 +94,14 @@ export const mutations = {
 		state.toast.type = null;
 		state.toast.message = null;
 		state.toast.seconds = null;
+	},
+
+	START_STAGE_HOVER(state) {
+		state.stageHover = true;
+	},
+
+	STOP_STAGE_HOVER(state) {
+		state.stageHover = false;
 	}
 
 };
@@ -106,8 +118,9 @@ export const actions = {
 
 	fetchProject({ state, commit }, id) {
 		commit('START_LOADING');
+		commit('SET_PROJECT', {});
 		Network.getProject(id)
-			.then(project => { state.project = project })
+			.then(project => { commit('SET_PROJECT', project) })
 			.then(() => commit('STOP_LOADING'));
 	},
 
