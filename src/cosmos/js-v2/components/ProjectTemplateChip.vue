@@ -20,10 +20,15 @@ export default {
 			return tpl ? tpl.title : this.project.template;
 		}
 
+		// @TODO use this when all templtaes are in v2. Chagen prop to template name from project.
+		/*
+		templateTitle() {
+			var tpl = Templates.get(this.template);
+			return tpl ? tpl.CONFIG.title : this.template;
+		}
+		*/
+
 	}
 
 }
 </script>
-
-<style>
-</style>

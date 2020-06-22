@@ -5117,7 +5117,15 @@ var _data_templates_json__WEBPACK_IMPORTED_MODULE_1___namespace = /*#__PURE__*/_
         name: this.project.template
       });
       return tpl ? tpl.title : this.project.template;
+    } // @TODO use this when all templtaes are in v2. Chagen prop to template name from project.
+
+    /*
+    templateTitle() {
+    	var tpl = Templates.get(this.template);
+    	return tpl ? tpl.CONFIG.title : this.template;
     }
+    */
+
   }
 });
 
@@ -7127,152 +7135,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 
- // @TODO Move into template config
-
-/*let templateDefs = {
-	'service-model': [
-		{
-			id: "model",
-			type: "model",
-			title: "Model",
-			hint: null,
-		},
-		{
-			id: "drivers",
-			type: "drivers",
-			title: "Drivers and Motivations",
-			hint: "What were / are the drivers and motivations of the project? Was it a statutory requirement, recognition of a need or demand, seizing an opportunity, addressing an inequality?",
-		},
-		{
-			id: "policyDefiner",
-			type: "stakeholder",
-			title: "Policy Definer",
-			hint: "Who are, or were, the definers of the service policies and the principles under which the service operates?",
-		},
-		{
-			id: "specifier",
-			type: "stakeholder",
-			title: "Specifier and Designer",
-			hint: "Who specifies / specified and designs / designed the service delivery processes and resources?",
-		},
-		{
-			id: "deployer",
-			type: "stakeholder",
-			title: "Deployer",
-			hint: "Who deploys / deployed and activates / activated those processes and resources?",
-		},
-		{
-			id: "deliverer",
-			type: "stakeholder",
-			title: "Deliverer",
-			hint: "Who is responsible for the delivery mechanism(s), channels and roles in your pilot?",
-		},
-		{
-			id: "evaluator",
-			type: "stakeholder",
-			title: "Evaluator",
-			hint: "Who is the evaluator(s) and governors of the service?",
-		},
-		{
-			id: "user",
-			type: "stakeholder",
-			title: "User",
-			hint: "Who is the direct user of the service?",
-		},
-		{
-			id: "beneficiary",
-			type: "stakeholder",
-			title: "Beneficiary",
-			hint: "Are there beneficiaries other than the direct user/participants? If so, who are they?",
-		},
-		{
-			id: "initiator",
-			type: "stakeholder",
-			title: "Initiator",
-			hint: "Who are, or were, the instigators who initiated your pilot activity?",
-		},
-	],
-	'analytic-model': [
-		{
-			id: "model",
-			type: "model",
-			title: "Model",
-			hint: null,
-		},
-		{
-			id: "serviceDeliveryManager",
-			type: "stakeholder",
-			title: "Service Delivery Manager",
-			hint: "Who is the Service Delivery Manager responsible for the Intervention?"
-		},
-		{
-			id: "frontLineServiceDeliverer",
-			type: "stakeholder",
-			title: "Front-line Service Deliverer",
-			hint: "Who is the Front-line Service Deliverer?"
-		},
-		{
-			id: "user",
-			type: "stakeholder",
-			title: "Client / User",
-			hint: "Who is the direct user of the service?"
-		},
-		{
-			id: "serviceOrganisationManager",
-			type: "stakeholder",
-			title: "Service Organisation Manager",
-			hint: "Who is the Service Organisation Manager for the Intervention?"
-		},
-		{
-			id: "servicePolicyMaker",
-			type: "stakeholder",
-			title: "Service Policy Maker",
-			hint: "Who are, or were, the definers of the service policies and the principles under which the service operates?"
-		},
-		{
-			id: "instigatorsOfChange",
-			type: "stakeholder",
-			title: "Instigators of Change",
-			hint: "Who are, or were, the instigators who initiated your intervention activity?"
-		},
-		{
-			id: "changeMakers",
-			type: "stakeholder",
-			title: "Change Makers",
-			hint: "Who are, or were, the instigators who initiated your intervention activity?"
-		},
-		{
-			id: "subjectsOfChange",
-			type: "stakeholder",
-			title: "Subjects of Change",
-			hint: "Who are the idenitified subjects of change within the intervention?"
-		},
-		{
-			id: "broker",
-			type: "stakeholder",
-			title: "Broker",
-			hint: "Is there an active Broker between the Instigators of Change and Change Makers? If so, who are they?"
-		},
-		{
-			id: "changeTheorists",
-			type: "stakeholder",
-			title: "Change Theorists",
-			hint: "Who are the Change Theorists for the Intervention?"
-		},
-		{
-			id: "beneficiaries",
-			type: "stakeholder",
-			title: "Beneficiaries",
-			hint: "Are there beneficiaries other than the direct user/participants? If so, who are they?"
-		},
-		{
-			id: "victims",
-			type: "stakeholder",
-			title: "Victims",
-			hint: "Are there any identified victims? If so, who are they?"
-		},
-	],
-};*/
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
