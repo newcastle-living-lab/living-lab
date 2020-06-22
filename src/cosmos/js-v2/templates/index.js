@@ -22,6 +22,9 @@ export default {
 	// Helps with reactivity.
 	populateProject(project) {
 		var tpl = this.get(project.template);
+		if ( ! tpl) {
+			return project;
+		}
 		for (var i = 0; i < tpl.DEFINITIONS.length; i++) {
 			var defName = tpl.DEFINITIONS[i].id;
 			if (typeof(project.data[defName]) === 'undefined') {

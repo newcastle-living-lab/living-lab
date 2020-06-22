@@ -1,7 +1,7 @@
 var auth = require("../includes/auth.js");
 
 exports.method = "get";
-exports.route = "/cosmos-2(/*)?";
+exports.route = "/cosmos(/*)?";
 
 exports.handler = function(req, res) {
 

@@ -51,7 +51,11 @@ export default {
 		fetchProject: call('fetchProject'),
 
 		projectChanged() {
-			if (this.project && this.project.name) {
+			if (this.project.id && this.project.name) {
+				if (this.project.template === 'service-model') {
+					top.location.href = top.location.href.replace(/\/cosmos\//, '/cosmos-1/');
+					return;
+				}
 				document.title = `${this.project.name} | ${this.appName} [Living Lab]`;
 			}
 		}

@@ -2708,7 +2708,7 @@ var routes = [{
   }]
 }];
 var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
-  base: '/cosmos-2/',
+  base: '/cosmos/',
   mode: 'history',
   routes: routes
 });
@@ -3188,6 +3188,10 @@ var allTemplates = [_analytic_model__WEBPACK_IMPORTED_MODULE_2__["default"]];
   // Helps with reactivity.
   populateProject: function populateProject(project) {
     var tpl = this.get(project.template);
+
+    if (!tpl) {
+      return project;
+    }
 
     for (var i = 0; i < tpl.DEFINITIONS.length; i++) {
       var defName = tpl.DEFINITIONS[i].id;
@@ -7515,7 +7519,12 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   methods: {
     fetchProject: Object(vuex_pathify__WEBPACK_IMPORTED_MODULE_0__["call"])('fetchProject'),
     projectChanged: function projectChanged() {
-      if (this.project && this.project.name) {
+      if (this.project.id && this.project.name) {
+        if (this.project.template === 'service-model') {
+          top.location.href = top.location.href.replace(/\/cosmos\//, '/cosmos-1/');
+          return;
+        }
+
         document.title = "".concat(this.project.name, " | ").concat(this.appName, " [Living Lab]");
       }
     }
