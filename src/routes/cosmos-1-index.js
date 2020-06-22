@@ -1,7 +1,7 @@
 var auth = require("../includes/auth.js");
 
 exports.method = "get";
-exports.route = "/cosmos(/*)?";
+exports.route = "/cosmos-1(/*)?";
 
 exports.handler = function(req, res) {
 
@@ -20,6 +20,7 @@ exports.handler = function(req, res) {
 	}
 
 	return res.render('cosmos.html', {
+		main: 'main.js',
 		config: config
 	});
 };

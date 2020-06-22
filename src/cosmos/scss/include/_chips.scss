@@ -1,0 +1,10 @@
+.chip {
+
+	&.chip-template {
+		border-radius: $border-radius;
+		font-size: $font-size-sm * 0.9;
+		color: darken($clrs-blue, 5%);
+		background: lighten($clrs-blue, 50%);
+	}
+
+}

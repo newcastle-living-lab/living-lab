@@ -1,0 +1,24 @@
+[
+	{
+		"name": "service-model",
+		"title": "Co-Creation of Service Model",
+		"features": ["dashboard", "social_media", "theory_of_change", "community_reporting", "living_lab_models"]
+	},
+	{
+		"name": "analytic-model",
+		"title": "Analytic Model",
+		"features": ["dashboard"]
+	},
+	{
+		"name": "intervention-theory",
+		"title": "Intervention Theory"
+	},
+	{
+		"name": "theory-of-change",
+		"title": "Theory of Change"
+	},
+	{
+		"name": "theory-of-moral-ordering",
+		"title": "Theory of Moral Ordering"
+	}
+]

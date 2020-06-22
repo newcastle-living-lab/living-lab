@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import axios from 'axios';
+import reject from 'lodash/reject';
 
 var baseURL = '/cosmos-api/';
 
@@ -14,8 +15,9 @@ const api = {
 		var endpoint = 'projects';
 
 		return http.get(endpoint)
-			.then(res => {
-				return res.data.projects
+			.then(res => res.data.projects)
+			.then(projects => {
+				return reject(projects, (project) => project.template != 'service-model');
 			});
 	},
 

@@ -59,7 +59,7 @@ const routes = [
 ]
 
 const router = new VueRouter({
-	base: '/cosmos/',
+	base: '/cosmos-1/',
 	mode: 'history',
 	routes,
 });
