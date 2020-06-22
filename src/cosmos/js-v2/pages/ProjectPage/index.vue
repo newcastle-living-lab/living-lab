@@ -5,7 +5,7 @@
 
 		<section class="app-main">
 
-			<ProjectSidebar />
+			<ProjectSidebar v-if="project.id && isEditing" />
 
 			<keep-alive>
 				<router-view></router-view>

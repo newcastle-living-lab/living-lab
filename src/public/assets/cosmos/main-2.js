@@ -1679,44 +1679,6 @@ module.exports = JSON.parse("[{\"name\":\"service-model\",\"title\":\"Co-Creatio
 
 /***/ }),
 
-/***/ "./js-v2/helpers/Template.js":
-/*!***********************************!*\
-  !*** ./js-v2/helpers/Template.js ***!
-  \***********************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
-/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _data_templates_json__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/data/templates.json */ "./js-v2/data/templates.json");
-var _data_templates_json__WEBPACK_IMPORTED_MODULE_1___namespace = /*#__PURE__*/__webpack_require__.t(/*! @/data/templates.json */ "./js-v2/data/templates.json", 1);
-/* harmony import */ var lodash_find__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! lodash/find */ "./node_modules/lodash/find.js");
-/* harmony import */ var lodash_find__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(lodash_find__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var lodash_indexOf__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! lodash/indexOf */ "./node_modules/lodash/indexOf.js");
-/* harmony import */ var lodash_indexOf__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(lodash_indexOf__WEBPACK_IMPORTED_MODULE_3__);
-
-
-
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-  // Determine if a given template has a certain feature
-  hasFeature: function hasFeature(templateName, featureName) {
-    var tpl = lodash_find__WEBPACK_IMPORTED_MODULE_2___default()(_data_templates_json__WEBPACK_IMPORTED_MODULE_1__, {
-      name: templateName
-    });
-
-    if (!tpl) {
-      return false;
-    }
-
-    return lodash_indexOf__WEBPACK_IMPORTED_MODULE_3___default()(tpl.features, featureName) >= 0;
-  }
-});
-
-/***/ }),
-
 /***/ "./js-v2/main.js":
 /*!***********************!*\
   !*** ./js-v2/main.js ***!
@@ -2765,6 +2727,8 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _templates__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/templates */ "./js-v2/templates/index.js");
+
 
 var baseURL = '/cosmos-api/';
 var http = axios__WEBPACK_IMPORTED_MODULE_0___default.a.create({
@@ -2781,7 +2745,12 @@ var http = axios__WEBPACK_IMPORTED_MODULE_0___default.a.create({
     var endpoint = "projects/".concat(id);
     return http.request(endpoint).then(function (res) {
       return res.data.project;
-    });
+    }).then(function (project) {
+      return _templates__WEBPACK_IMPORTED_MODULE_1__["default"].populateProject(project);
+    }); // .then(project => {
+    // 	var tpl = Templates.get(project.template);
+    // 	return tpl.Tools.populate(project);
+    // });
   },
   createProject: function createProject(params) {
     var endpoint = 'projects';
@@ -3076,6 +3045,161 @@ __webpack_require__.r(__webpack_exports__);
 // pathify.options.mapping = 'simple'
 
 vuex_pathify__WEBPACK_IMPORTED_MODULE_0__["default"].options.deep = 2;
+
+/***/ }),
+
+/***/ "./js-v2/templates/analytic-model/Tools.js":
+/*!*************************************************!*\
+  !*** ./js-v2/templates/analytic-model/Tools.js ***!
+  \*************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var lodash_clone__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! lodash/clone */ "./node_modules/lodash/clone.js");
+/* harmony import */ var lodash_clone__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(lodash_clone__WEBPACK_IMPORTED_MODULE_0__);
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  populate: function populate(project) {
+    var defaultTypes = {
+      'model': {
+        'title': null
+      },
+      'stakeholder': {
+        'title': null,
+        'type': null,
+        'colour': null,
+        'url': null
+      }
+    };
+
+    var objectsList = _defineProperty({
+      'model': defaultTypes.model,
+      'serviceDeliveryManager': defaultTypes.stakeholder
+    }, "serviceDeliveryManager", defaultTypes.stakeholder);
+
+    for (var key in objectsList) {
+      if (typeof project.data[key] == 'undefined') {
+        project.data[key] = {};
+      }
+    }
+
+    return project;
+  }
+});
+
+/***/ }),
+
+/***/ "./js-v2/templates/analytic-model/config.json":
+/*!****************************************************!*\
+  !*** ./js-v2/templates/analytic-model/config.json ***!
+  \****************************************************/
+/*! exports provided: name, title, features, stageSize, default */
+/***/ (function(module) {
+
+module.exports = JSON.parse("{\"name\":\"analytic-model\",\"title\":\"Analytic Model\",\"features\":[\"dashboard\"],\"stageSize\":{\"width\":1285,\"height\":750}}");
+
+/***/ }),
+
+/***/ "./js-v2/templates/analytic-model/definitions.json":
+/*!*********************************************************!*\
+  !*** ./js-v2/templates/analytic-model/definitions.json ***!
+  \*********************************************************/
+/*! exports provided: 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, default */
+/***/ (function(module) {
+
+module.exports = JSON.parse("[{\"id\":\"model\",\"type\":\"model\",\"title\":\"Model\",\"hint\":null},{\"id\":\"serviceDeliveryManager\",\"type\":\"stakeholder\",\"title\":\"Service Delivery Manager\",\"hint\":\"Who is the Service Delivery Manager responsible for the Intervention?\"},{\"id\":\"frontLineServiceDeliverer\",\"type\":\"stakeholder\",\"title\":\"Front-line Service Deliverer\",\"hint\":\"Who is the Front-line Service Deliverer?\"},{\"id\":\"user\",\"type\":\"stakeholder\",\"title\":\"Client / User\",\"hint\":\"Who is the direct user of the service?\"},{\"id\":\"serviceOrganisationManager\",\"type\":\"stakeholder\",\"title\":\"Service Organisation Manager\",\"hint\":\"Who is the Service Organisation Manager for the Intervention?\"},{\"id\":\"servicePolicyMaker\",\"type\":\"stakeholder\",\"title\":\"Service Policy Maker\",\"hint\":\"Who are, or were, the definers of the service policies and the principles under which the service operates?\"},{\"id\":\"instigatorsOfChange\",\"type\":\"stakeholder\",\"title\":\"Instigators of Change\",\"hint\":\"Who are, or were, the instigators who initiated your intervention activity?\"},{\"id\":\"changeMakers\",\"type\":\"stakeholder\",\"title\":\"Change Makers\",\"hint\":\"Who are, or were, the instigators who initiated your intervention activity?\"},{\"id\":\"subjectsOfChange\",\"type\":\"stakeholder\",\"title\":\"Subjects of Change\",\"hint\":\"Who are the idenitified subjects of change within the intervention?\"},{\"id\":\"broker\",\"type\":\"stakeholder\",\"title\":\"Broker\",\"hint\":\"Is there an active Broker between the Instigators of Change and Change Makers? If so, who are they?\"},{\"id\":\"changeTheorists\",\"type\":\"stakeholder\",\"title\":\"Change Theorists\",\"hint\":\"Who are the Change Theorists for the Intervention?\"},{\"id\":\"beneficiaries\",\"type\":\"stakeholder\",\"title\":\"Beneficiaries\",\"hint\":\"Are there beneficiaries other than the direct user/participants? If so, who are they?\"},{\"id\":\"victims\",\"type\":\"stakeholder\",\"title\":\"Victims\",\"hint\":\"Are there any identified victims? If so, who are they?\"}]");
+
+/***/ }),
+
+/***/ "./js-v2/templates/analytic-model/index.js":
+/*!*************************************************!*\
+  !*** ./js-v2/templates/analytic-model/index.js ***!
+  \*************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _config_json__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./config.json */ "./js-v2/templates/analytic-model/config.json");
+var _config_json__WEBPACK_IMPORTED_MODULE_0___namespace = /*#__PURE__*/__webpack_require__.t(/*! ./config.json */ "./js-v2/templates/analytic-model/config.json", 1);
+/* harmony import */ var _definitions_json__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./definitions.json */ "./js-v2/templates/analytic-model/definitions.json");
+var _definitions_json__WEBPACK_IMPORTED_MODULE_1___namespace = /*#__PURE__*/__webpack_require__.t(/*! ./definitions.json */ "./js-v2/templates/analytic-model/definitions.json", 1);
+/* harmony import */ var _nodes_json__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./nodes.json */ "./js-v2/templates/analytic-model/nodes.json");
+var _nodes_json__WEBPACK_IMPORTED_MODULE_2___namespace = /*#__PURE__*/__webpack_require__.t(/*! ./nodes.json */ "./js-v2/templates/analytic-model/nodes.json", 1);
+/* harmony import */ var _Tools__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Tools */ "./js-v2/templates/analytic-model/Tools.js");
+
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  CONFIG: _config_json__WEBPACK_IMPORTED_MODULE_0__,
+  DEFINITIONS: _definitions_json__WEBPACK_IMPORTED_MODULE_1__,
+  NODES: _nodes_json__WEBPACK_IMPORTED_MODULE_2__,
+  Tools: _Tools__WEBPACK_IMPORTED_MODULE_3__["default"]
+});
+
+/***/ }),
+
+/***/ "./js-v2/templates/analytic-model/nodes.json":
+/*!***************************************************!*\
+  !*** ./js-v2/templates/analytic-model/nodes.json ***!
+  \***************************************************/
+/*! exports provided: 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, default */
+/***/ (function(module) {
+
+module.exports = JSON.parse("[{\"componentName\":\"CosmosTitle\",\"definitionName\":\"model\"},{\"componentName\":\"CosmosNodeBracket\",\"config\":{\"position\":\"above\",\"label\":\"Meso\",\"labelColour\":\"#3d9970\",\"lineColour\":\"#0074d9\",\"description\":\"There may be a number of stages at this level.\",\"x\":242,\"y\":215,\"width\":310}},{\"componentName\":\"CosmosNodeBracket\",\"config\":{\"position\":\"below\",\"label\":\"Macro\",\"labelColour\":\"#3d9970\",\"lineColour\":\"#85144b\",\"x\":85,\"y\":400,\"width\":300}},{\"componentName\":\"CosmosNodeBracket\",\"config\":{\"position\":\"below\",\"label\":\"Micro\",\"labelColour\":\"#3d9970\",\"lineColour\":\"#0074d9\",\"x\":400,\"y\":400,\"width\":300}},{\"componentName\":\"v-line\",\"_comment\":\"Serv Pol Maker -- Serv Org Mgr\",\"config\":{\"x\":140,\"y\":270,\"points\":[0,0,45,0],\"stroke\":\"#ff4136\",\"strokeWidth\":6,\"lineCap\":\"round\",\"lineJoin\":\"round\"}},{\"componentName\":\"v-line\",\"_comment\":\"Serv Org Mgr -- Serv Del Mgr\",\"config\":{\"x\":295,\"y\":270,\"points\":[0,0,45,0],\"stroke\":\"#ff4136\",\"strokeWidth\":6,\"lineCap\":\"round\",\"lineJoin\":\"round\"}},{\"componentName\":\"v-line\",\"comment\":\"Serv Del Mgr -- Front Line Serv Del\",\"config\":{\"x\":450,\"y\":270,\"points\":[0,0,45,0],\"stroke\":\"#ff4136\",\"strokeWidth\":6,\"lineCap\":\"round\",\"lineJoin\":\"round\"}},{\"componentName\":\"v-line\",\"comment\":\"Front Line Serv Del -- Client/User\",\"config\":{\"x\":605,\"y\":270,\"points\":[0,0,45,0],\"stroke\":\"#ff4136\",\"strokeWidth\":6,\"lineCap\":\"round\",\"lineJoin\":\"round\"}},{\"componentName\":\"CosmosStakeholder\",\"definitionName\":\"serviceDeliveryManager\",\"config\":{\"group\":{\"x\":345,\"y\":225}}},{\"componentName\":\"CosmosStakeholder\",\"definitionName\":\"frontLineServiceDeliverer\",\"config\":{\"group\":{\"x\":500,\"y\":225}}},{\"componentName\":\"CosmosStakeholder\",\"definitionName\":\"user\",\"config\":{\"group\":{\"x\":655,\"y\":225}}},{\"componentName\":\"CosmosStakeholder\",\"definitionName\":\"serviceOrganisationManager\",\"config\":{\"group\":{\"x\":190,\"y\":225}}},{\"componentName\":\"CosmosStakeholder\",\"definitionName\":\"servicePolicyMaker\",\"config\":{\"group\":{\"x\":35,\"y\":225}}},{\"componentName\":\"CosmosGroup\",\"comment\":\"Lines for right side\",\"config\":{\"x\":870,\"y\":30},\"children\":[{\"componentName\":\"v-line\",\"comment\":\"instigator -- changemaker\",\"config\":{\"x\":100,\"y\":315,\"points\":[0,0,190,0],\"stroke\":\"#ff4136\",\"strokeWidth\":3,\"dash\":[15,5]}},{\"componentName\":\"v-line\",\"comment\":\"instigator -- broker\",\"config\":{\"x\":100,\"y\":270,\"points\":[0,0,45,-45],\"stroke\":\"#ff4136\",\"strokeWidth\":3,\"dash\":[15,5]}},{\"componentName\":\"v-line\",\"comment\":\"broker -- changeTheorists\",\"config\":{\"x\":245,\"y\":135,\"points\":[0,0,45,-45],\"stroke\":\"#ff4136\",\"strokeWidth\":3,\"dash\":[15,5]}},{\"componentName\":\"v-line\",\"comment\":\"instigators -- subjects\",\"config\":{\"x\":100,\"y\":360,\"points\":[0,0,45,45],\"stroke\":\"#ff4136\",\"strokeWidth\":3,\"dash\":[15,5]}},{\"componentName\":\"v-line\",\"comment\":\"victims -- subjects\",\"config\":{\"x\":100,\"y\":540,\"points\":[0,0,45,-45],\"stroke\":\"#ff4136\",\"strokeWidth\":3,\"dash\":[15,5]}},{\"componentName\":\"v-line\",\"comment\":\"subjects -- changemakers\",\"config\":{\"x\":245,\"y\":405,\"points\":[0,0,45,-45],\"stroke\":\"#ff4136\",\"strokeWidth\":3,\"dash\":[15,5]}},{\"componentName\":\"v-line\",\"comment\":\"subjects -- beneficiaries\",\"config\":{\"x\":245,\"y\":495,\"points\":[0,0,45,45],\"stroke\":\"#ff4136\",\"strokeWidth\":3,\"dash\":[15,5]}},{\"componentName\":\"v-line\",\"comment\":\"broker -- changemakers\",\"config\":{\"x\":245,\"y\":225,\"points\":[0,0,45,45],\"stroke\":\"#ff4136\",\"strokeWidth\":3,\"dash\":[15,5]}}]},{\"componentName\":\"CosmosGroup\",\"config\":{\"x\":870,\"y\":30},\"children\":[{\"componentName\":\"CosmosStakeholder\",\"definitionName\":\"instigatorsOfChange\",\"config\":{\"group\":{\"x\":0,\"y\":270}}},{\"componentName\":\"CosmosStakeholder\",\"definitionName\":\"changeMakers\",\"config\":{\"group\":{\"x\":290,\"y\":270}}},{\"componentName\":\"CosmosStakeholder\",\"definitionName\":\"subjectsOfChange\",\"config\":{\"group\":{\"x\":145,\"y\":405}}},{\"componentName\":\"CosmosStakeholder\",\"definitionName\":\"broker\",\"config\":{\"group\":{\"x\":145,\"y\":135}}},{\"componentName\":\"CosmosStakeholder\",\"definitionName\":\"changeTheorists\",\"config\":{\"group\":{\"x\":290,\"y\":0}}},{\"componentName\":\"CosmosStakeholder\",\"definitionName\":\"beneficiaries\",\"config\":{\"group\":{\"x\":290,\"y\":540}}},{\"componentName\":\"CosmosStakeholder\",\"definitionName\":\"victims\",\"config\":{\"group\":{\"x\":0,\"y\":540}}}]}]");
+
+/***/ }),
+
+/***/ "./js-v2/templates/index.js":
+/*!**********************************!*\
+  !*** ./js-v2/templates/index.js ***!
+  \**********************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var lodash_find__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! lodash/find */ "./node_modules/lodash/find.js");
+/* harmony import */ var lodash_find__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(lodash_find__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var lodash_map__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! lodash/map */ "./node_modules/lodash/map.js");
+/* harmony import */ var lodash_map__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(lodash_map__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _analytic_model__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./analytic-model */ "./js-v2/templates/analytic-model/index.js");
+
+
+
+var allTemplates = [_analytic_model__WEBPACK_IMPORTED_MODULE_2__["default"]];
+/* harmony default export */ __webpack_exports__["default"] = ({
+  all: function all() {
+    return lodash_map__WEBPACK_IMPORTED_MODULE_1___default()(allTemplates, function (t) {
+      return t.CONFIG;
+    });
+  },
+  get: function get(name) {
+    return lodash_find__WEBPACK_IMPORTED_MODULE_0___default()(allTemplates, function (t) {
+      return t.CONFIG.name === name;
+    });
+  },
+  // Populate the project data with empty objects for each definition.
+  // Helps with reactivity.
+  populateProject: function populateProject(project) {
+    var tpl = this.get(project.template);
+
+    for (var i = 0; i < tpl.DEFINITIONS.length; i++) {
+      var defName = tpl.DEFINITIONS[i].id;
+
+      if (typeof project.data[defName] === 'undefined') {
+        project.data[defName] = {};
+      }
+    }
+
+    return project;
+  }
+});
 
 /***/ }),
 
@@ -5290,9 +5414,6 @@ __webpack_require__.r(__webpack_exports__);
       }
     };
   },
-  watch: {
-    'isVisible': 'doTween'
-  },
 
   /*	watch: {
   		'value': 'refreshPositions',
@@ -5311,7 +5432,7 @@ __webpack_require__.r(__webpack_exports__);
     groupConfig: function groupConfig() {
       return {
         visible: this.isVisible,
-        opacity: 0,
+        opacity: 1,
         x: this.config.group.x,
         y: this.config.group.y
       };
@@ -5355,23 +5476,6 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   methods: {
-    doTween: function doTween() {
-      if (!this.isVisible) {
-        return;
-      }
-
-      if (!this.tween) {
-        this.tween = new Konva.Tween({
-          node: this.$refs.group.getNode(),
-          duration: 1,
-          opacity: 1
-        });
-      }
-
-      if (this.tween) {
-        this.tween.play();
-      }
-    },
     mousemove: function mousemove() {
       if (this.url) {
         Object(vuex_pathify__WEBPACK_IMPORTED_MODULE_0__["commit"])('START_STAGE_HOVER');
@@ -5885,46 +5989,23 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 
-var defaultValue = {
-  title: null
-};
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     definition: Object,
     value: Object
   },
-  data: function data() {
-    return {
-      local: lodash_clone__WEBPACK_IMPORTED_MODULE_0___default()(defaultValue),
-      previousValue: lodash_clone__WEBPACK_IMPORTED_MODULE_0___default()(defaultValue)
-    };
-  },
-  watch: {
-    local: {
-      handler: function handler(value) {
-        if (JSON.stringify(value) === JSON.stringify(this.previousValue)) {
-          return;
-        }
-
-        this.previousValue = JSON.parse(JSON.stringify(value));
-        this.$emit('input', this.filterValue(value));
-      },
-      deep: true
-    }
-  },
-  methods: {
-    filterValue: function filterValue(value) {
-      var data = lodash_clone__WEBPACK_IMPORTED_MODULE_0___default()(value);
-      if (typeof data.title === 'string' && data.title.length === 0) data.title = null;
-      return data;
-    }
-  },
   mounted: function mounted() {
-    if (this.value) {
-      this.local = this.filterValue(this.value);
+    this.val = this.value;
+  },
+  computed: {
+    val: {
+      get: function get() {
+        return this.value;
+      },
+      set: function set(value) {
+        this.$emit("input", value);
+      }
     }
-
-    this.$emit('input', this.filterValue(this.local));
   }
 });
 
@@ -5939,10 +6020,8 @@ var defaultValue = {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var lodash_clone__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! lodash/clone */ "./node_modules/lodash/clone.js");
-/* harmony import */ var lodash_clone__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(lodash_clone__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _data_activityTypes_json__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/data/activityTypes.json */ "./js-v2/data/activityTypes.json");
-var _data_activityTypes_json__WEBPACK_IMPORTED_MODULE_1___namespace = /*#__PURE__*/__webpack_require__.t(/*! @/data/activityTypes.json */ "./js-v2/data/activityTypes.json", 1);
+/* harmony import */ var _data_activityTypes_json__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @/data/activityTypes.json */ "./js-v2/data/activityTypes.json");
+var _data_activityTypes_json__WEBPACK_IMPORTED_MODULE_0___namespace = /*#__PURE__*/__webpack_require__.t(/*! @/data/activityTypes.json */ "./js-v2/data/activityTypes.json", 1);
 //
 //
 //
@@ -5967,7 +6046,6 @@ var _data_activityTypes_json__WEBPACK_IMPORTED_MODULE_1___namespace = /*#__PURE_
 //
 //
 //
-
 
 var defaultValue = {
   label: null,
@@ -5982,38 +6060,21 @@ var defaultValue = {
   },
   data: function data() {
     return {
-      local: lodash_clone__WEBPACK_IMPORTED_MODULE_0___default()(defaultValue),
-      previousValue: lodash_clone__WEBPACK_IMPORTED_MODULE_0___default()(defaultValue),
-      typeOptions: _data_activityTypes_json__WEBPACK_IMPORTED_MODULE_1__
+      typeOptions: _data_activityTypes_json__WEBPACK_IMPORTED_MODULE_0__
     };
   },
-  watch: {
-    local: {
-      handler: function handler(value) {
-        if (JSON.stringify(value) === JSON.stringify(this.previousValue)) {
-          return;
-        }
-
-        this.previousValue = JSON.parse(JSON.stringify(value));
-        this.$emit('input', this.filterValue(value));
-      },
-      deep: true
-    }
-  },
-  methods: {
-    filterValue: function filterValue(value) {
-      var data = lodash_clone__WEBPACK_IMPORTED_MODULE_0___default()(value);
-      if (typeof data.label === 'string' && data.label.length === 0) data.label = null;
-      if (typeof data.url === 'string' && data.url.length === 0) data.url = null;
-      return data;
-    }
-  },
   mounted: function mounted() {
-    if (this.value) {
-      this.local = this.filterValue(this.value);
+    this.val = this.value;
+  },
+  computed: {
+    val: {
+      get: function get() {
+        return this.value;
+      },
+      set: function set(value) {
+        this.$emit("input", value);
+      }
     }
-
-    this.$emit('input', this.filterValue(this.local));
   }
 });
 
@@ -6338,8 +6399,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _data_templates_json__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @/data/templates.json */ "./js-v2/data/templates.json");
-var _data_templates_json__WEBPACK_IMPORTED_MODULE_0___namespace = /*#__PURE__*/__webpack_require__.t(/*! @/data/templates.json */ "./js-v2/data/templates.json", 1);
+/* harmony import */ var _templates__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @/templates */ "./js-v2/templates/index.js");
 //
 //
 //
@@ -6382,7 +6442,7 @@ var _data_templates_json__WEBPACK_IMPORTED_MODULE_0___namespace = /*#__PURE__*/_
   },
   data: function data() {
     return {
-      templates: _data_templates_json__WEBPACK_IMPORTED_MODULE_0__,
+      templates: _templates__WEBPACK_IMPORTED_MODULE_0__["default"].all(),
       previousValue: {
         name: null,
         template: null,
@@ -6442,6 +6502,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _services_Network__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/services/Network */ "./js-v2/services/Network.js");
 /* harmony import */ var _NewProject__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./NewProject */ "./js-v2/pages/IndexPage/NewProject.vue");
 /* harmony import */ var _components_ProjectTemplateChip__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @/components/ProjectTemplateChip */ "./js-v2/components/ProjectTemplateChip.vue");
+/* harmony import */ var _templates__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @/templates */ "./js-v2/templates/index.js");
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
@@ -6532,8 +6593,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 
- // import {appStore} from '@/store/app';
-// import { state } from '@/store/store.js';
+
 
 
 
@@ -6546,10 +6606,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   },
   data: function data() {
     return {
-      // state: state,
-      // app: appStore.state,
-      // query: null,
-      // projects: [],
       newProject: {
         name: null,
         template: null,
@@ -6630,6 +6686,7 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vuex_pathify__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuex-pathify */ "./node_modules/vuex-pathify/dist/vuex-pathify.esm.js");
 /* harmony import */ var _services_Network__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/services/Network */ "./js-v2/services/Network.js");
+/* harmony import */ var _templates__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/templates */ "./js-v2/templates/index.js");
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
@@ -6668,338 +6725,78 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 
- // @TODO move to central place for template
 
-var templateNodes = [{
-  componentName: 'CosmosTitle',
-  definitionName: 'model'
-}, {
-  componentName: 'CosmosNodeBracket',
-  config: {
-    position: 'above',
-    label: 'Meso',
-    labelColour: '#3d9970',
-    lineColour: '#0074d9',
-    description: 'There may be a number of stages at this level.',
-    x: 242,
-    y: 215,
-    width: 310
-  }
-}, {
-  componentName: 'CosmosNodeBracket',
-  config: {
-    position: 'below',
-    label: 'Macro',
-    labelColour: '#3d9970',
-    lineColour: '#85144b',
-    x: 85,
-    y: 400,
-    width: 300
-  }
-}, {
-  componentName: 'CosmosNodeBracket',
-  config: {
-    position: 'below',
-    label: 'Micro',
-    labelColour: '#3d9970',
-    lineColour: '#0074d9',
-    x: 400,
-    y: 400,
-    width: 300
-  }
-}, {
-  componentName: 'v-line',
-  comment: 'Serv Pol Maker -- Serv Org Mgr',
-  config: {
-    x: 140,
-    y: 270,
-    points: [0, 0, 45, 0],
-    stroke: '#ff4136',
-    strokeWidth: 6,
-    lineCap: 'round',
-    lineJoin: 'round'
-  }
-}, {
-  componentName: 'v-line',
-  comment: 'Serv Org Mgr -- Serv Del Mgr',
-  config: {
-    x: 295,
-    y: 270,
-    points: [0, 0, 45, 0],
-    stroke: '#ff4136',
-    strokeWidth: 6,
-    lineCap: 'round',
-    lineJoin: 'round'
-  }
-}, {
-  componentName: 'v-line',
-  comment: 'Serv Del Mgr -- Front Line Serv Del',
-  config: {
-    x: 450,
-    y: 270,
-    points: [0, 0, 45, 0],
-    stroke: '#ff4136',
-    strokeWidth: 6,
-    lineCap: 'round',
-    lineJoin: 'round'
-  }
-}, {
-  componentName: 'v-line',
-  comment: 'Front Line Serv Del -- Client/User',
-  config: {
-    x: 605,
-    y: 270,
-    points: [0, 0, 45, 0],
-    stroke: '#ff4136',
-    strokeWidth: 6,
-    lineCap: 'round',
-    lineJoin: 'round'
-  }
-}, {
-  componentName: 'CosmosStakeholder',
-  definitionName: 'serviceDeliveryManager',
-  config: {
-    group: {
-      x: 345,
-      y: 225
-    }
-  }
-}, {
-  componentName: 'CosmosStakeholder',
-  definitionName: 'frontLineServiceDeliverer',
-  config: {
-    group: {
-      x: 500,
-      y: 225
-    }
-  }
-}, {
-  componentName: 'CosmosStakeholder',
-  definitionName: 'user',
-  config: {
-    group: {
-      x: 655,
-      y: 225
-    }
-  }
-}, {
-  componentName: 'CosmosStakeholder',
-  definitionName: 'serviceOrganisationManager',
-  config: {
-    group: {
-      x: 190,
-      y: 225
-    }
-  }
-}, {
-  componentName: 'CosmosStakeholder',
-  definitionName: 'servicePolicyMaker',
-  config: {
-    group: {
-      x: 35,
-      y: 225
-    }
-  }
-}, {
-  componentName: 'CosmosGroup',
-  comment: 'Lines for right side',
-  config: {
-    x: 870,
-    y: 30
-  },
-  children: [{
-    componentName: 'v-line',
-    comment: 'instigator -- changemaker',
-    config: {
-      x: 100,
-      y: 315,
-      points: [0, 0, 190, 0],
-      stroke: '#ff4136',
-      strokeWidth: 3,
-      dash: [15, 5]
-    }
-  }, {
-    componentName: 'v-line',
-    comment: 'instigator -- broker',
-    config: {
-      x: 100,
-      y: 270,
-      points: [0, 0, 45, -45],
-      stroke: '#ff4136',
-      strokeWidth: 3,
-      dash: [15, 5]
-    }
-  }, {
-    componentName: 'v-line',
-    comment: 'broker -- changeTheorists',
-    config: {
-      x: 245,
-      y: 135,
-      points: [0, 0, 45, -45],
-      stroke: '#ff4136',
-      strokeWidth: 3,
-      dash: [15, 5]
-    }
-  }, {
-    componentName: 'v-line',
-    comment: 'instigators -- subjects',
-    config: {
-      x: 100,
-      y: 360,
-      points: [0, 0, 45, 45],
-      stroke: '#ff4136',
-      strokeWidth: 3,
-      dash: [15, 5]
-    }
-  }, {
-    componentName: 'v-line',
-    comment: 'victims -- subjects',
-    config: {
-      x: 100,
-      y: 540,
-      points: [0, 0, 45, -45],
-      stroke: '#ff4136',
-      strokeWidth: 3,
-      dash: [15, 5]
-    }
-  }, {
-    componentName: 'v-line',
-    comment: 'subjects -- changemakers',
-    config: {
-      x: 245,
-      y: 405,
-      points: [0, 0, 45, -45],
-      stroke: '#ff4136',
-      strokeWidth: 3,
-      dash: [15, 5]
-    }
-  }, {
-    componentName: 'v-line',
-    comment: 'subjects -- beneficiaries',
-    config: {
-      x: 245,
-      y: 495,
-      points: [0, 0, 45, 45],
-      stroke: '#ff4136',
-      strokeWidth: 3,
-      dash: [15, 5]
-    }
-  }, {
-    componentName: 'v-line',
-    comment: 'broker -- changemakers',
-    config: {
-      x: 245,
-      y: 225,
-      points: [0, 0, 45, 45],
-      stroke: '#ff4136',
-      strokeWidth: 3,
-      dash: [15, 5]
-    }
-  }]
-}, {
-  componentName: 'CosmosGroup',
-  config: {
-    x: 870,
-    y: 30
-  },
-  children: [{
-    componentName: 'CosmosStakeholder',
-    definitionName: 'instigatorsOfChange',
-    config: {
-      group: {
-        x: 0,
-        y: 270
-      }
-    }
-  }, {
-    componentName: 'CosmosStakeholder',
-    definitionName: 'changeMakers',
-    config: {
-      group: {
-        x: 290,
-        y: 270
-      }
-    }
-  }, {
-    componentName: 'CosmosStakeholder',
-    definitionName: 'subjectsOfChange',
-    config: {
-      group: {
-        x: 145,
-        y: 405
-      }
-    }
-  }, {
-    componentName: 'CosmosStakeholder',
-    definitionName: 'broker',
-    config: {
-      group: {
-        x: 145,
-        y: 135
-      }
-    }
-  }, {
-    componentName: 'CosmosStakeholder',
-    definitionName: 'changeTheorists',
-    config: {
-      group: {
-        x: 290,
-        y: 0
-      }
-    }
-  }, {
-    componentName: 'CosmosStakeholder',
-    definitionName: 'beneficiaries',
-    config: {
-      group: {
-        x: 290,
-        y: 540
-      }
-    }
-  }, {
-    componentName: 'CosmosStakeholder',
-    definitionName: 'victims',
-    config: {
-      group: {
-        x: 0,
-        y: 540
-      }
-    }
-  }]
-}]; // @TODO set in template
 
-var stageSize = {
-  width: 1285,
-  height: 750
-};
 /* harmony default export */ __webpack_exports__["default"] = ({
   watch: {
     'scale': 'resize',
     'stageHover': 'setCursor'
   },
   data: function data() {
-    return {
-      stageConfig: {
-        width: stageSize.width,
-        height: stageSize.height,
+    return {};
+  },
+  computed: _objectSpread({}, Object(vuex_pathify__WEBPACK_IMPORTED_MODULE_0__["get"])(['scale', 'stageHover', 'options', 'project']), {
+    template: function template() {
+      if (!this.project.id) {
+        return false;
+      }
+
+      var template = _templates__WEBPACK_IMPORTED_MODULE_2__["default"].get(this.project.template);
+      return template;
+    },
+    nodes: function nodes() {
+      if (!this.template) {
+        return [];
+      }
+
+      return this.template.NODES;
+    },
+    stageConfig: function stageConfig() {
+      var config = {
+        width: 640,
+        height: 480,
         scale: {
           x: 1,
           y: 1
         }
-      },
-      backgroundConfig: {
+      };
+
+      if (this.template) {
+        config.width = this.template.CONFIG.stageSize.width;
+        config.height = this.template.CONFIG.stageSize.height;
+      }
+
+      ;
+      return config;
+    },
+    backgroundConfig: function backgroundConfig() {
+      var config = {
         fill: '#ffffff',
         x: 0,
         y: 0,
-        width: stageSize.width,
-        height: stageSize.height
-      },
-      nodes: templateNodes
-    };
-  },
-  computed: _objectSpread({}, Object(vuex_pathify__WEBPACK_IMPORTED_MODULE_0__["get"])(['scale', 'stageHover', 'options'])),
+        width: 640,
+        height: 480
+      };
+
+      if (this.template) {
+        config.width = this.template.CONFIG.stageSize.width;
+        config.height = this.template.CONFIG.stageSize.height;
+      }
+
+      ;
+    }
+  }),
   methods: {
     resize: function resize() {
+      if (!this.project.id) {
+        return;
+      }
+
+      if (!this.$refs.stage) {
+        return;
+      }
+
+      var stageSize = this.template.CONFIG.stageSize;
       var stage = this.$refs.stage.getStage();
 
       if (!this.scale) {
@@ -7230,7 +7027,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var lodash_map__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(lodash_map__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var lodash_findIndex__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! lodash/findIndex */ "./node_modules/lodash/findIndex.js");
 /* harmony import */ var lodash_findIndex__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(lodash_findIndex__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _SidebarPanel__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./SidebarPanel */ "./js-v2/pages/ProjectPage/ProjectSidebar/SidebarPanel.vue");
+/* harmony import */ var _templates__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @/templates */ "./js-v2/templates/index.js");
+/* harmony import */ var _SidebarPanel__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./SidebarPanel */ "./js-v2/pages/ProjectPage/ProjectSidebar/SidebarPanel.vue");
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
@@ -7257,140 +7055,171 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 
+
  // @TODO Move into template config
 
-var templateDefs = {
-  'service-model': [{
-    id: "model",
-    type: "model",
-    title: "Model",
-    hint: null
-  }, {
-    id: "drivers",
-    type: "drivers",
-    title: "Drivers and Motivations",
-    hint: "What were / are the drivers and motivations of the project? Was it a statutory requirement, recognition of a need or demand, seizing an opportunity, addressing an inequality?"
-  }, {
-    id: "policyDefiner",
-    type: "stakeholder",
-    title: "Policy Definer",
-    hint: "Who are, or were, the definers of the service policies and the principles under which the service operates?"
-  }, {
-    id: "specifier",
-    type: "stakeholder",
-    title: "Specifier and Designer",
-    hint: "Who specifies / specified and designs / designed the service delivery processes and resources?"
-  }, {
-    id: "deployer",
-    type: "stakeholder",
-    title: "Deployer",
-    hint: "Who deploys / deployed and activates / activated those processes and resources?"
-  }, {
-    id: "deliverer",
-    type: "stakeholder",
-    title: "Deliverer",
-    hint: "Who is responsible for the delivery mechanism(s), channels and roles in your pilot?"
-  }, {
-    id: "evaluator",
-    type: "stakeholder",
-    title: "Evaluator",
-    hint: "Who is the evaluator(s) and governors of the service?"
-  }, {
-    id: "user",
-    type: "stakeholder",
-    title: "User",
-    hint: "Who is the direct user of the service?"
-  }, {
-    id: "beneficiary",
-    type: "stakeholder",
-    title: "Beneficiary",
-    hint: "Are there beneficiaries other than the direct user/participants? If so, who are they?"
-  }, {
-    id: "initiator",
-    type: "stakeholder",
-    title: "Initiator",
-    hint: "Who are, or were, the instigators who initiated your pilot activity?"
-  }],
-  'analytic-model': [{
-    id: "model",
-    type: "model",
-    title: "Model",
-    hint: null
-  }, {
-    id: "serviceDeliveryManager",
-    type: "stakeholder",
-    title: "Service Delivery Manager",
-    hint: "Who is the Service Delivery Manager responsible for the Intervention?"
-  }, {
-    id: "frontLineServiceDeliverer",
-    type: "stakeholder",
-    title: "Front-line Service Deliverer",
-    hint: "Who is the Front-line Service Deliverer?"
-  }, {
-    id: "user",
-    type: "stakeholder",
-    title: "Client / User",
-    hint: "Who is the direct user of the service?"
-  }, {
-    id: "serviceOrganisationManager",
-    type: "stakeholder",
-    title: "Service Organisation Manager",
-    hint: "Who is the Service Organisation Manager for the Intervention?"
-  }, {
-    id: "servicePolicyMaker",
-    type: "stakeholder",
-    title: "Service Policy Maker",
-    hint: "Who are, or were, the definers of the service policies and the principles under which the service operates?"
-  }, {
-    id: "instigatorsOfChange",
-    type: "stakeholder",
-    title: "Instigators of Change",
-    hint: "Who are, or were, the instigators who initiated your intervention activity?"
-  }, {
-    id: "changeMakers",
-    type: "stakeholder",
-    title: "Change Makers",
-    hint: "Who are, or were, the instigators who initiated your intervention activity?"
-  }, {
-    id: "subjectsOfChange",
-    type: "stakeholder",
-    title: "Subjects of Change",
-    hint: "Who are the idenitified subjects of change within the intervention?"
-  }, {
-    id: "broker",
-    type: "stakeholder",
-    title: "Broker",
-    hint: "Is there an active Broker between the Instigators of Change and Change Makers? If so, who are they?"
-  }, {
-    id: "changeTheorists",
-    type: "stakeholder",
-    title: "Change Theorists",
-    hint: "Who are the Change Theorists for the Intervention?"
-  }, {
-    id: "beneficiaries",
-    type: "stakeholder",
-    title: "Beneficiaries",
-    hint: "Are there beneficiaries other than the direct user/participants? If so, who are they?"
-  }, {
-    id: "victims",
-    type: "stakeholder",
-    title: "Victims",
-    hint: "Are there any identified victims? If so, who are they?"
-  }]
-};
+/*let templateDefs = {
+	'service-model': [
+		{
+			id: "model",
+			type: "model",
+			title: "Model",
+			hint: null,
+		},
+		{
+			id: "drivers",
+			type: "drivers",
+			title: "Drivers and Motivations",
+			hint: "What were / are the drivers and motivations of the project? Was it a statutory requirement, recognition of a need or demand, seizing an opportunity, addressing an inequality?",
+		},
+		{
+			id: "policyDefiner",
+			type: "stakeholder",
+			title: "Policy Definer",
+			hint: "Who are, or were, the definers of the service policies and the principles under which the service operates?",
+		},
+		{
+			id: "specifier",
+			type: "stakeholder",
+			title: "Specifier and Designer",
+			hint: "Who specifies / specified and designs / designed the service delivery processes and resources?",
+		},
+		{
+			id: "deployer",
+			type: "stakeholder",
+			title: "Deployer",
+			hint: "Who deploys / deployed and activates / activated those processes and resources?",
+		},
+		{
+			id: "deliverer",
+			type: "stakeholder",
+			title: "Deliverer",
+			hint: "Who is responsible for the delivery mechanism(s), channels and roles in your pilot?",
+		},
+		{
+			id: "evaluator",
+			type: "stakeholder",
+			title: "Evaluator",
+			hint: "Who is the evaluator(s) and governors of the service?",
+		},
+		{
+			id: "user",
+			type: "stakeholder",
+			title: "User",
+			hint: "Who is the direct user of the service?",
+		},
+		{
+			id: "beneficiary",
+			type: "stakeholder",
+			title: "Beneficiary",
+			hint: "Are there beneficiaries other than the direct user/participants? If so, who are they?",
+		},
+		{
+			id: "initiator",
+			type: "stakeholder",
+			title: "Initiator",
+			hint: "Who are, or were, the instigators who initiated your pilot activity?",
+		},
+	],
+	'analytic-model': [
+		{
+			id: "model",
+			type: "model",
+			title: "Model",
+			hint: null,
+		},
+		{
+			id: "serviceDeliveryManager",
+			type: "stakeholder",
+			title: "Service Delivery Manager",
+			hint: "Who is the Service Delivery Manager responsible for the Intervention?"
+		},
+		{
+			id: "frontLineServiceDeliverer",
+			type: "stakeholder",
+			title: "Front-line Service Deliverer",
+			hint: "Who is the Front-line Service Deliverer?"
+		},
+		{
+			id: "user",
+			type: "stakeholder",
+			title: "Client / User",
+			hint: "Who is the direct user of the service?"
+		},
+		{
+			id: "serviceOrganisationManager",
+			type: "stakeholder",
+			title: "Service Organisation Manager",
+			hint: "Who is the Service Organisation Manager for the Intervention?"
+		},
+		{
+			id: "servicePolicyMaker",
+			type: "stakeholder",
+			title: "Service Policy Maker",
+			hint: "Who are, or were, the definers of the service policies and the principles under which the service operates?"
+		},
+		{
+			id: "instigatorsOfChange",
+			type: "stakeholder",
+			title: "Instigators of Change",
+			hint: "Who are, or were, the instigators who initiated your intervention activity?"
+		},
+		{
+			id: "changeMakers",
+			type: "stakeholder",
+			title: "Change Makers",
+			hint: "Who are, or were, the instigators who initiated your intervention activity?"
+		},
+		{
+			id: "subjectsOfChange",
+			type: "stakeholder",
+			title: "Subjects of Change",
+			hint: "Who are the idenitified subjects of change within the intervention?"
+		},
+		{
+			id: "broker",
+			type: "stakeholder",
+			title: "Broker",
+			hint: "Is there an active Broker between the Instigators of Change and Change Makers? If so, who are they?"
+		},
+		{
+			id: "changeTheorists",
+			type: "stakeholder",
+			title: "Change Theorists",
+			hint: "Who are the Change Theorists for the Intervention?"
+		},
+		{
+			id: "beneficiaries",
+			type: "stakeholder",
+			title: "Beneficiaries",
+			hint: "Are there beneficiaries other than the direct user/participants? If so, who are they?"
+		},
+		{
+			id: "victims",
+			type: "stakeholder",
+			title: "Victims",
+			hint: "Are there any identified victims? If so, who are they?"
+		},
+	],
+};*/
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
-    SidebarPanel: _SidebarPanel__WEBPACK_IMPORTED_MODULE_4__["default"]
+    SidebarPanel: _SidebarPanel__WEBPACK_IMPORTED_MODULE_5__["default"]
   },
   data: function data() {
     return {
-      currentPanel: 'meta' // definitions: templateDefs
-
+      currentPanel: 'meta'
     };
   },
   computed: _objectSpread({}, Object(vuex_pathify__WEBPACK_IMPORTED_MODULE_0__["get"])(['userCanEdit', 'isEditing', 'project']), {
     definitions: function definitions() {
-      return templateDefs[this.project.template];
+      if (!this.project.id) {
+        return [];
+      }
+
+      var template = _templates__WEBPACK_IMPORTED_MODULE_4__["default"].get(this.project.template);
+      return template.DEFINITIONS;
     },
     showSidebar: function showSidebar() {
       return this.userCanEdit && this.isEditing;
@@ -7454,7 +7283,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var lodash_filter__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(lodash_filter__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var lodash_map__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! lodash/map */ "./node_modules/lodash/map.js");
 /* harmony import */ var lodash_map__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(lodash_map__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _helpers_Template__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @/helpers/Template */ "./js-v2/helpers/Template.js");
+/* harmony import */ var lodash_indexOf__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! lodash/indexOf */ "./node_modules/lodash/indexOf.js");
+/* harmony import */ var lodash_indexOf__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(lodash_indexOf__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _templates__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @/templates */ "./js-v2/templates/index.js");
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
@@ -7498,9 +7329,17 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   computed: _objectSpread({}, Object(vuex_pathify__WEBPACK_IMPORTED_MODULE_0__["get"])(['project']), {}, Object(vuex_pathify__WEBPACK_IMPORTED_MODULE_0__["sync"])(['scale']), {
-    modelTitle: Object(vuex_pathify__WEBPACK_IMPORTED_MODULE_0__["get"])('project@data.model.title'),
+    templateFeatures: function templateFeatures() {
+      if (!this.project.id) {
+        return [];
+      }
+
+      var template = _templates__WEBPACK_IMPORTED_MODULE_4__["default"].get(this.project.template);
+      return template ? template.CONFIG.features : [];
+    },
 
     /**
      * Get available tabs based on features of the template.
@@ -7508,6 +7347,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
      */
     filteredTabs: function filteredTabs() {
       var _this = this;
+
+      if (!this.templateFeatures) {
+        return [];
+      }
 
       var tabs = [{
         feature: 'dashboard',
@@ -7532,8 +7375,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       }]; // Get tabs for the template's features
 
       tabs = lodash_filter__WEBPACK_IMPORTED_MODULE_1___default()(tabs, function (tab) {
-        return _this.hasFeature(tab.feature);
-      }); // Return object with name + route `to` param
+        return lodash_indexOf__WEBPACK_IMPORTED_MODULE_3___default()(_this.templateFeatures, tab.feature) >= 0;
+      }); // console.log(tabs);
+      // Return object with name + route `to` param
 
       tabs = lodash_map__WEBPACK_IMPORTED_MODULE_2___default()(tabs, function (tab) {
         return {
@@ -7554,12 +7398,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     activeTab: function activeTab() {
       return this.$route.name;
     }
-  }),
-  methods: {
-    hasFeature: function hasFeature(featureName) {
-      return _helpers_Template__WEBPACK_IMPORTED_MODULE_3__["default"].hasFeature(this.project.template, featureName);
-    }
-  }
+  })
 });
 
 /***/ }),
@@ -31902,11 +31741,11 @@ var render = function() {
           _c("VInput", {
             attrs: { type: "text", id: "title", maxlength: "255" },
             model: {
-              value: _vm.local.title,
+              value: _vm.val.title,
               callback: function($$v) {
-                _vm.$set(_vm.local, "title", $$v)
+                _vm.$set(_vm.val, "title", $$v)
               },
-              expression: "local.title"
+              expression: "val.title"
             }
           })
         ],
@@ -31949,11 +31788,11 @@ var render = function() {
           _c("VInput", {
             attrs: { type: "text", id: "label", maxlength: "255" },
             model: {
-              value: _vm.local.label,
+              value: _vm.val.label,
               callback: function($$v) {
-                _vm.$set(_vm.local, "label", $$v)
+                _vm.$set(_vm.val, "label", $$v)
               },
-              expression: "local.label"
+              expression: "val.label"
             }
           })
         ],
@@ -31967,11 +31806,11 @@ var render = function() {
           _c("VRadioList", {
             attrs: { name: "type", options: _vm.typeOptions },
             model: {
-              value: _vm.local.type,
+              value: _vm.val.type,
               callback: function($$v) {
-                _vm.$set(_vm.local, "type", $$v)
+                _vm.$set(_vm.val, "type", $$v)
               },
-              expression: "local.type"
+              expression: "val.type"
             }
           })
         ],
@@ -31984,11 +31823,11 @@ var render = function() {
         [
           _c("VColourPicker", {
             model: {
-              value: _vm.local.colour,
+              value: _vm.val.colour,
               callback: function($$v) {
-                _vm.$set(_vm.local, "colour", $$v)
+                _vm.$set(_vm.val, "colour", $$v)
               },
-              expression: "local.colour"
+              expression: "val.colour"
             }
           })
         ],
@@ -32002,11 +31841,11 @@ var render = function() {
           _c("VInput", {
             attrs: { type: "text", id: "url", maxlength: "255" },
             model: {
-              value: _vm.local.url,
+              value: _vm.val.url,
               callback: function($$v) {
-                _vm.$set(_vm.local, "url", $$v)
+                _vm.$set(_vm.val, "url", $$v)
               },
-              expression: "local.url"
+              expression: "val.url"
             }
           })
         ],
@@ -32732,48 +32571,52 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("main", { staticClass: "app-content dark" }, [
-    _c(
-      "div",
-      {
-        ref: "container",
-        staticClass: "canvas-container scrollable scr-x scr-y"
-      },
-      [
-        _c(
-          "v-stage",
-          { ref: "stage", attrs: { config: _vm.stageConfig } },
+    _vm.template
+      ? _c(
+          "div",
+          {
+            ref: "container",
+            staticClass: "canvas-container scrollable scr-x scr-y"
+          },
           [
             _c(
-              "v-layer",
-              [_c("v-rect", { attrs: { config: _vm.backgroundConfig } })],
-              1
-            ),
-            _vm._v(" "),
-            _c(
-              "v-layer",
-              _vm._l(_vm.nodes, function(node, idx) {
-                return _c(node.componentName, {
-                  key: idx,
-                  ref: node.ref,
-                  refInFor: true,
-                  tag: "component",
-                  attrs: {
-                    path: node.path,
-                    config: node.config,
-                    children: node.children,
-                    definitionName: node.definitionName,
-                    options: _vm.options
-                  }
-                })
-              }),
+              "v-stage",
+              { ref: "stage", attrs: { config: _vm.stageConfig } },
+              [
+                _c(
+                  "v-layer",
+                  [_c("v-rect", { attrs: { config: _vm.backgroundConfig } })],
+                  1
+                ),
+                _vm._v(" "),
+                this.project.id
+                  ? _c(
+                      "v-layer",
+                      _vm._l(_vm.nodes, function(node, idx) {
+                        return _c(node.componentName, {
+                          key: idx,
+                          ref: node.ref,
+                          refInFor: true,
+                          tag: "component",
+                          attrs: {
+                            path: node.path,
+                            config: node.config,
+                            children: node.children,
+                            definitionName: node.definitionName,
+                            options: _vm.options
+                          }
+                        })
+                      }),
+                      1
+                    )
+                  : _vm._e()
+              ],
               1
             )
           ],
           1
         )
-      ],
-      1
-    )
+      : _vm._e()
   ])
 }
 var staticRenderFns = []
@@ -33018,19 +32861,15 @@ var render = function() {
   return _c("section", { staticClass: "project-toolbar" }, [
     _c("nav", { staticClass: "navbar" }, [
       _c("section", { staticClass: "navbar-section navbar-tabs" }, [
-        _vm.project
+        _vm.project.id
           ? _c(
               "span",
               { staticClass: "btn btn-link text-bold btn-empty mr-2" },
-              [
-                _vm._v(
-                  _vm._s(_vm.project.name) + " (" + _vm._s(_vm.modelTitle) + ")"
-                )
-              ]
+              [_vm._v(_vm._s(_vm.project.name))]
             )
           : _vm._e(),
         _vm._v(" "),
-        _vm.project
+        _vm.project.id
           ? _c(
               "div",
               _vm._l(_vm.filteredTabs, function(tab, idx) {
@@ -33183,7 +33022,7 @@ var render = function() {
         "section",
         { staticClass: "app-main" },
         [
-          _c("ProjectSidebar"),
+          _vm.project.id && _vm.isEditing ? _c("ProjectSidebar") : _vm._e(),
           _vm._v(" "),
           _c("keep-alive", [_c("router-view")], 1)
         ],

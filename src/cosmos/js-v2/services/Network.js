@@ -1,5 +1,7 @@
 import axios from 'axios';
 
+import Templates from '@/templates';
+
 var baseURL = '/cosmos-api/';
 
 const http = axios.create({
@@ -17,7 +19,12 @@ export default {
 	getProject(id) {
 		var endpoint = `projects/${id}`;
 		return http.request(endpoint)
-			.then(res => res.data.project);
+			.then(res => res.data.project)
+			.then(project => Templates.populateProject(project));
+			// .then(project => {
+			// 	var tpl = Templates.get(project.template);
+			// 	return tpl.Tools.populate(project);
+			// });
 	},
 
 	createProject(params) {

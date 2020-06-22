@@ -5,8 +5,8 @@
 		<nav class="navbar">
 
 			<section class="navbar-section navbar-tabs">
-				<span v-if="project" class="btn btn-link text-bold btn-empty mr-2">{{ project.name }} ({{ modelTitle }})</span>
-				<div v-if="project">
+				<span v-if="project.id" class="btn btn-link text-bold btn-empty mr-2">{{ project.name }}</span>
+				<div v-if="project.id">
 					<router-link
 						v-for="(tab, idx) in filteredTabs"
 						:key="idx"
@@ -37,8 +37,9 @@ import { get, set, sync, call } from 'vuex-pathify';
 
 import filter from 'lodash/filter';
 import map from 'lodash/map';
+import indexOf from 'lodash/indexOf';
 
-import TemplateHelper from '@/helpers/Template';
+import Templates from '@/templates';
 
 export default {
 
@@ -52,13 +53,24 @@ export default {
 			'scale',
 		]),
 
-		modelTitle: get('project@data.model.title'),
+		templateFeatures() {
+			if ( ! this.project.id) {
+				return [];
+			}
+
+			var template = Templates.get(this.project.template);
+			return template ? template.CONFIG.features : [];
+		},
 
 		/**
 		 * Get available tabs based on features of the template.
 		 *
 		 */
 		filteredTabs() {
+
+			if ( ! this.templateFeatures) {
+				return [];
+			}
 
 			var tabs = [
 				{ feature: 'dashboard', label: 'Dashboard', route: 'dashboard' },
@@ -69,7 +81,9 @@ export default {
 			];
 
 			// Get tabs for the template's features
-			tabs = filter(tabs, (tab) => this.hasFeature(tab.feature));
+			tabs = filter(tabs, (tab) => indexOf(this.templateFeatures, tab.feature) >= 0);
+
+			// console.log(tabs);
 
 			// Return object with name + route `to` param
 			tabs = map(tabs, (tab) => {
@@ -92,12 +106,6 @@ export default {
 			return this.$route.name;
 		}
 
-	},
-
-	methods: {
-		hasFeature(featureName) {
-			return TemplateHelper.hasFeature(this.project.template, featureName);
-		}
 	}
 
 }

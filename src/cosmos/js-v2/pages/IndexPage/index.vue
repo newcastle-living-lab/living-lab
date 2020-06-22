@@ -87,12 +87,11 @@ import { get, sync, call } from 'vuex-pathify';
 
 import AlertCircleIcon from 'vue-feather-icons/icons/AlertCircleIcon';
 
-// import {appStore} from '@/store/app';
-// import { state } from '@/store/store.js';
-
 import Network from "@/services/Network";
 import NewProject from './NewProject';
 import ProjectTemplateChip from '@/components/ProjectTemplateChip';
+
+import Templates from '@/templates';
 
 
 export default {
@@ -105,10 +104,6 @@ export default {
 
 	data() {
 		return {
-			// state: state,
-			// app: appStore.state,
-			// query: null,
-			// projects: [],
 			newProject: {
 				name: null,
 				template: null,

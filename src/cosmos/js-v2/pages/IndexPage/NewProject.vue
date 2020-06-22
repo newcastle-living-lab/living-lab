@@ -25,7 +25,7 @@
 
 <script>
 
-import templates from '@/data/templates.json';
+import Templates from '@/templates';
 
 export default {
 
@@ -45,7 +45,7 @@ export default {
 
 	data() {
 		return {
-			templates: templates,
+			templates: Templates.all(),
 			previousValue: {
 				name: null,
 				template: null,

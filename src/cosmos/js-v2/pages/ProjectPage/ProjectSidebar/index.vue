@@ -22,11 +22,14 @@ import Vue from 'vue';
 import map from 'lodash/map';
 import findIndex from 'lodash/findIndex';
 
+import Templates from '@/templates';
+
 import SidebarPanel from './SidebarPanel';
 
 
+
 // @TODO Move into template config
-let templateDefs = {
+/*let templateDefs = {
 	'service-model': [
 		{
 			id: "model",
@@ -169,7 +172,7 @@ let templateDefs = {
 			hint: "Are there any identified victims? If so, who are they?"
 		},
 	],
-};
+};*/
 
 
 
@@ -182,7 +185,6 @@ export default {
 	data() {
 		return {
 			currentPanel: 'meta',
-			// definitions: templateDefs
 		}
 	},
 
@@ -195,7 +197,11 @@ export default {
 		]),
 
 		definitions() {
-			return templateDefs[ this.project.template ];
+			if ( ! this.project.id) {
+				return [];
+			}
+			var template = Templates.get(this.project.template);
+			return template.DEFINITIONS;
 		},
 
 		showSidebar() {

@@ -56,10 +56,6 @@ export default {
 		}
 	},
 
-	watch: {
-		'isVisible': 'doTween',
-	},
-
 /*	watch: {
 		'value': 'refreshPositions',
 	},*/
@@ -85,7 +81,7 @@ export default {
 		groupConfig() {
 			return {
 				visible: this.isVisible,
-				opacity: 0,
+				opacity: 1,
 				x: this.config.group.x,
 				y: this.config.group.y
 			}
@@ -137,22 +133,6 @@ export default {
 	},
 
 	methods: {
-
-		doTween() {
-			if ( ! this.isVisible) {
-				return;
-			}
-			if ( ! this.tween) {
-				this.tween = new Konva.Tween({
-					node: this.$refs.group.getNode(),
-					duration: 1,
-					opacity: 1,
-				});
-			}
-			if (this.tween) {
-				this.tween.play();
-			}
-		},
 
 		mousemove() {
 			if (this.url) {
