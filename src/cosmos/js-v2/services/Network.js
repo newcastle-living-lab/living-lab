@@ -21,10 +21,6 @@ export default {
 		return http.request(endpoint)
 			.then(res => res.data.project)
 			.then(project => Templates.populateProject(project));
-			// .then(project => {
-			// 	var tpl = Templates.get(project.template);
-			// 	return tpl.Tools.populate(project);
-			// });
 	},
 
 	createProject(params) {

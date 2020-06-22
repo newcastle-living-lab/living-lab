@@ -9,12 +9,36 @@
 						<div class="card-header">
 							<div class="card-title">Open project</div>
 						</div>
+						<div class="card-filter">
+							<div class="columns">
+								<div class="column col-6">
+									<div class="has-icon-left">
+										<VInput
+											type="search"
+											class="input-sm"
+											:value="filter.query"
+											@input="updateFilterQuery"
+											maxlength="100"
+											placeholder="Search..."
+											autofocus="true"
+										/>
+										<i class="form-icon icon icon-search"></i>
+									</div>
+								</div>
+								<div class="column col-6">
+									<VSelect v-model="filter.template" class="select-sm" placeholder="Template...">
+										<option value="">(All)</option>
+										<option v-for="(tpl, idx) in searchTemplates" :value="tpl.value">{{ tpl.label }}</option>
+									</VSelect>
+								</div>
+							</div>
+						</div>
 						<div class="card-body">
 
-							<template v-if="projects.length > 0">
+							<template v-if="filteredProjects.length > 0">
 
 								<router-link
-									v-for="project in projects"
+									v-for="project in filteredProjects"
 									:key="project.id"
 									:to="'/' + project.id + '/' + project.slug + '/dashboard'"
 									class="tile tile-project"
@@ -72,8 +96,6 @@
 						</template>
 					</div>
 
-					<!-- <pre>{{ newProject }} </pre> -->
-
 				</div>
 
 			</div>
@@ -84,6 +106,8 @@
 <script>
 
 import { get, sync, call } from 'vuex-pathify';
+import debounce from 'lodash/debounce';
+import filter from 'lodash/filter';
 
 import AlertCircleIcon from 'vue-feather-icons/icons/AlertCircleIcon';
 
@@ -93,6 +117,10 @@ import ProjectTemplateChip from '@/components/ProjectTemplateChip';
 
 import Templates from '@/templates';
 
+const searchTemplates = [
+	{'value': 'service-model', 'label': 'Co-Creation of Service Model'},
+	{'value': 'analytic-model', 'label': 'Analytic Model'},
+];
 
 export default {
 
@@ -104,6 +132,11 @@ export default {
 
 	data() {
 		return {
+			filter: {
+				query: '',
+				template: null,
+			},
+			searchTemplates: searchTemplates,
 			newProject: {
 				name: null,
 				template: null,
@@ -136,6 +169,32 @@ export default {
 			let uri = path + currentRoute;
 			uri = uri.replace('//', '/');
 			return '/login?ref=' + encodeURIComponent(uri);
+		},
+
+		filteredProjects() {
+
+			if (this.filter.query == 0 && this.filter.template == 0) {
+				return this.projects;
+			}
+
+			var items = this.projects;
+
+			var query = this.filter.query;
+			if (query && query.length > 0) {
+				query = query.trim().toLowerCase();
+				items = filter(items, (project) => {
+					var nameMatch = project.name && project.name.toLowerCase().indexOf(query) !== -1;
+					var authorMatch = project.created_by && project.created_by.toLowerCase().indexOf(query) !== -1;
+					return nameMatch || authorMatch;
+				});
+			}
+
+			var tpl = this.filter.template;
+			if (tpl && tpl.length > 0) {
+				items = filter(items, { template: tpl });
+			}
+
+			return items;
 		}
 
 	},
@@ -151,7 +210,11 @@ export default {
 
 		setTitle() {
 			document.title = `${this.appName} [Living Lab]`;
-		}
+		},
+
+		updateFilterQuery: debounce(function(e) {
+			this.filter.query = e;
+		}, 100),
 
 	},
 

@@ -5533,6 +5533,14 @@ a.text-gray-medium:visited {
   padding-top: 0.8rem;
 }
 
+.card.card-min .card-filter {
+  -webkit-box-flex: 1;
+          flex: 1 1 auto;
+  padding: 0.8rem;
+  border-bottom: 0.05rem solid #bbb;
+  background: #f2f0f1;
+}
+
 .m-4 {
   margin: 0.8rem !important;
 }
