@@ -1,7 +1,7 @@
 <template>
-	<div class="cosmos-index mb-16">
+	<div class="cosmos-index">
 
-		<div class="container grid-lg">
+		<div class="container grid-lg mb-16">
 			<div class="columns">
 
 				<div class="column col-8">

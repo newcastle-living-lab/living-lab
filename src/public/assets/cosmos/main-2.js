@@ -32666,8 +32666,8 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "cosmos-index mb-16" }, [
-    _c("div", { staticClass: "container grid-lg" }, [
+  return _c("div", { staticClass: "cosmos-index" }, [
+    _c("div", { staticClass: "container grid-lg mb-16" }, [
       _c("div", { staticClass: "columns" }, [
         _c("div", { staticClass: "column col-8" }, [
           _c("div", { staticClass: "card card-min card-projects" }, [
