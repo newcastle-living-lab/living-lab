@@ -1,5 +1,12 @@
 <template>
-	<input class="form-input" :type="type" v-model="val" @input="onInput" />
+	<input
+		class="form-input"
+		:type="type"
+		v-model="val"
+		@input="onInput"
+		@keyup.enter="onEnter"
+		@keyup.esc="onEsc"
+	/>
 </template>
 
 <script>
@@ -23,6 +30,12 @@ export default {
 	methods: {
 		onInput() {
 			if (this.value !== this.val) this.$emit("input", this.val);
+		},
+		onEnter() {
+			this.$emit("enter");
+		},
+		onEsc() {
+			this.$emit("esc");
 		}
 	}
 }

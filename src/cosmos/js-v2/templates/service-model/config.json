@@ -1,0 +1,9 @@
+{
+	"name": "service-model",
+	"title": "Co-Creation of Service Model",
+	"features": ["dashboard", "theory_of_change", "community_reporting", "social_media", "living_lab_models"],
+	"stageSize": {
+		"width": 1500,
+		"height": 980
+	}
+}

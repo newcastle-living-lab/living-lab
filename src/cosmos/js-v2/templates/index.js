@@ -2,9 +2,11 @@ import find from 'lodash/find';
 import map from 'lodash/map';
 
 import AnalyticModel from './analytic-model';
+import ServiceModel from './service-model';
 
 const allTemplates = [
-	AnalyticModel
+	AnalyticModel,
+	ServiceModel,
 ];
 
 

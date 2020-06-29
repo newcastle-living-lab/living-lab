@@ -33,7 +33,6 @@
 
 import { get, set, sync, call } from 'vuex-pathify';
 
-import Network from "@/services/Network";
 import Templates from '@/templates';
 
 export default {
@@ -41,13 +40,6 @@ export default {
 	watch: {
 		'scale': 'resize',
 		'stageHover': 'setCursor',
-	},
-
-	data() {
-
-		return {
-
-		}
 	},
 
 	computed: {
@@ -175,10 +167,3 @@ export default {
 }
 
 </script>
-
-<style scoped>
-pre {
-	background: #efefef;
-	font-size: 80%;
-}
-</style>

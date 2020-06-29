@@ -1,6 +1,6 @@
 <template>
 	<div class="form-group">
-		<label class="form-label" :for="name">{{ label }}</label>
+		<label class="form-label" :class="labelClass" :for="name">{{ label }}</label>
 		<slot />
 	</div>
 </template>
@@ -11,6 +11,7 @@ export default {
 	props: {
 		'name': String,
 		'label': String,
+		'labelClass': String,
 	}
 };
 </script>

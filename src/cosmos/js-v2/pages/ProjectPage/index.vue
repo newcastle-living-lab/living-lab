@@ -52,10 +52,11 @@ export default {
 
 		projectChanged() {
 			if (this.project.id && this.project.name) {
-				if (this.project.template === 'service-model') {
-					top.location.href = top.location.href.replace(/\/cosmos\//, '/cosmos-1/');
-					return;
-				}
+				// @TODO Temporary redirect until service-model is editable in COSMOS v2
+				// if (this.project.template === 'service-model') {
+				// 	top.location.href = top.location.href.replace(/\/cosmos\//, '/cosmos-1/');
+				// 	return;
+				// }
 				document.title = `${this.project.name} | ${this.appName} [Living Lab]`;
 			}
 		}

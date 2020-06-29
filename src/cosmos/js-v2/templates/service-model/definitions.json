@@ -1,0 +1,70 @@
+[
+	{
+		"id": "model",
+		"type": "model",
+		"title": "Model",
+		"hint": null
+	},
+	{
+		"id": "policyDef",
+		"type": "stakeholder",
+		"title": "Policy Definer",
+		"hint": "Who are, or were, the definers of the service policies and the principles under which the service operates?"
+	},
+	{
+		"id": "specDes",
+		"type": "stakeholder",
+		"title": "Specifier and Designer",
+		"hint": "Who specifies / specified and designs / designed the service delivery processes and resources?"
+	},
+	{
+		"id": "deployment",
+		"type": "stakeholder",
+		"title": "Deployer",
+		"hint": "Who deploys / deployed and activates / activated those processes and resources?"
+	},
+	{
+		"id": "delivery",
+		"type": "stakeholder",
+		"title": "Deliverer",
+		"hint": "Who is responsible for the delivery mechanism(s), channels and roles in your pilot?"
+	},
+	{
+		"id": "evaluation",
+		"type": "stakeholder",
+		"title": "Evaluator",
+		"hint": "Who is the evaluator(s) and governors of the service?"
+	},
+	{
+		"id": "user",
+		"type": "stakeholder",
+		"title": "User",
+		"hint": "Who is the direct user of the service?"
+	},
+	{
+		"id": "beneficiary",
+		"type": "stakeholder",
+		"title": "Beneficiary",
+		"hint": "Are there beneficiaries other than the direct user/participants? If so, who are they?"
+	},
+	{
+		"id": "initiator",
+		"type": "stakeholder",
+		"title": "Initiator",
+		"hint": "Who are, or were, the instigators who initiated your pilot activity?"
+	},
+	{
+		"id": "theoryOfChange",
+		"type": "externals",
+		"title": "Theory of Change",
+		"hint": "Please add any theories of change your project may have.",
+		"useImages": false
+	},
+	{
+		"id": "livingLabModels",
+		"type": "externals",
+		"title": "Living Lab Models",
+		"hint": "Please add any Living Lab models your project may have.",
+		"useImages": true
+	}
+]

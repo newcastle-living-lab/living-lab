@@ -11,7 +11,12 @@
 				{{ hint }}
 			</div>
 
-			<component v-bind:is="componentName" v-model="model" :definition="definition"></component>
+			<component
+				v-bind:is="componentName"
+				v-model="model"
+				:definition="definition"
+				:isVisible="isVisible"
+			></component>
 
 			<div class="sidebar-footer">
 				<VButton @click="goNext()" v-if="hasNext" class="btn-success">Next</VButton>
@@ -29,12 +34,14 @@ import { get, set, sync, call } from 'vuex-pathify';
 import InfoIcon from 'vue-feather-icons/icons/InfoIcon';
 
 // @TODO: Put these in their own lib to `install` them.
-import MetaEditor from '@/components/project/MetaEditor';
-import ModelEditor from '@/components/project/definitions/ModelEditor';
-import StakeholderEditor from '@/components/project/definitions/StakeholderEditor';
+import MetaEditor from '@/components/project/edit/MetaEditor';
+import ModelEditor from '@/components/project/edit/definitions/ModelEditor';
+import StakeholderEditor from '@/components/project/edit/definitions/StakeholderEditor';
+import ExternalsEditor from '@/components/project/edit/definitions/ExternalsEditor';
 Vue.component('meta-editor', MetaEditor);
 Vue.component('model-editor', ModelEditor);
 Vue.component('stakeholder-editor', StakeholderEditor);
+Vue.component('externals-editor', ExternalsEditor);
 
 export default {
 
