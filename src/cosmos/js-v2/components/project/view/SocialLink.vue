@@ -12,17 +12,18 @@ import { mapActions } from 'vuex';
 
 export default {
 
-	props: [
-		'item',
-	],
+	props: {
+		value: String,
+		network: String,
+	},
 
 	computed: {
 
 		formattedLabel() {
 
-			let val = this.item.value;
+			let val = this.value;
 
-			if (this.item.network === 'facebook') {
+			if (this.network === 'facebook') {
 				let domain = 'facebook.com';
 				let fbPos = val.indexOf('facebook.com');
 				if (fbPos > -1) {
@@ -31,12 +32,12 @@ export default {
 				}
 			}
 
-			if (this.item.network == 'twitter' || this.item.network == 'instagram') {
+			if (this.network == 'twitter' || this.network == 'instagram') {
 				val = val.replace(/^#/, '');
 				return `<span class='hashtag'>#</span>${val}`;
 			}
 
-			if (this.item.network == 'youtube') {
+			if (this.network == 'youtube') {
 				let regExp = /^.*(youtu\.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
 				let match = val.match(regExp);
 				if (match && match[2].length == 11) {
@@ -46,21 +47,21 @@ export default {
 		},
 
 		showHashtag() {
-			return (this.item.network == 'twitter' || this.item.network == 'instagram');
+			return (this.network == 'twitter' || this.network == 'instagram');
 		},
 
 		rawHashtag() {
-			return this.item.value.replace(/^#/, '').trim();
+			return this.value.replace(/^#/, '').trim();
 		},
 
 		url() {
-			switch (this.item.network) {
+			switch (this.network) {
 				case 'twitter':
 					return `https://twitter.com/hashtag/${this.rawHashtag}`;
 				break;
 				case 'facebook':
 				case 'youtube':
-					return this.item.value;
+					return this.value;
 				break;
 				case 'instagram':
 					return `https://www.instagram.com/explore/tags/${this.rawHashtag}/`;

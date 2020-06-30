@@ -51,7 +51,7 @@ export default {
 				return [];
 			}
 
-			return this.project.data.theoryOfChange;
+			return this.project.data.theoryOfChange.items;
 		}
 
 	}

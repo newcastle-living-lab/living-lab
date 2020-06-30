@@ -7,9 +7,10 @@
 					<h3 class="social-heading item-twitter-bg"><twitter-icon />Twitter</h3>
 					<ul class="menu">
 						<social-link
-							v-for="(item, index) in twitter"
+							v-for="(value, index) in socialLinks.twitter"
 							:key="index"
-							:item="item"
+							:value="value"
+							network="twitter"
 						/>
 					</ul>
 				</div>
@@ -17,9 +18,10 @@
 					<h3 class="social-heading item-facebook-bg"><facebook-icon />Facebook</h3>
 					<ul class="menu">
 						<social-link
-							v-for="(item, index) in facebook"
+							v-for="(value, index) in socialLinks.facebook"
 							:key="index"
-							:item="item"
+							:value="value"
+							network="facebook"
 						/>
 					</ul>
 				</div>
@@ -27,9 +29,10 @@
 					<h3 class="social-heading item-instagram-bg"><instagram-icon />Instagram</h3>
 					<ul class="menu">
 						<social-link
-							v-for="(item, index) in instagram"
+							v-for="(value, index) in socialLinks.instagram"
 							:key="index"
-							:item="item"
+							:value="value"
+							network="instagram"
 						/>
 					</ul>
 				</div>
@@ -37,9 +40,10 @@
 					<h3 class="social-heading item-youtube-bg"><youtube-icon />YouTube</h3>
 					<ul class="menu">
 						<social-link
-							v-for="(item, index) in youtube"
+							v-for="(value, index) in socialLinks.youtube"
 							:key="index"
-							:item="item"
+							:value="value"
+							network="youtube"
 						/>
 					</ul>
 				</div>
@@ -94,22 +98,6 @@ export default {
 			}
 
 			return this.project.data.social;
-		},
-
-		twitter() {
-			return this.socialLinks.filter(item => item.network == 'twitter');
-		},
-
-		facebook() {
-			return this.socialLinks.filter(item => item.network == 'facebook');
-		},
-
-		instagram() {
-			return this.socialLinks.filter(item => item.network == 'instagram');
-		},
-
-		youtube() {
-			return this.socialLinks.filter(item => item.network == 'youtube');
 		},
 
 	}

@@ -28,9 +28,7 @@
 				vertical-align: -10%;
 			}
 
-			&:hover,
-			&:focus,
-			&:active {
+			&:hover {
 				color: inherit;
 				background: $clrs-blue;	//lighten($clrs-black, 10%);
 			}

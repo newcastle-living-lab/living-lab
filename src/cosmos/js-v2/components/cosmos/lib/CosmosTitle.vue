@@ -45,7 +45,7 @@ export default {
 				lineHeight: 1.3,
 				x: 20,
 				y: 20,
-				width: 400,
+				width: 800,
 			};
 			return Object.assign({}, defaultConfig, this.config);
 		}

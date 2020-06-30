@@ -51,7 +51,7 @@ export default {
 				return [];
 			}
 
-			return this.project.data.communityReporting;
+			return this.project.data.communityReporting.items;
 		}
 
 	}

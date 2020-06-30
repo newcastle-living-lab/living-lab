@@ -3,7 +3,7 @@
 	<div class="sidebar-content">
 
 		<VGroup name="title" label="Title">
-			<VInput type="text" id="title" v-model="val.title" maxlength="255" />
+			<VTextarea rows="4" id="title" v-model="val.title" />
 		</VGroup>
 
 	</div>

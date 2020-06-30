@@ -1,21 +1,21 @@
 <template>
-	<input
+	<textarea
 		class="form-input"
-		:type="type"
 		v-model="val"
+		:rows="rows"
 		@input="onInput"
 		@keyup.enter="onEnter"
 		@keyup.esc="onEsc"
-	/>
+	></textarea>
 </template>
 
 <script>
 
 export default {
-	name: "VInput",
+	name: "VTextarea",
 	props: {
-		type: String,
-		value: [String, Number]
+		rows: [String, Number],
+		value: [String, Number],
 	},
 	computed: {
 		val: {
@@ -31,11 +31,11 @@ export default {
 		onInput() {
 			if (this.value !== this.val) this.$emit("input", this.val);
 		},
-		onEnter(event) {
-			this.$emit("enter", event);
+		onEnter() {
+			this.$emit("enter");
 		},
-		onEsc(event) {
-			this.$emit("esc", event);
+		onEsc() {
+			this.$emit("esc");
 		}
 	}
 }

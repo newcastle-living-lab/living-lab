@@ -33,6 +33,11 @@ export default {
 				project.data[defName] = {};
 			}
 		}
+		if (typeof(tpl.Tools) == 'object') {
+			if (typeof(tpl.Tools.populateProject) == 'function') {
+				project = tpl.Tools.populateProject(project, tpl.DEFINITIONS);
+			}
+		}
 		return project;
 	}
 

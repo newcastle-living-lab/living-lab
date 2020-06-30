@@ -18,7 +18,7 @@
 
 			<section class="navbar-section navbar-project">
 				<div v-if="project" class="input-group input-inline ml-8">
-					<label class="form-switch">
+					<label class="form-switch" v-show="activeTab == 'dashboard'">
 						<input type="checkbox" v-model="scale">
 						<i class="form-icon"></i> <span class="text-small text-gray">Scale to fit</span>
 					</label>

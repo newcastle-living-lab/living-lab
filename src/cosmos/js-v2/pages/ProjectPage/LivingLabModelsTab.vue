@@ -51,7 +51,7 @@ export default {
 				return [];
 			}
 
-			return this.project.data.livingLabModels;
+			return this.project.data.livingLabModels.items;
 		}
 
 	}

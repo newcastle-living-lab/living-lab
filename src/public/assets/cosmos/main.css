@@ -5274,9 +5274,7 @@ a.text-gray-medium:visited {
   vertical-align: -10%;
 }
 
-.app-header .navbar-buttons .btn-link:hover,
-.app-header .navbar-buttons .btn-link:focus,
-.app-header .navbar-buttons .btn-link:active {
+.app-header .navbar-buttons .btn-link:hover {
   color: inherit;
   background: #0074d9;
 }

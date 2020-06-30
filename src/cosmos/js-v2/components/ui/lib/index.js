@@ -2,6 +2,7 @@ import VGroup from "./VGroup";
 import VButton from "./VButton";
 // import VCkbox from "./VCkbox";
 import VInput from "./VInput";
+import VTextarea from "./VTextarea";
 // import VModal from "./VModal";
 import VSelect from "./VSelect";
 import VRadio from "./VRadio";
@@ -13,6 +14,7 @@ export {
 	VButton,
 	// VCkbox,
 	VInput,
+	VTextarea,
 	// VModal,
 	VSelect,
 	VRadio,

@@ -54,11 +54,50 @@
 		"hint": "Who are, or were, the instigators who initiated your pilot activity?"
 	},
 	{
+		"id": "extsvc",
+		"type": "externals",
+		"title": "External Technical Services",
+		"hint": "What reusable facilities, (technical and human) resources, services and sources of information were developed and used in support of these service definition and development processes? What external resources and services (e.g. communications and social media) were/are used?",
+		"useLabel": true,
+		"useImages": false,
+		"limit": 8
+	},
+	{
+		"id": "extorg",
+		"type": "externals",
+		"title": "External Organisations",
+		"hint": "Are there any relevant actors, stakeholders or agencies which are relevant to the pilot, but which remain outside its vision and ethos?",
+		"useLabel": true,
+		"useImages": false,
+		"limit": 8
+	},
+	{
+		"id": "infsvc",
+		"type": "externals",
+		"title": "Infrastructural Services",
+		"hint": "What external services, channels and facilities do you make use of in the delivery of your service(s)? What information sources do you make use of? What information do you publish, to whom and using what channels and media?",
+		"useLabel": true,
+		"useImages": false,
+		"limit": 8
+	},
+	{
 		"id": "theoryOfChange",
 		"type": "externals",
 		"title": "Theory of Change",
 		"hint": "Please add any theories of change your project may have.",
 		"useImages": false
+	},
+	{
+		"id": "communityReporting",
+		"type": "externals",
+		"title": "Community Reporting",
+		"hint": "Please add any Community Reports your project may have.",
+		"useImages": false
+	},
+	{
+		"id": "social",
+		"type": "social",
+		"title": "Social Media"
 	},
 	{
 		"id": "livingLabModels",

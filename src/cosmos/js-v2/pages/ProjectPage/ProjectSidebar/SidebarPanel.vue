@@ -4,7 +4,7 @@
 
 		<h3 @click="setCurrent()" class="sidebar-heading clickable">{{ panelTitle }}</h3>
 
-		<div class="sidebar-main" v-show="isVisible">
+		<div class="sidebar-main" v-if="isVisible">
 
 			<div class="sidebar-hint" v-if="hint">
 				<info-icon size="16" />
@@ -15,7 +15,6 @@
 				v-bind:is="componentName"
 				v-model="model"
 				:definition="definition"
-				:isVisible="isVisible"
 			></component>
 
 			<div class="sidebar-footer">
@@ -38,10 +37,12 @@ import MetaEditor from '@/components/project/edit/MetaEditor';
 import ModelEditor from '@/components/project/edit/definitions/ModelEditor';
 import StakeholderEditor from '@/components/project/edit/definitions/StakeholderEditor';
 import ExternalsEditor from '@/components/project/edit/definitions/ExternalsEditor';
+import SocialEditor from '@/components/project/edit/definitions/SocialEditor';
 Vue.component('meta-editor', MetaEditor);
 Vue.component('model-editor', ModelEditor);
 Vue.component('stakeholder-editor', StakeholderEditor);
 Vue.component('externals-editor', ExternalsEditor);
+Vue.component('social-editor', SocialEditor);
 
 export default {
 

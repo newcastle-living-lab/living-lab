@@ -64,6 +64,7 @@ export default {
 
 		...get([
 			'appName',
+			'isEditing',
 			'userCanEdit',
 			'hasUser',
 			'requireAuth',
@@ -87,7 +88,11 @@ export default {
 	methods: {
 
 		doEdit() {
-			commit('START_EDITING');
+			if (!this.isEditing)  {
+				commit('START_EDITING');
+			} else {
+				commit('STOP_EDITING');
+			}
 		},
 
 		doSave() {

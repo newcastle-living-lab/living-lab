@@ -36,6 +36,12 @@ export default {
 			.catch(e => {
 				return e && e.response && e.response.data ? e.response.data : false;
 			});
+	},
+
+	uploadImage(formData) {
+		var endpoint = 'upload-image';
+		return http.post(endpoint, formData)
+			.then(res => res.data);
 	}
 
 }

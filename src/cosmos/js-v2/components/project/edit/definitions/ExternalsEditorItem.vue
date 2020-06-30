@@ -116,6 +116,8 @@
 
 import { ElementMixin, HandleDirective  } from 'vue-slicksort';
 
+import Network from '@/services/Network';
+
 const STATUS_INITIAL = 0;
 const STATUS_SAVING = 1;
 const STATUS_SUCCESS = 2;
@@ -141,11 +143,9 @@ export default {
 
 	data() {
 		return {
-			uploadedFile: null,
 			uploadError: null,
 			currentStatus: null,
 			modified: false,
-			itemImage: false,
 			dropping: false,
 		}
 	},
@@ -184,14 +184,6 @@ export default {
 			if ( ! this.useImages) {
 				return false;
 			}
-
-			// if (this.uploadedFile) {
-			// 	return this.uploadedFile.filename;
-			// }
-
-			// if (this.itemImage) {
-			// 	return this.itemImage;
-			// }
 
 			if (this.item.image) {
 				return this.item.image;
@@ -254,40 +246,9 @@ export default {
 
 			this.$emit('edit-item', this.item);
 		},
-/*
-		doneEdit() {
 
-			const label = this.$refs.label.value.trim();
-			const url = this.$refs.url.value.trim();
-			const image = this.currentImage;
-
-			const { item } = this;
-
-			if ( ! label) {
-				this.$emit('delete-item', this.item);
-			} else {
-				this.item = item;
-				// this.editExternal({
-				// 	item,
-				// 	label,
-				// 	url,
-				// 	image
-				// });
-				// this.$emit('edit-item', null);
-			}
-		},*/
-
-/*		cancelEdit(e) {
-			this.$refs.label.value = this.item.label;
-			this.$refs.url.value = this.item.url;
-			this.itemImage = this.item.image;
-			this.resetUpload();
-			this.$emit('edit-item', null);
-		},
-*/
 		resetUpload() {
 			this.currentStatus = STATUS_INITIAL;
-			this.uploadedFile = null;
 			this.uploadError = null;
 		},
 
@@ -305,13 +266,11 @@ export default {
 		doUpload(formData) {
 
 			this.currentStatus = STATUS_SAVING;
-			// this.itemImage = false;
 			this.item.image = false;
 
-			this.$api.uploadImage(formData)
+			Network.uploadImage(formData)
 				.then(res => {
-					// this.uploadedFile = res;
-					this.item.image = res;
+					this.item.image = res.filename;
 					this.currentStatus = STATUS_SUCCESS;
 				})
 				.catch(err => {
@@ -322,7 +281,6 @@ export default {
 
 		removeImage() {
 			this.resetUpload();
-			// this.itemImage = false;
 			this.item.image = false;
 		},
 
@@ -336,6 +294,7 @@ export default {
 			}
 			this.dropping = true;
 		},
+
 		fileDragStop() {
 			if (!this.dropping) {
 				return;
@@ -347,7 +306,6 @@ export default {
 
 	mounted() {
 		this.resetUpload();
-		this.itemImage = this.item.image;
 	}
 
 }
