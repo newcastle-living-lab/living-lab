@@ -8,7 +8,7 @@
 
 		<VGroup :name="inputId('body')" :label="definitionBody.label">
 			<span class="form-input-hint" v-if="definitionBody.hint">{{ definitionBody.hint }}</span>
-			<VTextarea rows="10" v-model="val.body" maxlength="255" />
+			<VTextarea rows="10" v-model="val.body" />
 		</VGroup>
 
 	</div>

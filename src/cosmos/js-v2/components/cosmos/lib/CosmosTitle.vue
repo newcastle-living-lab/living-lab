@@ -39,7 +39,7 @@ export default {
 				visible: this.isVisible,
 				visible: true,
 				text: this.model ? this.model.title : '',
-				fontSize: 30,
+				fontSize: 24,
 				// fontStyle: 'bold',
 				fontFamily: this.options.fontFamily,
 				lineHeight: 1.3,

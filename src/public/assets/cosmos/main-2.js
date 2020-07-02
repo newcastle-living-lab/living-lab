@@ -253,6 +253,144 @@ var Cosmos = {
 
 /***/ }),
 
+/***/ "./js-v2/components/cosmos/lib/CosmosExternals.vue":
+/*!*********************************************************!*\
+  !*** ./js-v2/components/cosmos/lib/CosmosExternals.vue ***!
+  \*********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _CosmosExternals_vue_vue_type_template_id_304f109b___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./CosmosExternals.vue?vue&type=template&id=304f109b& */ "./js-v2/components/cosmos/lib/CosmosExternals.vue?vue&type=template&id=304f109b&");
+/* harmony import */ var _CosmosExternals_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./CosmosExternals.vue?vue&type=script&lang=js& */ "./js-v2/components/cosmos/lib/CosmosExternals.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _CosmosExternals_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _CosmosExternals_vue_vue_type_template_id_304f109b___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _CosmosExternals_vue_vue_type_template_id_304f109b___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "js-v2/components/cosmos/lib/CosmosExternals.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./js-v2/components/cosmos/lib/CosmosExternals.vue?vue&type=script&lang=js&":
+/*!**********************************************************************************!*\
+  !*** ./js-v2/components/cosmos/lib/CosmosExternals.vue?vue&type=script&lang=js& ***!
+  \**********************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_CosmosExternals_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./CosmosExternals.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./js-v2/components/cosmos/lib/CosmosExternals.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_CosmosExternals_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./js-v2/components/cosmos/lib/CosmosExternals.vue?vue&type=template&id=304f109b&":
+/*!****************************************************************************************!*\
+  !*** ./js-v2/components/cosmos/lib/CosmosExternals.vue?vue&type=template&id=304f109b& ***!
+  \****************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_CosmosExternals_vue_vue_type_template_id_304f109b___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./CosmosExternals.vue?vue&type=template&id=304f109b& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./js-v2/components/cosmos/lib/CosmosExternals.vue?vue&type=template&id=304f109b&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_CosmosExternals_vue_vue_type_template_id_304f109b___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_CosmosExternals_vue_vue_type_template_id_304f109b___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./js-v2/components/cosmos/lib/CosmosExternalsItem.vue":
+/*!*************************************************************!*\
+  !*** ./js-v2/components/cosmos/lib/CosmosExternalsItem.vue ***!
+  \*************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _CosmosExternalsItem_vue_vue_type_template_id_6a071664___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./CosmosExternalsItem.vue?vue&type=template&id=6a071664& */ "./js-v2/components/cosmos/lib/CosmosExternalsItem.vue?vue&type=template&id=6a071664&");
+/* harmony import */ var _CosmosExternalsItem_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./CosmosExternalsItem.vue?vue&type=script&lang=js& */ "./js-v2/components/cosmos/lib/CosmosExternalsItem.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _CosmosExternalsItem_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _CosmosExternalsItem_vue_vue_type_template_id_6a071664___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _CosmosExternalsItem_vue_vue_type_template_id_6a071664___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "js-v2/components/cosmos/lib/CosmosExternalsItem.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./js-v2/components/cosmos/lib/CosmosExternalsItem.vue?vue&type=script&lang=js&":
+/*!**************************************************************************************!*\
+  !*** ./js-v2/components/cosmos/lib/CosmosExternalsItem.vue?vue&type=script&lang=js& ***!
+  \**************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_CosmosExternalsItem_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./CosmosExternalsItem.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./js-v2/components/cosmos/lib/CosmosExternalsItem.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_CosmosExternalsItem_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./js-v2/components/cosmos/lib/CosmosExternalsItem.vue?vue&type=template&id=6a071664&":
+/*!********************************************************************************************!*\
+  !*** ./js-v2/components/cosmos/lib/CosmosExternalsItem.vue?vue&type=template&id=6a071664& ***!
+  \********************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_CosmosExternalsItem_vue_vue_type_template_id_6a071664___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./CosmosExternalsItem.vue?vue&type=template&id=6a071664& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./js-v2/components/cosmos/lib/CosmosExternalsItem.vue?vue&type=template&id=6a071664&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_CosmosExternalsItem_vue_vue_type_template_id_6a071664___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_CosmosExternalsItem_vue_vue_type_template_id_6a071664___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
 /***/ "./js-v2/components/cosmos/lib/CosmosGroup.vue":
 /*!*****************************************************!*\
   !*** ./js-v2/components/cosmos/lib/CosmosGroup.vue ***!
@@ -317,6 +455,75 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_CosmosGroup_vue_vue_type_template_id_ecc5d9dc___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_CosmosGroup_vue_vue_type_template_id_ecc5d9dc___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./js-v2/components/cosmos/lib/CosmosInfoBox.vue":
+/*!*******************************************************!*\
+  !*** ./js-v2/components/cosmos/lib/CosmosInfoBox.vue ***!
+  \*******************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _CosmosInfoBox_vue_vue_type_template_id_3721d510___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./CosmosInfoBox.vue?vue&type=template&id=3721d510& */ "./js-v2/components/cosmos/lib/CosmosInfoBox.vue?vue&type=template&id=3721d510&");
+/* harmony import */ var _CosmosInfoBox_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./CosmosInfoBox.vue?vue&type=script&lang=js& */ "./js-v2/components/cosmos/lib/CosmosInfoBox.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _CosmosInfoBox_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _CosmosInfoBox_vue_vue_type_template_id_3721d510___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _CosmosInfoBox_vue_vue_type_template_id_3721d510___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "js-v2/components/cosmos/lib/CosmosInfoBox.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./js-v2/components/cosmos/lib/CosmosInfoBox.vue?vue&type=script&lang=js&":
+/*!********************************************************************************!*\
+  !*** ./js-v2/components/cosmos/lib/CosmosInfoBox.vue?vue&type=script&lang=js& ***!
+  \********************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_CosmosInfoBox_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./CosmosInfoBox.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./js-v2/components/cosmos/lib/CosmosInfoBox.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_CosmosInfoBox_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./js-v2/components/cosmos/lib/CosmosInfoBox.vue?vue&type=template&id=3721d510&":
+/*!**************************************************************************************!*\
+  !*** ./js-v2/components/cosmos/lib/CosmosInfoBox.vue?vue&type=template&id=3721d510& ***!
+  \**************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_CosmosInfoBox_vue_vue_type_template_id_3721d510___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./CosmosInfoBox.vue?vue&type=template&id=3721d510& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./js-v2/components/cosmos/lib/CosmosInfoBox.vue?vue&type=template&id=3721d510&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_CosmosInfoBox_vue_vue_type_template_id_3721d510___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_CosmosInfoBox_vue_vue_type_template_id_3721d510___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 
@@ -529,6 +736,75 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./js-v2/components/cosmos/lib/CosmosTextBox.vue":
+/*!*******************************************************!*\
+  !*** ./js-v2/components/cosmos/lib/CosmosTextBox.vue ***!
+  \*******************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _CosmosTextBox_vue_vue_type_template_id_7a9637b1___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./CosmosTextBox.vue?vue&type=template&id=7a9637b1& */ "./js-v2/components/cosmos/lib/CosmosTextBox.vue?vue&type=template&id=7a9637b1&");
+/* harmony import */ var _CosmosTextBox_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./CosmosTextBox.vue?vue&type=script&lang=js& */ "./js-v2/components/cosmos/lib/CosmosTextBox.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _CosmosTextBox_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _CosmosTextBox_vue_vue_type_template_id_7a9637b1___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _CosmosTextBox_vue_vue_type_template_id_7a9637b1___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "js-v2/components/cosmos/lib/CosmosTextBox.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./js-v2/components/cosmos/lib/CosmosTextBox.vue?vue&type=script&lang=js&":
+/*!********************************************************************************!*\
+  !*** ./js-v2/components/cosmos/lib/CosmosTextBox.vue?vue&type=script&lang=js& ***!
+  \********************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_CosmosTextBox_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./CosmosTextBox.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./js-v2/components/cosmos/lib/CosmosTextBox.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_CosmosTextBox_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./js-v2/components/cosmos/lib/CosmosTextBox.vue?vue&type=template&id=7a9637b1&":
+/*!**************************************************************************************!*\
+  !*** ./js-v2/components/cosmos/lib/CosmosTextBox.vue?vue&type=template&id=7a9637b1& ***!
+  \**************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_CosmosTextBox_vue_vue_type_template_id_7a9637b1___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./CosmosTextBox.vue?vue&type=template&id=7a9637b1& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./js-v2/components/cosmos/lib/CosmosTextBox.vue?vue&type=template&id=7a9637b1&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_CosmosTextBox_vue_vue_type_template_id_7a9637b1___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_CosmosTextBox_vue_vue_type_template_id_7a9637b1___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
 /***/ "./js-v2/components/cosmos/lib/CosmosTitle.vue":
 /*!*****************************************************!*\
   !*** ./js-v2/components/cosmos/lib/CosmosTitle.vue ***!
@@ -602,7 +878,7 @@ __webpack_require__.r(__webpack_exports__);
 /*!**********************************************!*\
   !*** ./js-v2/components/cosmos/lib/index.js ***!
   \**********************************************/
-/*! exports provided: CosmosTitle, CosmosGroup, CosmosStakeholder, CosmosNodeBracket */
+/*! exports provided: CosmosTitle, CosmosInfoBox, CosmosTextBox, CosmosExternals, CosmosExternalsItem, CosmosGroup, CosmosStakeholder, CosmosNodeBracket */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -613,11 +889,27 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _CosmosTitle__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./CosmosTitle */ "./js-v2/components/cosmos/lib/CosmosTitle.vue");
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "CosmosTitle", function() { return _CosmosTitle__WEBPACK_IMPORTED_MODULE_1__["default"]; });
 
-/* harmony import */ var _CosmosStakeholder__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./CosmosStakeholder */ "./js-v2/components/cosmos/lib/CosmosStakeholder.vue");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "CosmosStakeholder", function() { return _CosmosStakeholder__WEBPACK_IMPORTED_MODULE_2__["default"]; });
+/* harmony import */ var _CosmosInfoBox__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./CosmosInfoBox */ "./js-v2/components/cosmos/lib/CosmosInfoBox.vue");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "CosmosInfoBox", function() { return _CosmosInfoBox__WEBPACK_IMPORTED_MODULE_2__["default"]; });
 
-/* harmony import */ var _CosmosNodeBracket__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./CosmosNodeBracket */ "./js-v2/components/cosmos/lib/CosmosNodeBracket.vue");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "CosmosNodeBracket", function() { return _CosmosNodeBracket__WEBPACK_IMPORTED_MODULE_3__["default"]; });
+/* harmony import */ var _CosmosTextBox__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./CosmosTextBox */ "./js-v2/components/cosmos/lib/CosmosTextBox.vue");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "CosmosTextBox", function() { return _CosmosTextBox__WEBPACK_IMPORTED_MODULE_3__["default"]; });
+
+/* harmony import */ var _CosmosExternals__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./CosmosExternals */ "./js-v2/components/cosmos/lib/CosmosExternals.vue");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "CosmosExternals", function() { return _CosmosExternals__WEBPACK_IMPORTED_MODULE_4__["default"]; });
+
+/* harmony import */ var _CosmosExternalsItem__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./CosmosExternalsItem */ "./js-v2/components/cosmos/lib/CosmosExternalsItem.vue");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "CosmosExternalsItem", function() { return _CosmosExternalsItem__WEBPACK_IMPORTED_MODULE_5__["default"]; });
+
+/* harmony import */ var _CosmosStakeholder__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./CosmosStakeholder */ "./js-v2/components/cosmos/lib/CosmosStakeholder.vue");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "CosmosStakeholder", function() { return _CosmosStakeholder__WEBPACK_IMPORTED_MODULE_6__["default"]; });
+
+/* harmony import */ var _CosmosNodeBracket__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./CosmosNodeBracket */ "./js-v2/components/cosmos/lib/CosmosNodeBracket.vue");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "CosmosNodeBracket", function() { return _CosmosNodeBracket__WEBPACK_IMPORTED_MODULE_7__["default"]; });
+
+
+
+
 
 
 
@@ -3854,10 +4146,10 @@ var _nodes_json__WEBPACK_IMPORTED_MODULE_2___namespace = /*#__PURE__*/__webpack_
 /*!**************************************************!*\
   !*** ./js-v2/templates/service-model/nodes.json ***!
   \**************************************************/
-/*! exports provided: 0, default */
+/*! exports provided: 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, default */
 /***/ (function(module) {
 
-module.exports = JSON.parse("[{\"componentName\":\"CosmosTitle\",\"definitionName\":\"model\"}]");
+module.exports = JSON.parse("[{\"componentName\":\"CosmosTitle\",\"definitionName\":\"model\"},{\"componentName\":\"CosmosInfoBox\",\"definitionName\":\"drivers\",\"config\":{\"x\":20,\"y\":100}},{\"componentName\":\"CosmosExternals\",\"definitionName\":\"extorg\",\"config\":{\"x\":20,\"y\":250,\"itemColour\":\"#f012be\"}},{\"componentName\":\"CosmosExternals\",\"definitionName\":\"extsvc\",\"config\":{\"x\":20,\"y\":740,\"itemColour\":\"#2ecc40\"}},{\"componentName\":\"CosmosExternals\",\"definitionName\":\"infsvc\",\"config\":{\"x\":980,\"y\":740,\"itemColour\":\"#2ecc40\"}},{\"componentName\":\"CosmosGroup\",\"_comment\":\"Stakeholders (LEFT) for above Serv Def + Dev Platform\",\"config\":{\"x\":620,\"y\":220},\"children\":[{\"componentName\":\"CosmosStakeholder\",\"definitionName\":\"policyDef\",\"config\":{\"group\":{\"x\":100,\"y\":10}}},{\"componentName\":\"CosmosStakeholder\",\"definitionName\":\"specDes\",\"config\":{\"group\":{\"x\":0,\"y\":160}}},{\"componentName\":\"CosmosStakeholder\",\"definitionName\":\"deployment\",\"config\":{\"group\":{\"x\":200,\"y\":160}}}]},{\"componentName\":\"CosmosStakeholder\",\"definitionName\":\"initiator\",\"config\":{\"group\":{\"x\":350,\"y\":540}}},{\"componentName\":\"CosmosTextBox\",\"config\":{\"label\":\"Service Definition and Development Platform\",\"x\":500,\"y\":570,\"textWidth\":300,\"width\":500,\"height\":50}},{\"componentName\":\"CosmosTextBox\",\"config\":{\"label\":\"Service Delivery Platform\",\"x\":980,\"y\":570,\"textWidth\":300,\"width\":500,\"height\":50}},{\"componentName\":\"v-line\",\"_comment\":\"Line between def+dev platform + delivery platform\",\"config\":{\"x\":990,\"y\":620,\"points\":[0,0,0,-400],\"stroke\":\"#3d9970\",\"strokeWidth\":2,\"dash\":[9,3]}},{\"componentName\":\"CosmosGroup\",\"_comment\":\"Stakeholders (RIGHT) for above serv del platform\",\"config\":{\"x\":1060,\"y\":220},\"children\":[{\"componentName\":\"CosmosStakeholder\",\"definitionName\":\"delivery\",\"config\":{\"group\":{\"x\":0,\"y\":10}}},{\"componentName\":\"CosmosStakeholder\",\"definitionName\":\"user\",\"config\":{\"group\":{\"x\":200,\"y\":10}}},{\"componentName\":\"CosmosStakeholder\",\"definitionName\":\"evaluation\",\"config\":{\"group\":{\"x\":0,\"y\":160}}},{\"componentName\":\"CosmosStakeholder\",\"definitionName\":\"beneficiary\",\"config\":{\"group\":{\"x\":200,\"y\":160}}}]}]");
 
 /***/ }),
 
@@ -5788,6 +6080,301 @@ var _data_templates_json__WEBPACK_IMPORTED_MODULE_1___namespace = /*#__PURE__*/_
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./js-v2/components/cosmos/lib/CosmosExternals.vue?vue&type=script&lang=js&":
+/*!******************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./js-v2/components/cosmos/lib/CosmosExternals.vue?vue&type=script&lang=js& ***!
+  \******************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var vuex_pathify__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuex-pathify */ "./node_modules/vuex-pathify/dist/vuex-pathify.esm.js");
+/* harmony import */ var colors_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! colors.css */ "./node_modules/colors.css/js/colors.js");
+/* harmony import */ var colors_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(colors_css__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var lodash_sum__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! lodash/sum */ "./node_modules/lodash/sum.js");
+/* harmony import */ var lodash_sum__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(lodash_sum__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var lodash_map__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! lodash/map */ "./node_modules/lodash/map.js");
+/* harmony import */ var lodash_map__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(lodash_map__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var lodash_throttle__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! lodash/throttle */ "./node_modules/lodash/throttle.js");
+/* harmony import */ var lodash_throttle__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(lodash_throttle__WEBPACK_IMPORTED_MODULE_4__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+
+
+var defaultModel = {
+  label: false,
+  items: []
+};
+var dimensions = {
+  item: {
+    width: 110,
+    height: 70
+  },
+  padding: 10,
+  spacing: 10
+};
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: 'CosmosExternals',
+  data: function data() {
+    return {
+      dimensions: dimensions,
+      titleFontSize: 14,
+      titleLineHeight: 1.4
+    };
+  },
+  props: {
+    options: Object,
+    definitionName: String,
+    config: Object
+  },
+  computed: {
+    projectData: Object(vuex_pathify__WEBPACK_IMPORTED_MODULE_0__["get"])('project@data'),
+    model: function model() {
+      return this.projectData && this.projectData[this.definitionName] ? this.projectData[this.definitionName] : Object.assign({}, defaultModel);
+    },
+    mappedItems: function mappedItems() {
+      var _this = this;
+
+      var items = lodash_map__WEBPACK_IMPORTED_MODULE_3___default()(this.model.items, function (item, index) {
+        var pos = {
+          x: 0,
+          y: 0
+        };
+        var row = Math.floor(index / _this.numCols),
+            col = index % _this.numCols;
+        pos.x += col * (_this.dimensions.item.width + _this.dimensions.spacing);
+        pos.y += row * (_this.dimensions.item.height + _this.dimensions.spacing);
+        return {
+          // index: index,
+          // row: row,
+          // col: col,
+          data: {
+            label: item.label,
+            url: item.url
+          },
+          config: {
+            colour: _this.config.itemColour ? _this.config.itemColour : colors_css__WEBPACK_IMPORTED_MODULE_1___default.a.black,
+            width: _this.dimensions.item.width,
+            height: _this.dimensions.item.height,
+            x: pos.x,
+            y: pos.y
+          }
+        };
+      });
+      return items;
+    },
+    numRows: function numRows() {
+      return this.config.rows ? this.config.rows : 2;
+    },
+    numCols: function numCols() {
+      return this.config.cols ? this.config.cols : 4;
+    },
+    isVisible: function isVisible() {
+      var hasLabel = this.model.label && this.model.label.length > 0;
+      var hasItems = this.model.items && this.model.items.length > 0;
+      return hasLabel && hasItems ? true : false;
+    },
+    groupConfig: function groupConfig() {
+      var width = lodash_sum__WEBPACK_IMPORTED_MODULE_2___default()([this.dimensions.padding * 2, (this.dimensions.item.width + this.dimensions.spacing) * this.numCols]);
+      var height = lodash_sum__WEBPACK_IMPORTED_MODULE_2___default()([this.dimensions.padding * 2, // top + bottom
+      this.titleFontSize * this.titleLineHeight, // title
+      this.dimensions.padding, // after title
+      (this.dimensions.item.height + this.dimensions.spacing) * this.numRows, this.dimensions.spacing]);
+      return {
+        x: this.config.x ? this.config.x : 0,
+        y: this.config.y ? this.config.y : 0,
+        width: Math.ceil(width),
+        height: Math.ceil(height),
+        visible: this.isVisible
+      };
+    },
+    titleConfig: function titleConfig() {
+      var groupConfig = this.groupConfig;
+      return {
+        x: 0,
+        y: 0,
+        width: groupConfig.width,
+        text: this.model.label ? this.model.label : false,
+        fontSize: this.titleFontSize,
+        fontStyle: 'bold',
+        fontFamily: this.options.fontFamily,
+        lineHeight: this.titleLineHeight,
+        padding: this.dimensions.padding,
+        align: 'left'
+      };
+    },
+    borderConfig: function borderConfig() {
+      var groupConfig = this.groupConfig;
+      return {
+        x: 0,
+        y: 0,
+        width: groupConfig.width,
+        height: groupConfig.height,
+        stroke: colors_css__WEBPACK_IMPORTED_MODULE_1___default.a.black,
+        strokeWidth: 1
+      };
+    },
+    itemsGroupConfig: function itemsGroupConfig() {
+      var groupConfig = this.groupConfig;
+      var y = lodash_sum__WEBPACK_IMPORTED_MODULE_2___default()([this.dimensions.padding * 2, this.titleFontSize * this.titleLineHeight // title
+      ]);
+      return {
+        x: this.dimensions.padding,
+        y: Math.ceil(y)
+      };
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./js-v2/components/cosmos/lib/CosmosExternalsItem.vue?vue&type=script&lang=js&":
+/*!**********************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./js-v2/components/cosmos/lib/CosmosExternalsItem.vue?vue&type=script&lang=js& ***!
+  \**********************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var vuex_pathify__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuex-pathify */ "./node_modules/vuex-pathify/dist/vuex-pathify.esm.js");
+/* harmony import */ var colors_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! colors.css */ "./node_modules/colors.css/js/colors.js");
+/* harmony import */ var colors_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(colors_css__WEBPACK_IMPORTED_MODULE_1__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: 'CosmosExternalsItem',
+  props: {
+    data: Object,
+    config: Object,
+    options: Object
+  },
+  data: function data() {
+    return {
+      isHovering: false
+    };
+  },
+  computed: {
+    colour: function colour() {
+      return this.config.colour ? this.config.colour : colors_css__WEBPACK_IMPORTED_MODULE_1___default.a.black;
+    },
+    groupConfig: function groupConfig() {
+      return {
+        x: this.config.x,
+        y: this.config.y
+      };
+      /*
+      			var row = 0,
+      				col = 0;
+      
+      			col = (this.index % cols);
+      			row = Math.floor(this.index / cols);
+      
+      			let x = 0;
+      			let y = 30;
+      
+      			x += col * (size.width + 10);
+      			y += row * (size.height + 10);
+      
+      			x += 15;
+      			y += 10;
+      
+      			return {
+      				x: x,
+      				y: y,
+      			};*/
+    },
+    rectConfig: function rectConfig() {
+      return {
+        x: 0,
+        y: 0,
+        width: this.config.width,
+        height: this.config.height,
+        cornerRadius: this.config.height / 5,
+        fill: this.isHovering ? colors_css__WEBPACK_IMPORTED_MODULE_1___default.a.silver : null,
+        strokeWidth: 1,
+        stroke: this.colour
+      };
+    },
+    labelConfig: function labelConfig() {
+      return {
+        x: 0,
+        y: 0,
+        width: this.config.width,
+        height: this.config.height,
+        padding: 5,
+        text: this.data.label,
+        fontSize: 12,
+        fontStyle: 'bold',
+        fontFamily: this.options.fontFamily,
+        lineHeight: 1.3,
+        align: 'center',
+        verticalAlign: 'middle'
+      };
+    }
+  },
+  methods: {
+    mousemove: function mousemove() {
+      if (this.data.url) {
+        this.isHovering = true;
+        Object(vuex_pathify__WEBPACK_IMPORTED_MODULE_0__["commit"])('START_STAGE_HOVER');
+      }
+    },
+    mouseout: function mouseout() {
+      if (this.data.url) {
+        this.isHovering = false;
+        Object(vuex_pathify__WEBPACK_IMPORTED_MODULE_0__["commit"])('STOP_STAGE_HOVER');
+      }
+    },
+    launchUrl: function launchUrl() {
+      if (this.data.url) {
+        this.$refs.link.click();
+      }
+    }
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./js-v2/components/cosmos/lib/CosmosGroup.vue?vue&type=script&lang=js&":
 /*!**************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./js-v2/components/cosmos/lib/CosmosGroup.vue?vue&type=script&lang=js& ***!
@@ -5832,6 +6419,140 @@ __webpack_require__.r(__webpack_exports__);
         y: this.config.y
       };
     }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./js-v2/components/cosmos/lib/CosmosInfoBox.vue?vue&type=script&lang=js&":
+/*!****************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./js-v2/components/cosmos/lib/CosmosInfoBox.vue?vue&type=script&lang=js& ***!
+  \****************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var vuex_pathify__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuex-pathify */ "./node_modules/vuex-pathify/dist/vuex-pathify.esm.js");
+/* harmony import */ var lodash_throttle__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! lodash/throttle */ "./node_modules/lodash/throttle.js");
+/* harmony import */ var lodash_throttle__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(lodash_throttle__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var colors_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! colors.css */ "./node_modules/colors.css/js/colors.js");
+/* harmony import */ var colors_css__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(colors_css__WEBPACK_IMPORTED_MODULE_2__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+var defaultModel = {
+  title: false,
+  body: false
+};
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: 'CosmosInfoBox',
+  data: function data() {
+    return {
+      height: 0
+    };
+  },
+  props: {
+    options: Object,
+    definitionName: String,
+    config: Object
+  },
+  watch: {
+    'model': {
+      handler: lodash_throttle__WEBPACK_IMPORTED_MODULE_1___default()(function (newVal, oldVal) {
+        this.refreshPositions();
+      }, 250),
+      deep: true
+    }
+  },
+  computed: {
+    projectData: Object(vuex_pathify__WEBPACK_IMPORTED_MODULE_0__["get"])('project@data'),
+    model: function model() {
+      return this.projectData && this.projectData[this.definitionName] ? this.projectData[this.definitionName] : Object.assign({}, defaultModel);
+    },
+    isVisible: function isVisible() {
+      return this.model.title && this.model.title.length > 0 ? true : false;
+    },
+    groupConfig: function groupConfig() {
+      return {
+        x: this.config.x ? this.config.x : 0,
+        y: this.config.y ? this.config.y : 0,
+        width: this.config.width ? this.config.width : 400,
+        height: 0,
+        visible: this.isVisible
+      };
+    },
+    titleConfig: function titleConfig() {
+      return {
+        x: 0,
+        y: 0,
+        width: 400,
+        text: this.model.title,
+        fontSize: 14,
+        fontStyle: 'bold',
+        fontFamily: this.options.fontFamily,
+        lineHeight: 1.3,
+        padding: 10,
+        align: 'left'
+      };
+    },
+    bodyConfig: function bodyConfig() {
+      return {
+        x: 0,
+        y: 20,
+        width: 400,
+        text: this.model.body,
+        fontFamily: this.options.fontFamily,
+        fontSize: 12,
+        lineHeight: 1.3,
+        padding: 10
+      };
+    },
+    borderConfig: function borderConfig() {
+      return {
+        x: 0,
+        y: 0,
+        width: 400,
+        height: this.height,
+        stroke: colors_css__WEBPACK_IMPORTED_MODULE_2___default.a.black,
+        strokeWidth: 1
+      };
+    }
+  },
+  methods: {
+    refreshPositions: function refreshPositions() {
+      var _this = this;
+
+      if (!this.isVisible) {
+        return;
+      }
+
+      var refs = {
+        title: this.$refs.title,
+        body: this.$refs.body
+      };
+
+      if (!refs.body || !refs.title) {
+        return;
+      }
+
+      this.$nextTick(function () {
+        _this.height = refs.body.getNode().getClientRect().height + refs.title.getNode().getClientRect().height - 20;
+      });
+    }
+  },
+  mounted: function mounted() {
+    this.refreshPositions();
   }
 });
 
@@ -6373,6 +7094,85 @@ Icons.Female = 'M 49.801 1.32 C 43.403 1.32 38.16 6.563 38.16 12.961 C 38.16 19.
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./js-v2/components/cosmos/lib/CosmosTextBox.vue?vue&type=script&lang=js&":
+/*!****************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./js-v2/components/cosmos/lib/CosmosTextBox.vue?vue&type=script&lang=js& ***!
+  \****************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var vuex_pathify__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuex-pathify */ "./node_modules/vuex-pathify/dist/vuex-pathify.esm.js");
+/* harmony import */ var colors_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! colors.css */ "./node_modules/colors.css/js/colors.js");
+/* harmony import */ var colors_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(colors_css__WEBPACK_IMPORTED_MODULE_1__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: 'CosmosTextBox',
+  data: function data() {
+    return {
+      lineHeight: 1.3
+    };
+  },
+  props: {
+    options: Object,
+    definitionName: String,
+    config: Object
+  },
+  computed: {
+    fontSize: function fontSize() {
+      return this.config.fontSize ? this.config.fontSize : 14;
+    },
+    groupConfig: function groupConfig() {
+      return {
+        x: this.config.x ? this.config.x : 0,
+        y: this.config.y ? this.config.y : 0
+      };
+    },
+    labelConfig: function labelConfig() {
+      var x = this.config.width / 2;
+      x -= this.config.textWidth / 2;
+      return {
+        x: x,
+        y: 0,
+        width: this.config.textWidth,
+        height: this.config.height,
+        text: this.config.label,
+        fontSize: this.fontSize,
+        fontStyle: 'bold',
+        fontFamily: this.options.fontFamily,
+        lineHeight: this.lineHeight,
+        align: 'center',
+        verticalAlign: 'middle'
+      };
+    },
+    borderConfig: function borderConfig() {
+      var height = this.labelHeight;
+      return {
+        x: 0,
+        y: 0,
+        width: this.config.width,
+        height: this.config.height,
+        cornerRadius: Math.ceil(this.config.height / 2),
+        stroke: colors_css__WEBPACK_IMPORTED_MODULE_1___default.a.black,
+        strokeWidth: 2
+      };
+    }
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./js-v2/components/cosmos/lib/CosmosTitle.vue?vue&type=script&lang=js&":
 /*!**************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./js-v2/components/cosmos/lib/CosmosTitle.vue?vue&type=script&lang=js& ***!
@@ -6414,7 +7214,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
       var defaultConfig = (_defaultConfig = {
         visible: this.isVisible
-      }, _defineProperty(_defaultConfig, "visible", true), _defineProperty(_defaultConfig, "text", this.model ? this.model.title : ''), _defineProperty(_defaultConfig, "fontSize", 30), _defineProperty(_defaultConfig, "fontFamily", this.options.fontFamily), _defineProperty(_defaultConfig, "lineHeight", 1.3), _defineProperty(_defaultConfig, "x", 20), _defineProperty(_defaultConfig, "y", 20), _defineProperty(_defaultConfig, "width", 800), _defaultConfig);
+      }, _defineProperty(_defaultConfig, "visible", true), _defineProperty(_defaultConfig, "text", this.model ? this.model.title : ''), _defineProperty(_defaultConfig, "fontSize", 24), _defineProperty(_defaultConfig, "fontFamily", this.options.fontFamily), _defineProperty(_defaultConfig, "lineHeight", 1.3), _defineProperty(_defaultConfig, "x", 20), _defineProperty(_defaultConfig, "y", 20), _defineProperty(_defaultConfig, "width", 800), _defaultConfig);
       return Object.assign({}, defaultConfig, this.config);
     }
   }
@@ -24617,6 +25417,41 @@ module.exports = baseSetToString;
 
 /***/ }),
 
+/***/ "./node_modules/lodash/_baseSum.js":
+/*!*****************************************!*\
+  !*** ./node_modules/lodash/_baseSum.js ***!
+  \*****************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+/**
+ * The base implementation of `_.sum` and `_.sumBy` without support for
+ * iteratee shorthands.
+ *
+ * @private
+ * @param {Array} array The array to iterate over.
+ * @param {Function} iteratee The function invoked per iteration.
+ * @returns {number} Returns the sum.
+ */
+function baseSum(array, iteratee) {
+  var result,
+      index = -1,
+      length = array.length;
+
+  while (++index < length) {
+    var current = iteratee(array[index]);
+    if (current !== undefined) {
+      result = result === undefined ? current : (result + current);
+    }
+  }
+  return result;
+}
+
+module.exports = baseSum;
+
+
+/***/ }),
+
 /***/ "./node_modules/lodash/_baseTimes.js":
 /*!*******************************************!*\
   !*** ./node_modules/lodash/_baseTimes.js ***!
@@ -29357,6 +30192,121 @@ function stubFalse() {
 }
 
 module.exports = stubFalse;
+
+
+/***/ }),
+
+/***/ "./node_modules/lodash/sum.js":
+/*!************************************!*\
+  !*** ./node_modules/lodash/sum.js ***!
+  \************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var baseSum = __webpack_require__(/*! ./_baseSum */ "./node_modules/lodash/_baseSum.js"),
+    identity = __webpack_require__(/*! ./identity */ "./node_modules/lodash/identity.js");
+
+/**
+ * Computes the sum of the values in `array`.
+ *
+ * @static
+ * @memberOf _
+ * @since 3.4.0
+ * @category Math
+ * @param {Array} array The array to iterate over.
+ * @returns {number} Returns the sum.
+ * @example
+ *
+ * _.sum([4, 2, 8, 6]);
+ * // => 20
+ */
+function sum(array) {
+  return (array && array.length)
+    ? baseSum(array, identity)
+    : 0;
+}
+
+module.exports = sum;
+
+
+/***/ }),
+
+/***/ "./node_modules/lodash/throttle.js":
+/*!*****************************************!*\
+  !*** ./node_modules/lodash/throttle.js ***!
+  \*****************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var debounce = __webpack_require__(/*! ./debounce */ "./node_modules/lodash/debounce.js"),
+    isObject = __webpack_require__(/*! ./isObject */ "./node_modules/lodash/isObject.js");
+
+/** Error message constants. */
+var FUNC_ERROR_TEXT = 'Expected a function';
+
+/**
+ * Creates a throttled function that only invokes `func` at most once per
+ * every `wait` milliseconds. The throttled function comes with a `cancel`
+ * method to cancel delayed `func` invocations and a `flush` method to
+ * immediately invoke them. Provide `options` to indicate whether `func`
+ * should be invoked on the leading and/or trailing edge of the `wait`
+ * timeout. The `func` is invoked with the last arguments provided to the
+ * throttled function. Subsequent calls to the throttled function return the
+ * result of the last `func` invocation.
+ *
+ * **Note:** If `leading` and `trailing` options are `true`, `func` is
+ * invoked on the trailing edge of the timeout only if the throttled function
+ * is invoked more than once during the `wait` timeout.
+ *
+ * If `wait` is `0` and `leading` is `false`, `func` invocation is deferred
+ * until to the next tick, similar to `setTimeout` with a timeout of `0`.
+ *
+ * See [David Corbacho's article](https://css-tricks.com/debouncing-throttling-explained-examples/)
+ * for details over the differences between `_.throttle` and `_.debounce`.
+ *
+ * @static
+ * @memberOf _
+ * @since 0.1.0
+ * @category Function
+ * @param {Function} func The function to throttle.
+ * @param {number} [wait=0] The number of milliseconds to throttle invocations to.
+ * @param {Object} [options={}] The options object.
+ * @param {boolean} [options.leading=true]
+ *  Specify invoking on the leading edge of the timeout.
+ * @param {boolean} [options.trailing=true]
+ *  Specify invoking on the trailing edge of the timeout.
+ * @returns {Function} Returns the new throttled function.
+ * @example
+ *
+ * // Avoid excessively updating the position while scrolling.
+ * jQuery(window).on('scroll', _.throttle(updatePosition, 100));
+ *
+ * // Invoke `renewToken` when the click event is fired, but not more than once every 5 minutes.
+ * var throttled = _.throttle(renewToken, 300000, { 'trailing': false });
+ * jQuery(element).on('click', throttled);
+ *
+ * // Cancel the trailing throttled invocation.
+ * jQuery(window).on('popstate', throttled.cancel);
+ */
+function throttle(func, wait, options) {
+  var leading = true,
+      trailing = true;
+
+  if (typeof func != 'function') {
+    throw new TypeError(FUNC_ERROR_TEXT);
+  }
+  if (isObject(options)) {
+    leading = 'leading' in options ? !!options.leading : leading;
+    trailing = 'trailing' in options ? !!options.trailing : trailing;
+  }
+  return debounce(func, wait, {
+    'leading': leading,
+    'maxWait': wait,
+    'trailing': trailing
+  });
+}
+
+module.exports = throttle;
 
 
 /***/ }),
@@ -34161,6 +35111,98 @@ render._withStripped = true
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./js-v2/components/cosmos/lib/CosmosExternals.vue?vue&type=template&id=304f109b&":
+/*!**********************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./js-v2/components/cosmos/lib/CosmosExternals.vue?vue&type=template&id=304f109b& ***!
+  \**********************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "v-group",
+    { attrs: { config: _vm.groupConfig } },
+    [
+      _c("v-rect", { ref: "border", attrs: { config: _vm.borderConfig } }),
+      _vm._v(" "),
+      _c("v-text", { ref: "title", attrs: { config: _vm.titleConfig } }),
+      _vm._v(" "),
+      _c(
+        "v-group",
+        { attrs: { config: _vm.itemsGroupConfig } },
+        _vm._l(_vm.mappedItems, function(item, index) {
+          return _c("CosmosExternalsItem", {
+            key: index,
+            attrs: {
+              data: item.data,
+              config: item.config,
+              options: _vm.options
+            }
+          })
+        }),
+        1
+      )
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./js-v2/components/cosmos/lib/CosmosExternalsItem.vue?vue&type=template&id=6a071664&":
+/*!**************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./js-v2/components/cosmos/lib/CosmosExternalsItem.vue?vue&type=template&id=6a071664& ***!
+  \**************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "v-group",
+    {
+      attrs: { config: _vm.groupConfig },
+      on: {
+        mousemove: _vm.mousemove,
+        mouseout: _vm.mouseout,
+        click: _vm.launchUrl,
+        tap: _vm.launchUrl
+      }
+    },
+    [
+      _c("v-rect", { attrs: { config: _vm.rectConfig } }),
+      _vm._v(" "),
+      _c("v-text", { attrs: { config: _vm.labelConfig } }),
+      _vm._v(" "),
+      _c("a", { ref: "link", attrs: { href: _vm.data.url, target: "_blank" } })
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./js-v2/components/cosmos/lib/CosmosGroup.vue?vue&type=template&id=ecc5d9dc&":
 /*!******************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./js-v2/components/cosmos/lib/CosmosGroup.vue?vue&type=template&id=ecc5d9dc& ***!
@@ -34194,6 +35236,41 @@ var render = function() {
         }
       })
     }),
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./js-v2/components/cosmos/lib/CosmosInfoBox.vue?vue&type=template&id=3721d510&":
+/*!********************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./js-v2/components/cosmos/lib/CosmosInfoBox.vue?vue&type=template&id=3721d510& ***!
+  \********************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "v-group",
+    { attrs: { config: _vm.groupConfig } },
+    [
+      _c("v-text", { ref: "title", attrs: { config: _vm.titleConfig } }),
+      _vm._v(" "),
+      _c("v-text", { ref: "body", attrs: { config: _vm.bodyConfig } }),
+      _vm._v(" "),
+      _c("v-rect", { ref: "border", attrs: { config: _vm.borderConfig } })
+    ],
     1
   )
 }
@@ -34357,6 +35434,39 @@ var render = function() {
             1
           )
         : _vm._e()
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./js-v2/components/cosmos/lib/CosmosTextBox.vue?vue&type=template&id=7a9637b1&":
+/*!********************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./js-v2/components/cosmos/lib/CosmosTextBox.vue?vue&type=template&id=7a9637b1& ***!
+  \********************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "v-group",
+    { attrs: { config: _vm.groupConfig } },
+    [
+      _c("v-rect", { ref: "border", attrs: { config: _vm.borderConfig } }),
+      _vm._v(" "),
+      _c("v-text", { ref: "label", attrs: { config: _vm.labelConfig } })
     ],
     1
   )
@@ -35052,7 +36162,7 @@ var render = function() {
             : _vm._e(),
           _vm._v(" "),
           _c("VTextarea", {
-            attrs: { rows: "10", maxlength: "255" },
+            attrs: { rows: "10" },
             model: {
               value: _vm.val.body,
               callback: function($$v) {

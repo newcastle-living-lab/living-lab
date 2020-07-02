@@ -2,5 +2,174 @@
 	{
 		"componentName": "CosmosTitle",
 		"definitionName": "model"
+	},
+	{
+		"componentName": "CosmosInfoBox",
+		"definitionName": "drivers",
+		"config": {
+			"x": 20,
+			"y": 100
+		}
+	},
+	{
+		"componentName": "CosmosExternals",
+		"definitionName": "extorg",
+		"config": {
+			"x": 20,
+			"y": 250,
+			"itemColour": "#f012be"
+		}
+	},
+	{
+		"componentName": "CosmosExternals",
+		"definitionName": "extsvc",
+		"config": {
+			"x": 20,
+			"y": 740,
+			"itemColour": "#2ecc40"
+		}
+	},
+	{
+		"componentName": "CosmosExternals",
+		"definitionName": "infsvc",
+		"config": {
+			"x": 980,
+			"y": 740,
+			"itemColour": "#2ecc40"
+		}
+	},
+	{
+		"componentName": "CosmosGroup",
+		"_comment": "Stakeholders (LEFT) for above Serv Def + Dev Platform",
+		"config": {
+			"x": 620,
+			"y": 220
+		},
+		"children": [
+			{
+				"componentName": "CosmosStakeholder",
+				"definitionName": "policyDef",
+				"config": {
+					"group": {
+						"x": 100,
+						"y": 10
+					}
+				}
+			},
+			{
+				"componentName": "CosmosStakeholder",
+				"definitionName": "specDes",
+				"config": {
+					"group": {
+						"x": 0,
+						"y": 160
+					}
+				}
+			},
+			{
+				"componentName": "CosmosStakeholder",
+				"definitionName": "deployment",
+				"config": {
+					"group": {
+						"x": 200,
+						"y": 160
+					}
+				}
+			}
+		]
+	},
+	{
+		"componentName": "CosmosStakeholder",
+		"definitionName": "initiator",
+		"config": {
+			"group": {
+				"x": 350,
+				"y": 540
+			}
+		}
+	},
+	{
+		"componentName": "CosmosTextBox",
+		"config": {
+			"label": "Service Definition and Development Platform",
+			"x": 500,
+			"y": 570,
+			"textWidth": 300,
+			"width": 500,
+			"height": 50
+		}
+	},
+	{
+		"componentName": "CosmosTextBox",
+		"config": {
+			"label": "Service Delivery Platform",
+			"x": 980,
+			"y": 570,
+			"textWidth": 300,
+			"width": 500,
+			"height": 50
+		}
+	},
+	{
+		"componentName": "v-line",
+		"_comment": "Line between def+dev platform + delivery platform",
+		"config": {
+			"x": 990,
+			"y": 620,
+			"points": [0, 0, 0, -400],
+			"stroke": "#3d9970",
+			"strokeWidth": 2,
+			"dash": [9, 3]
+		}
+	},
+	{
+		"componentName": "CosmosGroup",
+		"_comment": "Stakeholders (RIGHT) for above serv del platform",
+		"config": {
+			"x": 1060,
+			"y": 220
+		},
+		"children": [
+			{
+				"componentName": "CosmosStakeholder",
+				"definitionName": "delivery",
+				"config": {
+					"group": {
+						"x": 0,
+						"y": 10
+					}
+				}
+			},
+			{
+				"componentName": "CosmosStakeholder",
+				"definitionName": "user",
+				"config": {
+					"group": {
+						"x": 200,
+						"y": 10
+					}
+				}
+			},
+			{
+				"componentName": "CosmosStakeholder",
+				"definitionName": "evaluation",
+				"config": {
+					"group": {
+						"x": 0,
+						"y": 160
+					}
+				}
+			},
+			{
+				"componentName": "CosmosStakeholder",
+				"definitionName": "beneficiary",
+				"config": {
+					"group": {
+						"x": 200,
+						"y": 160
+					}
+				}
+			}
+		]
 	}
 ]
