@@ -42,31 +42,10 @@ export default {
 		},
 
 		groupConfig() {
-
 			return {
 				x: this.config.x,
 				y: this.config.y
 			};
-/*
-			var row = 0,
-				col = 0;
-
-			col = (this.index % cols);
-			row = Math.floor(this.index / cols);
-
-			let x = 0;
-			let y = 30;
-
-			x += col * (size.width + 10);
-			y += row * (size.height + 10);
-
-			x += 15;
-			y += 10;
-
-			return {
-				x: x,
-				y: y,
-			};*/
 		},
 
 		rectConfig() {
