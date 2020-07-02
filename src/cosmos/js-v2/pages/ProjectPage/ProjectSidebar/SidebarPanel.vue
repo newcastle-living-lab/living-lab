@@ -38,11 +38,13 @@ import ModelEditor from '@/components/project/edit/definitions/ModelEditor';
 import StakeholderEditor from '@/components/project/edit/definitions/StakeholderEditor';
 import ExternalsEditor from '@/components/project/edit/definitions/ExternalsEditor';
 import SocialEditor from '@/components/project/edit/definitions/SocialEditor';
+import InfoEditor from '@/components/project/edit/definitions/InfoEditor';
 Vue.component('meta-editor', MetaEditor);
 Vue.component('model-editor', ModelEditor);
 Vue.component('stakeholder-editor', StakeholderEditor);
 Vue.component('externals-editor', ExternalsEditor);
 Vue.component('social-editor', SocialEditor);
+Vue.component('info-editor', InfoEditor);
 
 export default {
 

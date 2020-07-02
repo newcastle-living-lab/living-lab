@@ -1059,6 +1059,76 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./js-v2/components/project/edit/definitions/InfoEditor.vue":
+/*!******************************************************************!*\
+  !*** ./js-v2/components/project/edit/definitions/InfoEditor.vue ***!
+  \******************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _InfoEditor_vue_vue_type_template_id_5ada8b06___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./InfoEditor.vue?vue&type=template&id=5ada8b06& */ "./js-v2/components/project/edit/definitions/InfoEditor.vue?vue&type=template&id=5ada8b06&");
+/* harmony import */ var _InfoEditor_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./InfoEditor.vue?vue&type=script&lang=js& */ "./js-v2/components/project/edit/definitions/InfoEditor.vue?vue&type=script&lang=js&");
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _InfoEditor_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _InfoEditor_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _InfoEditor_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _InfoEditor_vue_vue_type_template_id_5ada8b06___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _InfoEditor_vue_vue_type_template_id_5ada8b06___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "js-v2/components/project/edit/definitions/InfoEditor.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./js-v2/components/project/edit/definitions/InfoEditor.vue?vue&type=script&lang=js&":
+/*!*******************************************************************************************!*\
+  !*** ./js-v2/components/project/edit/definitions/InfoEditor.vue?vue&type=script&lang=js& ***!
+  \*******************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_InfoEditor_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../node_modules/vue-loader/lib??vue-loader-options!./InfoEditor.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./js-v2/components/project/edit/definitions/InfoEditor.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_InfoEditor_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./js-v2/components/project/edit/definitions/InfoEditor.vue?vue&type=template&id=5ada8b06&":
+/*!*************************************************************************************************!*\
+  !*** ./js-v2/components/project/edit/definitions/InfoEditor.vue?vue&type=template&id=5ada8b06& ***!
+  \*************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_InfoEditor_vue_vue_type_template_id_5ada8b06___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib??vue-loader-options!./InfoEditor.vue?vue&type=template&id=5ada8b06& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./js-v2/components/project/edit/definitions/InfoEditor.vue?vue&type=template&id=5ada8b06&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_InfoEditor_vue_vue_type_template_id_5ada8b06___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_InfoEditor_vue_vue_type_template_id_5ada8b06___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
 /***/ "./js-v2/components/project/edit/definitions/ModelEditor.vue":
 /*!*******************************************************************!*\
   !*** ./js-v2/components/project/edit/definitions/ModelEditor.vue ***!
@@ -3630,7 +3700,18 @@ function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
       }
 
       switch (def.id) {
+        case 'drivers':
+          if (_typeof(project.data[def.id]) != 'object' || Object.keys(project.data[def.id]).length === 0) {
+            newObj = {
+              title: project.data.goals ? project.data.goals.label : '',
+              body: project.data.goals ? project.data.goals.body : ''
+            };
+            project.data[def.id] = newObj;
+          }
+
+          break;
         // Legacy: convert 'title' into the "Model" object
+
         case 'model':
           if (_typeof(project.data[def.id]) != 'object' || Object.keys(project.data[def.id]).length === 0) {
             newObj = {
@@ -3710,8 +3791,8 @@ function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
       }
     }
 
-    project.data = lodash_pick__WEBPACK_IMPORTED_MODULE_3___default()(project.data, keepKeys);
-    console.log(lodash_cloneDeep__WEBPACK_IMPORTED_MODULE_0___default()(project));
+    project.data = lodash_pick__WEBPACK_IMPORTED_MODULE_3___default()(project.data, keepKeys); // console.log(cloneDeep(project));
+
     return project;
   }
 });
@@ -3733,10 +3814,10 @@ module.exports = JSON.parse("{\"name\":\"service-model\",\"title\":\"Co-Creation
 /*!********************************************************!*\
   !*** ./js-v2/templates/service-model/definitions.json ***!
   \********************************************************/
-/*! exports provided: 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, default */
+/*! exports provided: 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, default */
 /***/ (function(module) {
 
-module.exports = JSON.parse("[{\"id\":\"model\",\"type\":\"model\",\"title\":\"Model\",\"hint\":null},{\"id\":\"policyDef\",\"type\":\"stakeholder\",\"title\":\"Policy Definer\",\"hint\":\"Who are, or were, the definers of the service policies and the principles under which the service operates?\"},{\"id\":\"specDes\",\"type\":\"stakeholder\",\"title\":\"Specifier and Designer\",\"hint\":\"Who specifies / specified and designs / designed the service delivery processes and resources?\"},{\"id\":\"deployment\",\"type\":\"stakeholder\",\"title\":\"Deployer\",\"hint\":\"Who deploys / deployed and activates / activated those processes and resources?\"},{\"id\":\"delivery\",\"type\":\"stakeholder\",\"title\":\"Deliverer\",\"hint\":\"Who is responsible for the delivery mechanism(s), channels and roles in your pilot?\"},{\"id\":\"evaluation\",\"type\":\"stakeholder\",\"title\":\"Evaluator\",\"hint\":\"Who is the evaluator(s) and governors of the service?\"},{\"id\":\"user\",\"type\":\"stakeholder\",\"title\":\"User\",\"hint\":\"Who is the direct user of the service?\"},{\"id\":\"beneficiary\",\"type\":\"stakeholder\",\"title\":\"Beneficiary\",\"hint\":\"Are there beneficiaries other than the direct user/participants? If so, who are they?\"},{\"id\":\"initiator\",\"type\":\"stakeholder\",\"title\":\"Initiator\",\"hint\":\"Who are, or were, the instigators who initiated your pilot activity?\"},{\"id\":\"extsvc\",\"type\":\"externals\",\"title\":\"External Technical Services\",\"hint\":\"What reusable facilities, (technical and human) resources, services and sources of information were developed and used in support of these service definition and development processes? What external resources and services (e.g. communications and social media) were/are used?\",\"useLabel\":true,\"useImages\":false,\"limit\":8},{\"id\":\"extorg\",\"type\":\"externals\",\"title\":\"External Organisations\",\"hint\":\"Are there any relevant actors, stakeholders or agencies which are relevant to the pilot, but which remain outside its vision and ethos?\",\"useLabel\":true,\"useImages\":false,\"limit\":8},{\"id\":\"infsvc\",\"type\":\"externals\",\"title\":\"Infrastructural Services\",\"hint\":\"What external services, channels and facilities do you make use of in the delivery of your service(s)? What information sources do you make use of? What information do you publish, to whom and using what channels and media?\",\"useLabel\":true,\"useImages\":false,\"limit\":8},{\"id\":\"theoryOfChange\",\"type\":\"externals\",\"title\":\"Theory of Change\",\"hint\":\"Please add any theories of change your project may have.\",\"useImages\":false},{\"id\":\"communityReporting\",\"type\":\"externals\",\"title\":\"Community Reporting\",\"hint\":\"Please add any Community Reports your project may have.\",\"useImages\":false},{\"id\":\"social\",\"type\":\"social\",\"title\":\"Social Media\"},{\"id\":\"livingLabModels\",\"type\":\"externals\",\"title\":\"Living Lab Models\",\"hint\":\"Please add any Living Lab models your project may have.\",\"useImages\":true}]");
+module.exports = JSON.parse("[{\"id\":\"model\",\"type\":\"model\",\"title\":\"Model\",\"hint\":null},{\"id\":\"drivers\",\"type\":\"info\",\"title\":\"Drivers and Motivations\",\"hint\":\"What were / are the drivers and motivations of the project? Was it a statutory requirement, recognition of a need or demand, seizing an opportunity, addressing an inequality?\",\"body\":{\"label\":\"Drivers and Motivations\",\"hint\":\"What are the drivers and motivations involved?\"}},{\"id\":\"policyDef\",\"type\":\"stakeholder\",\"title\":\"Policy Definer\",\"hint\":\"Who are, or were, the definers of the service policies and the principles under which the service operates?\"},{\"id\":\"specDes\",\"type\":\"stakeholder\",\"title\":\"Specifier and Designer\",\"hint\":\"Who specifies / specified and designs / designed the service delivery processes and resources?\"},{\"id\":\"deployment\",\"type\":\"stakeholder\",\"title\":\"Deployer\",\"hint\":\"Who deploys / deployed and activates / activated those processes and resources?\"},{\"id\":\"delivery\",\"type\":\"stakeholder\",\"title\":\"Deliverer\",\"hint\":\"Who is responsible for the delivery mechanism(s), channels and roles in your pilot?\"},{\"id\":\"evaluation\",\"type\":\"stakeholder\",\"title\":\"Evaluator\",\"hint\":\"Who is the evaluator(s) and governors of the service?\"},{\"id\":\"user\",\"type\":\"stakeholder\",\"title\":\"User\",\"hint\":\"Who is the direct user of the service?\"},{\"id\":\"beneficiary\",\"type\":\"stakeholder\",\"title\":\"Beneficiary\",\"hint\":\"Are there beneficiaries other than the direct user/participants? If so, who are they?\"},{\"id\":\"initiator\",\"type\":\"stakeholder\",\"title\":\"Initiator\",\"hint\":\"Who are, or were, the instigators who initiated your pilot activity?\"},{\"id\":\"extsvc\",\"type\":\"externals\",\"title\":\"External Technical Services\",\"hint\":\"What reusable facilities, (technical and human) resources, services and sources of information were developed and used in support of these service definition and development processes? What external resources and services (e.g. communications and social media) were/are used?\",\"useLabel\":true,\"useImages\":false,\"limit\":8},{\"id\":\"extorg\",\"type\":\"externals\",\"title\":\"External Organisations\",\"hint\":\"Are there any relevant actors, stakeholders or agencies which are relevant to the pilot, but which remain outside its vision and ethos?\",\"useLabel\":true,\"useImages\":false,\"limit\":8},{\"id\":\"infsvc\",\"type\":\"externals\",\"title\":\"Infrastructural Services\",\"hint\":\"What external services, channels and facilities do you make use of in the delivery of your service(s)? What information sources do you make use of? What information do you publish, to whom and using what channels and media?\",\"useLabel\":true,\"useImages\":false,\"limit\":8},{\"id\":\"theoryOfChange\",\"type\":\"externals\",\"title\":\"Theory of Change\",\"hint\":\"Please add any theories of change your project may have.\",\"useImages\":false},{\"id\":\"communityReporting\",\"type\":\"externals\",\"title\":\"Community Reporting\",\"hint\":\"Please add any Community Reports your project may have.\",\"useImages\":false},{\"id\":\"social\",\"type\":\"social\",\"title\":\"Social Media\"},{\"id\":\"livingLabModels\",\"type\":\"externals\",\"title\":\"Living Lab Models\",\"hint\":\"Please add any Living Lab models your project may have.\",\"useImages\":true}]");
 
 /***/ }),
 
@@ -7044,6 +7125,77 @@ var STATUS_REMOVED = 4;
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./js-v2/components/project/edit/definitions/InfoEditor.vue?vue&type=script&lang=js&":
+/*!***************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./js-v2/components/project/edit/definitions/InfoEditor.vue?vue&type=script&lang=js& ***!
+  \***************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: {
+    definition: Object,
+    value: Object
+  },
+  computed: {
+    val: {
+      get: function get() {
+        return this.value;
+      },
+      set: function set(value) {
+        this.$emit("input", value);
+      }
+    },
+    definitionBody: function definitionBody() {
+      var body = {
+        label: 'Description',
+        hint: false
+      };
+
+      if (this.definition.body) {
+        if (this.definition.body.label) {
+          body.label = this.definition.body.label;
+        }
+
+        if (this.definition.body.hint) {
+          body.hint = this.definition.body.hint;
+        }
+      }
+
+      return body;
+    }
+  },
+  methods: {
+    inputId: function inputId(forInput) {
+      return "".concat(this.definition.id, "_").concat(forInput);
+    }
+  },
+  mounted: function mounted() {
+    this.val = this.value;
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./js-v2/components/project/edit/definitions/ModelEditor.vue?vue&type=script&lang=js&":
 /*!****************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./js-v2/components/project/edit/definitions/ModelEditor.vue?vue&type=script&lang=js& ***!
@@ -8686,6 +8838,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_project_edit_definitions_StakeholderEditor__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @/components/project/edit/definitions/StakeholderEditor */ "./js-v2/components/project/edit/definitions/StakeholderEditor.vue");
 /* harmony import */ var _components_project_edit_definitions_ExternalsEditor__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @/components/project/edit/definitions/ExternalsEditor */ "./js-v2/components/project/edit/definitions/ExternalsEditor.vue");
 /* harmony import */ var _components_project_edit_definitions_SocialEditor__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @/components/project/edit/definitions/SocialEditor */ "./js-v2/components/project/edit/definitions/SocialEditor.vue");
+/* harmony import */ var _components_project_edit_definitions_InfoEditor__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @/components/project/edit/definitions/InfoEditor */ "./js-v2/components/project/edit/definitions/InfoEditor.vue");
 //
 //
 //
@@ -8723,11 +8876,13 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('meta-editor', _components_project_edit_MetaEditor__WEBPACK_IMPORTED_MODULE_3__["default"]);
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('model-editor', _components_project_edit_definitions_ModelEditor__WEBPACK_IMPORTED_MODULE_4__["default"]);
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('stakeholder-editor', _components_project_edit_definitions_StakeholderEditor__WEBPACK_IMPORTED_MODULE_5__["default"]);
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('externals-editor', _components_project_edit_definitions_ExternalsEditor__WEBPACK_IMPORTED_MODULE_6__["default"]);
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('social-editor', _components_project_edit_definitions_SocialEditor__WEBPACK_IMPORTED_MODULE_7__["default"]);
+vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('info-editor', _components_project_edit_definitions_InfoEditor__WEBPACK_IMPORTED_MODULE_8__["default"]);
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
     InfoIcon: vue_feather_icons_icons_InfoIcon__WEBPACK_IMPORTED_MODULE_2__["default"]
@@ -34838,6 +34993,79 @@ var render = function() {
         ])
       ])
     ]
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./js-v2/components/project/edit/definitions/InfoEditor.vue?vue&type=template&id=5ada8b06&":
+/*!*******************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./js-v2/components/project/edit/definitions/InfoEditor.vue?vue&type=template&id=5ada8b06& ***!
+  \*******************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { staticClass: "sidebar-content" },
+    [
+      _c(
+        "VGroup",
+        { attrs: { name: _vm.inputId("title"), label: "Title" } },
+        [
+          _c("VInput", {
+            attrs: { type: "text", maxlength: "255" },
+            model: {
+              value: _vm.val.title,
+              callback: function($$v) {
+                _vm.$set(_vm.val, "title", $$v)
+              },
+              expression: "val.title"
+            }
+          })
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c(
+        "VGroup",
+        {
+          attrs: { name: _vm.inputId("body"), label: _vm.definitionBody.label }
+        },
+        [
+          _vm.definitionBody.hint
+            ? _c("span", { staticClass: "form-input-hint" }, [
+                _vm._v(_vm._s(_vm.definitionBody.hint))
+              ])
+            : _vm._e(),
+          _vm._v(" "),
+          _c("VTextarea", {
+            attrs: { rows: "10", maxlength: "255" },
+            model: {
+              value: _vm.val.body,
+              callback: function($$v) {
+                _vm.$set(_vm.val, "body", $$v)
+              },
+              expression: "val.body"
+            }
+          })
+        ],
+        1
+      )
+    ],
+    1
   )
 }
 var staticRenderFns = []

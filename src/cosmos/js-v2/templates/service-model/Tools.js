@@ -37,12 +37,22 @@ export default {
 
 			switch (def.id) {
 
+				case 'drivers':
+					if (typeof(project.data[def.id]) != 'object' || Object.keys(project.data[def.id]).length === 0) {
+						newObj = {
+							title: project.data.goals ? project.data.goals.label : '',
+							body: project.data.goals ? project.data.goals.body : '',
+						};
+						project.data[def.id] = newObj;
+					}
+				break;
+
 				// Legacy: convert 'title' into the "Model" object
 				case 'model':
 					if (typeof(project.data[def.id]) != 'object' || Object.keys(project.data[def.id]).length === 0) {
 						newObj = {
 							title: project.data.title ? project.data.title : null,
-						}
+						};
 						project.data[def.id] = newObj
 					}
 				break;
@@ -96,7 +106,7 @@ export default {
 
 		project.data = pick(project.data, keepKeys);
 
-		console.log(cloneDeep(project));
+		// console.log(cloneDeep(project));
 
 		return project;
 	}
