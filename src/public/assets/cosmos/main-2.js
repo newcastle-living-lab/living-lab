@@ -253,6 +253,144 @@ var Cosmos = {
 
 /***/ }),
 
+/***/ "./js-v2/components/cosmos/lib/CosmosArrow.vue":
+/*!*****************************************************!*\
+  !*** ./js-v2/components/cosmos/lib/CosmosArrow.vue ***!
+  \*****************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _CosmosArrow_vue_vue_type_template_id_b64a88c8___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./CosmosArrow.vue?vue&type=template&id=b64a88c8& */ "./js-v2/components/cosmos/lib/CosmosArrow.vue?vue&type=template&id=b64a88c8&");
+/* harmony import */ var _CosmosArrow_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./CosmosArrow.vue?vue&type=script&lang=js& */ "./js-v2/components/cosmos/lib/CosmosArrow.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _CosmosArrow_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _CosmosArrow_vue_vue_type_template_id_b64a88c8___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _CosmosArrow_vue_vue_type_template_id_b64a88c8___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "js-v2/components/cosmos/lib/CosmosArrow.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./js-v2/components/cosmos/lib/CosmosArrow.vue?vue&type=script&lang=js&":
+/*!******************************************************************************!*\
+  !*** ./js-v2/components/cosmos/lib/CosmosArrow.vue?vue&type=script&lang=js& ***!
+  \******************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_CosmosArrow_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./CosmosArrow.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./js-v2/components/cosmos/lib/CosmosArrow.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_CosmosArrow_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./js-v2/components/cosmos/lib/CosmosArrow.vue?vue&type=template&id=b64a88c8&":
+/*!************************************************************************************!*\
+  !*** ./js-v2/components/cosmos/lib/CosmosArrow.vue?vue&type=template&id=b64a88c8& ***!
+  \************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_CosmosArrow_vue_vue_type_template_id_b64a88c8___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./CosmosArrow.vue?vue&type=template&id=b64a88c8& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./js-v2/components/cosmos/lib/CosmosArrow.vue?vue&type=template&id=b64a88c8&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_CosmosArrow_vue_vue_type_template_id_b64a88c8___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_CosmosArrow_vue_vue_type_template_id_b64a88c8___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./js-v2/components/cosmos/lib/CosmosCurve.vue":
+/*!*****************************************************!*\
+  !*** ./js-v2/components/cosmos/lib/CosmosCurve.vue ***!
+  \*****************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _CosmosCurve_vue_vue_type_template_id_0ffb6582___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./CosmosCurve.vue?vue&type=template&id=0ffb6582& */ "./js-v2/components/cosmos/lib/CosmosCurve.vue?vue&type=template&id=0ffb6582&");
+/* harmony import */ var _CosmosCurve_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./CosmosCurve.vue?vue&type=script&lang=js& */ "./js-v2/components/cosmos/lib/CosmosCurve.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _CosmosCurve_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _CosmosCurve_vue_vue_type_template_id_0ffb6582___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _CosmosCurve_vue_vue_type_template_id_0ffb6582___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "js-v2/components/cosmos/lib/CosmosCurve.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./js-v2/components/cosmos/lib/CosmosCurve.vue?vue&type=script&lang=js&":
+/*!******************************************************************************!*\
+  !*** ./js-v2/components/cosmos/lib/CosmosCurve.vue?vue&type=script&lang=js& ***!
+  \******************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_CosmosCurve_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./CosmosCurve.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./js-v2/components/cosmos/lib/CosmosCurve.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_CosmosCurve_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./js-v2/components/cosmos/lib/CosmosCurve.vue?vue&type=template&id=0ffb6582&":
+/*!************************************************************************************!*\
+  !*** ./js-v2/components/cosmos/lib/CosmosCurve.vue?vue&type=template&id=0ffb6582& ***!
+  \************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_CosmosCurve_vue_vue_type_template_id_0ffb6582___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./CosmosCurve.vue?vue&type=template&id=0ffb6582& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./js-v2/components/cosmos/lib/CosmosCurve.vue?vue&type=template&id=0ffb6582&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_CosmosCurve_vue_vue_type_template_id_0ffb6582___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_CosmosCurve_vue_vue_type_template_id_0ffb6582___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
 /***/ "./js-v2/components/cosmos/lib/CosmosExternals.vue":
 /*!*********************************************************!*\
   !*** ./js-v2/components/cosmos/lib/CosmosExternals.vue ***!
@@ -878,7 +1016,7 @@ __webpack_require__.r(__webpack_exports__);
 /*!**********************************************!*\
   !*** ./js-v2/components/cosmos/lib/index.js ***!
   \**********************************************/
-/*! exports provided: CosmosTitle, CosmosInfoBox, CosmosTextBox, CosmosExternals, CosmosExternalsItem, CosmosGroup, CosmosStakeholder, CosmosNodeBracket */
+/*! exports provided: CosmosTitle, CosmosInfoBox, CosmosTextBox, CosmosExternals, CosmosExternalsItem, CosmosGroup, CosmosStakeholder, CosmosNodeBracket, CosmosArrow, CosmosCurve */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -906,6 +1044,14 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony import */ var _CosmosNodeBracket__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./CosmosNodeBracket */ "./js-v2/components/cosmos/lib/CosmosNodeBracket.vue");
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "CosmosNodeBracket", function() { return _CosmosNodeBracket__WEBPACK_IMPORTED_MODULE_7__["default"]; });
+
+/* harmony import */ var _CosmosArrow__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./CosmosArrow */ "./js-v2/components/cosmos/lib/CosmosArrow.vue");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "CosmosArrow", function() { return _CosmosArrow__WEBPACK_IMPORTED_MODULE_8__["default"]; });
+
+/* harmony import */ var _CosmosCurve__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./CosmosCurve */ "./js-v2/components/cosmos/lib/CosmosCurve.vue");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "CosmosCurve", function() { return _CosmosCurve__WEBPACK_IMPORTED_MODULE_9__["default"]; });
+
+
 
 
 
@@ -1355,15 +1501,14 @@ __webpack_require__.r(__webpack_exports__);
 /*!******************************************************************!*\
   !*** ./js-v2/components/project/edit/definitions/InfoEditor.vue ***!
   \******************************************************************/
-/*! no static exports found */
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _InfoEditor_vue_vue_type_template_id_5ada8b06___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./InfoEditor.vue?vue&type=template&id=5ada8b06& */ "./js-v2/components/project/edit/definitions/InfoEditor.vue?vue&type=template&id=5ada8b06&");
 /* harmony import */ var _InfoEditor_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./InfoEditor.vue?vue&type=script&lang=js& */ "./js-v2/components/project/edit/definitions/InfoEditor.vue?vue&type=script&lang=js&");
-/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _InfoEditor_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _InfoEditor_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__[key]; }) }(__WEBPACK_IMPORT_KEY__));
-/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
 
@@ -1393,7 +1538,7 @@ component.options.__file = "js-v2/components/project/edit/definitions/InfoEditor
 /*!*******************************************************************************************!*\
   !*** ./js-v2/components/project/edit/definitions/InfoEditor.vue?vue&type=script&lang=js& ***!
   \*******************************************************************************************/
-/*! no static exports found */
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -4098,7 +4243,7 @@ function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
 /*! exports provided: name, title, features, stageSize, default */
 /***/ (function(module) {
 
-module.exports = JSON.parse("{\"name\":\"service-model\",\"title\":\"Co-Creation of Service Model\",\"features\":[\"dashboard\",\"theory_of_change\",\"community_reporting\",\"social_media\",\"living_lab_models\"],\"stageSize\":{\"width\":1500,\"height\":980}}");
+module.exports = JSON.parse("{\"name\":\"service-model\",\"title\":\"Co-Creation of Service Model\",\"features\":[\"dashboard\",\"theory_of_change\",\"community_reporting\",\"social_media\",\"living_lab_models\"],\"stageSize\":{\"width\":1500,\"height\":1020}}");
 
 /***/ }),
 
@@ -4146,10 +4291,10 @@ var _nodes_json__WEBPACK_IMPORTED_MODULE_2___namespace = /*#__PURE__*/__webpack_
 /*!**************************************************!*\
   !*** ./js-v2/templates/service-model/nodes.json ***!
   \**************************************************/
-/*! exports provided: 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, default */
+/*! exports provided: 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, default */
 /***/ (function(module) {
 
-module.exports = JSON.parse("[{\"componentName\":\"CosmosTitle\",\"definitionName\":\"model\"},{\"componentName\":\"CosmosInfoBox\",\"definitionName\":\"drivers\",\"config\":{\"x\":20,\"y\":100}},{\"componentName\":\"CosmosExternals\",\"definitionName\":\"extorg\",\"config\":{\"x\":20,\"y\":250,\"itemColour\":\"#f012be\"}},{\"componentName\":\"CosmosExternals\",\"definitionName\":\"extsvc\",\"config\":{\"x\":20,\"y\":740,\"itemColour\":\"#2ecc40\"}},{\"componentName\":\"CosmosExternals\",\"definitionName\":\"infsvc\",\"config\":{\"x\":980,\"y\":740,\"itemColour\":\"#2ecc40\"}},{\"componentName\":\"CosmosGroup\",\"_comment\":\"Stakeholders (LEFT) for above Serv Def + Dev Platform\",\"config\":{\"x\":620,\"y\":220},\"children\":[{\"componentName\":\"CosmosStakeholder\",\"definitionName\":\"policyDef\",\"config\":{\"group\":{\"x\":100,\"y\":10}}},{\"componentName\":\"CosmosStakeholder\",\"definitionName\":\"specDes\",\"config\":{\"group\":{\"x\":0,\"y\":160}}},{\"componentName\":\"CosmosStakeholder\",\"definitionName\":\"deployment\",\"config\":{\"group\":{\"x\":200,\"y\":160}}}]},{\"componentName\":\"CosmosStakeholder\",\"definitionName\":\"initiator\",\"config\":{\"group\":{\"x\":350,\"y\":540}}},{\"componentName\":\"CosmosTextBox\",\"config\":{\"label\":\"Service Definition and Development Platform\",\"x\":500,\"y\":570,\"textWidth\":300,\"width\":500,\"height\":50}},{\"componentName\":\"CosmosTextBox\",\"config\":{\"label\":\"Service Delivery Platform\",\"x\":980,\"y\":570,\"textWidth\":300,\"width\":500,\"height\":50}},{\"componentName\":\"v-line\",\"_comment\":\"Line between def+dev platform + delivery platform\",\"config\":{\"x\":990,\"y\":620,\"points\":[0,0,0,-400],\"stroke\":\"#3d9970\",\"strokeWidth\":2,\"dash\":[9,3]}},{\"componentName\":\"CosmosGroup\",\"_comment\":\"Stakeholders (RIGHT) for above serv del platform\",\"config\":{\"x\":1060,\"y\":220},\"children\":[{\"componentName\":\"CosmosStakeholder\",\"definitionName\":\"delivery\",\"config\":{\"group\":{\"x\":0,\"y\":10}}},{\"componentName\":\"CosmosStakeholder\",\"definitionName\":\"user\",\"config\":{\"group\":{\"x\":200,\"y\":10}}},{\"componentName\":\"CosmosStakeholder\",\"definitionName\":\"evaluation\",\"config\":{\"group\":{\"x\":0,\"y\":160}}},{\"componentName\":\"CosmosStakeholder\",\"definitionName\":\"beneficiary\",\"config\":{\"group\":{\"x\":200,\"y\":160}}}]}]");
+module.exports = JSON.parse("[{\"componentName\":\"CosmosTitle\",\"definitionName\":\"model\"},{\"componentName\":\"CosmosInfoBox\",\"definitionName\":\"drivers\",\"config\":{\"x\":20,\"y\":100}},{\"componentName\":\"CosmosExternals\",\"definitionName\":\"extorg\",\"config\":{\"x\":20,\"y\":250,\"itemColour\":\"#f012be\"}},{\"componentName\":\"CosmosExternals\",\"definitionName\":\"extsvc\",\"config\":{\"x\":20,\"y\":740,\"itemColour\":\"#2ecc40\"}},{\"componentName\":\"CosmosExternals\",\"definitionName\":\"infsvc\",\"config\":{\"x\":980,\"y\":740,\"itemColour\":\"#2ecc40\"}},{\"componentName\":\"CosmosCurve\",\"config\":{\"x\":480,\"y\":580,\"ratio\":0.1,\"points\":{\"start\":{\"x\":0,\"y\":0},\"end\":{\"x\":150,\"y\":-360}}}},{\"componentName\":\"v-text\",\"config\":{\"x\":600,\"y\":190,\"text\":\"Structural Relationships and Occasions\",\"fill\":\"#ff4136\",\"fontSize\":16,\"fontStyle\":\"bold\",\"fontFamily\":\"-apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif\"}},{\"componentName\":\"CosmosCurve\",\"config\":{\"x\":480,\"y\":610,\"ratio\":0.1,\"points\":{\"start\":{\"x\":0,\"y\":0},\"end\":{\"x\":150,\"y\":360}}}},{\"componentName\":\"v-text\",\"config\":{\"x\":600,\"y\":980,\"text\":\"Infrastructural Relationships, Recourses and Facilities\",\"fill\":\"#ff4136\",\"fontSize\":16,\"fontStyle\":\"bold\",\"fontFamily\":\"-apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif\"}},{\"componentName\":\"CosmosGroup\",\"_comment\":\"Stakeholders (LEFT) for above Serv Def + Dev Platform\",\"config\":{\"x\":620,\"y\":220},\"children\":[{\"componentName\":\"CosmosStakeholder\",\"definitionName\":\"policyDef\",\"config\":{\"group\":{\"x\":100,\"y\":10}}},{\"componentName\":\"CosmosStakeholder\",\"definitionName\":\"specDes\",\"config\":{\"group\":{\"x\":0,\"y\":160}}},{\"componentName\":\"CosmosStakeholder\",\"definitionName\":\"deployment\",\"config\":{\"group\":{\"x\":200,\"y\":160}}}]},{\"componentName\":\"CosmosArrow\",\"config\":{\"x\":330,\"y\":580,\"length\":100,\"direction\":\"SE\",\"arrowColour\":\"#3d9970\",\"label\":{\"text\":\"Ethos\",\"fontSize\":18,\"fill\":\"#3d9970\"}}},{\"componentName\":\"CosmosArrow\",\"config\":{\"x\":330,\"y\":600,\"length\":70,\"direction\":\"E\",\"arrowColour\":\"#aaaaaa\",\"label\":{\"text\":\"Policy & Law\",\"fontSize\":18,\"fill\":\"#000000\"}}},{\"componentName\":\"CosmosArrow\",\"config\":{\"x\":330,\"y\":620,\"length\":100,\"direction\":\"NE\",\"arrowColour\":\"#aaaaaa\",\"label\":{\"text\":\"Resources\",\"fontSize\":18,\"fill\":\"#000000\"}}},{\"componentName\":\"CosmosTextBox\",\"config\":{\"label\":\"Service Definition and Development Platform\",\"x\":500,\"y\":570,\"textWidth\":300,\"width\":500,\"height\":50}},{\"componentName\":\"CosmosTextBox\",\"config\":{\"label\":\"Service Delivery Platform\",\"x\":980,\"y\":570,\"textWidth\":300,\"width\":500,\"height\":50}},{\"componentName\":\"v-line\",\"_comment\":\"Line between def+dev platform + delivery platform\",\"config\":{\"x\":990,\"y\":620,\"points\":[0,0,0,-400],\"stroke\":\"#3d9970\",\"strokeWidth\":2,\"dash\":[9,3]}},{\"componentName\":\"v-rect\",\"_comment\":\"Outline for initiator\",\"config\":{\"x\":345,\"y\":490,\"width\":160,\"height\":210,\"stroke\":\"#3d9970\",\"cornerRadius\":75,\"strokeWidth\":2,\"fill\":\"#ffffff\"}},{\"componentName\":\"CosmosStakeholder\",\"definitionName\":\"initiator\",\"config\":{\"group\":{\"x\":375,\"y\":530}}},{\"componentName\":\"CosmosGroup\",\"_comment\":\"Stakeholders (RIGHT) for above serv del platform\",\"config\":{\"x\":1060,\"y\":220},\"children\":[{\"componentName\":\"CosmosStakeholder\",\"definitionName\":\"delivery\",\"config\":{\"group\":{\"x\":0,\"y\":10}}},{\"componentName\":\"CosmosStakeholder\",\"definitionName\":\"user\",\"config\":{\"group\":{\"x\":200,\"y\":10}}},{\"componentName\":\"CosmosStakeholder\",\"definitionName\":\"evaluation\",\"config\":{\"group\":{\"x\":0,\"y\":160}}},{\"componentName\":\"CosmosStakeholder\",\"definitionName\":\"beneficiary\",\"config\":{\"group\":{\"x\":200,\"y\":160}}}]}]");
 
 /***/ }),
 
@@ -6075,6 +6220,261 @@ var _data_templates_json__WEBPACK_IMPORTED_MODULE_1___namespace = /*#__PURE__*/_
     }
     */
 
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./js-v2/components/cosmos/lib/CosmosArrow.vue?vue&type=script&lang=js&":
+/*!**************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./js-v2/components/cosmos/lib/CosmosArrow.vue?vue&type=script&lang=js& ***!
+  \**************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var colors_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! colors.css */ "./node_modules/colors.css/js/colors.js");
+/* harmony import */ var colors_css__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(colors_css__WEBPACK_IMPORTED_MODULE_0__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: 'CosmosArrow',
+  props: {
+    options: Object,
+    config: Object
+  },
+  data: function data() {
+    return {
+      labelOffset: {
+        x: 0,
+        y: 0
+      }
+    };
+  },
+  computed: {
+    groupConfig: function groupConfig() {
+      return {
+        x: this.config.x,
+        y: this.config.y
+      };
+    },
+    labelConfig: function labelConfig() {
+      var defaults = {
+        text: '',
+        x: 0,
+        y: 0,
+        fontSize: 18,
+        fontStyle: 'bold',
+        fontFamily: this.options.fontFamily,
+        fill: colors_css__WEBPACK_IMPORTED_MODULE_0___default.a.black,
+        lineHeight: 1.3,
+        padding: 0,
+        align: 'right',
+        verticalAlign: 'middle',
+        offsetX: this.labelOffset.x,
+        offsetY: this.labelOffset.y
+      };
+      var config = Object.assign(defaults, this.config.label); // var coords = this.arrowCoords;
+      // config.offsetX = coords.end.x;
+      // config.offsetY = coords.end.y;
+
+      return config;
+    },
+    arrowConfig: function arrowConfig() {
+      var width = this.config.length;
+      var defaults = {
+        pointerLength: 8,
+        pointerWidth: 8,
+        fill: colors_css__WEBPACK_IMPORTED_MODULE_0___default.a.gray,
+        stroke: colors_css__WEBPACK_IMPORTED_MODULE_0___default.a.black,
+        strokeWidth: 4
+      };
+      var config = Object.assign({}, defaults);
+      var coords = this.arrowCoords;
+      config.points = [coords.start.x, coords.start.y, coords.end.x, coords.end.y];
+      config.offsetX = coords.end.x;
+      config.offsetY = coords.end.y;
+
+      if (this.config.arrowColour) {
+        config.fill = this.config.arrowColour;
+        config.stroke = this.config.arrowColour;
+      }
+
+      return config;
+    },
+    arrowCoords: function arrowCoords() {
+      var points = {
+        start: {
+          x: 0,
+          y: 0
+        },
+        end: {
+          x: 0,
+          y: 0
+        }
+      };
+      var deg = 0;
+
+      switch (this.config.direction.toUpperCase()) {
+        case "N":
+          deg = 270;
+          break;
+
+        case "S":
+          deg = 90;
+          break;
+
+        case "E":
+          deg = 0;
+          break;
+
+        case "W":
+          deg = 180;
+          break;
+
+        case "NE":
+          deg = 315;
+          break;
+
+        case "SE":
+          deg = 45;
+          break;
+
+        case "SW":
+          deg = 135;
+          break;
+
+        case "NW":
+          deg = 225;
+          break;
+      }
+
+      var rad = deg * (Math.PI / 180);
+      points.end.x = points.start.x + this.config.length * Math.cos(rad);
+      points.end.y = points.start.y + this.config.length * Math.sin(rad);
+      return points;
+    }
+  },
+  methods: {
+    moveLabel: function moveLabel() {
+      var _this = this;
+
+      this.$nextTick(function () {
+        var w = _this.$refs.label.getNode().getClientRect().width;
+
+        var h = _this.$refs.label.getNode().getClientRect().height;
+
+        var coords = _this.arrowCoords;
+
+        switch (_this.config.direction.toUpperCase()) {
+          case "SE":
+          case "E":
+          case "NE":
+            _this.labelOffset.x = 5 + w + coords.end.x;
+            _this.labelOffset.y = h / 2 + coords.end.y;
+            break;
+
+          case "S":
+            _this.labelOffset.x = coords.end.x + w / 2;
+            _this.labelOffset.y = coords.end.y + h + 5;
+            break;
+
+          case "SW":
+            _this.labelOffset.x = coords.end.x + 5;
+            _this.labelOffset.y = coords.end.y + h + 5;
+            break;
+
+          case "W":
+            _this.labelOffset.x = coords.end.x - 5;
+            _this.labelOffset.y = h / 2 + coords.end.y;
+            break;
+
+          case "NW":
+            _this.labelOffset.x = coords.end.x;
+            _this.labelOffset.y = coords.end.y;
+            break;
+        }
+      });
+    }
+  },
+  mounted: function mounted() {
+    this.moveLabel();
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./js-v2/components/cosmos/lib/CosmosCurve.vue?vue&type=script&lang=js&":
+/*!**************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./js-v2/components/cosmos/lib/CosmosCurve.vue?vue&type=script&lang=js& ***!
+  \**************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var colors_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! colors.css */ "./node_modules/colors.css/js/colors.js");
+/* harmony import */ var colors_css__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(colors_css__WEBPACK_IMPORTED_MODULE_0__);
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
+
+function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
+
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: 'CosmosCurve',
+  props: {
+    options: Object,
+    config: Object
+  },
+  computed: {
+    groupConfig: function groupConfig() {
+      return {
+        x: this.config.x,
+        y: this.config.y
+      };
+    },
+    curveConfig: function curveConfig() {
+      var pts = {
+        st: [this.config.points.start.x, this.config.points.start.y],
+        ct: [this.config.points.end.x, this.config.points.end.y * this.config.ratio, this.config.points.end.x, this.config.points.end.y],
+        en: [this.config.points.end.x, this.config.points.end.y]
+      };
+      return {
+        x: 0,
+        y: 0,
+        stroke: colors_css__WEBPACK_IMPORTED_MODULE_0___default.a.olive,
+        strokeWidth: 2,
+        lineCap: 'round',
+        dash: [9, 6],
+        sceneFunc: function sceneFunc(context) {
+          context.beginPath();
+          context.moveTo.apply(context, _toConsumableArray(pts.st));
+          context.bezierCurveTo.apply(context, _toConsumableArray(pts.ct).concat(_toConsumableArray(pts.en)));
+          context.strokeShape(this);
+        }
+      };
+    }
   }
 });
 
@@ -35083,6 +35483,68 @@ var render = function() {
   return _c("span", { staticClass: "chip chip-template" }, [
     _vm._v(_vm._s(_vm.templateTitle))
   ])
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./js-v2/components/cosmos/lib/CosmosArrow.vue?vue&type=template&id=b64a88c8&":
+/*!******************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./js-v2/components/cosmos/lib/CosmosArrow.vue?vue&type=template&id=b64a88c8& ***!
+  \******************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "v-group",
+    { ref: "group", attrs: { config: _vm.groupConfig } },
+    [
+      _c("v-text", { ref: "label", attrs: { config: _vm.labelConfig } }),
+      _vm._v(" "),
+      _c("v-arrow", { attrs: { config: _vm.arrowConfig } })
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./js-v2/components/cosmos/lib/CosmosCurve.vue?vue&type=template&id=0ffb6582&":
+/*!******************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./js-v2/components/cosmos/lib/CosmosCurve.vue?vue&type=template&id=0ffb6582& ***!
+  \******************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "v-group",
+    { ref: "group", attrs: { config: _vm.groupConfig } },
+    [_c("v-shape", { attrs: { config: _vm.curveConfig } })],
+    1
+  )
 }
 var staticRenderFns = []
 render._withStripped = true

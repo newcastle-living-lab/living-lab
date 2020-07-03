@@ -6,6 +6,8 @@ import CosmosExternals from './CosmosExternals';
 import CosmosExternalsItem from './CosmosExternalsItem';
 import CosmosStakeholder from './CosmosStakeholder';
 import CosmosNodeBracket from './CosmosNodeBracket';
+import CosmosArrow from './CosmosArrow';
+import CosmosCurve from './CosmosCurve';
 
 export {
 	CosmosTitle,
@@ -16,4 +18,6 @@ export {
 	CosmosGroup,
 	CosmosStakeholder,
 	CosmosNodeBracket,
+	CosmosArrow,
+	CosmosCurve,
 };
