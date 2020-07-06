@@ -2,7 +2,7 @@
 
 	<main class="app-content dark">
 
-		<div ref="container" class="canvas-container scrollable scr-x scr-y" v-if="template">
+		<div ref="container" class="canvas-container scrollable scr-x scr-y" v-if="project.template">
 
 			<v-stage ref="stage" :config="stageConfig">
 				<v-layer>
@@ -31,6 +31,7 @@
 
 <script>
 
+import throttle from 'lodash/throttle';
 import { get, set, sync, call } from 'vuex-pathify';
 
 import Templates from '@/templates';
@@ -39,7 +40,30 @@ export default {
 
 	watch: {
 		'scale': 'resize',
+		'isEditing': 'resize',
+		'project.template': {
+			handler: function(newVal, oldVal) {
+				if (oldVal !== newVal && typeof(newVal) != 'undefined') {
+					console.log("template changed");
+					this.resize();
+				}
+			},
+			// deep: true
+		},
 		'stageHover': 'setCursor',
+	},
+
+	data() {
+		return {
+			stageConfig: {
+				width: 640,
+				height: 480,
+				scale: {
+					x: 1,
+					y: 1,
+				}
+			}
+		}
 	},
 
 	computed: {
@@ -49,6 +73,7 @@ export default {
 			'stageHover',
 			'options',
 			'project',
+			'isEditing',
 		]),
 
 		template() {
@@ -60,47 +85,17 @@ export default {
 		},
 
 		nodes() {
-			if ( ! this.template) {
-				return [];
-			}
-
-			return this.template.NODES;
-		},
-
-		stageConfig() {
-
-			var config = {
-				width: 640,
-				height: 480,
-				scale: {
-					x: 1,
-					y: 1,
-				}
-			}
-
-			if (this.template) {
-				config.width = this.template.CONFIG.stageSize.width;
-				config.height = this.template.CONFIG.stageSize.height;
-			};
-
-			return config;
+			return (this.project.template ? this.template.NODES : []);
 		},
 
 		backgroundConfig() {
-
 			var config = {
 				fill: '#ffffff',
 				x: 0,
 				y: 0,
-				width: 640,
-				height: 480
+				width: this.stageConfig.width,
+				height: this.stageConfig.height
 			};
-
-			if (this.template) {
-				config.width = this.template.CONFIG.stageSize.width;
-				config.height = this.template.CONFIG.stageSize.height;
-			};
-
 		}
 
 	},
@@ -113,45 +108,75 @@ export default {
 				return;
 			}
 
-			if ( ! this.$refs.stage) {
+			var container = null,
+				maxWidth = null,
+				maxHeight = null,
+				stageSize = this.template.CONFIG.stageSize,
+				width = stageSize.width,
+				height = stageSize.height,
+				newWidth = 0,
+				newHeight = 0,
+				ratio = 0;
+
+			if (this.$refs.container) {
+				container = this.$refs.container;
+				maxWidth = container.offsetWidth - 30;
+				maxHeight = container.offsetHeight - 15;
+			}
+
+			this.stageConfig.width = width;
+			this.stageConfig.height = height;
+			this.stageConfig.scale = { x: 1, y: 1 };
+
+			// No scaling or container, just leave the values as they are (100% size)
+			if ( ! this.scale || ! container) {
 				return;
 			}
 
-			let stageSize = this.template.CONFIG.stageSize;
-
-			let stage = this.$refs.stage.getStage();
-
-			if ( ! this.scale) {
-
-				stage.width(stageSize.width);
-				stage.height(stageSize.height);
-				stage.scale({ x: 1, y: 1 });
-				stage.draw();
-
-			} else {
-
-				var container = this.$refs.container;
-				// now we need to fit stage into parent
-				var containerWidth = container.offsetWidth - 30;
-				// to do this we need to scale the stage
-				var scale = containerWidth / stageSize.width;
-
-				var newWidth = stageSize.width * scale,
-					newHeight = stageSize.height * scale;
-
-				this.stageConfig.scale = {
-					x: scale,
-					y: scale
-				};
-				this.stageConfig.width = newWidth;
-				this.stageConfig.height = newHeight;
-
-				stage.width(newWidth);
-				stage.height(newHeight);
-				stage.scale({ x: scale, y: scale });
-				stage.draw();
-
+			// Scale is still `on`, but the size already fits: no need to scale
+			if (width < maxWidth && height < maxHeight) {
+				return;
 			}
+
+			/*
+			var dims = {
+				width: width,
+				maxWidth: maxWidth,
+				height: height,
+				maxHeight: maxHeight
+			};
+			console.log(dims);
+			*/
+
+			// Width is larger
+			if (width > maxWidth) {
+				ratio = maxWidth / width;
+				newWidth = maxWidth;
+				newHeight = height * ratio;
+				height = height * ratio;
+				width = width * ratio;
+			}
+
+			// Height is larger
+			if (height > maxHeight) {
+				ratio = maxHeight / height;
+				newWidth = width * ratio;
+				newHeight = maxHeight;
+			}
+
+			this.stageConfig.width = newWidth;
+			this.stageConfig.height = newHeight;
+
+			var scale = {
+				x: newWidth / stageSize.width,
+				y: newHeight / stageSize.height
+			};
+
+			this.stageConfig.scale = scale;
+
+			// this.$refs.stage.getNode().draw();
+
+			return;
 		},
 
 		setCursor() {
@@ -161,7 +186,14 @@ export default {
 	},
 
 	mounted() {
-		this.resize();
+		this.$nextTick(() => {
+			this.resize();
+			window.addEventListener('resize', throttle(this.resize, 250));
+		});
+	},
+
+	destroyed() {
+		window.removeEventListener("resize", throttle(this.resize, 250));
 	}
 
 }

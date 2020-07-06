@@ -117,8 +117,9 @@ export const actions = {
 
 
 	fetchProject({ state, commit }, id) {
-		commit('START_LOADING');
 		commit('SET_PROJECT', {});
+		commit('SET_SCALE', false);
+		commit('START_LOADING');
 		Network.getProject(id)
 			.then(project => { commit('SET_PROJECT', project) })
 			.then(() => commit('STOP_LOADING'));
