@@ -14,15 +14,21 @@ export default {
 			newObj,
 			keepKeys = [];
 
+		// console.log(project);
+
 		for (var i = 0; i < definitions.length; i++) {
 
 			def = definitions[i];
 			keepKeys.push(def.id);
 
+			var currentValue = JSON.stringify(project.data[def.id]);
+			var blank = JSON.stringify({});
+
 			switch (def.type) {
 
-				// Legacy: convert array format for external items into object
 				case 'externals':
+
+					// Legacy: convert array format for external items into object
 					if (isArray(project.data[def.id])) {
 						items = [...project.data[def.id]];
 						newObj = {
@@ -31,6 +37,29 @@ export default {
 						}
 						project.data[def.id] = newObj;
 					}
+
+					// Ensure empty values have a proper object structure
+					if (currentValue == blank) {
+						project.data[def.id] = Object.assign({
+							label: null,
+							items: []
+						});
+					}
+
+				break;
+
+				case 'social':
+
+					// Ensure object structure exists
+					if (currentValue == blank) {
+						project.data[def.id] = Object.assign({
+							twitter: [],
+							facebook: [],
+							instagram: [],
+							youtube: [],
+						});
+					}
+
 				break;
 
 			}
@@ -58,30 +87,27 @@ export default {
 				break;
 
 				case 'extsvc':
-					items = [...filter(project.data.services, item => item.type == 'extsvc')];
-					newObj = {
-						label: project.data.extSvcLabel ? project.data.extSvcLabel : null,
-						items: items,
+					if (isArray(project.data.services)) {
+						items = [...filter(project.data.services, item => item.type == 'extsvc')];
+						project.data[def.id].items = items;
+						project.data[def.id].label = project.data.extSvcLabel ? project.data.extSvcLabel : null;
 					}
-					project.data[def.id] = newObj;
 				break;
 
 				case 'extorg':
-					items = [...filter(project.data.services, item => item.type == 'extorg')];
-					newObj = {
-						label: project.data.extOrgLabel ? project.data.extOrgLabel : null,
-						items: items,
+					if (isArray(project.data.services)) {
+						items = [...filter(project.data.services, item => item.type == 'extorg')];
+						project.data[def.id].items = items;
+						project.data[def.id].label = project.data.extOrgLabel ? project.data.extOrgLabel : null;
 					}
-					project.data[def.id] = newObj;
 				break;
 
 				case 'infsvc':
-					items = [...filter(project.data.services, item => item.type == 'infsvc')];
-					newObj = {
-						label: project.data.infSvcLabel ? project.data.infSvcLabel : null,
-						items: items,
+					if (isArray(project.data.services)) {
+						items = [...filter(project.data.services, item => item.type == 'infsvc')];
+						project.data[def.id].items = items;
+						project.data[def.id].label = project.data.infSvcLabel ? project.data.infSvcLabel : null;
 					}
-					project.data[def.id] = newObj;
 				break;
 
 				case 'social':
