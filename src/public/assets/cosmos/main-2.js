@@ -3870,8 +3870,9 @@ var actions = {
   fetchProject: function fetchProject(_ref3, id) {
     var state = _ref3.state,
         commit = _ref3.commit;
-    commit('START_LOADING');
     commit('SET_PROJECT', {});
+    commit('SET_SCALE', false);
+    commit('START_LOADING');
     _services_Network__WEBPACK_IMPORTED_MODULE_1__["default"].getProject(id).then(function (project) {
       commit('SET_PROJECT', project);
     }).then(function () {
@@ -4115,15 +4116,17 @@ function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
         def,
         items,
         newObj,
-        keepKeys = [];
+        keepKeys = []; // console.log(project);
 
     for (var i = 0; i < definitions.length; i++) {
       def = definitions[i];
       keepKeys.push(def.id);
+      var currentValue = JSON.stringify(project.data[def.id]);
+      var blank = JSON.stringify({});
 
       switch (def.type) {
-        // Legacy: convert array format for external items into object
         case 'externals':
+          // Legacy: convert array format for external items into object
           if (lodash_isArray__WEBPACK_IMPORTED_MODULE_1___default()(project.data[def.id])) {
             items = _toConsumableArray(project.data[def.id]);
             newObj = {
@@ -4131,6 +4134,27 @@ function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
               items: items
             };
             project.data[def.id] = newObj;
+          } // Ensure empty values have a proper object structure
+
+
+          if (currentValue == blank) {
+            project.data[def.id] = Object.assign({
+              label: null,
+              items: []
+            });
+          }
+
+          break;
+
+        case 'social':
+          // Ensure object structure exists
+          if (currentValue == blank) {
+            project.data[def.id] = Object.assign({
+              twitter: [],
+              facebook: [],
+              instagram: [],
+              youtube: []
+            });
           }
 
           break;
@@ -4160,36 +4184,36 @@ function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
           break;
 
         case 'extsvc':
-          items = _toConsumableArray(lodash_filter__WEBPACK_IMPORTED_MODULE_2___default()(project.data.services, function (item) {
-            return item.type == 'extsvc';
-          }));
-          newObj = {
-            label: project.data.extSvcLabel ? project.data.extSvcLabel : null,
-            items: items
-          };
-          project.data[def.id] = newObj;
+          if (lodash_isArray__WEBPACK_IMPORTED_MODULE_1___default()(project.data.services)) {
+            items = _toConsumableArray(lodash_filter__WEBPACK_IMPORTED_MODULE_2___default()(project.data.services, function (item) {
+              return item.type == 'extsvc';
+            }));
+            project.data[def.id].items = items;
+            project.data[def.id].label = project.data.extSvcLabel ? project.data.extSvcLabel : null;
+          }
+
           break;
 
         case 'extorg':
-          items = _toConsumableArray(lodash_filter__WEBPACK_IMPORTED_MODULE_2___default()(project.data.services, function (item) {
-            return item.type == 'extorg';
-          }));
-          newObj = {
-            label: project.data.extOrgLabel ? project.data.extOrgLabel : null,
-            items: items
-          };
-          project.data[def.id] = newObj;
+          if (lodash_isArray__WEBPACK_IMPORTED_MODULE_1___default()(project.data.services)) {
+            items = _toConsumableArray(lodash_filter__WEBPACK_IMPORTED_MODULE_2___default()(project.data.services, function (item) {
+              return item.type == 'extorg';
+            }));
+            project.data[def.id].items = items;
+            project.data[def.id].label = project.data.extOrgLabel ? project.data.extOrgLabel : null;
+          }
+
           break;
 
         case 'infsvc':
-          items = _toConsumableArray(lodash_filter__WEBPACK_IMPORTED_MODULE_2___default()(project.data.services, function (item) {
-            return item.type == 'infsvc';
-          }));
-          newObj = {
-            label: project.data.infSvcLabel ? project.data.infSvcLabel : null,
-            items: items
-          };
-          project.data[def.id] = newObj;
+          if (lodash_isArray__WEBPACK_IMPORTED_MODULE_1___default()(project.data.services)) {
+            items = _toConsumableArray(lodash_filter__WEBPACK_IMPORTED_MODULE_2___default()(project.data.services, function (item) {
+              return item.type == 'infsvc';
+            }));
+            project.data[def.id].items = items;
+            project.data[def.id].label = project.data.infSvcLabel ? project.data.infSvcLabel : null;
+          }
+
           break;
 
         case 'social':
@@ -6369,6 +6393,10 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       this.$nextTick(function () {
+        if (!_this.$refs.label) {
+          return;
+        }
+
         var w = _this.$refs.label.getNode().getClientRect().width;
 
         var h = _this.$refs.label.getNode().getClientRect().height;
@@ -7889,6 +7917,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
 
 
 var SortableList = {
@@ -8792,7 +8821,12 @@ var defaultValue = {
     };
   },
   mounted: function mounted() {
+    var _this = this;
+
     this.val = this.value;
+    this.$nextTick(function () {
+      _this.$refs.label.$el.focus();
+    });
   },
   computed: {
     val: {
@@ -9747,8 +9781,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var vuex_pathify__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuex-pathify */ "./node_modules/vuex-pathify/dist/vuex-pathify.esm.js");
-/* harmony import */ var _templates__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/templates */ "./js-v2/templates/index.js");
+/* harmony import */ var lodash_throttle__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! lodash/throttle */ "./node_modules/lodash/throttle.js");
+/* harmony import */ var lodash_throttle__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(lodash_throttle__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var vuex_pathify__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vuex-pathify */ "./node_modules/vuex-pathify/dist/vuex-pathify.esm.js");
+/* harmony import */ var _templates__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/templates */ "./js-v2/templates/index.js");
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
@@ -9788,60 +9824,54 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 
 
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   watch: {
     'scale': 'resize',
+    'isEditing': 'resize',
+    'project.template': {
+      handler: function handler(newVal, oldVal) {
+        if (oldVal !== newVal && typeof newVal != 'undefined') {
+          console.log("template changed");
+          this.resize();
+        }
+      } // deep: true
+
+    },
     'stageHover': 'setCursor'
   },
-  computed: _objectSpread({}, Object(vuex_pathify__WEBPACK_IMPORTED_MODULE_0__["get"])(['scale', 'stageHover', 'options', 'project']), {
-    template: function template() {
-      if (!this.project.id) {
-        return false;
-      }
-
-      var template = _templates__WEBPACK_IMPORTED_MODULE_1__["default"].get(this.project.template);
-      return template;
-    },
-    nodes: function nodes() {
-      if (!this.template) {
-        return [];
-      }
-
-      return this.template.NODES;
-    },
-    stageConfig: function stageConfig() {
-      var config = {
+  data: function data() {
+    return {
+      stageConfig: {
         width: 640,
         height: 480,
         scale: {
           x: 1,
           y: 1
         }
-      };
-
-      if (this.template) {
-        config.width = this.template.CONFIG.stageSize.width;
-        config.height = this.template.CONFIG.stageSize.height;
+      }
+    };
+  },
+  computed: _objectSpread({}, Object(vuex_pathify__WEBPACK_IMPORTED_MODULE_1__["get"])(['scale', 'stageHover', 'options', 'project', 'isEditing']), {
+    template: function template() {
+      if (!this.project.id) {
+        return false;
       }
 
-      ;
-      return config;
+      var template = _templates__WEBPACK_IMPORTED_MODULE_2__["default"].get(this.project.template);
+      return template;
+    },
+    nodes: function nodes() {
+      return this.project.template ? this.template.NODES : [];
     },
     backgroundConfig: function backgroundConfig() {
       var config = {
         fill: '#ffffff',
         x: 0,
         y: 0,
-        width: 640,
-        height: 480
+        width: this.stageConfig.width,
+        height: this.stageConfig.height
       };
-
-      if (this.template) {
-        config.width = this.template.CONFIG.stageSize.width;
-        config.height = this.template.CONFIG.stageSize.height;
-      }
-
-      ;
     }
   }),
   methods: {
@@ -9850,43 +9880,73 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         return;
       }
 
-      if (!this.$refs.stage) {
+      var container = null,
+          maxWidth = null,
+          maxHeight = null,
+          stageSize = this.template.CONFIG.stageSize,
+          width = stageSize.width,
+          height = stageSize.height,
+          newWidth = 0,
+          newHeight = 0,
+          ratio = 0;
+
+      if (this.$refs.container) {
+        container = this.$refs.container;
+        maxWidth = container.offsetWidth - 30;
+        maxHeight = container.offsetHeight - 15;
+      }
+
+      this.stageConfig.width = width;
+      this.stageConfig.height = height;
+      this.stageConfig.scale = {
+        x: 1,
+        y: 1
+      }; // No scaling or container, just leave the values as they are (100% size)
+
+      if (!this.scale || !container) {
+        return;
+      } // Scale is still `on`, but the size already fits: no need to scale
+
+
+      if (width < maxWidth && height < maxHeight) {
         return;
       }
+      /*
+      var dims = {
+      	width: width,
+      	maxWidth: maxWidth,
+      	height: height,
+      	maxHeight: maxHeight
+      };
+      console.log(dims);
+      */
+      // Width is larger
 
-      var stageSize = this.template.CONFIG.stageSize;
-      var stage = this.$refs.stage.getStage();
 
-      if (!this.scale) {
-        stage.width(stageSize.width);
-        stage.height(stageSize.height);
-        stage.scale({
-          x: 1,
-          y: 1
-        });
-        stage.draw();
-      } else {
-        var container = this.$refs.container; // now we need to fit stage into parent
+      if (width > maxWidth) {
+        ratio = maxWidth / width;
+        newWidth = maxWidth;
+        newHeight = height * ratio;
+        height = height * ratio;
+        width = width * ratio;
+      } // Height is larger
 
-        var containerWidth = container.offsetWidth - 30; // to do this we need to scale the stage
 
-        var scale = containerWidth / stageSize.width;
-        var newWidth = stageSize.width * scale,
-            newHeight = stageSize.height * scale;
-        this.stageConfig.scale = {
-          x: scale,
-          y: scale
-        };
-        this.stageConfig.width = newWidth;
-        this.stageConfig.height = newHeight;
-        stage.width(newWidth);
-        stage.height(newHeight);
-        stage.scale({
-          x: scale,
-          y: scale
-        });
-        stage.draw();
+      if (height > maxHeight) {
+        ratio = maxHeight / height;
+        newWidth = width * ratio;
+        newHeight = maxHeight;
       }
+
+      this.stageConfig.width = newWidth;
+      this.stageConfig.height = newHeight;
+      var scale = {
+        x: newWidth / stageSize.width,
+        y: newHeight / stageSize.height
+      };
+      this.stageConfig.scale = scale; // this.$refs.stage.getNode().draw();
+
+      return;
     },
     setCursor: function setCursor() {
       var cursor = this.stageHover ? 'pointer' : 'default';
@@ -9894,7 +9954,16 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     }
   },
   mounted: function mounted() {
-    this.resize();
+    var _this = this;
+
+    this.$nextTick(function () {
+      _this.resize();
+
+      window.addEventListener('resize', lodash_throttle__WEBPACK_IMPORTED_MODULE_0___default()(_this.resize, 250));
+    });
+  },
+  destroyed: function destroyed() {
+    window.removeEventListener("resize", lodash_throttle__WEBPACK_IMPORTED_MODULE_0___default()(this.resize, 250));
   }
 });
 
@@ -36243,40 +36312,45 @@ var render = function() {
         1
       ),
       _vm._v(" "),
-      _c(
-        "SortableList",
-        {
-          staticClass: "mb-4",
-          attrs: {
-            lockAxis: "y",
-            useDragHandle: true,
-            lockToContainerEdges: true,
-            transitionDuration: 0
-          },
-          model: {
-            value: _vm.val.items,
-            callback: function($$v) {
-              _vm.$set(_vm.val, "items", $$v)
+      _vm.val.items
+        ? _c(
+            "SortableList",
+            {
+              staticClass: "mb-4",
+              attrs: {
+                lockAxis: "y",
+                useDragHandle: true,
+                lockToContainerEdges: true,
+                transitionDuration: 0
+              },
+              model: {
+                value: _vm.val.items,
+                callback: function($$v) {
+                  _vm.$set(_vm.val, "items", $$v)
+                },
+                expression: "val.items"
+              }
             },
-            expression: "val.items"
-          }
-        },
-        _vm._l(_vm.val.items, function(item, index) {
-          return _c("ExternalsEditorItem", {
-            key: index,
-            attrs: {
-              index: index,
-              item: item,
-              definition: _vm.definition,
-              useImages: _vm.useImages,
-              editingItem: _vm.editingItem,
-              showHandle: true
-            },
-            on: { "edit-item": _vm.setEditItem, "delete-item": _vm.deleteItem }
-          })
-        }),
-        1
-      ),
+            _vm._l(_vm.val.items, function(item, index) {
+              return _c("ExternalsEditorItem", {
+                key: index,
+                attrs: {
+                  index: index,
+                  item: item,
+                  definition: _vm.definition,
+                  useImages: _vm.useImages,
+                  editingItem: _vm.editingItem,
+                  showHandle: true
+                },
+                on: {
+                  "edit-item": _vm.setEditItem,
+                  "delete-item": _vm.deleteItem
+                }
+              })
+            }),
+            1
+          )
+        : _vm._e(),
       _vm._v(" "),
       _vm.limit
         ? _c("span", { staticClass: "form-input-hint" }, [
@@ -36947,6 +37021,7 @@ var render = function() {
         { attrs: { name: "label", label: "Label" } },
         [
           _c("VInput", {
+            ref: "label",
             attrs: { type: "text", id: "label", maxlength: "255" },
             model: {
               value: _vm.val.label,
@@ -37826,7 +37901,7 @@ var render = function() {
                               "/" +
                               project.id +
                               "/" +
-                              project.slug +
+                              (project.slug ? project.slug : "untitled") +
                               "/dashboard"
                           }
                         },
@@ -38047,7 +38122,7 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("main", { staticClass: "app-content dark" }, [
-    _vm.template
+    _vm.project.template
       ? _c(
           "div",
           {
