@@ -40,7 +40,7 @@
 								<router-link
 									v-for="project in filteredProjects"
 									:key="project.id"
-									:to="'/' + project.id + '/' + project.slug + '/dashboard'"
+									:to="'/' + project.id + '/' + (project.slug ? project.slug : 'untitled') + '/dashboard'"
 									class="tile tile-project"
 								>
 									<div class="tile-content">
