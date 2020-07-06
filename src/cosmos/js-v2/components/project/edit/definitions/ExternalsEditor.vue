@@ -29,6 +29,7 @@
 		<SortableList
 			lockAxis="y"
 			v-model="val.items"
+			v-if="val.items"
 			:useDragHandle="true"
 			:lockToContainerEdges="true"
 			:transitionDuration="0"
