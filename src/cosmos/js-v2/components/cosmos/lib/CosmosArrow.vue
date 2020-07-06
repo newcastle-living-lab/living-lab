@@ -128,6 +128,10 @@ export default {
 		moveLabel() {
 			this.$nextTick(() => {
 
+				if ( ! this.$refs.label) {
+					return;
+				}
+
 				var w = this.$refs.label.getNode().getClientRect().width;
 				var h = this.$refs.label.getNode().getClientRect().height;
 				var coords = this.arrowCoords;
