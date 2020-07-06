@@ -3,7 +3,7 @@
 	<div class="sidebar-content">
 
 		<VGroup name="label" label="Label">
-			<VInput type="text" id="label" v-model="val.label" maxlength="255" />
+			<VInput ref="label" type="text" id="label" v-model="val.label" maxlength="255" />
 		</VGroup>
 
 		<VGroup name="type" label="Type">
@@ -48,6 +48,9 @@ export default {
 
 	mounted() {
 		this.val = this.value;
+		this.$nextTick(() => {
+			this.$refs.label.$el.focus();
+		});
 	},
 
 	computed: {
