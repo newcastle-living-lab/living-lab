@@ -2,8 +2,20 @@
 
 	<div class="sidebar-content">
 
-		<VGroup name="title" label="Title">
-			<VTextarea rows="4" id="title" v-model="val.title" />
+		<VGroup
+			v-for="(child, idx) in definition.children"
+			:key="idx"
+			:val="val"
+			:label="child.label"
+		>
+
+			<component
+				v-bind:is="child.componentName"
+				v-model="val[child.id]"
+				v-bind="child.componentProps"
+				:definition="child"
+			></component>
+
 		</VGroup>
 
 	</div>
@@ -12,9 +24,9 @@
 
 <script>
 
-import clone from 'lodash/clone';
-
 export default {
+
+	name: "GroupEditor",
 
 	props: {
 		definition: Object,

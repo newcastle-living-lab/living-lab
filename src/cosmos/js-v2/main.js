@@ -11,6 +11,9 @@ Vue.use(UI);
 import Cosmos from "./components/cosmos";
 Vue.use(Cosmos);
 
+import Editors from "./components/project/edit";
+Vue.use(Editors);
+
 import i18n from './plugins/i18n';
 import router from './plugins/router';
 import store from './store';

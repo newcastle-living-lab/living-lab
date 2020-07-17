@@ -1,12 +1,15 @@
 import find from 'lodash/find';
 import map from 'lodash/map';
+import forEach from 'lodash/forEach';
 
 import AnalyticModel from './analytic-model';
 import ServiceModel from './service-model';
+import MoralOrdering from './moral-ordering';
 
 const allTemplates = [
 	AnalyticModel,
 	ServiceModel,
+	MoralOrdering,
 ];
 
 
@@ -27,18 +30,41 @@ export default {
 		if ( ! tpl) {
 			return project;
 		}
-		for (var i = 0; i < tpl.DEFINITIONS.length; i++) {
-			var defName = tpl.DEFINITIONS[i].id;
-			if (typeof(project.data[defName]) === 'undefined') {
-				project.data[defName] = {};
-			}
-		}
+
+		project.data = setObjectKeys(project.data, tpl.DEFINITIONS);
+
 		if (typeof(tpl.Tools) == 'object') {
 			if (typeof(tpl.Tools.populateProject) == 'function') {
 				project = tpl.Tools.populateProject(project, tpl.DEFINITIONS);
 			}
 		}
+
 		return project;
 	}
 
+}
+
+
+
+function setObjectKeys(onObject, fromArray) {
+	forEach(fromArray, (item) => {
+		if (item.id && typeof(onObject[item.id]) === 'undefined') {
+			switch (item.dataType) {
+				case "string":
+					onObject[item.id] = "";
+				break;
+				case "array":
+					onObject[item.id] = [];
+				break;
+				case "object":
+				default:
+					onObject[item.id] = {};
+				break;
+			}
+		}
+		if (Array.isArray(item.children)) {
+			setObjectKeys(onObject[item.id], item.children);
+		}
+	});
+	return onObject;
 }

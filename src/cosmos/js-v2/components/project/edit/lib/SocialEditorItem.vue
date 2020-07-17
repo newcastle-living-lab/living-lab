@@ -25,6 +25,8 @@
 
 export default {
 
+	name: "SocialEditorItem",
+
 	directives: {
 		focus (el, { value }, { context }) {
 			if (value) {

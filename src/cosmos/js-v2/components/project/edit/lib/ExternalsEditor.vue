@@ -68,6 +68,8 @@ const SortableList = {
 
 export default {
 
+	name: "ExternalsEditor",
+
 	components: {
 		ExternalsEditorItem,
 		SortableList

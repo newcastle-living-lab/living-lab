@@ -98,6 +98,8 @@ const tabs = [
 
 export default {
 
+	name: "SocialEditor",
+
 	components: {
 		TwitterIcon,
 		FacebookIcon,

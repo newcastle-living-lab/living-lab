@@ -1,9 +1,9 @@
 <template>
 
-	<div class="sidebar-content">
+	<div :class="showWrapper ? 'sidebar-content' : ''">
 
-		<VGroup name="label" label="Label">
-			<VInput ref="label" type="text" id="label" v-model="val.label" maxlength="255" />
+		<VGroup :name="inputId('label')" label="Label">
+			<VInput ref="label" type="text" :id="inputId('label')" v-model="val.label" maxlength="255" @enter="$emit('enter')" />
 		</VGroup>
 
 		<VGroup name="type" label="Type">
@@ -14,8 +14,8 @@
 			<VColourPicker v-model="val.colour" />
 		</VGroup>
 
-		<VGroup name="url" label="Web address">
-			<VInput type="text" id="url" v-model="val.url" maxlength="255" />
+		<VGroup :name="inputId('url')" label="Web address">
+			<VInput placeholder="https://" type="url" :id="inputId('url')" v-model="val.url" maxlength="255" @enter="$emit('enter')" />
 		</VGroup>
 
 	</div>
@@ -35,7 +35,10 @@ const defaultValue = {
 
 export default {
 
+	name: "StakeholderEditor",
+
 	props: {
+		groupName: String,
 		definition: Object,
 		value: Object,
 	},
@@ -54,6 +57,11 @@ export default {
 	},
 
 	computed: {
+
+		showWrapper() {
+			return this.definition ? true : false
+		},
+
 		val: {
 			get() {
 				return this.value;
@@ -62,6 +70,16 @@ export default {
 				this.$emit("input", value);
 			}
 		}
+
+	},
+
+	methods: {
+
+		inputId(forInput) {
+			var prefix = this.definition ? this.definition.id : this.groupName;
+			return `${prefix}_${forInput}`;
+		},
+
 	}
 
 }

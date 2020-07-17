@@ -1,0 +1,9 @@
+{
+	"name": "moral-ordering",
+	"title": "Moral Ordering",
+	"features": ["dashboard"],
+	"stageSize": {
+		"width": 1285,
+		"height": 900
+	}
+}

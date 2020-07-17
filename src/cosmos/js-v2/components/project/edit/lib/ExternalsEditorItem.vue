@@ -126,6 +126,8 @@ const STATUS_REMOVED = 4;
 
 export default {
 
+	name: "ExternalsEditorItem",
+
 	mixins: [ElementMixin],
 
 	directives: {

@@ -19,6 +19,8 @@
 
 export default {
 
+	name: "InfoEditor",
+
 	props: {
 		definition: Object,
 		value: Object,

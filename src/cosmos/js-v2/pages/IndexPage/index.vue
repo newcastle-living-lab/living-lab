@@ -28,7 +28,7 @@
 								<div class="column col-6">
 									<VSelect v-model="filter.template" class="select-sm" placeholder="Template...">
 										<option value="">(All)</option>
-										<option v-for="(tpl, idx) in searchTemplates" :value="tpl.value">{{ tpl.label }}</option>
+										<option v-for="(tpl, idx) in availableTemplates" :value="tpl.name">{{ tpl.title }}</option>
 									</VSelect>
 								</div>
 							</div>
@@ -136,7 +136,7 @@ export default {
 				query: '',
 				template: null,
 			},
-			searchTemplates: searchTemplates,
+			availableTemplates: Templates.all(),
 			newProject: {
 				name: null,
 				template: null,

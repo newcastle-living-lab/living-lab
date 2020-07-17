@@ -17,6 +17,7 @@
 
 export default {
 
+	name: "MetaEditor",
 	props: ['value'],
 
 }
