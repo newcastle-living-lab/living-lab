@@ -598,6 +598,75 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./js-v2/components/cosmos/lib/CosmosImage.vue":
+/*!*****************************************************!*\
+  !*** ./js-v2/components/cosmos/lib/CosmosImage.vue ***!
+  \*****************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _CosmosImage_vue_vue_type_template_id_a4ac1024___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./CosmosImage.vue?vue&type=template&id=a4ac1024& */ "./js-v2/components/cosmos/lib/CosmosImage.vue?vue&type=template&id=a4ac1024&");
+/* harmony import */ var _CosmosImage_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./CosmosImage.vue?vue&type=script&lang=js& */ "./js-v2/components/cosmos/lib/CosmosImage.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _CosmosImage_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _CosmosImage_vue_vue_type_template_id_a4ac1024___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _CosmosImage_vue_vue_type_template_id_a4ac1024___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "js-v2/components/cosmos/lib/CosmosImage.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./js-v2/components/cosmos/lib/CosmosImage.vue?vue&type=script&lang=js&":
+/*!******************************************************************************!*\
+  !*** ./js-v2/components/cosmos/lib/CosmosImage.vue?vue&type=script&lang=js& ***!
+  \******************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_CosmosImage_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./CosmosImage.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./js-v2/components/cosmos/lib/CosmosImage.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_CosmosImage_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./js-v2/components/cosmos/lib/CosmosImage.vue?vue&type=template&id=a4ac1024&":
+/*!************************************************************************************!*\
+  !*** ./js-v2/components/cosmos/lib/CosmosImage.vue?vue&type=template&id=a4ac1024& ***!
+  \************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_CosmosImage_vue_vue_type_template_id_a4ac1024___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./CosmosImage.vue?vue&type=template&id=a4ac1024& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./js-v2/components/cosmos/lib/CosmosImage.vue?vue&type=template&id=a4ac1024&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_CosmosImage_vue_vue_type_template_id_a4ac1024___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_CosmosImage_vue_vue_type_template_id_a4ac1024___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
 /***/ "./js-v2/components/cosmos/lib/CosmosInfoBox.vue":
 /*!*******************************************************!*\
   !*** ./js-v2/components/cosmos/lib/CosmosInfoBox.vue ***!
@@ -1016,7 +1085,7 @@ __webpack_require__.r(__webpack_exports__);
 /*!**********************************************!*\
   !*** ./js-v2/components/cosmos/lib/index.js ***!
   \**********************************************/
-/*! exports provided: CosmosTitle, CosmosInfoBox, CosmosTextBox, CosmosExternals, CosmosExternalsItem, CosmosGroup, CosmosStakeholder, CosmosNodeBracket, CosmosArrow, CosmosCurve */
+/*! exports provided: CosmosGroup, CosmosTitle, CosmosImage, CosmosInfoBox, CosmosTextBox, CosmosExternals, CosmosExternalsItem, CosmosStakeholder, CosmosNodeBracket, CosmosArrow, CosmosCurve */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1027,29 +1096,33 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _CosmosTitle__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./CosmosTitle */ "./js-v2/components/cosmos/lib/CosmosTitle.vue");
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "CosmosTitle", function() { return _CosmosTitle__WEBPACK_IMPORTED_MODULE_1__["default"]; });
 
-/* harmony import */ var _CosmosInfoBox__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./CosmosInfoBox */ "./js-v2/components/cosmos/lib/CosmosInfoBox.vue");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "CosmosInfoBox", function() { return _CosmosInfoBox__WEBPACK_IMPORTED_MODULE_2__["default"]; });
+/* harmony import */ var _CosmosImage__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./CosmosImage */ "./js-v2/components/cosmos/lib/CosmosImage.vue");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "CosmosImage", function() { return _CosmosImage__WEBPACK_IMPORTED_MODULE_2__["default"]; });
 
-/* harmony import */ var _CosmosTextBox__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./CosmosTextBox */ "./js-v2/components/cosmos/lib/CosmosTextBox.vue");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "CosmosTextBox", function() { return _CosmosTextBox__WEBPACK_IMPORTED_MODULE_3__["default"]; });
+/* harmony import */ var _CosmosInfoBox__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./CosmosInfoBox */ "./js-v2/components/cosmos/lib/CosmosInfoBox.vue");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "CosmosInfoBox", function() { return _CosmosInfoBox__WEBPACK_IMPORTED_MODULE_3__["default"]; });
 
-/* harmony import */ var _CosmosExternals__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./CosmosExternals */ "./js-v2/components/cosmos/lib/CosmosExternals.vue");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "CosmosExternals", function() { return _CosmosExternals__WEBPACK_IMPORTED_MODULE_4__["default"]; });
+/* harmony import */ var _CosmosTextBox__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./CosmosTextBox */ "./js-v2/components/cosmos/lib/CosmosTextBox.vue");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "CosmosTextBox", function() { return _CosmosTextBox__WEBPACK_IMPORTED_MODULE_4__["default"]; });
 
-/* harmony import */ var _CosmosExternalsItem__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./CosmosExternalsItem */ "./js-v2/components/cosmos/lib/CosmosExternalsItem.vue");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "CosmosExternalsItem", function() { return _CosmosExternalsItem__WEBPACK_IMPORTED_MODULE_5__["default"]; });
+/* harmony import */ var _CosmosExternals__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./CosmosExternals */ "./js-v2/components/cosmos/lib/CosmosExternals.vue");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "CosmosExternals", function() { return _CosmosExternals__WEBPACK_IMPORTED_MODULE_5__["default"]; });
 
-/* harmony import */ var _CosmosStakeholder__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./CosmosStakeholder */ "./js-v2/components/cosmos/lib/CosmosStakeholder.vue");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "CosmosStakeholder", function() { return _CosmosStakeholder__WEBPACK_IMPORTED_MODULE_6__["default"]; });
+/* harmony import */ var _CosmosExternalsItem__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./CosmosExternalsItem */ "./js-v2/components/cosmos/lib/CosmosExternalsItem.vue");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "CosmosExternalsItem", function() { return _CosmosExternalsItem__WEBPACK_IMPORTED_MODULE_6__["default"]; });
 
-/* harmony import */ var _CosmosNodeBracket__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./CosmosNodeBracket */ "./js-v2/components/cosmos/lib/CosmosNodeBracket.vue");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "CosmosNodeBracket", function() { return _CosmosNodeBracket__WEBPACK_IMPORTED_MODULE_7__["default"]; });
+/* harmony import */ var _CosmosStakeholder__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./CosmosStakeholder */ "./js-v2/components/cosmos/lib/CosmosStakeholder.vue");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "CosmosStakeholder", function() { return _CosmosStakeholder__WEBPACK_IMPORTED_MODULE_7__["default"]; });
 
-/* harmony import */ var _CosmosArrow__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./CosmosArrow */ "./js-v2/components/cosmos/lib/CosmosArrow.vue");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "CosmosArrow", function() { return _CosmosArrow__WEBPACK_IMPORTED_MODULE_8__["default"]; });
+/* harmony import */ var _CosmosNodeBracket__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./CosmosNodeBracket */ "./js-v2/components/cosmos/lib/CosmosNodeBracket.vue");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "CosmosNodeBracket", function() { return _CosmosNodeBracket__WEBPACK_IMPORTED_MODULE_8__["default"]; });
 
-/* harmony import */ var _CosmosCurve__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./CosmosCurve */ "./js-v2/components/cosmos/lib/CosmosCurve.vue");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "CosmosCurve", function() { return _CosmosCurve__WEBPACK_IMPORTED_MODULE_9__["default"]; });
+/* harmony import */ var _CosmosArrow__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./CosmosArrow */ "./js-v2/components/cosmos/lib/CosmosArrow.vue");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "CosmosArrow", function() { return _CosmosArrow__WEBPACK_IMPORTED_MODULE_9__["default"]; });
+
+/* harmony import */ var _CosmosCurve__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./CosmosCurve */ "./js-v2/components/cosmos/lib/CosmosCurve.vue");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "CosmosCurve", function() { return _CosmosCurve__WEBPACK_IMPORTED_MODULE_10__["default"]; });
+
 
 
 
@@ -4382,6 +4455,56 @@ function setObjectKeys(onObject, fromArray) {
 
 /***/ }),
 
+/***/ "./js-v2/templates/moral-ordering/Functions.js":
+/*!*****************************************************!*\
+  !*** ./js-v2/templates/moral-ordering/Functions.js ***!
+  \*****************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ({
+  /**
+   * Determine the visibility status (true/false) based on the definition and project data.
+   */
+  graphicVisibility: function graphicVisibility(definitionName, projectData) {
+    // console.log("graphicVisibility");
+    // console.log(definitionName);
+    // console.log(projectData);
+    if (definitionName === '_redRect') {
+      var hasEthos = projectData.defineEthos && projectData.defineEthos.definedBy && projectData.defineEthos.evidenceUrl; // return (hasEthos ? true : false);
+
+      return true;
+    }
+
+    if (definitionName === '_governLabel') {
+      var hasGovern = projectData.govern.actions && projectData.govern.actors.length > 0 && projectData.govern.outcomes && projectData.govern.evolution && projectData.govern.improvements;
+      return hasGovern ? true : false;
+    }
+
+    if (definitionName === '_deliverLabel') {
+      var hasDeliver = projectData.deliver.method && projectData.deliver.actors.length > 0 && projectData.deliver.evidenceUrl;
+      return hasDeliver ? true : false;
+    }
+
+    if (definitionName === '_ethosSection') {
+      var hasEthos = projectData.defineEthos.values && projectData.defineEthos.definedBy && projectData.defineEthos.evidenceUrl;
+      return hasEthos ? true : false;
+    }
+
+    if (definitionName === '_planManageSection') {
+      var hasPlanManagePrior = projectData.planManagePrior.actions && projectData.planManagePrior.actors.length > 0 && projectData.planManagePrior.evidenceUrl;
+      var hasPlanManageCurrent = projectData.planManageCurrent.actions && projectData.planManageCurrent.actors.length > 0 && projectData.planManageCurrent.evidenceUrl;
+      return hasPlanManagePrior && hasPlanManageCurrent ? true : false;
+    }
+
+    return false;
+  }
+});
+
+/***/ }),
+
 /***/ "./js-v2/templates/moral-ordering/config.json":
 /*!****************************************************!*\
   !*** ./js-v2/templates/moral-ordering/config.json ***!
@@ -4389,7 +4512,7 @@ function setObjectKeys(onObject, fromArray) {
 /*! exports provided: name, title, features, stageSize, default */
 /***/ (function(module) {
 
-module.exports = JSON.parse("{\"name\":\"moral-ordering\",\"title\":\"Moral Ordering\",\"features\":[\"dashboard\"],\"stageSize\":{\"width\":1285,\"height\":900}}");
+module.exports = JSON.parse("{\"name\":\"moral-ordering\",\"title\":\"Moral Ordering\",\"features\":[\"dashboard\"],\"stageSize\":{\"width\":1285,\"height\":800}}");
 
 /***/ }),
 
@@ -4419,13 +4542,16 @@ var _config_json__WEBPACK_IMPORTED_MODULE_0___namespace = /*#__PURE__*/__webpack
 var _definitions_json__WEBPACK_IMPORTED_MODULE_1___namespace = /*#__PURE__*/__webpack_require__.t(/*! ./definitions.json */ "./js-v2/templates/moral-ordering/definitions.json", 1);
 /* harmony import */ var _nodes_json__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./nodes.json */ "./js-v2/templates/moral-ordering/nodes.json");
 var _nodes_json__WEBPACK_IMPORTED_MODULE_2___namespace = /*#__PURE__*/__webpack_require__.t(/*! ./nodes.json */ "./js-v2/templates/moral-ordering/nodes.json", 1);
+/* harmony import */ var _Functions__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Functions */ "./js-v2/templates/moral-ordering/Functions.js");
+
 
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   CONFIG: _config_json__WEBPACK_IMPORTED_MODULE_0__,
   DEFINITIONS: _definitions_json__WEBPACK_IMPORTED_MODULE_1__,
-  NODES: _nodes_json__WEBPACK_IMPORTED_MODULE_2__
+  NODES: _nodes_json__WEBPACK_IMPORTED_MODULE_2__,
+  Functions: _Functions__WEBPACK_IMPORTED_MODULE_4__["default"]
 });
 
 /***/ }),
@@ -4434,10 +4560,10 @@ var _nodes_json__WEBPACK_IMPORTED_MODULE_2___namespace = /*#__PURE__*/__webpack_
 /*!***************************************************!*\
   !*** ./js-v2/templates/moral-ordering/nodes.json ***!
   \***************************************************/
-/*! exports provided: 0, default */
+/*! exports provided: 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, default */
 /***/ (function(module) {
 
-module.exports = JSON.parse("[{\"componentName\":\"CosmosTitle\",\"definitionName\":\"model\"}]");
+module.exports = JSON.parse("[{\"componentName\":\"CosmosTitle\",\"definitionName\":\"model\"},{\"componentName\":\"CosmosGroup\",\"_comment\":\"Rectangles\",\"config\":{\"x\":75,\"y\":185},\"children\":[{\"componentName\":\"v-rect\",\"config\":{\"width\":760,\"height\":490,\"x\":0,\"y\":50,\"fill\":\"#ffffff\",\"stroke\":\"#1FA3E3\",\"strokeWidth\":3,\"cornerRadius\":45}},{\"componentName\":\"v-rect\",\"config\":{\"width\":760,\"height\":490,\"x\":15,\"y\":40,\"fill\":\"#ffffff\",\"stroke\":\"#1FA3E3\",\"strokeWidth\":3,\"cornerRadius\":45,\"opacity\":0.7}},{\"componentName\":\"v-rect\",\"config\":{\"width\":760,\"height\":490,\"x\":30,\"y\":30,\"fill\":\"#ffffff\",\"stroke\":\"#1FA3E3\",\"strokeWidth\":3,\"cornerRadius\":45,\"opacity\":0.7}},{\"componentName\":\"v-rect\",\"config\":{\"width\":760,\"height\":490,\"x\":45,\"y\":20,\"fill\":\"#ffffff\",\"stroke\":\"#1FA3E3\",\"strokeWidth\":3,\"cornerRadius\":45,\"opacity\":0.7}},{\"componentName\":\"v-rect\",\"config\":{\"width\":760,\"height\":490,\"x\":60,\"y\":5,\"fill\":\"#ffffff\",\"stroke\":\"#99D5F2\",\"strokeWidth\":6,\"cornerRadius\":45,\"opacity\":0.7}}]},{\"componentName\":\"CosmosGroup\",\"_comment\":\"Group for red rectangle and Ethos/Plan+Manage/Govern\",\"definitionName\":\"_redRect\",\"visibilityFunc\":\"graphicVisibility\",\"config\":{\"x\":170,\"y\":130},\"children\":[{\"componentName\":\"v-rect\",\"config\":{\"width\":630,\"height\":365,\"x\":0,\"y\":0,\"fill\":\"#FCEDEF\",\"stroke\":\"#E75168\",\"strokeWidth\":3,\"cornerRadius\":45,\"opacity\":0.8}}]},{\"componentName\":\"CosmosGroup\",\"_comment\":\"Group for 'Govern' label\",\"definitionName\":\"_governLabel\",\"visibilityFunc\":\"graphicVisibility\",\"config\":{\"x\":570,\"y\":420},\"children\":[{\"componentName\":\"v-text\",\"config\":{\"x\":0,\"y\":0,\"text\":\"Govern\",\"fill\":\"#2e7354\",\"fontSize\":25,\"fontStyle\":\"bold\",\"fontFamily\":\"-apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif\",\"align\":\"center\"}}]},{\"componentName\":\"CosmosGroup\",\"_comment\":\"Group for 'Deliver' label\",\"definitionName\":\"_deliverLabel\",\"visibilityFunc\":\"graphicVisibility\",\"config\":{\"x\":420,\"y\":620},\"children\":[{\"componentName\":\"v-text\",\"config\":{\"x\":0,\"y\":0,\"text\":\"Deliver\",\"fill\":\"#2e7354\",\"fontSize\":25,\"fontStyle\":\"bold\",\"fontFamily\":\"-apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif\",\"align\":\"center\"}}]},{\"componentName\":\"CosmosGroup\",\"_comment\":\"Group for 'Define Ethos' label\",\"definitionName\":\"_ethosSection\",\"visibilityFunc\":\"graphicVisibility\",\"config\":{\"x\":630,\"y\":150},\"children\":[{\"componentName\":\"v-text\",\"config\":{\"x\":0,\"y\":0,\"text\":\"Define Ethos\",\"fill\":\"#2e7354\",\"fontSize\":25,\"fontStyle\":\"bold\",\"fontFamily\":\"-apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif\"}},{\"componentName\":\"v-text\",\"config\":{\"x\":10,\"y\":50,\"text\":\"Values\\nPrinciples\\nIntentions\\nPolicies\",\"fill\":\"#2e7354\",\"fontSize\":20,\"fontStyle\":\"bold\",\"fontFamily\":\"-apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif\",\"align\":\"left\",\"lineHeight\":1.3}}]},{\"componentName\":\"CosmosGroup\",\"_comment\":\"Group for 'Plan + Manage' label\",\"definitionName\":\"_planManageSection\",\"visibilityFunc\":\"graphicVisibility\",\"config\":{\"x\":190,\"y\":280},\"children\":[{\"componentName\":\"v-text\",\"config\":{\"x\":0,\"y\":0,\"width\":200,\"text\":\"Plan & Manage\",\"fill\":\"#2e7354\",\"align\":\"right\",\"fontSize\":25,\"fontStyle\":\"bold\",\"fontFamily\":\"-apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif\"}},{\"componentName\":\"v-text\",\"config\":{\"x\":0,\"y\":30,\"width\":180,\"text\":\"Rules\\nResources\\nProcesses\\nAccounts\",\"fill\":\"#2e7354\",\"align\":\"right\",\"lineHeight\":1.3,\"fontSize\":20,\"fontStyle\":\"bold\",\"fontFamily\":\"-apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif\"}}]},{\"componentName\":\"CosmosGroup\",\"_comment\":\"Group for 'Experience' label\",\"config\":{\"x\":745,\"y\":570},\"children\":[{\"componentName\":\"v-text\",\"config\":{\"x\":0,\"y\":0,\"text\":\"Experience\",\"fill\":\"#2e7354\",\"align\":\"left\",\"fontSize\":25,\"fontStyle\":\"bold\",\"fontFamily\":\"-apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif\"}}]},{\"componentName\":\"CosmosImage\",\"_comment\":\"arrows for deliver <-> experience\",\"config\":{\"filename\":\"moral-ordering/arrows-circles.svg\",\"x\":520,\"y\":455,\"scale\":{\"x\":0.42,\"y\":0.42}}},{\"componentName\":\"CosmosImage\",\"_comment\":\"arrows for plan/manage <-> deliver\",\"config\":{\"filename\":\"moral-ordering/arrows-circles.svg\",\"x\":500,\"y\":350,\"rotation\":65,\"scale\":{\"x\":0.42,\"y\":0.42}}},{\"componentName\":\"CosmosImage\",\"_comment\":\"arrows for plan/manage <-> ethos\",\"config\":{\"filename\":\"moral-ordering/arrows-circles.svg\",\"x\":550,\"y\":480,\"rotation\":135,\"scale\":{\"x\":-0.42,\"y\":0.42}}},{\"componentName\":\"v-text\",\"config\":{\"x\":835,\"y\":210,\"opacity\":0.6,\"text\":\"Individual Cases\",\"fill\":\"#2e7354\",\"align\":\"left\",\"fontStyle\":\"bold\",\"fontSize\":40,\"fontFamily\":\"-apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif\"}},{\"componentName\":\"v-text\",\"config\":{\"x\":835,\"y\":270,\"text\":\"The Service Level\",\"fill\":\"#2e7354\",\"align\":\"left\",\"fontStyle\":\"bold\",\"fontSize\":40,\"fontFamily\":\"-apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif\"}}]");
 
 /***/ }),
 
@@ -7144,6 +7270,9 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vuex_pathify__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuex-pathify */ "./node_modules/vuex-pathify/dist/vuex-pathify.esm.js");
+/* harmony import */ var _templates__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/templates */ "./js-v2/templates/index.js");
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
 //
 //
 //
@@ -7163,21 +7292,106 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'CosmosGroup',
   props: {
     config: Object,
     children: Array,
     definitionName: String,
+    templateName: String,
+    visibilityFunc: String,
     options: Object
   },
   computed: {
+    projectData: Object(vuex_pathify__WEBPACK_IMPORTED_MODULE_0__["get"])('project@data'),
+    isVisible: function isVisible() {
+      if (typeof this.visibilityFunc === 'undefined') {
+        return true;
+      }
+
+      if (!this.templateName) {
+        return true;
+      }
+
+      var fns = _templates__WEBPACK_IMPORTED_MODULE_1__["default"].get(this.templateName)['Functions'];
+      var hasFns = _typeof(fns) == 'object';
+      var hasFn = hasFns && typeof fns[this.visibilityFunc] == 'function';
+
+      if (!hasFn) {
+        return true;
+      }
+
+      var res = fns[this.visibilityFunc](this.definitionName, this.projectData);
+      return res;
+    },
     groupConfig: function groupConfig() {
       return {
+        visible: this.isVisible,
         x: this.config.x,
         y: this.config.y
       };
     }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./js-v2/components/cosmos/lib/CosmosImage.vue?vue&type=script&lang=js&":
+/*!**************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./js-v2/components/cosmos/lib/CosmosImage.vue?vue&type=script&lang=js& ***!
+  \**************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var vuex_pathify__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuex-pathify */ "./node_modules/vuex-pathify/dist/vuex-pathify.esm.js");
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: 'CosmosImage',
+  props: {
+    options: Object,
+    definitionName: String,
+    config: Object
+  },
+  data: function data() {
+    return {
+      image: null
+    };
+  },
+  computed: {
+    imageConfig: function imageConfig() {
+      return {
+        x: this.config.x ? this.config.x : 0,
+        y: this.config.y ? this.config.y : 0,
+        image: this.image,
+        scale: this.config.scale ? this.config.scale : {
+          x: 1,
+          y: 1
+        },
+        rotation: this.config.rotation ? this.config.rotation : 0
+      };
+    }
+  },
+  created: function created() {
+    var _this = this;
+
+    console.log(this.config);
+    var image = new window.Image();
+    image.src = "/cosmos-images/".concat(this.config.filename);
+
+    image.onload = function () {
+      _this.image = image;
+    };
   }
 });
 
@@ -10514,6 +10728,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
 
 
 
@@ -10524,7 +10740,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     'project.template': {
       handler: function handler(newVal, oldVal) {
         if (oldVal !== newVal && typeof newVal != 'undefined') {
-          console.log("template changed");
+          // console.log("template changed");
           this.resize();
         }
       } // deep: true
@@ -36494,6 +36710,34 @@ render._withStripped = true
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./js-v2/components/cosmos/lib/CosmosImage.vue?vue&type=template&id=a4ac1024&":
+/*!******************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./js-v2/components/cosmos/lib/CosmosImage.vue?vue&type=template&id=a4ac1024& ***!
+  \******************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "v-group",
+    [_c("v-image", { attrs: { config: _vm.imageConfig } })],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./js-v2/components/cosmos/lib/CosmosInfoBox.vue?vue&type=template&id=3721d510&":
 /*!********************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./js-v2/components/cosmos/lib/CosmosInfoBox.vue?vue&type=template&id=3721d510& ***!
@@ -39149,7 +39393,9 @@ var render = function() {
                             config: node.config,
                             children: node.children,
                             definitionName: node.definitionName,
-                            options: _vm.options
+                            visibilityFunc: node.visibilityFunc,
+                            options: _vm.options,
+                            templateName: _vm.project.template
                           }
                         })
                       }),

@@ -4,6 +4,6 @@
 	"features": ["dashboard"],
 	"stageSize": {
 		"width": 1285,
-		"height": 900
+		"height": 800
 	}
 }

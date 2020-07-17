@@ -18,7 +18,9 @@
 						:config="node.config"
 						:children="node.children"
 						:definitionName="node.definitionName"
+						:visibilityFunc="node.visibilityFunc"
 						:options="options"
+						:templateName="project.template"
 					></component>
 				</v-layer>
 			</v-stage>
@@ -44,7 +46,7 @@ export default {
 		'project.template': {
 			handler: function(newVal, oldVal) {
 				if (oldVal !== newVal && typeof(newVal) != 'undefined') {
-					console.log("template changed");
+					// console.log("template changed");
 					this.resize();
 				}
 			},
