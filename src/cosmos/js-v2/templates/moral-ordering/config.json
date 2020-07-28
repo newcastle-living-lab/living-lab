@@ -1,7 +1,10 @@
 {
 	"name": "moral-ordering",
 	"title": "Moral Ordering",
-	"features": ["dashboard"],
+	"tabs": [
+		{ "route": "dashboard", "label": "Dashboard" },
+		{ "route": "summary", "component": "MoralSummaryTab", "label": "Summary" }
+	],
 	"stageSize": {
 		"width": 1285,
 		"height": 800

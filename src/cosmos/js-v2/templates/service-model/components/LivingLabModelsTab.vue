@@ -5,7 +5,7 @@
 			<h4 class="mb-8 mt-4">Living Lab Models</h4>
 
 			<div class="columns external-items ">
-				<external-item
+				<ExternalItem
 					v-for="(item, index) in livingLabModels"
 					:key="index"
 					:item="item"
@@ -27,6 +27,8 @@ import Templates from '@/templates';
 import ExternalItem from '@/components/project/view/ExternalItem';
 
 export default {
+
+	name: "LivingLabModelsTab",
 
 	components: {
 		ExternalItem

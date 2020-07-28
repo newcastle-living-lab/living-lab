@@ -5539,6 +5539,47 @@ a.text-gray-medium:visited {
   background: #f2f0f1;
 }
 
+.tile.stakeholder-tile {
+  text-decoration: none;
+  color: inherit;
+}
+
+.tile.stakeholder-tile + .stakeholder-tile {
+  margin-top: 0.8rem;
+}
+
+.tile.stakeholder-tile .tile-content {
+  line-height: 1;
+}
+
+.tile.stakeholder-tile .tile-content .tile-label,
+.tile.stakeholder-tile .tile-content .tile-type {
+  line-height: 1.2;
+}
+
+.tile.stakeholder-tile .tile-icon-wrapper {
+  align-content: space-around;
+  -webkit-box-align: center;
+          align-items: center;
+  border: 0.1rem solid #000;
+  border-radius: 0.2rem;
+  color: #fff;
+  display: -webkit-box;
+  display: flex;
+  -ms-flex-align: center;
+  -ms-flex-line-pack: distribute;
+  height: 2rem;
+  width: 2rem;
+}
+
+.tile.stakeholder-tile .tile-icon-wrapper .icon {
+  margin: auto;
+}
+
+.tile.stakeholder-tile .tile-icon-wrapper .feather {
+  margin: 0 auto;
+}
+
 .m-4 {
   margin: 0.8rem !important;
 }

@@ -53,13 +53,19 @@ export default {
 			'scale',
 		]),
 
-		templateFeatures() {
+
+		template() {
 			if ( ! this.project.id) {
+				return false;
+			}
+			return Templates.get(this.project.template);
+		},
+
+		templateTabs() {
+			if ( ! this.template) {
 				return [];
 			}
-
-			var template = Templates.get(this.project.template);
-			return template ? template.CONFIG.features : [];
+			return this.template.CONFIG.tabs;
 		},
 
 		/**
@@ -68,28 +74,20 @@ export default {
 		 */
 		filteredTabs() {
 
-			if ( ! this.templateFeatures) {
+			if ( ! this.templateTabs) {
 				return [];
 			}
 
-			var tabs = [
-				{ feature: 'dashboard', label: 'Dashboard', route: 'dashboard' },
-				{ feature: 'theory_of_change', label: 'Theory of Change', route: 'theory_of_change' },
-				{ feature: 'community_reporting', label: 'Community Reporting', route: 'community_reporting' },
-				{ feature: 'social_media', label: 'Social Media', route: 'social_media' },
-				{ feature: 'living_lab_models', label: 'Living Lab Models', route: 'living_lab_models' },
-			];
-
-			// Get tabs for the template's features
-			tabs = filter(tabs, (tab) => indexOf(this.templateFeatures, tab.feature) >= 0);
-
-			// console.log(tabs);
-
-			// Return object with name + route `to` param
-			tabs = map(tabs, (tab) => {
+			var tabs = map(this.templateTabs, (tab) => {
+				var to = null;
+				if (tab.route === 'dashboard') {
+					to = { name: 'dashboard', params: this.$route.params };
+				} else {
+					to = { name: 'template-tab', params: {...this.$route.params, tab: tab.route }};
+				};
 				return {
 					label: tab.label,
-					to: { name: tab.route, params: this.$route.params },
+					to: to
 				};
 			});
 

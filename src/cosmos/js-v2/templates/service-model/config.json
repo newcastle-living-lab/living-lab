@@ -1,7 +1,13 @@
 {
 	"name": "service-model",
 	"title": "Co-Creation of Service Model",
-	"features": ["dashboard", "theory_of_change", "community_reporting", "social_media", "living_lab_models"],
+	"tabs": [
+		{ "route": "dashboard", "label": "Dashboard" },
+		{ "route": "theory_of_change", "component": "TheoryOfChangeTab", "label": "Theory of Change" },
+		{ "route": "community_reporting", "component": "CommunityReportingTab", "label": "Community Reporting" },
+		{ "route": "social_media", "component": "SocialMediaTab", "label": "Social Media" },
+		{ "route": "living_lab_models", "component": "LivingLabModelsTab", "label": "Living Lab Models" }
+	],
 	"stageSize": {
 		"width": 1500,
 		"height": 1020

@@ -28,6 +28,8 @@ import ExternalItem from '@/components/project/view/ExternalItem';
 
 export default {
 
+	name: "CommunityReportingTab",
+
 	components: {
 		ExternalItem
 	},

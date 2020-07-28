@@ -40,6 +40,21 @@ export default {
 		}
 
 		return project;
+	},
+
+	Components: {
+		install(Vue) {
+			for (let tpl in allTemplates) {
+				if ( ! allTemplates[tpl].Components) {
+					continue;
+				}
+				for (let key in allTemplates[tpl].Components) {
+					const component = allTemplates[tpl].Components[key];
+					console.log("Registering component " + component.name);
+					Vue.component(component.name, component);
+				}
+			}
+		}
 	}
 
 }

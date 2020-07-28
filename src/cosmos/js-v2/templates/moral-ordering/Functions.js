@@ -5,9 +5,6 @@ export default {
 	 * Determine the visibility status (true/false) based on the definition and project data.
 	 */
 	graphicVisibility(definitionName, projectData) {
-		// console.log("graphicVisibility");
-		// console.log(definitionName);
-		// console.log(projectData);
 
 		if (definitionName === '_redRect') {
 			var hasEthos = projectData.defineEthos

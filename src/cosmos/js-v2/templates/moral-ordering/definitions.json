@@ -51,7 +51,10 @@
 				"id": "actions",
 				"dataType": "string",
 				"label": "What actions were being undertaken prior to the intervention?",
-				"componentName": "VTextarea"
+				"componentName": "VTextarea",
+				"componentProps": {
+					"rows": 4
+				}
 			},
 			{
 				"id": "actors",
@@ -81,7 +84,10 @@
 				"id": "actions",
 				"dataType": "string",
 				"label": "What actions are now being undertaken within the pilot?",
-				"componentName": "VTextarea"
+				"componentName": "VTextarea",
+				"componentProps": {
+					"rows": 4
+				}
 			},
 			{
 				"id": "actors",

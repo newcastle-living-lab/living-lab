@@ -70,6 +70,8 @@ import SocialLink from '@/components/project/view/SocialLink';
 
 export default {
 
+	name: "SocialMediaTab",
+
 	components: {
 		TwitterIcon,
 		FacebookIcon,
