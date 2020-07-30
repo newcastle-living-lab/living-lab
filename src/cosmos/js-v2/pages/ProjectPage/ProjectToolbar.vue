@@ -17,6 +17,12 @@
 			</section>
 
 			<section class="navbar-section navbar-project">
+				<div v-show="lastSave.waiting" class="input-group input-inline">
+					<div class="text-gray text-small"><span class="loading mr-4"></span> <span>Saving...</span></div>
+				</div>
+				<div v-show="lastSavedString && ! lastSave.waiting" class="input-group input-inline">
+					<span class="text-gray text-small">Last saved at {{ lastSavedString }}</span>
+				</div>
 				<div v-if="project" class="input-group input-inline ml-8">
 					<label class="form-switch" v-show="activeTab == 'dashboard'">
 						<input type="checkbox" v-model="scale">
@@ -34,6 +40,7 @@
 <script>
 
 import { get, set, sync, call } from 'vuex-pathify';
+import format from 'date-fns/format';
 
 import filter from 'lodash/filter';
 import map from 'lodash/map';
@@ -47,12 +54,12 @@ export default {
 
 		...get([
 			'project',
+			'lastSave',
 		]),
 
 		...sync([
 			'scale',
 		]),
-
 
 		template() {
 			if ( ! this.project.id) {
@@ -102,6 +109,13 @@ export default {
 
 		activeTab: function() {
 			return this.$route.name;
+		},
+
+		lastSavedString() {
+			if (this.lastSave.time) {
+				return format(this.lastSave.time, 'HH:mm');
+			}
+			return false;
 		}
 
 	}

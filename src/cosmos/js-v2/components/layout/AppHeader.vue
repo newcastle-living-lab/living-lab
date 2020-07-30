@@ -96,7 +96,7 @@ export default {
 		},
 
 		doSave() {
-			dispatch('saveProject');
+			dispatch('saveProject', 'manual');
 		}
 
 	}

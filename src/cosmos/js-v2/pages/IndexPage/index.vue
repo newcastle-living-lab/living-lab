@@ -202,6 +202,7 @@ export default {
 	methods: {
 
 		fetchProjects: call('fetchProjects'),
+		clearProject: call('clearProject'),
 
 		createProject() {
 			Network.createProject(this.newProject)
@@ -219,6 +220,7 @@ export default {
 	},
 
 	mounted() {
+		this.clearProject();
 		this.fetchProjects();
 		this.setTitle();
 	},

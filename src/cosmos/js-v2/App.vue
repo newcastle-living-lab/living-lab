@@ -16,7 +16,7 @@
 
 <script>
 
-import { get, commit } from 'vuex-pathify';
+import { get, commit, call } from 'vuex-pathify';
 
 import Network from "./services/Network";
 import AppHeader from "./components/layout/AppHeader.vue";
@@ -35,13 +35,28 @@ export default {
 
 		...get([
 			'isEditing',
-			'isLoading'
+			'isLoading',
+			'project',
+			'lastSave',
 		]),
 
 		currentRoute: function() {
 			return this.$route
 		},
 
+	},
+
+	watch: {
+		'project': {
+			handler: function() {
+				this.doAutoSave();
+			},
+			deep: true,
+		}
+	},
+
+	methods: {
+		doAutoSave: call('doAutoSave'),
 	},
 
 	created() {
