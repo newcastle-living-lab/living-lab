@@ -5403,6 +5403,12 @@ a.text-gray-medium:visited {
   padding-right: 0.8rem;
 }
 
+.dropdown.dropdown-download .menu {
+  -webkit-animation: none;
+          animation: none;
+  color: #444;
+}
+
 .btn {
   touch-action: manipulation;
   -webkit-transition: none;

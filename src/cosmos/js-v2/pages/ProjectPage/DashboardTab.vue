@@ -34,6 +34,21 @@
 
 		</div>
 
+		<div class="modal modal-sm" :class="isExporting ? 'active' : ''">
+			<div class="modal-overlay"></div>
+			<div class="modal-container">
+				<div class="modal-header">
+					<div class="modal-title h5">Exporting...</div>
+				</div>
+				<div class="modal-body">
+					<div class="content mb-4">
+						<p>The export file is being generated.</p>
+						<div class="loading loading-lg"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+
 	</main>
 
 </template>
@@ -42,7 +57,9 @@
 
 import throttle from 'lodash/throttle';
 import { get, set, sync, call } from 'vuex-pathify';
+import jsPDF from 'jspdf';
 
+import { EventBus } from '@/services/EventBus';
 import Templates from '@/templates';
 
 export default {
@@ -64,6 +81,7 @@ export default {
 
 	data() {
 		return {
+			isExporting: false,
 			stageConfig: {
 				width: 640,
 				height: 480,
@@ -102,9 +120,10 @@ export default {
 				fill: '#ffffff',
 				x: 0,
 				y: 0,
-				width: this.stageConfig.width,
-				height: this.stageConfig.height
+				width: this.template.CONFIG.stageSize.width,
+				height: this.template.CONFIG.stageSize.height,
 			};
+			return config;
 		}
 
 	},
@@ -191,6 +210,58 @@ export default {
 		setCursor() {
 			var cursor = this.stageHover ? 'pointer' : 'default';
 			this.$refs.stage.getStage().container().style.cursor = cursor;
+		},
+
+		exportHandler(params) {
+
+			var stage = this.$refs.stage.getStage();
+
+			switch (params.target) {
+
+				case 'image':
+					this.isExporting = true;
+					var image = stage.toDataURL({ pixelRatio: 2 });
+					var link = document.createElement('a');
+					link.download = `${this.project.name}.png`;
+					link.href = image;
+					document.body.appendChild(link);
+					link.click();
+					document.body.removeChild(link);
+					this.isExporting = false;
+				break;
+
+				case 'pdf':
+
+					this.isExporting = true;
+
+					setTimeout(() => {
+
+						var pdfPromise = (new Promise(resolve => {
+
+							var w = stage.width(),
+								h = stage.height();
+
+							var image = stage.toDataURL({ pixelRatio: 1.5 });
+
+							var pdf = new jsPDF('l', 'px', [w, h], false, true);
+							var width = pdf.internal.pageSize.getWidth();
+							var height = pdf.internal.pageSize.getHeight();
+
+							pdf.addImage(image, 'PNG', 0, 0, width, height);
+							var res = pdf.save(`${this.project.name}.pdf`, {returnPromise: true});
+							res.then(() => resolve());
+						}));
+
+						pdfPromise.then(() => {
+							this.isExporting = false;
+						});
+
+					}, 100);
+
+				break;
+
+			}
+
 		}
 	},
 
@@ -199,10 +270,14 @@ export default {
 			this.resize();
 			window.addEventListener('resize', throttle(this.resize, 250));
 		});
+
+		EventBus.$on('export', this.exportHandler);
+
 	},
 
 	destroyed() {
 		window.removeEventListener("resize", throttle(this.resize, 250));
+		EventBus.$off('export', this.exportHandler);
 	}
 
 }

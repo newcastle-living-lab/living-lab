@@ -18,6 +18,14 @@
 					@click="doSave"
 				><save-icon size="16" />Save</button>
 
+				<div class="dropdown dropdown-download" v-if="hasProject">
+					<button class='btn btn-link btn-sm dropdown-toggle'><download-icon size="16" />Download <i class="icon icon-caret"></i></button>
+					<ul class="menu">
+						 <li class="menu-item"><a href="javascript:;" @click="doExportImage()">Image</a></li>
+						 <li class="menu-item"><a href="javascript:;" @click="doExportPdf()">PDF</a></li>
+					</ul>
+				</div>
+
 			</section>
 
 			<section class="navbar-section navbar-tabs">
@@ -40,12 +48,15 @@
 
 import { get, commit, dispatch } from 'vuex-pathify';
 
+import { EventBus } from '@/services/EventBus';
+
 import PlusIcon from 'vue-feather-icons/icons/PlusIcon';
 import EditIcon from 'vue-feather-icons/icons/EditIcon';
 import FolderIcon from 'vue-feather-icons/icons/FolderIcon';
 import SaveIcon from 'vue-feather-icons/icons/SaveIcon';
 import UserIcon from 'vue-feather-icons/icons/UserIcon';
 import KeyIcon from 'vue-feather-icons/icons/KeyIcon';
+import DownloadIcon from 'vue-feather-icons/icons/DownloadIcon';
 
 export default {
 
@@ -56,6 +67,7 @@ export default {
 		SaveIcon,
 		UserIcon,
 		KeyIcon,
+		DownloadIcon,
 	},
 
 	props: ['route'],
@@ -97,6 +109,14 @@ export default {
 
 		doSave() {
 			dispatch('saveProject', 'manual');
+		},
+
+		doExportImage() {
+			EventBus.$emit('export', { target: 'image' });
+		},
+
+		doExportPdf() {
+			EventBus.$emit('export', { target: 'pdf' });
 		}
 
 	}
