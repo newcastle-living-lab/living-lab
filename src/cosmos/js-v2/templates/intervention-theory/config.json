@@ -1,0 +1,12 @@
+{
+	"name": "intervention-theory",
+	"title": "Intervention Theory",
+	"dashboard": "InterventionDashboard",
+	"tabs": [
+		{ "route": "dashboard", "label": "Dashboard" }
+	],
+	"stageSize": {
+		"width": 1285,
+		"height": 800
+	}
+}

@@ -9,6 +9,7 @@
 export default {
 	name: "VGroup",
 	props: {
+		'val': [String,Object,Array],
 		'name': String,
 		'label': String,
 		'labelClass': String,

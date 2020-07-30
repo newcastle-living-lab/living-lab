@@ -16,8 +16,6 @@ export default {
 
 	props: {
 		options: Object,
-		definitionName: String,
-		config: Object,
 	},
 
 	computed: {

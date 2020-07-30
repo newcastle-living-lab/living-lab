@@ -1,6 +1,6 @@
 import VGroup from "./VGroup";
 import VButton from "./VButton";
-// import VCkbox from "./VCkbox";
+import VCheckList from "./VCheckList";
 import VInput from "./VInput";
 import VTextarea from "./VTextarea";
 // import VModal from "./VModal";
@@ -12,7 +12,7 @@ import VColourPicker from "./VColourPicker";
 export {
 	VGroup,
 	VButton,
-	// VCkbox,
+	VCheckList,
 	VInput,
 	VTextarea,
 	// VModal,

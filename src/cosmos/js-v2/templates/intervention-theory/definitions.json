@@ -1,0 +1,97 @@
+[
+	{
+		"id": "model",
+		"type": "model",
+		"title": "Model",
+		"hint": null
+	},
+	{
+		"id": "wellbeing",
+		"type": "group",
+		"title": "Human well-being and Environment",
+		"children": [
+			{
+				"id": "items",
+				"dataType": "array",
+				"label": "Which aspects of human well-being and of the environment are relevant to your service? Are some more significant than others?",
+				"componentName": "VCheckList",
+				"componentProps": {
+					"options": [
+						{"value": "physical_env", "label": "Physical Envrionment"},
+						{"value": "socio_cultural_env", "label": "Socio-cultural Environment"},
+						{"value": "faculties_skills", "label": "Faculties and Skills"},
+						{"value": "mental_psych", "label": "Mental and Psychological"},
+						{"value": "physiological", "label": "Physiological"},
+						{"value": "socio_economic", "label": "Socio-Economic"}
+					]
+				}
+			}
+		]
+	},
+	{
+		"id": "innovation",
+		"type": "group",
+		"title": "Innovation and change",
+		"children": [
+			{
+				"id": "items",
+				"dataType": "array",
+				"label": "What aspects of the service lifecycle are important regarding your innovation and change?",
+				"componentName": "VCheckList",
+				"componentProps": {
+					"options": [
+						{"value": "transformation", "label": "Transformation"},
+						{"value": "development", "label": "Development"},
+						{"value": "facilitation", "label": "Facilitation"},
+						{"value": "rehabilitation", "label": "Rehabilitation"},
+						{"value": "remedy", "label": "Remedy"},
+						{"value": "palliation", "label": "Palliation"},
+						{"value": "prevention", "label": "Prevention"}
+					]
+				}
+			}
+		]
+	},
+	{
+		"id": "intervention",
+		"type": "group",
+		"title": "Intervention",
+		"children": [
+			{
+				"id": "items",
+				"dataType": "array",
+				"label": "What type of intervention is occuring?",
+				"componentName": "VCheckList",
+				"componentProps": {
+					"options": [
+						{"value": "identification", "label": "Identification & Planning"},
+						{"value": "coordination_delivery", "label": "Coordination & Delivery"},
+						{"value": "management", "label": "Management"},
+						{"value": "governance", "label": "Governance"},
+						{"value": "learning", "label": "Learning"}
+					]
+				}
+			}
+		]
+	},
+	{
+		"id": "learning",
+		"type": "group",
+		"title": "Learning",
+		"children": [
+			{
+				"id": "items",
+				"dataType": "array",
+				"label": "How is learning happening in your intervention?",
+				"componentName": "VCheckList",
+				"componentProps": {
+					"options": [
+						{"value": "research_evidence", "label": "Research & Evidence"},
+						{"value": "trials", "label": "Trials"},
+						{"value": "service_improvement", "label": "Service Improvement"}
+					]
+				}
+			}
+		]
+	}
+]

@@ -5,11 +5,13 @@ import forEach from 'lodash/forEach';
 import AnalyticModel from './analytic-model';
 import ServiceModel from './service-model';
 import MoralOrdering from './moral-ordering';
+import InterventionTheory from './intervention-theory';
 
 const allTemplates = [
 	AnalyticModel,
 	ServiceModel,
 	MoralOrdering,
+	InterventionTheory,
 ];
 
 

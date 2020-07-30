@@ -8,7 +8,7 @@
 				<v-layer>
 					<v-rect :config="backgroundConfig" />
 				</v-layer>
-				<v-layer v-if="this.project.id">
+				<v-layer v-if="project.id && nodes.length">
 					<component
 						v-for="(node, idx) in nodes"
 						:key="idx"
@@ -22,6 +22,13 @@
 						:options="options"
 						:templateName="project.template"
 					></component>
+				</v-layer>
+				<v-layer v-if="project.id && template.CONFIG.dashboard">
+					<component
+						v-bind:is="template.CONFIG.dashboard"
+						:definitions="template.DEFINITIONS"
+						:options="options"
+					/>
 				</v-layer>
 			</v-stage>
 
@@ -87,7 +94,7 @@ export default {
 		},
 
 		nodes() {
-			return (this.project.template ? this.template.NODES : []);
+			return (this.project.template && this.template.NODES ? this.template.NODES : []);
 		},
 
 		backgroundConfig() {

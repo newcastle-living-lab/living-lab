@@ -1,0 +1,206 @@
+<template>
+
+	<v-group>
+
+		<CosmosTitle :options="options" />
+
+		<v-rect :config="{
+			x: 60,
+			y: 145,
+			width: 180,
+			height: 100,
+			fill: '#ccc',
+			opacity: 0
+		}" />
+
+		<CosmosImage :config="{
+			x: 0,
+			y: 90,
+			filename: 'intervention-theory/dashboard.png'
+		}" />
+
+		<v-text
+			v-for="(config, name) in wellbeingConfig"
+			:key="name"
+			:config="config"
+		/>
+
+		<v-text
+			v-for="(config, name) in interventionConfig"
+			:key="name"
+			:config="config"
+		/>
+
+		<v-text :config="learningConfig" />
+
+		<v-text :config="innovationConfig" />
+
+	</v-group>
+
+</template>
+
+<script>
+
+import { get } from 'vuex-pathify';
+import map from 'lodash/map';
+import find from 'lodash/find';
+import filter from 'lodash/filter';
+
+import Templates from '@/templates';
+
+const defaultTextConfig = {
+	fontSize: 24,
+	fontStyle: 'bold',
+	fontFamily: '-apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif',
+	lineHeight: 1.2,
+	align: 'center'
+};
+
+export default {
+
+	name: 'InterventionDashboard',
+
+	props: {
+		options: Object,
+		definitions: [Object, Array],
+	},
+
+	computed: {
+
+		projectData: get('project@data'),
+
+		wellbeingConfig() {
+
+			var items = [
+				{ key: 'physical_env', text: 'Physical Environment', fill: '#6161EA', x: 90, y: 160, width: 175 },
+				{ key: 'socio_cultural_env', text: 'Socio-cultural Environment', fill: '#6161EA', x: 530, y: 160, width: 175 },
+
+				{ key: 'faculties_skills', text: 'Faculties and Skills', x: 130, y: 300, width: 175 },
+				{ key: 'mental_psych', text: 'Mental and Psychological', x: 490, y: 305, width: 220 },
+				{ key: 'socio_economic', text: 'Socio-Economic', x: 25, y: 545, width: 280 },
+				{ key: 'physiological', text: 'Physiological', x: 510, y: 545, width: 220 },
+			];
+
+			var config = {},
+				itemConfig = {};
+
+			items.forEach((item) => {
+
+				itemConfig = {
+					fontSize: 22,
+					visible: this.inArray(this.projectData.wellbeing.items, item.key),
+					text: item.text,
+					fill: item.fill ? item.fill : '#1818AA',
+					x: item.x,
+					y: item.y,
+					width: item.width,
+				};
+
+				config[item.key] = {...defaultTextConfig, ...itemConfig};
+
+			});
+
+			var headingConfig = {
+				fontSize: 30,
+				text: 'Well Being',
+				fill: '#1818AA',
+				x: 290,
+				y: 450,
+				width: 220,
+			};
+
+			config.heading = {...defaultTextConfig, ...headingConfig};
+
+			return config;
+		},
+
+		interventionConfig() {
+
+			var items = [
+				{ key: 'identification', text: 'Identification & Planning', x: 20, y: 630, width: 220 },
+				{ key: 'coordination_delivery', text: 'Coordination & Delivery', x: 155, y: 700, width: 220 },
+				{ key: 'management', text: 'Management', x: 350, y: 740, width: 210 },
+				{ key: 'governance', text: 'Governance', x: 510, y: 700, width: 200 },
+				{ key: 'learning', text: 'Learning', x: 600, y: 630, width: 160 },
+			];
+
+			var config = {},
+				itemConfig = {};
+
+			items.forEach((item) => {
+
+				itemConfig = {
+					fontSize: 22,
+					visible: this.inArray(this.projectData.intervention.items, item.key),
+					text: item.text,
+					fill: item.fill ? item.fill : '#D3332A',
+					x: item.x,
+					y: item.y,
+					width: item.width,
+				};
+
+				config[item.key] = {...defaultTextConfig, ...itemConfig};
+
+			});
+
+			return config;
+		},
+
+		learningConfig() {
+
+			var definition = find(this.definitions, { id: 'learning' });
+			var options = find(definition.children, { id: 'items' }).componentProps.options;
+
+			var lines = filter(options, (option) => this.inArray(this.projectData.learning.items, option.value));
+			lines = map(lines, (line) => line.label);
+
+			var itemConfig = {
+				align: 'left',
+				verticalAlign: 'middle',
+				lineHeight: 1.5,
+				fontSize: 22,
+				text: lines.join("\n"),
+				fill: '#D3332A',
+				x: 800,
+				y: 665,
+				width: 310,
+				height: 110,
+			};
+
+			return {...defaultTextConfig, ...itemConfig};
+		},
+
+		innovationConfig() {
+
+			var definition = find(this.definitions, { id: 'innovation' });
+			var options = find(definition.children, { id: 'items' }).componentProps.options;
+
+			var lines = filter(options, (option) => this.inArray(this.projectData.innovation.items, option.value));
+			lines = map(lines, (line) => line.label);
+
+			var itemConfig = {
+				align: 'left',
+				verticalAlign: 'middle',
+				lineHeight: 1.5,
+				fontSize: 30,
+				text: lines.join("\n"),
+				fill: '#410141',
+				x: 955,
+				y: 255,
+				width: 310,
+				height: 420,
+			};
+
+			return {...defaultTextConfig, ...itemConfig};
+		},
+
+	},
+
+	methods: {
+		inArray(arr, item) {
+			return (arr.indexOf(item) !== -1);
+		}
+	}
+
+}
+</script>
