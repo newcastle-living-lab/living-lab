@@ -6,12 +6,14 @@ import AnalyticModel from './analytic-model';
 import ServiceModel from './service-model';
 import MoralOrdering from './moral-ordering';
 import InterventionTheory from './intervention-theory';
+import TheoryOfChange from './theory-of-change';
 
 const allTemplates = [
 	AnalyticModel,
 	ServiceModel,
 	MoralOrdering,
 	InterventionTheory,
+	TheoryOfChange,
 ];
 
 

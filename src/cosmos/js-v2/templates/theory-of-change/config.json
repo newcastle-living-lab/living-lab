@@ -1,0 +1,13 @@
+{
+	"name": "theory-of-change",
+	"title": "Theory of Change",
+	"dashboard": "TheoryOfChangeDashboard",
+	"tabs": [
+		{ "route": "dashboard", "label": "Dashboard" },
+		{ "route": "summary", "label": "Summary", "component": "TheoryOfChangeSummaryTab" }
+	],
+	"stageSize": {
+		"width": 1280,
+		"height": 800
+	}
+}

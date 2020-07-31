@@ -4359,6 +4359,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _service_model__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./service-model */ "./js-v2/templates/service-model/index.js");
 /* harmony import */ var _moral_ordering__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./moral-ordering */ "./js-v2/templates/moral-ordering/index.js");
 /* harmony import */ var _intervention_theory__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./intervention-theory */ "./js-v2/templates/intervention-theory/index.js");
+/* harmony import */ var _theory_of_change__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./theory-of-change */ "./js-v2/templates/theory-of-change/index.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 
@@ -4368,7 +4369,8 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
 
 
 
-var allTemplates = [_analytic_model__WEBPACK_IMPORTED_MODULE_3__["default"], _service_model__WEBPACK_IMPORTED_MODULE_4__["default"], _moral_ordering__WEBPACK_IMPORTED_MODULE_5__["default"], _intervention_theory__WEBPACK_IMPORTED_MODULE_6__["default"]];
+
+var allTemplates = [_analytic_model__WEBPACK_IMPORTED_MODULE_3__["default"], _service_model__WEBPACK_IMPORTED_MODULE_4__["default"], _moral_ordering__WEBPACK_IMPORTED_MODULE_5__["default"], _intervention_theory__WEBPACK_IMPORTED_MODULE_6__["default"], _theory_of_change__WEBPACK_IMPORTED_MODULE_7__["default"]];
 /* harmony default export */ __webpack_exports__["default"] = ({
   all: function all() {
     return lodash_map__WEBPACK_IMPORTED_MODULE_1___default()(allTemplates, function (t) {
@@ -5417,6 +5419,234 @@ var _nodes_json__WEBPACK_IMPORTED_MODULE_2___namespace = /*#__PURE__*/__webpack_
 /***/ (function(module) {
 
 module.exports = JSON.parse("[{\"componentName\":\"CosmosTitle\",\"definitionName\":\"model\"},{\"componentName\":\"CosmosInfoBox\",\"definitionName\":\"drivers\",\"config\":{\"x\":20,\"y\":100}},{\"componentName\":\"CosmosExternals\",\"definitionName\":\"extorg\",\"config\":{\"x\":20,\"y\":250,\"itemColour\":\"#f012be\"}},{\"componentName\":\"CosmosExternals\",\"definitionName\":\"extsvc\",\"config\":{\"x\":20,\"y\":740,\"itemColour\":\"#2ecc40\"}},{\"componentName\":\"CosmosExternals\",\"definitionName\":\"infsvc\",\"config\":{\"x\":980,\"y\":740,\"itemColour\":\"#2ecc40\"}},{\"componentName\":\"CosmosCurve\",\"config\":{\"x\":480,\"y\":580,\"ratio\":0.1,\"points\":{\"start\":{\"x\":0,\"y\":0},\"end\":{\"x\":150,\"y\":-360}}}},{\"componentName\":\"v-text\",\"config\":{\"x\":600,\"y\":190,\"text\":\"Structural Relationships and Occasions\",\"fill\":\"#ff4136\",\"fontSize\":16,\"fontStyle\":\"bold\",\"fontFamily\":\"-apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif\"}},{\"componentName\":\"CosmosCurve\",\"config\":{\"x\":480,\"y\":610,\"ratio\":0.1,\"points\":{\"start\":{\"x\":0,\"y\":0},\"end\":{\"x\":150,\"y\":360}}}},{\"componentName\":\"v-text\",\"config\":{\"x\":600,\"y\":980,\"text\":\"Infrastructural Relationships, Recourses and Facilities\",\"fill\":\"#ff4136\",\"fontSize\":16,\"fontStyle\":\"bold\",\"fontFamily\":\"-apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif\"}},{\"componentName\":\"CosmosGroup\",\"_comment\":\"Stakeholders (LEFT) for above Serv Def + Dev Platform\",\"config\":{\"x\":620,\"y\":220},\"children\":[{\"componentName\":\"CosmosStakeholder\",\"definitionName\":\"policyDef\",\"config\":{\"group\":{\"x\":100,\"y\":10}}},{\"componentName\":\"CosmosStakeholder\",\"definitionName\":\"specDes\",\"config\":{\"group\":{\"x\":0,\"y\":160}}},{\"componentName\":\"CosmosStakeholder\",\"definitionName\":\"deployment\",\"config\":{\"group\":{\"x\":200,\"y\":160}}}]},{\"componentName\":\"CosmosArrow\",\"config\":{\"x\":330,\"y\":580,\"length\":100,\"direction\":\"SE\",\"arrowColour\":\"#3d9970\",\"label\":{\"text\":\"Ethos\",\"fontSize\":18,\"fill\":\"#3d9970\"}}},{\"componentName\":\"CosmosArrow\",\"config\":{\"x\":330,\"y\":600,\"length\":70,\"direction\":\"E\",\"arrowColour\":\"#aaaaaa\",\"label\":{\"text\":\"Policy & Law\",\"fontSize\":18,\"fill\":\"#000000\"}}},{\"componentName\":\"CosmosArrow\",\"config\":{\"x\":330,\"y\":620,\"length\":100,\"direction\":\"NE\",\"arrowColour\":\"#aaaaaa\",\"label\":{\"text\":\"Resources\",\"fontSize\":18,\"fill\":\"#000000\"}}},{\"componentName\":\"CosmosTextBox\",\"config\":{\"label\":\"Service Definition and Development Platform\",\"x\":500,\"y\":570,\"textWidth\":300,\"width\":500,\"height\":50}},{\"componentName\":\"CosmosTextBox\",\"config\":{\"label\":\"Service Delivery Platform\",\"x\":980,\"y\":570,\"textWidth\":300,\"width\":500,\"height\":50}},{\"componentName\":\"v-line\",\"_comment\":\"Line between def+dev platform + delivery platform\",\"config\":{\"x\":990,\"y\":620,\"points\":[0,0,0,-400],\"stroke\":\"#3d9970\",\"strokeWidth\":2,\"dash\":[9,3]}},{\"componentName\":\"v-rect\",\"_comment\":\"Outline for initiator\",\"config\":{\"x\":345,\"y\":490,\"width\":160,\"height\":210,\"stroke\":\"#3d9970\",\"cornerRadius\":75,\"strokeWidth\":2,\"fill\":\"#ffffff\"}},{\"componentName\":\"CosmosStakeholder\",\"definitionName\":\"initiator\",\"config\":{\"group\":{\"x\":375,\"y\":530}}},{\"componentName\":\"CosmosGroup\",\"_comment\":\"Stakeholders (RIGHT) for above serv del platform\",\"config\":{\"x\":1060,\"y\":220},\"children\":[{\"componentName\":\"CosmosStakeholder\",\"definitionName\":\"delivery\",\"config\":{\"group\":{\"x\":0,\"y\":10}}},{\"componentName\":\"CosmosStakeholder\",\"definitionName\":\"user\",\"config\":{\"group\":{\"x\":200,\"y\":10}}},{\"componentName\":\"CosmosStakeholder\",\"definitionName\":\"evaluation\",\"config\":{\"group\":{\"x\":0,\"y\":160}}},{\"componentName\":\"CosmosStakeholder\",\"definitionName\":\"beneficiary\",\"config\":{\"group\":{\"x\":200,\"y\":160}}}]}]");
+
+/***/ }),
+
+/***/ "./js-v2/templates/theory-of-change/components/TheoryOfChangeDashboard.vue":
+/*!*********************************************************************************!*\
+  !*** ./js-v2/templates/theory-of-change/components/TheoryOfChangeDashboard.vue ***!
+  \*********************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _TheoryOfChangeDashboard_vue_vue_type_template_id_1edac1dd___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./TheoryOfChangeDashboard.vue?vue&type=template&id=1edac1dd& */ "./js-v2/templates/theory-of-change/components/TheoryOfChangeDashboard.vue?vue&type=template&id=1edac1dd&");
+/* harmony import */ var _TheoryOfChangeDashboard_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./TheoryOfChangeDashboard.vue?vue&type=script&lang=js& */ "./js-v2/templates/theory-of-change/components/TheoryOfChangeDashboard.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _TheoryOfChangeDashboard_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _TheoryOfChangeDashboard_vue_vue_type_template_id_1edac1dd___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _TheoryOfChangeDashboard_vue_vue_type_template_id_1edac1dd___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "js-v2/templates/theory-of-change/components/TheoryOfChangeDashboard.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./js-v2/templates/theory-of-change/components/TheoryOfChangeDashboard.vue?vue&type=script&lang=js&":
+/*!**********************************************************************************************************!*\
+  !*** ./js-v2/templates/theory-of-change/components/TheoryOfChangeDashboard.vue?vue&type=script&lang=js& ***!
+  \**********************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_TheoryOfChangeDashboard_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./TheoryOfChangeDashboard.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./js-v2/templates/theory-of-change/components/TheoryOfChangeDashboard.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_TheoryOfChangeDashboard_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./js-v2/templates/theory-of-change/components/TheoryOfChangeDashboard.vue?vue&type=template&id=1edac1dd&":
+/*!****************************************************************************************************************!*\
+  !*** ./js-v2/templates/theory-of-change/components/TheoryOfChangeDashboard.vue?vue&type=template&id=1edac1dd& ***!
+  \****************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_TheoryOfChangeDashboard_vue_vue_type_template_id_1edac1dd___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./TheoryOfChangeDashboard.vue?vue&type=template&id=1edac1dd& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./js-v2/templates/theory-of-change/components/TheoryOfChangeDashboard.vue?vue&type=template&id=1edac1dd&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_TheoryOfChangeDashboard_vue_vue_type_template_id_1edac1dd___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_TheoryOfChangeDashboard_vue_vue_type_template_id_1edac1dd___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./js-v2/templates/theory-of-change/components/TheoryOfChangeSummaryTab.vue":
+/*!**********************************************************************************!*\
+  !*** ./js-v2/templates/theory-of-change/components/TheoryOfChangeSummaryTab.vue ***!
+  \**********************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _TheoryOfChangeSummaryTab_vue_vue_type_template_id_b56dded4_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./TheoryOfChangeSummaryTab.vue?vue&type=template&id=b56dded4&scoped=true& */ "./js-v2/templates/theory-of-change/components/TheoryOfChangeSummaryTab.vue?vue&type=template&id=b56dded4&scoped=true&");
+/* harmony import */ var _TheoryOfChangeSummaryTab_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./TheoryOfChangeSummaryTab.vue?vue&type=script&lang=js& */ "./js-v2/templates/theory-of-change/components/TheoryOfChangeSummaryTab.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _TheoryOfChangeSummaryTab_vue_vue_type_style_index_0_id_b56dded4_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./TheoryOfChangeSummaryTab.vue?vue&type=style&index=0&id=b56dded4&lang=scss&scoped=true& */ "./js-v2/templates/theory-of-change/components/TheoryOfChangeSummaryTab.vue?vue&type=style&index=0&id=b56dded4&lang=scss&scoped=true&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
+  _TheoryOfChangeSummaryTab_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _TheoryOfChangeSummaryTab_vue_vue_type_template_id_b56dded4_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _TheoryOfChangeSummaryTab_vue_vue_type_template_id_b56dded4_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  "b56dded4",
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "js-v2/templates/theory-of-change/components/TheoryOfChangeSummaryTab.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./js-v2/templates/theory-of-change/components/TheoryOfChangeSummaryTab.vue?vue&type=script&lang=js&":
+/*!***********************************************************************************************************!*\
+  !*** ./js-v2/templates/theory-of-change/components/TheoryOfChangeSummaryTab.vue?vue&type=script&lang=js& ***!
+  \***********************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_TheoryOfChangeSummaryTab_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./TheoryOfChangeSummaryTab.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./js-v2/templates/theory-of-change/components/TheoryOfChangeSummaryTab.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_TheoryOfChangeSummaryTab_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./js-v2/templates/theory-of-change/components/TheoryOfChangeSummaryTab.vue?vue&type=style&index=0&id=b56dded4&lang=scss&scoped=true&":
+/*!********************************************************************************************************************************************!*\
+  !*** ./js-v2/templates/theory-of-change/components/TheoryOfChangeSummaryTab.vue?vue&type=style&index=0&id=b56dded4&lang=scss&scoped=true& ***!
+  \********************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_sass_loader_dist_cjs_js_ref_7_3_node_modules_vue_loader_lib_index_js_vue_loader_options_TheoryOfChangeSummaryTab_vue_vue_type_style_index_0_id_b56dded4_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/style-loader!../../../../node_modules/css-loader!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/src??ref--7-2!../../../../node_modules/sass-loader/dist/cjs.js??ref--7-3!../../../../node_modules/vue-loader/lib??vue-loader-options!./TheoryOfChangeSummaryTab.vue?vue&type=style&index=0&id=b56dded4&lang=scss&scoped=true& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./js-v2/templates/theory-of-change/components/TheoryOfChangeSummaryTab.vue?vue&type=style&index=0&id=b56dded4&lang=scss&scoped=true&");
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_sass_loader_dist_cjs_js_ref_7_3_node_modules_vue_loader_lib_index_js_vue_loader_options_TheoryOfChangeSummaryTab_vue_vue_type_style_index_0_id_b56dded4_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_sass_loader_dist_cjs_js_ref_7_3_node_modules_vue_loader_lib_index_js_vue_loader_options_TheoryOfChangeSummaryTab_vue_vue_type_style_index_0_id_b56dded4_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_sass_loader_dist_cjs_js_ref_7_3_node_modules_vue_loader_lib_index_js_vue_loader_options_TheoryOfChangeSummaryTab_vue_vue_type_style_index_0_id_b56dded4_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_sass_loader_dist_cjs_js_ref_7_3_node_modules_vue_loader_lib_index_js_vue_loader_options_TheoryOfChangeSummaryTab_vue_vue_type_style_index_0_id_b56dded4_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_sass_loader_dist_cjs_js_ref_7_3_node_modules_vue_loader_lib_index_js_vue_loader_options_TheoryOfChangeSummaryTab_vue_vue_type_style_index_0_id_b56dded4_lang_scss_scoped_true___WEBPACK_IMPORTED_MODULE_0___default.a); 
+
+/***/ }),
+
+/***/ "./js-v2/templates/theory-of-change/components/TheoryOfChangeSummaryTab.vue?vue&type=template&id=b56dded4&scoped=true&":
+/*!*****************************************************************************************************************************!*\
+  !*** ./js-v2/templates/theory-of-change/components/TheoryOfChangeSummaryTab.vue?vue&type=template&id=b56dded4&scoped=true& ***!
+  \*****************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_TheoryOfChangeSummaryTab_vue_vue_type_template_id_b56dded4_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./TheoryOfChangeSummaryTab.vue?vue&type=template&id=b56dded4&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./js-v2/templates/theory-of-change/components/TheoryOfChangeSummaryTab.vue?vue&type=template&id=b56dded4&scoped=true&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_TheoryOfChangeSummaryTab_vue_vue_type_template_id_b56dded4_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_TheoryOfChangeSummaryTab_vue_vue_type_template_id_b56dded4_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./js-v2/templates/theory-of-change/components/index.js":
+/*!**************************************************************!*\
+  !*** ./js-v2/templates/theory-of-change/components/index.js ***!
+  \**************************************************************/
+/*! exports provided: TheoryOfChangeDashboard, TheoryOfChangeSummaryTab */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _TheoryOfChangeDashboard__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./TheoryOfChangeDashboard */ "./js-v2/templates/theory-of-change/components/TheoryOfChangeDashboard.vue");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "TheoryOfChangeDashboard", function() { return _TheoryOfChangeDashboard__WEBPACK_IMPORTED_MODULE_0__["default"]; });
+
+/* harmony import */ var _TheoryOfChangeSummaryTab__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./TheoryOfChangeSummaryTab */ "./js-v2/templates/theory-of-change/components/TheoryOfChangeSummaryTab.vue");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "TheoryOfChangeSummaryTab", function() { return _TheoryOfChangeSummaryTab__WEBPACK_IMPORTED_MODULE_1__["default"]; });
+
+
+
+
+
+/***/ }),
+
+/***/ "./js-v2/templates/theory-of-change/config.json":
+/*!******************************************************!*\
+  !*** ./js-v2/templates/theory-of-change/config.json ***!
+  \******************************************************/
+/*! exports provided: name, title, dashboard, tabs, stageSize, default */
+/***/ (function(module) {
+
+module.exports = JSON.parse("{\"name\":\"theory-of-change\",\"title\":\"Theory of Change\",\"dashboard\":\"TheoryOfChangeDashboard\",\"tabs\":[{\"route\":\"dashboard\",\"label\":\"Dashboard\"},{\"route\":\"summary\",\"label\":\"Summary\",\"component\":\"TheoryOfChangeSummaryTab\"}],\"stageSize\":{\"width\":1280,\"height\":800}}");
+
+/***/ }),
+
+/***/ "./js-v2/templates/theory-of-change/definitions.json":
+/*!***********************************************************!*\
+  !*** ./js-v2/templates/theory-of-change/definitions.json ***!
+  \***********************************************************/
+/*! exports provided: 0, 1, 2, 3, 4, default */
+/***/ (function(module) {
+
+module.exports = JSON.parse("[{\"id\":\"model\",\"type\":\"model\",\"title\":\"Model\",\"hint\":null},{\"id\":\"first_order\",\"type\":\"group\",\"title\":\"First Order\",\"children\":[{\"id\":\"vision\",\"dataType\":\"string\",\"label\":\"How were the vision and objectives set?\",\"componentName\":\"VTextarea\",\"componentProps\":{\"rows\":4}},{\"id\":\"plan\",\"dataType\":\"string\",\"label\":\"How was a plan set up to deliver the vision?\",\"componentName\":\"VTextarea\",\"componentProps\":{\"rows\":4}},{\"id\":\"execute\",\"dataType\":\"string\",\"label\":\"How is the plan being executed?\",\"componentName\":\"VTextarea\",\"componentProps\":{\"rows\":4}},{\"id\":\"measure\",\"dataType\":\"string\",\"label\":\"How are observations and measurements being recorded? If not, what needs to be enabled to do so?\",\"componentName\":\"VTextarea\",\"componentProps\":{\"rows\":4}}]},{\"id\":\"second_order\",\"type\":\"group\",\"title\":\"Second Order\",\"children\":[{\"id\":\"sense_making\",\"dataType\":\"string\",\"label\":\"When do you review the plans and vision?\",\"componentName\":\"VTextarea\",\"componentProps\":{\"rows\":4}},{\"id\":\"languaging\",\"dataType\":\"string\",\"label\":\"What changes have been made to how the intervention has been understood?\",\"componentName\":\"VTextarea\",\"componentProps\":{\"rows\":4}},{\"id\":\"committing\",\"dataType\":\"string\",\"label\":\"How has the service delivery of the intervention changed from its original plans?\",\"componentName\":\"VTextarea\",\"componentProps\":{\"rows\":4}}]},{\"id\":\"third_order\",\"type\":\"group\",\"title\":\"Third Order\",\"children\":[{\"id\":\"processes\",\"dataType\":\"string\",\"label\":\"What processes provoke or enable second order questioning?\",\"componentName\":\"VTextarea\",\"componentProps\":{\"rows\":4}}]},{\"id\":\"fourth_order\",\"type\":\"group\",\"title\":\"Fourth Order\",\"children\":[{\"id\":\"unexpected_events\",\"dataType\":\"string\",\"label\":\"Have there been instances where you have seen unexpected events occurred?\",\"componentName\":\"VTextarea\",\"componentProps\":{\"rows\":4}},{\"id\":\"event_cause\",\"dataType\":\"string\",\"label\":\"What happened to allow this event to occur?\",\"componentName\":\"VTextarea\",\"componentProps\":{\"rows\":4}},{\"id\":\"change_origin\",\"dataType\":\"string\",\"label\":\"What was the origin of the change? And what was the change?\",\"componentName\":\"VTextarea\",\"componentProps\":{\"rows\":4}}]}]");
+
+/***/ }),
+
+/***/ "./js-v2/templates/theory-of-change/index.js":
+/*!***************************************************!*\
+  !*** ./js-v2/templates/theory-of-change/index.js ***!
+  \***************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _config_json__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./config.json */ "./js-v2/templates/theory-of-change/config.json");
+var _config_json__WEBPACK_IMPORTED_MODULE_0___namespace = /*#__PURE__*/__webpack_require__.t(/*! ./config.json */ "./js-v2/templates/theory-of-change/config.json", 1);
+/* harmony import */ var _definitions_json__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./definitions.json */ "./js-v2/templates/theory-of-change/definitions.json");
+var _definitions_json__WEBPACK_IMPORTED_MODULE_1___namespace = /*#__PURE__*/__webpack_require__.t(/*! ./definitions.json */ "./js-v2/templates/theory-of-change/definitions.json", 1);
+/* harmony import */ var _components__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components */ "./js-v2/templates/theory-of-change/components/index.js");
+
+ // import NODES from "./nodes.json";
+// import Functions from "./Functions";
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  CONFIG: _config_json__WEBPACK_IMPORTED_MODULE_0__,
+  DEFINITIONS: _definitions_json__WEBPACK_IMPORTED_MODULE_1__,
+  // NODES,
+  // Functions,
+  Components: _components__WEBPACK_IMPORTED_MODULE_2__
+});
 
 /***/ }),
 
@@ -12997,6 +13227,422 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./js-v2/templates/theory-of-change/components/TheoryOfChangeDashboard.vue?vue&type=script&lang=js&":
+/*!******************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./js-v2/templates/theory-of-change/components/TheoryOfChangeDashboard.vue?vue&type=script&lang=js& ***!
+  \******************************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var vuex_pathify__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuex-pathify */ "./node_modules/vuex-pathify/dist/vuex-pathify.esm.js");
+/* harmony import */ var lodash_map__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! lodash/map */ "./node_modules/lodash/map.js");
+/* harmony import */ var lodash_map__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(lodash_map__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var lodash_find__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! lodash/find */ "./node_modules/lodash/find.js");
+/* harmony import */ var lodash_find__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(lodash_find__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var lodash_filter__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! lodash/filter */ "./node_modules/lodash/filter.js");
+/* harmony import */ var lodash_filter__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(lodash_filter__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _templates__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @/templates */ "./js-v2/templates/index.js");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+
+
+var defaultTextConfig = {
+  fontSize: 32,
+  // fontStyle: 'bold',
+  fontFamily: '-apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif',
+  lineHeight: 1.2,
+  align: 'left'
+};
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: 'TheoryOfChangeDashboard',
+  props: {
+    options: Object,
+    definitions: [Object, Array]
+  },
+  computed: {
+    projectData: Object(vuex_pathify__WEBPACK_IMPORTED_MODULE_0__["get"])('project@data'),
+    zeroOrderConfig: function zeroOrderConfig() {
+      var config = {
+        text: 'Zero Order',
+        fill: '#2d2d68',
+        x: 890,
+        y: 645
+      };
+      return _objectSpread({}, defaultTextConfig, {}, config);
+    },
+    firstOrderConfigs: function firstOrderConfigs() {
+      var configs = {};
+      var hasVision = this.projectData.first_order.vision.length > 0;
+      var hasPlan = this.projectData.first_order.plan.length > 0;
+      var hasExecute = this.projectData.first_order.execute.length > 0;
+      var hasMeasure = this.projectData.first_order.measure.length > 0;
+      configs.label = _objectSpread({}, defaultTextConfig, {
+        text: 'First Order',
+        fill: '#947194',
+        x: 480,
+        y: 435,
+        visible: hasVision && hasPlan && hasExecute && hasMeasure
+      });
+      configs.risk = _objectSpread({}, defaultTextConfig, {
+        text: 'Risk',
+        fill: '#d317a4',
+        x: 345,
+        y: 600,
+        visible: hasVision && hasPlan && hasExecute && hasMeasure
+      });
+      configs.vision = _objectSpread({}, defaultTextConfig, {
+        text: 'Vision',
+        fill: '#255d4d',
+        x: 440,
+        y: 375,
+        visible: hasVision
+      });
+      configs.plan = _objectSpread({}, defaultTextConfig, {
+        text: 'Plan',
+        fill: '#255d4d',
+        x: 705,
+        y: 515,
+        visible: hasPlan
+      });
+      configs.execute = _objectSpread({}, defaultTextConfig, {
+        text: 'Execute',
+        fill: '#255d4d',
+        x: 435,
+        y: 670,
+        visible: hasExecute
+      });
+      configs.measure = _objectSpread({}, defaultTextConfig, {
+        text: 'Measure',
+        fill: '#255d4d',
+        x: 155,
+        y: 515,
+        visible: hasMeasure
+      });
+      return configs;
+    },
+    secondOrderConfigs: function secondOrderConfigs() {
+      var configs = {};
+      var hasSenseMaking = this.projectData.second_order.sense_making.length > 0;
+      var hasLanguaging = this.projectData.second_order.languaging.length > 0;
+      var hasCommitting = this.projectData.second_order.committing.length > 0;
+      configs.label = _objectSpread({}, defaultTextConfig, {
+        text: 'Second Order',
+        fill: '#cab5ca',
+        x: 390,
+        y: 165,
+        visible: hasSenseMaking && hasLanguaging && hasCommitting
+      });
+      configs.ambiguity = _objectSpread({}, defaultTextConfig, {
+        text: 'Ambiguity',
+        fill: '#d317a4',
+        x: 270,
+        y: 115,
+        visible: hasSenseMaking && hasLanguaging && hasCommitting
+      });
+      configs.sense_making = _objectSpread({}, defaultTextConfig, {
+        text: 'Sense-Making',
+        fill: '#a8bdb7',
+        x: 100,
+        y: 215,
+        visible: hasSenseMaking
+      });
+      configs.plan = _objectSpread({}, defaultTextConfig, {
+        text: '"Languaging"',
+        fill: '#a8bdb7',
+        x: 350,
+        y: 65,
+        visible: hasLanguaging
+      });
+      configs.committing = _objectSpread({}, defaultTextConfig, {
+        text: 'Committing',
+        fill: '#a8bdb7',
+        x: 610,
+        y: 215,
+        visible: hasCommitting
+      });
+      return configs;
+    },
+    thirdOrderConfigs: function thirdOrderConfigs() {
+      var configs = {};
+      var hasProcesses = this.projectData.third_order.processes.length > 0;
+      configs.label = _objectSpread({}, defaultTextConfig, {
+        text: 'Third Order',
+        fill: '#3c003c',
+        x: 45,
+        y: 295,
+        width: 100,
+        align: 'center',
+        visible: hasProcesses
+      });
+      configs.ambivalence = _objectSpread({}, defaultTextConfig, {
+        text: 'Ambivalence',
+        fill: '#d317a4',
+        x: 340,
+        y: 295,
+        visible: hasProcesses,
+        rotation: -4
+      });
+      return configs;
+    },
+    fourthOrderConfig: function fourthOrderConfig() {
+      var config = {
+        text: 'Fourth Order!',
+        fill: '#947194',
+        x: 850,
+        y: 35
+      };
+      return _objectSpread({}, defaultTextConfig, {}, config);
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./js-v2/templates/theory-of-change/components/TheoryOfChangeSummaryTab.vue?vue&type=script&lang=js&":
+/*!*******************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./js-v2/templates/theory-of-change/components/TheoryOfChangeSummaryTab.vue?vue&type=script&lang=js& ***!
+  \*******************************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var vuex_pathify__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuex-pathify */ "./node_modules/vuex-pathify/dist/vuex-pathify.esm.js");
+/* harmony import */ var lodash_find__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! lodash/find */ "./node_modules/lodash/find.js");
+/* harmony import */ var lodash_find__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(lodash_find__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _templates__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/templates */ "./js-v2/templates/index.js");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+var EvidenceLink = {
+  props: {
+    url: String
+  },
+  template: "<a class=\"link\" :href=\"url\" target=\"_blank\">{{ url }}</a>"
+};
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: "TheoryOfChangeSummaryTab",
+  components: {
+    EvidenceLink: EvidenceLink
+  },
+  computed: _objectSpread({}, Object(vuex_pathify__WEBPACK_IMPORTED_MODULE_0__["get"])(['project', 'isEditing']), {
+    template: function template() {
+      if (!this.project.id) {
+        return false;
+      }
+
+      var template = _templates__WEBPACK_IMPORTED_MODULE_2__["default"].get(this.project.template);
+      return template;
+    },
+    definitionsById: function definitionsById() {
+      var defs = {};
+      var children = {};
+      this.template.DEFINITIONS.forEach(function (item) {
+        if (item.children && Array.isArray(item.children)) {
+          children = {};
+          item.children.forEach(function (child) {
+            children[child.id] = child;
+          });
+          item.children = children;
+        }
+
+        defs[item.id] = item;
+      });
+      return defs;
+    }
+  })
+});
+
+/***/ }),
+
 /***/ "./node_modules/charenc/charenc.js":
 /*!*****************************************!*\
   !*** ./node_modules/charenc/charenc.js ***!
@@ -13199,6 +13845,25 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 // module
 exports.push([module.i, ".group-title[data-v-4768a397] {\n  font-size: 1.3rem;\n  padding-top: 0.6rem;\n}\n.group-prompt[data-v-4768a397] {\n  font-size: 0.8rem;\n  font-weight: bold;\n  width: 50%;\n  vertical-align: top;\n}\n.group-value[data-v-4768a397] {\n  vertical-align: top;\n}\n.group-value .link[data-v-4768a397],\n.group-value a.link[data-v-4768a397] {\n  color: #0074D9;\n  text-decoration: underline;\n}\n.like-pre[data-v-4768a397] {\n  white-space: pre;\n}\ntable[data-v-4768a397] {\n  margin-bottom: 2.4rem;\n}\n.divider[data-v-4768a397] {\n  border-top-width: 0.1rem;\n  height: 0.1rem;\n}", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./js-v2/templates/theory-of-change/components/TheoryOfChangeSummaryTab.vue?vue&type=style&index=0&id=b56dded4&lang=scss&scoped=true&":
+/*!******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--7-2!./node_modules/sass-loader/dist/cjs.js??ref--7-3!./node_modules/vue-loader/lib??vue-loader-options!./js-v2/templates/theory-of-change/components/TheoryOfChangeSummaryTab.vue?vue&type=style&index=0&id=b56dded4&lang=scss&scoped=true& ***!
+  \******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, ".group-title[data-v-b56dded4] {\n  font-size: 1.3rem;\n  padding-top: 0.6rem;\n}\n.group-prompt[data-v-b56dded4] {\n  font-size: 0.8rem;\n  font-weight: bold;\n  width: 50%;\n  vertical-align: top;\n}\n.group-value[data-v-b56dded4] {\n  vertical-align: top;\n}\n.group-value .link[data-v-b56dded4],\n.group-value a.link[data-v-b56dded4] {\n  color: #0074D9;\n  text-decoration: underline;\n}\n.like-pre[data-v-b56dded4] {\n  white-space: pre;\n}\ntable[data-v-b56dded4] {\n  margin-bottom: 2.4rem;\n}\n.divider[data-v-b56dded4] {\n  border-top-width: 0.1rem;\n  height: 0.1rem;\n}", ""]);
 
 // exports
 
@@ -37366,6 +38031,36 @@ if(false) {}
 
 /***/ }),
 
+/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./js-v2/templates/theory-of-change/components/TheoryOfChangeSummaryTab.vue?vue&type=style&index=0&id=b56dded4&lang=scss&scoped=true&":
+/*!**********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader!./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--7-2!./node_modules/sass-loader/dist/cjs.js??ref--7-3!./node_modules/vue-loader/lib??vue-loader-options!./js-v2/templates/theory-of-change/components/TheoryOfChangeSummaryTab.vue?vue&type=style&index=0&id=b56dded4&lang=scss&scoped=true& ***!
+  \**********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../../node_modules/css-loader!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/src??ref--7-2!../../../../node_modules/sass-loader/dist/cjs.js??ref--7-3!../../../../node_modules/vue-loader/lib??vue-loader-options!./TheoryOfChangeSummaryTab.vue?vue&type=style&index=0&id=b56dded4&lang=scss&scoped=true& */ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./js-v2/templates/theory-of-change/components/TheoryOfChangeSummaryTab.vue?vue&type=style&index=0&id=b56dded4&lang=scss&scoped=true&");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
 /***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./js-v2/components/layout/ToastMessage.vue?vue&type=style&index=0&id=3fd9a3c9&scoped=true&lang=css&":
 /*!**********************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/style-loader!./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./js-v2/components/layout/ToastMessage.vue?vue&type=style&index=0&id=3fd9a3c9&scoped=true&lang=css& ***!
@@ -46065,6 +46760,358 @@ var render = function() {
     : _vm._e()
 }
 var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./js-v2/templates/theory-of-change/components/TheoryOfChangeDashboard.vue?vue&type=template&id=1edac1dd&":
+/*!**********************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./js-v2/templates/theory-of-change/components/TheoryOfChangeDashboard.vue?vue&type=template&id=1edac1dd& ***!
+  \**********************************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "v-group",
+    [
+      _c("CosmosTitle", { attrs: { options: _vm.options } }),
+      _vm._v(" "),
+      _c(
+        "v-group",
+        {
+          attrs: {
+            config: {
+              x: 0,
+              y: 80
+            }
+          }
+        },
+        [
+          _c("CosmosImage", {
+            attrs: {
+              config: {
+                x: 0,
+                y: 0,
+                filename: "theory-of-change/dashboard.png"
+              }
+            }
+          }),
+          _vm._v(" "),
+          _c("v-text", { attrs: { config: _vm.zeroOrderConfig } }),
+          _vm._v(" "),
+          _c("v-text", { attrs: { config: _vm.fourthOrderConfig } }),
+          _vm._v(" "),
+          _vm._l(_vm.firstOrderConfigs, function(config, name) {
+            return _c("v-text", { key: name, attrs: { config: config } })
+          }),
+          _vm._v(" "),
+          _vm._l(_vm.secondOrderConfigs, function(config, name) {
+            return _c("v-text", { key: name, attrs: { config: config } })
+          }),
+          _vm._v(" "),
+          _vm._l(_vm.thirdOrderConfigs, function(config, name) {
+            return _c("v-text", { key: name, attrs: { config: config } })
+          })
+        ],
+        2
+      )
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./js-v2/templates/theory-of-change/components/TheoryOfChangeSummaryTab.vue?vue&type=template&id=b56dded4&scoped=true&":
+/*!***********************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./js-v2/templates/theory-of-change/components/TheoryOfChangeSummaryTab.vue?vue&type=template&id=b56dded4&scoped=true& ***!
+  \***********************************************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "main",
+    { ref: "container", staticClass: "app-content light moral-summary" },
+    [
+      _c("div", { class: _vm.isEditing ? "scrollable scr-y" : "" }, [
+        _c("div", { staticClass: "container grid-xl" }, [
+          _c("h1", { staticClass: "h4 mb-8 mt-4" }, [
+            _vm._v(_vm._s(_vm.project.data.model.title))
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "divider" }),
+          _vm._v(" "),
+          _c("div", { staticClass: "columns" }, [
+            _vm._m(0),
+            _vm._v(" "),
+            _c("div", { staticClass: "column col-9" }, [
+              _c("table", { staticClass: "table" }, [
+                _c("tbody", [
+                  _c("tr", [
+                    _c("td", { staticClass: "group-prompt" }, [
+                      _vm._v(
+                        _vm._s(
+                          _vm.definitionsById.first_order.children.vision.label
+                        )
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("td", { staticClass: "group-value like-pre" }, [
+                      _vm._v(_vm._s(_vm.project.data.first_order.vision))
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("tr", [
+                    _c("td", { staticClass: "group-prompt" }, [
+                      _vm._v(
+                        _vm._s(
+                          _vm.definitionsById.first_order.children.plan.label
+                        )
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("td", { staticClass: "group-value like-pre" }, [
+                      _vm._v(_vm._s(_vm.project.data.first_order.plan))
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("tr", [
+                    _c("td", { staticClass: "group-prompt" }, [
+                      _vm._v(
+                        _vm._s(
+                          _vm.definitionsById.first_order.children.execute.label
+                        )
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("td", { staticClass: "group-value like-pre" }, [
+                      _vm._v(_vm._s(_vm.project.data.first_order.execute))
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("tr", [
+                    _c("td", { staticClass: "group-prompt" }, [
+                      _vm._v(
+                        _vm._s(
+                          _vm.definitionsById.first_order.children.measure.label
+                        )
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("td", { staticClass: "group-value like-pre" }, [
+                      _vm._v(_vm._s(_vm.project.data.first_order.measure))
+                    ])
+                  ])
+                ])
+              ])
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "divider" }),
+          _vm._v(" "),
+          _c("div", { staticClass: "columns" }, [
+            _vm._m(1),
+            _vm._v(" "),
+            _c("div", { staticClass: "column col-9" }, [
+              _c("table", { staticClass: "table" }, [
+                _c("tbody", [
+                  _c("tr", [
+                    _c("td", { staticClass: "group-prompt" }, [
+                      _vm._v(
+                        _vm._s(
+                          _vm.definitionsById.second_order.children.sense_making
+                            .label
+                        )
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("td", { staticClass: "group-value like-pre" }, [
+                      _vm._v(_vm._s(_vm.project.data.second_order.sense_making))
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("tr", [
+                    _c("td", { staticClass: "group-prompt" }, [
+                      _vm._v(
+                        _vm._s(
+                          _vm.definitionsById.second_order.children.languaging
+                            .label
+                        )
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("td", { staticClass: "group-value like-pre" }, [
+                      _vm._v(_vm._s(_vm.project.data.second_order.languaging))
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("tr", [
+                    _c("td", { staticClass: "group-prompt" }, [
+                      _vm._v(
+                        _vm._s(
+                          _vm.definitionsById.second_order.children.committing
+                            .label
+                        )
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("td", { staticClass: "group-value like-pre" }, [
+                      _vm._v(_vm._s(_vm.project.data.second_order.committing))
+                    ])
+                  ])
+                ])
+              ])
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "divider" }),
+          _vm._v(" "),
+          _c("div", { staticClass: "columns" }, [
+            _vm._m(2),
+            _vm._v(" "),
+            _c("div", { staticClass: "column col-9" }, [
+              _c("table", { staticClass: "table" }, [
+                _c("tbody", [
+                  _c("tr", [
+                    _c("td", { staticClass: "group-prompt" }, [
+                      _vm._v(
+                        _vm._s(
+                          _vm.definitionsById.third_order.children.processes
+                            .label
+                        )
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("td", { staticClass: "group-value like-pre" }, [
+                      _vm._v(_vm._s(_vm.project.data.third_order.processes))
+                    ])
+                  ])
+                ])
+              ])
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "divider" }),
+          _vm._v(" "),
+          _c("div", { staticClass: "columns" }, [
+            _vm._m(3),
+            _vm._v(" "),
+            _c("div", { staticClass: "column col-9" }, [
+              _c("table", { staticClass: "table" }, [
+                _c("tbody", [
+                  _c("tr", [
+                    _c("td", { staticClass: "group-prompt" }, [
+                      _vm._v(
+                        _vm._s(
+                          _vm.definitionsById.fourth_order.children
+                            .unexpected_events.label
+                        )
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("td", { staticClass: "group-value like-pre" }, [
+                      _vm._v(
+                        _vm._s(_vm.project.data.fourth_order.unexpected_events)
+                      )
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("tr", [
+                    _c("td", { staticClass: "group-prompt" }, [
+                      _vm._v(
+                        _vm._s(
+                          _vm.definitionsById.fourth_order.children.event_cause
+                            .label
+                        )
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("td", { staticClass: "group-value like-pre" }, [
+                      _vm._v(_vm._s(_vm.project.data.fourth_order.event_cause))
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("tr", [
+                    _c("td", { staticClass: "group-prompt" }, [
+                      _vm._v(
+                        _vm._s(
+                          _vm.definitionsById.fourth_order.children
+                            .change_origin.label
+                        )
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("td", { staticClass: "group-value like-pre" }, [
+                      _vm._v(
+                        _vm._s(_vm.project.data.fourth_order.change_origin)
+                      )
+                    ])
+                  ])
+                ])
+              ])
+            ])
+          ])
+        ])
+      ])
+    ]
+  )
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "column col-3" }, [
+      _c("h2", { staticClass: "group-title" }, [_vm._v("First Order")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "column col-3" }, [
+      _c("h2", { staticClass: "group-title" }, [_vm._v("Second Order")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "column col-3" }, [
+      _c("h2", { staticClass: "group-title" }, [_vm._v("Third Order")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "column col-3" }, [
+      _c("h2", { staticClass: "group-title" }, [_vm._v("Fourth Order!")])
+    ])
+  }
+]
 render._withStripped = true
 
 
