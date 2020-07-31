@@ -13415,7 +13415,7 @@ var defaultTextConfig = {
         y: 215,
         visible: hasSenseMaking
       });
-      configs.plan = _objectSpread({}, defaultTextConfig, {
+      configs.languaging = _objectSpread({}, defaultTextConfig, {
         text: '"Languaging"',
         fill: '#a8bdb7',
         x: 350,
@@ -46812,15 +46812,24 @@ var render = function() {
           _c("v-text", { attrs: { config: _vm.fourthOrderConfig } }),
           _vm._v(" "),
           _vm._l(_vm.firstOrderConfigs, function(config, name) {
-            return _c("v-text", { key: name, attrs: { config: config } })
+            return _c("v-text", {
+              key: "first" + name,
+              attrs: { config: config }
+            })
           }),
           _vm._v(" "),
           _vm._l(_vm.secondOrderConfigs, function(config, name) {
-            return _c("v-text", { key: name, attrs: { config: config } })
+            return _c("v-text", {
+              key: "second" + name,
+              attrs: { config: config }
+            })
           }),
           _vm._v(" "),
           _vm._l(_vm.thirdOrderConfigs, function(config, name) {
-            return _c("v-text", { key: name, attrs: { config: config } })
+            return _c("v-text", {
+              key: "third" + name,
+              attrs: { config: config }
+            })
           })
         ],
         2

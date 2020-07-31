@@ -19,19 +19,19 @@
 
 			<v-text
 				v-for="(config, name) in firstOrderConfigs"
-				:key="name"
+				:key="'first' + name"
 				:config="config"
 			/>
 
 			<v-text
 				v-for="(config, name) in secondOrderConfigs"
-				:key="name"
+				:key="'second' + name"
 				:config="config"
 			/>
 
 			<v-text
 				v-for="(config, name) in thirdOrderConfigs"
-				:key="name"
+				:key="'third' + name"
 				:config="config"
 			/>
 
@@ -200,7 +200,7 @@ export default {
 				visible: (hasSenseMaking),
 			};
 
-			configs.plan = {
+			configs.languaging = {
 				...defaultTextConfig,
 				text: '"Languaging"',
 				fill: '#a8bdb7',
