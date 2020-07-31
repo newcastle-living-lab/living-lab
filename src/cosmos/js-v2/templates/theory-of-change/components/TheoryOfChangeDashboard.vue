@@ -158,7 +158,7 @@ export default {
 				text: 'Measure',
 				fill: '#255d4d',
 				x: 155,
-				y: 515,
+				y: 520,
 				visible: (hasMeasure),
 			};
 
