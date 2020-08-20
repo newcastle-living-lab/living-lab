@@ -4,8 +4,10 @@ import VueRouter from 'vue-router';
 import IndexPage from '@/pages/IndexPage';
 import ProjectPage from '@/pages/ProjectPage';
 import DashboardTab from '@/pages/ProjectPage/DashboardTab';
+import WelcomeTab from '@/pages/ProjectPage/WelcomeTab';
 import JsonTab from '@/pages/ProjectPage/JsonTab';
-import TemplateTab from '@/pages/ProjectPage/TemplateTab';
+import SummaryTab from '@/pages/ProjectPage/SummaryTab';
+import ContainerTab from '@/pages/ProjectPage/ContainerTab';
 
 Vue.use(VueRouter);
 
@@ -20,10 +22,11 @@ const routes = [
 		component: ProjectPage,
 		props: true,
 		children: [
-			{ path: '', name: 'project_index', component: DashboardTab },
-			{ path: 'dashboard', name: 'dashboard', component: DashboardTab },
-			{ path: 'json', name: 'json', component: JsonTab },
-			{ path: ':tab', name: 'template-tab', component: TemplateTab, props: true },
+			{ path: '/', name: 'project', component: WelcomeTab, props: { aspectId: 'welcome' } },
+			{ path: 'json', name: 'json', component: JsonTab, props: true },
+			{ path: ':aspectId/model', name: 'model', component: DashboardTab, props: true },
+			{ path: ':aspectId/summary', name: 'summary', component: SummaryTab, props: true },
+			{ path: ':aspectId', name: 'container', component: ContainerTab, props: true },
 		]
 	},
 ]

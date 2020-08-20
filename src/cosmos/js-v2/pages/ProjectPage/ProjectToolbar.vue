@@ -5,15 +5,17 @@
 		<nav class="navbar">
 
 			<section class="navbar-section navbar-tabs">
-				<span v-if="project.id" class="btn btn-link text-bold btn-empty mr-2">{{ project.name }}</span>
-				<div v-if="project.id">
+
+				<ul class="tab" v-if="project.id">
 					<router-link
 						v-for="(tab, idx) in filteredTabs"
 						:key="idx"
 						:to="tab.to"
-						class="btn btn-sm btn-link"
-					>{{ tab.label }}</router-link>
-				</div>
+						class="tab-item"
+						tag="li"
+						active-class="active"
+					><a>{{ tab.label }}</a></router-link>
+				</ul>
 			</section>
 
 			<section class="navbar-section navbar-project">

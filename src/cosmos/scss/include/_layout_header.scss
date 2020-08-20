@@ -33,19 +33,27 @@
 				background: $clrs-blue;	//lighten($clrs-black, 10%);
 			}
 
-			&.navbar-brand {
-				padding-left: 0;
-				padding-right: 0;
-				margin-right: $unit-12;
-				font-size: $font-size-lg;
-				&:hover,
-				&:focus,
-				&:active {
-					color: $clrs-blue;
-					background: none;
-				}
-			}
+		}
 
+		.navbar-brand {
+			padding-left: 0;
+			padding-right: 0;
+			margin-right: $unit-6;
+			font-size: $font-size;
+			font-weight: bold;
+			&:hover,
+			&:focus,
+			&:active {
+				color: $clrs-blue;
+				background: none;
+			}
+		}
+
+		.navbar-project {
+			font-size: $font-size;
+			padding-left: 0;
+			padding-right: 0;
+			margin-right: $unit-12;
 		}
 	}
 

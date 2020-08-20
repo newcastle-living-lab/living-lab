@@ -1,0 +1,10 @@
+{
+	"id": "moral_ordering_model",
+	"title": "Moral Ordering",
+	"routeName": "model",
+	"summaryComponent": "MoralSummaryTab",
+	"stageSize": {
+		"width": 1285,
+		"height": 800
+	}
+}

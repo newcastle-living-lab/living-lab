@@ -3,6 +3,7 @@
 	<component
 		v-bind:is="componentName"
 		v-if="componentName"
+		:aspectId="aspectId"
 	></component>
 
 </template>
@@ -12,39 +13,44 @@
 import find from 'lodash/find';
 import { get, set, sync, call } from 'vuex-pathify';
 
-import Templates from '@/templates';
+import Aspects from '@/aspects';
 
 export default {
 
 	props: {
-		tab: String
+		aspectId: [Boolean, String],
 	},
 
 	computed: {
 
-		template() {
-			if ( ! this.project.id) {
-				return false;
+		/**
+		 * Get aspect (ALL data - CONFIG + DEFS etc!) based on supplied editor ID
+		 *
+		 */
+		aspect() {
+			const aspect = this.aspectId;
+			if ( ! this.aspectId) {
+				return null;
 			}
-			var template = Templates.get(this.project.template);
-			return template;
+			return Aspects.get(aspect);
 		},
 
-		tabConfig() {
-			if ( ! this.template) {
+		aspectConfig() {
+			if ( ! this.aspect) {
 				return false;
 			}
 
-			return find(this.template.CONFIG.tabs, { route: this.tab });
+			return this.aspect.CONFIG;
 		},
 
 		componentName() {
-			return this.tabConfig.component;
+			return this.aspectConfig.componentName;
 		},
 
 		...get([
 			'project',
 		]),
+
 	}
 
 }

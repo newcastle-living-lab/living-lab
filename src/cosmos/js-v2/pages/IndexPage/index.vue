@@ -11,7 +11,7 @@
 						</div>
 						<div class="card-filter">
 							<div class="columns">
-								<div class="column col-6">
+								<div class="column col-12">
 									<div class="has-icon-left">
 										<VInput
 											type="search"
@@ -25,12 +25,6 @@
 										<i class="form-icon icon icon-search"></i>
 									</div>
 								</div>
-								<div class="column col-6">
-									<VSelect v-model="filter.template" class="select-sm" placeholder="Template...">
-										<option value="">(All)</option>
-										<option v-for="(tpl, idx) in availableTemplates" :value="tpl.name">{{ tpl.title }}</option>
-									</VSelect>
-								</div>
 							</div>
 						</div>
 						<div class="card-body">
@@ -40,7 +34,7 @@
 								<router-link
 									v-for="project in filteredProjects"
 									:key="project.id"
-									:to="'/' + project.id + '/' + (project.slug ? project.slug : 'untitled') + '/dashboard'"
+									:to="'/' + project.id + '/' + (project.slug ? project.slug : 'untitled')"
 									class="tile tile-project"
 								>
 									<div class="tile-content">
@@ -115,7 +109,6 @@ import Network from "@/services/Network";
 import NewProject from './NewProject';
 import ProjectTemplateChip from '@/components/ProjectTemplateChip';
 
-import Templates from '@/templates';
 
 const searchTemplates = [
 	{'value': 'service-model', 'label': 'Co-Creation of Service Model'},
@@ -136,7 +129,6 @@ export default {
 				query: '',
 				template: null,
 			},
-			availableTemplates: Templates.all(),
 			newProject: {
 				name: null,
 				template: null,
@@ -160,7 +152,7 @@ export default {
 		]),
 
 		canCreateNewProject() {
-			return (this.newProject.name && this.newProject.template)
+			return (this.newProject.name && this.newProject.name.length > 0)
 		},
 
 		loginUrl() {

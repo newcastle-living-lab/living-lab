@@ -1,0 +1,9 @@
+{
+	"id": "analytic_model",
+	"title": "Analytic Model",
+	"routeName": "model",
+	"stageSize": {
+		"width": 1285,
+		"height": 750
+	}
+}

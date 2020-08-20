@@ -1,11 +1,11 @@
 <template>
 	<div class="cosmos-project">
 
-		<ProjectToolbar />
+		<!-- <ProjectToolbar /> -->
 
 		<section class="app-main">
 
-			<ProjectSidebar v-if="project.id && isEditing" />
+			<ProjectSidebar :aspectId="aspectId" />
 
 			<keep-alive>
 				<router-view></router-view>
@@ -20,15 +20,28 @@
 
 import { get, set, sync, call } from 'vuex-pathify';
 
-import Network from "@/services/Network";
-import ProjectToolbar from "./ProjectToolbar";
+// import ProjectToolbar from "./ProjectToolbar";
 import ProjectSidebar from "./ProjectSidebar";
 
 export default {
 
 	components: {
-		ProjectToolbar,
+		// ProjectToolbar,
 		ProjectSidebar,
+		// EditSidebar,
+	},
+
+	props: {
+		'aspectId': {
+			type: String,
+			default: 'welcome',
+		},
+		'id': {
+			type: [String, Number],
+			coerce: function (val) {
+				return parseInt(val, 10);
+			}
+		}
 	},
 
 	computed: {
@@ -37,7 +50,7 @@ export default {
 		]),
 		...sync([
 			'project',
-			'isEditing',
+			// 'isEditing',
 		]),
 	},
 
@@ -52,11 +65,6 @@ export default {
 
 		projectChanged() {
 			if (this.project.id && this.project.name) {
-				// @TODO Temporary redirect until service-model is editable in COSMOS v2
-				// if (this.project.template === 'service-model') {
-				// 	top.location.href = top.location.href.replace(/\/cosmos\//, '/cosmos-1/');
-				// 	return;
-				// }
 				document.title = `${this.project.name} | ${this.appName} [Living Lab]`;
 			}
 		}
@@ -64,9 +72,8 @@ export default {
 	},
 
 	mounted() {
-		this.isEditing = false;
-		if (this.$route.params.id) {
-			this.fetchProject(this.$route.params.id);
+		if (this.id) {
+			this.fetchProject(this.id);
 		}
 	}
 

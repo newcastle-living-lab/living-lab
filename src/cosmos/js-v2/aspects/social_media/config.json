@@ -1,0 +1,6 @@
+{
+	"id": "social_media",
+	"title": "Social Media",
+	"routeName": "container",
+	"componentName": "SocialMediaView"
+}

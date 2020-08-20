@@ -1,0 +1,6 @@
+{
+	"id": "community_reporting",
+	"title": "Community Reporting",
+	"routeName": "container",
+	"componentName": "CommunityReportingView"
+}

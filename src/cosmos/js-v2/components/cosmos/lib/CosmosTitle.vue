@@ -15,15 +15,21 @@ export default {
 	name: 'CosmosTitle',
 
 	props: {
+		aspectId: String,
 		options: Object,
 	},
 
 	computed: {
 
-		projectData: get('project@data'),
+
+		dataPath() {
+			return `project@data.${this.aspectId}`;
+		},
+
+		aspectData: get(':dataPath'),
 
 		model() {
-			return this.projectData && this.projectData.model ? this.projectData.model : {};
+			return this.aspectData && this.aspectData.model ? this.aspectData.model : {};
 		},
 
 		isVisible() {

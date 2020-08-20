@@ -19,7 +19,6 @@ export default {
 
 	props: {
 		options: Object,
-		projectData: Object,
 		config: Object,
 	},
 

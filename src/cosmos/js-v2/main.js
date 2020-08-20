@@ -14,8 +14,11 @@ Vue.use(Cosmos);
 import Editors from "./components/project/edit";
 Vue.use(Editors);
 
-import Templates from "./templates";
-Vue.use(Templates.Components);
+// import Templates from "./templates";
+// Vue.use(Templates.Components);
+
+import Aspects from "./aspects";
+Vue.use(Aspects.Components);
 
 import i18n from './plugins/i18n';
 import router from './plugins/router';

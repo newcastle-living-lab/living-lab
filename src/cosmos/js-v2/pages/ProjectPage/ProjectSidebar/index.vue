@@ -1,107 +1,71 @@
 <template>
-	<aside class="app-sidebar" v-show="showSidebar">
-		<div class="scrollable scr-y">
-			<SidebarPanel
-				v-for="(panel, idx) in panels"
-				:key="panel.id"
-				:panel="panel"
-				:hasNext="idx < (numPanels-1)"
-				:currentPanel="currentPanel"
-				@set-current="setCurrentPanel"
-				@go-next="goNextPanel"
-			/>
-		</div>
+
+	<aside class="app-sidebar">
+		<AspectsView
+			v-show="!isEditing"
+			:aspectId="aspectId"
+			:aspectEditId="aspectEditId"
+			@edit-aspect="doEdit"
+		/>
+		<EditorView
+			v-if="isEditing"
+			:aspectId="aspectId"
+			:aspectEditId="aspectEditId"
+			@edit-aspect="doEdit"
+		/>
 	</aside>
+
 </template>
 
 <script>
 
 import { get, set, sync, call } from 'vuex-pathify';
 
-import Vue from 'vue';
-import map from 'lodash/map';
-import findIndex from 'lodash/findIndex';
+import AspectsView from './AspectsView';
+import EditorView from './EditorView';
 
-import Templates from '@/templates';
-
-import SidebarPanel from './SidebarPanel';
+import Aspects from '@/aspects';
 
 export default {
 
 	components: {
-		SidebarPanel
+		AspectsView,
+		EditorView,
+	},
+
+	props: {
+		aspectId: String
 	},
 
 	data() {
 		return {
-			currentPanel: 'meta',
+			aspectEditId: false,
 		}
 	},
 
 	computed: {
 
-		...get([
-			'userCanEdit',
-			'isEditing',
-			'project',
-		]),
-
-		definitions() {
-			if ( ! this.project.id) {
-				return [];
-			}
-			var template = Templates.get(this.project.template);
-			return template.DEFINITIONS;
-		},
-
-		showSidebar() {
-			return (this.userCanEdit && this.isEditing);
-		},
-
-		panels() {
-
-			var panels = map(this.definitions, (def) => {
-				return {
-					modelPath: `project@data.${def.id}`,
-					id: def.id,
-					editor: `${def.type}-editor`,
-					definition: def,
-				}
-			});
-
-			panels.unshift({
-				modelPath: `project`,
-				id: "meta",
-				editor: "meta-editor",
-				title: "Project",
-			});
-
-			return panels;
-		},
-
-		numPanels() {
-			return this.panels.length;
+		isEditing() {
+			return this.aspectEditId !== false
 		}
+
 	},
 
 	methods: {
 
-		// Change current panel to specific ID
-		setCurrentPanel(id) {
-			this.currentPanel = id;
-		},
-
-		// Go to the next panel after the supplied ID
-		goNextPanel(id) {
-			// find index of current panel ID
-			var idx = findIndex(this.panels, { id: id }),
-				nextIdx = 0;
-			// Increment to get next one
-			if (idx < this.numPanels-1) {
-				nextIdx = idx + 1;
+		doEdit(aspectId) {
+			this.aspectEditId = aspectId;
+			// console.log(`Current aspect: ${this.aspectId}`);
+			// console.log(`Do edit on: ${aspectId}`);
+			if (this.aspectEditId && this.aspectEditId != this.aspectId) {
+				// Get aspect details to get the route to push.
+				// This is done so that Editing any non-current aspect switches the current aspect to the one being edited.
+				const aspect = Aspects.get(aspectId);
+				const params = {...this.$route.params, aspectId: aspectId }
+				this.$router.push({ name: aspect.CONFIG.routeName, params: params });
 			}
-			this.setCurrentPanel(this.panels[nextIdx].id);
 		}
+
 	}
 
 }

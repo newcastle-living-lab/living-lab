@@ -1,0 +1,14 @@
+[
+	{
+		"componentName": "CosmosTitle",
+		"definitionName": "model"
+	},
+	{
+		"componentName": "CosmosGroup",
+		"_comment": "Rectangles",
+		"config": {
+			"x": 75,
+			"y": 185
+		}
+	}
+]

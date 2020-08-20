@@ -1,0 +1,196 @@
+[
+	{
+		"id": "model",
+		"type": "model",
+		"title": "Model",
+		"hint": null
+	},
+	{
+		"id": "defineEthos",
+		"type": "group",
+		"title": "Define Ethos",
+		"children": [
+			{
+				"id": "values",
+				"dataType": "string",
+				"label": "What values are important that the intervention comes to address?",
+				"componentName": "VTextarea"
+			},
+			{
+				"id": "definedBy",
+				"dataType": "string",
+				"label": "How do these values come to be defined?",
+				"componentName": "VRadioList",
+				"componentProps": {
+					"options": [
+						{"value": "policy", "label": "Policy"},
+						{"value": "meeting", "label": "Meeting"},
+						{"value": "other", "label": "Other"}
+					]
+				}
+			},
+			{
+				"id": "evidenceUrl",
+				"dataType": "string",
+				"label": "What (external) evidence is available to support this?",
+				"componentName": "VInput",
+				"componentProps": {
+					"type": "url",
+					"placeholder": "https://"
+				}
+			}
+		]
+	},
+	{
+		"id": "planManagePrior",
+		"type": "group",
+		"title": "Plan and Manage - Prior actions",
+		"hint": "",
+		"children": [
+			{
+				"id": "actions",
+				"dataType": "string",
+				"label": "What actions were being undertaken prior to the intervention?",
+				"componentName": "VTextarea",
+				"componentProps": {
+					"rows": 4
+				}
+			},
+			{
+				"id": "actors",
+				"dataType": "array",
+				"label": "Who was involved with these prior actions?",
+				"componentName": "StakeholderMultiEditor"
+			},
+			{
+				"id": "evidenceUrl",
+				"dataType": "string",
+				"label": "What (external) evidence is available to support this?",
+				"componentName": "VInput",
+				"componentProps": {
+					"type": "url",
+					"placeholder": "https://"
+				}
+			}
+		]
+	},
+	{
+		"id": "planManageCurrent",
+		"type": "group",
+		"title": "Plan and Manage - Current actions",
+		"hint": "",
+		"children": [
+			{
+				"id": "actions",
+				"dataType": "string",
+				"label": "What actions are now being undertaken within the pilot?",
+				"componentName": "VTextarea",
+				"componentProps": {
+					"rows": 4
+				}
+			},
+			{
+				"id": "actors",
+				"dataType": "array",
+				"label": "What ongoing actions are being taken?",
+				"componentName": "StakeholderMultiEditor"
+			},
+			{
+				"id": "evidenceUrl",
+				"dataType": "string",
+				"label": "What (external) evidence is available to support this?",
+				"componentName": "VInput",
+				"componentProps": {
+					"type": "url",
+					"placeholder": "https://"
+				}
+			}
+		]
+	},
+	{
+		"id": "deliver",
+		"type": "group",
+		"title": "Deliver",
+		"children": [
+			{
+				"id": "method",
+				"dataType": "string",
+				"label": "How is the intervention delivered?",
+				"componentName": "VRadioList",
+				"componentProps": {
+					"options": [
+						{"value": "policy", "label": "Policy"},
+						{"value": "meeting", "label": "Meeting"},
+						{"value": "other", "label": "Other"}
+					]
+				}
+			},
+			{
+				"id": "actors",
+				"dataType": "array",
+				"label": "By whom is it delivered?",
+				"componentName": "StakeholderMultiEditor"
+			},
+			{
+				"id": "evidenceUrl",
+				"dataType": "string",
+				"label": "What (external) evidence is available to support this?",
+				"componentName": "VInput",
+				"componentProps": {
+					"type": "url",
+					"placeholder": "https://"
+				}
+			}
+		]
+	},
+	{
+		"id": "govern",
+		"type": "group",
+		"title": "Govern",
+		"hint": "",
+		"children": [
+			{
+				"id": "actions",
+				"dataType": "string",
+				"label": "How is the intervention governed? What measures are put in place to ensure the outcomes were as intended?",
+				"componentName": "VTextarea",
+				"componentProps": {
+					"rows": 4
+				}
+			},
+			{
+				"id": "actors",
+				"dataType": "array",
+				"label": "Who is evaluating this?",
+				"componentName": "StakeholderMultiEditor"
+			},
+			{
+				"id": "outcomes",
+				"dataType": "string",
+				"label": "Are outcomes embodied in targets and measurements? And if so, whose?",
+				"componentName": "VTextarea",
+				"componentProps": {
+					"rows": 4
+				}
+			},
+			{
+				"id": "evolution",
+				"dataType": "string",
+				"label": "How does this impact on the evolution of the service?",
+				"componentName": "VTextarea",
+				"componentProps": {
+					"rows": 4
+				}
+			},
+			{
+				"id": "improvements",
+				"dataType": "string",
+				"label": "How are improvements identified? How are they implemented?",
+				"componentName": "VTextarea",
+				"componentProps": {
+					"rows": 4
+				}
+			}
+		]
+	}
+]

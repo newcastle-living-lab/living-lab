@@ -30,6 +30,7 @@ export default {
 	},
 
 	props: {
+		aspectId: String,
 		options: Object,
 		definitionName: String,
 		config: Object,
@@ -46,11 +47,15 @@ export default {
 
 	computed: {
 
-		projectData: get('project@data'),
+		dataPath() {
+			return `project@data.${this.aspectId}`;
+		},
+
+		aspectData: get(':dataPath'),
 
 		model() {
-			return this.projectData && this.projectData[this.definitionName]
-				? this.projectData[this.definitionName]
+			return this.aspectData && this.aspectData[this.definitionName]
+				? this.aspectData[this.definitionName]
 				: Object.assign({}, defaultModel);
 		},
 

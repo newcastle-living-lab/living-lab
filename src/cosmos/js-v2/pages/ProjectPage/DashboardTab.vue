@@ -2,7 +2,7 @@
 
 	<main class="app-content dark">
 
-		<div ref="container" class="canvas-container scrollable scr-x scr-y" v-if="project.template">
+		<div ref="container" class="canvas-container scrollable scr-x scr-y" v-if="aspect">
 
 			<v-stage ref="stage" :config="stageConfig">
 				<v-layer>
@@ -20,14 +20,15 @@
 						:definitionName="node.definitionName"
 						:visibilityFunc="node.visibilityFunc"
 						:options="options"
-						:templateName="project.template"
+						:aspectId="aspect.CONFIG.id"
 					></component>
 				</v-layer>
-				<v-layer v-if="project.id && template.CONFIG.dashboard">
+				<v-layer v-if="project.id && aspect.CONFIG.dashboardComponent">
 					<component
-						v-bind:is="template.CONFIG.dashboard"
-						:definitions="template.DEFINITIONS"
+						v-bind:is="aspect.CONFIG.dashboardComponent"
+						:definitions="aspect.DEFINITIONS"
 						:options="options"
+						:aspectId="aspect.CONFIG.id"
 					/>
 				</v-layer>
 			</v-stage>
@@ -60,23 +61,31 @@ import { get, set, sync, call } from 'vuex-pathify';
 import jsPDF from 'jspdf';
 
 import { EventBus } from '@/services/EventBus';
-import Templates from '@/templates';
+import Aspects from '@/aspects';
 
 export default {
 
+	props: {
+		aspectId: [Boolean, String],
+	},
+
 	watch: {
 		'scale': 'resize',
-		'isEditing': 'resize',
-		'project.template': {
+		'stageHover': 'setCursor',
+		'project.id': {
 			handler: function(newVal, oldVal) {
 				if (oldVal !== newVal && typeof(newVal) != 'undefined') {
-					// console.log("template changed");
 					this.resize();
 				}
 			},
-			// deep: true
 		},
-		'stageHover': 'setCursor',
+		'aspectId': {
+			handler: function(newVal, oldVal) {
+				if (oldVal !== newVal && typeof(newVal) != 'undefined') {
+					this.resize();
+				}
+			},
+		},
 	},
 
 	data() {
@@ -100,19 +109,30 @@ export default {
 			'stageHover',
 			'options',
 			'project',
-			'isEditing',
 		]),
 
+		/**
+		 * Get aspect (ALL data - CONFIG + DEFS etc!) based on supplied editor ID
+		 *
+		 */
+		aspect() {
+			const aspect = this.aspectId;
+			if ( ! this.aspectId) {
+				return null;
+			}
+			return Aspects.get(aspect);
+		},
+/*
 		template() {
 			if ( ! this.project.id) {
 				return false;
 			}
 			var template = Templates.get(this.project.template);
 			return template;
-		},
+		},*/
 
 		nodes() {
-			return (this.project.template && this.template.NODES ? this.template.NODES : []);
+			return (this.aspect && this.aspect.NODES ? this.aspect.NODES : []);
 		},
 
 		backgroundConfig() {
@@ -120,8 +140,8 @@ export default {
 				fill: '#ffffff',
 				x: 0,
 				y: 0,
-				width: this.template.CONFIG.stageSize.width,
-				height: this.template.CONFIG.stageSize.height,
+				width: this.aspect.CONFIG.stageSize.width,
+				height: this.aspect.CONFIG.stageSize.height,
 			};
 			return config;
 		}
@@ -136,10 +156,14 @@ export default {
 				return;
 			}
 
+			if ( ! this.aspect) {
+				return;
+			}
+
 			var container = null,
 				maxWidth = null,
 				maxHeight = null,
-				stageSize = this.template.CONFIG.stageSize,
+				stageSize = this.aspect.CONFIG.stageSize,
 				width = stageSize.width,
 				height = stageSize.height,
 				newWidth = 0,

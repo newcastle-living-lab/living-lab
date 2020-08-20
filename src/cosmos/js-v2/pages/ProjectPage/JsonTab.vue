@@ -1,8 +1,10 @@
 <template>
 
-	<main ref="container" class="app-content light community-reporting scrollable scr-y">
-		<div class="container grid-xl">
-			<pre>{{ project }}</pre>
+	<main ref="container" class="app-content light community-reporting">
+		<div class="scrollable scr-y">
+			<div class="container grid-xl">
+				<pre>{{ project }}</pre>
+			</div>
 		</div>
 	</main>
 

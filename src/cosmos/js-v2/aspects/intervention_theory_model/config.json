@@ -1,0 +1,10 @@
+{
+	"id": "intervention_theory_model",
+	"title": "Intervention Theory Model",
+	"routeName": "model",
+	"dashboardComponent": "InterventionDashboard",
+	"stageSize": {
+		"width": 1285,
+		"height": 800
+	}
+}

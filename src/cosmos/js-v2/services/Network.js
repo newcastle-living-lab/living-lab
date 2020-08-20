@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import Templates from '@/templates';
+import Aspects from '@/aspects';
 
 var baseURL = '/cosmos-api/';
 
@@ -20,7 +20,7 @@ export default {
 		var endpoint = `projects/${id}`;
 		return http.request(endpoint)
 			.then(res => res.data.project)
-			.then(project => Templates.populateProject(project));
+			.then(project => Aspects.populateProject(project));
 	},
 
 	createProject(params) {

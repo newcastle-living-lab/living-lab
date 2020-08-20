@@ -11,6 +11,7 @@
 			:children="node.children"
 			:definitionName="node.definitionName"
 			:options="options"
+			:aspectId="aspectId"
 		></component>
 	</v-group>
 
@@ -20,35 +21,37 @@
 
 import { get } from 'vuex-pathify';
 
-import Templates from '@/templates';
-
 export default {
 
 	name: 'CosmosGroup',
 
 	props: {
+		aspectId: String,
 		config: Object,
 		children: Array,
 		definitionName: String,
-		templateName: String,
 		visibilityFunc: String,
 		options: Object
 	},
 
 	computed: {
 
-		projectData: get('project@data'),
+		dataPath() {
+			return `project@data.${this.aspectId}`;
+		},
+
+		aspectData: get(':dataPath'),
 
 		isVisible() {
 			if (typeof(this.visibilityFunc) === 'undefined') {
 				return true;
 			}
 
-			if ( ! this.templateName) {
+			if ( ! this.aspectId) {
 				return true;
 			}
 
-			var fns = Templates.get(this.templateName)['Functions'];
+			var fns = Aspects.get(this.aspectId)['Functions'];
 			var hasFns = (typeof(fns) == 'object');
 			var hasFn = hasFns && (typeof(fns[this.visibilityFunc]) == 'function');
 			if ( ! hasFn) {

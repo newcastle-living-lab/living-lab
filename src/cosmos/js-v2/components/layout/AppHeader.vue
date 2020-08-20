@@ -8,10 +8,12 @@
 
 				<router-link to='/' class='navbar-brand btn btn-link'>{{ appName }}</router-link>
 
-				<button class='btn btn-link btn-sm'
+				<span class='navbar-project btn btn-empty' v-if="project.id">{{ project.name }}</span>
+
+				<!-- <button class='btn btn-link btn-sm'
 					v-if="hasProject && userCanEdit"
 					@click="doEdit"
-				><edit-icon size="16" />Edit</button>
+				><edit-icon size="16" />Edit</button> -->
 
 				<button class='btn btn-link btn-sm'
 					v-if="hasProject && userCanEdit"
@@ -81,6 +83,7 @@ export default {
 			'hasUser',
 			'requireAuth',
 			'user',
+			'project',
 		]),
 
 		hasProject() {

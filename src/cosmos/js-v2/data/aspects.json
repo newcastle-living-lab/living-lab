@@ -1,0 +1,58 @@
+[
+	{
+		"routeName": "project",
+		"aspect": "welcome",
+		"component": "WelcomeTab"
+	},
+	{
+		"routeName": "model",
+		"aspect": "co-creation-of-service",
+		"label": "Co-Creation of Service Model"
+	},
+	{
+		"routeName": "model",
+		"aspect": "analytic",
+		"label": "Analytic Model"
+	},
+	{
+		"routeName": "model",
+		"aspect": "intervention-theory",
+		"label": "Intervention Theory Model"
+	},
+	{
+		"routeName": "model",
+		"aspect": "change-model",
+		"label": "Change Model",
+		"summary": true
+	},
+	{
+		"routeName": "model",
+		"aspect": "moral-ordering",
+		"label": "Moral Ordering Model",
+		"summary": true
+	},
+	{
+		"routeName": "generic",
+		"aspect": "theory-of-change",
+		"label": "Theory of Change",
+		"component": "TheoryOfChangeTab"
+	},
+	{
+		"routeName": "generic",
+		"aspect": "community-reporting",
+		"label": "Community Reporting",
+		"component": "CommunityReportingTab"
+	},
+	{
+		"routeName": "generic",
+		"aspect": "social-media",
+		"label": "Social Media",
+		"component": "SocialMediaTab"
+	},
+	{
+		"routeName": "generic",
+		"aspect": "documents-and-files",
+		"label": "Documents and Files",
+		"component": "LivingLabModelsTab"
+	}
+]
