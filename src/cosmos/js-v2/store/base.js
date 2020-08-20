@@ -6,7 +6,7 @@ import Network from '@/services/Network';
 
 export const state = {
 	appName: 'CoSMoS',
-	isEditing: false,
+	aspectEditId: false,
 	isLoading: false,
 	config: {
 		user: null,
@@ -105,12 +105,12 @@ export const mutations = {
 		state.isLoading = false;
 	},
 
-	START_EDITING(state) {
-		state.isEditing = true;
+	EDIT_ASPECT(state, aspectId) {
+		state.aspectEditId = aspectId;
 	},
 
-	STOP_EDITING(state) {
-		state.isEditing = false;
+	STOP_EDITING_ASPECT(state) {
+		state.aspectEditId = false;
 	},
 
 	SET_TOAST(state, { type, message, seconds }) {
@@ -166,7 +166,7 @@ export const actions = {
 
 	doAutoSave({ state, commit, dispatch }) {
 
-		var isEditing = state.isEditing;
+		var isEditing = (state.aspectEditId !== false);
 		var hasProject = (state.project && state.project.id);
 		var hasLastSave = (state.lastSave.hash);
 

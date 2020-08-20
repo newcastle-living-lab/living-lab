@@ -1,9 +1,9 @@
 <template>
 
-	<main ref="container" class="app-content light moral-summary">
-		<div :class="isEditing ? 'scrollable scr-y' : ''">
+	<main ref="container" class="app-content light moral-summary" v-if="aspectData">
+		<div class="scrollable scr-y">
 			<div class="container grid-xl">
-				<h1 class="h4 mb-8 mt-4">{{ project.data.model.title }}</h1>
+				<h1 class="h4 mb-8 mt-4" v-if="aspectData.model">{{ aspectData.model.title }}</h1>
 
 				<div class="divider"></div>
 
@@ -16,15 +16,15 @@
 							<tbody>
 								<tr>
 									<td class="group-prompt">{{ definitionsById.defineEthos.children.values.label }}</td>
-									<td class="group-value like-pre">{{ project.data.defineEthos.values }}</td>
+									<td class="group-value like-pre">{{ aspectData.defineEthos.values }}</td>
 								</tr>
 								<tr>
 									<td class="group-prompt">{{ definitionsById.defineEthos.children.definedBy.label }}</td>
-									<td class="group-value">{{ optionListLabel(definitionsById.defineEthos.children.definedBy, project.data.defineEthos.definedBy) }}</td>
+									<td class="group-value">{{ optionListLabel(definitionsById.defineEthos.children.definedBy, aspectData.defineEthos.definedBy) }}</td>
 								</tr>
 								<tr>
 									<td class="group-prompt">{{ definitionsById.defineEthos.children.evidenceUrl.label }}</td>
-									<td class="group-value"><EvidenceLink :url="project.data.defineEthos.evidenceUrl" /></td>
+									<td class="group-value"><EvidenceLink :url="aspectData.defineEthos.evidenceUrl" /></td>
 								</tr>
 							</tbody>
 						</table>
@@ -42,13 +42,13 @@
 							<tbody>
 								<tr>
 									<td class="group-prompt">{{ definitionsById.planManagePrior.children.actions.label }}</td>
-									<td class="group-value">{{ project.data.planManagePrior.actions }}</td>
+									<td class="group-value">{{ aspectData.planManagePrior.actions }}</td>
 								</tr>
 								<tr>
 									<td class="group-prompt">{{ definitionsById.planManagePrior.children.actors.label }}</td>
 									<td class="group-value">
 										<StakeholderTile
-											v-for="(actor, idx) in project.data.planManagePrior.actors"
+											v-for="(actor, idx) in aspectData.planManagePrior.actors"
 											:key="idx"
 											:stakeholder="actor"
 										/>
@@ -56,17 +56,17 @@
 								</tr>
 								<tr>
 									<td class="group-prompt">{{ definitionsById.planManagePrior.children.evidenceUrl.label }}</td>
-									<td class="group-value"><EvidenceLink :url="project.data.planManagePrior.evidenceUrl" /></td>
+									<td class="group-value"><EvidenceLink :url="aspectData.planManagePrior.evidenceUrl" /></td>
 								</tr>
 								<tr>
 									<td class="group-prompt">{{ definitionsById.planManageCurrent.children.actions.label }}</td>
-									<td class="group-value like-pre">{{ project.data.planManageCurrent.actions }}</td>
+									<td class="group-value like-pre">{{ aspectData.planManageCurrent.actions }}</td>
 								</tr>
 								<tr>
 									<td class="group-prompt">{{ definitionsById.planManageCurrent.children.actors.label }}</td>
 									<td class="group-value">
 										<StakeholderTile
-											v-for="(actor, idx) in project.data.planManageCurrent.actors"
+											v-for="(actor, idx) in aspectData.planManageCurrent.actors"
 											:key="idx"
 											:stakeholder="actor"
 										/>
@@ -74,7 +74,7 @@
 								</tr>
 								<tr>
 									<td class="group-prompt">{{ definitionsById.planManageCurrent.children.evidenceUrl.label }}</td>
-									<td class="group-value"><EvidenceLink :url="project.data.planManageCurrent.evidenceUrl" /></td>
+									<td class="group-value"><EvidenceLink :url="aspectData.planManageCurrent.evidenceUrl" /></td>
 								</tr>
 							</tbody>
 						</table>
@@ -92,13 +92,13 @@
 							<tbody>
 								<tr>
 									<td class="group-prompt">{{ definitionsById.deliver.children.method.label }}</td>
-									<td class="group-value">{{ optionListLabel(definitionsById.deliver.children.method, project.data.deliver.method) }}</td>
+									<td class="group-value">{{ optionListLabel(definitionsById.deliver.children.method, aspectData.deliver.method) }}</td>
 								</tr>
 								<tr>
 									<td class="group-prompt">{{ definitionsById.deliver.children.actors.label }}</td>
 									<td class="group-value">
 										<StakeholderTile
-											v-for="(actor, idx) in project.data.deliver.actors"
+											v-for="(actor, idx) in aspectData.deliver.actors"
 											:key="idx"
 											:stakeholder="actor"
 										/>
@@ -106,7 +106,7 @@
 								</tr>
 								<tr>
 									<td class="group-prompt">{{ definitionsById.deliver.children.evidenceUrl.label }}</td>
-									<td class="group-value"><EvidenceLink :url="project.data.deliver.evidenceUrl" /></td>
+									<td class="group-value"><EvidenceLink :url="aspectData.deliver.evidenceUrl" /></td>
 								</tr>
 							</tbody>
 						</table>
@@ -124,13 +124,13 @@
 							<tbody>
 								<tr>
 									<td class="group-prompt">{{ definitionsById.govern.children.actions.label }}</td>
-									<td class="group-value like-pre">{{ project.data.govern.actions }}</td>
+									<td class="group-value like-pre">{{ aspectData.govern.actions }}</td>
 								</tr>
 								<tr>
 									<td class="group-prompt">{{ definitionsById.govern.children.actors.label }}</td>
 									<td class="group-value">
 										<StakeholderTile
-											v-for="(actor, idx) in project.data.govern.actors"
+											v-for="(actor, idx) in aspectData.govern.actors"
 											:key="idx"
 											:stakeholder="actor"
 										/>
@@ -138,15 +138,15 @@
 								</tr>
 								<tr>
 									<td class="group-prompt">{{ definitionsById.govern.children.outcomes.label }}</td>
-									<td class="group-value like-pre">{{ project.data.govern.outcomes }}</td>
+									<td class="group-value like-pre">{{ aspectData.govern.outcomes }}</td>
 								</tr>
 								<tr>
 									<td class="group-prompt">{{ definitionsById.govern.children.evolution.label }}</td>
-									<td class="group-value like-pre">{{ project.data.govern.evolution }}</td>
+									<td class="group-value like-pre">{{ aspectData.govern.evolution }}</td>
 								</tr>
 								<tr>
 									<td class="group-prompt">{{ definitionsById.govern.children.improvements.label }}</td>
-									<td class="group-value like-pre">{{ project.data.govern.improvements }}</td>
+									<td class="group-value like-pre">{{ aspectData.govern.improvements }}</td>
 								</tr>
 							</tbody>
 						</table>
@@ -164,7 +164,8 @@
 import { get, set, sync, call } from 'vuex-pathify';
 import find from 'lodash/find';
 
-import Templates from "@/templates";
+import Aspects from '@/aspects';
+
 import StakeholderTile from './StakeholderTile';
 
 const EvidenceLink = {
@@ -176,34 +177,48 @@ const EvidenceLink = {
 
 export default {
 
-	name: "MoralSummaryTab",
+	name: "MoralSummaryView",
 
 	components: {
 		StakeholderTile,
 		EvidenceLink,
 	},
 
+	props: {
+		aspectId: [Boolean, String],
+	},
+
 	computed: {
 
 		...get([
 			'project',
-			'isEditing',
 		]),
 
-		template() {
-			if ( ! this.project.id) {
-				return false;
+		/**
+		 * Get aspect (ALL data - CONFIG + DEFS etc!) based on supplied editor ID
+		 *
+		 */
+		aspect() {
+			const aspect = this.aspectId;
+			if ( ! this.aspectId) {
+				return null;
 			}
-			var template = Templates.get(this.project.template);
-			return template;
+			return Aspects.get(aspect);
 		},
+
+
+		dataPath() {
+			return `project@data.${this.aspectId}`;
+		},
+
+		aspectData: get(':dataPath'),
 
 		definitionsById() {
 
 			var defs = {};
 			var children = {};
 
-			this.template.DEFINITIONS.forEach(item => {
+			this.aspect.DEFINITIONS.forEach(item => {
 				if (item.children && Array.isArray(item.children)) {
 					children = {};
 					item.children.forEach(child => {

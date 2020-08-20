@@ -5196,8 +5196,8 @@ a.text-gray-medium:visited {
 }
 
 .app-header {
-  background: #111111;
-  color: #fff;
+  background: #f2f0f1;
+  color: #444;
   padding: 0.4rem 0.8rem;
   border-bottom: 0.05rem solid #bbb;
 }
@@ -5212,6 +5212,12 @@ a.text-gray-medium:visited {
   color: inherit;
 }
 
+.app-header .saving-ui {
+  margin-left: 0.8rem;
+  color: #666;
+  font-size: 0.7rem;
+}
+
 .app-header .navbar-buttons .btn-link {
   margin-right: 0.4rem;
 }
@@ -5222,7 +5228,7 @@ a.text-gray-medium:visited {
 }
 
 .app-header .navbar-buttons .btn-link:hover {
-  color: inherit;
+  color: #fff;
   background: #0074d9;
 }
 
@@ -5335,6 +5341,10 @@ a.text-gray-medium:visited {
 .app-sidebar .tile-template.active {
   border-left: 0.2rem solid #25a0ff;
   padding-left: 0.4rem;
+}
+
+.app-sidebar .panel {
+  border: 0;
 }
 
 .app-sidebar .sidebar-heading {

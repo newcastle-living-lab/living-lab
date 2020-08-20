@@ -1,5 +1,5 @@
-import MoralSummaryTab from "./MoralSummaryTab";
+import MoralSummaryView from "./MoralSummaryView";
 
 export {
-	MoralSummaryTab,
+	MoralSummaryView,
 };

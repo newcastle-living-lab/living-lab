@@ -4,14 +4,10 @@
 		<AspectsView
 			v-show="!isEditing"
 			:aspectId="aspectId"
-			:aspectEditId="aspectEditId"
-			@edit-aspect="doEdit"
 		/>
 		<EditorView
 			v-if="isEditing"
 			:aspectId="aspectId"
-			:aspectEditId="aspectEditId"
-			@edit-aspect="doEdit"
 		/>
 	</aside>
 
@@ -34,26 +30,30 @@ export default {
 	},
 
 	props: {
-		aspectId: String
+		aspectId: String,
 	},
 
 	data() {
 		return {
-			aspectEditId: false,
+			// aspectEditId: false,
 		}
 	},
 
 	computed: {
 
+		...get([
+			'aspectEditId',
+		]),
+
 		isEditing() {
-			return this.aspectEditId !== false
+			return (this.aspectEditId !== false);
 		}
 
 	},
 
 	methods: {
 
-		doEdit(aspectId) {
+		/*doEdit(aspectId) {
 			this.aspectEditId = aspectId;
 			// console.log(`Current aspect: ${this.aspectId}`);
 			// console.log(`Do edit on: ${aspectId}`);
@@ -64,7 +64,7 @@ export default {
 				const params = {...this.$route.params, aspectId: aspectId }
 				this.$router.push({ name: aspect.CONFIG.routeName, params: params });
 			}
-		}
+		}*/
 
 	}
 

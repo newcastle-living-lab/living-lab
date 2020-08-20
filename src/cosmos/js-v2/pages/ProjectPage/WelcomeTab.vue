@@ -2,7 +2,10 @@
 
 	<main ref="container" class="app-content light welcome">
 		<div class="container grid-xl">
-			WELCOME TO THE PROJECT "{{ project.name }}"
+			<div class="empty">
+					<p class="empty-title h5">{{ project.name }}</p>
+					<p class="empty-subtitle" v-if="project.created_by">Created by {{ project.created_by }} on {{ project.created_at }}</p>
+				</div>
 		</div>
 	</main>
 

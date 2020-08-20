@@ -28,7 +28,7 @@
 
 <script>
 
-import { get, set, sync, call } from 'vuex-pathify';
+import { get, set, sync, call, commit } from 'vuex-pathify';
 
 import map from 'lodash/map';
 import findIndex from 'lodash/findIndex';
@@ -37,8 +37,6 @@ import EditIcon from 'vue-feather-icons/icons/SettingsIcon';
 import InfoIcon from 'vue-feather-icons/icons/InfoIcon';
 
 import Aspects from '@/aspects';
-// import Templates from '@/templates';
-// import Aspects from '@/data/aspects.json';
 
 export default {
 
@@ -49,7 +47,6 @@ export default {
 
 	props: {
 		aspectId: String,
-		aspectEditId: [Boolean, String],
 	},
 
 	data() {
@@ -115,7 +112,7 @@ export default {
 	methods: {
 
 		doEdit(aspectId) {
-			this.$emit('edit-aspect', aspectId);
+			commit('EDIT_ASPECT', aspectId);
 		},
 
 	}

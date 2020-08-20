@@ -1,7 +1,7 @@
 <template>
 
 	<main ref="container" class="app-content light moral-summary" v-if="aspectData">
-		<div :class="isEditing ? 'scrollable scr-y' : ''">
+		<div class="scrollable scr-y">
 			<div class="container grid-xl">
 				<h1 class="h4 mb-8 mt-4" v-if="aspectData.model">{{ aspectData.model.title }}</h1>
 
@@ -141,7 +141,6 @@ export default {
 
 		...get([
 			'project',
-			'isEditing',
 		]),
 
 		/**

@@ -1,8 +1,8 @@
 
 .app-header {
 
-	background: $clrs-black;
-	color: $light-color;
+	background: $gray-color-light;	//$clrs-black;
+	color: $dark-color;	//light-color;
 	padding: $layout-spacing $unit-4;
 	border-bottom: $unit-o solid $border-color;
 
@@ -16,6 +16,11 @@
 
 	}
 
+	.saving-ui {
+		margin-left: $unit-4;
+		color: $gray-color;
+		font-size: $font-size-sm;
+	}
 
 	.navbar-buttons {
 
@@ -29,7 +34,7 @@
 			}
 
 			&:hover {
-				color: inherit;
+				color: $light-color;
 				background: $clrs-blue;	//lighten($clrs-black, 10%);
 			}
 

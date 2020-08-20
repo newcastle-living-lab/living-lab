@@ -51,11 +51,14 @@ export default {
 			}
 			// ensure all aspect definitions have a key
 			if (typeof(aspect.DEFINITIONS) !== 'undefined') {
+				console.debug(`Setting object keys for ${aspect.CONFIG.id}...`);
 				project.data[aspectConfig.id] = setObjectKeys(project.data[aspectConfig.id], aspect.DEFINITIONS);
 			}
 		});
 
 		project = this.convertFromTemplate(project);
+
+		// console.log(JSON.parse(JSON.stringify(project)));
 
 		return project;
 	},
@@ -181,12 +184,32 @@ function setObjectKeys(onObject, fromArray) {
 				break;
 				case "object":
 				default:
+					item.dataType = 'object';
 					onObject[item.id] = {};
 				break;
 			}
+
+			switch (item.type) {
+				case 'externals':
+					onObject[item.id] = {
+						label: '',
+						items: [],
+					};
+				break;
+				case 'stakeholder':
+					onObject[item.id] = {
+						label: null,
+						type: null,
+						colour: null,
+						url: null,
+					};
+				break;
+			}
 		}
+		console.debug(`setObjectKeys(): ${item.id}: Set to ${item.dataType}.`);
 		if (Array.isArray(item.children)) {
-			setObjectKeys(onObject[item.id], item.children);
+			console.debug(`setObjectKeys(): ${item.id}: Processing children!`);
+			onObject[item.id] = setObjectKeys(onObject[item.id], item.children);
 		}
 	});
 	return onObject;

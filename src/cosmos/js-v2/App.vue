@@ -1,6 +1,6 @@
 <template>
 
-	<div class="app-container" :class="[isEditing ? 'is-editing' : '', isLoading ? 'is-loading' : '']">
+	<div class="app-container" :class="[aspectEditId ? 'is-editing' : '', isLoading ? 'is-loading' : '']">
 
 		<AppHeader :route="this.$route" />
 
@@ -34,7 +34,7 @@ export default {
 	computed: {
 
 		...get([
-			'isEditing',
+			'aspectEditId',
 			'isLoading',
 			'project',
 			'lastSave',

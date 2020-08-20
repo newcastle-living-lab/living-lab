@@ -20,6 +20,8 @@
 
 import { get, set, sync, call } from 'vuex-pathify';
 
+import Aspects from '@/aspects';
+
 // import ProjectToolbar from "./ProjectToolbar";
 import ProjectSidebar from "./ProjectSidebar";
 
@@ -47,16 +49,17 @@ export default {
 	computed: {
 		...get([
 			'appName',
+			'aspectEditId',
 		]),
 		...sync([
 			'project',
-			// 'isEditing',
 		]),
 	},
 
 	watch: {
 		'project.name': 'projectChanged',
 		'project.data': 'projectChanged',
+		'aspectEditId': 'aspectEditIdChanged',
 	},
 
 	methods: {
@@ -66,6 +69,16 @@ export default {
 		projectChanged() {
 			if (this.project.id && this.project.name) {
 				document.title = `${this.project.name} | ${this.appName} [Living Lab]`;
+			}
+		},
+
+		// When the editing aspect changes - check it matches the current 'viewing' aspect.
+		// If it's different, trigger a route change to 'view' the chosen edit aspect.
+		aspectEditIdChanged() {
+			if (this.aspectEditId && this.aspectEditId != this.aspectId) {
+				const aspect = Aspects.get(this.aspectEditId);
+				const params = {...this.$route.params, aspectId: this.aspectEditId }
+				this.$router.push({ name: aspect.CONFIG.routeName, params: params });
 			}
 		}
 

@@ -30,7 +30,7 @@
 
 <script>
 
-import { get, set, sync, call } from 'vuex-pathify';
+import { get, set, sync, call, commit } from 'vuex-pathify';
 
 import Vue from 'vue';
 import map from 'lodash/map';
@@ -51,7 +51,6 @@ export default {
 
 	props: {
 		aspectId: String,
-		aspectEditId: [Boolean, String],
 	},
 
 	data() {
@@ -64,6 +63,7 @@ export default {
 
 		...get([
 			'project',
+			'aspectEditId',
 		]),
 
 		/**
@@ -71,11 +71,10 @@ export default {
 		 *
 		 */
 		aspect() {
-			const aspect = this.aspectEditId;
 			if ( ! this.aspectEditId) {
 				return null;
 			}
-			return Aspects.get(aspect);
+			return Aspects.get(this.aspectEditId);
 		},
 
 		/**
@@ -102,6 +101,10 @@ export default {
 		},
 
 		panels() {
+
+			if ( ! this.aspect) {
+				return [];
+			}
 
 			const aspectId = this.aspect.CONFIG.id;
 
@@ -136,7 +139,7 @@ export default {
 	methods: {
 
 		doEdit() {
-			this.$emit('edit-aspect', false);
+			commit('STOP_EDITING_ASPECT');
 		},
 
 		// Change current panel to specific ID
@@ -158,7 +161,9 @@ export default {
 	},
 
 	mounted() {
-		this.setCurrentPanel(this.panels[0].id);
+		if (this.panels.length > 0) {
+			this.setCurrentPanel(this.panels[0].id);
+		}
 	}
 
 }

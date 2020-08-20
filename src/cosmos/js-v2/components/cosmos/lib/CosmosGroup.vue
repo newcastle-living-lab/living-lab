@@ -21,6 +21,8 @@
 
 import { get } from 'vuex-pathify';
 
+import Aspects from '@/aspects';
+
 export default {
 
 	name: 'CosmosGroup',
@@ -35,6 +37,18 @@ export default {
 	},
 
 	computed: {
+
+		/**
+		 * Get aspect (ALL data - CONFIG + DEFS etc!) based on supplied editor ID
+		 *
+		 */
+		aspect() {
+			const aspect = this.aspectId;
+			if ( ! this.aspectId) {
+				return null;
+			}
+			return Aspects.get(aspect);
+		},
 
 		dataPath() {
 			return `project@data.${this.aspectId}`;
@@ -51,14 +65,14 @@ export default {
 				return true;
 			}
 
-			var fns = Aspects.get(this.aspectId)['Functions'];
+			var fns = typeof(this.aspect.Functions) !== 'undefined' ? this.aspect.Functions : null;
 			var hasFns = (typeof(fns) == 'object');
 			var hasFn = hasFns && (typeof(fns[this.visibilityFunc]) == 'function');
 			if ( ! hasFn) {
 				return true;
 			}
 
-			var res = fns[this.visibilityFunc](this.definitionName, this.projectData);
+			var res = fns[this.visibilityFunc](this.definitionName, this.aspectData);
 			return res;
 		},
 

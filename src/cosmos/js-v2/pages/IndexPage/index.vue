@@ -38,9 +38,6 @@
 									class="tile tile-project"
 								>
 									<div class="tile-content">
-										<div class="float-right">
-											<ProjectTemplateChip :project="project" />
-										</div>
 										<p class="tile-title"><span v-if="project.name">{{ project.name }}</span><span v-else>#{{ project.id }}</span></p>
 										<p class="tile-subtitle" v-if="project.created_by">{{ project.created_by }}</p>
 									</div>
@@ -107,31 +104,21 @@ import AlertCircleIcon from 'vue-feather-icons/icons/AlertCircleIcon';
 
 import Network from "@/services/Network";
 import NewProject from './NewProject';
-import ProjectTemplateChip from '@/components/ProjectTemplateChip';
-
-
-const searchTemplates = [
-	{'value': 'service-model', 'label': 'Co-Creation of Service Model'},
-	{'value': 'analytic-model', 'label': 'Analytic Model'},
-];
 
 export default {
 
 	components: {
 		AlertCircleIcon,
 		NewProject,
-		ProjectTemplateChip,
 	},
 
 	data() {
 		return {
 			filter: {
 				query: '',
-				template: null,
 			},
 			newProject: {
 				name: null,
-				template: null,
 				created_by: null,
 			},
 		}
@@ -165,7 +152,7 @@ export default {
 
 		filteredProjects() {
 
-			if (this.filter.query == 0 && this.filter.template == 0) {
+			if (this.filter.query.length == 0) {
 				return this.projects;
 			}
 

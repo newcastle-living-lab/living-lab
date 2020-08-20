@@ -8,13 +8,6 @@
 		</div>
 
 		<div class="form-group">
-			<label class="form-label" for="template">Template</label>
-			<VSelect v-model="value.template">
-				<option v-for="(tpl, idx) in templates" :value="tpl.name">{{ tpl.title }}</option>
-			</VSelect>
-		</div>
-
-		<div class="form-group">
 			<label class="form-label" for="created_by">Created by</label>
 			<VInput type="text" id="created_by" v-model="value.created_by" />
 		</div>
@@ -24,8 +17,6 @@
 </template>
 
 <script>
-
-import Templates from '@/templates';
 
 export default {
 
@@ -45,10 +36,8 @@ export default {
 
 	data() {
 		return {
-			templates: Templates.all(),
 			previousValue: {
 				name: null,
-				template: null,
 				created_by: null,
 				created_at: null,
 				modified_at: null,
@@ -80,7 +69,6 @@ export default {
 
 		filterValue(value) {
 			const name = value.name === null || value.name === "" ? undefined : value.name;
-			const template = value.template === null || value.template === "" ? undefined : value.template;
 			const created_by = value.created_by === null || value.created_by === "" ? undefined : value.created_by;
 
 			const created_at = (new Date()).toLocaleDateString();
@@ -88,7 +76,6 @@ export default {
 
 			return {
 				name: name,
-				template: template,
 				created_by: created_by,
 				created_at: created_at,
 				modified_at: modified_at,

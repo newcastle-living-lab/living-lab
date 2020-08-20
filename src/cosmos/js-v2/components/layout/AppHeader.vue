@@ -10,34 +10,48 @@
 
 				<span class='navbar-project btn btn-empty' v-if="project.id">{{ project.name }}</span>
 
-				<!-- <button class='btn btn-link btn-sm'
-					v-if="hasProject && userCanEdit"
-					@click="doEdit"
-				><edit-icon size="16" />Edit</button> -->
-
 				<button class='btn btn-link btn-sm'
 					v-if="hasProject && userCanEdit"
 					@click="doSave"
 				><save-icon size="16" />Save</button>
 
 				<div class="dropdown dropdown-download" v-if="hasProject">
-					<button class='btn btn-link btn-sm dropdown-toggle'><download-icon size="16" />Download <i class="icon icon-caret"></i></button>
+					<button class='btn btn-link btn-sm dropdown-toggle' :disabled="activeTab != 'model'"><download-icon size="16" />Download <i class="icon icon-caret"></i></button>
 					<ul class="menu">
 						 <li class="menu-item"><a href="javascript:;" @click="doExportImage()">Image</a></li>
 						 <li class="menu-item"><a href="javascript:;" @click="doExportPdf()">PDF</a></li>
 					</ul>
 				</div>
 
+				<div class="saving-ui input-group input-inline">
+					<div v-show="lastSave.waiting">
+						<span class="loading mr-4"></span>
+						<span>Saving...</span>
+					</div>
+					<div v-show="lastSavedString && ! lastSave.waiting">
+						Last saved at {{ lastSavedString }}
+					</div>
+				</div>
+
 			</section>
 
 			<section class="navbar-section navbar-tabs">
-				<span v-if="hasUser"
-					class="btn btn-empty btn-sm"
-				><user-icon size="16" /> {{ user.username }}</span>
-				<a v-if="!hasUser && requireAuth"
-					class="btn btn-link btn-sm"
-					:href="loginUrl"
-				><key-icon size="16" /> Log in</a>
+				<div v-if="project && project.id" class="input-group input-inline mr-8">
+					<label class="form-switch input-sm" v-show="activeTab == 'model'">
+						<input type="checkbox" v-model="scale">
+						<i class="form-icon"></i> <span class="text-small">Scale to fit</span>
+					</label>
+				</div>
+
+				<div class="input-group input-inline">
+					<span v-if="hasUser"
+						class="btn btn-empty btn-sm"
+					><user-icon size="16" /> {{ user.username }}</span>
+					<a v-if="!hasUser && requireAuth"
+						class="btn btn-link btn-sm"
+						:href="loginUrl"
+					><key-icon size="16" /> Log in</a>
+				</div>
 			</section>
 
 		</nav>
@@ -48,7 +62,8 @@
 
 <script>
 
-import { get, commit, dispatch } from 'vuex-pathify';
+import { get, sync, commit, dispatch } from 'vuex-pathify';
+import format from 'date-fns/format';
 
 import { EventBus } from '@/services/EventBus';
 
@@ -78,12 +93,16 @@ export default {
 
 		...get([
 			'appName',
-			'isEditing',
 			'userCanEdit',
 			'hasUser',
 			'requireAuth',
 			'user',
 			'project',
+			'lastSave',
+		]),
+
+		...sync([
+			'scale',
 		]),
 
 		hasProject() {
@@ -96,19 +115,22 @@ export default {
 			let uri = path + currentRoute;
 			uri = uri.replace('//', '/');
 			return '/login?ref=' + encodeURIComponent(uri);
-		}
+		},
+
+		lastSavedString() {
+			if (this.lastSave.time) {
+				return format(this.lastSave.time, 'HH:mm');
+			}
+			return false;
+		},
+
+		activeTab: function() {
+			return this.$route.name;
+		},
 
 	},
 
 	methods: {
-
-		doEdit() {
-			if (!this.isEditing)  {
-				commit('START_EDITING');
-			} else {
-				commit('STOP_EDITING');
-			}
-		},
 
 		doSave() {
 			dispatch('saveProject', 'manual');
