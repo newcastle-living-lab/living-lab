@@ -774,8 +774,8 @@ var allAspects = [_welcome__WEBPACK_IMPORTED_MODULE_4__["default"], _service_mod
         project.data[aspectConfig.id] = setObjectKeys(project.data[aspectConfig.id], aspect.DEFINITIONS);
       }
     });
-    project = this.convertFromTemplate(project); // console.log(JSON.parse(JSON.stringify(project)));
-
+    project = this.convertFromTemplate(project);
+    console.log(JSON.parse(JSON.stringify(project)));
     return project;
   },
   convertFromTemplate: function convertFromTemplate(project) {
