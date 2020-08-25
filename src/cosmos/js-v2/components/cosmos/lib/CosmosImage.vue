@@ -34,6 +34,7 @@ export default {
 				image: this.image,
 				scale: this.config.scale ? this.config.scale : { x: 1, y: 1 },
 				rotation: this.config.rotation ? this.config.rotation : 0,
+				opacity: typeof(this.config.opacity) !== 'undefined' ? this.config.opacity : 1,
 			}
 		},
 	},

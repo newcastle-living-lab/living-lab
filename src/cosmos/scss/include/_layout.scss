@@ -118,11 +118,26 @@ body {
 	flex: 1 1 auto;
 }
 
+.app-body {
+	display: flex;
+	flex-direction: column;
+	flex-grow: 1;
+}
+
 .app-content {
 
 	padding: $unit-4;
 	position: relative;
 	width: 100%;
+	height: 100%;
+/*
+	display: flex;
+	flex-direction: column;
+
+	> div {
+		position: relative;
+		flex: 1 1 auto;
+	}*/
 
 	&.dark {
 		background: $grey-dark;

@@ -3,21 +3,20 @@
 	<v-group>
 
 		<CosmosTitle :options="options" />
-
-		<v-rect :config="{
-			x: 60,
-			y: 145,
-			width: 180,
-			height: 100,
-			fill: '#ccc',
-			opacity: 0
-		}" />
-
+<!--
 		<CosmosImage :config="{
 			x: 0,
 			y: 90,
-			filename: 'intervention-theory/dashboard.png'
-		}" />
+			filename: 'intervention-theory/dashboard.png',
+			opacity: 0,
+		}" /> -->
+
+		<CosmosImage :config="bgConfig.star" />
+		<CosmosImage :config="bgConfig.change" />
+		<CosmosImage :config="bgConfig.intervention" />
+		<CosmosImage :config="bgConfig.environmentArrows" />
+		<CosmosImage :config="bgConfig.wellbeingArrows" />
+		<CosmosImage :config="bgConfig.learning" />
 
 		<v-text
 			v-for="(config, name) in wellbeingConfig"
@@ -66,11 +65,74 @@ export default {
 
 	computed: {
 
+		...get(['userGuide']),
+
 		dataPath() {
-			return `project@data.${this.aspectId}`;
+			if (this.userGuide.isOpen) {
+				return `userGuide@project.data.${this.aspectId}`;
+			} else {
+				return `project@data.${this.aspectId}`;
+			}
 		},
 
 		aspectData: get(':dataPath'),
+
+		bgConfig() {
+
+			var data = {};
+
+			var defaults = {
+				x: 0,
+				y: 90,
+			};
+
+			data.star = {
+				...defaults,
+				filename: 'intervention-theory/dashboard-wellbeing-star.png',
+				opacity: 1,
+			};
+
+			data.intervention = {
+				...defaults,
+				filename: 'intervention-theory/dashboard-intervention.png',
+				opacity: 1,
+			};
+
+			data.wellbeingArrows = {
+				...defaults,
+				filename: 'intervention-theory/dashboard-wellbeing-arrows.png',
+				opacity: 1,
+			};
+
+			data.environmentArrows = {
+				...defaults,
+				filename: 'intervention-theory/dashboard-environment-arrows.png',
+				opacity: 1,
+			};
+
+			data.learning = {
+				...defaults,
+				filename: 'intervention-theory/dashboard-learning.png',
+				opacity: 1,
+			};
+
+			data.change = {
+				...defaults,
+				filename: 'intervention-theory/dashboard-change.png',
+				opacity: 1,
+			};
+
+			if (this.userGuide.isOpen) {
+				data.star.opacity = this.userGuide.currentStep >= 0 ? 1 : 0;
+				data.intervention.opacity = this.userGuide.currentStep >= 11 ? 1 : 0;
+				data.wellbeingArrows.opacity = this.userGuide.currentStep >= 8 ? 1 : 0;
+				data.environmentArrows.opacity = this.userGuide.currentStep >= 10 ? 1 : 0;
+				data.learning.opacity = this.userGuide.currentStep >= 12 ? 1 : 0;
+				// data.change.opacity = this.userGuide.currentStep >= 12 ? 1 : 0;
+			}
+
+			return data;
+		},
 
 		wellbeingConfig() {
 
@@ -85,13 +147,33 @@ export default {
 			];
 
 			var config = {},
-				itemConfig = {};
+				itemConfig = {},
+				isVisible = false;
 
 			items.forEach((item) => {
 
+				isVisible = false;
+
+				if (this.userGuide.isOpen) {
+					switch (item.key) {
+						case 'faculties_skills':
+						case 'mental_psych':
+						case 'socio_economic':
+						case 'physiological':
+							isVisible = this.userGuide.currentStep >= 8;
+						break;
+						case 'physical_env':
+						case 'socio_cultural_env':
+							isVisible = this.userGuide.currentStep >= 10;
+						break;
+					}
+				} else {
+					isVisible = this.inArray(this.aspectData.wellbeing.items, item.key);
+				}
+
 				itemConfig = {
 					fontSize: 22,
-					visible: this.inArray(this.aspectData.wellbeing.items, item.key),
+					visible: isVisible,
 					text: item.text,
 					fill: item.fill ? item.fill : '#1818AA',
 					x: item.x,
@@ -128,13 +210,22 @@ export default {
 			];
 
 			var config = {},
-				itemConfig = {};
+				itemConfig = {},
+				isVisible = false;
 
 			items.forEach((item) => {
 
+				isVisible = false;
+
+				if (this.userGuide.isOpen) {
+					isVisible = this.userGuide.currentStep >= 11;
+				} else {
+					isVisible = this.inArray(this.aspectData.intervention.items, item.key);
+				}
+
 				itemConfig = {
 					fontSize: 22,
-					visible: this.inArray(this.aspectData.intervention.items, item.key),
+					visible: isVisible,
 					text: item.text,
 					fill: item.fill ? item.fill : '#D3332A',
 					x: item.x,
@@ -154,20 +245,30 @@ export default {
 			var definition = find(this.definitions, { id: 'learning' });
 			var options = find(definition.children, { id: 'items' }).componentProps.options;
 
-			var lines = filter(options, (option) => this.inArray(this.aspectData.learning.items, option.value));
+			var isVisible = false;
+
+			if (this.userGuide.isOpen) {
+				var lines = options;
+				isVisible = this.userGuide.currentStep >= 12;
+			} else {
+				var lines = filter(options, (option) => this.inArray(this.aspectData.learning.items, option.value));
+				isVisible = true;
+			}
+
 			lines = map(lines, (line) => line.label);
 
 			var itemConfig = {
+				x: 800,
+				y: 665,
+				width: 310,
+				height: 110,
+				visible: isVisible,
 				align: 'left',
 				verticalAlign: 'middle',
 				lineHeight: 1.5,
 				fontSize: 22,
 				text: lines.join("\n"),
 				fill: '#D3332A',
-				x: 800,
-				y: 665,
-				width: 310,
-				height: 110,
 			};
 
 			return {...defaultTextConfig, ...itemConfig};

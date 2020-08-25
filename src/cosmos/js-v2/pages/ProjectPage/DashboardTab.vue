@@ -35,6 +35,7 @@
 
 		</div>
 
+
 		<div class="modal modal-sm" :class="isExporting ? 'active' : ''">
 			<div class="modal-overlay"></div>
 			<div class="modal-container">
@@ -63,7 +64,15 @@ import jsPDF from 'jspdf';
 import { EventBus } from '@/services/EventBus';
 import Aspects from '@/aspects';
 
+import UserGuide from '@/components/UserGuide';
+
 export default {
+
+	name: 'DashboardTab',
+
+	components: {
+		UserGuide
+	},
 
 	props: {
 		aspectId: [Boolean, String],

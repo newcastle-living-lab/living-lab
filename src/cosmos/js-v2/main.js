@@ -5,6 +5,9 @@ import Vue from 'vue';
 import VueKonva from 'vue-konva';
 Vue.use(VueKonva);
 
+// import VueTour from 'vue-tour';
+// Vue.use(VueTour);
+
 import UI from "./components/ui";
 Vue.use(UI);
 

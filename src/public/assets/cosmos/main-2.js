@@ -757,6 +757,11 @@ var allAspects = [_welcome__WEBPACK_IMPORTED_MODULE_4__["default"], _service_mod
       return t.CONFIG.id === id;
     });
   },
+  getBlankItem: function getBlankItem(id) {
+    var aspect = this.get(id);
+    var data = {};
+    return setObjectKeys(data, aspect.DEFINITIONS);
+  },
   // Populate the project data with empty objects for each aspect.
   // Helps with reactivity if objects/keys exist first.
   populateProject: function populateProject(project) {
@@ -902,9 +907,9 @@ function setObjectKeys(onObject, fromArray) {
           };
           break;
       }
-    }
 
-    console.debug("setObjectKeys(): ".concat(item.id, ": Set to ").concat(item.dataType, "."));
+      console.debug("setObjectKeys(): ".concat(item.id, ": Set to ").concat(item.dataType, "."));
+    }
 
     if (Array.isArray(item.children)) {
       console.debug("setObjectKeys(): ".concat(item.id, ": Processing children!"));
@@ -913,6 +918,60 @@ function setObjectKeys(onObject, fromArray) {
   });
   return onObject;
 }
+
+/***/ }),
+
+/***/ "./js-v2/aspects/intervention_theory_model/Guide.js":
+/*!**********************************************************!*\
+  !*** ./js-v2/aspects/intervention_theory_model/Guide.js ***!
+  \**********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ({
+  steps: [{
+    'type': 'info',
+    'title': 'The co-creative initiatives we are considering are all concerned with improving and nurturing wellbeing. Here we consider the wellbeing of individuals but this might be applied to places or to wider environments.'
+  }, {
+    'type': 'info',
+    'title': 'Wellbeing has a number of different facets which are all interdependent.'
+  }, {
+    'type': 'info',
+    'title': 'It also interacts with the physical and social environments.'
+  }, {
+    'type': 'info',
+    'title': 'Some services or interventions are about mending something that has gone wrong and restoring the status quo.'
+  }, {
+    'type': 'info',
+    'title': 'But there are other purposes for interventions.'
+  }, {
+    'type': 'info',
+    'title': 'The intervention process involves a number of different stages and processes.'
+  }, {
+    'type': 'info',
+    'title': 'Finally, if our innovations are to be sustained we must learn and improve.'
+  }, {
+    'type': 'question',
+    'title': 'Who, what or where is the target of your intervention?'
+  }, {
+    'type': 'question',
+    'title': 'Which aspects of wellbeing are the focus of your initiative?'
+  }, {
+    'type': 'question',
+    'title': 'What aspects of the wellbeing of your subject are relevant but beyond the scope of your initiative?'
+  }, {
+    'type': 'question',
+    'title': 'What are the relevant environmental aspects?'
+  }, {
+    'type': 'question',
+    'title': 'Which combinations of interventions, from prevention to transformation, are relevant to your initiative?'
+  }, {
+    'type': 'question',
+    'title': 'To what extent is learning and improvement built into your development governance and delivery processes?'
+  }]
+});
 
 /***/ }),
 
@@ -1037,18 +1096,20 @@ __webpack_require__.r(__webpack_exports__);
 var _config_json__WEBPACK_IMPORTED_MODULE_0___namespace = /*#__PURE__*/__webpack_require__.t(/*! ./config.json */ "./js-v2/aspects/intervention_theory_model/config.json", 1);
 /* harmony import */ var _definitions_json__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./definitions.json */ "./js-v2/aspects/intervention_theory_model/definitions.json");
 var _definitions_json__WEBPACK_IMPORTED_MODULE_1___namespace = /*#__PURE__*/__webpack_require__.t(/*! ./definitions.json */ "./js-v2/aspects/intervention_theory_model/definitions.json", 1);
-/* harmony import */ var _components__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components */ "./js-v2/aspects/intervention_theory_model/components/index.js");
+/* harmony import */ var _Guide__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Guide */ "./js-v2/aspects/intervention_theory_model/Guide.js");
+/* harmony import */ var _components__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components */ "./js-v2/aspects/intervention_theory_model/components/index.js");
 
  // import NODES from "./nodes.json";
-// import Functions from "./Functions";
+
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   CONFIG: _config_json__WEBPACK_IMPORTED_MODULE_0__,
   DEFINITIONS: _definitions_json__WEBPACK_IMPORTED_MODULE_1__,
+  Guide: _Guide__WEBPACK_IMPORTED_MODULE_2__["default"],
   // NODES,
   // Functions,
-  Components: _components__WEBPACK_IMPORTED_MODULE_2__
+  Components: _components__WEBPACK_IMPORTED_MODULE_3__
 });
 
 /***/ }),
@@ -1689,6 +1750,75 @@ var _config_json__WEBPACK_IMPORTED_MODULE_0___namespace = /*#__PURE__*/__webpack
 /* harmony default export */ __webpack_exports__["default"] = ({
   CONFIG: _config_json__WEBPACK_IMPORTED_MODULE_0__
 });
+
+/***/ }),
+
+/***/ "./js-v2/components/UserGuide.vue":
+/*!****************************************!*\
+  !*** ./js-v2/components/UserGuide.vue ***!
+  \****************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _UserGuide_vue_vue_type_template_id_a6fc7856___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./UserGuide.vue?vue&type=template&id=a6fc7856& */ "./js-v2/components/UserGuide.vue?vue&type=template&id=a6fc7856&");
+/* harmony import */ var _UserGuide_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./UserGuide.vue?vue&type=script&lang=js& */ "./js-v2/components/UserGuide.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _UserGuide_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _UserGuide_vue_vue_type_template_id_a6fc7856___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _UserGuide_vue_vue_type_template_id_a6fc7856___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "js-v2/components/UserGuide.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./js-v2/components/UserGuide.vue?vue&type=script&lang=js&":
+/*!*****************************************************************!*\
+  !*** ./js-v2/components/UserGuide.vue?vue&type=script&lang=js& ***!
+  \*****************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_UserGuide_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../node_modules/babel-loader/lib??ref--4-0!../../node_modules/vue-loader/lib??vue-loader-options!./UserGuide.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./js-v2/components/UserGuide.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_UserGuide_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./js-v2/components/UserGuide.vue?vue&type=template&id=a6fc7856&":
+/*!***********************************************************************!*\
+  !*** ./js-v2/components/UserGuide.vue?vue&type=template&id=a6fc7856& ***!
+  \***********************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_UserGuide_vue_vue_type_template_id_a6fc7856___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../node_modules/vue-loader/lib??vue-loader-options!./UserGuide.vue?vue&type=template&id=a6fc7856& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./js-v2/components/UserGuide.vue?vue&type=template&id=a6fc7856&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_UserGuide_vue_vue_type_template_id_a6fc7856___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_UserGuide_vue_vue_type_template_id_a6fc7856___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
 
 /***/ }),
 
@@ -4590,7 +4720,9 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-vue__WEBPACK_IMPORTED_MODULE_1___default.a.use(vue_konva__WEBPACK_IMPORTED_MODULE_2___default.a);
+vue__WEBPACK_IMPORTED_MODULE_1___default.a.use(vue_konva__WEBPACK_IMPORTED_MODULE_2___default.a); // import VueTour from 'vue-tour';
+// Vue.use(VueTour);
+
 
 vue__WEBPACK_IMPORTED_MODULE_1___default.a.use(_components_ui__WEBPACK_IMPORTED_MODULE_3__["default"]);
 
@@ -5703,7 +5835,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var md5__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(md5__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var lodash_debounce__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! lodash/debounce */ "./node_modules/lodash/debounce.js");
 /* harmony import */ var lodash_debounce__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(lodash_debounce__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _services_Network__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @/services/Network */ "./js-v2/services/Network.js");
+/* harmony import */ var _aspects__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @/aspects */ "./js-v2/aspects/index.js");
+/* harmony import */ var _services_Network__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @/services/Network */ "./js-v2/services/Network.js");
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
@@ -5711,6 +5844,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
 
 
 
@@ -5742,6 +5876,13 @@ var state = {
   },
   options: {
     fontFamily: '-apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif'
+  },
+  userGuide: {
+    isAvailable: false,
+    isCompleted: false,
+    isOpen: false,
+    currentStep: 0,
+    project: {}
   }
 };
 var getters = {
@@ -5821,29 +5962,126 @@ var mutations = _objectSpread({}, vuex_pathify__WEBPACK_IMPORTED_MODULE_0__["mak
   },
   STOP_STAGE_HOVER: function STOP_STAGE_HOVER(state) {
     state.stageHover = false;
+  },
+  OPEN_USER_GUIDE: function OPEN_USER_GUIDE(state) {
+    state.userGuide.currentStep = 0;
+    state.userGuide.isOpen = true;
+  },
+  CLOSE_USER_GUIDE: function CLOSE_USER_GUIDE(state) {
+    state.userGuide.currentStep = 0;
+    state.userGuide.isOpen = false;
+  },
+  SET_USER_GUIDE_STATUS: function SET_USER_GUIDE_STATUS(state, _ref2) {
+    var isAvailable = _ref2.isAvailable,
+        isCompleted = _ref2.isCompleted;
+    state.userGuide.isAvailable = isAvailable;
+    state.userGuide.isCompleted = isCompleted;
+  },
+  INIT_USER_GUIDE_PROJECT: function INIT_USER_GUIDE_PROJECT(state) {
+    var project = {
+      data: {}
+    };
+    state.userGuide.project = _aspects__WEBPACK_IMPORTED_MODULE_3__["default"].populateProject(project);
   }
 });
 var actions = {
-  fetchProjects: function fetchProjects(_ref2) {
-    var state = _ref2.state,
-        commit = _ref2.commit;
+  /**
+   * Start user guide:
+   *
+   * - Set local values for step & open status
+   *
+   */
+  openUserGuide: function openUserGuide(_ref3, _ref4) {
+    var state = _ref3.state,
+        commit = _ref3.commit;
+    var projectId = _ref4.projectId,
+        aspectId = _ref4.aspectId;
+    var storageKey = "cosmos.ug.".concat(projectId, ".").concat(aspectId);
+    localStorage.removeItem(storageKey);
+    commit('OPEN_USER_GUIDE');
+  },
+
+  /**
+   * On final step - close user guide.
+   *
+   * - Set localStorage flag for completion.
+   * - Set local values to hide the guide.
+   */
+  finishUserGuide: function finishUserGuide(_ref5, _ref6) {
+    var state = _ref5.state,
+        commit = _ref5.commit,
+        dispatch = _ref5.dispatch;
+    var projectId = _ref6.projectId,
+        aspectId = _ref6.aspectId;
+    var storageKey = "cosmos.ug.".concat(projectId, ".").concat(aspectId);
+    localStorage.setItem(storageKey, true);
+    commit('CLOSE_USER_GUIDE');
+    dispatch('checkUserGuideStatus', projectId, aspectId);
+  },
+
+  /**
+   * Remove the flag that this user guide has ran.
+   * - Remove flag from localStorage
+   *
+   */
+  removeUserGuide: function removeUserGuide(_ref7, _ref8) {
+    var state = _ref7.state,
+        commit = _ref7.commit;
+    var projectId = _ref8.projectId,
+        aspectId = _ref8.aspectId;
+    var storageKey = "cosmos.ug.".concat(projectId, ".").concat(aspectId);
+    localStorage.removeItem(storageKey);
+    dispatch('checkUserGuideStatus', projectId, aspectId);
+  },
+
+  /**
+   * Given a project + aspect, check & update the user guide status.
+   *
+   */
+  checkUserGuideStatus: function checkUserGuideStatus(_ref9, _ref10) {
+    var state = _ref9.state,
+        commit = _ref9.commit;
+    var projectId = _ref10.projectId,
+        aspectId = _ref10.aspectId;
+    var storageKey = "cosmos.ug.".concat(projectId, ".").concat(aspectId);
+
+    if (!projectId || !aspectId) {
+      return;
+    }
+
+    var value = localStorage.getItem(storageKey);
+    var isCompleted = value === true || value === 'true';
+    var aspect = _aspects__WEBPACK_IMPORTED_MODULE_3__["default"].get(aspectId);
+    var hasUg = aspect && typeof aspect.Guide !== 'undefined';
+    commit('SET_USER_GUIDE_STATUS', {
+      isAvailable: hasUg,
+      isCompleted: isCompleted
+    });
+  },
+  fetchProjects: function fetchProjects(_ref11) {
+    var state = _ref11.state,
+        commit = _ref11.commit;
     commit('START_LOADING');
-    _services_Network__WEBPACK_IMPORTED_MODULE_3__["default"].getProjects().then(function (projects) {
+    _services_Network__WEBPACK_IMPORTED_MODULE_4__["default"].getProjects().then(function (projects) {
       commit('SET_PROJECTS', projects);
+    }).then(function () {
+      return commit('STOP_EDITING_ASPECT');
     }).then(function () {
       return commit('CLEAR_LAST_SAVE');
     }).then(function () {
       return commit('STOP_LOADING');
     });
   },
-  fetchProject: function fetchProject(_ref3, id) {
-    var state = _ref3.state,
-        commit = _ref3.commit;
+  fetchProject: function fetchProject(_ref12, id) {
+    var state = _ref12.state,
+        commit = _ref12.commit;
     commit('SET_PROJECT', {});
     commit('SET_SCALE', false);
     commit('START_LOADING');
-    _services_Network__WEBPACK_IMPORTED_MODULE_3__["default"].getProject(id).then(function (project) {
+    _services_Network__WEBPACK_IMPORTED_MODULE_4__["default"].getProject(id).then(function (project) {
       commit('SET_PROJECT', project);
+    }).then(function () {
+      return commit('STOP_EDITING_ASPECT');
     }).then(function () {
       return commit('CLEAR_LAST_SAVE');
     }).then(function () {
@@ -5852,17 +6090,17 @@ var actions = {
       return commit('STOP_LOADING');
     });
   },
-  clearProject: function clearProject(_ref4) {
-    var state = _ref4.state,
-        commit = _ref4.commit;
+  clearProject: function clearProject(_ref13) {
+    var state = _ref13.state,
+        commit = _ref13.commit;
     commit('SET_PROJECT', {});
     commit('SET_SCALE', false);
     commit('CLEAR_LAST_SAVE');
   },
-  doAutoSave: function doAutoSave(_ref5) {
-    var state = _ref5.state,
-        commit = _ref5.commit,
-        dispatch = _ref5.dispatch;
+  doAutoSave: function doAutoSave(_ref14) {
+    var state = _ref14.state,
+        commit = _ref14.commit,
+        dispatch = _ref14.dispatch;
     var isEditing = state.aspectEditId !== false;
     var hasProject = state.project && state.project.id;
     var hasLastSave = state.lastSave.hash;
@@ -5883,8 +6121,8 @@ var actions = {
     commit('AUTO_SAVE_WAIT', true);
     dispatch('doAutoSaveAction');
   },
-  doAutoSaveAction: lodash_debounce__WEBPACK_IMPORTED_MODULE_2___default()(function (_ref6) {
-    var dispatch = _ref6.dispatch;
+  doAutoSaveAction: lodash_debounce__WEBPACK_IMPORTED_MODULE_2___default()(function (_ref15) {
+    var dispatch = _ref15.dispatch;
 
     if (state.project && state.project.id) {
       dispatch('saveProject');
@@ -5892,12 +6130,12 @@ var actions = {
   }, 1000, {
     maxWait: 3000
   }),
-  saveProject: function saveProject(_ref7, source) {
-    var state = _ref7.state,
-        commit = _ref7.commit;
+  saveProject: function saveProject(_ref16, source) {
+    var state = _ref16.state,
+        commit = _ref16.commit;
     commit('START_LOADING');
     commit('TOUCH_MODIFIED_DATE');
-    _services_Network__WEBPACK_IMPORTED_MODULE_3__["default"].saveProject(state.project.id, state.project).then(function (res) {
+    _services_Network__WEBPACK_IMPORTED_MODULE_4__["default"].saveProject(state.project.id, state.project).then(function (res) {
       if (res && res.success) {
         commit('TOUCH_LAST_SAVE');
 
@@ -7863,6 +8101,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   },
   created: function created() {
     Object(vuex_pathify__WEBPACK_IMPORTED_MODULE_0__["commit"])('SET_CONFIG', _objectSpread({}, this.$root.$options.config));
+    Object(vuex_pathify__WEBPACK_IMPORTED_MODULE_0__["commit"])('INIT_USER_GUIDE_PROJECT');
   }
 });
 
@@ -8511,7 +8750,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
 
 
 
@@ -8530,11 +8768,56 @@ var defaultTextConfig = {
     options: Object,
     definitions: [Object, Array]
   },
-  computed: {
+  computed: _objectSpread({}, Object(vuex_pathify__WEBPACK_IMPORTED_MODULE_0__["get"])(['userGuide']), {
     dataPath: function dataPath() {
-      return "project@data.".concat(this.aspectId);
+      if (this.userGuide.isOpen) {
+        return "userGuide@project.data.".concat(this.aspectId);
+      } else {
+        return "project@data.".concat(this.aspectId);
+      }
     },
     aspectData: Object(vuex_pathify__WEBPACK_IMPORTED_MODULE_0__["get"])(':dataPath'),
+    bgConfig: function bgConfig() {
+      var data = {};
+      var defaults = {
+        x: 0,
+        y: 90
+      };
+      data.star = _objectSpread({}, defaults, {
+        filename: 'intervention-theory/dashboard-wellbeing-star.png',
+        opacity: 1
+      });
+      data.intervention = _objectSpread({}, defaults, {
+        filename: 'intervention-theory/dashboard-intervention.png',
+        opacity: 1
+      });
+      data.wellbeingArrows = _objectSpread({}, defaults, {
+        filename: 'intervention-theory/dashboard-wellbeing-arrows.png',
+        opacity: 1
+      });
+      data.environmentArrows = _objectSpread({}, defaults, {
+        filename: 'intervention-theory/dashboard-environment-arrows.png',
+        opacity: 1
+      });
+      data.learning = _objectSpread({}, defaults, {
+        filename: 'intervention-theory/dashboard-learning.png',
+        opacity: 1
+      });
+      data.change = _objectSpread({}, defaults, {
+        filename: 'intervention-theory/dashboard-change.png',
+        opacity: 1
+      });
+
+      if (this.userGuide.isOpen) {
+        data.star.opacity = this.userGuide.currentStep >= 0 ? 1 : 0;
+        data.intervention.opacity = this.userGuide.currentStep >= 11 ? 1 : 0;
+        data.wellbeingArrows.opacity = this.userGuide.currentStep >= 8 ? 1 : 0;
+        data.environmentArrows.opacity = this.userGuide.currentStep >= 10 ? 1 : 0;
+        data.learning.opacity = this.userGuide.currentStep >= 12 ? 1 : 0; // data.change.opacity = this.userGuide.currentStep >= 12 ? 1 : 0;
+      }
+
+      return data;
+    },
     wellbeingConfig: function wellbeingConfig() {
       var _this = this;
 
@@ -8578,11 +8861,32 @@ var defaultTextConfig = {
         width: 220
       }];
       var config = {},
-          itemConfig = {};
+          itemConfig = {},
+          isVisible = false;
       items.forEach(function (item) {
+        isVisible = false;
+
+        if (_this.userGuide.isOpen) {
+          switch (item.key) {
+            case 'faculties_skills':
+            case 'mental_psych':
+            case 'socio_economic':
+            case 'physiological':
+              isVisible = _this.userGuide.currentStep >= 8;
+              break;
+
+            case 'physical_env':
+            case 'socio_cultural_env':
+              isVisible = _this.userGuide.currentStep >= 10;
+              break;
+          }
+        } else {
+          isVisible = _this.inArray(_this.aspectData.wellbeing.items, item.key);
+        }
+
         itemConfig = {
           fontSize: 22,
-          visible: _this.inArray(_this.aspectData.wellbeing.items, item.key),
+          visible: isVisible,
           text: item.text,
           fill: item.fill ? item.fill : '#1818AA',
           x: item.x,
@@ -8637,11 +8941,20 @@ var defaultTextConfig = {
         width: 160
       }];
       var config = {},
-          itemConfig = {};
+          itemConfig = {},
+          isVisible = false;
       items.forEach(function (item) {
+        isVisible = false;
+
+        if (_this2.userGuide.isOpen) {
+          isVisible = _this2.userGuide.currentStep >= 11;
+        } else {
+          isVisible = _this2.inArray(_this2.aspectData.intervention.items, item.key);
+        }
+
         itemConfig = {
           fontSize: 22,
-          visible: _this2.inArray(_this2.aspectData.intervention.items, item.key),
+          visible: isVisible,
           text: item.text,
           fill: item.fill ? item.fill : '#D3332A',
           x: item.x,
@@ -8661,23 +8974,33 @@ var defaultTextConfig = {
       var options = lodash_find__WEBPACK_IMPORTED_MODULE_2___default()(definition.children, {
         id: 'items'
       }).componentProps.options;
-      var lines = lodash_filter__WEBPACK_IMPORTED_MODULE_3___default()(options, function (option) {
-        return _this3.inArray(_this3.aspectData.learning.items, option.value);
-      });
+      var isVisible = false;
+
+      if (this.userGuide.isOpen) {
+        var lines = options;
+        isVisible = this.userGuide.currentStep >= 12;
+      } else {
+        var lines = lodash_filter__WEBPACK_IMPORTED_MODULE_3___default()(options, function (option) {
+          return _this3.inArray(_this3.aspectData.learning.items, option.value);
+        });
+        isVisible = true;
+      }
+
       lines = lodash_map__WEBPACK_IMPORTED_MODULE_1___default()(lines, function (line) {
         return line.label;
       });
       var itemConfig = {
+        x: 800,
+        y: 665,
+        width: 310,
+        height: 110,
+        visible: isVisible,
         align: 'left',
         verticalAlign: 'middle',
         lineHeight: 1.5,
         fontSize: 22,
         text: lines.join("\n"),
-        fill: '#D3332A',
-        x: 800,
-        y: 665,
-        width: 310,
-        height: 110
+        fill: '#D3332A'
       };
       return _objectSpread({}, defaultTextConfig, {}, itemConfig);
     },
@@ -8710,7 +9033,7 @@ var defaultTextConfig = {
       };
       return _objectSpread({}, defaultTextConfig, {}, itemConfig);
     }
-  },
+  }),
   methods: {
     inArray: function inArray(arr, item) {
       return arr.indexOf(item) !== -1;
@@ -9232,6 +9555,142 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   methods: {
     doEdit: function doEdit() {
       Object(vuex_pathify__WEBPACK_IMPORTED_MODULE_0__["commit"])('EDIT_ASPECT', this.aspectId);
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./js-v2/components/UserGuide.vue?vue&type=script&lang=js&":
+/*!*************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./js-v2/components/UserGuide.vue?vue&type=script&lang=js& ***!
+  \*************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var vuex_pathify__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuex-pathify */ "./node_modules/vuex-pathify/dist/vuex-pathify.esm.js");
+/* harmony import */ var vue_feather_icons_icons_ArrowRightIcon__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue-feather-icons/icons/ArrowRightIcon */ "./node_modules/vue-feather-icons/icons/ArrowRightIcon.js");
+/* harmony import */ var vue_feather_icons_icons_ArrowLeftIcon__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vue-feather-icons/icons/ArrowLeftIcon */ "./node_modules/vue-feather-icons/icons/ArrowLeftIcon.js");
+/* harmony import */ var vue_feather_icons_icons_CheckIcon__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! vue-feather-icons/icons/CheckIcon */ "./node_modules/vue-feather-icons/icons/CheckIcon.js");
+/* harmony import */ var vue_feather_icons_icons_InfoIcon__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! vue-feather-icons/icons/InfoIcon */ "./node_modules/vue-feather-icons/icons/InfoIcon.js");
+/* harmony import */ var vue_feather_icons_icons_MessageSquareIcon__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! vue-feather-icons/icons/MessageSquareIcon */ "./node_modules/vue-feather-icons/icons/MessageSquareIcon.js");
+/* harmony import */ var _aspects__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @/aspects */ "./js-v2/aspects/index.js");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+
+
+
+
+var labels = {
+  BACK: 'Back',
+  NEXT: 'Next',
+  CLOSE: 'Close'
+};
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: 'UserGuide',
+  components: {
+    NextIcon: vue_feather_icons_icons_ArrowRightIcon__WEBPACK_IMPORTED_MODULE_1__["default"],
+    BackIcon: vue_feather_icons_icons_ArrowLeftIcon__WEBPACK_IMPORTED_MODULE_2__["default"],
+    CheckIcon: vue_feather_icons_icons_CheckIcon__WEBPACK_IMPORTED_MODULE_3__["default"],
+    InfoIcon: vue_feather_icons_icons_InfoIcon__WEBPACK_IMPORTED_MODULE_4__["default"],
+    QuestionIcon: vue_feather_icons_icons_MessageSquareIcon__WEBPACK_IMPORTED_MODULE_5__["default"]
+  },
+  props: {
+    'projectId': [Boolean, String, Number],
+    'aspectId': [String, Boolean]
+  },
+  data: function data() {
+    return {
+      labels: labels // isOpen: false,
+
+    };
+  },
+  computed: _objectSpread({}, Object(vuex_pathify__WEBPACK_IMPORTED_MODULE_0__["sync"])(['userGuide']), {
+    /**
+     * Get aspect (ALL data - CONFIG + DEFS etc!) based on supplied editor ID
+     *
+     */
+    aspect: function aspect() {
+      var aspect = this.aspectId;
+
+      if (!this.aspectId) {
+        return null;
+      }
+
+      return _aspects__WEBPACK_IMPORTED_MODULE_6__["default"].get(aspect);
+    },
+    steps: function steps() {
+      return this.aspect && this.aspect.Guide ? this.aspect.Guide.steps : [];
+    },
+    stepCount: function stepCount() {
+      return this.steps.length;
+    }
+  }),
+  methods: {
+    next: function next() {
+      if (this.userGuide.currentStep < this.steps.length - 1) {
+        this.userGuide.currentStep++;
+      } else {
+        this.userGuide.currentStep = 0;
+      }
+    },
+    prev: function prev() {
+      if (this.userGuide.currentStep > 0) {
+        this.userGuide.currentStep--;
+      } else {
+        this.userGuide.currentStep = this.steps.length - 1;
+      }
+    },
+    close: function close() {
+      Object(vuex_pathify__WEBPACK_IMPORTED_MODULE_0__["dispatch"])('finishUserGuide', {
+        projectId: this.projectId,
+        aspectId: this.aspectId
+      });
+    },
+    stepClasses: function stepClasses(step) {
+      return ["user-guide-step-".concat(step.type)];
+    }
+  },
+  mounted: function mounted() {
+    if (this.userGuide.isAvailable && !this.userGuide.isCompleted) {
+      Object(vuex_pathify__WEBPACK_IMPORTED_MODULE_0__["dispatch"])('openUserGuide', {
+        projectId: this.projectId,
+        aspectId: this.aspectId
+      });
     }
   }
 });
@@ -9912,7 +10371,8 @@ __webpack_require__.r(__webpack_exports__);
           x: 1,
           y: 1
         },
-        rotation: this.config.rotation ? this.config.rotation : 0
+        rotation: this.config.rotation ? this.config.rotation : 0,
+        opacity: typeof this.config.opacity !== 'undefined' ? this.config.opacity : 1
       };
     }
   },
@@ -10748,14 +11208,15 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vuex_pathify__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuex-pathify */ "./node_modules/vuex-pathify/dist/vuex-pathify.esm.js");
 /* harmony import */ var date_fns_format__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! date-fns/format */ "./node_modules/date-fns/esm/format/index.js");
-/* harmony import */ var _services_EventBus__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/services/EventBus */ "./js-v2/services/EventBus.js");
-/* harmony import */ var vue_feather_icons_icons_PlusIcon__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! vue-feather-icons/icons/PlusIcon */ "./node_modules/vue-feather-icons/icons/PlusIcon.js");
-/* harmony import */ var vue_feather_icons_icons_EditIcon__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! vue-feather-icons/icons/EditIcon */ "./node_modules/vue-feather-icons/icons/EditIcon.js");
-/* harmony import */ var vue_feather_icons_icons_FolderIcon__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! vue-feather-icons/icons/FolderIcon */ "./node_modules/vue-feather-icons/icons/FolderIcon.js");
-/* harmony import */ var vue_feather_icons_icons_SaveIcon__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! vue-feather-icons/icons/SaveIcon */ "./node_modules/vue-feather-icons/icons/SaveIcon.js");
-/* harmony import */ var vue_feather_icons_icons_UserIcon__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! vue-feather-icons/icons/UserIcon */ "./node_modules/vue-feather-icons/icons/UserIcon.js");
-/* harmony import */ var vue_feather_icons_icons_KeyIcon__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! vue-feather-icons/icons/KeyIcon */ "./node_modules/vue-feather-icons/icons/KeyIcon.js");
-/* harmony import */ var vue_feather_icons_icons_DownloadIcon__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! vue-feather-icons/icons/DownloadIcon */ "./node_modules/vue-feather-icons/icons/DownloadIcon.js");
+/* harmony import */ var vue_feather_icons_icons_PlusIcon__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vue-feather-icons/icons/PlusIcon */ "./node_modules/vue-feather-icons/icons/PlusIcon.js");
+/* harmony import */ var vue_feather_icons_icons_EditIcon__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! vue-feather-icons/icons/EditIcon */ "./node_modules/vue-feather-icons/icons/EditIcon.js");
+/* harmony import */ var vue_feather_icons_icons_FolderIcon__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! vue-feather-icons/icons/FolderIcon */ "./node_modules/vue-feather-icons/icons/FolderIcon.js");
+/* harmony import */ var vue_feather_icons_icons_SaveIcon__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! vue-feather-icons/icons/SaveIcon */ "./node_modules/vue-feather-icons/icons/SaveIcon.js");
+/* harmony import */ var vue_feather_icons_icons_UserIcon__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! vue-feather-icons/icons/UserIcon */ "./node_modules/vue-feather-icons/icons/UserIcon.js");
+/* harmony import */ var vue_feather_icons_icons_KeyIcon__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! vue-feather-icons/icons/KeyIcon */ "./node_modules/vue-feather-icons/icons/KeyIcon.js");
+/* harmony import */ var vue_feather_icons_icons_DownloadIcon__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! vue-feather-icons/icons/DownloadIcon */ "./node_modules/vue-feather-icons/icons/DownloadIcon.js");
+/* harmony import */ var _aspects__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @/aspects */ "./js-v2/aspects/index.js");
+/* harmony import */ var _services_EventBus__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @/services/EventBus */ "./js-v2/services/EventBus.js");
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
@@ -10824,6 +11285,13 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+
 
 
 
@@ -10836,16 +11304,16 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
-    PlusIcon: vue_feather_icons_icons_PlusIcon__WEBPACK_IMPORTED_MODULE_3__["default"],
-    FolderIcon: vue_feather_icons_icons_FolderIcon__WEBPACK_IMPORTED_MODULE_5__["default"],
-    EditIcon: vue_feather_icons_icons_EditIcon__WEBPACK_IMPORTED_MODULE_4__["default"],
-    SaveIcon: vue_feather_icons_icons_SaveIcon__WEBPACK_IMPORTED_MODULE_6__["default"],
-    UserIcon: vue_feather_icons_icons_UserIcon__WEBPACK_IMPORTED_MODULE_7__["default"],
-    KeyIcon: vue_feather_icons_icons_KeyIcon__WEBPACK_IMPORTED_MODULE_8__["default"],
-    DownloadIcon: vue_feather_icons_icons_DownloadIcon__WEBPACK_IMPORTED_MODULE_9__["default"]
+    PlusIcon: vue_feather_icons_icons_PlusIcon__WEBPACK_IMPORTED_MODULE_2__["default"],
+    FolderIcon: vue_feather_icons_icons_FolderIcon__WEBPACK_IMPORTED_MODULE_4__["default"],
+    EditIcon: vue_feather_icons_icons_EditIcon__WEBPACK_IMPORTED_MODULE_3__["default"],
+    SaveIcon: vue_feather_icons_icons_SaveIcon__WEBPACK_IMPORTED_MODULE_5__["default"],
+    UserIcon: vue_feather_icons_icons_UserIcon__WEBPACK_IMPORTED_MODULE_6__["default"],
+    KeyIcon: vue_feather_icons_icons_KeyIcon__WEBPACK_IMPORTED_MODULE_7__["default"],
+    DownloadIcon: vue_feather_icons_icons_DownloadIcon__WEBPACK_IMPORTED_MODULE_8__["default"]
   },
   props: ['route'],
-  computed: _objectSpread({}, Object(vuex_pathify__WEBPACK_IMPORTED_MODULE_0__["get"])(['appName', 'userCanEdit', 'hasUser', 'requireAuth', 'user', 'project', 'lastSave']), {}, Object(vuex_pathify__WEBPACK_IMPORTED_MODULE_0__["sync"])(['scale']), {
+  computed: _objectSpread({}, Object(vuex_pathify__WEBPACK_IMPORTED_MODULE_0__["get"])(['appName', 'userCanEdit', 'hasUser', 'requireAuth', 'user', 'project', 'lastSave', 'userGuide']), {}, Object(vuex_pathify__WEBPACK_IMPORTED_MODULE_0__["sync"])(['scale']), {
     hasProject: function hasProject() {
       return this.route && this.route.params.id;
     },
@@ -10865,6 +11333,34 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     },
     activeTab: function activeTab() {
       return this.$route.name;
+    },
+
+    /**
+     * Get aspect (ALL data - CONFIG + DEFS etc!) based on supplied editor ID
+     *
+     */
+    aspect: function aspect() {
+      var aspectId = this.route.params.aspectId;
+
+      if (!aspectId) {
+        return null;
+      }
+
+      return _aspects__WEBPACK_IMPORTED_MODULE_9__["default"].get(aspectId);
+    },
+    steps: function steps() {
+      return this.aspect && this.aspect.Guide ? this.aspect.Guide.steps : [];
+    },
+    userGuideAvailable: function userGuideAvailable() {
+      var hasGuide = this.aspect && this.aspect.Guide && this.aspect.Guide.steps;
+      return hasGuide && this.guideCompleted;
+    },
+    userGuideStorageKey: function userGuideStorageKey() {
+      if (!this.project || !this.aspect) {
+        return null;
+      }
+
+      return "cosmos.ug.".concat(this.project.id, ".").concat(this.aspect.CONFIG.id);
     }
   }),
   methods: {
@@ -10872,15 +11368,23 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       Object(vuex_pathify__WEBPACK_IMPORTED_MODULE_0__["dispatch"])('saveProject', 'manual');
     },
     doExportImage: function doExportImage() {
-      _services_EventBus__WEBPACK_IMPORTED_MODULE_2__["EventBus"].$emit('export', {
+      _services_EventBus__WEBPACK_IMPORTED_MODULE_10__["EventBus"].$emit('export', {
         target: 'image'
       });
     },
     doExportPdf: function doExportPdf() {
-      _services_EventBus__WEBPACK_IMPORTED_MODULE_2__["EventBus"].$emit('export', {
+      _services_EventBus__WEBPACK_IMPORTED_MODULE_10__["EventBus"].$emit('export', {
         target: 'pdf'
       });
+    },
+    startUserGuide: function startUserGuide() {
+      Object(vuex_pathify__WEBPACK_IMPORTED_MODULE_0__["dispatch"])('openUserGuide', {
+        projectId: this.project.id,
+        aspectId: this.aspect.CONFIG.id
+      });
     }
+  },
+  mounted: function mounted() {// this.setUserGuideData();
   }
 });
 
@@ -13304,6 +13808,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var jspdf__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(jspdf__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _services_EventBus__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @/services/EventBus */ "./js-v2/services/EventBus.js");
 /* harmony import */ var _aspects__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @/aspects */ "./js-v2/aspects/index.js");
+/* harmony import */ var _components_UserGuide__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @/components/UserGuide */ "./js-v2/components/UserGuide.vue");
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
@@ -13366,12 +13871,18 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+
 
 
 
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+  name: 'DashboardTab',
+  components: {
+    UserGuide: _components_UserGuide__WEBPACK_IMPORTED_MODULE_5__["default"]
+  },
   props: {
     aspectId: [Boolean, String]
   },
@@ -14200,6 +14711,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vuex_pathify__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuex-pathify */ "./node_modules/vuex-pathify/dist/vuex-pathify.esm.js");
 /* harmony import */ var _aspects__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/aspects */ "./js-v2/aspects/index.js");
 /* harmony import */ var _ProjectSidebar__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ProjectSidebar */ "./js-v2/pages/ProjectPage/ProjectSidebar/index.vue");
+/* harmony import */ var _components_UserGuide__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @/components/UserGuide */ "./js-v2/components/UserGuide.vue");
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
@@ -14224,15 +14736,17 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
 
- // import ProjectToolbar from "./ProjectToolbar";
+
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
-    // ProjectToolbar,
-    ProjectSidebar: _ProjectSidebar__WEBPACK_IMPORTED_MODULE_2__["default"] // EditSidebar,
-
+    ProjectSidebar: _ProjectSidebar__WEBPACK_IMPORTED_MODULE_2__["default"],
+    UserGuide: _components_UserGuide__WEBPACK_IMPORTED_MODULE_3__["default"]
   },
   props: {
     'aspectId': {
@@ -14250,14 +14764,26 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   watch: {
     'project.name': 'projectChanged',
     'project.data': 'projectChanged',
-    'aspectEditId': 'aspectEditIdChanged'
+    'aspectEditId': 'aspectEditIdChanged',
+    'aspectId': 'aspectIdChanged'
   },
   methods: {
     fetchProject: Object(vuex_pathify__WEBPACK_IMPORTED_MODULE_0__["call"])('fetchProject'),
     projectChanged: function projectChanged() {
       if (this.project.id && this.project.name) {
         document.title = "".concat(this.project.name, " | ").concat(this.appName, " [Living Lab]");
+        Object(vuex_pathify__WEBPACK_IMPORTED_MODULE_0__["dispatch"])('checkUserGuideStatus', {
+          projectId: this.project.id,
+          aspectId: this.aspectId
+        });
       }
+    },
+    aspectIdChanged: function aspectIdChanged() {
+      console.log("proj apsect id changed to: " + this.aspectId);
+      Object(vuex_pathify__WEBPACK_IMPORTED_MODULE_0__["dispatch"])('checkUserGuideStatus', {
+        projectId: this.project.id,
+        aspectId: this.aspectId
+      });
     },
     // When the editing aspect changes - check it matches the current 'viewing' aspect.
     // If it's different, trigger a route change to 'view' the chosen edit aspect.
@@ -39147,6 +39673,179 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/vue-feather-icons/icons/ArrowLeftIcon.js":
+/*!***************************************************************!*\
+  !*** ./node_modules/vue-feather-icons/icons/ArrowLeftIcon.js ***!
+  \***************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var babel_helper_vue_jsx_merge_props__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! babel-helper-vue-jsx-merge-props */ "./node_modules/babel-helper-vue-jsx-merge-props/index.js");
+/* harmony import */ var babel_helper_vue_jsx_merge_props__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(babel_helper_vue_jsx_merge_props__WEBPACK_IMPORTED_MODULE_0__);
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: 'ArrowLeftIcon',
+  props: {
+    size: {
+      type: String,
+      default: '24',
+      validator: function validator(s) {
+        return !isNaN(s) || s.length >= 2 && !isNaN(s.slice(0, s.length - 1)) && s.slice(-1) === 'x';
+      }
+    }
+  },
+  functional: true,
+  render: function render(h, ctx) {
+    var size = ctx.props.size.slice(-1) === 'x' ? ctx.props.size.slice(0, ctx.props.size.length - 1) + 'em' : parseInt(ctx.props.size) + 'px';
+    var attrs = ctx.data.attrs || {};
+    attrs.width = attrs.width || size;
+    attrs.height = attrs.height || size;
+    ctx.data.attrs = attrs;
+    return h("svg", babel_helper_vue_jsx_merge_props__WEBPACK_IMPORTED_MODULE_0___default()([{
+      attrs: {
+        xmlns: "http://www.w3.org/2000/svg",
+        width: "24",
+        height: "24",
+        viewBox: "0 0 24 24",
+        fill: "none",
+        stroke: "currentColor",
+        "stroke-width": "2",
+        "stroke-linecap": "round",
+        "stroke-linejoin": "round"
+      },
+      "class": "feather feather-arrow-left"
+    }, ctx.data]), [h("line", {
+      attrs: {
+        x1: "19",
+        y1: "12",
+        x2: "5",
+        y2: "12"
+      }
+    }), h("polyline", {
+      attrs: {
+        points: "12 19 5 12 12 5"
+      }
+    })]);
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/vue-feather-icons/icons/ArrowRightIcon.js":
+/*!****************************************************************!*\
+  !*** ./node_modules/vue-feather-icons/icons/ArrowRightIcon.js ***!
+  \****************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var babel_helper_vue_jsx_merge_props__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! babel-helper-vue-jsx-merge-props */ "./node_modules/babel-helper-vue-jsx-merge-props/index.js");
+/* harmony import */ var babel_helper_vue_jsx_merge_props__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(babel_helper_vue_jsx_merge_props__WEBPACK_IMPORTED_MODULE_0__);
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: 'ArrowRightIcon',
+  props: {
+    size: {
+      type: String,
+      default: '24',
+      validator: function validator(s) {
+        return !isNaN(s) || s.length >= 2 && !isNaN(s.slice(0, s.length - 1)) && s.slice(-1) === 'x';
+      }
+    }
+  },
+  functional: true,
+  render: function render(h, ctx) {
+    var size = ctx.props.size.slice(-1) === 'x' ? ctx.props.size.slice(0, ctx.props.size.length - 1) + 'em' : parseInt(ctx.props.size) + 'px';
+    var attrs = ctx.data.attrs || {};
+    attrs.width = attrs.width || size;
+    attrs.height = attrs.height || size;
+    ctx.data.attrs = attrs;
+    return h("svg", babel_helper_vue_jsx_merge_props__WEBPACK_IMPORTED_MODULE_0___default()([{
+      attrs: {
+        xmlns: "http://www.w3.org/2000/svg",
+        width: "24",
+        height: "24",
+        viewBox: "0 0 24 24",
+        fill: "none",
+        stroke: "currentColor",
+        "stroke-width": "2",
+        "stroke-linecap": "round",
+        "stroke-linejoin": "round"
+      },
+      "class": "feather feather-arrow-right"
+    }, ctx.data]), [h("line", {
+      attrs: {
+        x1: "5",
+        y1: "12",
+        x2: "19",
+        y2: "12"
+      }
+    }), h("polyline", {
+      attrs: {
+        points: "12 5 19 12 12 19"
+      }
+    })]);
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/vue-feather-icons/icons/CheckIcon.js":
+/*!***********************************************************!*\
+  !*** ./node_modules/vue-feather-icons/icons/CheckIcon.js ***!
+  \***********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var babel_helper_vue_jsx_merge_props__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! babel-helper-vue-jsx-merge-props */ "./node_modules/babel-helper-vue-jsx-merge-props/index.js");
+/* harmony import */ var babel_helper_vue_jsx_merge_props__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(babel_helper_vue_jsx_merge_props__WEBPACK_IMPORTED_MODULE_0__);
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: 'CheckIcon',
+  props: {
+    size: {
+      type: String,
+      default: '24',
+      validator: function validator(s) {
+        return !isNaN(s) || s.length >= 2 && !isNaN(s.slice(0, s.length - 1)) && s.slice(-1) === 'x';
+      }
+    }
+  },
+  functional: true,
+  render: function render(h, ctx) {
+    var size = ctx.props.size.slice(-1) === 'x' ? ctx.props.size.slice(0, ctx.props.size.length - 1) + 'em' : parseInt(ctx.props.size) + 'px';
+    var attrs = ctx.data.attrs || {};
+    attrs.width = attrs.width || size;
+    attrs.height = attrs.height || size;
+    ctx.data.attrs = attrs;
+    return h("svg", babel_helper_vue_jsx_merge_props__WEBPACK_IMPORTED_MODULE_0___default()([{
+      attrs: {
+        xmlns: "http://www.w3.org/2000/svg",
+        width: "24",
+        height: "24",
+        viewBox: "0 0 24 24",
+        fill: "none",
+        stroke: "currentColor",
+        "stroke-width": "2",
+        "stroke-linecap": "round",
+        "stroke-linejoin": "round"
+      },
+      "class": "feather feather-check"
+    }, ctx.data]), [h("polyline", {
+      attrs: {
+        points: "20 6 9 17 4 12"
+      }
+    })]);
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/vue-feather-icons/icons/CornerUpLeftIcon.js":
 /*!******************************************************************!*\
   !*** ./node_modules/vue-feather-icons/icons/CornerUpLeftIcon.js ***!
@@ -39692,6 +40391,59 @@ __webpack_require__.r(__webpack_exports__);
     }, ctx.data]), [h("path", {
       attrs: {
         d: "M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4"
+      }
+    })]);
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/vue-feather-icons/icons/MessageSquareIcon.js":
+/*!*******************************************************************!*\
+  !*** ./node_modules/vue-feather-icons/icons/MessageSquareIcon.js ***!
+  \*******************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var babel_helper_vue_jsx_merge_props__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! babel-helper-vue-jsx-merge-props */ "./node_modules/babel-helper-vue-jsx-merge-props/index.js");
+/* harmony import */ var babel_helper_vue_jsx_merge_props__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(babel_helper_vue_jsx_merge_props__WEBPACK_IMPORTED_MODULE_0__);
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: 'MessageSquareIcon',
+  props: {
+    size: {
+      type: String,
+      default: '24',
+      validator: function validator(s) {
+        return !isNaN(s) || s.length >= 2 && !isNaN(s.slice(0, s.length - 1)) && s.slice(-1) === 'x';
+      }
+    }
+  },
+  functional: true,
+  render: function render(h, ctx) {
+    var size = ctx.props.size.slice(-1) === 'x' ? ctx.props.size.slice(0, ctx.props.size.length - 1) + 'em' : parseInt(ctx.props.size) + 'px';
+    var attrs = ctx.data.attrs || {};
+    attrs.width = attrs.width || size;
+    attrs.height = attrs.height || size;
+    ctx.data.attrs = attrs;
+    return h("svg", babel_helper_vue_jsx_merge_props__WEBPACK_IMPORTED_MODULE_0___default()([{
+      attrs: {
+        xmlns: "http://www.w3.org/2000/svg",
+        width: "24",
+        height: "24",
+        viewBox: "0 0 24 24",
+        fill: "none",
+        stroke: "currentColor",
+        "stroke-width": "2",
+        "stroke-linecap": "round",
+        "stroke-linejoin": "round"
+      },
+      "class": "feather feather-message-square"
+    }, ctx.data]), [h("path", {
+      attrs: {
+        d: "M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"
       }
     })]);
   }
@@ -43111,28 +43863,17 @@ var render = function() {
     [
       _c("CosmosTitle", { attrs: { options: _vm.options } }),
       _vm._v(" "),
-      _c("v-rect", {
-        attrs: {
-          config: {
-            x: 60,
-            y: 145,
-            width: 180,
-            height: 100,
-            fill: "#ccc",
-            opacity: 0
-          }
-        }
-      }),
+      _c("CosmosImage", { attrs: { config: _vm.bgConfig.star } }),
       _vm._v(" "),
-      _c("CosmosImage", {
-        attrs: {
-          config: {
-            x: 0,
-            y: 90,
-            filename: "intervention-theory/dashboard.png"
-          }
-        }
-      }),
+      _c("CosmosImage", { attrs: { config: _vm.bgConfig.change } }),
+      _vm._v(" "),
+      _c("CosmosImage", { attrs: { config: _vm.bgConfig.intervention } }),
+      _vm._v(" "),
+      _c("CosmosImage", { attrs: { config: _vm.bgConfig.environmentArrows } }),
+      _vm._v(" "),
+      _c("CosmosImage", { attrs: { config: _vm.bgConfig.wellbeingArrows } }),
+      _vm._v(" "),
+      _c("CosmosImage", { attrs: { config: _vm.bgConfig.learning } }),
       _vm._v(" "),
       _vm._l(_vm.wellbeingConfig, function(config, name) {
         return _c("v-text", { key: name, attrs: { config: config } })
@@ -43885,6 +44626,183 @@ render._withStripped = true
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./js-v2/components/UserGuide.vue?vue&type=template&id=a6fc7856&":
+/*!*****************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./js-v2/components/UserGuide.vue?vue&type=template&id=a6fc7856& ***!
+  \*****************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _vm.userGuide.isOpen && _vm.steps.length > 0
+    ? _c(
+        "div",
+        { staticClass: "user-guide" },
+        [
+          _vm._l(_vm.steps, function(step, idx) {
+            return [
+              _vm.userGuide.currentStep === idx
+                ? _c("div", { staticClass: "tile" }, [
+                    _c(
+                      "div",
+                      { staticClass: "tile-icon" },
+                      [
+                        _c("InfoIcon", {
+                          directives: [
+                            {
+                              name: "show",
+                              rawName: "v-show",
+                              value: step.type === "info",
+                              expression: "step.type === 'info'"
+                            }
+                          ],
+                          attrs: { size: "48" }
+                        }),
+                        _vm._v(" "),
+                        _c("QuestionIcon", {
+                          directives: [
+                            {
+                              name: "show",
+                              rawName: "v-show",
+                              value: step.type === "question",
+                              expression: "step.type === 'question'"
+                            }
+                          ],
+                          attrs: { size: "48" }
+                        })
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "tile-content" }, [
+                      _c("div", { staticClass: "tile-title" }, [
+                        _vm._v(" " + _vm._s(step.title))
+                      ]),
+                      _vm._v(" "),
+                      _vm.userGuide.currentStep === 0
+                        ? _c(
+                            "a",
+                            {
+                              staticClass: "text-small mt-2 d-inline-block",
+                              attrs: { href: "#" },
+                              on: {
+                                click: function($event) {
+                                  $event.preventDefault()
+                                  return _vm.close()
+                                }
+                              }
+                            },
+                            [_vm._v("Skip user guide")]
+                          )
+                        : _vm._e()
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "tile-action" }, [
+                      _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-grey",
+                          class:
+                            _vm.userGuide.currentStep === 0 ? "disabled" : "",
+                          attrs: {
+                            disabled: _vm.userGuide.currentStep === 0,
+                            type: "button"
+                          },
+                          on: {
+                            click: function($event) {
+                              $event.preventDefault()
+                              return _vm.prev()
+                            }
+                          }
+                        },
+                        [
+                          _c("BackIcon", { attrs: { size: "16" } }),
+                          _vm._v(" " + _vm._s(_vm.labels.BACK))
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "button",
+                        {
+                          directives: [
+                            {
+                              name: "show",
+                              rawName: "v-show",
+                              value:
+                                _vm.userGuide.currentStep !==
+                                _vm.steps.length - 1,
+                              expression:
+                                "userGuide.currentStep !== steps.length - 1"
+                            }
+                          ],
+                          staticClass: "btn btn-success",
+                          on: {
+                            click: function($event) {
+                              $event.preventDefault()
+                              return _vm.next()
+                            }
+                          }
+                        },
+                        [
+                          _vm._v(_vm._s(_vm.labels.NEXT) + " "),
+                          _c("NextIcon", { attrs: { size: "16" } })
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "button",
+                        {
+                          directives: [
+                            {
+                              name: "show",
+                              rawName: "v-show",
+                              value:
+                                _vm.userGuide.currentStep ===
+                                _vm.steps.length - 1,
+                              expression:
+                                "userGuide.currentStep === steps.length - 1"
+                            }
+                          ],
+                          staticClass: "btn btn-primary",
+                          on: {
+                            click: function($event) {
+                              $event.preventDefault()
+                              return _vm.close()
+                            }
+                          }
+                        },
+                        [
+                          _c("CheckIcon", { attrs: { size: "16" } }),
+                          _vm._v(" " + _vm._s(_vm.labels.CLOSE))
+                        ],
+                        1
+                      )
+                    ])
+                  ])
+                : _vm._e()
+            ]
+          })
+        ],
+        2
+      )
+    : _vm._e()
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./js-v2/components/cosmos/lib/CosmosArrow.vue?vue&type=template&id=b64a88c8&":
 /*!******************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./js-v2/components/cosmos/lib/CosmosArrow.vue?vue&type=template&id=b64a88c8& ***!
@@ -44512,6 +45430,26 @@ var render = function() {
       ),
       _vm._v(" "),
       _c("section", { staticClass: "navbar-section navbar-tabs" }, [
+        _vm.project && _vm.project.id
+          ? _c("div", { staticClass: "input-group input-inline mr-8" }, [
+              _vm.userGuide.isAvailable && !_vm.userGuide.isOpen
+                ? _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-sm btn-link",
+                      on: {
+                        click: function($event) {
+                          $event.preventDefault()
+                          return _vm.startUserGuide()
+                        }
+                      }
+                    },
+                    [_vm._v("Show user guide")]
+                  )
+                : _vm._e()
+            ])
+          : _vm._e(),
+        _vm._v(" "),
         _vm.project && _vm.project.id
           ? _c("div", { staticClass: "input-group input-inline mr-8" }, [
               _c(
@@ -47392,7 +48330,20 @@ var render = function() {
       [
         _c("ProjectSidebar", { attrs: { aspectId: _vm.aspectId } }),
         _vm._v(" "),
-        _c("keep-alive", [_c("router-view")], 1)
+        _c(
+          "div",
+          { staticClass: "app-body" },
+          [
+            _vm.project && _vm.project.id
+              ? _c("UserGuide", {
+                  attrs: { projectId: _vm.project.id, aspectId: _vm.aspectId }
+                })
+              : _vm._e(),
+            _vm._v(" "),
+            _c("keep-alive", [_c("router-view")], 1)
+          ],
+          1
+        )
       ],
       1
     )

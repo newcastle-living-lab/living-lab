@@ -38,6 +38,12 @@ export default {
 		return find(allAspects, (t) => t.CONFIG.id === id);
 	},
 
+	getBlankItem(id) {
+		var aspect = this.get(id);
+		var data = {};
+		return setObjectKeys(data, aspect.DEFINITIONS);
+	},
+
 	// Populate the project data with empty objects for each aspect.
 	// Helps with reactivity if objects/keys exist first.
 	populateProject(project) {
@@ -205,8 +211,8 @@ function setObjectKeys(onObject, fromArray) {
 					};
 				break;
 			}
+			console.debug(`setObjectKeys(): ${item.id}: Set to ${item.dataType}.`);
 		}
-		console.debug(`setObjectKeys(): ${item.id}: Set to ${item.dataType}.`);
 		if (Array.isArray(item.children)) {
 			console.debug(`setObjectKeys(): ${item.id}: Processing children!`);
 			onObject[item.id] = setObjectKeys(onObject[item.id], item.children);

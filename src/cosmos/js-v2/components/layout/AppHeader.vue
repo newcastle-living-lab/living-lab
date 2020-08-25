@@ -37,6 +37,12 @@
 
 			<section class="navbar-section navbar-tabs">
 				<div v-if="project && project.id" class="input-group input-inline mr-8">
+					<button class="btn btn-sm btn-link"
+						@click.prevent="startUserGuide()"
+						v-if="userGuide.isAvailable && !userGuide.isOpen"
+					>Show user guide</button>
+				</div>
+				<div v-if="project && project.id" class="input-group input-inline mr-8">
 					<label class="form-switch input-sm" v-show="activeTab == 'model'">
 						<input type="checkbox" v-model="scale">
 						<i class="form-icon"></i> <span class="text-small">Scale to fit</span>
@@ -65,8 +71,6 @@
 import { get, sync, commit, dispatch } from 'vuex-pathify';
 import format from 'date-fns/format';
 
-import { EventBus } from '@/services/EventBus';
-
 import PlusIcon from 'vue-feather-icons/icons/PlusIcon';
 import EditIcon from 'vue-feather-icons/icons/EditIcon';
 import FolderIcon from 'vue-feather-icons/icons/FolderIcon';
@@ -74,6 +78,9 @@ import SaveIcon from 'vue-feather-icons/icons/SaveIcon';
 import UserIcon from 'vue-feather-icons/icons/UserIcon';
 import KeyIcon from 'vue-feather-icons/icons/KeyIcon';
 import DownloadIcon from 'vue-feather-icons/icons/DownloadIcon';
+
+import Aspects from '@/aspects';
+import { EventBus } from '@/services/EventBus';
 
 export default {
 
@@ -99,6 +106,7 @@ export default {
 			'user',
 			'project',
 			'lastSave',
+			'userGuide',
 		]),
 
 		...sync([
@@ -128,6 +136,34 @@ export default {
 			return this.$route.name;
 		},
 
+		/**
+		 * Get aspect (ALL data - CONFIG + DEFS etc!) based on supplied editor ID
+		 *
+		 */
+		aspect() {
+			const aspectId = this.route.params.aspectId;
+			if ( ! aspectId) {
+				return null;
+			}
+			return Aspects.get(aspectId);
+		},
+
+		steps() {
+			return this.aspect && this.aspect.Guide ? this.aspect.Guide.steps : [];
+		},
+
+		userGuideAvailable() {
+			const hasGuide = (this.aspect && this.aspect.Guide && this.aspect.Guide.steps);
+			return (hasGuide && this.guideCompleted);
+		},
+
+		userGuideStorageKey() {
+			if ( ! this.project || ! this.aspect) {
+				return null;
+			}
+			return `cosmos.ug.${this.project.id}.${this.aspect.CONFIG.id}`;
+		}
+
 	},
 
 	methods: {
@@ -142,8 +178,16 @@ export default {
 
 		doExportPdf() {
 			EventBus.$emit('export', { target: 'pdf' });
-		}
+		},
 
+		startUserGuide() {
+			dispatch('openUserGuide', {projectId: this.project.id, aspectId: this.aspect.CONFIG.id });
+		},
+
+	},
+
+	mounted() {
+		// this.setUserGuideData();
 	}
 
 }

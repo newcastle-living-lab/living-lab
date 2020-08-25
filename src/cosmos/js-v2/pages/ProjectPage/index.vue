@@ -7,9 +7,12 @@
 
 			<ProjectSidebar :aspectId="aspectId" />
 
-			<keep-alive>
-				<router-view></router-view>
-			</keep-alive>
+			<div class="app-body">
+				<UserGuide :projectId="project.id" :aspectId="aspectId" v-if="project && project.id" />
+				<keep-alive>
+					<router-view></router-view>
+				</keep-alive>
+			</div>
 
 		</section>
 
@@ -18,19 +21,18 @@
 
 <script>
 
-import { get, set, sync, call } from 'vuex-pathify';
+import { get, set, sync, call, dispatch } from 'vuex-pathify';
 
 import Aspects from '@/aspects';
 
-// import ProjectToolbar from "./ProjectToolbar";
 import ProjectSidebar from "./ProjectSidebar";
+import UserGuide from '@/components/UserGuide';
 
 export default {
 
 	components: {
-		// ProjectToolbar,
 		ProjectSidebar,
-		// EditSidebar,
+		UserGuide,
 	},
 
 	props: {
@@ -54,12 +56,14 @@ export default {
 		...sync([
 			'project',
 		]),
+
 	},
 
 	watch: {
 		'project.name': 'projectChanged',
 		'project.data': 'projectChanged',
 		'aspectEditId': 'aspectEditIdChanged',
+		'aspectId': 'aspectIdChanged',
 	},
 
 	methods: {
@@ -69,7 +73,13 @@ export default {
 		projectChanged() {
 			if (this.project.id && this.project.name) {
 				document.title = `${this.project.name} | ${this.appName} [Living Lab]`;
+				dispatch('checkUserGuideStatus', { projectId: this.project.id, aspectId: this.aspectId });
 			}
+		},
+
+		aspectIdChanged() {
+			console.log("proj apsect id changed to: " + this.aspectId);
+			dispatch('checkUserGuideStatus', { projectId: this.project.id, aspectId: this.aspectId });
 		},
 
 		// When the editing aspect changes - check it matches the current 'viewing' aspect.

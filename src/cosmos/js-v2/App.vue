@@ -16,7 +16,7 @@
 
 <script>
 
-import { get, commit, call } from 'vuex-pathify';
+import { get, commit, call, dispatch } from 'vuex-pathify';
 
 import Network from "./services/Network";
 import AppHeader from "./components/layout/AppHeader.vue";
@@ -61,6 +61,7 @@ export default {
 
 	created() {
 		commit('SET_CONFIG', {...this.$root.$options.config});
+		commit('INIT_USER_GUIDE_PROJECT');
 	}
 
 }

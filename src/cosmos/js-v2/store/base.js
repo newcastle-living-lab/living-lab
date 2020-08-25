@@ -2,6 +2,7 @@ import { make } from 'vuex-pathify';
 import md5 from 'md5';
 import debounce from 'lodash/debounce';
 
+import Aspects from '@/aspects';
 import Network from '@/services/Network';
 
 export const state = {
@@ -30,6 +31,13 @@ export const state = {
 	},
 	options: {
 		fontFamily: '-apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif',
+	},
+	userGuide: {
+		isAvailable: false,
+		isCompleted: false,
+		isOpen: false,
+		currentStep: 0,
+		project: {},
 	}
 };
 
@@ -133,16 +141,91 @@ export const mutations = {
 
 	STOP_STAGE_HOVER(state) {
 		state.stageHover = false;
+	},
+
+	OPEN_USER_GUIDE(state) {
+		state.userGuide.currentStep = 0;
+		state.userGuide.isOpen = true;
+	},
+
+	CLOSE_USER_GUIDE(state) {
+		state.userGuide.currentStep = 0;
+		state.userGuide.isOpen = false;
+	},
+
+	SET_USER_GUIDE_STATUS(state, { isAvailable, isCompleted }) {
+		state.userGuide.isAvailable = isAvailable;
+		state.userGuide.isCompleted = isCompleted;
+	},
+
+	INIT_USER_GUIDE_PROJECT(state) {
+		var project = {
+			data: {}
+		};
+		state.userGuide.project = Aspects.populateProject(project)
 	}
 
 };
 
 export const actions = {
 
+	/**
+	 * Start user guide:
+	 *
+	 * - Set local values for step & open status
+	 *
+	 */
+	openUserGuide({ state, commit }, { projectId, aspectId }) {
+		const storageKey = `cosmos.ug.${projectId}.${aspectId}`;
+		localStorage.removeItem(storageKey);
+		commit('OPEN_USER_GUIDE');
+	},
+
+	/**
+	 * On final step - close user guide.
+	 *
+	 * - Set localStorage flag for completion.
+	 * - Set local values to hide the guide.
+	 */
+	finishUserGuide({ state, commit, dispatch }, { projectId, aspectId }) {
+		const storageKey = `cosmos.ug.${projectId}.${aspectId}`;
+		localStorage.setItem(storageKey, true);
+		commit('CLOSE_USER_GUIDE');
+		dispatch('checkUserGuideStatus', projectId, aspectId);
+	},
+
+	/**
+	 * Remove the flag that this user guide has ran.
+	 * - Remove flag from localStorage
+	 *
+	 */
+	removeUserGuide({ state, commit }, { projectId, aspectId }) {
+		const storageKey = `cosmos.ug.${projectId}.${aspectId}`;
+		localStorage.removeItem(storageKey);
+		dispatch('checkUserGuideStatus', projectId, aspectId);
+	},
+
+	/**
+	 * Given a project + aspect, check & update the user guide status.
+	 *
+	 */
+	checkUserGuideStatus({ state, commit }, { projectId, aspectId }) {
+		const storageKey = `cosmos.ug.${projectId}.${aspectId}`;
+		if ( ! projectId || ! aspectId) {
+			return;
+		}
+		var value = localStorage.getItem(storageKey);
+		var isCompleted = (value === true || value === 'true');
+		var aspect = Aspects.get(aspectId);
+		var hasUg = (aspect && typeof(aspect.Guide) !== 'undefined');
+		commit('SET_USER_GUIDE_STATUS', { isAvailable: hasUg, isCompleted: isCompleted });
+	},
+
 	fetchProjects({ state, commit }) {
 		commit('START_LOADING');
 		Network.getProjects()
 			.then(projects => { commit('SET_PROJECTS', projects) })
+			.then(() => commit('STOP_EDITING_ASPECT'))
 			.then(() => commit('CLEAR_LAST_SAVE'))
 			.then(() => commit('STOP_LOADING'));
 	},
@@ -153,6 +236,7 @@ export const actions = {
 		commit('START_LOADING');
 		Network.getProject(id)
 			.then(project => { commit('SET_PROJECT', project) })
+			.then(() => commit('STOP_EDITING_ASPECT'))
 			.then(() => commit('CLEAR_LAST_SAVE'))
 			.then(() => commit('INITIAL_SAVE_HASH'))
 			.then(() => commit('STOP_LOADING'));

@@ -4825,10 +4825,29 @@ body {
           flex: 1 1 auto;
 }
 
+.app-body {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+          flex-direction: column;
+  -webkit-box-flex: 1;
+          flex-grow: 1;
+}
+
 .app-content {
   padding: 0.8rem;
   position: relative;
   width: 100%;
+  height: 100%;
+  /*
+  	display: flex;
+  	flex-direction: column;
+
+  	> div {
+  		position: relative;
+  		flex: 1 1 auto;
+  	}*/
 }
 
 .app-content.dark {
@@ -5405,6 +5424,22 @@ a.text-gray-medium:visited {
   vertical-align: -15%;
 }
 
+.user-guide {
+  background: #fff5da;
+  padding: 0.8rem;
+}
+
+.user-guide .tile {
+  max-width: 960px;
+  /*.tile-buttons {
+  	margin-top: $unit-4;
+  }*/
+}
+
+.user-guide .tile .tile-icon {
+  margin-right: 0.4rem;
+}
+
 .loading-indicator {
   position: absolute;
   top: 0;
@@ -5528,6 +5563,35 @@ a.text-gray-medium:visited {
   border-left-color: #fff;
 }
 
+.btn.btn-grey {
+  background: #666;
+  border-color: #5e5e5e;
+  color: #fff;
+}
+
+.btn.btn-grey:focus {
+  box-shadow: 0 0 0 0.1rem rgba(102, 102, 102, 0.2);
+}
+
+.btn.btn-grey:focus,
+.btn.btn-grey:hover {
+  background: #616161;
+  border-color: #595959;
+  color: #fff;
+}
+
+.btn.btn-grey:active,
+.btn.btn-grey.active {
+  background: #545454;
+  border-color: #4d4d4d;
+  color: #fff;
+}
+
+.btn.btn-grey.loading::after {
+  border-bottom-color: #fff;
+  border-left-color: #fff;
+}
+
 .btn.btn-negative {
   background: #ff4136;
   border-color: #ff3327;
@@ -5598,6 +5662,11 @@ a.text-gray-medium:visited {
   padding: 0.8rem;
   border-bottom: 0.05rem solid #bbb;
   background: #f2f0f1;
+}
+
+.card.card-user-guide {
+  width: 100%;
+  border: 0;
 }
 
 .tile.stakeholder-tile {
