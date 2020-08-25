@@ -209,16 +209,29 @@ export const actions = {
 	 * Given a project + aspect, check & update the user guide status.
 	 *
 	 */
-	checkUserGuideStatus({ state, commit }, { projectId, aspectId }) {
-		const storageKey = `cosmos.ug.${projectId}.${aspectId}`;
+	checkUserGuideStatus({ state, commit, dispatch }, { projectId, aspectId }) {
+
 		if ( ! projectId || ! aspectId) {
 			return;
 		}
+
+		// Close it if one is already open
+		commit('CLOSE_USER_GUIDE');
+
+		// Get stored value
+		const storageKey = `cosmos.ug.${projectId}.${aspectId}`;
 		var value = localStorage.getItem(storageKey);
 		var isCompleted = (value === true || value === 'true');
 		var aspect = Aspects.get(aspectId);
 		var hasUg = (aspect && typeof(aspect.Guide) !== 'undefined');
+
+		// Set the new status
 		commit('SET_USER_GUIDE_STATUS', { isAvailable: hasUg, isCompleted: isCompleted });
+
+		// Open the user guide if it's available and hasn't been completed yet.
+		if (hasUg && ! isCompleted) {
+			dispatch('openUserGuide', { projectId: projectId, aspectId: aspectId });
+		}
 	},
 
 	fetchProjects({ state, commit }) {

@@ -9,7 +9,7 @@
 					<QuestionIcon size="48" v-show="step.type === 'question'" />
 				</div>
 				<div class="tile-content">
-					<div class="tile-title"><!-- {{ userGuide.currentStep }}. --> {{ step.title }}</div>
+					<div class="tile-title">{{ userGuide.currentStep }}. {{ step.title }}</div>
 					<a href="#" class="text-small mt-2 d-inline-block" @click.prevent="close()" v-if="userGuide.currentStep === 0">Skip user guide</a>
 				</div>
 				<div class="tile-action">
@@ -61,7 +61,6 @@ export default {
 	data() {
 		return {
 			labels: labels,
-			// isOpen: false,
 		}
 	},
 
@@ -119,12 +118,6 @@ export default {
 			return [`user-guide-step-${step.type}`];
 		}
 
-	},
-
-	mounted() {
-		if (this.userGuide.isAvailable && ! this.userGuide.isCompleted) {
-			dispatch('openUserGuide', { projectId: this.projectId, aspectId: this.aspectId });
-		}
 	}
 
 }

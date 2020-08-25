@@ -1161,6 +1161,117 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./js-v2/aspects/moral_ordering_model/Guide.js":
+/*!*****************************************************!*\
+  !*** ./js-v2/aspects/moral_ordering_model/Guide.js ***!
+  \*****************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ({
+  steps: [{
+    'type': 'info',
+    'title': 'There are a number of core processes involved in a co-creative innovation. The first is concerned with the definition of ethos.'
+  }, {
+    'type': 'info',
+    'title': 'The second involves management activities and products.'
+  }, {
+    'type': 'info',
+    'title': 'Moral ordering is concerned with who gets to participate in activities so, in the case of your initiative, who is involved in these processes? Where and when do they take place? How do they communicate and how are they recorded?'
+  }, {
+    'type': 'info',
+    'title': 'As a result of leadership, planning and design, services or initiatives are delivered and experienced.'
+  }, {
+    'type': 'question',
+    'title': 'Again who is involved here and do they get any participation in the first two sets of activities?'
+  }, {
+    'type': 'info',
+    'title': 'Rather than simply close the loop with a simple evaluation process, we are suggesting that, in systems of co-productive wellbeing and care, governance involves all the participants in the relationships identified here participation in addressing the questions defined in the moral ordering model.'
+  }, {
+    'type': 'info',
+    'title': 'Governance takes place at the individual service client relationship level.'
+  }, {
+    'type': 'info',
+    'title': 'It also takes place at the overall service level.'
+  }, {
+    'type': 'question',
+    'title': 'How are governance processes, in the sense we are describing them here, take place in your initiative?'
+  }]
+});
+
+/***/ }),
+
+/***/ "./js-v2/aspects/moral_ordering_model/components/MoralDashboard.vue":
+/*!**************************************************************************!*\
+  !*** ./js-v2/aspects/moral_ordering_model/components/MoralDashboard.vue ***!
+  \**************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _MoralDashboard_vue_vue_type_template_id_389f0414___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./MoralDashboard.vue?vue&type=template&id=389f0414& */ "./js-v2/aspects/moral_ordering_model/components/MoralDashboard.vue?vue&type=template&id=389f0414&");
+/* harmony import */ var _MoralDashboard_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./MoralDashboard.vue?vue&type=script&lang=js& */ "./js-v2/aspects/moral_ordering_model/components/MoralDashboard.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _MoralDashboard_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _MoralDashboard_vue_vue_type_template_id_389f0414___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _MoralDashboard_vue_vue_type_template_id_389f0414___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "js-v2/aspects/moral_ordering_model/components/MoralDashboard.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./js-v2/aspects/moral_ordering_model/components/MoralDashboard.vue?vue&type=script&lang=js&":
+/*!***************************************************************************************************!*\
+  !*** ./js-v2/aspects/moral_ordering_model/components/MoralDashboard.vue?vue&type=script&lang=js& ***!
+  \***************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_MoralDashboard_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./MoralDashboard.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./js-v2/aspects/moral_ordering_model/components/MoralDashboard.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_MoralDashboard_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./js-v2/aspects/moral_ordering_model/components/MoralDashboard.vue?vue&type=template&id=389f0414&":
+/*!*********************************************************************************************************!*\
+  !*** ./js-v2/aspects/moral_ordering_model/components/MoralDashboard.vue?vue&type=template&id=389f0414& ***!
+  \*********************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_MoralDashboard_vue_vue_type_template_id_389f0414___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./MoralDashboard.vue?vue&type=template&id=389f0414& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./js-v2/aspects/moral_ordering_model/components/MoralDashboard.vue?vue&type=template&id=389f0414&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_MoralDashboard_vue_vue_type_template_id_389f0414___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_MoralDashboard_vue_vue_type_template_id_389f0414___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
 /***/ "./js-v2/aspects/moral_ordering_model/components/MoralSummaryView.vue":
 /*!****************************************************************************!*\
   !*** ./js-v2/aspects/moral_ordering_model/components/MoralSummaryView.vue ***!
@@ -1321,13 +1432,17 @@ __webpack_require__.r(__webpack_exports__);
 /*!****************************************************************!*\
   !*** ./js-v2/aspects/moral_ordering_model/components/index.js ***!
   \****************************************************************/
-/*! exports provided: MoralSummaryView */
+/*! exports provided: MoralDashboard, MoralSummaryView */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _MoralSummaryView__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./MoralSummaryView */ "./js-v2/aspects/moral_ordering_model/components/MoralSummaryView.vue");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "MoralSummaryView", function() { return _MoralSummaryView__WEBPACK_IMPORTED_MODULE_0__["default"]; });
+/* harmony import */ var _MoralDashboard__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./MoralDashboard */ "./js-v2/aspects/moral_ordering_model/components/MoralDashboard.vue");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "MoralDashboard", function() { return _MoralDashboard__WEBPACK_IMPORTED_MODULE_0__["default"]; });
+
+/* harmony import */ var _MoralSummaryView__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./MoralSummaryView */ "./js-v2/aspects/moral_ordering_model/components/MoralSummaryView.vue");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "MoralSummaryView", function() { return _MoralSummaryView__WEBPACK_IMPORTED_MODULE_1__["default"]; });
+
 
 
 
@@ -1338,10 +1453,10 @@ __webpack_require__.r(__webpack_exports__);
 /*!********************************************************!*\
   !*** ./js-v2/aspects/moral_ordering_model/config.json ***!
   \********************************************************/
-/*! exports provided: id, title, routeName, summaryComponent, stageSize, default */
+/*! exports provided: id, title, routeName, dashboardComponent, summaryComponent, stageSize, default */
 /***/ (function(module) {
 
-module.exports = JSON.parse("{\"id\":\"moral_ordering_model\",\"title\":\"Moral Ordering\",\"routeName\":\"model\",\"summaryComponent\":\"MoralSummaryView\",\"stageSize\":{\"width\":1285,\"height\":800}}");
+module.exports = JSON.parse("{\"id\":\"moral_ordering_model\",\"title\":\"Moral Ordering\",\"routeName\":\"model\",\"dashboardComponent\":\"MoralDashboard\",\"summaryComponent\":\"MoralSummaryView\",\"stageSize\":{\"width\":1285,\"height\":800}}");
 
 /***/ }),
 
@@ -1369,11 +1484,11 @@ __webpack_require__.r(__webpack_exports__);
 var _config_json__WEBPACK_IMPORTED_MODULE_0___namespace = /*#__PURE__*/__webpack_require__.t(/*! ./config.json */ "./js-v2/aspects/moral_ordering_model/config.json", 1);
 /* harmony import */ var _definitions_json__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./definitions.json */ "./js-v2/aspects/moral_ordering_model/definitions.json");
 var _definitions_json__WEBPACK_IMPORTED_MODULE_1___namespace = /*#__PURE__*/__webpack_require__.t(/*! ./definitions.json */ "./js-v2/aspects/moral_ordering_model/definitions.json", 1);
-/* harmony import */ var _nodes_json__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./nodes.json */ "./js-v2/aspects/moral_ordering_model/nodes.json");
-var _nodes_json__WEBPACK_IMPORTED_MODULE_2___namespace = /*#__PURE__*/__webpack_require__.t(/*! ./nodes.json */ "./js-v2/aspects/moral_ordering_model/nodes.json", 1);
+/* harmony import */ var _Guide__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Guide */ "./js-v2/aspects/moral_ordering_model/Guide.js");
 /* harmony import */ var _Functions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Functions */ "./js-v2/aspects/moral_ordering_model/Functions.js");
 /* harmony import */ var _components__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components */ "./js-v2/aspects/moral_ordering_model/components/index.js");
 
+ // import NODES from "./nodes.json";
 
 
 
@@ -1381,21 +1496,11 @@ var _nodes_json__WEBPACK_IMPORTED_MODULE_2___namespace = /*#__PURE__*/__webpack_
 /* harmony default export */ __webpack_exports__["default"] = ({
   CONFIG: _config_json__WEBPACK_IMPORTED_MODULE_0__,
   DEFINITIONS: _definitions_json__WEBPACK_IMPORTED_MODULE_1__,
-  NODES: _nodes_json__WEBPACK_IMPORTED_MODULE_2__,
+  // NODES,
+  Guide: _Guide__WEBPACK_IMPORTED_MODULE_2__["default"],
   Functions: _Functions__WEBPACK_IMPORTED_MODULE_3__["default"],
   Components: _components__WEBPACK_IMPORTED_MODULE_4__
 });
-
-/***/ }),
-
-/***/ "./js-v2/aspects/moral_ordering_model/nodes.json":
-/*!*******************************************************!*\
-  !*** ./js-v2/aspects/moral_ordering_model/nodes.json ***!
-  \*******************************************************/
-/*! exports provided: 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, default */
-/***/ (function(module) {
-
-module.exports = JSON.parse("[{\"componentName\":\"CosmosTitle\",\"definitionName\":\"model\"},{\"componentName\":\"CosmosGroup\",\"_comment\":\"Rectangles\",\"config\":{\"x\":75,\"y\":185},\"children\":[{\"componentName\":\"v-rect\",\"config\":{\"width\":760,\"height\":490,\"x\":0,\"y\":50,\"fill\":\"#ffffff\",\"stroke\":\"#1FA3E3\",\"strokeWidth\":3,\"cornerRadius\":45}},{\"componentName\":\"v-rect\",\"config\":{\"width\":760,\"height\":490,\"x\":15,\"y\":40,\"fill\":\"#ffffff\",\"stroke\":\"#1FA3E3\",\"strokeWidth\":3,\"cornerRadius\":45,\"opacity\":0.7}},{\"componentName\":\"v-rect\",\"config\":{\"width\":760,\"height\":490,\"x\":30,\"y\":30,\"fill\":\"#ffffff\",\"stroke\":\"#1FA3E3\",\"strokeWidth\":3,\"cornerRadius\":45,\"opacity\":0.7}},{\"componentName\":\"v-rect\",\"config\":{\"width\":760,\"height\":490,\"x\":45,\"y\":20,\"fill\":\"#ffffff\",\"stroke\":\"#1FA3E3\",\"strokeWidth\":3,\"cornerRadius\":45,\"opacity\":0.7}},{\"componentName\":\"v-rect\",\"config\":{\"width\":760,\"height\":490,\"x\":60,\"y\":5,\"fill\":\"#ffffff\",\"stroke\":\"#99D5F2\",\"strokeWidth\":6,\"cornerRadius\":45,\"opacity\":0.7}}]},{\"componentName\":\"CosmosGroup\",\"_comment\":\"Group for red rectangle and Ethos/Plan+Manage/Govern\",\"definitionName\":\"_redRect\",\"visibilityFunc\":\"graphicVisibility\",\"config\":{\"x\":170,\"y\":130},\"children\":[{\"componentName\":\"v-rect\",\"config\":{\"width\":630,\"height\":365,\"x\":0,\"y\":0,\"fill\":\"#FCEDEF\",\"stroke\":\"#E75168\",\"strokeWidth\":3,\"cornerRadius\":45,\"opacity\":0.8}}]},{\"componentName\":\"CosmosGroup\",\"_comment\":\"Group for 'Govern' label\",\"definitionName\":\"_governLabel\",\"visibilityFunc\":\"graphicVisibility\",\"config\":{\"x\":570,\"y\":420},\"children\":[{\"componentName\":\"v-text\",\"config\":{\"x\":0,\"y\":0,\"text\":\"Govern\",\"fill\":\"#2e7354\",\"fontSize\":25,\"fontStyle\":\"bold\",\"fontFamily\":\"-apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif\",\"align\":\"center\"}}]},{\"componentName\":\"CosmosGroup\",\"_comment\":\"Group for 'Deliver' label\",\"definitionName\":\"_deliverLabel\",\"visibilityFunc\":\"graphicVisibility\",\"config\":{\"x\":420,\"y\":620},\"children\":[{\"componentName\":\"v-text\",\"config\":{\"x\":0,\"y\":0,\"text\":\"Deliver\",\"fill\":\"#2e7354\",\"fontSize\":25,\"fontStyle\":\"bold\",\"fontFamily\":\"-apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif\",\"align\":\"center\"}}]},{\"componentName\":\"CosmosGroup\",\"_comment\":\"Group for 'Define Ethos' label\",\"definitionName\":\"_ethosSection\",\"visibilityFunc\":\"graphicVisibility\",\"config\":{\"x\":630,\"y\":150},\"children\":[{\"componentName\":\"v-text\",\"config\":{\"x\":0,\"y\":0,\"text\":\"Define Ethos\",\"fill\":\"#2e7354\",\"fontSize\":25,\"fontStyle\":\"bold\",\"fontFamily\":\"-apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif\"}},{\"componentName\":\"v-text\",\"config\":{\"x\":10,\"y\":50,\"text\":\"Values\\nPrinciples\\nIntentions\\nPolicies\",\"fill\":\"#2e7354\",\"fontSize\":20,\"fontStyle\":\"bold\",\"fontFamily\":\"-apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif\",\"align\":\"left\",\"lineHeight\":1.3}}]},{\"componentName\":\"CosmosGroup\",\"_comment\":\"Group for 'Plan + Manage' label\",\"definitionName\":\"_planManageSection\",\"visibilityFunc\":\"graphicVisibility\",\"config\":{\"x\":190,\"y\":280},\"children\":[{\"componentName\":\"v-text\",\"config\":{\"x\":0,\"y\":0,\"width\":200,\"text\":\"Plan & Manage\",\"fill\":\"#2e7354\",\"align\":\"right\",\"fontSize\":25,\"fontStyle\":\"bold\",\"fontFamily\":\"-apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif\"}},{\"componentName\":\"v-text\",\"config\":{\"x\":0,\"y\":30,\"width\":180,\"text\":\"Rules\\nResources\\nProcesses\\nAccounts\",\"fill\":\"#2e7354\",\"align\":\"right\",\"lineHeight\":1.3,\"fontSize\":20,\"fontStyle\":\"bold\",\"fontFamily\":\"-apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif\"}}]},{\"componentName\":\"CosmosGroup\",\"_comment\":\"Group for 'Experience' label\",\"config\":{\"x\":745,\"y\":570},\"children\":[{\"componentName\":\"v-text\",\"config\":{\"x\":0,\"y\":0,\"text\":\"Experience\",\"fill\":\"#2e7354\",\"align\":\"left\",\"fontSize\":25,\"fontStyle\":\"bold\",\"fontFamily\":\"-apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif\"}}]},{\"componentName\":\"CosmosImage\",\"_comment\":\"arrows for deliver <-> experience\",\"config\":{\"filename\":\"moral-ordering/arrows-circles.svg\",\"x\":520,\"y\":455,\"scale\":{\"x\":0.42,\"y\":0.42}}},{\"componentName\":\"CosmosImage\",\"_comment\":\"arrows for plan/manage <-> deliver\",\"config\":{\"filename\":\"moral-ordering/arrows-circles.svg\",\"x\":500,\"y\":350,\"rotation\":65,\"scale\":{\"x\":0.42,\"y\":0.42}}},{\"componentName\":\"CosmosImage\",\"_comment\":\"arrows for plan/manage <-> ethos\",\"config\":{\"filename\":\"moral-ordering/arrows-circles.svg\",\"x\":550,\"y\":480,\"rotation\":135,\"scale\":{\"x\":-0.42,\"y\":0.42}}},{\"componentName\":\"v-text\",\"config\":{\"x\":835,\"y\":210,\"opacity\":0.6,\"text\":\"Individual Cases\",\"fill\":\"#2e7354\",\"align\":\"left\",\"fontStyle\":\"bold\",\"fontSize\":40,\"fontFamily\":\"-apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif\"}},{\"componentName\":\"v-text\",\"config\":{\"x\":835,\"y\":270,\"text\":\"The Service Level\",\"fill\":\"#2e7354\",\"align\":\"left\",\"fontStyle\":\"bold\",\"fontSize\":40,\"fontFamily\":\"-apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif\"}}]");
 
 /***/ }),
 
@@ -6040,23 +6145,35 @@ var actions = {
    */
   checkUserGuideStatus: function checkUserGuideStatus(_ref9, _ref10) {
     var state = _ref9.state,
-        commit = _ref9.commit;
+        commit = _ref9.commit,
+        dispatch = _ref9.dispatch;
     var projectId = _ref10.projectId,
         aspectId = _ref10.aspectId;
-    var storageKey = "cosmos.ug.".concat(projectId, ".").concat(aspectId);
 
     if (!projectId || !aspectId) {
       return;
-    }
+    } // Close it if one is already open
 
+
+    commit('CLOSE_USER_GUIDE'); // Get stored value
+
+    var storageKey = "cosmos.ug.".concat(projectId, ".").concat(aspectId);
     var value = localStorage.getItem(storageKey);
     var isCompleted = value === true || value === 'true';
     var aspect = _aspects__WEBPACK_IMPORTED_MODULE_3__["default"].get(aspectId);
-    var hasUg = aspect && typeof aspect.Guide !== 'undefined';
+    var hasUg = aspect && typeof aspect.Guide !== 'undefined'; // Set the new status
+
     commit('SET_USER_GUIDE_STATUS', {
       isAvailable: hasUg,
       isCompleted: isCompleted
-    });
+    }); // Open the user guide if it's available and hasn't been completed yet.
+
+    if (hasUg && !isCompleted) {
+      dispatch('openUserGuide', {
+        projectId: projectId,
+        aspectId: aspectId
+      });
+    }
   },
   fetchProjects: function fetchProjects(_ref11) {
     var state = _ref11.state,
@@ -8810,10 +8927,11 @@ var defaultTextConfig = {
 
       if (this.userGuide.isOpen) {
         data.star.opacity = this.userGuide.currentStep >= 0 ? 1 : 0;
-        data.intervention.opacity = this.userGuide.currentStep >= 11 ? 1 : 0;
+        data.intervention.opacity = this.userGuide.currentStep >= 12 ? 1 : 0;
         data.wellbeingArrows.opacity = this.userGuide.currentStep >= 8 ? 1 : 0;
         data.environmentArrows.opacity = this.userGuide.currentStep >= 10 ? 1 : 0;
-        data.learning.opacity = this.userGuide.currentStep >= 12 ? 1 : 0; // data.change.opacity = this.userGuide.currentStep >= 12 ? 1 : 0;
+        data.learning.opacity = this.userGuide.currentStep >= 12 ? 1 : 0;
+        data.change.opacity = this.userGuide.currentStep >= 11 ? 1 : 0;
       }
 
       return data;
@@ -8947,7 +9065,7 @@ var defaultTextConfig = {
         isVisible = false;
 
         if (_this2.userGuide.isOpen) {
-          isVisible = _this2.userGuide.currentStep >= 11;
+          isVisible = _this2.userGuide.currentStep >= 12;
         } else {
           isVisible = _this2.inArray(_this2.aspectData.intervention.items, item.key);
         }
@@ -9013,13 +9131,23 @@ var defaultTextConfig = {
       var options = lodash_find__WEBPACK_IMPORTED_MODULE_2___default()(definition.children, {
         id: 'items'
       }).componentProps.options;
-      var lines = lodash_filter__WEBPACK_IMPORTED_MODULE_3___default()(options, function (option) {
-        return _this4.inArray(_this4.aspectData.innovation.items, option.value);
-      });
+      var isVisible = false;
+
+      if (this.userGuide.isOpen) {
+        var lines = options;
+        isVisible = this.userGuide.currentStep >= 11;
+      } else {
+        var lines = lodash_filter__WEBPACK_IMPORTED_MODULE_3___default()(options, function (option) {
+          return _this4.inArray(_this4.aspectData.innovation.items, option.value);
+        });
+        isVisible = true;
+      }
+
       lines = lodash_map__WEBPACK_IMPORTED_MODULE_1___default()(lines, function (line) {
         return line.label;
       });
       var itemConfig = {
+        visible: isVisible,
         align: 'left',
         verticalAlign: 'middle',
         lineHeight: 1.5,
@@ -9032,6 +9160,442 @@ var defaultTextConfig = {
         height: 420
       };
       return _objectSpread({}, defaultTextConfig, {}, itemConfig);
+    }
+  }),
+  methods: {
+    inArray: function inArray(arr, item) {
+      return arr.indexOf(item) !== -1;
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./js-v2/aspects/moral_ordering_model/components/MoralDashboard.vue?vue&type=script&lang=js&":
+/*!***********************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./js-v2/aspects/moral_ordering_model/components/MoralDashboard.vue?vue&type=script&lang=js& ***!
+  \***********************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var vuex_pathify__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuex-pathify */ "./node_modules/vuex-pathify/dist/vuex-pathify.esm.js");
+/* harmony import */ var lodash_map__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! lodash/map */ "./node_modules/lodash/map.js");
+/* harmony import */ var lodash_map__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(lodash_map__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var lodash_find__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! lodash/find */ "./node_modules/lodash/find.js");
+/* harmony import */ var lodash_find__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(lodash_find__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var lodash_filter__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! lodash/filter */ "./node_modules/lodash/filter.js");
+/* harmony import */ var lodash_filter__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(lodash_filter__WEBPACK_IMPORTED_MODULE_3__);
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+
+var defaultTextConfig = {
+  fontSize: 24,
+  fontStyle: 'bold',
+  fontFamily: '-apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif',
+  lineHeight: 1.2,
+  align: 'center'
+};
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: 'MoralDashboard',
+  props: {
+    aspectId: [Boolean, String],
+    options: Object,
+    definitions: [Object, Array]
+  },
+  computed: _objectSpread({}, Object(vuex_pathify__WEBPACK_IMPORTED_MODULE_0__["get"])(['userGuide']), {
+    dataPath: function dataPath() {
+      if (this.userGuide.isOpen) {
+        return "userGuide@project.data.".concat(this.aspectId);
+      } else {
+        return "project@data.".concat(this.aspectId);
+      }
+    },
+    aspectData: Object(vuex_pathify__WEBPACK_IMPORTED_MODULE_0__["get"])(':dataPath'),
+    userValues: function userValues() {
+      var data = {
+        hasGovern: false,
+        hasDeliver: false,
+        hasEthos: false,
+        hasPlanManage: false
+      };
+
+      if (this.aspectData.govern.actions && this.aspectData.govern.actors.length > 0 && this.aspectData.govern.outcomes && this.aspectData.govern.evolution && this.aspectData.govern.improvements) {
+        data.hasGovern = true;
+      }
+
+      if (this.aspectData.deliver.method && this.aspectData.deliver.actors.length > 0 && this.aspectData.deliver.evidenceUrl) {
+        data.hasDeliver = true;
+      }
+
+      if (this.aspectData.defineEthos.values && this.aspectData.defineEthos.definedBy && this.aspectData.defineEthos.evidenceUrl) {
+        data.hasEthos = true;
+      }
+
+      var hasPlanManagePrior = this.aspectData.planManagePrior.actions && this.aspectData.planManagePrior.actors.length > 0 && this.aspectData.planManagePrior.evidenceUrl;
+      var hasPlanManageCurrent = this.aspectData.planManageCurrent.actions && this.aspectData.planManageCurrent.actors.length > 0 && this.aspectData.planManageCurrent.evidenceUrl;
+      data.hasPlanManage = hasPlanManagePrior && hasPlanManageCurrent;
+      return data;
+    },
+
+    /**
+     * Blue rectangles.
+     * r1-r5: bottom to top.
+     *
+     */
+    rectsConfig: function rectsConfig() {
+      var data = {};
+      var defaults = {
+        width: 760,
+        height: 490,
+        x: 0,
+        y: 0,
+        fill: "#ffffff",
+        stroke: "#1FA3E3",
+        strokeWidth: 3,
+        cornerRadius: 45,
+        visible: this.userGuide.isOpen ? false : true
+      };
+      data.r1 = _objectSpread({}, defaults, {
+        x: 0,
+        y: 105
+      });
+      data.r2 = _objectSpread({}, defaults, {
+        x: 15,
+        y: 95,
+        opacity: 0.7
+      });
+      data.r3 = _objectSpread({}, defaults, {
+        x: 30,
+        y: 85,
+        opacity: 0.7
+      });
+      data.r4 = _objectSpread({}, defaults, {
+        x: 45,
+        y: 75,
+        opacity: 0.7
+      });
+      data.r5 = _objectSpread({}, defaults, {
+        x: 60,
+        y: 60,
+        fill: "#ffffff",
+        stroke: "#99D5F2",
+        strokeWidth: 6,
+        opacity: 0.7
+      });
+      /*
+      data.red = {
+      	...defaults,
+      	width: 630,
+      	height: 365,
+      	x: 95,
+      	y: 0,
+      	fill: "#FCEDEF",
+      	stroke: "#E75168",
+      	strokeWidth: 3,
+      	cornerRadius: 45,
+      	opacity: 0.8,
+      	visible: false,
+      };
+      */
+
+      if (this.userGuide.isOpen) {
+        if (this.userGuide.currentStep >= 7) {
+          data.r5.visible = true;
+        }
+
+        if (this.userGuide.currentStep >= 8) {
+          data.r1.visible = true;
+          data.r2.visible = true;
+          data.r3.visible = true;
+          data.r4.visible = true;
+        }
+      }
+
+      return data;
+    },
+    textsConfig: function textsConfig() {
+      var data = {};
+
+      var defaults = _objectSpread({}, defaultTextConfig, {
+        fontSize: 25,
+        align: "center",
+        fill: "#2e7354",
+        visible: false
+      });
+
+      data.govern = _objectSpread({}, defaults, {
+        x: 570,
+        y: 415,
+        text: "Govern"
+      });
+      data.deliver = _objectSpread({}, defaults, {
+        x: 420,
+        y: 620,
+        text: "Deliver"
+      });
+      data.ethosLabel = _objectSpread({}, defaults, {
+        x: 630,
+        y: 150,
+        text: "Define Ethos"
+      });
+      data.ethosItems = _objectSpread({}, defaults, {
+        x: 640,
+        y: 200,
+        text: "Values\nPrinciples\nIntentions\nPolicies",
+        fontSize: 20,
+        align: "left",
+        lineHeight: 1.3
+      });
+      data.planLabel = _objectSpread({}, defaults, {
+        x: 200,
+        y: 275,
+        width: 200,
+        text: "Plan & Manage"
+      });
+      data.planItems = _objectSpread({}, defaults, {
+        x: 170,
+        y: 310,
+        width: 200,
+        text: "Rules\nResources\nProcesses\nAccounts",
+        fontSize: 20,
+        align: "right",
+        lineHeight: 1.3
+      });
+      data.experience = _objectSpread({}, defaults, {
+        x: 745,
+        y: 570,
+        text: "Experience"
+      });
+      data.individualCases = _objectSpread({}, defaults, {
+        x: 835,
+        y: 210,
+        text: "Individual Cases",
+        fontSize: 40,
+        opacity: 0.6
+      });
+      data.serviceLevel = _objectSpread({}, defaults, {
+        x: 835,
+        y: 270,
+        text: "The Service Level",
+        fontSize: 40
+      });
+
+      if (this.userGuide.isOpen) {
+        if (this.userGuide.currentStep >= 0) {
+          data.ethosLabel.visible = true;
+          data.ethosItems.visible = true;
+        }
+
+        if (this.userGuide.currentStep >= 1) {
+          data.planLabel.visible = true;
+          data.planItems.visible = true;
+        }
+
+        if (this.userGuide.currentStep >= 3) {
+          data.deliver.visible = true;
+          data.experience.visible = true;
+        }
+
+        if (this.userGuide.currentStep >= 5) {
+          data.govern.visible = true;
+        }
+
+        if (this.userGuide.currentStep >= 7) {
+          data.individualCases.visible = true;
+          data.individualCases.opacity = 1;
+        }
+
+        if (this.userGuide.currentStep >= 8) {
+          data.serviceLevel.visible = true;
+        }
+      } else {
+        data.individualCases.visible = true;
+        data.serviceLevel.visible = true;
+        data.govern.visible = this.userValues.hasGovern;
+        data.deliver.visible = this.userValues.hasDeliver;
+        data.experience.visible = this.userValues.hasDeliver;
+        data.ethosLabel.visible = this.userValues.hasEthos;
+        data.ethosItems.visible = this.userValues.hasEthos;
+        data.planLabel.visible = this.userValues.hasPlanManage;
+        data.planItems.visible = this.userValues.hasPlanManage;
+      }
+
+      return data;
+    },
+    imagesConfig: function imagesConfig() {
+      var data = {};
+      var groupDefaults = {
+        x: 0,
+        y: 0
+      };
+      var imageDefaults = {
+        x: 0,
+        y: 0,
+        scale: {
+          x: 0.55,
+          y: 0.55
+        },
+        visible: false
+      };
+      data.deliverAndExperience = {
+        group: _objectSpread({}, groupDefaults, {
+          x: 520,
+          y: 455
+        }),
+        arrow: _objectSpread({}, imageDefaults, {
+          filename: 'moral-ordering/arrow.png'
+        }),
+        loop: _objectSpread({}, imageDefaults, {
+          filename: 'moral-ordering/loop.png'
+        })
+      };
+      data.planAndDeliver = {
+        group: _objectSpread({}, groupDefaults, {
+          x: 500,
+          y: 350
+        }),
+        arrow: _objectSpread({}, imageDefaults, {
+          filename: 'moral-ordering/arrow.png',
+          rotation: 65
+        }),
+        loop: _objectSpread({}, imageDefaults, {
+          filename: 'moral-ordering/loop.png',
+          rotation: 65
+        })
+      };
+      data.planAndEthos = {
+        group: _objectSpread({}, groupDefaults, {
+          x: 550,
+          y: 480
+        }),
+        arrow: _objectSpread({}, imageDefaults, {
+          filename: 'moral-ordering/arrow.png',
+          rotation: 135,
+          scale: {
+            x: -0.55,
+            y: 0.55
+          }
+        }),
+        loop: _objectSpread({}, imageDefaults, {
+          filename: 'moral-ordering/loop.png',
+          rotation: 135,
+          scale: {
+            x: -0.55,
+            y: 0.55
+          }
+        })
+      };
+
+      if (this.userGuide.isOpen) {
+        if (this.userGuide.currentStep >= 2) {
+          data.planAndEthos.arrow.visible = true;
+        }
+
+        if (this.userGuide.currentStep >= 3) {
+          data.deliverAndExperience.arrow.visible = true;
+          data.planAndDeliver.arrow.visible = true;
+        }
+
+        if (this.userGuide.currentStep >= 5) {
+          data.planAndEthos.loop.visible = true;
+          data.planAndDeliver.loop.visible = true;
+          data.deliverAndExperience.loop.visible = true;
+        }
+      } else {
+        if (this.userValues.hasEthos && this.userValues.hasPlanManage) {
+          data.planAndEthos.arrow.visible = true;
+
+          if (this.userValues.hasGovern) {
+            data.planAndEthos.loop.visible = true;
+          }
+        }
+
+        if (this.userValues.hasDeliver && this.userValues.hasPlanManage) {
+          data.planAndDeliver.arrow.visible = true;
+
+          if (this.userValues.hasGovern) {
+            data.planAndDeliver.loop.visible = true;
+          }
+        }
+
+        if (this.userValues.hasDeliver) {
+          data.deliverAndExperience.arrow.visible = true;
+
+          if (this.userValues.hasGovern) {
+            data.deliverAndExperience.loop.visible = true;
+          }
+        }
+      } // data.planAndDeliver = {
+      // 	...defaults,
+      // 	x: 500,
+      // 	y: 350,
+      // 	rotation: 65,
+      // };
+      // data.planAndEthos = {
+      // 	...defaults,
+      // 	x: 550,
+      // 	y: 480,
+      // 	rotation: 135,
+      // 	scale: { x: -0.42, y: 0.42 },
+      // };
+      // if (this.userGuide.isOpen) {
+      // 	if (this.userGuide.currentStep >= 2) {
+      // 		data.planAndEthos.visible = true;
+      // 	}
+      // }
+
+
+      return data;
     }
   }),
   methods: {
@@ -9635,8 +10199,7 @@ var labels = {
   },
   data: function data() {
     return {
-      labels: labels // isOpen: false,
-
+      labels: labels
     };
   },
   computed: _objectSpread({}, Object(vuex_pathify__WEBPACK_IMPORTED_MODULE_0__["sync"])(['userGuide']), {
@@ -9683,14 +10246,6 @@ var labels = {
     },
     stepClasses: function stepClasses(step) {
       return ["user-guide-step-".concat(step.type)];
-    }
-  },
-  mounted: function mounted() {
-    if (this.userGuide.isAvailable && !this.userGuide.isCompleted) {
-      Object(vuex_pathify__WEBPACK_IMPORTED_MODULE_0__["dispatch"])('openUserGuide', {
-        projectId: this.projectId,
-        aspectId: this.aspectId
-      });
     }
   }
 });
@@ -10372,6 +10927,7 @@ __webpack_require__.r(__webpack_exports__);
           y: 1
         },
         rotation: this.config.rotation ? this.config.rotation : 0,
+        visible: typeof this.config.visible !== 'undefined' ? this.config.visible : true,
         opacity: typeof this.config.opacity !== 'undefined' ? this.config.opacity : 1
       };
     }
@@ -14760,7 +15316,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       }
     }
   },
-  computed: _objectSpread({}, Object(vuex_pathify__WEBPACK_IMPORTED_MODULE_0__["get"])(['appName', 'aspectEditId']), {}, Object(vuex_pathify__WEBPACK_IMPORTED_MODULE_0__["sync"])(['project'])),
+  computed: _objectSpread({}, Object(vuex_pathify__WEBPACK_IMPORTED_MODULE_0__["get"])(['appName', 'aspectEditId', 'userGuide']), {}, Object(vuex_pathify__WEBPACK_IMPORTED_MODULE_0__["sync"])(['project'])),
   watch: {
     'project.name': 'projectChanged',
     'project.data': 'projectChanged',
@@ -14801,6 +15357,14 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         });
       }
     }
+    /*
+    		doUserGuide() {
+    			if (this.userGuide.isAvailable && ! this.userGuide.isCompleted) {
+    				console.log("Opening user guide...");
+    				dispatch('openUserGuide', { projectId: this.project.id, aspectId: this.aspectId });
+    			}
+    		}*/
+
   },
   mounted: function mounted() {
     if (this.id) {
@@ -43861,7 +44425,9 @@ var render = function() {
   return _c(
     "v-group",
     [
-      _c("CosmosTitle", { attrs: { options: _vm.options } }),
+      _c("CosmosTitle", {
+        attrs: { aspectId: _vm.aspectId, options: _vm.options }
+      }),
       _vm._v(" "),
       _c("CosmosImage", { attrs: { config: _vm.bgConfig.star } }),
       _vm._v(" "),
@@ -43886,6 +44452,75 @@ var render = function() {
       _c("v-text", { attrs: { config: _vm.learningConfig } }),
       _vm._v(" "),
       _c("v-text", { attrs: { config: _vm.innovationConfig } })
+    ],
+    2
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./js-v2/aspects/moral_ordering_model/components/MoralDashboard.vue?vue&type=template&id=389f0414&":
+/*!***************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./js-v2/aspects/moral_ordering_model/components/MoralDashboard.vue?vue&type=template&id=389f0414& ***!
+  \***************************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "v-group",
+    [
+      _c("CosmosTitle", {
+        attrs: { aspectId: _vm.aspectId, options: _vm.options }
+      }),
+      _vm._v(" "),
+      _c(
+        "v-group",
+        {
+          attrs: {
+            config: {
+              x: 75,
+              y: 130
+            }
+          }
+        },
+        _vm._l(_vm.rectsConfig, function(config, name) {
+          return _c("v-rect", { key: name, attrs: { config: config } })
+        }),
+        1
+      ),
+      _vm._v(" "),
+      _c(
+        "v-group",
+        _vm._l(_vm.textsConfig, function(config, name) {
+          return _c("v-text", { key: name, attrs: { config: config } })
+        }),
+        1
+      ),
+      _vm._v(" "),
+      _vm._l(_vm.imagesConfig, function(config, name) {
+        return _c(
+          "v-group",
+          { key: name, attrs: { config: config.group } },
+          [
+            _c("CosmosImage", { attrs: { config: config.arrow } }),
+            _vm._v(" "),
+            _c("CosmosImage", { attrs: { config: config.loop } })
+          ],
+          1
+        )
+      })
     ],
     2
   )
@@ -44683,7 +45318,11 @@ var render = function() {
                     _vm._v(" "),
                     _c("div", { staticClass: "tile-content" }, [
                       _c("div", { staticClass: "tile-title" }, [
-                        _vm._v(" " + _vm._s(step.title))
+                        _vm._v(
+                          _vm._s(_vm.userGuide.currentStep) +
+                            ". " +
+                            _vm._s(step.title)
+                        )
                       ]),
                       _vm._v(" "),
                       _vm.userGuide.currentStep === 0

@@ -52,6 +52,7 @@ export default {
 		...get([
 			'appName',
 			'aspectEditId',
+			'userGuide',
 		]),
 		...sync([
 			'project',
@@ -90,7 +91,14 @@ export default {
 				const params = {...this.$route.params, aspectId: this.aspectEditId }
 				this.$router.push({ name: aspect.CONFIG.routeName, params: params });
 			}
-		}
+		},
+/*
+		doUserGuide() {
+			if (this.userGuide.isAvailable && ! this.userGuide.isCompleted) {
+				console.log("Opening user guide...");
+				dispatch('openUserGuide', { projectId: this.project.id, aspectId: this.aspectId });
+			}
+		}*/
 
 	},
 

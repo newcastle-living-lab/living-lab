@@ -1,6 +1,7 @@
 import CONFIG from "./config.json";
 import DEFINITIONS from "./definitions.json";
-import NODES from "./nodes.json";
+// import NODES from "./nodes.json";
+import Guide from "./Guide";
 import Functions from "./Functions";
 
 import * as Components from "./components";
@@ -8,7 +9,8 @@ import * as Components from "./components";
 export default {
 	CONFIG,
 	DEFINITIONS,
-	NODES,
+	// NODES,
+	Guide,
 	Functions,
 	Components,
 };

@@ -2,7 +2,7 @@
 
 	<v-group>
 
-		<CosmosTitle :options="options" />
+		<CosmosTitle :aspectId="aspectId" :options="options" />
 <!--
 		<CosmosImage :config="{
 			x: 0,
@@ -124,11 +124,11 @@ export default {
 
 			if (this.userGuide.isOpen) {
 				data.star.opacity = this.userGuide.currentStep >= 0 ? 1 : 0;
-				data.intervention.opacity = this.userGuide.currentStep >= 11 ? 1 : 0;
+				data.intervention.opacity = this.userGuide.currentStep >= 12 ? 1 : 0;
 				data.wellbeingArrows.opacity = this.userGuide.currentStep >= 8 ? 1 : 0;
 				data.environmentArrows.opacity = this.userGuide.currentStep >= 10 ? 1 : 0;
 				data.learning.opacity = this.userGuide.currentStep >= 12 ? 1 : 0;
-				// data.change.opacity = this.userGuide.currentStep >= 12 ? 1 : 0;
+				data.change.opacity = this.userGuide.currentStep >= 11 ? 1 : 0;
 			}
 
 			return data;
@@ -218,7 +218,7 @@ export default {
 				isVisible = false;
 
 				if (this.userGuide.isOpen) {
-					isVisible = this.userGuide.currentStep >= 11;
+					isVisible = this.userGuide.currentStep >= 12;
 				} else {
 					isVisible = this.inArray(this.aspectData.intervention.items, item.key);
 				}
@@ -279,10 +279,20 @@ export default {
 			var definition = find(this.definitions, { id: 'innovation' });
 			var options = find(definition.children, { id: 'items' }).componentProps.options;
 
-			var lines = filter(options, (option) => this.inArray(this.aspectData.innovation.items, option.value));
+			var isVisible = false;
+
+			if (this.userGuide.isOpen) {
+				var lines = options;
+				isVisible = this.userGuide.currentStep >= 11;
+			} else {
+				var lines = filter(options, (option) => this.inArray(this.aspectData.innovation.items, option.value));
+				isVisible = true;
+			}
+
 			lines = map(lines, (line) => line.label);
 
 			var itemConfig = {
+				visible: isVisible,
 				align: 'left',
 				verticalAlign: 'middle',
 				lineHeight: 1.5,
