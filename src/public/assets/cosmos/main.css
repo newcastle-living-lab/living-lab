@@ -5431,12 +5431,13 @@ a.text-gray-medium:visited {
 
 .user-guide .tile {
   max-width: 960px;
-  /*.tile-buttons {
-  	margin-top: $unit-4;
-  }*/
 }
 
 .user-guide .tile .tile-icon {
+  margin-right: 0.4rem;
+}
+
+.user-guide .tile .tile-content {
   margin-right: 0.4rem;
 }
 

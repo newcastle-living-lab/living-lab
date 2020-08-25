@@ -214,6 +214,45 @@ module.exports = JSON.parse("[{\"componentName\":\"CosmosTitle\",\"definitionNam
 
 /***/ }),
 
+/***/ "./js-v2/aspects/change_model/Guide.js":
+/*!*********************************************!*\
+  !*** ./js-v2/aspects/change_model/Guide.js ***!
+  \*********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ({
+  steps: [{
+    'type': 'info',
+    'title': 'We start off with the standard model of purposeful action that we are all very familiar with.'
+  }, {
+    'type': 'info',
+    'title': 'But we have all had the experience of looking back and realising that things have changed in a really fundamental way: we talk about the paradigm shifting. This implies that we have engaged in making new sense of our world and this often means that our language changes.'
+  }, {
+    'type': 'info',
+    'title': 'These two different ways of operation are sometimes referred to as first order and second order.'
+  }, {
+    'type': 'info',
+    'title': 'In management terms, we have risk management on one hand and the resolution of contradictions and ambiguities on the other.'
+  }, {
+    'type': 'info',
+    'title': 'We now introduce the idea of third order activities which enable and support the appropriate transitions between first and second work allowing a step back to reconsider our ethos and assumptions and, when we have, to move back into the mode of practical planning and delivery.'
+  }, {
+    'type': 'info',
+    'title': 'Sometimes the reaction to ambiguity and contradiction is an emotional one: fight or fly which is zero order, or inspiration and heroism which we will call fourth order.'
+  }, {
+    'type': 'info',
+    'title': 'So, on the right hand side of our diagram we have the spectrum of emotional work and responses while of the left hand side we have co-productive, conversational work.'
+  }, {
+    'type': 'info',
+    'title': 'This model generates a series of open ended questions about where the different first and second order work takes place in your initiative, what emotional work has been and is requires and how and where it is undertaken and how and by whom are the required third order interventions undertaken?'
+  }]
+});
+
+/***/ }),
+
 /***/ "./js-v2/aspects/change_model/components/TheoryOfChangeDashboard.vue":
 /*!***************************************************************************!*\
   !*** ./js-v2/aspects/change_model/components/TheoryOfChangeDashboard.vue ***!
@@ -426,14 +465,17 @@ __webpack_require__.r(__webpack_exports__);
 var _config_json__WEBPACK_IMPORTED_MODULE_0___namespace = /*#__PURE__*/__webpack_require__.t(/*! ./config.json */ "./js-v2/aspects/change_model/config.json", 1);
 /* harmony import */ var _definitions_json__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./definitions.json */ "./js-v2/aspects/change_model/definitions.json");
 var _definitions_json__WEBPACK_IMPORTED_MODULE_1___namespace = /*#__PURE__*/__webpack_require__.t(/*! ./definitions.json */ "./js-v2/aspects/change_model/definitions.json", 1);
-/* harmony import */ var _components__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components */ "./js-v2/aspects/change_model/components/index.js");
+/* harmony import */ var _Guide__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Guide */ "./js-v2/aspects/change_model/Guide.js");
+/* harmony import */ var _components__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components */ "./js-v2/aspects/change_model/components/index.js");
+
 
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   CONFIG: _config_json__WEBPACK_IMPORTED_MODULE_0__,
   DEFINITIONS: _definitions_json__WEBPACK_IMPORTED_MODULE_1__,
-  Components: _components__WEBPACK_IMPORTED_MODULE_2__
+  Guide: _Guide__WEBPACK_IMPORTED_MODULE_2__["default"],
+  Components: _components__WEBPACK_IMPORTED_MODULE_3__
 });
 
 /***/ }),
