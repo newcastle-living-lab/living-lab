@@ -10,7 +10,7 @@ export const state = {
 	aspectEditId: false,
 	isLoading: false,
 	features: {
-		userGuide: false,
+		userGuide: true,
 	},
 	config: {
 		user: null,
