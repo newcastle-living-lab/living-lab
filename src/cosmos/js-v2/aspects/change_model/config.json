@@ -1,0 +1,11 @@
+{
+	"id": "change_model",
+	"title": "Change Model",
+	"routeName": "model",
+	"dashboardComponent": "TheoryOfChangeDashboard",
+	"summaryComponent": "TheoryOfChangeSummaryView",
+	"stageSize": {
+		"width": 1280,
+		"height": 800
+	}
+}

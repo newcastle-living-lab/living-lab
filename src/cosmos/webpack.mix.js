@@ -12,6 +12,11 @@ let mix = require('laravel-mix');
  */
 
 var basename = 'cosmos';
+var basePath = 'assets/cosmos';
+
+function jsOutputPath(name) {
+	return mix.inProduction() ? `${basePath}/${name}.min.js` : `${basePath}/${name}.js`;
+}
 
 if (mix.inProduction()) {
 	var jsOutput = `assets/cosmos/main.min.js`;
@@ -23,8 +28,21 @@ if (mix.inProduction()) {
 
 mix.setPublicPath('../public');
 
-mix.js(`js/main.js`, jsOutput)
-	.sass(`scss/main.scss`, cssOutput);
+mix.js(`js/main.js`, jsOutputPath('main'));
+mix.js(`js-v2/main.js`, jsOutputPath('main-2'));
+
+mix.sass(`scss/main.scss`, cssOutput);
+
+mix.webpackConfig({
+	resolve: {
+		extensions: ['.js', '.vue', '.json'],
+		alias: {
+			'@': __dirname + '/js-v2'
+		},
+	},
+});
+
+
 
 // Full API
 // mix.js(src, output);

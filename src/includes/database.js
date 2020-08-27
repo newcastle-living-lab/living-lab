@@ -64,7 +64,7 @@ Database.prototype.createTables = function() {
 
 	this.db.run("ALTER TABLE `eps` RENAME TO `cosmos`", function(err) {});
 
-	this.db.run("CREATE TABLE IF NOT EXISTS `cosmos` (id INTEGER PRIMARY KEY, name TEXT, slug TEXT, folder TEXT, created_at TEXT, modified_at TEXT, created_by TEXT, data TEXT)", function(err) {
+	this.db.run("CREATE TABLE IF NOT EXISTS `cosmos` (id INTEGER PRIMARY KEY, name TEXT, slug TEXT, folder TEXT, template TEXT, created_at TEXT, modified_at TEXT, created_by TEXT, data TEXT)", function(err) {
 		if (err) {
 			console.error("Database cosmos creation error");
 		}
@@ -90,6 +90,14 @@ Database.prototype.updateTables = function() {
 		if ( ! colExists) {
 			db.run('ALTER TABLE cosmos ADD COLUMN slug TEXT');
 			console.log('Added "slug" column to Cosmos.');
+		}
+	});
+
+	// Add 'template' to cosmos
+	this.tableHasColumn('cosmos', 'template', function(colExists) {
+		if ( ! colExists) {
+			db.run('ALTER TABLE cosmos ADD COLUMN template TEXT');
+			console.log('Added "template" column to Cosmos.');
 		}
 	});
 

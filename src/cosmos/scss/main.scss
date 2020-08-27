@@ -5,8 +5,18 @@
 @import "node_modules/spectre.css/src/icons";
 
 @import "include/_layout";
+@import "include/_layout_grid";
+@import "include/_layout_header";
+@import "include/_layout_index";
+@import "include/_layout_project";
+@import "include/_layout_sidebar";
+@import "include/_user_guide";
+@import "include/_loading";
 @import "include/_menus";
 @import "include/_buttons";
+@import "include/_chips";
+@import "include/_cards";
+@import "include/_tiles";
 
 @include margin-variant(4, $unit-4);
 @include margin-variant(8, $unit-8);

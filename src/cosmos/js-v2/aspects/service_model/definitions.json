@@ -1,0 +1,93 @@
+[
+	{
+		"id": "model",
+		"type": "model",
+		"title": "Model",
+		"hint": null
+	},
+	{
+		"id": "drivers",
+		"type": "info",
+		"title": "Drivers and Motivations",
+		"hint": "What were / are the drivers and motivations of the project? Was it a statutory requirement, recognition of a need or demand, seizing an opportunity, addressing an inequality?",
+		"body": {
+			"label": "Drivers and Motivations",
+			"hint": "What are the drivers and motivations involved?"
+		}
+	},
+	{
+		"id": "policyDef",
+		"type": "stakeholder",
+		"title": "Policy Definer",
+		"hint": "Who are, or were, the definers of the service policies and the principles under which the service operates?"
+	},
+	{
+		"id": "specDes",
+		"type": "stakeholder",
+		"title": "Specifier and Designer",
+		"hint": "Who specifies / specified and designs / designed the service delivery processes and resources?"
+	},
+	{
+		"id": "deployment",
+		"type": "stakeholder",
+		"title": "Deployer",
+		"hint": "Who deploys / deployed and activates / activated those processes and resources?"
+	},
+	{
+		"id": "delivery",
+		"type": "stakeholder",
+		"title": "Deliverer",
+		"hint": "Who is responsible for the delivery mechanism(s), channels and roles in your pilot?"
+	},
+	{
+		"id": "evaluation",
+		"type": "stakeholder",
+		"title": "Evaluator",
+		"hint": "Who is the evaluator(s) and governors of the service?"
+	},
+	{
+		"id": "user",
+		"type": "stakeholder",
+		"title": "User",
+		"hint": "Who is the direct user of the service?"
+	},
+	{
+		"id": "beneficiary",
+		"type": "stakeholder",
+		"title": "Beneficiary",
+		"hint": "Are there beneficiaries other than the direct user/participants? If so, who are they?"
+	},
+	{
+		"id": "initiator",
+		"type": "stakeholder",
+		"title": "Initiator",
+		"hint": "Who are, or were, the instigators who initiated your pilot activity?"
+	},
+	{
+		"id": "extsvc",
+		"type": "externals",
+		"title": "External Technical Services",
+		"hint": "What reusable facilities, (technical and human) resources, services and sources of information were developed and used in support of these service definition and development processes? What external resources and services (e.g. communications and social media) were/are used?",
+		"useLabel": true,
+		"useImages": false,
+		"limit": 8
+	},
+	{
+		"id": "extorg",
+		"type": "externals",
+		"title": "External Organisations",
+		"hint": "Are there any relevant actors, stakeholders or agencies which are relevant to the pilot, but which remain outside its vision and ethos?",
+		"useLabel": true,
+		"useImages": false,
+		"limit": 8
+	},
+	{
+		"id": "infsvc",
+		"type": "externals",
+		"title": "Infrastructural Services",
+		"hint": "What external services, channels and facilities do you make use of in the delivery of your service(s)? What information sources do you make use of? What information do you publish, to whom and using what channels and media?",
+		"useLabel": true,
+		"useImages": false,
+		"limit": 8
+	}
+]

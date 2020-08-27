@@ -1,0 +1,98 @@
+
+
+.app-sidebar {
+	// display: block;
+	width: $sidebar-width;
+	min-width: $sidebar-width;
+	// padding: $unit-4;
+	border-right: $unit-o solid $border-color;
+	// overflow-y: auto;
+	height: 100%;
+	position: relative;
+
+	.tile-template {
+		padding: $unit-2;
+		border-bottom: $unit-o solid $border-color;
+		color: $dark-color;
+		padding-left: $unit-2 + $unit-1;
+
+		a {
+			color: inherit;
+		}
+
+		.tile-action {
+			.btn {
+				color: $gray-color;
+			}
+			.feather {
+				vertical-align: -10%;
+			}
+		}
+
+		&.active {
+			border-left: $unit-1 solid $secondary-color;
+			padding-left: $unit-2;
+		}
+	}
+
+	.panel {
+		border: 0;
+	}
+
+	.sidebar-heading {
+		background: $gray-color-light;
+		font-size: $font-size-sm;
+		font-weight: normal;
+		padding: $unit-2 $unit-4;
+		border: $unit-o solid $border-color;
+		border-width: $unit-o 0;
+		margin-bottom: -$unit-o;
+		cursor: default;
+
+		&:first-child {
+			margin-top: -$unit-o;
+		}
+
+		&.clickable {
+			&:hover {
+				background: darken($gray-color-light, 7%);
+			}
+		}
+	}
+
+	.sidebar-top {
+		margin-bottom: $unit-4;
+		.tab {
+			margin: 0;
+			.tab-item {
+				font-size: $font-size-sm;
+				a {
+					color: inherit;
+				}
+			}
+		}
+	}
+
+	.sidebar-content {
+		min-height: 50vh;
+		padding: $unit-2 $unit-4 $unit-4 $unit-4;
+	}
+
+	.sidebar-footer {
+		margin: 0;
+		padding: $unit-6 $unit-4 $unit-6 $unit-4;
+	}
+
+	.sidebar-hint {
+		margin-bottom: $unit-2;
+		// margin-top: $unit-2;
+		background: lighten($clrs-blue, 50%);
+		padding: $unit-2 $unit-4;
+		border-top: $unit-o solid $border-color;
+		font-size: $font-size-sm;
+		color: darken($clrs-blue, 20%);
+		.feather {
+			vertical-align: -15%;
+		}
+	}
+}

@@ -11,30 +11,15 @@
 	<meta http-equiv="Expires" content="0" />
 	<link rel="stylesheet" type="text/css" href="/assets/cosmos/main.css">
 	<script>window.config = {{ config | dump | safe }};</script>
+	{% if fathom_site_id %}
+	<script src="https://cdn.usefathom.com/script.js" site="{{ fathom_site_id }}" spa="auto" defer></script>
+	{% endif %}
 </head>
 
 <body>
 
 	<div id="app"></div>
-	<script src="/assets/cosmos/main.js"></script>
-	{% if fathom_site_id %}
-	<!-- Fathom - simple website analytics - https://usefathom.com -->
-	<script>
-	(function(f, a, t, h, o, m){
-	a[h]=a[h]||function(){
-	(a[h].q=a[h].q||[]).push(arguments)
-	};
-	o=f.createElement('script'),
-	m=f.getElementsByTagName('script')[0];
-	o.async=1; o.src=t; o.id='fathom-script';
-	m.parentNode.insertBefore(o,m)
-	})(document, window, 'https://cdn.usefathom.com/tracker.js', 'fathom');
-	fathom('set', 'siteId', '{{ fathom_site_id }}');
-	fathom('trackPageview');
-	fathom('set', 'spa', 'pushstate');
-	</script>
-	<!-- / Fathom -->
-	{% endif %}
+	<script src="/assets/cosmos/{{ main }}"></script>
 
 </body>
 

@@ -1,0 +1,39 @@
+.card {
+
+
+	// Compressed horizontal padding so things in body can be full-width
+	//
+	&.card-min {
+
+		.card-header {
+			padding-bottom: $layout-spacing-lg;
+			border-bottom: $unit-o solid $border-color;
+		}
+
+		.card-body {
+			padding-left: 0;
+			padding-right: 0;
+			padding-top: 0;
+		}
+
+		.card-content {
+			padding-left: $layout-spacing-lg;
+			padding-right: $layout-spacing-lg;
+			padding-top: $layout-spacing-lg;
+		}
+
+		.card-filter {
+			flex: 1 1 auto;
+			padding: $layout-spacing-lg;
+			border-bottom: $unit-o solid $border-color;
+			background: $bg-color;
+		}
+
+	}
+
+	&.card-user-guide {
+		width: 100%;
+		border: 0;
+	}
+
+}

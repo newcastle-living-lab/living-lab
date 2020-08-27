@@ -1,0 +1,322 @@
+[
+	{
+		"componentName": "CosmosTitle",
+		"definitionName": "model"
+	},
+	{
+		"componentName": "CosmosGroup",
+		"_comment": "Rectangles",
+		"config": {
+			"x": 75,
+			"y": 185
+		},
+		"children": [
+			{
+				"componentName": "v-rect",
+				"config": {
+					"width": 760,
+					"height": 490,
+					"x": 0,
+					"y": 50,
+					"fill": "#ffffff",
+					"stroke": "#1FA3E3",
+					"strokeWidth": 3,
+					"cornerRadius": 45
+				}
+			},
+			{
+				"componentName": "v-rect",
+				"config": {
+					"width": 760,
+					"height": 490,
+					"x": 15,
+					"y": 40,
+					"fill": "#ffffff",
+					"stroke": "#1FA3E3",
+					"strokeWidth": 3,
+					"cornerRadius": 45,
+					"opacity": 0.7
+				}
+			},
+			{
+				"componentName": "v-rect",
+				"config": {
+					"width": 760,
+					"height": 490,
+					"x": 30,
+					"y": 30,
+					"fill": "#ffffff",
+					"stroke": "#1FA3E3",
+					"strokeWidth": 3,
+					"cornerRadius": 45,
+					"opacity": 0.7
+				}
+			},
+			{
+				"componentName": "v-rect",
+				"config": {
+					"width": 760,
+					"height": 490,
+					"x": 45,
+					"y": 20,
+					"fill": "#ffffff",
+					"stroke": "#1FA3E3",
+					"strokeWidth": 3,
+					"cornerRadius": 45,
+					"opacity": 0.7
+				}
+			},
+			{
+				"componentName": "v-rect",
+				"config": {
+					"width": 760,
+					"height": 490,
+					"x": 60,
+					"y": 5,
+					"fill": "#ffffff",
+					"stroke": "#99D5F2",
+					"strokeWidth": 6,
+					"cornerRadius": 45,
+					"opacity": 0.7
+				}
+			}
+		]
+	},
+	{
+		"componentName": "CosmosGroup",
+		"_comment": "Group for red rectangle and Ethos/Plan+Manage/Govern",
+		"definitionName": "_redRect",
+		"visibilityFunc": "graphicVisibility",
+		"config": {
+			"x": 170,
+			"y": 130
+		},
+		"children": [
+			{
+				"componentName": "v-rect",
+				"config": {
+					"width": 630,
+					"height": 365,
+					"x": 0,
+					"y": 0,
+					"fill": "#FCEDEF",
+					"stroke": "#E75168",
+					"strokeWidth": 3,
+					"cornerRadius": 45,
+					"opacity": 0.8
+				}
+			}
+		]
+	},
+	{
+		"componentName": "CosmosGroup",
+		"_comment": "Group for 'Govern' label",
+		"definitionName": "_governLabel",
+		"visibilityFunc": "graphicVisibility",
+		"config": {
+			"x": 570,
+			"y": 420
+		},
+		"children": [
+			{
+				"componentName": "v-text",
+				"config": {
+					"x": 0,
+					"y": 0,
+					"text": "Govern",
+					"fill": "#2e7354",
+					"fontSize": 25,
+					"fontStyle": "bold",
+					"fontFamily": "-apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif",
+					"align": "center"
+				}
+			}
+		]
+	},
+	{
+		"componentName": "CosmosGroup",
+		"_comment": "Group for 'Deliver' label",
+		"definitionName": "_deliverLabel",
+		"visibilityFunc": "graphicVisibility",
+		"config": {
+			"x": 420,
+			"y": 620
+		},
+		"children": [
+			{
+				"componentName": "v-text",
+				"config": {
+					"x": 0,
+					"y": 0,
+					"text": "Deliver",
+					"fill": "#2e7354",
+					"fontSize": 25,
+					"fontStyle": "bold",
+					"fontFamily": "-apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif",
+					"align": "center"
+				}
+			}
+		]
+	},
+	{
+		"componentName": "CosmosGroup",
+		"_comment": "Group for 'Define Ethos' label",
+		"definitionName": "_ethosSection",
+		"visibilityFunc": "graphicVisibility",
+		"config": {
+			"x": 630,
+			"y": 150
+		},
+		"children": [
+			{
+				"componentName": "v-text",
+				"config": {
+					"x": 0,
+					"y": 0,
+					"text": "Define Ethos",
+					"fill": "#2e7354",
+					"fontSize": 25,
+					"fontStyle": "bold",
+					"fontFamily": "-apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif"
+				}
+			},
+			{
+				"componentName": "v-text",
+				"config": {
+					"x": 10,
+					"y": 50,
+					"text": "Values\nPrinciples\nIntentions\nPolicies",
+					"fill": "#2e7354",
+					"fontSize": 20,
+					"fontStyle": "bold",
+					"fontFamily": "-apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif",
+					"align": "left",
+					"lineHeight": 1.3
+				}
+			}
+		]
+	},
+	{
+		"componentName": "CosmosGroup",
+		"_comment": "Group for 'Plan + Manage' label",
+		"definitionName": "_planManageSection",
+		"visibilityFunc": "graphicVisibility",
+		"config": {
+			"x": 190,
+			"y": 280
+		},
+		"children": [
+			{
+				"componentName": "v-text",
+				"config": {
+					"x": 0,
+					"y": 0,
+					"width": 200,
+					"text": "Plan & Manage",
+					"fill": "#2e7354",
+					"align": "right",
+					"fontSize": 25,
+					"fontStyle": "bold",
+					"fontFamily": "-apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif"
+				}
+			},
+			{
+				"componentName": "v-text",
+				"config": {
+					"x": 0,
+					"y": 30,
+					"width": 180,
+					"text": "Rules\nResources\nProcesses\nAccounts",
+					"fill": "#2e7354",
+					"align": "right",
+					"lineHeight": 1.3,
+					"fontSize": 20,
+					"fontStyle": "bold",
+					"fontFamily": "-apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif"
+				}
+			}
+		]
+	},
+	{
+		"componentName": "CosmosGroup",
+		"_comment": "Group for 'Experience' label",
+		"config": {
+			"x": 745,
+			"y": 570
+		},
+		"children": [
+			{
+				"componentName": "v-text",
+				"config": {
+					"x": 0,
+					"y": 0,
+					"text": "Experience",
+					"fill": "#2e7354",
+					"align": "left",
+					"fontSize": 25,
+					"fontStyle": "bold",
+					"fontFamily": "-apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif"
+				}
+			}
+		]
+	},
+	{
+		"componentName": "CosmosImage",
+		"_comment": "arrows for deliver <-> experience",
+		"config": {
+			"filename": "moral-ordering/arrows-circles.svg",
+			"x": 520,
+			"y": 455,
+			"scale": { "x": 0.42, "y": 0.42 }
+		}
+	},
+	{
+		"componentName": "CosmosImage",
+		"_comment": "arrows for plan/manage <-> deliver",
+		"config": {
+			"filename": "moral-ordering/arrows-circles.svg",
+			"x": 500,
+			"y": 350,
+			"rotation": 65,
+			"scale": { "x": 0.42, "y": 0.42 }
+		}
+	},
+	{
+		"componentName": "CosmosImage",
+		"_comment": "arrows for plan/manage <-> ethos",
+		"config": {
+			"filename": "moral-ordering/arrows-circles.svg",
+			"x": 550,
+			"y": 480,
+			"rotation": 135,
+			"scale": { "x": -0.42, "y": 0.42 }
+		}
+	},
+	{
+		"componentName": "v-text",
+		"config": {
+			"x": 835,
+			"y": 210,
+			"opacity": 0.6,
+			"text": "Individual Cases",
+			"fill": "#2e7354",
+			"align": "left",
+			"fontStyle": "bold",
+			"fontSize": 40,
+			"fontFamily": "-apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif"
+		}
+	},
+	{
+		"componentName": "v-text",
+		"config": {
+			"x": 835,
+			"y": 270,
+			"text": "The Service Level",
+			"fill": "#2e7354",
+			"align": "left",
+			"fontStyle": "bold",
+			"fontSize": 40,
+			"fontFamily": "-apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif"
+		}
+	}
+]

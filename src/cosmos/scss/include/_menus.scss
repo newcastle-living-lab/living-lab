@@ -16,3 +16,16 @@
 	}
 
 }
+
+
+
+.dropdown {
+
+	&.dropdown-download {
+		.menu {
+			animation: none;
+			color: $dark-color;
+		}
+	}
+
+}

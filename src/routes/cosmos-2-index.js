@@ -10,6 +10,7 @@ exports.handler = function(req, res) {
 		require_auth: res.locals.require_auth ? true : false,
 		version: res.locals.app_version,
 		fathom_site_id: res.locals.fathom_site_id,
+		auto_save: res.locals.auto_save ? true : false,
 	};
 
 	if (req.user) {
@@ -20,6 +21,7 @@ exports.handler = function(req, res) {
 	}
 
 	return res.render('cosmos.html', {
+		main: 'main-2.js',
 		config: config
 	});
 };

@@ -62,6 +62,7 @@ var initServers = function() {
 	app.use("/playlists", express.static(path.join(process.cwd(), "data", "playlists")));
 	app.use("/images", express.static(path.join(process.cwd(), "data", "images")));
 	app.use("/export", express.static(path.join(process.cwd(), "data", "export")));
+	app.use("/cosmos-images", express.static(path.join(process.cwd(), "cosmos", "template-images")));
 
 	app.use(bodyParser.json());
 	app.use(bodyParser.urlencoded({ extended: true, limit: 50 * 1024 * 1024 }));

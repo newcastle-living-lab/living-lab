@@ -1,0 +1,9 @@
+[
+	{
+		"id": "data",
+		"type": "externals",
+		"title": "Documents and Files",
+		"hint": "Please add any Documents and Files your project may have.",
+		"useImages": true
+	}
+]

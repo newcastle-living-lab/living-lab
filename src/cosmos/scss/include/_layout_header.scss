@@ -1,0 +1,70 @@
+
+.app-header {
+
+	background: $gray-color-light;	//$clrs-black;
+	color: $dark-color;	//light-color;
+	padding: $layout-spacing $unit-4;
+	border-bottom: $unit-o solid $border-color;
+
+	.btn-link {
+		color: inherit;
+		&:hover,
+		&:focus,
+		&:active {
+			color: inherit;
+		}
+
+	}
+
+	.saving-ui {
+		margin-left: $unit-4;
+		color: $gray-color;
+		font-size: $font-size-sm;
+	}
+
+	.navbar-section {
+		flex: 1 1 auto;
+	}
+
+	.navbar-buttons {
+
+		.btn-link {
+
+			margin-right: $unit-2;
+
+			.feather {
+				margin-right: $unit-1;
+				vertical-align: -10%;
+			}
+
+			&:hover {
+				color: $light-color;
+				background: $clrs-blue;	//lighten($clrs-black, 10%);
+			}
+
+		}
+
+		.navbar-brand {
+			padding-left: 0;
+			padding-right: 0;
+			margin-right: $unit-6;
+			font-size: $font-size;
+			font-weight: bold;
+			&:hover,
+			&:focus,
+			&:active {
+				color: $clrs-blue;
+				background: none;
+			}
+		}
+
+		.navbar-project {
+			font-size: $font-size;
+			padding-left: 0;
+			padding-right: 0;
+			margin-right: $unit-12;
+		}
+	}
+
+
+}

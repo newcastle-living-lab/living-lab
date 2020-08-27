@@ -1,0 +1,14 @@
+.user-guide {
+	background: #fff5da;
+	padding: $unit-4;
+
+	.tile {
+		max-width: $control-width-lg;
+		.tile-icon {
+			margin-right: $unit-2;
+		}
+		.tile-content {
+			margin-right: $unit-2;
+		}
+	}
+}

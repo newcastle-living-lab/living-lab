@@ -1,0 +1,11 @@
+{
+	"id": "moral_ordering_model",
+	"title": "Moral Ordering",
+	"routeName": "model",
+	"dashboardComponent": "MoralDashboard",
+	"summaryComponent": "MoralSummaryView",
+	"stageSize": {
+		"width": 1285,
+		"height": 800
+	}
+}

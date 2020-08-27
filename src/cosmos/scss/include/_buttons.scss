@@ -1,6 +1,7 @@
 .btn {
 
 	touch-action: manipulation;
+	transition: none;
 
 	&.btn-secondary {
 		@include button-variant($secondary-color);
@@ -10,6 +11,9 @@
 		@include button-variant($grey-dark);
 	}
 
+	&.btn-grey {
+		@include button-variant($grey);
+	}
 
 	&.btn-negative {
 		@include button-variant($clrs-red);
