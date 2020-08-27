@@ -1,5 +1,9 @@
 # Living Lab Changelog
 
+## v1.26.0
+
+* COSMOS: Per-project templates has been removed; each project now contains all aspects in one.
+
 
 ## v1.25.8
 
