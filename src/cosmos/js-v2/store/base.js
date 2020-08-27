@@ -9,6 +9,9 @@ export const state = {
 	appName: 'CoSMoS',
 	aspectEditId: false,
 	isLoading: false,
+	features: {
+		userGuide: false,
+	},
 	config: {
 		user: null,
 		require_auth: true,

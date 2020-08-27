@@ -79,7 +79,6 @@ export default {
 		},
 
 		aspectIdChanged() {
-			console.log("proj apsect id changed to: " + this.aspectId);
 			dispatch('checkUserGuideStatus', { projectId: this.project.id, aspectId: this.aspectId });
 		},
 
@@ -92,13 +91,6 @@ export default {
 				this.$router.push({ name: aspect.CONFIG.routeName, params: params });
 			}
 		},
-/*
-		doUserGuide() {
-			if (this.userGuide.isAvailable && ! this.userGuide.isCompleted) {
-				console.log("Opening user guide...");
-				dispatch('openUserGuide', { projectId: this.project.id, aspectId: this.aspectId });
-			}
-		}*/
 
 	},
 

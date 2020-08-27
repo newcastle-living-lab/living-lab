@@ -17,10 +17,6 @@ module.exports = {
 			});
 		}
 
-		if (dbRow.template == undefined || dbRow.template == null || (dbRow.template && dbRow.template.length === 0)) {
-			dbRow.template = 'service-model';
-		}
-
 		if (typeof(dbRow.data) == 'undefined' || dbRow.data == null) {
 			dbRow.data = {};
 		} else {

@@ -763,16 +763,25 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var lodash_forEach__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(lodash_forEach__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var lodash_cloneDeep__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! lodash/cloneDeep */ "./node_modules/lodash/cloneDeep.js");
 /* harmony import */ var lodash_cloneDeep__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(lodash_cloneDeep__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _welcome__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./welcome */ "./js-v2/aspects/welcome/index.js");
-/* harmony import */ var _service_model__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./service_model */ "./js-v2/aspects/service_model/index.js");
-/* harmony import */ var _analytic_model__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./analytic_model */ "./js-v2/aspects/analytic_model/index.js");
-/* harmony import */ var _intervention_theory_model__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./intervention_theory_model */ "./js-v2/aspects/intervention_theory_model/index.js");
-/* harmony import */ var _change_model__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./change_model */ "./js-v2/aspects/change_model/index.js");
-/* harmony import */ var _moral_ordering_model__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./moral_ordering_model */ "./js-v2/aspects/moral_ordering_model/index.js");
-/* harmony import */ var _theory_of_change__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./theory_of_change */ "./js-v2/aspects/theory_of_change/index.js");
-/* harmony import */ var _community_reporting__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./community_reporting */ "./js-v2/aspects/community_reporting/index.js");
-/* harmony import */ var _social_media__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./social_media */ "./js-v2/aspects/social_media/index.js");
-/* harmony import */ var _documents__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./documents */ "./js-v2/aspects/documents/index.js");
+/* harmony import */ var lodash_isEmpty__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! lodash/isEmpty */ "./node_modules/lodash/isEmpty.js");
+/* harmony import */ var lodash_isEmpty__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(lodash_isEmpty__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var lodash_isArray__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! lodash/isArray */ "./node_modules/lodash/isArray.js");
+/* harmony import */ var lodash_isArray__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(lodash_isArray__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _welcome__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./welcome */ "./js-v2/aspects/welcome/index.js");
+/* harmony import */ var _service_model__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./service_model */ "./js-v2/aspects/service_model/index.js");
+/* harmony import */ var _analytic_model__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./analytic_model */ "./js-v2/aspects/analytic_model/index.js");
+/* harmony import */ var _intervention_theory_model__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./intervention_theory_model */ "./js-v2/aspects/intervention_theory_model/index.js");
+/* harmony import */ var _change_model__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./change_model */ "./js-v2/aspects/change_model/index.js");
+/* harmony import */ var _moral_ordering_model__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./moral_ordering_model */ "./js-v2/aspects/moral_ordering_model/index.js");
+/* harmony import */ var _theory_of_change__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./theory_of_change */ "./js-v2/aspects/theory_of_change/index.js");
+/* harmony import */ var _community_reporting__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./community_reporting */ "./js-v2/aspects/community_reporting/index.js");
+/* harmony import */ var _social_media__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./social_media */ "./js-v2/aspects/social_media/index.js");
+/* harmony import */ var _documents__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./documents */ "./js-v2/aspects/documents/index.js");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 
 
@@ -787,7 +796,10 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var allAspects = [_welcome__WEBPACK_IMPORTED_MODULE_4__["default"], _service_model__WEBPACK_IMPORTED_MODULE_5__["default"], _analytic_model__WEBPACK_IMPORTED_MODULE_6__["default"], _intervention_theory_model__WEBPACK_IMPORTED_MODULE_7__["default"], _change_model__WEBPACK_IMPORTED_MODULE_8__["default"], _moral_ordering_model__WEBPACK_IMPORTED_MODULE_9__["default"], _theory_of_change__WEBPACK_IMPORTED_MODULE_10__["default"], _community_reporting__WEBPACK_IMPORTED_MODULE_11__["default"], _social_media__WEBPACK_IMPORTED_MODULE_12__["default"], _documents__WEBPACK_IMPORTED_MODULE_13__["default"]];
+
+
+
+var allAspects = [_welcome__WEBPACK_IMPORTED_MODULE_6__["default"], _service_model__WEBPACK_IMPORTED_MODULE_7__["default"], _analytic_model__WEBPACK_IMPORTED_MODULE_8__["default"], _intervention_theory_model__WEBPACK_IMPORTED_MODULE_9__["default"], _change_model__WEBPACK_IMPORTED_MODULE_10__["default"], _moral_ordering_model__WEBPACK_IMPORTED_MODULE_11__["default"], _theory_of_change__WEBPACK_IMPORTED_MODULE_12__["default"], _community_reporting__WEBPACK_IMPORTED_MODULE_13__["default"], _social_media__WEBPACK_IMPORTED_MODULE_14__["default"], _documents__WEBPACK_IMPORTED_MODULE_15__["default"]];
 /* harmony default export */ __webpack_exports__["default"] = ({
   all: function all() {
     return lodash_map__WEBPACK_IMPORTED_MODULE_1___default()(allAspects, function (t) {
@@ -826,49 +838,72 @@ var allAspects = [_welcome__WEBPACK_IMPORTED_MODULE_4__["default"], _service_mod
     return project;
   },
   convertFromTemplate: function convertFromTemplate(project) {
-    // Skip projects without templates
-    if (!project.template || project.template.length == 0) {
-      return project;
-    }
+    // console.log('convertFromTemplate');
+    // console.log(JSON.parse(JSON.stringify(project)));
+    // Move the "main" definitions that remain with this aspect into the new object.
+    //
+    var newId = 'co_creation_of_service_model';
+    var serviceDefinitions = ['model', 'drivers', 'policyDef', 'specDes', 'deployment', 'delivery', 'evaluation', 'user', 'beneficiary', 'initiator', 'extsvc', 'extorg', 'infsvc'];
+    lodash_forEach__WEBPACK_IMPORTED_MODULE_2___default()(serviceDefinitions, function (definition) {
+      if (typeof project.data[definition] !== 'undefined') {
+        project.data[newId][definition] = lodash_cloneDeep__WEBPACK_IMPORTED_MODULE_3___default()(project.data[definition]);
+        delete project.data[definition];
+      }
+    }); // Legacy theoryOfChange, Liv Lab Models (docs) and community reporting.
 
-    if (project.template === 'service-model') {
-      // Special treatment of service_model due to extracting some definitions.
-      //
-      var newId = 'co_creation_of_service_model'; // Move the "main" definitions that remain with this aspect into the new object.
-      //
+    if (lodash_isArray__WEBPACK_IMPORTED_MODULE_5___default()(project.data.externals)) {
+      var defaultExternal = {
+        label: null,
+        url: null,
+        image: null
+      };
+      console.debug("convertFromTemplate(): Identified `externals` key.");
+      lodash_forEach__WEBPACK_IMPORTED_MODULE_2___default()(project.data.externals, function (ext) {
+        var newItem = _objectSpread({}, defaultExternal, {}, ext);
 
-      var serviceDefinitions = ['model', 'drivers', 'policyDef', 'specDes', 'deployment', 'delivery', 'evaluation', 'user', 'beneficiary', 'initiator', 'extsvc', 'extorg', 'infsvc'];
-      lodash_forEach__WEBPACK_IMPORTED_MODULE_2___default()(serviceDefinitions, function (definition) {
-        if (typeof project.data[definition] !== 'undefined') {
-          project.data[newId][definition] = lodash_cloneDeep__WEBPACK_IMPORTED_MODULE_3___default()(project.data[definition]);
-          delete project.data[definition];
-        }
-      }); // Move the other definitions that have their own aspects into the respective objects.
-      //
+        delete newItem.type;
 
-      var otherDefinitions = [{
-        'source': 'theoryOfChange',
-        'destination': 'theory_of_change'
-      }, {
-        'source': 'communityReporting',
-        'destination': 'community_reporting'
-      }, {
-        'source': 'social',
-        'destination': 'social_media'
-      }, {
-        'source': 'livingLabModels',
-        'destination': 'documents'
-      }];
-      lodash_forEach__WEBPACK_IMPORTED_MODULE_2___default()(otherDefinitions, function (definition) {
-        if (typeof project.data[definition.source] !== 'undefined') {
-          project.data[definition.destination] = {
-            'data': lodash_cloneDeep__WEBPACK_IMPORTED_MODULE_3___default()(project.data[definition.source])
-          };
-          delete project.data[definition.source];
-          console.debug("Moving data.".concat(definition.source, " --> data.").concat(definition.destination));
+        switch (ext.type) {
+          case 'livlabmod':
+            project.data.documents.data.items.push(newItem);
+            break;
+
+          case 'toc':
+            project.data.theory_of_change.data.items.push(newItem);
+            break;
+
+          case 'comrep':
+            project.data.community_reporting.data.items.push(newItem);
+            break;
         }
       });
-    }
+      delete project.data['externals'];
+    } // Move the other definitions that have their own aspects into the respective objects.
+    //
+
+
+    var otherDefinitions = [{
+      'source': 'theoryOfChange',
+      'destination': 'theory_of_change'
+    }, {
+      'source': 'communityReporting',
+      'destination': 'community_reporting'
+    }, {
+      'source': 'social',
+      'destination': 'social_media'
+    }, {
+      'source': 'livingLabModels',
+      'destination': 'documents'
+    }];
+    lodash_forEach__WEBPACK_IMPORTED_MODULE_2___default()(otherDefinitions, function (definition) {
+      if (typeof project.data[definition.source] !== 'undefined') {
+        project.data[definition.destination] = {
+          'data': lodash_cloneDeep__WEBPACK_IMPORTED_MODULE_3___default()(project.data[definition.source])
+        };
+        delete project.data[definition.source];
+        console.debug("Moving data.".concat(definition.source, " --> data.").concat(definition.destination));
+      }
+    });
 
     if (project.template && project.template.length > 0 && project.template != 'service-model') {
       // Just move the old definitions to the new relevant property.
@@ -914,6 +949,24 @@ var allAspects = [_welcome__WEBPACK_IMPORTED_MODULE_4__["default"], _service_mod
 });
 
 function setObjectKeys(onObject, fromArray) {
+  var defaults = {
+    stakeholder: {
+      label: null,
+      type: null,
+      colour: null,
+      url: null
+    },
+    externals: {
+      label: '',
+      items: []
+    },
+    social: {
+      twitter: [],
+      facebook: [],
+      instagram: [],
+      youtube: []
+    }
+  };
   lodash_forEach__WEBPACK_IMPORTED_MODULE_2___default()(fromArray, function (item) {
     if (item.id && typeof onObject[item.id] === 'undefined') {
       switch (item.dataType) {
@@ -932,25 +985,31 @@ function setObjectKeys(onObject, fromArray) {
           break;
       }
 
-      switch (item.type) {
-        case 'externals':
-          onObject[item.id] = {
-            label: '',
-            items: []
-          };
-          break;
-
-        case 'stakeholder':
-          onObject[item.id] = {
-            label: null,
-            type: null,
-            colour: null,
-            url: null
-          };
-          break;
-      }
-
       console.debug("setObjectKeys(): ".concat(item.id, ": Set to ").concat(item.dataType, "."));
+    }
+
+    if (item.type == 'stakeholder') {
+      if (lodash_isEmpty__WEBPACK_IMPORTED_MODULE_4___default()(onObject[item.id])) {
+        onObject[item.id] = _objectSpread({}, defaults.stakeholder);
+      } else {
+        onObject[item.id] = _objectSpread({}, defaults.stakeholder, {}, onObject[item.id]);
+      }
+    }
+
+    if (item.type == 'externals') {
+      if (lodash_isEmpty__WEBPACK_IMPORTED_MODULE_4___default()(onObject[item.id])) {
+        onObject[item.id] = _objectSpread({}, defaults.externals);
+      } else {
+        onObject[item.id] = _objectSpread({}, defaults.externals, {}, onObject[item.id]);
+      }
+    }
+
+    if (item.type == 'social') {
+      if (lodash_isEmpty__WEBPACK_IMPORTED_MODULE_4___default()(onObject[item.id])) {
+        onObject[item.id] = _objectSpread({}, defaults.social);
+      } else {
+        onObject[item.id] = _objectSpread({}, defaults.social, {}, onObject[item.id]);
+      }
     }
 
     if (Array.isArray(item.children)) {
@@ -6001,6 +6060,9 @@ var state = {
   appName: 'CoSMoS',
   aspectEditId: false,
   isLoading: false,
+  features: {
+    userGuide: false
+  },
   config: {
     user: null,
     require_auth: true,
@@ -10244,7 +10306,7 @@ var labels = {
       labels: labels
     };
   },
-  computed: _objectSpread({}, Object(vuex_pathify__WEBPACK_IMPORTED_MODULE_0__["sync"])(['userGuide']), {
+  computed: _objectSpread({}, Object(vuex_pathify__WEBPACK_IMPORTED_MODULE_0__["get"])(['features']), {}, Object(vuex_pathify__WEBPACK_IMPORTED_MODULE_0__["sync"])(['userGuide']), {
     /**
      * Get aspect (ALL data - CONFIG + DEFS etc!) based on supplied editor ID
      *
@@ -13025,6 +13087,8 @@ __webpack_require__.r(__webpack_exports__);
           val = val.substring(fbPos + domain.length);
           return val;
         }
+
+        return val;
       }
 
       if (this.network == 'twitter' || this.network == 'instagram') {
@@ -13039,6 +13103,8 @@ __webpack_require__.r(__webpack_exports__);
         if (match && match[2].length == 11) {
           return match[2];
         }
+
+        return val;
       }
     },
     showHashtag: function showHashtag() {
@@ -15377,7 +15443,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       }
     },
     aspectIdChanged: function aspectIdChanged() {
-      console.log("proj apsect id changed to: " + this.aspectId);
       Object(vuex_pathify__WEBPACK_IMPORTED_MODULE_0__["dispatch"])('checkUserGuideStatus', {
         projectId: this.project.id,
         aspectId: this.aspectId
@@ -15399,14 +15464,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         });
       }
     }
-    /*
-    		doUserGuide() {
-    			if (this.userGuide.isAvailable && ! this.userGuide.isCompleted) {
-    				console.log("Opening user guide...");
-    				dispatch('openUserGuide', { projectId: this.project.id, aspectId: this.aspectId });
-    			}
-    		}*/
-
   },
   mounted: function mounted() {
     if (this.id) {
@@ -37503,6 +37560,94 @@ module.exports = isBuffer;
 
 /***/ }),
 
+/***/ "./node_modules/lodash/isEmpty.js":
+/*!****************************************!*\
+  !*** ./node_modules/lodash/isEmpty.js ***!
+  \****************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var baseKeys = __webpack_require__(/*! ./_baseKeys */ "./node_modules/lodash/_baseKeys.js"),
+    getTag = __webpack_require__(/*! ./_getTag */ "./node_modules/lodash/_getTag.js"),
+    isArguments = __webpack_require__(/*! ./isArguments */ "./node_modules/lodash/isArguments.js"),
+    isArray = __webpack_require__(/*! ./isArray */ "./node_modules/lodash/isArray.js"),
+    isArrayLike = __webpack_require__(/*! ./isArrayLike */ "./node_modules/lodash/isArrayLike.js"),
+    isBuffer = __webpack_require__(/*! ./isBuffer */ "./node_modules/lodash/isBuffer.js"),
+    isPrototype = __webpack_require__(/*! ./_isPrototype */ "./node_modules/lodash/_isPrototype.js"),
+    isTypedArray = __webpack_require__(/*! ./isTypedArray */ "./node_modules/lodash/isTypedArray.js");
+
+/** `Object#toString` result references. */
+var mapTag = '[object Map]',
+    setTag = '[object Set]';
+
+/** Used for built-in method references. */
+var objectProto = Object.prototype;
+
+/** Used to check objects for own properties. */
+var hasOwnProperty = objectProto.hasOwnProperty;
+
+/**
+ * Checks if `value` is an empty object, collection, map, or set.
+ *
+ * Objects are considered empty if they have no own enumerable string keyed
+ * properties.
+ *
+ * Array-like values such as `arguments` objects, arrays, buffers, strings, or
+ * jQuery-like collections are considered empty if they have a `length` of `0`.
+ * Similarly, maps and sets are considered empty if they have a `size` of `0`.
+ *
+ * @static
+ * @memberOf _
+ * @since 0.1.0
+ * @category Lang
+ * @param {*} value The value to check.
+ * @returns {boolean} Returns `true` if `value` is empty, else `false`.
+ * @example
+ *
+ * _.isEmpty(null);
+ * // => true
+ *
+ * _.isEmpty(true);
+ * // => true
+ *
+ * _.isEmpty(1);
+ * // => true
+ *
+ * _.isEmpty([1, 2, 3]);
+ * // => false
+ *
+ * _.isEmpty({ 'a': 1 });
+ * // => false
+ */
+function isEmpty(value) {
+  if (value == null) {
+    return true;
+  }
+  if (isArrayLike(value) &&
+      (isArray(value) || typeof value == 'string' || typeof value.splice == 'function' ||
+        isBuffer(value) || isTypedArray(value) || isArguments(value))) {
+    return !value.length;
+  }
+  var tag = getTag(value);
+  if (tag == mapTag || tag == setTag) {
+    return !value.size;
+  }
+  if (isPrototype(value)) {
+    return !baseKeys(value).length;
+  }
+  for (var key in value) {
+    if (hasOwnProperty.call(value, key)) {
+      return false;
+    }
+  }
+  return true;
+}
+
+module.exports = isEmpty;
+
+
+/***/ }),
+
 /***/ "./node_modules/lodash/isFunction.js":
 /*!*******************************************!*\
   !*** ./node_modules/lodash/isFunction.js ***!
@@ -45318,7 +45463,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm.userGuide.isOpen && _vm.steps.length > 0
+  return _vm.features.userGuide && _vm.userGuide.isOpen && _vm.steps.length > 0
     ? _c(
         "div",
         { staticClass: "user-guide" },

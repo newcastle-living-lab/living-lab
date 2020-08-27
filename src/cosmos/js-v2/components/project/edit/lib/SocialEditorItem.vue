@@ -63,6 +63,7 @@ export default {
 					val = val.substring(fbPos + domain.length);
 					return val;
 				}
+				return val;
 			}
 
 			if (this.network == 'twitter' || this.network == 'instagram') {
@@ -76,6 +77,7 @@ export default {
 				if (match && match[2].length == 11) {
 					return match[2];
 				}
+				return val;
 			}
 		},
 

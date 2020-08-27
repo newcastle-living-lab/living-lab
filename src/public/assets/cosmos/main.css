@@ -5237,6 +5237,11 @@ a.text-gray-medium:visited {
   font-size: 0.7rem;
 }
 
+.app-header .navbar-section {
+  -webkit-box-flex: 1;
+          flex: 1 1 auto;
+}
+
 .app-header .navbar-buttons .btn-link {
   margin-right: 0.4rem;
 }

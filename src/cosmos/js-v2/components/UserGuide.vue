@@ -1,6 +1,6 @@
 
 <template>
-	<div v-if="userGuide.isOpen && steps.length > 0" class="user-guide">
+	<div v-if="features.userGuide && userGuide.isOpen && steps.length > 0" class="user-guide">
 
 		<template v-for="(step, idx) in steps">
 			<div class="tile" v-if="userGuide.currentStep === idx">
@@ -65,6 +65,8 @@ export default {
 	},
 
 	computed: {
+
+		...get(['features']),
 
 		...sync([
 			'userGuide',

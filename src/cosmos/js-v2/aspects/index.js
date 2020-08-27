@@ -2,6 +2,8 @@ import find from 'lodash/find';
 import map from 'lodash/map';
 import forEach from 'lodash/forEach';
 import cloneDeep from 'lodash/cloneDeep';
+import isEmpty from 'lodash/isEmpty';
+import isArray from 'lodash/isArray';
 
 import Welcome from './welcome';
 import ServiceModel from './service_model';
@@ -71,63 +73,84 @@ export default {
 
 	convertFromTemplate(project) {
 
-		// Skip projects without templates
-		if ( ! project.template || project.template.length == 0) {
-			return project;
-		}
+		// console.log('convertFromTemplate');
+		// console.log(JSON.parse(JSON.stringify(project)));
 
-		if (project.template === 'service-model') {
+		// Move the "main" definitions that remain with this aspect into the new object.
+		//
+		var newId = 'co_creation_of_service_model';
+		var serviceDefinitions = [
+			'model',
+			'drivers',
+			'policyDef',
+			'specDes',
+			'deployment',
+			'delivery',
+			'evaluation',
+			'user',
+			'beneficiary',
+			'initiator',
+			'extsvc',
+			'extorg',
+			'infsvc',
+		];
 
-			// Special treatment of service_model due to extracting some definitions.
-			//
+		forEach(serviceDefinitions, (definition) => {
+			if (typeof(project.data[definition]) !== 'undefined') {
+				project.data[newId][definition] = cloneDeep(project.data[definition]);
+				delete project.data[definition];
+			}
+		});
 
-			var newId = 'co_creation_of_service_model';
+		// Legacy theoryOfChange, Liv Lab Models (docs) and community reporting.
+		if (isArray(project.data.externals)) {
 
-			// Move the "main" definitions that remain with this aspect into the new object.
-			//
+			const defaultExternal = {
+				label: null,
+				url: null,
+				image: null,
+			};
 
-			var serviceDefinitions = [
-				'model',
-				'drivers',
-				'policyDef',
-				'specDes',
-				'deployment',
-				'delivery',
-				'evaluation',
-				'user',
-				'beneficiary',
-				'initiator',
-				'extsvc',
-				'extorg',
-				'infsvc',
-			];
+			console.debug("convertFromTemplate(): Identified `externals` key.");
 
-			forEach(serviceDefinitions, (definition) => {
-				if (typeof(project.data[definition]) !== 'undefined') {
-					project.data[newId][definition] = cloneDeep(project.data[definition]);
-					delete project.data[definition];
+			forEach(project.data.externals, (ext) => {
+
+				var newItem = {...defaultExternal, ...ext};
+				delete newItem.type;
+
+				switch (ext.type) {
+					case 'livlabmod':
+						project.data.documents.data.items.push(newItem);
+					break;
+					case 'toc':
+						project.data.theory_of_change.data.items.push(newItem);
+					break;
+					case 'comrep':
+						project.data.community_reporting.data.items.push(newItem);
+					break;
 				}
 			});
 
-			// Move the other definitions that have their own aspects into the respective objects.
-			//
-
-			var otherDefinitions = [
-				{'source': 'theoryOfChange', 'destination': 'theory_of_change'},
-				{'source': 'communityReporting', 'destination': 'community_reporting'},
-				{'source': 'social', 'destination': 'social_media'},
-				{'source': 'livingLabModels', 'destination': 'documents'},
-			];
-
-			forEach(otherDefinitions, (definition) => {
-				if (typeof(project.data[definition.source]) !== 'undefined') {
-					project.data[definition.destination] = { 'data': cloneDeep(project.data[definition.source]) };
-					delete project.data[definition.source];
-					console.debug(`Moving data.${definition.source} --> data.${definition.destination}`);
-				}
-			});
-
+			delete project.data['externals'];
 		}
+
+		// Move the other definitions that have their own aspects into the respective objects.
+		//
+
+		var otherDefinitions = [
+			{'source': 'theoryOfChange', 'destination': 'theory_of_change'},
+			{'source': 'communityReporting', 'destination': 'community_reporting'},
+			{'source': 'social', 'destination': 'social_media'},
+			{'source': 'livingLabModels', 'destination': 'documents'},
+		];
+
+		forEach(otherDefinitions, (definition) => {
+			if (typeof(project.data[definition.source]) !== 'undefined') {
+				project.data[definition.destination] = { 'data': cloneDeep(project.data[definition.source]) };
+				delete project.data[definition.source];
+				console.debug(`Moving data.${definition.source} --> data.${definition.destination}`);
+			}
+		});
 
 		if (project.template && project.template.length > 0 && project.template != 'service-model') {
 
@@ -179,6 +202,26 @@ export default {
 
 
 function setObjectKeys(onObject, fromArray) {
+
+	const defaults = {
+		stakeholder: {
+			label: null,
+			type: null,
+			colour: null,
+			url: null,
+		},
+		externals: {
+			label: '',
+			items: [],
+		},
+		social: {
+			twitter: [],
+			facebook: [],
+			instagram: [],
+			youtube: [],
+		},
+	};
+
 	forEach(fromArray, (item) => {
 		if (item.id && typeof(onObject[item.id]) === 'undefined') {
 			switch (item.dataType) {
@@ -194,25 +237,33 @@ function setObjectKeys(onObject, fromArray) {
 					onObject[item.id] = {};
 				break;
 			}
-
-			switch (item.type) {
-				case 'externals':
-					onObject[item.id] = {
-						label: '',
-						items: [],
-					};
-				break;
-				case 'stakeholder':
-					onObject[item.id] = {
-						label: null,
-						type: null,
-						colour: null,
-						url: null,
-					};
-				break;
-			}
 			console.debug(`setObjectKeys(): ${item.id}: Set to ${item.dataType}.`);
 		}
+
+		if (item.type == 'stakeholder') {
+			if (isEmpty(onObject[item.id])) {
+				onObject[item.id] = {...defaults.stakeholder};
+			} else {
+				onObject[item.id] = {...defaults.stakeholder, ...onObject[item.id]};
+			}
+		}
+
+		if (item.type == 'externals') {
+			if (isEmpty(onObject[item.id])) {
+				onObject[item.id] = {...defaults.externals};
+			} else {
+				onObject[item.id] = {...defaults.externals, ...onObject[item.id]};
+			}
+		}
+
+		if (item.type == 'social') {
+			if (isEmpty(onObject[item.id])) {
+				onObject[item.id] = {...defaults.social};
+			} else {
+				onObject[item.id] = {...defaults.social, ...onObject[item.id]};
+			}
+		}
+
 		if (Array.isArray(item.children)) {
 			console.debug(`setObjectKeys(): ${item.id}: Processing children!`);
 			onObject[item.id] = setObjectKeys(onObject[item.id], item.children);
