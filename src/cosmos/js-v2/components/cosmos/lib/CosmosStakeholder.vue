@@ -63,8 +63,14 @@ export default {
 
 	computed: {
 
+		...get(['userGuide']),
+
 		dataPath() {
-			return `project@data.${this.aspectId}`;
+			if (this.userGuide.isOpen) {
+				return `userGuide@project.data.${this.aspectId}`;
+			} else {
+				return `project@data.${this.aspectId}`;
+			}
 		},
 
 		aspectData: get(':dataPath'),
@@ -74,6 +80,11 @@ export default {
 		},
 
 		isVisible() {
+
+			if (typeof(this.config.group.visible) !== 'undefined') {
+				return this.config.group.visible;
+			}
+
 			return this.model.label
 				&& this.model.label.length > 0
 				? true : false;
