@@ -25,7 +25,7 @@
 										<i class="form-icon icon icon-search"></i>
 									</div>
 								</div>
-								<div class="column col-6">
+								<div class="column col-6" v-show="hasAdminRole || !requireAuth">
 									<label class="form-radio form-inline input-sm">
 										<input type="radio" value="" v-model="filter.owner"><i class="form-icon"></i> All
 									</label>
@@ -143,6 +143,8 @@ export default {
 			'userCanEdit',
 			'userCanCreate',
 			'user',
+			'hasAdminRole',
+			'requireAuth',
 		]),
 
 		canCreateNewProject() {
@@ -205,6 +207,9 @@ export default {
 	},
 
 	mounted() {
+		if (this.requireAuth && ! this.hasAdminRole) {
+			this.filter.owner = 'mine';
+		}
 		this.clearProject();
 		this.fetchProjects();
 		this.setTitle();

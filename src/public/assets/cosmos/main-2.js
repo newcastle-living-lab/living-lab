@@ -15010,7 +15010,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       }
     };
   },
-  computed: _objectSpread({}, Object(vuex_pathify__WEBPACK_IMPORTED_MODULE_0__["sync"])(['projects']), {}, Object(vuex_pathify__WEBPACK_IMPORTED_MODULE_0__["get"])(['appName', 'userCanEdit', 'userCanCreate', 'user']), {
+  computed: _objectSpread({}, Object(vuex_pathify__WEBPACK_IMPORTED_MODULE_0__["sync"])(['projects']), {}, Object(vuex_pathify__WEBPACK_IMPORTED_MODULE_0__["get"])(['appName', 'userCanEdit', 'userCanCreate', 'user', 'hasAdminRole', 'requireAuth']), {
     canCreateNewProject: function canCreateNewProject() {
       return this.newProject.name && this.newProject.name.length > 0;
     },
@@ -15065,6 +15065,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     }, 100)
   },
   mounted: function mounted() {
+    if (this.requireAuth && !this.hasAdminRole) {
+      this.filter.owner = 'mine';
+    }
+
     this.clearProject();
     this.fetchProjects();
     this.setTitle();
@@ -49329,59 +49333,75 @@ var render = function() {
                   )
                 ]),
                 _vm._v(" "),
-                _c("div", { staticClass: "column col-6" }, [
-                  _c(
-                    "label",
-                    { staticClass: "form-radio form-inline input-sm" },
-                    [
-                      _c("input", {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.filter.owner,
-                            expression: "filter.owner"
+                _c(
+                  "div",
+                  {
+                    directives: [
+                      {
+                        name: "show",
+                        rawName: "v-show",
+                        value: _vm.hasAdminRole || !_vm.requireAuth,
+                        expression: "hasAdminRole || !requireAuth"
+                      }
+                    ],
+                    staticClass: "column col-6"
+                  },
+                  [
+                    _c(
+                      "label",
+                      { staticClass: "form-radio form-inline input-sm" },
+                      [
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.filter.owner,
+                              expression: "filter.owner"
+                            }
+                          ],
+                          attrs: { type: "radio", value: "" },
+                          domProps: { checked: _vm._q(_vm.filter.owner, "") },
+                          on: {
+                            change: function($event) {
+                              return _vm.$set(_vm.filter, "owner", "")
+                            }
                           }
-                        ],
-                        attrs: { type: "radio", value: "" },
-                        domProps: { checked: _vm._q(_vm.filter.owner, "") },
-                        on: {
-                          change: function($event) {
-                            return _vm.$set(_vm.filter, "owner", "")
+                        }),
+                        _c("i", { staticClass: "form-icon" }),
+                        _vm._v(" All\n\t\t\t\t\t\t\t\t")
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "label",
+                      { staticClass: "form-radio form-inline input-sm" },
+                      [
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.filter.owner,
+                              expression: "filter.owner"
+                            }
+                          ],
+                          attrs: { type: "radio", value: "mine" },
+                          domProps: {
+                            checked: _vm._q(_vm.filter.owner, "mine")
+                          },
+                          on: {
+                            change: function($event) {
+                              return _vm.$set(_vm.filter, "owner", "mine")
+                            }
                           }
-                        }
-                      }),
-                      _c("i", { staticClass: "form-icon" }),
-                      _vm._v(" All\n\t\t\t\t\t\t\t\t")
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "label",
-                    { staticClass: "form-radio form-inline input-sm" },
-                    [
-                      _c("input", {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.filter.owner,
-                            expression: "filter.owner"
-                          }
-                        ],
-                        attrs: { type: "radio", value: "mine" },
-                        domProps: { checked: _vm._q(_vm.filter.owner, "mine") },
-                        on: {
-                          change: function($event) {
-                            return _vm.$set(_vm.filter, "owner", "mine")
-                          }
-                        }
-                      }),
-                      _c("i", { staticClass: "form-icon" }),
-                      _vm._v(" Just mine\n\t\t\t\t\t\t\t\t")
-                    ]
-                  )
-                ])
+                        }),
+                        _c("i", { staticClass: "form-icon" }),
+                        _vm._v(" Just mine\n\t\t\t\t\t\t\t\t")
+                      ]
+                    )
+                  ]
+                )
               ])
             ]),
             _vm._v(" "),
