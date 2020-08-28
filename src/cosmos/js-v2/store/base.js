@@ -52,15 +52,34 @@ export const getters = {
 	},
 
 	hasUser(state) {
-		return state.config.user !== null && typeof state.config.user === 'object' && state.config.user.username;
+		return (state.config.user !== null && typeof state.config.user === 'object' && state.config.user.username ? true : false);
 	},
 
 	hasEditRole(state, getters) {
 		return (getters.hasUser && getters.user.roles.indexOf('edit') >= 0);
 	},
 
+	hasAdminRole(state, getters) {
+		return (getters.hasUser && getters.user.roles.indexOf('admin') >= 0);
+	},
+
 	user(state) {
 		return state.config.user;
+	},
+
+	userCanCreate(state, getters) {
+
+		if ( ! getters.requireAuth) {
+			return true;
+		}
+
+		if ( ! getters.hasUser) {
+			return false;
+		}
+
+		if (getters.hasEditRole || getters.hasAdminRole) {
+			return true;
+		}
 	},
 
 	userCanEdit(state, getters) {
@@ -69,7 +88,24 @@ export const getters = {
 			return true;
 		}
 
-		return getters.hasUser && getters.hasEditRole;
+		var hasUser = getters.hasUser;
+		var isOwner = (getters.user.username == state.project.created_by);
+		var isAdmin = getters.hasAdminRole;
+		var isEditor = getters.hasEditRole;
+
+		if ( ! hasUser) {
+			return false;
+		}
+
+		if (isAdmin) {
+			return true;
+		}
+
+		if (isOwner && isEditor) {
+			return true;
+		}
+
+		return false;
 	}
 
 };

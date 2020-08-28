@@ -7,13 +7,20 @@ exports.route = "/cosmos-api/projects";
 
 exports.handler = function(req, res, next) {
 
+	var require_auth = res.locals.require_auth;
+	var username = null;
+
+	if (require_auth) {
+		username = req.user.username;
+	}
+
 	var decodedBody = req.body;
 
 	var params = {
 		$name: decodedBody.name,
 		$created_at: decodedBody.created_at,
 		$modified_at: decodedBody.modified_at,
-		$created_by: decodedBody.created_by,
+		$created_by: username,
 		$data: JSON.stringify({}),
 	};
 

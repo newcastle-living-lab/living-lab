@@ -11,7 +11,7 @@
 						</div>
 						<div class="card-filter">
 							<div class="columns">
-								<div class="column col-12">
+								<div class="column col-6">
 									<div class="has-icon-left">
 										<VInput
 											type="search"
@@ -24,6 +24,14 @@
 										/>
 										<i class="form-icon icon icon-search"></i>
 									</div>
+								</div>
+								<div class="column col-6">
+									<label class="form-radio form-inline input-sm">
+										<input type="radio" value="" v-model="filter.owner"><i class="form-icon"></i> All
+									</label>
+									<label class="form-radio form-inline input-sm">
+										<input type="radio" value="mine" v-model="filter.owner"><i class="form-icon"></i> Just mine
+									</label>
 								</div>
 							</div>
 						</div>
@@ -62,7 +70,7 @@
 						<div class="card-header">
 							<div class="card-title">Create new project</div>
 						</div>
-						<template v-if="userCanEdit">
+						<template v-if="userCanCreate">
 							<div class="card-body">
 								<NewProject v-model="newProject" class="card-content" />
 							</div>
@@ -116,10 +124,10 @@ export default {
 		return {
 			filter: {
 				query: '',
+				owner: '',
 			},
 			newProject: {
 				name: null,
-				created_by: null,
 			},
 		}
 	},
@@ -133,8 +141,7 @@ export default {
 		...get([
 			'appName',
 			'userCanEdit',
-			'hasUser',
-			'requireAuth',
+			'userCanCreate',
 			'user',
 		]),
 
@@ -152,7 +159,7 @@ export default {
 
 		filteredProjects() {
 
-			if (this.filter.query.length == 0) {
+			if (this.filter.query.length == 0 && this.filter.owner.length == 0) {
 				return this.projects;
 			}
 
@@ -168,9 +175,8 @@ export default {
 				});
 			}
 
-			var tpl = this.filter.template;
-			if (tpl && tpl.length > 0) {
-				items = filter(items, { template: tpl });
+			if (this.filter.owner == 'mine') {
+				items = filter(items, { created_by: this.user.username  });
 			}
 
 			return items;

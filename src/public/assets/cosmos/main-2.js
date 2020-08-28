@@ -342,7 +342,7 @@ __webpack_require__.r(__webpack_exports__);
 var _config_json__WEBPACK_IMPORTED_MODULE_0___namespace = /*#__PURE__*/__webpack_require__.t(/*! ./config.json */ "./js-v2/aspects/analytic_model/config.json", 1);
 /* harmony import */ var _definitions_json__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./definitions.json */ "./js-v2/aspects/analytic_model/definitions.json");
 var _definitions_json__WEBPACK_IMPORTED_MODULE_1___namespace = /*#__PURE__*/__webpack_require__.t(/*! ./definitions.json */ "./js-v2/aspects/analytic_model/definitions.json", 1);
-/* harmony import */ var _Guide__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Guide */ "./js-v2/aspects/analytic_model/Guide.js");
+/* harmony import */ var _Guide__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Guide */ "./js-v2/aspects/analytic_model/Guide.js");
 /* harmony import */ var _components__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components */ "./js-v2/aspects/analytic_model/components/index.js");
 
  // import NODES from "./nodes.json";
@@ -352,7 +352,7 @@ var _definitions_json__WEBPACK_IMPORTED_MODULE_1___namespace = /*#__PURE__*/__we
 /* harmony default export */ __webpack_exports__["default"] = ({
   CONFIG: _config_json__WEBPACK_IMPORTED_MODULE_0__,
   DEFINITIONS: _definitions_json__WEBPACK_IMPORTED_MODULE_1__,
-  Guide: _Guide__WEBPACK_IMPORTED_MODULE_4__["default"],
+  Guide: _Guide__WEBPACK_IMPORTED_MODULE_2__["default"],
   Components: _components__WEBPACK_IMPORTED_MODULE_3__ // NODES,
 
 });
@@ -6244,20 +6244,53 @@ var getters = {
     return state.config.require_auth === true;
   },
   hasUser: function hasUser(state) {
-    return state.config.user !== null && _typeof(state.config.user) === 'object' && state.config.user.username;
+    return state.config.user !== null && _typeof(state.config.user) === 'object' && state.config.user.username ? true : false;
   },
   hasEditRole: function hasEditRole(state, getters) {
     return getters.hasUser && getters.user.roles.indexOf('edit') >= 0;
   },
+  hasAdminRole: function hasAdminRole(state, getters) {
+    return getters.hasUser && getters.user.roles.indexOf('admin') >= 0;
+  },
   user: function user(state) {
     return state.config.user;
+  },
+  userCanCreate: function userCanCreate(state, getters) {
+    if (!getters.requireAuth) {
+      return true;
+    }
+
+    if (!getters.hasUser) {
+      return false;
+    }
+
+    if (getters.hasEditRole || getters.hasAdminRole) {
+      return true;
+    }
   },
   userCanEdit: function userCanEdit(state, getters) {
     if (!getters.requireAuth) {
       return true;
     }
 
-    return getters.hasUser && getters.hasEditRole;
+    var hasUser = getters.hasUser;
+    var isOwner = getters.user.username == state.project.created_by;
+    var isAdmin = getters.hasAdminRole;
+    var isEditor = getters.hasEditRole;
+
+    if (!hasUser) {
+      return false;
+    }
+
+    if (isAdmin) {
+      return true;
+    }
+
+    if (isOwner && isEditor) {
+      return true;
+    }
+
+    return false;
   }
 };
 var mutations = _objectSpread({}, vuex_pathify__WEBPACK_IMPORTED_MODULE_0__["make"].mutations(state), {
@@ -14774,11 +14807,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     value: {
@@ -14786,7 +14814,6 @@ __webpack_require__.r(__webpack_exports__);
         return {
           name: null,
           template: null,
-          created_by: null,
           created_at: null,
           modified_at: null
         };
@@ -14797,7 +14824,6 @@ __webpack_require__.r(__webpack_exports__);
     return {
       previousValue: {
         name: null,
-        created_by: null,
         created_at: null,
         modified_at: null
       }
@@ -14822,12 +14848,10 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     filterValue: function filterValue(value) {
       var name = value.name === null || value.name === "" ? undefined : value.name;
-      var created_by = value.created_by === null || value.created_by === "" ? undefined : value.created_by;
       var created_at = new Date().toLocaleDateString();
       var modified_at = new Date().toLocaleDateString();
       return {
         name: name,
-        created_by: created_by,
         created_at: created_at,
         modified_at: modified_at
       };
@@ -14956,6 +14980,14 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -14970,15 +15002,15 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   data: function data() {
     return {
       filter: {
-        query: ''
+        query: '',
+        owner: ''
       },
       newProject: {
-        name: null,
-        created_by: null
+        name: null
       }
     };
   },
-  computed: _objectSpread({}, Object(vuex_pathify__WEBPACK_IMPORTED_MODULE_0__["sync"])(['projects']), {}, Object(vuex_pathify__WEBPACK_IMPORTED_MODULE_0__["get"])(['appName', 'userCanEdit', 'hasUser', 'requireAuth', 'user']), {
+  computed: _objectSpread({}, Object(vuex_pathify__WEBPACK_IMPORTED_MODULE_0__["sync"])(['projects']), {}, Object(vuex_pathify__WEBPACK_IMPORTED_MODULE_0__["get"])(['appName', 'userCanEdit', 'userCanCreate', 'user']), {
     canCreateNewProject: function canCreateNewProject() {
       return this.newProject.name && this.newProject.name.length > 0;
     },
@@ -14990,7 +15022,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       return '/login?ref=' + encodeURIComponent(uri);
     },
     filteredProjects: function filteredProjects() {
-      if (this.filter.query.length == 0) {
+      if (this.filter.query.length == 0 && this.filter.owner.length == 0) {
         return this.projects;
       }
 
@@ -15006,11 +15038,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         });
       }
 
-      var tpl = this.filter.template;
-
-      if (tpl && tpl.length > 0) {
+      if (this.filter.owner == 'mine') {
         items = lodash_filter__WEBPACK_IMPORTED_MODULE_2___default()(items, {
-          template: tpl
+          created_by: this.user.username
         });
       }
 
@@ -49242,30 +49272,6 @@ var render = function() {
         })
       ],
       1
-    ),
-    _vm._v(" "),
-    _c(
-      "div",
-      { staticClass: "form-group" },
-      [
-        _c(
-          "label",
-          { staticClass: "form-label", attrs: { for: "created_by" } },
-          [_vm._v("Created by")]
-        ),
-        _vm._v(" "),
-        _c("VInput", {
-          attrs: { type: "text", id: "created_by" },
-          model: {
-            value: _vm.value.created_by,
-            callback: function($$v) {
-              _vm.$set(_vm.value, "created_by", $$v)
-            },
-            expression: "value.created_by"
-          }
-        })
-      ],
-      1
     )
   ])
 }
@@ -49300,7 +49306,7 @@ var render = function() {
             _vm._v(" "),
             _c("div", { staticClass: "card-filter" }, [
               _c("div", { staticClass: "columns" }, [
-                _c("div", { staticClass: "column col-12" }, [
+                _c("div", { staticClass: "column col-6" }, [
                   _c(
                     "div",
                     { staticClass: "has-icon-left" },
@@ -49320,6 +49326,60 @@ var render = function() {
                       _c("i", { staticClass: "form-icon icon icon-search" })
                     ],
                     1
+                  )
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "column col-6" }, [
+                  _c(
+                    "label",
+                    { staticClass: "form-radio form-inline input-sm" },
+                    [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.filter.owner,
+                            expression: "filter.owner"
+                          }
+                        ],
+                        attrs: { type: "radio", value: "" },
+                        domProps: { checked: _vm._q(_vm.filter.owner, "") },
+                        on: {
+                          change: function($event) {
+                            return _vm.$set(_vm.filter, "owner", "")
+                          }
+                        }
+                      }),
+                      _c("i", { staticClass: "form-icon" }),
+                      _vm._v(" All\n\t\t\t\t\t\t\t\t")
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "label",
+                    { staticClass: "form-radio form-inline input-sm" },
+                    [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.filter.owner,
+                            expression: "filter.owner"
+                          }
+                        ],
+                        attrs: { type: "radio", value: "mine" },
+                        domProps: { checked: _vm._q(_vm.filter.owner, "mine") },
+                        on: {
+                          change: function($event) {
+                            return _vm.$set(_vm.filter, "owner", "mine")
+                          }
+                        }
+                      }),
+                      _c("i", { staticClass: "form-icon" }),
+                      _vm._v(" Just mine\n\t\t\t\t\t\t\t\t")
+                    ]
                   )
                 ])
               ])
@@ -49389,7 +49449,7 @@ var render = function() {
             [
               _vm._m(1),
               _vm._v(" "),
-              _vm.userCanEdit
+              _vm.userCanCreate
                 ? [
                     _c(
                       "div",
