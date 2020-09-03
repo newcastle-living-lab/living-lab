@@ -151,6 +151,10 @@ export default {
 				lineJoin: "round"
 			};
 
+			if (this.userGuide.isOpen) {
+				defaultConfig.visible = this.userGuide.currentStep >= 4;
+			}
+
 			config.spmToSom = {
 				...defaultConfig,
 				x: 140,
