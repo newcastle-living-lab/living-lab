@@ -6274,7 +6274,7 @@ var getters = {
     }
 
     var hasUser = getters.hasUser;
-    var isOwner = getters.user.username == state.project.created_by;
+    var isOwner = hasUser && getters.user.username == state.project.created_by;
     var isAdmin = getters.hasAdminRole;
     var isEditor = getters.hasEditRole;
 
@@ -8663,6 +8663,11 @@ var defaultTextConfig = {
         lineCap: "round",
         lineJoin: "round"
       };
+
+      if (this.userGuide.isOpen) {
+        defaultConfig.visible = this.userGuide.currentStep >= 4;
+      }
+
       config.spmToSom = _objectSpread({}, defaultConfig, {
         x: 140,
         y: 270

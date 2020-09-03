@@ -89,7 +89,7 @@ export const getters = {
 		}
 
 		var hasUser = getters.hasUser;
-		var isOwner = (getters.user.username == state.project.created_by);
+		var isOwner = (hasUser && getters.user.username == state.project.created_by);
 		var isAdmin = getters.hasAdminRole;
 		var isEditor = getters.hasEditRole;
 
