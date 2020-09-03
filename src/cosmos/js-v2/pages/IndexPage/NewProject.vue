@@ -7,11 +7,6 @@
 			<VInput type="text" id="name" v-model="value.name" />
 		</div>
 
-		<div class="form-group">
-			<label class="form-label" for="created_by">Created by</label>
-			<VInput type="text" id="created_by" v-model="value.created_by" />
-		</div>
-
 	</div>
 
 </template>
@@ -26,7 +21,6 @@ export default {
 				return {
 					name: null,
 					template: null,
-					created_by: null,
 					created_at: null,
 					modified_at: null,
 				};
@@ -38,7 +32,6 @@ export default {
 		return {
 			previousValue: {
 				name: null,
-				created_by: null,
 				created_at: null,
 				modified_at: null,
 			}
@@ -69,14 +62,12 @@ export default {
 
 		filterValue(value) {
 			const name = value.name === null || value.name === "" ? undefined : value.name;
-			const created_by = value.created_by === null || value.created_by === "" ? undefined : value.created_by;
 
 			const created_at = (new Date()).toLocaleDateString();
 			const modified_at = (new Date()).toLocaleDateString();
 
 			return {
 				name: name,
-				created_by: created_by,
 				created_at: created_at,
 				modified_at: modified_at,
 			};

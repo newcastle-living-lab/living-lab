@@ -155,14 +155,166 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./js-v2/aspects/analytic_model/Guide.js":
+/*!***********************************************!*\
+  !*** ./js-v2/aspects/analytic_model/Guide.js ***!
+  \***********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ({
+  steps: [{
+    'type': 'info',
+    'title': 'In this model, we consider a Cosie initiative in terms of a set of roles and the conversational relationships in which they engage.'
+  }, {
+    'type': 'info',
+    'title': 'First we have front line service deliverer and a client.'
+  }, {
+    'type': 'info',
+    'title': 'The deliverer has a manager or supervisor. This pattern of an individual engaging in two conversations will be repeated.'
+  }, {
+    'type': 'info',
+    'title': 'The delivery takes place in some formal or informal institutional context.'
+  }, {
+    'type': 'info',
+    'title': 'Finally, the service exists in some wider policy setting.'
+  }, {
+    'type': 'info',
+    'title': 'This is meant to be an abstract model. In some cases there may be a flat organisation where delivery, management and policy are undertaken by all the members of a small team, in other cases they may represent distinct individuals and contexts.'
+  }, {
+    'type': 'question',
+    'title': 'How do the concepts of micro, meso and macro map onto your initiative?'
+  }, {
+    'type': 'question',
+    'title': 'How does communication take place between them?'
+  }, {
+    'type': 'question',
+    'title': 'How coordinated and coherent are they?'
+  }, {
+    'type': 'question',
+    'title': 'In particular, are there information flows and conversations between macro and micro which are not mediated by the meso? What are the implications of this?'
+  }, {
+    'type': 'info',
+    'title': 'The next model considers change agency in terms of roles and conversations.'
+  }, {
+    'type': 'info',
+    'title': 'A change must be instigated, then it is executed.'
+  }, {
+    'type': 'info',
+    'title': 'The changes we are considering are to a person, or a place or environment.'
+  }, {
+    'type': 'info',
+    'title': 'The changes we are considering are often themselves complex and are about complex situations. Often they are based on some theory which has been introduced or brokered into the situation.'
+  }, {
+    'type': 'info',
+    'title': 'There is a set of intended beneficiaries.'
+  }, {
+    'type': 'info',
+    'title': 'But there are also possible dis-beneficiaries or victims of the change.'
+  }, {
+    'type': 'info',
+    'title': 'This model is designed as a probe on the initial service model to identify the specific actors who, at various stages in the development of the initiative, have undertaken one or more of these change agency roles. Who are they?'
+  }]
+});
+
+/***/ }),
+
+/***/ "./js-v2/aspects/analytic_model/components/AnalyticDashboard.vue":
+/*!***********************************************************************!*\
+  !*** ./js-v2/aspects/analytic_model/components/AnalyticDashboard.vue ***!
+  \***********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _AnalyticDashboard_vue_vue_type_template_id_195338a5___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./AnalyticDashboard.vue?vue&type=template&id=195338a5& */ "./js-v2/aspects/analytic_model/components/AnalyticDashboard.vue?vue&type=template&id=195338a5&");
+/* harmony import */ var _AnalyticDashboard_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./AnalyticDashboard.vue?vue&type=script&lang=js& */ "./js-v2/aspects/analytic_model/components/AnalyticDashboard.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _AnalyticDashboard_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _AnalyticDashboard_vue_vue_type_template_id_195338a5___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _AnalyticDashboard_vue_vue_type_template_id_195338a5___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "js-v2/aspects/analytic_model/components/AnalyticDashboard.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./js-v2/aspects/analytic_model/components/AnalyticDashboard.vue?vue&type=script&lang=js&":
+/*!************************************************************************************************!*\
+  !*** ./js-v2/aspects/analytic_model/components/AnalyticDashboard.vue?vue&type=script&lang=js& ***!
+  \************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_AnalyticDashboard_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./AnalyticDashboard.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./js-v2/aspects/analytic_model/components/AnalyticDashboard.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_AnalyticDashboard_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./js-v2/aspects/analytic_model/components/AnalyticDashboard.vue?vue&type=template&id=195338a5&":
+/*!******************************************************************************************************!*\
+  !*** ./js-v2/aspects/analytic_model/components/AnalyticDashboard.vue?vue&type=template&id=195338a5& ***!
+  \******************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AnalyticDashboard_vue_vue_type_template_id_195338a5___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./AnalyticDashboard.vue?vue&type=template&id=195338a5& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./js-v2/aspects/analytic_model/components/AnalyticDashboard.vue?vue&type=template&id=195338a5&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AnalyticDashboard_vue_vue_type_template_id_195338a5___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AnalyticDashboard_vue_vue_type_template_id_195338a5___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./js-v2/aspects/analytic_model/components/index.js":
+/*!**********************************************************!*\
+  !*** ./js-v2/aspects/analytic_model/components/index.js ***!
+  \**********************************************************/
+/*! exports provided: AnalyticDashboard */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _AnalyticDashboard__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./AnalyticDashboard */ "./js-v2/aspects/analytic_model/components/AnalyticDashboard.vue");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "AnalyticDashboard", function() { return _AnalyticDashboard__WEBPACK_IMPORTED_MODULE_0__["default"]; });
+
+
+
+
+/***/ }),
+
 /***/ "./js-v2/aspects/analytic_model/config.json":
 /*!**************************************************!*\
   !*** ./js-v2/aspects/analytic_model/config.json ***!
   \**************************************************/
-/*! exports provided: id, title, routeName, stageSize, default */
+/*! exports provided: id, title, routeName, dashboardComponent, stageSize, default */
 /***/ (function(module) {
 
-module.exports = JSON.parse("{\"id\":\"analytic_model\",\"title\":\"Analytic Model\",\"routeName\":\"model\",\"stageSize\":{\"width\":1285,\"height\":750}}");
+module.exports = JSON.parse("{\"id\":\"analytic_model\",\"title\":\"Analytic Model\",\"routeName\":\"model\",\"dashboardComponent\":\"AnalyticDashboard\",\"stageSize\":{\"width\":1285,\"height\":750}}");
 
 /***/ }),
 
@@ -190,27 +342,20 @@ __webpack_require__.r(__webpack_exports__);
 var _config_json__WEBPACK_IMPORTED_MODULE_0___namespace = /*#__PURE__*/__webpack_require__.t(/*! ./config.json */ "./js-v2/aspects/analytic_model/config.json", 1);
 /* harmony import */ var _definitions_json__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./definitions.json */ "./js-v2/aspects/analytic_model/definitions.json");
 var _definitions_json__WEBPACK_IMPORTED_MODULE_1___namespace = /*#__PURE__*/__webpack_require__.t(/*! ./definitions.json */ "./js-v2/aspects/analytic_model/definitions.json", 1);
-/* harmony import */ var _nodes_json__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./nodes.json */ "./js-v2/aspects/analytic_model/nodes.json");
-var _nodes_json__WEBPACK_IMPORTED_MODULE_2___namespace = /*#__PURE__*/__webpack_require__.t(/*! ./nodes.json */ "./js-v2/aspects/analytic_model/nodes.json", 1);
+/* harmony import */ var _Guide__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Guide */ "./js-v2/aspects/analytic_model/Guide.js");
+/* harmony import */ var _components__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components */ "./js-v2/aspects/analytic_model/components/index.js");
+
+ // import NODES from "./nodes.json";
 
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   CONFIG: _config_json__WEBPACK_IMPORTED_MODULE_0__,
   DEFINITIONS: _definitions_json__WEBPACK_IMPORTED_MODULE_1__,
-  NODES: _nodes_json__WEBPACK_IMPORTED_MODULE_2__
+  Guide: _Guide__WEBPACK_IMPORTED_MODULE_2__["default"],
+  Components: _components__WEBPACK_IMPORTED_MODULE_3__ // NODES,
+
 });
-
-/***/ }),
-
-/***/ "./js-v2/aspects/analytic_model/nodes.json":
-/*!*************************************************!*\
-  !*** ./js-v2/aspects/analytic_model/nodes.json ***!
-  \*************************************************/
-/*! exports provided: 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, default */
-/***/ (function(module) {
-
-module.exports = JSON.parse("[{\"componentName\":\"CosmosTitle\",\"definitionName\":\"model\"},{\"componentName\":\"CosmosNodeBracket\",\"config\":{\"position\":\"above\",\"label\":\"Meso\",\"labelColour\":\"#3d9970\",\"lineColour\":\"#0074d9\",\"description\":\"There may be a number of stages at this level.\",\"x\":242,\"y\":215,\"width\":310}},{\"componentName\":\"CosmosNodeBracket\",\"config\":{\"position\":\"below\",\"label\":\"Macro\",\"labelColour\":\"#3d9970\",\"lineColour\":\"#85144b\",\"x\":85,\"y\":400,\"width\":300}},{\"componentName\":\"CosmosNodeBracket\",\"config\":{\"position\":\"below\",\"label\":\"Micro\",\"labelColour\":\"#3d9970\",\"lineColour\":\"#0074d9\",\"x\":400,\"y\":400,\"width\":300}},{\"componentName\":\"v-line\",\"_comment\":\"Serv Pol Maker -- Serv Org Mgr\",\"config\":{\"x\":140,\"y\":270,\"points\":[0,0,45,0],\"stroke\":\"#ff4136\",\"strokeWidth\":6,\"lineCap\":\"round\",\"lineJoin\":\"round\"}},{\"componentName\":\"v-line\",\"_comment\":\"Serv Org Mgr -- Serv Del Mgr\",\"config\":{\"x\":295,\"y\":270,\"points\":[0,0,45,0],\"stroke\":\"#ff4136\",\"strokeWidth\":6,\"lineCap\":\"round\",\"lineJoin\":\"round\"}},{\"componentName\":\"v-line\",\"comment\":\"Serv Del Mgr -- Front Line Serv Del\",\"config\":{\"x\":450,\"y\":270,\"points\":[0,0,45,0],\"stroke\":\"#ff4136\",\"strokeWidth\":6,\"lineCap\":\"round\",\"lineJoin\":\"round\"}},{\"componentName\":\"v-line\",\"comment\":\"Front Line Serv Del -- Client/User\",\"config\":{\"x\":605,\"y\":270,\"points\":[0,0,45,0],\"stroke\":\"#ff4136\",\"strokeWidth\":6,\"lineCap\":\"round\",\"lineJoin\":\"round\"}},{\"componentName\":\"CosmosStakeholder\",\"definitionName\":\"serviceDeliveryManager\",\"config\":{\"group\":{\"x\":345,\"y\":225}}},{\"componentName\":\"CosmosStakeholder\",\"definitionName\":\"frontLineServiceDeliverer\",\"config\":{\"group\":{\"x\":500,\"y\":225}}},{\"componentName\":\"CosmosStakeholder\",\"definitionName\":\"user\",\"config\":{\"group\":{\"x\":655,\"y\":225}}},{\"componentName\":\"CosmosStakeholder\",\"definitionName\":\"serviceOrganisationManager\",\"config\":{\"group\":{\"x\":190,\"y\":225}}},{\"componentName\":\"CosmosStakeholder\",\"definitionName\":\"servicePolicyMaker\",\"config\":{\"group\":{\"x\":35,\"y\":225}}},{\"componentName\":\"CosmosGroup\",\"comment\":\"Lines for right side\",\"config\":{\"x\":870,\"y\":30},\"children\":[{\"componentName\":\"v-line\",\"comment\":\"instigator -- changemaker\",\"config\":{\"x\":100,\"y\":315,\"points\":[0,0,190,0],\"stroke\":\"#ff4136\",\"strokeWidth\":3,\"dash\":[15,5]}},{\"componentName\":\"v-line\",\"comment\":\"instigator -- broker\",\"config\":{\"x\":100,\"y\":270,\"points\":[0,0,45,-45],\"stroke\":\"#ff4136\",\"strokeWidth\":3,\"dash\":[15,5]}},{\"componentName\":\"v-line\",\"comment\":\"broker -- changeTheorists\",\"config\":{\"x\":245,\"y\":135,\"points\":[0,0,45,-45],\"stroke\":\"#ff4136\",\"strokeWidth\":3,\"dash\":[15,5]}},{\"componentName\":\"v-line\",\"comment\":\"instigators -- subjects\",\"config\":{\"x\":100,\"y\":360,\"points\":[0,0,45,45],\"stroke\":\"#ff4136\",\"strokeWidth\":3,\"dash\":[15,5]}},{\"componentName\":\"v-line\",\"comment\":\"victims -- subjects\",\"config\":{\"x\":100,\"y\":540,\"points\":[0,0,45,-45],\"stroke\":\"#ff4136\",\"strokeWidth\":3,\"dash\":[15,5]}},{\"componentName\":\"v-line\",\"comment\":\"subjects -- changemakers\",\"config\":{\"x\":245,\"y\":405,\"points\":[0,0,45,-45],\"stroke\":\"#ff4136\",\"strokeWidth\":3,\"dash\":[15,5]}},{\"componentName\":\"v-line\",\"comment\":\"subjects -- beneficiaries\",\"config\":{\"x\":245,\"y\":495,\"points\":[0,0,45,45],\"stroke\":\"#ff4136\",\"strokeWidth\":3,\"dash\":[15,5]}},{\"componentName\":\"v-line\",\"comment\":\"broker -- changemakers\",\"config\":{\"x\":245,\"y\":225,\"points\":[0,0,45,45],\"stroke\":\"#ff4136\",\"strokeWidth\":3,\"dash\":[15,5]}}]},{\"componentName\":\"CosmosGroup\",\"config\":{\"x\":870,\"y\":30},\"children\":[{\"componentName\":\"CosmosStakeholder\",\"definitionName\":\"instigatorsOfChange\",\"config\":{\"group\":{\"x\":0,\"y\":270}}},{\"componentName\":\"CosmosStakeholder\",\"definitionName\":\"changeMakers\",\"config\":{\"group\":{\"x\":290,\"y\":270}}},{\"componentName\":\"CosmosStakeholder\",\"definitionName\":\"subjectsOfChange\",\"config\":{\"group\":{\"x\":145,\"y\":405}}},{\"componentName\":\"CosmosStakeholder\",\"definitionName\":\"broker\",\"config\":{\"group\":{\"x\":145,\"y\":135}}},{\"componentName\":\"CosmosStakeholder\",\"definitionName\":\"changeTheorists\",\"config\":{\"group\":{\"x\":290,\"y\":0}}},{\"componentName\":\"CosmosStakeholder\",\"definitionName\":\"beneficiaries\",\"config\":{\"group\":{\"x\":290,\"y\":540}}},{\"componentName\":\"CosmosStakeholder\",\"definitionName\":\"victims\",\"config\":{\"group\":{\"x\":0,\"y\":540}}}]}]");
 
 /***/ }),
 
@@ -6061,7 +6206,7 @@ var state = {
   aspectEditId: false,
   isLoading: false,
   features: {
-    userGuide: false
+    userGuide: true
   },
   config: {
     user: null,
@@ -6099,20 +6244,53 @@ var getters = {
     return state.config.require_auth === true;
   },
   hasUser: function hasUser(state) {
-    return state.config.user !== null && _typeof(state.config.user) === 'object' && state.config.user.username;
+    return state.config.user !== null && _typeof(state.config.user) === 'object' && state.config.user.username ? true : false;
   },
   hasEditRole: function hasEditRole(state, getters) {
     return getters.hasUser && getters.user.roles.indexOf('edit') >= 0;
   },
+  hasAdminRole: function hasAdminRole(state, getters) {
+    return getters.hasUser && getters.user.roles.indexOf('admin') >= 0;
+  },
   user: function user(state) {
     return state.config.user;
+  },
+  userCanCreate: function userCanCreate(state, getters) {
+    if (!getters.requireAuth) {
+      return true;
+    }
+
+    if (!getters.hasUser) {
+      return false;
+    }
+
+    if (getters.hasEditRole || getters.hasAdminRole) {
+      return true;
+    }
   },
   userCanEdit: function userCanEdit(state, getters) {
     if (!getters.requireAuth) {
       return true;
     }
 
-    return getters.hasUser && getters.hasEditRole;
+    var hasUser = getters.hasUser;
+    var isOwner = hasUser && getters.user.username == state.project.created_by;
+    var isAdmin = getters.hasAdminRole;
+    var isEditor = getters.hasEditRole;
+
+    if (!hasUser) {
+      return false;
+    }
+
+    if (isAdmin) {
+      return true;
+    }
+
+    if (isOwner && isEditor) {
+      return true;
+    }
+
+    return false;
   }
 };
 var mutations = _objectSpread({}, vuex_pathify__WEBPACK_IMPORTED_MODULE_0__["make"].mutations(state), {
@@ -8328,6 +8506,412 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./js-v2/aspects/analytic_model/components/AnalyticDashboard.vue?vue&type=script&lang=js&":
+/*!********************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./js-v2/aspects/analytic_model/components/AnalyticDashboard.vue?vue&type=script&lang=js& ***!
+  \********************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var vuex_pathify__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuex-pathify */ "./node_modules/vuex-pathify/dist/vuex-pathify.esm.js");
+/* harmony import */ var lodash_map__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! lodash/map */ "./node_modules/lodash/map.js");
+/* harmony import */ var lodash_map__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(lodash_map__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var lodash_find__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! lodash/find */ "./node_modules/lodash/find.js");
+/* harmony import */ var lodash_find__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(lodash_find__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var lodash_filter__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! lodash/filter */ "./node_modules/lodash/filter.js");
+/* harmony import */ var lodash_filter__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(lodash_filter__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var lodash_random__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! lodash/random */ "./node_modules/lodash/random.js");
+/* harmony import */ var lodash_random__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(lodash_random__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var lodash_forEach__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! lodash/forEach */ "./node_modules/lodash/forEach.js");
+/* harmony import */ var lodash_forEach__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(lodash_forEach__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _data_filteredColours_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @/data/filteredColours.js */ "./js-v2/data/filteredColours.js");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+
+
+
+
+var defaultTextConfig = {
+  fontSize: 32,
+  // fontStyle: 'bold',
+  fontFamily: '-apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif',
+  lineHeight: 1.2,
+  align: 'left'
+};
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: 'AnalyticDashboard',
+  props: {
+    aspectId: [Boolean, String],
+    options: Object,
+    definitions: [Object, Array]
+  },
+  computed: _objectSpread({}, Object(vuex_pathify__WEBPACK_IMPORTED_MODULE_0__["sync"])(['userGuide']), {
+    dataPath: function dataPath() {
+      if (this.userGuide.isOpen) {
+        return "userGuide@project.data.".concat(this.aspectId);
+      } else {
+        return "project@data.".concat(this.aspectId);
+      }
+    },
+    aspectData: Object(vuex_pathify__WEBPACK_IMPORTED_MODULE_0__["get"])(':dataPath'),
+    bracketsConfig: function bracketsConfig() {
+      var config = {};
+      config.meso = {
+        position: "above",
+        label: "Meso",
+        labelColour: "#3d9970",
+        lineColour: "#0074d9",
+        description: "There may be a number of stages at this level.",
+        x: 242,
+        y: 215,
+        width: 310
+      };
+      config.macro = {
+        position: "below",
+        label: "Macro",
+        labelColour: "#3d9970",
+        lineColour: "#85144b",
+        x: 85,
+        y: 400,
+        width: 300
+      };
+      config.micro = {
+        position: "below",
+        label: "Micro",
+        labelColour: "#3d9970",
+        lineColour: "#0074d9",
+        x: 400,
+        y: 400,
+        width: 300
+      };
+
+      if (this.userGuide.isOpen) {
+        config.micro.visible = this.userGuide.currentStep >= 1;
+        config.meso.visible = this.userGuide.currentStep >= 3;
+        config.macro.visible = this.userGuide.currentStep >= 4;
+      }
+
+      return config;
+    },
+    horizontalLinesConfig: function horizontalLinesConfig() {
+      var config = {};
+      var defaultConfig = {
+        points: [0, 0, 45, 0],
+        stroke: "#ff4136",
+        strokeWidth: 6,
+        lineCap: "round",
+        lineJoin: "round"
+      };
+
+      if (this.userGuide.isOpen) {
+        defaultConfig.visible = this.userGuide.currentStep >= 4;
+      }
+
+      config.spmToSom = _objectSpread({}, defaultConfig, {
+        x: 140,
+        y: 270
+      });
+      config.somToSdm = _objectSpread({}, defaultConfig, {
+        x: 295,
+        y: 270
+      });
+      config.sdmToFlsd = _objectSpread({}, defaultConfig, {
+        x: 450,
+        y: 270
+      });
+      config.flsdToU = _objectSpread({}, defaultConfig, {
+        x: 605,
+        y: 270
+      });
+      return config;
+    },
+    agencyLinesConfig: function agencyLinesConfig() {
+      var _this = this;
+
+      var config = {};
+      var defaultConfig = {
+        x: 100,
+        y: 315,
+        points: [0, 0, 190, 0],
+        stroke: "#ff4136",
+        strokeWidth: 3,
+        dash: [15, 5]
+      };
+      config.iToCm = _objectSpread({}, defaultConfig, {
+        x: 100,
+        y: 315
+      });
+      config.iToBr = _objectSpread({}, defaultConfig, {
+        x: 100,
+        y: 270,
+        points: [0, 0, 45, -45]
+      });
+      config.brToCt = _objectSpread({}, defaultConfig, {
+        x: 245,
+        y: 135,
+        points: [0, 0, 45, -45]
+      });
+      config.iToS = _objectSpread({}, defaultConfig, {
+        x: 100,
+        y: 360,
+        points: [0, 0, 45, 45]
+      });
+      config.vToS = _objectSpread({}, defaultConfig, {
+        x: 100,
+        y: 540,
+        points: [0, 0, 45, -45]
+      });
+      config.sToCm = _objectSpread({}, defaultConfig, {
+        x: 245,
+        y: 405,
+        points: [0, 0, 45, -45]
+      });
+      config.sToBe = _objectSpread({}, defaultConfig, {
+        x: 245,
+        y: 495,
+        points: [0, 0, 45, 45]
+      });
+      config.brToCm = _objectSpread({}, defaultConfig, {
+        x: 245,
+        y: 225,
+        points: [0, 0, 45, 45]
+      });
+
+      if (this.userGuide.isOpen) {
+        lodash_forEach__WEBPACK_IMPORTED_MODULE_5___default()(config, function (item, key) {
+          item.visible = _this.userGuide.currentStep >= 10;
+        });
+      }
+
+      return config;
+    },
+    stakeholdersConfig: function stakeholdersConfig() {
+      var config = {};
+      config.sdm = {
+        definitionName: 'serviceDeliveryManager',
+        config: {
+          group: {
+            x: 345,
+            y: 225
+          }
+        }
+      };
+      config.flsd = {
+        definitionName: 'frontLineServiceDeliverer',
+        config: {
+          group: {
+            x: 500,
+            y: 225
+          }
+        }
+      };
+      config.user = {
+        definitionName: 'user',
+        config: {
+          group: {
+            x: 655,
+            y: 225
+          }
+        }
+      };
+      config.som = {
+        definitionName: 'serviceOrganisationManager',
+        config: {
+          group: {
+            x: 190,
+            y: 225
+          }
+        }
+      };
+      config.spm = {
+        definitionName: 'servicePolicyMaker',
+        config: {
+          group: {
+            x: 35,
+            y: 225
+          }
+        }
+      };
+
+      if (this.userGuide.isOpen) {
+        config.sdm.config.group.visible = this.userGuide.currentStep >= 1;
+        config.flsd.config.group.visible = this.userGuide.currentStep >= 3;
+        config.user.config.group.visible = this.userGuide.currentStep >= 1;
+        config.som.config.group.visible = this.userGuide.currentStep >= 3;
+        config.spm.config.group.visible = this.userGuide.currentStep >= 4;
+      } // Note: <CosmosStakeholder> handles its own visibility when group.visible isn't present (based on model's label' value)
+
+
+      return config;
+    },
+    agencyStakeholdersConfig: function agencyStakeholdersConfig() {
+      var config = {};
+      config.ioc = {
+        definitionName: 'instigatorsOfChange',
+        config: {
+          group: {
+            x: 0,
+            y: 270
+          }
+        }
+      };
+      config.cm = {
+        definitionName: 'changeMakers',
+        config: {
+          group: {
+            x: 290,
+            y: 270
+          }
+        }
+      };
+      config.soc = {
+        definitionName: 'subjectsOfChange',
+        config: {
+          group: {
+            x: 145,
+            y: 405
+          }
+        }
+      };
+      config.br = {
+        definitionName: 'broker',
+        config: {
+          group: {
+            x: 145,
+            y: 135
+          }
+        }
+      };
+      config.ct = {
+        definitionName: 'changeTheorists',
+        config: {
+          group: {
+            x: 290,
+            y: 0
+          }
+        }
+      };
+      config.be = {
+        definitionName: 'beneficiaries',
+        config: {
+          group: {
+            x: 290,
+            y: 540
+          }
+        }
+      };
+      config.v = {
+        definitionName: 'victims',
+        config: {
+          group: {
+            x: 0,
+            y: 540
+          }
+        }
+      };
+
+      if (this.userGuide.isOpen) {
+        config.ioc.config.group.visible = this.userGuide.currentStep >= 11;
+        config.cm.config.group.visible = this.userGuide.currentStep >= 11;
+        config.soc.config.group.visible = this.userGuide.currentStep >= 12;
+        config.br.config.group.visible = this.userGuide.currentStep >= 13;
+        config.ct.config.group.visible = this.userGuide.currentStep >= 13;
+        config.be.config.group.visible = this.userGuide.currentStep >= 14;
+        config.v.config.group.visible = this.userGuide.currentStep >= 15;
+      } // Note: <CosmosStakeholder> handles its own visibility when group.visible isn't present (based on model's label' value)
+
+
+      return config;
+    }
+  }),
+  methods: {
+    getRandomColour: function getRandomColour() {
+      var len = _data_filteredColours_js__WEBPACK_IMPORTED_MODULE_6__["default"].length;
+      var idx = Math.floor(Math.random() * len);
+      return _data_filteredColours_js__WEBPACK_IMPORTED_MODULE_6__["default"][idx].value;
+    }
+  },
+  mounted: function mounted() {
+    var _this2 = this;
+
+    var ugData = this.userGuide.project.data[this.aspectId];
+    var items = lodash_filter__WEBPACK_IMPORTED_MODULE_3___default()(this.definitions, function (def) {
+      return def.type === 'stakeholder';
+    });
+    lodash_forEach__WEBPACK_IMPORTED_MODULE_5___default()(items, function (def) {
+      ugData[def.id] = {
+        label: def.title,
+        type: 'user',
+        colour: _this2.getRandomColour()
+      };
+    });
+    return;
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./js-v2/aspects/change_model/components/TheoryOfChangeDashboard.vue?vue&type=script&lang=js&":
 /*!************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./js-v2/aspects/change_model/components/TheoryOfChangeDashboard.vue?vue&type=script&lang=js& ***!
@@ -8394,22 +8978,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 
@@ -8428,115 +8996,182 @@ var defaultTextConfig = {
     options: Object,
     definitions: [Object, Array]
   },
-  computed: {
+  computed: _objectSpread({}, Object(vuex_pathify__WEBPACK_IMPORTED_MODULE_0__["get"])(['userGuide']), {
     dataPath: function dataPath() {
-      return "project@data.".concat(this.aspectId);
+      if (this.userGuide.isOpen) {
+        return "userGuide@project.data.".concat(this.aspectId);
+      } else {
+        return "project@data.".concat(this.aspectId);
+      }
     },
     aspectData: Object(vuex_pathify__WEBPACK_IMPORTED_MODULE_0__["get"])(':dataPath'),
-    zeroOrderConfig: function zeroOrderConfig() {
-      var config = {
-        text: 'Zero Order',
-        fill: '#2d2d68',
-        x: 890,
-        y: 645
+    bgConfig: function bgConfig() {
+      var data = {};
+      var defaults = {
+        x: 0,
+        y: 0,
+        opacity: 1
       };
-      return _objectSpread({}, defaultTextConfig, {}, config);
+      data.brain = _objectSpread({}, defaults, {
+        filename: 'theory-of-change/dashboard-brain.png'
+      });
+      data.firstLoop = _objectSpread({}, defaults, {
+        filename: 'theory-of-change/dashboard-first-loop.png'
+      });
+      data.secondLoop = _objectSpread({}, defaults, {
+        filename: 'theory-of-change/dashboard-second-loop.png'
+      });
+      data.thirdLoop = _objectSpread({}, defaults, {
+        filename: 'theory-of-change/dashboard-third-loop.png'
+      });
+      data.zeroFourthLoop = _objectSpread({}, defaults, {
+        filename: 'theory-of-change/dashboard-zero-fourth-loop.png'
+      });
+
+      if (this.userGuide.isOpen) {
+        data.firstLoop.opacity = this.userGuide.currentStep >= 0 ? 1 : 0;
+        data.secondLoop.opacity = this.userGuide.currentStep >= 1 ? 1 : 0;
+        data.thirdLoop.opacity = this.userGuide.currentStep >= 4 ? 1 : 0;
+        data.zeroFourthLoop.opacity = this.userGuide.currentStep >= 5 ? 1 : 0;
+        data.brain.opacity = this.userGuide.currentStep >= 6 ? 1 : 0;
+      }
+
+      return data;
     },
     firstOrderConfigs: function firstOrderConfigs() {
       var configs = {};
-      var hasVision = this.aspectData.first_order.vision.length > 0;
-      var hasPlan = this.aspectData.first_order.plan.length > 0;
-      var hasExecute = this.aspectData.first_order.execute.length > 0;
-      var hasMeasure = this.aspectData.first_order.measure.length > 0;
       configs.label = _objectSpread({}, defaultTextConfig, {
         text: 'First Order',
         fill: '#947194',
         x: 480,
         y: 435,
-        visible: hasVision && hasPlan && hasExecute && hasMeasure
+        visible: false
       });
       configs.risk = _objectSpread({}, defaultTextConfig, {
         text: 'Risk',
         fill: '#d317a4',
         x: 345,
         y: 600,
-        visible: hasVision && hasPlan && hasExecute && hasMeasure
+        visible: false
       });
       configs.vision = _objectSpread({}, defaultTextConfig, {
         text: 'Vision',
         fill: '#255d4d',
         x: 440,
         y: 375,
-        visible: hasVision
+        visible: false
       });
       configs.plan = _objectSpread({}, defaultTextConfig, {
         text: 'Plan',
         fill: '#255d4d',
         x: 705,
         y: 515,
-        visible: hasPlan
+        visible: false
       });
       configs.execute = _objectSpread({}, defaultTextConfig, {
         text: 'Execute',
         fill: '#255d4d',
         x: 435,
         y: 670,
-        visible: hasExecute
+        visible: false
       });
       configs.measure = _objectSpread({}, defaultTextConfig, {
         text: 'Measure',
         fill: '#255d4d',
         x: 155,
         y: 520,
-        visible: hasMeasure
+        visible: false
       });
+
+      if (this.userGuide.isOpen) {
+        configs.vision.visible = true;
+        configs.plan.visible = true;
+        configs.execute.visible = true;
+        configs.measure.visible = true;
+        configs.label.visible = this.userGuide.currentStep >= 2;
+        configs.risk.visible = this.userGuide.currentStep >= 3;
+      } else {
+        var hasVision = this.aspectData.first_order.vision.length > 0;
+        var hasPlan = this.aspectData.first_order.plan.length > 0;
+        var hasExecute = this.aspectData.first_order.execute.length > 0;
+        var hasMeasure = this.aspectData.first_order.measure.length > 0;
+
+        if (hasVision && hasPlan && hasExecute && hasMeasure) {
+          configs.label.visible = true;
+          configs.risk.visible = true;
+        }
+
+        configs.vision.visible = hasVision;
+        configs.plan.visible = hasPlan;
+        configs.execute.visible = hasExecute;
+        configs.measure.visible = hasMeasure;
+      }
+
       return configs;
     },
     secondOrderConfigs: function secondOrderConfigs() {
       var configs = {};
-      var hasSenseMaking = this.aspectData.second_order.sense_making.length > 0;
-      var hasLanguaging = this.aspectData.second_order.languaging.length > 0;
-      var hasCommitting = this.aspectData.second_order.committing.length > 0;
       configs.label = _objectSpread({}, defaultTextConfig, {
         text: 'Second Order',
         fill: '#cab5ca',
         x: 390,
         y: 165,
-        visible: hasSenseMaking && hasLanguaging && hasCommitting
+        visible: false
       });
       configs.ambiguity = _objectSpread({}, defaultTextConfig, {
         text: 'Ambiguity',
         fill: '#d317a4',
         x: 270,
         y: 115,
-        visible: hasSenseMaking && hasLanguaging && hasCommitting
+        visible: false
       });
       configs.sense_making = _objectSpread({}, defaultTextConfig, {
         text: 'Sense-Making',
         fill: '#a8bdb7',
         x: 100,
         y: 215,
-        visible: hasSenseMaking
+        visible: false
       });
       configs.languaging = _objectSpread({}, defaultTextConfig, {
         text: '"Languaging"',
         fill: '#a8bdb7',
         x: 350,
         y: 65,
-        visible: hasLanguaging
+        visible: false
       });
       configs.committing = _objectSpread({}, defaultTextConfig, {
         text: 'Committing',
         fill: '#a8bdb7',
         x: 610,
         y: 215,
-        visible: hasCommitting
+        visible: false
       });
+
+      if (this.userGuide.isOpen) {
+        configs.sense_making.visible = this.userGuide.currentStep >= 1;
+        configs.languaging.visible = this.userGuide.currentStep >= 1;
+        configs.committing.visible = this.userGuide.currentStep >= 1;
+        configs.label.visible = this.userGuide.currentStep >= 2;
+        configs.ambiguity.visible = this.userGuide.currentStep >= 3;
+      } else {
+        var hasSenseMaking = this.aspectData.second_order.sense_making.length > 0;
+        var hasLanguaging = this.aspectData.second_order.languaging.length > 0;
+        var hasCommitting = this.aspectData.second_order.committing.length > 0;
+
+        if (hasSenseMaking && hasLanguaging && hasCommitting) {
+          configs.label.visible = true;
+          configs.ambiguity.visible = true;
+        }
+
+        configs.sense_making.visible = hasSenseMaking;
+        configs.languaging.visible = hasLanguaging;
+        configs.committing.visible = hasCommitting;
+      }
+
       return configs;
     },
     thirdOrderConfigs: function thirdOrderConfigs() {
       var configs = {};
-      var hasProcesses = this.aspectData.third_order.processes.length > 0;
       configs.label = _objectSpread({}, defaultTextConfig, {
         text: 'Third Order',
         fill: '#3c003c',
@@ -8544,28 +9179,68 @@ var defaultTextConfig = {
         y: 295,
         width: 100,
         align: 'center',
-        visible: hasProcesses
+        visible: false
       });
       configs.ambivalence = _objectSpread({}, defaultTextConfig, {
         text: 'Ambivalence',
         fill: '#d317a4',
         x: 340,
         y: 295,
-        visible: hasProcesses,
+        visible: false,
         rotation: -4
       });
+
+      if (this.userGuide.isOpen) {
+        configs.label.visible = this.userGuide.currentStep >= 4;
+        configs.ambivalence.visible = this.userGuide.currentStep >= 4;
+      } else {
+        var hasProcesses = this.aspectData.third_order.processes.length > 0;
+
+        if (hasProcesses) {
+          configs.label.visible = true;
+          configs.ambivalence.visible = true;
+        }
+      }
+
       return configs;
     },
+    zeroOrderConfig: function zeroOrderConfig() {
+      var isVisible = false;
+
+      if (this.userGuide.isOpen) {
+        isVisible = this.userGuide.currentStep >= 5;
+      } else {
+        isVisible = true;
+      }
+
+      var config = {
+        text: 'Zero Order',
+        fill: '#2d2d68',
+        x: 890,
+        y: 645,
+        visible: isVisible
+      };
+      return _objectSpread({}, defaultTextConfig, {}, config);
+    },
     fourthOrderConfig: function fourthOrderConfig() {
+      var isVisible = false;
+
+      if (this.userGuide.isOpen) {
+        isVisible = this.userGuide.currentStep >= 5;
+      } else {
+        isVisible = true;
+      }
+
       var config = {
         text: 'Fourth Order!',
         fill: '#947194',
         x: 850,
-        y: 35
+        y: 35,
+        visible: isVisible
       };
       return _objectSpread({}, defaultTextConfig, {}, config);
     }
-  }
+  })
 });
 
 /***/ }),
@@ -11229,7 +11904,8 @@ __webpack_require__.r(__webpack_exports__);
     groupConfig: function groupConfig() {
       return {
         x: this.config.x,
-        y: this.config.y
+        y: this.config.y,
+        visible: typeof this.config.visible !== 'undefined' ? this.config.visible : true
       };
     },
     lineConfig: function lineConfig() {
@@ -11382,6 +12058,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var colors_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! colors.css */ "./node_modules/colors.css/js/colors.js");
 /* harmony import */ var colors_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(colors_css__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _CosmosStakeholderIcon__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./CosmosStakeholderIcon */ "./js-v2/components/cosmos/lib/CosmosStakeholderIcon.vue");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 //
 //
 //
@@ -11435,15 +12117,23 @@ __webpack_require__.r(__webpack_exports__);
   /*	watch: {
   		'value': 'refreshPositions',
   	},*/
-  computed: {
+  computed: _objectSpread({}, Object(vuex_pathify__WEBPACK_IMPORTED_MODULE_0__["get"])(['userGuide']), {
     dataPath: function dataPath() {
-      return "project@data.".concat(this.aspectId);
+      if (this.userGuide.isOpen) {
+        return "userGuide@project.data.".concat(this.aspectId);
+      } else {
+        return "project@data.".concat(this.aspectId);
+      }
     },
     aspectData: Object(vuex_pathify__WEBPACK_IMPORTED_MODULE_0__["get"])(':dataPath'),
     model: function model() {
       return this.aspectData && this.aspectData[this.definitionName] ? this.aspectData[this.definitionName] : {};
     },
     isVisible: function isVisible() {
+      if (typeof this.config.group.visible !== 'undefined') {
+        return this.config.group.visible;
+      }
+
       return this.model.label && this.model.label.length > 0 ? true : false;
     },
     url: function url() {
@@ -11494,7 +12184,7 @@ __webpack_require__.r(__webpack_exports__);
       };
       return config;
     }
-  },
+  }),
   methods: {
     mousemove: function mousemove() {
       if (this.url) {
@@ -14122,11 +14812,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     value: {
@@ -14134,7 +14819,6 @@ __webpack_require__.r(__webpack_exports__);
         return {
           name: null,
           template: null,
-          created_by: null,
           created_at: null,
           modified_at: null
         };
@@ -14145,7 +14829,6 @@ __webpack_require__.r(__webpack_exports__);
     return {
       previousValue: {
         name: null,
-        created_by: null,
         created_at: null,
         modified_at: null
       }
@@ -14170,12 +14853,10 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     filterValue: function filterValue(value) {
       var name = value.name === null || value.name === "" ? undefined : value.name;
-      var created_by = value.created_by === null || value.created_by === "" ? undefined : value.created_by;
       var created_at = new Date().toLocaleDateString();
       var modified_at = new Date().toLocaleDateString();
       return {
         name: name,
-        created_by: created_by,
         created_at: created_at,
         modified_at: modified_at
       };
@@ -14304,6 +14985,14 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -14318,15 +15007,15 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   data: function data() {
     return {
       filter: {
-        query: ''
+        query: '',
+        owner: ''
       },
       newProject: {
-        name: null,
-        created_by: null
+        name: null
       }
     };
   },
-  computed: _objectSpread({}, Object(vuex_pathify__WEBPACK_IMPORTED_MODULE_0__["sync"])(['projects']), {}, Object(vuex_pathify__WEBPACK_IMPORTED_MODULE_0__["get"])(['appName', 'userCanEdit', 'hasUser', 'requireAuth', 'user']), {
+  computed: _objectSpread({}, Object(vuex_pathify__WEBPACK_IMPORTED_MODULE_0__["sync"])(['projects']), {}, Object(vuex_pathify__WEBPACK_IMPORTED_MODULE_0__["get"])(['appName', 'userCanEdit', 'userCanCreate', 'user', 'hasAdminRole', 'requireAuth']), {
     canCreateNewProject: function canCreateNewProject() {
       return this.newProject.name && this.newProject.name.length > 0;
     },
@@ -14338,7 +15027,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       return '/login?ref=' + encodeURIComponent(uri);
     },
     filteredProjects: function filteredProjects() {
-      if (this.filter.query.length == 0) {
+      if (this.filter.query.length == 0 && this.filter.owner.length == 0) {
         return this.projects;
       }
 
@@ -14354,11 +15043,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         });
       }
 
-      var tpl = this.filter.template;
-
-      if (tpl && tpl.length > 0) {
+      if (this.filter.owner == 'mine') {
         items = lodash_filter__WEBPACK_IMPORTED_MODULE_2___default()(items, {
-          template: tpl
+          created_by: this.user.username
         });
       }
 
@@ -14383,6 +15070,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     }, 100)
   },
   mounted: function mounted() {
+    if (this.requireAuth && !this.hasAdminRole) {
+      this.filter.owner = 'mine';
+    }
+
     this.clearProject();
     this.fetchProjects();
     this.setTitle();
@@ -33784,6 +34475,35 @@ module.exports = basePropertyDeep;
 
 /***/ }),
 
+/***/ "./node_modules/lodash/_baseRandom.js":
+/*!********************************************!*\
+  !*** ./node_modules/lodash/_baseRandom.js ***!
+  \********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+/* Built-in method references for those with the same name as other `lodash` methods. */
+var nativeFloor = Math.floor,
+    nativeRandom = Math.random;
+
+/**
+ * The base implementation of `_.random` without support for returning
+ * floating-point numbers.
+ *
+ * @private
+ * @param {number} lower The lower bound.
+ * @param {number} upper The upper bound.
+ * @returns {number} Returns the random number.
+ */
+function baseRandom(lower, upper) {
+  return lower + nativeFloor(nativeRandom() * (upper - lower + 1));
+}
+
+module.exports = baseRandom;
+
+
+/***/ }),
+
 /***/ "./node_modules/lodash/_baseSum.js":
 /*!*****************************************!*\
   !*** ./node_modules/lodash/_baseSum.js ***!
@@ -35602,6 +36322,47 @@ function isIndex(value, length) {
 }
 
 module.exports = isIndex;
+
+
+/***/ }),
+
+/***/ "./node_modules/lodash/_isIterateeCall.js":
+/*!************************************************!*\
+  !*** ./node_modules/lodash/_isIterateeCall.js ***!
+  \************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var eq = __webpack_require__(/*! ./eq */ "./node_modules/lodash/eq.js"),
+    isArrayLike = __webpack_require__(/*! ./isArrayLike */ "./node_modules/lodash/isArrayLike.js"),
+    isIndex = __webpack_require__(/*! ./_isIndex */ "./node_modules/lodash/_isIndex.js"),
+    isObject = __webpack_require__(/*! ./isObject */ "./node_modules/lodash/isObject.js");
+
+/**
+ * Checks if the given arguments are from an iteratee call.
+ *
+ * @private
+ * @param {*} value The potential iteratee value argument.
+ * @param {*} index The potential iteratee index or key argument.
+ * @param {*} object The potential iteratee object argument.
+ * @returns {boolean} Returns `true` if the arguments are from an iteratee call,
+ *  else `false`.
+ */
+function isIterateeCall(value, index, object) {
+  if (!isObject(object)) {
+    return false;
+  }
+  var type = typeof index;
+  if (type == 'number'
+        ? (isArrayLike(object) && isIndex(index, object.length))
+        : (type == 'string' && index in object)
+      ) {
+    return eq(object[index], value);
+  }
+  return false;
+}
+
+module.exports = isIterateeCall;
 
 
 /***/ }),
@@ -38290,6 +39051,99 @@ function property(path) {
 }
 
 module.exports = property;
+
+
+/***/ }),
+
+/***/ "./node_modules/lodash/random.js":
+/*!***************************************!*\
+  !*** ./node_modules/lodash/random.js ***!
+  \***************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var baseRandom = __webpack_require__(/*! ./_baseRandom */ "./node_modules/lodash/_baseRandom.js"),
+    isIterateeCall = __webpack_require__(/*! ./_isIterateeCall */ "./node_modules/lodash/_isIterateeCall.js"),
+    toFinite = __webpack_require__(/*! ./toFinite */ "./node_modules/lodash/toFinite.js");
+
+/** Built-in method references without a dependency on `root`. */
+var freeParseFloat = parseFloat;
+
+/* Built-in method references for those with the same name as other `lodash` methods. */
+var nativeMin = Math.min,
+    nativeRandom = Math.random;
+
+/**
+ * Produces a random number between the inclusive `lower` and `upper` bounds.
+ * If only one argument is provided a number between `0` and the given number
+ * is returned. If `floating` is `true`, or either `lower` or `upper` are
+ * floats, a floating-point number is returned instead of an integer.
+ *
+ * **Note:** JavaScript follows the IEEE-754 standard for resolving
+ * floating-point values which can produce unexpected results.
+ *
+ * @static
+ * @memberOf _
+ * @since 0.7.0
+ * @category Number
+ * @param {number} [lower=0] The lower bound.
+ * @param {number} [upper=1] The upper bound.
+ * @param {boolean} [floating] Specify returning a floating-point number.
+ * @returns {number} Returns the random number.
+ * @example
+ *
+ * _.random(0, 5);
+ * // => an integer between 0 and 5
+ *
+ * _.random(5);
+ * // => also an integer between 0 and 5
+ *
+ * _.random(5, true);
+ * // => a floating-point number between 0 and 5
+ *
+ * _.random(1.2, 5.2);
+ * // => a floating-point number between 1.2 and 5.2
+ */
+function random(lower, upper, floating) {
+  if (floating && typeof floating != 'boolean' && isIterateeCall(lower, upper, floating)) {
+    upper = floating = undefined;
+  }
+  if (floating === undefined) {
+    if (typeof upper == 'boolean') {
+      floating = upper;
+      upper = undefined;
+    }
+    else if (typeof lower == 'boolean') {
+      floating = lower;
+      lower = undefined;
+    }
+  }
+  if (lower === undefined && upper === undefined) {
+    lower = 0;
+    upper = 1;
+  }
+  else {
+    lower = toFinite(lower);
+    if (upper === undefined) {
+      upper = lower;
+      lower = 0;
+    } else {
+      upper = toFinite(upper);
+    }
+  }
+  if (lower > upper) {
+    var temp = lower;
+    lower = upper;
+    upper = temp;
+  }
+  if (floating || lower % 1 || upper % 1) {
+    var rand = nativeRandom();
+    return nativeMin(lower + (rand * (upper - lower + freeParseFloat('1e-' + ((rand + '').length - 1)))), upper);
+  }
+  return baseRandom(lower, upper);
+}
+
+module.exports = random;
 
 
 /***/ }),
@@ -44057,6 +44911,97 @@ render._withStripped = true
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./js-v2/aspects/analytic_model/components/AnalyticDashboard.vue?vue&type=template&id=195338a5&":
+/*!************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./js-v2/aspects/analytic_model/components/AnalyticDashboard.vue?vue&type=template&id=195338a5& ***!
+  \************************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "v-group",
+    [
+      _c("CosmosTitle", {
+        attrs: { aspectId: _vm.aspectId, options: _vm.options }
+      }),
+      _vm._v(" "),
+      _vm._l(_vm.bracketsConfig, function(config, name) {
+        return _c("CosmosNodeBracket", {
+          key: name,
+          attrs: { config: config, options: _vm.options }
+        })
+      }),
+      _vm._v(" "),
+      _vm._l(_vm.horizontalLinesConfig, function(config, name) {
+        return _c("v-line", { key: name, attrs: { config: config } })
+      }),
+      _vm._v(" "),
+      _vm._l(_vm.stakeholdersConfig, function(config, name) {
+        return _c(
+          "CosmosStakeholder",
+          _vm._b(
+            {
+              key: name,
+              attrs: { aspectId: _vm.aspectId, options: _vm.options }
+            },
+            "CosmosStakeholder",
+            config,
+            false
+          )
+        )
+      }),
+      _vm._v(" "),
+      _c(
+        "v-group",
+        {
+          attrs: {
+            config: {
+              x: 870,
+              y: 30
+            }
+          }
+        },
+        [
+          _vm._l(_vm.agencyLinesConfig, function(config, name) {
+            return _c("v-line", { key: name, attrs: { config: config } })
+          }),
+          _vm._v(" "),
+          _vm._l(_vm.agencyStakeholdersConfig, function(config, name) {
+            return _c(
+              "CosmosStakeholder",
+              _vm._b(
+                {
+                  key: name,
+                  attrs: { aspectId: _vm.aspectId, options: _vm.options }
+                },
+                "CosmosStakeholder",
+                config,
+                false
+              )
+            )
+          })
+        ],
+        2
+      )
+    ],
+    2
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./js-v2/aspects/change_model/components/TheoryOfChangeDashboard.vue?vue&type=template&id=12233e23&":
 /*!****************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./js-v2/aspects/change_model/components/TheoryOfChangeDashboard.vue?vue&type=template&id=12233e23& ***!
@@ -44075,7 +45020,9 @@ var render = function() {
   return _c(
     "v-group",
     [
-      _c("CosmosTitle", { attrs: { options: _vm.options } }),
+      _c("CosmosTitle", {
+        attrs: { aspectId: _vm.aspectId, options: _vm.options }
+      }),
       _vm._v(" "),
       _c(
         "v-group",
@@ -44088,15 +45035,15 @@ var render = function() {
           }
         },
         [
-          _c("CosmosImage", {
-            attrs: {
-              config: {
-                x: 0,
-                y: 0,
-                filename: "theory-of-change/dashboard.png"
-              }
-            }
-          }),
+          _c("CosmosImage", { attrs: { config: _vm.bgConfig.brain } }),
+          _vm._v(" "),
+          _c("CosmosImage", { attrs: { config: _vm.bgConfig.firstLoop } }),
+          _vm._v(" "),
+          _c("CosmosImage", { attrs: { config: _vm.bgConfig.secondLoop } }),
+          _vm._v(" "),
+          _c("CosmosImage", { attrs: { config: _vm.bgConfig.thirdLoop } }),
+          _vm._v(" "),
+          _c("CosmosImage", { attrs: { config: _vm.bgConfig.zeroFourthLoop } }),
           _vm._v(" "),
           _c("v-text", { attrs: { config: _vm.zeroOrderConfig } }),
           _vm._v(" "),
@@ -48334,30 +49281,6 @@ var render = function() {
         })
       ],
       1
-    ),
-    _vm._v(" "),
-    _c(
-      "div",
-      { staticClass: "form-group" },
-      [
-        _c(
-          "label",
-          { staticClass: "form-label", attrs: { for: "created_by" } },
-          [_vm._v("Created by")]
-        ),
-        _vm._v(" "),
-        _c("VInput", {
-          attrs: { type: "text", id: "created_by" },
-          model: {
-            value: _vm.value.created_by,
-            callback: function($$v) {
-              _vm.$set(_vm.value, "created_by", $$v)
-            },
-            expression: "value.created_by"
-          }
-        })
-      ],
-      1
     )
   ])
 }
@@ -48392,7 +49315,7 @@ var render = function() {
             _vm._v(" "),
             _c("div", { staticClass: "card-filter" }, [
               _c("div", { staticClass: "columns" }, [
-                _c("div", { staticClass: "column col-12" }, [
+                _c("div", { staticClass: "column col-6" }, [
                   _c(
                     "div",
                     { staticClass: "has-icon-left" },
@@ -48413,7 +49336,77 @@ var render = function() {
                     ],
                     1
                   )
-                ])
+                ]),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    directives: [
+                      {
+                        name: "show",
+                        rawName: "v-show",
+                        value: _vm.hasAdminRole || !_vm.requireAuth,
+                        expression: "hasAdminRole || !requireAuth"
+                      }
+                    ],
+                    staticClass: "column col-6"
+                  },
+                  [
+                    _c(
+                      "label",
+                      { staticClass: "form-radio form-inline input-sm" },
+                      [
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.filter.owner,
+                              expression: "filter.owner"
+                            }
+                          ],
+                          attrs: { type: "radio", value: "" },
+                          domProps: { checked: _vm._q(_vm.filter.owner, "") },
+                          on: {
+                            change: function($event) {
+                              return _vm.$set(_vm.filter, "owner", "")
+                            }
+                          }
+                        }),
+                        _c("i", { staticClass: "form-icon" }),
+                        _vm._v(" All\n\t\t\t\t\t\t\t\t")
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "label",
+                      { staticClass: "form-radio form-inline input-sm" },
+                      [
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.filter.owner,
+                              expression: "filter.owner"
+                            }
+                          ],
+                          attrs: { type: "radio", value: "mine" },
+                          domProps: {
+                            checked: _vm._q(_vm.filter.owner, "mine")
+                          },
+                          on: {
+                            change: function($event) {
+                              return _vm.$set(_vm.filter, "owner", "mine")
+                            }
+                          }
+                        }),
+                        _c("i", { staticClass: "form-icon" }),
+                        _vm._v(" Just mine\n\t\t\t\t\t\t\t\t")
+                      ]
+                    )
+                  ]
+                )
               ])
             ]),
             _vm._v(" "),
@@ -48481,7 +49474,7 @@ var render = function() {
             [
               _vm._m(1),
               _vm._v(" "),
-              _vm.userCanEdit
+              _vm.userCanCreate
                 ? [
                     _c(
                       "div",

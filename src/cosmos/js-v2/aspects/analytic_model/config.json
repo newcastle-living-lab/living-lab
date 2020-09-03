@@ -2,6 +2,7 @@
 	"id": "analytic_model",
 	"title": "Analytic Model",
 	"routeName": "model",
+	"dashboardComponent": "AnalyticDashboard",
 	"stageSize": {
 		"width": 1285,
 		"height": 750

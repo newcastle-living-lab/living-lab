@@ -37,6 +37,7 @@ export default {
 			return {
 				x: this.config.x,
 				y: this.config.y,
+				visible: typeof(this.config.visible) !== 'undefined' ? this.config.visible : true,
 			}
 		},
 
