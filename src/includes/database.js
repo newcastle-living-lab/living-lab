@@ -70,6 +70,12 @@ Database.prototype.createTables = function() {
 		}
 	});
 
+	this.db.run("CREATE TABLE IF NOT EXISTS `users` (id INTEGER PRIMARY KEY, status INTEGER, email TEXT, password TEXT, name TEXT, roles TEXT, created_at TEXT, modified_at TEXT)", function(err) {
+		if (err) {
+			console.error("Database users creation error");
+		}
+	});
+
 }
 
 
