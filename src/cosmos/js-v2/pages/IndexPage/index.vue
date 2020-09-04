@@ -178,7 +178,7 @@ export default {
 			}
 
 			if (this.filter.owner == 'mine') {
-				items = filter(items, { created_by: this.user.username  });
+				items = filter(items, { created_by: this.user.email  });
 			}
 
 			return items;

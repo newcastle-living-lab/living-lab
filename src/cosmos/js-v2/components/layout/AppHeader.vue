@@ -52,7 +52,7 @@
 				<div class="input-group input-inline">
 					<span v-if="hasUser"
 						class="btn btn-empty btn-sm"
-					><user-icon size="16" /> {{ user.username }}</span>
+					><user-icon size="16" /> {{ user.email }}</span>
 					<a v-if="!hasUser && requireAuth"
 						class="btn btn-link btn-sm"
 						:href="loginUrl"

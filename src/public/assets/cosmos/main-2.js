@@ -6244,7 +6244,7 @@ var getters = {
     return state.config.require_auth === true;
   },
   hasUser: function hasUser(state) {
-    return state.config.user !== null && _typeof(state.config.user) === 'object' && state.config.user.username ? true : false;
+    return state.config.user !== null && _typeof(state.config.user) === 'object' && state.config.user.email ? true : false;
   },
   hasEditRole: function hasEditRole(state, getters) {
     return getters.hasUser && getters.user.roles.indexOf('edit') >= 0;
@@ -15045,7 +15045,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
       if (this.filter.owner == 'mine') {
         items = lodash_filter__WEBPACK_IMPORTED_MODULE_2___default()(items, {
-          created_by: this.user.username
+          created_by: this.user.email
         });
       }
 
@@ -47294,7 +47294,7 @@ var render = function() {
                 { staticClass: "btn btn-empty btn-sm" },
                 [
                   _c("user-icon", { attrs: { size: "16" } }),
-                  _vm._v(" " + _vm._s(_vm.user.username))
+                  _vm._v(" " + _vm._s(_vm.user.email))
                 ],
                 1
               )
