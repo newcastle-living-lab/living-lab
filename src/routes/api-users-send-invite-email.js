@@ -23,7 +23,7 @@ handlers.push(function(req, res) {
 			console.error("API: Users Send Invite Email: " + err);
 			return res.status(500).send({
 				'success': false,
-				'reason': err,
+				'reason': err.toString(),
 			});
 		});
 

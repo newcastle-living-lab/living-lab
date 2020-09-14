@@ -184,8 +184,6 @@ Settings.prototype.set = function(key, value, type) {
 			formattedRow,
 			inserted = 0;
 
-		console.log(data);
-
 		db.run("BEGIN TRANSACTION");
 
 		for (const key in data) {
@@ -194,7 +192,7 @@ Settings.prototype.set = function(key, value, type) {
 				key: key,
 			};
 
-			if (typeof(data[key]) === 'object' && Object.hasOwnProperty('value')) {
+			if (typeof(data[key]) === 'object' && data[key].hasOwnProperty('value')) {
 				// Use value and type properties of object
 				row.value = data[key]['value'];
 				row.type = data[key]['type'];
