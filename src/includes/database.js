@@ -70,9 +70,15 @@ Database.prototype.createTables = function() {
 		}
 	});
 
-	this.db.run("CREATE TABLE IF NOT EXISTS `users` (id INTEGER PRIMARY KEY, status INTEGER, email TEXT, password TEXT, name TEXT, roles TEXT, created_at TEXT, modified_at TEXT)", function(err) {
+	this.db.run("CREATE TABLE IF NOT EXISTS `users` (id INTEGER PRIMARY KEY, status INTEGER, email TEXT, password TEXT, name TEXT, roles TEXT, created_at TEXT, modified_at TEXT, UNIQUE(email))", function(err) {
 		if (err) {
 			console.error("Database users creation error");
+		}
+	});
+
+	this.db.run("CREATE TABLE IF NOT EXISTS `settings` (`key` TEXT PRIMARY KEY, `value` TEXT, `type` TEXT)", function(err) {
+		if (err) {
+			console.error("Database settings creation error");
 		}
 	});
 

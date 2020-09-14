@@ -35,10 +35,20 @@ module.exports = function ensureRole(options) {
 	return function(req, res, next) {
 
 		var hasRoles = (req.user && req.user.roles && req.user.roles.length > 0);
-		var hasMatchingRole = (req.user.roles.indexOf(roleName) !== -1);
+		var hasMatchingRole = (hasRoles && req.user.roles.indexOf(roleName) !== -1);
 
 		if ( ! hasRoles || ! hasMatchingRole) {
-			return res.status(403).render("_error.html", { message: message });
+
+			res.status(403);
+
+			if (req.accepts('json')) {
+				return res.send({
+					'success': false,
+					'reason': message,
+				});
+			} else {
+				return res.render('_error.html', { message: message });
+			}
 		}
 
 		next();
