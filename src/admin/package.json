@@ -11,6 +11,7 @@
 		"production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
 	},
 	"devDependencies": {
+		"@newcastle-living-lab/living-lab-admin": "^1.0.0",
 		"cross-env": "^6.0.3",
 		"laravel-mix": "^4.1.4"
 	},

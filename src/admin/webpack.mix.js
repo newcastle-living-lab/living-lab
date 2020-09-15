@@ -10,8 +10,8 @@ if (mix.inProduction()) {
 	var cssOutput = `${basePath}/main.css`;
 }
 
-mix.copy('node_modules/living-lab-admin/dist/main.js', `${basePath}/main.js`);
-mix.copy('node_modules/living-lab-admin/dist/main.css', `${basePath}/main.css`);
+mix.copy('node_modules/@newcastle-living-lab/living-lab-admin/dist/main.js', `${basePath}/main.js`);
+mix.copy('node_modules/@newcastle-living-lab/living-lab-admin/dist/main.css', `${basePath}/main.css`);
 
 // mix.setPublicPath('../public');
 //
