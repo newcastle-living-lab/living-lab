@@ -4705,6 +4705,35 @@ a.text-error:visited {
   color: #fff;
 }
 
+.footer.footer-meta {
+  margin-top: 3.2rem;
+  padding: 0.4rem 0;
+  background: #f2f0f1;
+  border-top: 0.05rem solid #d0d0d0;
+  color: #444;
+}
+
+.footer.footer-meta .navbar .section-logos .logo-item {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.footer.footer-logos {
+  padding: 1.6rem 0;
+}
+
+.footer .logo-item {
+  display: inline-block;
+  margin: 0.8rem 1.2rem;
+}
+
+.footer .logo-item img {
+  height: 2.8rem;
+  width: auto;
+  max-width: 100%;
+  display: block;
+}
+
 .page-content {
   padding-top: 1.6rem;
   padding-bottom: 1.6rem;

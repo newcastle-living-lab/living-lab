@@ -23,7 +23,7 @@
 					<nav class="pure-menu pure-menu-horizontal header-menu">
 						<ul class="pure-menu-list">
 							{% if authenticated %}
-							<li class="pure-menu-item"><span class="pure-menu-text"><i class="fa fa-user"></i> {{ user.username }}</span></li>
+							<li class="pure-menu-item"><a class="pure-menu-link" href="/admin/account"><i class="fa fa-user"></i> {{ user.email }}</a></li>
 							<li class="pure-menu-item"><a class="pure-menu-link" href="/logout"><i class="fa fa-lock"></i> Log out</a></li>
 							{% else %}
 							<li class="pure-menu-item"><a class="pure-menu-link" href="/login"><i class="fa fa-key"></i> Log in</a></li>

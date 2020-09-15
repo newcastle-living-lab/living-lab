@@ -1,4 +1,6 @@
-var passport = require("passport");
+var passport = require("passport"),
+	eventLog = require("../includes/event-log"),
+	eventType = require("../includes/event-types");
 
 exports.method = "post";
 exports.route = "/api/auth/session";
@@ -22,9 +24,18 @@ exports.handler = function(req, res, next) {
 		}
 
 		return req.logIn(user, {}, function(err) {
+
+			eventLog.log({
+				"type": eventType.LOG_IN,
+				"req": req,
+				"user": user
+			});
+
 			return res.send({
 				'success': true,
+				'returnTo': req.session.returnTo,
 			});
+
 		});
 
 

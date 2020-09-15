@@ -31,11 +31,11 @@ Eventlog.prototype.log = function(input) {
 
 	if (this.require_auth) {
 		var user = null;
-		if (input.req.user && input.req.user.username) {
-			user = input.req.user.username;
+		if (input.req.user && input.req.user.email) {
+			user = input.req.user.email;
 		}
 		if (input.user) {
-			user = input.user.username;
+			user = input.user.email;
 		}
 	}
 
