@@ -349,5 +349,4 @@ export const actions = {
 			})
 		.then(() => commit('STOP_LOADING'));
 	}
-
 }

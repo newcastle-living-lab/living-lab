@@ -23,6 +23,11 @@
 					</ul>
 				</div>
 
+				<button class='btn btn-link btn-sm'
+					v-if="hasProject && hasUser"
+					@click="doExportProject()"
+				><share-icon size="16" />Export</button>
+
 				<div class="saving-ui input-group input-inline">
 					<div v-show="lastSave.waiting">
 						<span class="loading mr-4"></span>
@@ -62,6 +67,30 @@
 
 		</nav>
 
+		<div class="modal modal-sm" :class="modal == 'export' ? 'active' : ''">
+			<div class="modal-overlay"></div>
+			<div class="modal-container">
+				<div class="modal-header">
+					<div class="modal-title h5">Exporting project...</div>
+				</div>
+				<div class="modal-body">
+					<div class="content">
+						<template>
+							<p>Please wait while the file is being generated.</p>
+							<div class="loading loading-lg mb-8"></div>
+						</template>
+						<!-- <template v-else>
+							<div class="text-center mb-8" style="color: #2ecc40">
+								<CheckIcon size="48" />
+							</div>
+							<a class="btn btn-primary btn-block" :href="exportData.url">Download file</a>
+						</template> -->
+					</div>
+				</div>
+			</div>
+		</div>
+
+
 	</section>
 
 </template>
@@ -78,9 +107,12 @@ import SaveIcon from 'vue-feather-icons/icons/SaveIcon';
 import UserIcon from 'vue-feather-icons/icons/UserIcon';
 import KeyIcon from 'vue-feather-icons/icons/KeyIcon';
 import DownloadIcon from 'vue-feather-icons/icons/DownloadIcon';
+import ShareIcon from 'vue-feather-icons/icons/Share2Icon';
+import CheckIcon from 'vue-feather-icons/icons/CheckCircleIcon';
 
 import Aspects from '@/aspects';
 import { EventBus } from '@/services/EventBus';
+import Network from '@/services/Network';
 
 export default {
 
@@ -92,9 +124,19 @@ export default {
 		UserIcon,
 		KeyIcon,
 		DownloadIcon,
+		ShareIcon,
+		CheckIcon,
 	},
 
 	props: ['route'],
+
+	data() {
+		return {
+			'modal': false,
+			exportError: null,
+			exportData: null,
+		}
+	},
 
 	computed: {
 
@@ -122,7 +164,7 @@ export default {
 			let path = top.location.pathname.replace(currentRoute, '');
 			let uri = path + currentRoute;
 			uri = uri.replace('//', '/');
-			return '/login?ref=' + encodeURIComponent(uri);
+			return '/admin/account/login?ref=' + encodeURIComponent(uri);
 		},
 
 		lastSavedString() {
@@ -182,6 +224,22 @@ export default {
 
 		startUserGuide() {
 			dispatch('openUserGuide', {projectId: this.project.id, aspectId: this.aspect.CONFIG.id });
+		},
+
+		doExportProject() {
+			this.modal = 'export';
+			Network.exportProject(this.project.id)
+				.then((res) => {
+					if (res && res.success && res.url) {
+						this.modal = false;
+						top.location.href = res.url;
+						return;
+					}
+					commit('SET_TOAST', { message: `Error: ${res.reason}`, type: 'error' });
+				})
+				.catch((err) => {
+					commit('SET_TOAST', { message: `Error: ${err}`, type: 'error' });
+				});
 		},
 
 	},
