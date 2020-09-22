@@ -159,6 +159,7 @@ Settings.prototype.set = function(key, value, type) {
 	var data = {};
 
 	// Standardise the format
+	//
 
 	if (typeof(key) == 'string') {
 		// One row: all params supplied
@@ -173,58 +174,76 @@ Settings.prototype.set = function(key, value, type) {
 		throw "Settings: set(): type of key parameter must be string or object";
 	}
 
+	var rows = [],
+		params = {},
+		row = {},
+		formattedRow;
+
+	// Convert object of settings to rows that can be inserted
+	//
+
+	for (const key in data) {
+
+		row = {
+			key: key,
+			type: (typeof(this.data[key]) !== 'undefined' ? this.data[key]['type'] : 'string'),
+		};
+
+		if (toString.call(data[key]) == "[object Object]" && data[key].hasOwnProperty('value')) {
+			row.value = data[key]['value'];
+			// Accept a 'type' if it's present
+			if (data[key].hasOwnProperty('type')) {
+				row.type = data[key]['type'];
+			}
+		} else {
+			row.value = data[key];
+		}
+
+		formattedRow = this.sleepValue(row);
+
+		params = {
+			$key: formattedRow.key,
+			$value: formattedRow.value,
+			$type: formattedRow.type,
+		};
+
+		rows.push(params);
+	}
+
+	// Execute an sql statement for the rows of data
+	//
 	return new Promise((resolve, reject) => {
 
-		var sql = "INSERT OR REPLACE INTO settings(`key`, `value`, `type`) VALUES ($key, $value, $type)";
+		var inserted = 0;
+		var total = rows.length;
+		var params = null;
 		var db = database.getDb();
+		const sql = "INSERT OR REPLACE INTO settings(`key`, `value`, `type`) VALUES ($key, $value, $type)";
 		var stmt = db.prepare(sql);
-
-		var params = {},
-			row = {},
-			formattedRow,
-			inserted = 0;
 
 		db.run("BEGIN TRANSACTION");
 
-		for (const key in data) {
+		rows.forEach((row) => {
 
-			row = {
-				key: key,
-			};
-
-			if (typeof(data[key]) === 'object' && data[key].hasOwnProperty('value')) {
-				// Use value and type properties of object
-				row.value = data[key]['value'];
-				row.type = data[key]['type'];
-			} else {
-				// No value given, use the key's value as the actual value and get the type from already-loaded data (if present; otherwise presume string)
-				row.value = data[key];
-				row.type = (typeof(this.data[key]) !== 'undefined' ? this.data[key]['type'] : 'string');
-			}
-
-			formattedRow = this.sleepValue(row);
-
-			params = {
-				$key: formattedRow.key,
-				$value: formattedRow.value,
-				$type: formattedRow.type,
-			};
-
-			stmt.run(params, (err) => {
-
-				if (err) { reject(err); }
+			stmt.run(row, (err) => {
 
 				inserted++;
-				if (inserted >= Object.keys(data).length) {
-					stmt.finalize();
+
+				if (err) {
+					console.error(err);
+					return reject(err);
+				}
+
+				if (inserted >= total) {
+					console.log("Finished saving settings!");
 					db.run("COMMIT");
-					// console.log("Finished saving settings!");
+					stmt.finalize();
 					this.reloadSettings().then(() => resolve());
 				}
 
 			});
 
-		}
+		});
 
 	});
 
