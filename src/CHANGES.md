@@ -1,5 +1,11 @@
 # Living Lab Changelog
 
+## v1.28.1
+
+* Add link to CoSMoS on dashboard.
+* Add link to CoSMoS on Admin UI.
+
+
 ## v1.28.0
 
 * COSMOS: Add Export functionality.
