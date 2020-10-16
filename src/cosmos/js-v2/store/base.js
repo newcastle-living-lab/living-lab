@@ -52,7 +52,7 @@ export const getters = {
 	},
 
 	hasUser(state) {
-		return (state.config.user !== null && typeof state.config.user === 'object' && state.config.user.username ? true : false);
+		return (state.config.user !== null && typeof state.config.user === 'object' && state.config.user.email ? true : false);
 	},
 
 	hasEditRole(state, getters) {
@@ -349,5 +349,4 @@ export const actions = {
 			})
 		.then(() => commit('STOP_LOADING'));
 	}
-
 }

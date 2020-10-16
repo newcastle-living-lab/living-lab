@@ -1,5 +1,17 @@
 #!/usr/bin/env node
 
+var defaultConfig = {
+	db_path: null,
+	http_port: 1337,
+	socket_port: 1337,
+	require_auth: true,
+	session_driver: 'default',
+	secret: null,
+	auto_save: false,
+	single_instance: true,
+	fathom_site_id: false
+};
+
 var express = require("express"),
 	io = require("socket.io"),
 	http = require("http"),
@@ -11,6 +23,8 @@ var express = require("express"),
 	passport = require("passport"),
 	Strategy = require("passport-local").Strategy,
 	session = require("express-session"),
+	redis = require('redis'),
+	redisStore = require('connect-redis')(session),
 	// SQLiteStore = require('connect-sqlite3')(session),
 	cookieParser = require("cookie-parser"),
 	bodyParser = require("body-parser"),
@@ -22,6 +36,10 @@ var express = require("express"),
 	package = require("./package.json"),
 	routes = require("./routes/index.js");
 
+config = {...defaultConfig, ...config};
+
+const { v4: uuidv4 } = require('uuid');
+
 var app,
 	webSocket,
 	httpServer,
@@ -32,23 +50,32 @@ var VERSION = package.version;
 var initAuth = function() {
 
 	passport.use(new Strategy(function(username, password, cb) {
-		users.findByUsername(username, function(err, user) {
-			if (err) { return cb(err); }
-			if ( ! user) { return cb(null, false); }
-			if ( ! users.checkPassword(password, user.password)) { return cb(null, false); }
-			return cb(null, user);
-		});
+		users.authenticate(username, password)
+			.then(function(user) {
+				// console.log("Got user!");
+				// console.log(user);
+				cb(null, user);
+				return;
+			})
+			.catch(function(err) {
+				console.error("Auth: error: " + err);
+				return cb(null, false);
+			});
 	}));
 
 	passport.serializeUser(function(user, cb) {
-		cb(null, user.username);
+		cb(null, user.id);
 	});
 
 	passport.deserializeUser(function(id, cb) {
-		users.findByUsername(id, function (err, user) {
-			if (err) { return cb(err); }
-			cb(null, user);
-		});
+		users.getById(id)
+			.then(function(user) {
+				delete user.password;
+				cb(null, user);
+			})
+			.catch(function() {
+				cb(false);
+			});
 	});
 
 }
@@ -68,12 +95,33 @@ var initServers = function() {
 	app.use(bodyParser.urlencoded({ extended: true, limit: 50 * 1024 * 1024 }));
 
 	if (config.require_auth) {
-		app.use(session({
-			// store: new SQLiteStore,
+
+		var sessionConfig = {
+			name: 'livinglab',
 			secret: config.secret,
 			resave: false,
 			saveUninitialized: false
-		}));
+		}
+
+		if (config.session_driver === 'redis') {
+
+			var redisClient = redis.createClient();
+			redisClient.on('error', function(err) {
+			  console.error('Redis error: ', err);
+			});
+
+			sessionConfig.genid = function(req) {
+				return uuidv4();
+			}
+			sessionConfig.store = new redisStore({
+				host: 'localhost',
+				port: 6379,
+				client: redisClient,
+			});
+
+		}
+
+		app.use(session(sessionConfig));
 		app.use(cookieParser());
 		app.use(passport.initialize());
 		app.use(passport.session());

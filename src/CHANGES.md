@@ -1,5 +1,11 @@
 # Living Lab Changelog
 
+## v1.28.0
+
+* COSMOS: Add Export functionality.
+* Living Lab: Added User Admin functionality.
+
+
 ## v1.27.0
 
 * COSMOS: Add User Guide.

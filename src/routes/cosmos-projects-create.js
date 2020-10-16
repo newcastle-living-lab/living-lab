@@ -11,7 +11,7 @@ exports.handler = function(req, res, next) {
 	var username = null;
 
 	if (require_auth) {
-		username = req.user.username;
+		username = req.user.email;
 	}
 
 	var decodedBody = req.body;
@@ -19,7 +19,7 @@ exports.handler = function(req, res, next) {
 	var params = {
 		$name: decodedBody.name,
 		$created_at: decodedBody.created_at,
-		$modified_at: decodedBody.modified_at,
+		$modified_at: null,
 		$created_by: username,
 		$data: JSON.stringify({}),
 	};

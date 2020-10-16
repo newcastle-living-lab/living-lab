@@ -14,10 +14,7 @@ exports.handler = function(req, res) {
 	};
 
 	if (req.user) {
-		config.user = {
-			username: req.user.username,
-			roles: req.user.roles,
-		}
+		config.user = req.user;
 	}
 
 	return res.render('cosmos.html', {

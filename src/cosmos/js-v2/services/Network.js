@@ -42,6 +42,16 @@ export default {
 		var endpoint = 'upload-image';
 		return http.post(endpoint, formData)
 			.then(res => res.data);
+	},
+
+	exportProject(id) {
+		return http.post(`export-project/${id}`)
+			.then(res => res.data)
+	},
+
+	importProject(formData) {
+		return http.post(`import-project`, formData)
+			.then(res => res.data)
 	}
 
 }

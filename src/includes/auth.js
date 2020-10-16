@@ -1,4 +1,6 @@
-var path = require("path");
+var path = require("path"),
+	ensureLoggedIn = require("connect-ensure-login").ensureLoggedIn;
+
 
 var config = require(path.join(process.cwd(), "config", "config.json"));
 var useAuth = (config && config.require_auth);
@@ -13,7 +15,9 @@ var useAuth = (config && config.require_auth);
 
 if (useAuth) {
 	exports.ensureRole = require("./ensure-role.js");
-	exports.ensureLoggedIn = require("connect-ensure-login").ensureLoggedIn;
+	exports.ensureLoggedIn = function() {
+		return ensureLoggedIn({ redirectTo: '/admin/account/login' });
+	}
 } else {
 	exports.ensureRole =
 	exports.ensureLoggedIn = function(options) {

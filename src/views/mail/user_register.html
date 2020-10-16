@@ -1,0 +1,10 @@
+{% extends "layouts/mail_html.html" %}
+
+{% block content %}
+
+<div class="invite-token">
+	<p>You have registered for an account on {{ app_name }}.</p>
+	<p><a href="{{ url }}">Complete your registration</a> by setting a password.</p>
+</div>
+
+{% endblock %}

@@ -65,36 +65,8 @@
 				</div>
 
 				<div class="column col-4">
-
-					<div class="card card-min card-new-project">
-						<div class="card-header">
-							<div class="card-title">Create new project</div>
-						</div>
-						<template v-if="userCanCreate">
-							<div class="card-body">
-								<NewProject v-model="newProject" class="card-content" />
-							</div>
-							<div class="card-footer">
-								<VButton
-									class="btn-primary"
-									@click="createProject"
-									:disabled="(canCreateNewProject ? false : true)"
-									:class="(canCreateNewProject ? '' : 'disabled')"
-								>Create</VButton>
-							</div>
-						</template>
-						<template v-else>
-							<div class="card-body">
-								<div class="tile tile-empty">
-									<div class="tile-content">
-										<div><alert-circle-icon size="16" /></div>
-										<div><a :href="loginUrl">Log in</a> to create a project.</div>
-									</div>
-								</div>
-							</div>
-						</template>
-					</div>
-
+					<NewProject :loginUrl="loginUrl" class="mb-8" />
+					<!-- <ImportProject :loginUrl="loginUrl" /> -->
 				</div>
 
 			</div>
@@ -112,12 +84,14 @@ import AlertCircleIcon from 'vue-feather-icons/icons/AlertCircleIcon';
 
 import Network from "@/services/Network";
 import NewProject from './NewProject';
+import ImportProject from './ImportProject';
 
 export default {
 
 	components: {
 		AlertCircleIcon,
 		NewProject,
+		ImportProject,
 	},
 
 	data() {
@@ -125,9 +99,6 @@ export default {
 			filter: {
 				query: '',
 				owner: '',
-			},
-			newProject: {
-				name: null,
 			},
 		}
 	},
@@ -140,23 +111,17 @@ export default {
 
 		...get([
 			'appName',
-			'userCanEdit',
-			'userCanCreate',
 			'user',
 			'hasAdminRole',
 			'requireAuth',
 		]),
-
-		canCreateNewProject() {
-			return (this.newProject.name && this.newProject.name.length > 0)
-		},
 
 		loginUrl() {
 			let currentRoute = this.$route.path;
 			let path = top.location.pathname.replace(currentRoute, '');
 			let uri = path + currentRoute;
 			uri = uri.replace('//', '/');
-			return '/login?ref=' + encodeURIComponent(uri);
+			return '/admin/account/login?ref=' + encodeURIComponent(uri);
 		},
 
 		filteredProjects() {
@@ -178,7 +143,7 @@ export default {
 			}
 
 			if (this.filter.owner == 'mine') {
-				items = filter(items, { created_by: this.user.username  });
+				items = filter(items, { created_by: this.user.email  });
 			}
 
 			return items;
@@ -191,10 +156,6 @@ export default {
 		fetchProjects: call('fetchProjects'),
 		clearProject: call('clearProject'),
 
-		createProject() {
-			Network.createProject(this.newProject)
-				.then(id => { this.$router.push('/' + id + '/dashboard'); });
-		},
 
 		setTitle() {
 			document.title = `${this.appName} [Living Lab]`;
