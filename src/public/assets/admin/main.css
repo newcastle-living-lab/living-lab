@@ -4660,11 +4660,14 @@ a.text-error:visited {
   line-height: 1;
   font-size: 0.84rem;
   color: #fff;
-  margin-right: 1.6rem;
+}
+
+.header .logo-link + .logo-link {
+  margin-left: 0.8rem;
 }
 
 .header .main-menu {
-  margin: 0;
+  margin: 0 0 0 1.6rem;
   padding: 0;
   display: inline-block;
   list-style: none;
