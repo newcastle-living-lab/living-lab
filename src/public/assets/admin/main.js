@@ -2081,9 +2081,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
-//
-//
 
 
 
@@ -2902,7 +2899,7 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vuex_pathify__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuex-pathify */ "./node_modules/vuex-pathify/dist/vuex-pathify.esm.js");
-/* harmony import */ var _services_Network__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/services/Network */ "./src/js/services/Network.js");
+/* harmony import */ var _adminRoot_services_Network__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @adminRoot/services/Network */ "./src/js/services/Network.js");
 //
 //
 //
@@ -2939,7 +2936,7 @@ __webpack_require__.r(__webpack_exports__);
     getUser: function getUser() {
       var _this = this;
 
-      _services_Network__WEBPACK_IMPORTED_MODULE_1__["default"].getAuthUser().then(function (user) {
+      _adminRoot_services_Network__WEBPACK_IMPORTED_MODULE_1__["default"].getAuthUser().then(function (user) {
         return _this.user = user;
       });
     },
@@ -2947,7 +2944,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this2 = this;
 
       Object(vuex_pathify__WEBPACK_IMPORTED_MODULE_0__["commit"])('START_LOADING');
-      _services_Network__WEBPACK_IMPORTED_MODULE_1__["default"].saveAccount(this.user).then(function (res) {
+      _adminRoot_services_Network__WEBPACK_IMPORTED_MODULE_1__["default"].saveAccount(this.user).then(function (res) {
         if (res.success) {
           Object(vuex_pathify__WEBPACK_IMPORTED_MODULE_0__["commit"])('SET_TOAST', {
             message: 'Your account has been updated.',
@@ -3050,7 +3047,7 @@ var tabs = [{
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vuex_pathify__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuex-pathify */ "./node_modules/vuex-pathify/dist/vuex-pathify.esm.js");
-/* harmony import */ var _services_Network__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/services/Network */ "./src/js/services/Network.js");
+/* harmony import */ var _adminRoot_services_Network__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @adminRoot/services/Network */ "./src/js/services/Network.js");
 //
 //
 //
@@ -3118,7 +3115,7 @@ __webpack_require__.r(__webpack_exports__);
       }
 
       Object(vuex_pathify__WEBPACK_IMPORTED_MODULE_0__["commit"])('START_LOADING');
-      _services_Network__WEBPACK_IMPORTED_MODULE_1__["default"].changePassword(this.currentPassword, this.newPassword1).then(function (res) {
+      _adminRoot_services_Network__WEBPACK_IMPORTED_MODULE_1__["default"].changePassword(this.currentPassword, this.newPassword1).then(function (res) {
         if (res.success) {
           Object(vuex_pathify__WEBPACK_IMPORTED_MODULE_0__["commit"])('SET_TOAST', {
             message: 'Your password has been updated.',
@@ -3159,7 +3156,7 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vuex_pathify__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuex-pathify */ "./node_modules/vuex-pathify/dist/vuex-pathify.esm.js");
-/* harmony import */ var _services_Network__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/services/Network */ "./src/js/services/Network.js");
+/* harmony import */ var _adminRoot_services_Network__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @adminRoot/services/Network */ "./src/js/services/Network.js");
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
@@ -3226,7 +3223,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       var _this = this;
 
       this.errorMessage = false;
-      _services_Network__WEBPACK_IMPORTED_MODULE_1__["default"].loginUser(this.loginForm.email, this.loginForm.password).then(function (res) {
+      _adminRoot_services_Network__WEBPACK_IMPORTED_MODULE_1__["default"].loginUser(this.loginForm.email, this.loginForm.password).then(function (res) {
         if (!res.success) {
           throw new Error(res && res.reason ? res.reason : 'Unknown error');
         }
@@ -3273,7 +3270,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vuex_pathify__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuex-pathify */ "./node_modules/vuex-pathify/dist/vuex-pathify.esm.js");
-/* harmony import */ var _services_Network__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/services/Network */ "./src/js/services/Network.js");
+/* harmony import */ var _adminRoot_services_Network__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @adminRoot/services/Network */ "./src/js/services/Network.js");
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
@@ -3340,7 +3337,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       var _this = this;
 
       this.errorMessage = false;
-      _services_Network__WEBPACK_IMPORTED_MODULE_1__["default"].registerUser(this.newUser).then(function (res) {
+      _adminRoot_services_Network__WEBPACK_IMPORTED_MODULE_1__["default"].registerUser(this.newUser).then(function (res) {
         if (res.success) {
           _this.$router.push({
             name: 'home'
@@ -3383,7 +3380,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vuex_pathify__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuex-pathify */ "./node_modules/vuex-pathify/dist/vuex-pathify.esm.js");
-/* harmony import */ var _services_Network__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/services/Network */ "./src/js/services/Network.js");
+/* harmony import */ var _adminRoot_services_Network__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @adminRoot/services/Network */ "./src/js/services/Network.js");
 //
 //
 //
@@ -3447,7 +3444,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       Object(vuex_pathify__WEBPACK_IMPORTED_MODULE_0__["commit"])('START_LOADING');
-      _services_Network__WEBPACK_IMPORTED_MODULE_1__["default"].checkUserVerifyToken(this.id, this.token).then(function (res) {
+      _adminRoot_services_Network__WEBPACK_IMPORTED_MODULE_1__["default"].checkUserVerifyToken(this.id, this.token).then(function (res) {
         if (res.success) {
           _this.user = res.user;
           _this.validToken = res.success;
@@ -3473,7 +3470,7 @@ __webpack_require__.r(__webpack_exports__);
         password: this.newPassword
       };
       Object(vuex_pathify__WEBPACK_IMPORTED_MODULE_0__["commit"])('START_LOADING');
-      _services_Network__WEBPACK_IMPORTED_MODULE_1__["default"].setInitialPassword(this.id, this.token, this.newPassword).then(function (res) {
+      _adminRoot_services_Network__WEBPACK_IMPORTED_MODULE_1__["default"].setInitialPassword(this.id, this.token, this.newPassword).then(function (res) {
         if (res.success) {
           Object(vuex_pathify__WEBPACK_IMPORTED_MODULE_0__["dispatch"])('fetchAuthUser').then(function (res) {
             _this2.$router.push({
@@ -3516,7 +3513,7 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vuex_pathify__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuex-pathify */ "./node_modules/vuex-pathify/dist/vuex-pathify.esm.js");
-/* harmony import */ var _services_Network__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/services/Network */ "./src/js/services/Network.js");
+/* harmony import */ var _adminRoot_services_Network__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @adminRoot/services/Network */ "./src/js/services/Network.js");
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
@@ -3641,6 +3638,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     'settings': Object
@@ -3659,7 +3664,7 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vuex_pathify__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuex-pathify */ "./node_modules/vuex-pathify/dist/vuex-pathify.esm.js");
-/* harmony import */ var _services_Network__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/services/Network */ "./src/js/services/Network.js");
+/* harmony import */ var _adminRoot_services_Network__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @adminRoot/services/Network */ "./src/js/services/Network.js");
 /* harmony import */ var _EmailSettings__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./EmailSettings */ "./src/js/modules/settings/EmailSettings.vue");
 /* harmony import */ var _GeneralSettings__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./GeneralSettings */ "./src/js/modules/settings/GeneralSettings.vue");
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
@@ -3768,7 +3773,7 @@ var tabs = [{
   id: 'email_settings',
   label: 'Email'
 }];
-var settingsKeys = ['users.enable_registration', 'smtp.from_name', 'smtp.from_email', 'smtp.from_email', 'smtp.auth_user', 'smtp.auth_pass', 'smtp.secure', 'smtp.port', 'smtp.host'];
+var settingsKeys = ['users.enable_registration', 'cosmos.auto_save', 'cosmos.fathom_site_id', 'smtp.from_name', 'smtp.from_email', 'smtp.from_email', 'smtp.auth_user', 'smtp.auth_pass', 'smtp.secure', 'smtp.port', 'smtp.host'];
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
     GeneralSettings: _GeneralSettings__WEBPACK_IMPORTED_MODULE_3__["default"],
@@ -3790,7 +3795,7 @@ var settingsKeys = ['users.enable_registration', 'smtp.from_name', 'smtp.from_em
       var _this = this;
 
       Object(vuex_pathify__WEBPACK_IMPORTED_MODULE_0__["commit"])('START_LOADING');
-      _services_Network__WEBPACK_IMPORTED_MODULE_1__["default"].getSettings(settingsKeys).then(function (res) {
+      _adminRoot_services_Network__WEBPACK_IMPORTED_MODULE_1__["default"].getSettings(settingsKeys).then(function (res) {
         return _this.settings = res.settings;
       }).then(function () {
         return Object(vuex_pathify__WEBPACK_IMPORTED_MODULE_0__["commit"])('STOP_LOADING');
@@ -3800,7 +3805,7 @@ var settingsKeys = ['users.enable_registration', 'smtp.from_name', 'smtp.from_em
       var _this2 = this;
 
       Object(vuex_pathify__WEBPACK_IMPORTED_MODULE_0__["commit"])('START_LOADING');
-      _services_Network__WEBPACK_IMPORTED_MODULE_1__["default"].saveSettings(this.settings).then(function (res) {
+      _adminRoot_services_Network__WEBPACK_IMPORTED_MODULE_1__["default"].saveSettings(this.settings).then(function (res) {
         if (res.success) {
           Object(vuex_pathify__WEBPACK_IMPORTED_MODULE_0__["commit"])('SET_TOAST', {
             message: 'Settings have been saved.',
@@ -3909,7 +3914,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue_feather_icons_icons_ClockIcon__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue-feather-icons/icons/ClockIcon */ "./node_modules/vue-feather-icons/icons/ClockIcon.js");
 /* harmony import */ var vue_feather_icons_icons_CheckIcon__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue-feather-icons/icons/CheckIcon */ "./node_modules/vue-feather-icons/icons/CheckIcon.js");
 /* harmony import */ var vue_feather_icons_icons_XIcon__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vue-feather-icons/icons/XIcon */ "./node_modules/vue-feather-icons/icons/XIcon.js");
-/* harmony import */ var _data_user_statuses__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @/data/user_statuses */ "./src/js/data/user_statuses.js");
+/* harmony import */ var _adminRoot_data_user_statuses__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @adminRoot/data/user_statuses */ "./src/js/data/user_statuses.js");
 //
 //
 //
@@ -3940,19 +3945,19 @@ __webpack_require__.r(__webpack_exports__);
       };
 
       switch (this.status) {
-        case _data_user_statuses__WEBPACK_IMPORTED_MODULE_3__["default"].CREATED:
+        case _adminRoot_data_user_statuses__WEBPACK_IMPORTED_MODULE_3__["default"].CREATED:
           config.tooltip = 'Pending';
           config.style.color = '#ff851b';
           config.icon = 'ClockIcon';
           break;
 
-        case _data_user_statuses__WEBPACK_IMPORTED_MODULE_3__["default"].VERIFIED:
+        case _adminRoot_data_user_statuses__WEBPACK_IMPORTED_MODULE_3__["default"].VERIFIED:
           config.tooltip = 'Active';
           config.style.color = '#2ecc40';
           config.icon = 'CheckIcon';
           break;
 
-        case _data_user_statuses__WEBPACK_IMPORTED_MODULE_3__["default"].DISABLED:
+        case _adminRoot_data_user_statuses__WEBPACK_IMPORTED_MODULE_3__["default"].DISABLED:
           config.tooltip = 'Disabled';
           config.style.color = '#ff4136';
           config.icon = 'XIcon';
@@ -3976,8 +3981,8 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vuex_pathify__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuex-pathify */ "./node_modules/vuex-pathify/dist/vuex-pathify.esm.js");
-/* harmony import */ var _services_Network__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/services/Network */ "./src/js/services/Network.js");
-/* harmony import */ var _data_user_statuses__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/data/user_statuses */ "./src/js/data/user_statuses.js");
+/* harmony import */ var _adminRoot_services_Network__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @adminRoot/services/Network */ "./src/js/services/Network.js");
+/* harmony import */ var _adminRoot_data_user_statuses__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @adminRoot/data/user_statuses */ "./src/js/data/user_statuses.js");
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
@@ -4053,10 +4058,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         label: 'View'
       }],
       statusOptions: [{
-        value: _data_user_statuses__WEBPACK_IMPORTED_MODULE_2__["default"].VERIFIED,
+        value: _adminRoot_data_user_statuses__WEBPACK_IMPORTED_MODULE_2__["default"].VERIFIED,
         label: 'Active'
       }, {
-        value: _data_user_statuses__WEBPACK_IMPORTED_MODULE_2__["default"].DISABLED,
+        value: _adminRoot_data_user_statuses__WEBPACK_IMPORTED_MODULE_2__["default"].DISABLED,
         label: 'Disabled'
       }]
     };
@@ -4066,7 +4071,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     getUser: function getUser() {
       var _this = this;
 
-      _services_Network__WEBPACK_IMPORTED_MODULE_1__["default"].getUser(this.id).then(function (user) {
+      _adminRoot_services_Network__WEBPACK_IMPORTED_MODULE_1__["default"].getUser(this.id).then(function (user) {
         return _this.user = user;
       });
     },
@@ -4074,7 +4079,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       var _this2 = this;
 
       Object(vuex_pathify__WEBPACK_IMPORTED_MODULE_0__["commit"])('START_LOADING');
-      _services_Network__WEBPACK_IMPORTED_MODULE_1__["default"].saveUser(this.user).then(function (res) {
+      _adminRoot_services_Network__WEBPACK_IMPORTED_MODULE_1__["default"].saveUser(this.user).then(function (res) {
         if (res.success) {
           Object(vuex_pathify__WEBPACK_IMPORTED_MODULE_0__["commit"])('SET_TOAST', {
             message: 'User details have been saved.',
@@ -4105,7 +4110,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     },
     resendInvite: function resendInvite() {
       Object(vuex_pathify__WEBPACK_IMPORTED_MODULE_0__["commit"])('START_LOADING');
-      _services_Network__WEBPACK_IMPORTED_MODULE_1__["default"].resendUserInvitationEmail(this.user.id).then(function () {
+      _adminRoot_services_Network__WEBPACK_IMPORTED_MODULE_1__["default"].resendUserInvitationEmail(this.user.id).then(function () {
         return Object(vuex_pathify__WEBPACK_IMPORTED_MODULE_0__["commit"])('SET_TOAST', {
           message: 'Email has been re-sent.',
           type: 'success',
@@ -4138,7 +4143,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vuex_pathify__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuex-pathify */ "./node_modules/vuex-pathify/dist/vuex-pathify.esm.js");
-/* harmony import */ var _services_Network__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/services/Network */ "./src/js/services/Network.js");
+/* harmony import */ var _adminRoot_services_Network__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @adminRoot/services/Network */ "./src/js/services/Network.js");
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
@@ -4208,7 +4213,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     submitForm: function submitForm() {
       var _this = this;
 
-      _services_Network__WEBPACK_IMPORTED_MODULE_1__["default"].inviteUser(this.newUser).then(function () {
+      _adminRoot_services_Network__WEBPACK_IMPORTED_MODULE_1__["default"].inviteUser(this.newUser).then(function () {
         Object(vuex_pathify__WEBPACK_IMPORTED_MODULE_0__["commit"])('SET_TOAST', {
           message: 'An invitation has been emailed to the user!',
           type: 'success',
@@ -4236,7 +4241,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vuex_pathify__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuex-pathify */ "./node_modules/vuex-pathify/dist/vuex-pathify.esm.js");
 /* harmony import */ var vue_feather_icons_icons_Trash2Icon__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue-feather-icons/icons/Trash2Icon */ "./node_modules/vue-feather-icons/icons/Trash2Icon.js");
-/* harmony import */ var _services_Network__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/services/Network */ "./src/js/services/Network.js");
+/* harmony import */ var _adminRoot_services_Network__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @adminRoot/services/Network */ "./src/js/services/Network.js");
 /* harmony import */ var _UserStatusIcon__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./UserStatusIcon */ "./src/js/modules/users/UserStatusIcon.vue");
 /* harmony import */ var _UserRoleIcon__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./UserRoleIcon */ "./src/js/modules/users/UserRoleIcon.vue");
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
@@ -4331,7 +4336,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       var _this = this;
 
       Object(vuex_pathify__WEBPACK_IMPORTED_MODULE_0__["commit"])('START_LOADING');
-      _services_Network__WEBPACK_IMPORTED_MODULE_2__["default"].getUsers().then(function (users) {
+      _adminRoot_services_Network__WEBPACK_IMPORTED_MODULE_2__["default"].getUsers().then(function (users) {
         return _this.users = users;
       }).then(function () {
         return Object(vuex_pathify__WEBPACK_IMPORTED_MODULE_0__["commit"])('STOP_LOADING');
@@ -4339,7 +4344,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     },
     deleteUser: function deleteUser(user) {
       if (confirm("Are you sure you want to delete this user?")) {
-        _services_Network__WEBPACK_IMPORTED_MODULE_2__["default"].deleteUser(user.id).then(function () {
+        _adminRoot_services_Network__WEBPACK_IMPORTED_MODULE_2__["default"].deleteUser(user.id).then(function () {
           return Object(vuex_pathify__WEBPACK_IMPORTED_MODULE_0__["commit"])('SET_TOAST', {
             message: 'User has been deleted.',
             type: 'success',
@@ -11410,39 +11415,20 @@ var render = function() {
               "section",
               { staticClass: "navbar-section section-logo" },
               [
-                _vm.config && _vm.config.homeUri
-                  ? _c(
-                      "a",
-                      {
-                        staticClass: "logo-link d-inline-block",
-                        attrs: { href: _vm.config.homeUri }
-                      },
-                      [
-                        _vm._v(
-                          "\n\t\t\t\t\t\t\t" +
-                            _vm._s(_vm.homeLabel) +
-                            "\n\t\t\t\t\t\t"
-                        )
-                      ]
-                    )
-                  : _vm._e(),
-                _vm._v(" "),
-                !_vm.config.homeUri
-                  ? _c(
-                      "router-link",
-                      {
-                        staticClass: "logo-link d-inline-block",
-                        attrs: { to: { name: "home" } }
-                      },
-                      [
-                        _vm._v(
-                          "\n\t\t\t\t\t\t\t" +
-                            _vm._s(_vm.homeLabel) +
-                            "\n\t\t\t\t\t\t"
-                        )
-                      ]
-                    )
-                  : _vm._e(),
+                _vm._l(_vm.config.header, function(label, link) {
+                  return _c(
+                    "a",
+                    {
+                      staticClass: "logo-link d-inline-block",
+                      attrs: { href: link }
+                    },
+                    [
+                      _vm._v(
+                        "\n\t\t\t\t\t\t\t" + _vm._s(label) + "\n\t\t\t\t\t\t"
+                      )
+                    ]
+                  )
+                }),
                 _vm._v(" "),
                 _c(
                   "ul",
@@ -11478,7 +11464,7 @@ var render = function() {
                   1
                 )
               ],
-              1
+              2
             ),
             _vm._v(" "),
             _c("section", { staticClass: "navbar-section section-user" }, [
@@ -13426,6 +13412,48 @@ var render = function() {
                     _vm.$set(_vm.settings, "users.enable_registration", $$v)
                   },
                   expression: "settings['users.enable_registration']"
+                }
+              })
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "VGroup",
+            { attrs: { name: "auto_save", label: "Auto-save projects" } },
+            [
+              _c("VCheck", {
+                attrs: { name: "auto_save", label: "Yes" },
+                model: {
+                  value: _vm.settings["cosmos.auto_save"],
+                  callback: function($$v) {
+                    _vm.$set(_vm.settings, "cosmos.auto_save", $$v)
+                  },
+                  expression: "settings['cosmos.auto_save']"
+                }
+              })
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "VGroup",
+            {
+              attrs: {
+                name: "fathom_site_id",
+                label: "Fathom tracking Site ID",
+                size: "sm"
+              }
+            },
+            [
+              _c("VInput", {
+                attrs: { type: "text", id: "fathom_site_id" },
+                model: {
+                  value: _vm.settings["cosmos.fathom_site_id"],
+                  callback: function($$v) {
+                    _vm.$set(_vm.settings, "cosmos.fathom_site_id", $$v)
+                  },
+                  expression: "settings['cosmos.fathom_site_id']"
                 }
               })
             ],
@@ -33350,13 +33378,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _plugins_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./plugins/router */ "./src/js/plugins/router.js");
 /* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./store */ "./src/js/store/index.js");
 /* harmony import */ var _App__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./App */ "./src/js/App.vue");
-/* harmony import */ var _components_layout_AppHeader__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @/components/layout/AppHeader */ "./src/js/components/layout/AppHeader.vue");
-/* harmony import */ var _components_layout_PageTitle__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @/components/layout/PageTitle */ "./src/js/components/layout/PageTitle.vue");
-/* harmony import */ var _components_layout_NoticeView__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @/components/layout/NoticeView */ "./src/js/components/layout/NoticeView.vue");
-/* harmony import */ var _components_layout_LoadingBar__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @/components/layout/LoadingBar */ "./src/js/components/layout/LoadingBar.vue");
-/* harmony import */ var _components_layout_ToastMessage__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @/components/layout/ToastMessage */ "./src/js/components/layout/ToastMessage.vue");
-/* harmony import */ var _components_layout_AppMeta__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @/components/layout/AppMeta */ "./src/js/components/layout/AppMeta.vue");
-/* harmony import */ var _components_layout_AppLogos__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! @/components/layout/AppLogos */ "./src/js/components/layout/AppLogos.vue");
+/* harmony import */ var _components_layout_AppHeader__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./components/layout/AppHeader */ "./src/js/components/layout/AppHeader.vue");
+/* harmony import */ var _components_layout_PageTitle__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./components/layout/PageTitle */ "./src/js/components/layout/PageTitle.vue");
+/* harmony import */ var _components_layout_NoticeView__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./components/layout/NoticeView */ "./src/js/components/layout/NoticeView.vue");
+/* harmony import */ var _components_layout_LoadingBar__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./components/layout/LoadingBar */ "./src/js/components/layout/LoadingBar.vue");
+/* harmony import */ var _components_layout_ToastMessage__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./components/layout/ToastMessage */ "./src/js/components/layout/ToastMessage.vue");
+/* harmony import */ var _components_layout_AppMeta__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./components/layout/AppMeta */ "./src/js/components/layout/AppMeta.vue");
+/* harmony import */ var _components_layout_AppLogos__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./components/layout/AppLogos */ "./src/js/components/layout/AppLogos.vue");
 /* harmony import */ var _services_Network__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./services/Network */ "./src/js/services/Network.js");
 
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.config.productionTip = false;
@@ -33416,9 +33444,14 @@ var getParams = function getParams(elt) {
   var data = {};
 
   for (var key in el.dataset) {
-    data[key] = formatVal(el.dataset[key]);
+    if (el.dataset[key].substr(0, 1) == '{') {
+      data[key] = JSON.parse(el.dataset[key]);
+    } else {
+      data[key] = formatVal(el.dataset[key]);
+    }
   }
 
+  console.log(data);
   return data;
 };
 
@@ -34609,8 +34642,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var vue_i18n__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue-i18n */ "./node_modules/vue-i18n/dist/vue-i18n.esm.js");
-/* harmony import */ var _data_language_json__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/data/language.json */ "./src/js/data/language.json");
-var _data_language_json__WEBPACK_IMPORTED_MODULE_2___namespace = /*#__PURE__*/__webpack_require__.t(/*! @/data/language.json */ "./src/js/data/language.json", 1);
+/* harmony import */ var _adminRoot_data_language_json__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @adminRoot/data/language.json */ "./src/js/data/language.json");
+var _adminRoot_data_language_json__WEBPACK_IMPORTED_MODULE_2___namespace = /*#__PURE__*/__webpack_require__.t(/*! @adminRoot/data/language.json */ "./src/js/data/language.json", 1);
 
 
 
@@ -34620,7 +34653,7 @@ var i18n = new vue_i18n__WEBPACK_IMPORTED_MODULE_1__["default"]({
   // set locale
   fallbackLocale: 'en',
   // set fallback locale
-  messages: _data_language_json__WEBPACK_IMPORTED_MODULE_2__
+  messages: _adminRoot_data_language_json__WEBPACK_IMPORTED_MODULE_2__
 });
 /* harmony default export */ __webpack_exports__["default"] = (i18n);
 
@@ -34638,10 +34671,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.esm.js");
-/* harmony import */ var _modules_home_routes__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/modules/home/routes */ "./src/js/modules/home/routes.js");
-/* harmony import */ var _modules_users_routes__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @/modules/users/routes */ "./src/js/modules/users/routes.js");
-/* harmony import */ var _modules_account_routes__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @/modules/account/routes */ "./src/js/modules/account/routes.js");
-/* harmony import */ var _modules_settings_routes__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @/modules/settings/routes */ "./src/js/modules/settings/routes.js");
+/* harmony import */ var _adminRoot_modules_home_routes__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @adminRoot/modules/home/routes */ "./src/js/modules/home/routes.js");
+/* harmony import */ var _adminRoot_modules_users_routes__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @adminRoot/modules/users/routes */ "./src/js/modules/users/routes.js");
+/* harmony import */ var _adminRoot_modules_account_routes__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @adminRoot/modules/account/routes */ "./src/js/modules/account/routes.js");
+/* harmony import */ var _adminRoot_modules_settings_routes__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @adminRoot/modules/settings/routes */ "./src/js/modules/settings/routes.js");
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
 
 function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -34690,7 +34723,7 @@ const routes = [
 var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
   base: '/admin/',
   mode: 'history',
-  routes: [].concat(_toConsumableArray(_modules_home_routes__WEBPACK_IMPORTED_MODULE_2__["default"]), _toConsumableArray(_modules_users_routes__WEBPACK_IMPORTED_MODULE_3__["default"]), _toConsumableArray(_modules_account_routes__WEBPACK_IMPORTED_MODULE_4__["default"]), _toConsumableArray(_modules_settings_routes__WEBPACK_IMPORTED_MODULE_5__["default"]))
+  routes: [].concat(_toConsumableArray(_adminRoot_modules_home_routes__WEBPACK_IMPORTED_MODULE_2__["default"]), _toConsumableArray(_adminRoot_modules_users_routes__WEBPACK_IMPORTED_MODULE_3__["default"]), _toConsumableArray(_adminRoot_modules_account_routes__WEBPACK_IMPORTED_MODULE_4__["default"]), _toConsumableArray(_adminRoot_modules_settings_routes__WEBPACK_IMPORTED_MODULE_5__["default"]))
 });
 /* harmony default export */ __webpack_exports__["default"] = (router);
 
@@ -34843,7 +34876,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "mutations", function() { return mutations; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "actions", function() { return actions; });
 /* harmony import */ var vuex_pathify__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuex-pathify */ "./node_modules/vuex-pathify/dist/vuex-pathify.esm.js");
-/* harmony import */ var _services_Network__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/services/Network */ "./src/js/services/Network.js");
+/* harmony import */ var _adminRoot_services_Network__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @adminRoot/services/Network */ "./src/js/services/Network.js");
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
@@ -34852,8 +34885,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
- // import debounce from 'lodash/debounce';
-// import Aspects from '@/aspects';
 
 
 var state = {
@@ -34910,7 +34941,7 @@ var actions = {
     var state = _ref2.state,
         commit = _ref2.commit;
     // commit('SET_AUTH_USER', null);
-    return _services_Network__WEBPACK_IMPORTED_MODULE_1__["default"].getAuthUser().then(function (user) {
+    return _adminRoot_services_Network__WEBPACK_IMPORTED_MODULE_1__["default"].getAuthUser().then(function (user) {
       commit('SET_AUTH_USER', user);
       return user;
     });
@@ -34919,7 +34950,7 @@ var actions = {
     var state = _ref3.state,
         commit = _ref3.commit,
         dispatch = _ref3.dispatch;
-    return _services_Network__WEBPACK_IMPORTED_MODULE_1__["default"].logoutUser().then(function (res) {
+    return _adminRoot_services_Network__WEBPACK_IMPORTED_MODULE_1__["default"].logoutUser().then(function (res) {
       commit('SET_AUTH_USER', null);
       dispatch('fetchAuthUser');
     });
@@ -34927,7 +34958,7 @@ var actions = {
   fetchLogos: function fetchLogos(_ref4) {
     var state = _ref4.state,
         commit = _ref4.commit;
-    return _services_Network__WEBPACK_IMPORTED_MODULE_1__["default"].getLogos().then(function (res) {
+    return _adminRoot_services_Network__WEBPACK_IMPORTED_MODULE_1__["default"].getLogos().then(function (res) {
       if (res.success && res.logos) {
         commit('SET_LOGOS', res.logos);
       }
