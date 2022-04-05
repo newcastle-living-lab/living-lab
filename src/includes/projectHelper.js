@@ -34,6 +34,25 @@ function load(projectId, cb) {
 
 
 /**
+ * Make folders for project if they don't exist.
+ *
+ */
+function ensureResourceFolder(id) {
+
+	var resourcesPath = fs.realpathSync(path.join(process.cwd(), "data", "resources"));
+
+	// First, check for `projects`
+	var projectsPath = path.join(resourcesPath, 'projects');
+	fs.mkdir(projectsPath, function(err) {});
+
+	var newFolderName = 'project-' + id;
+
+	var projectPath = path.join(resourcesPath, 'projects', newFolderName);
+	fs.mkdir(projectPath, function(err) {});
+}
+
+
+/**
  * Create an entry in the Players table for a given project
  *
  */
@@ -455,6 +474,7 @@ function exportProject(project, cb) {
 module.exports = {
 	"load": load,
 	"loadByName": loadByName,
+	"ensureResourceFolder": ensureResourceFolder,
 	"createPlayerEntry": createPlayerEntry,
 	"toPlayer": toPlayer,
 	"exportProject": exportProject,
