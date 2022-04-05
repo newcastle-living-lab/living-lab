@@ -200,8 +200,6 @@ function showDeleteFile(data) {
  */
 function fileRemove(data) {
 
-	console.log(data);
-
 	var ans = confirm('Are you sure you want to delete the selected file "' + data.name + '"?');
 
 	if ( ! ans) {

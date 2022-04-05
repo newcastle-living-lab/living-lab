@@ -4,8 +4,12 @@ function FileExplorer(container, hostaddr) {
 	this.document = $(document);
 	this.hostaddr = hostaddr;
 
+	this.PROJ_FOLDER_RE = /^project-([0-9]+)$/;
+
 	this.nodes = [];
 	this.currentPath = null;
+
+	this.projectFolders = {};
 
 	this.container.on('click', '[data-ui="item"][data-type="directory"]', $.proxy(this, 'onFolderClick'));
 	this.container.on('click', '[data-ui="item"][data-type="file"]', $.proxy(this, 'onFileClick'));
@@ -16,11 +20,24 @@ function FileExplorer(container, hostaddr) {
 	this.document.on('fx:folder_created', $.proxy(this, 'onFolderCreated'));
 
 	this.loadResources('/');
+	this.loadProjects();
 }
 
 
 FileExplorer.prototype.trigger = function(event, data) {
 	this.document.trigger("fx:" + event, data);
+}
+
+
+FileExplorer.prototype.loadProjects = function() {
+	$.getJSON(hostaddr + "/getprojects", $.proxy(function(data) {
+		var folderName, projectName;
+		for (var p in data) {
+			folderName = 'project-' + data[p].id;
+			projectName = data[p].name;
+			this.projectFolders[folderName] = projectName;
+		}
+	}, this));
 }
 
 
@@ -122,7 +139,14 @@ FileExplorer.prototype.navigate = function(path) {
 		this.container.append(this.renderFile(files[i]));
 	}
 
-	this.trigger('navigate', { path: path, files: files });
+	var segments = path.split('/');
+	var folder = segments.pop();
+	var alias = null;
+	if (this.PROJ_FOLDER_RE.test(folder)) {
+		alias = path.replace(folder, this.projectFolders[folder]);
+	}
+
+	this.trigger('navigate', { path: path, alias: alias, files: files });
 }
 
 
@@ -131,6 +155,10 @@ FileExplorer.prototype.navigate = function(path) {
  *
  */
 FileExplorer.prototype.renderFile = function(file) {
+
+	if (file.type === 'directory' && this.PROJ_FOLDER_RE.test(file.name)) {
+		file.name = this.projectFolders[file.name];
+	}
 
 	var item = $('<a>', {
 		'class': 'resourceicon',

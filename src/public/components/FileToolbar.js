@@ -97,12 +97,14 @@ FileToolbar.prototype.render = function() {
 		'class': 'filetoolbar-button btn-action-new',
 		'type': 'button',
 		'data-ui': 'new',
+		'title': 'Create new folder here',
 	}).html(this.icons.new);
 
 	this.uiDeleteBtn = $('<button>', {
 		'class': 'filetoolbar-button btn-action-delete',
 		'type': 'button',
 		'data-ui': 'delete',
+		'title': 'Delete this folder',
 	}).html(this.icons.delete);
 
 	buttons.append(this.uiNewBtn);
@@ -137,17 +139,27 @@ FileToolbar.prototype.onNavigate = function(evt, params) {
 		this.numItems = 0;
 	}
 
-	this.updatePath();
+	this.updatePath(params.alias);
 	this.updateButtonAvailability();
 }
 
 
-FileToolbar.prototype.updatePath = function() {
-	this.uiPath.text(currentPath);
+FileToolbar.prototype.updatePath = function(alias) {
+	var text = alias && alias.length ? alias : this.currentPath;
+	this.uiPath.text(text);
 }
 
 FileToolbar.prototype.updateButtonAvailability = function() {
-	if (this.numItems > 0) {
+
+	var isProject = this.currentPath === '/projects' || this.parentPath === '/projects';
+
+	if (isProject) {
+		this.uiNewBtn.prop('disabled', true);
+	} else {
+		this.uiNewBtn.prop('disabled', false);
+	}
+
+	if (this.numItems > 0 || isProject) {
 		this.uiDeleteBtn.prop('disabled', true);
 	} else {
 		this.uiDeleteBtn.prop('disabled', false);
