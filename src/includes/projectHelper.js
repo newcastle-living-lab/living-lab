@@ -6,6 +6,7 @@
 var os = require("os"),
 	fs = require("fs"),
 	path = require("path"),
+	rimraf = require("rimraf"),
 	nunjucks = require("nunjucks"),
 	_ = require('lodash/core'),
 	database = require("./database"),
@@ -49,6 +50,35 @@ function ensureResourceFolder(id) {
 
 	var projectPath = path.join(resourcesPath, 'projects', newFolderName);
 	fs.mkdir(projectPath, function(err) {});
+}
+
+
+/**
+ * Remove a projects resource folder by ID.
+ *
+ */
+function removeResourceFolder(id) {
+
+	if ( ! id || ! id.length) return false;
+
+	var folderName = 'project-' + id;
+
+	try {
+		var dir = fs.realpathSync(path.join(process.cwd(), "data", "resources", "projects", folderName));
+	} catch (e) {
+		console.error("Project resources dir " + folderName + " could NOT be found.");
+		return false;
+	}
+
+	rimraf(dir, function(err) {
+		if ( ! err) {
+			console.info("Project resources dir " + dir + " deleted.");
+		} else {
+			console.error("Project resources dir " + dir + " could NOT be deleted.");
+			console.error(err);
+		}
+	});
+
 }
 
 
@@ -475,6 +505,7 @@ module.exports = {
 	"load": load,
 	"loadByName": loadByName,
 	"ensureResourceFolder": ensureResourceFolder,
+	"removeResourceFolder": removeResourceFolder,
 	"createPlayerEntry": createPlayerEntry,
 	"toPlayer": toPlayer,
 	"exportProject": exportProject,

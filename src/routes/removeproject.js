@@ -1,6 +1,7 @@
 var url = require("url"),
 	database = require("../includes/database.js"),
 	eventLog = require("../includes/event-log"),
+	projectHelper = require("../includes/projectHelper.js"),
 	eventType = require("../includes/event-types");
 
 exports.method = "get";
@@ -15,6 +16,9 @@ exports.handler = function (req, res) {
 	db.run(sql, [pid], function (error) {
 		console.log(error);
 		console.log('Deleted project ' + pid);
+		// Remove resources folder
+		projectHelper.removeResourceFolder(pid);
+		// Log it
 		eventLog.log({
 			"type": eventType.DELETE_PROJECT,
 			"req": req,
