@@ -65,6 +65,8 @@ handlers.push(function(req, res, next) {
 
 				insid = pid;
 
+				projectHelper.ensureResourceFolder(insid);
+
 				projectHelper.createPlayerEntry({
 					name: pname,
 					id: pid
@@ -103,6 +105,8 @@ handlers.push(function(req, res, next) {
 				db.each("SELECT last_insert_rowid() AS id FROM Projects", function(err, row) {
 					insid = row.id;
 				}, function(err, rows) {
+
+					projectHelper.ensureResourceFolder(insid);
 
 					projectHelper.createPlayerEntry({
 						name: pname,
