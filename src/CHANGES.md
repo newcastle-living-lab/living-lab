@@ -1,5 +1,10 @@
 # Living Lab Changelog
 
+## v1.29.0
+
+* Living Lab: Automatically create linked resource folders when creating a new project, and remove them when the project is deleted.
+
+
 ## v1.28.1
 
 * Add link to CoSMoS on dashboard.
