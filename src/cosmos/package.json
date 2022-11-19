@@ -24,7 +24,7 @@
 		"laravel-mix": "^4.1.4",
 		"lodash": "^4.17.15",
 		"md5": "^2.2.1",
-		"resolve-url-loader": "^3.1.0",
+		"resolve-url-loader": "^5.0.0",
 		"sass": "^1.22.12",
 		"sass-loader": "^7.3.1",
 		"spectre.css": "^0.5.8",
