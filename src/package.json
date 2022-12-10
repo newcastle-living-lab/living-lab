@@ -35,7 +35,7 @@
 		"cross-env": "^6.0.3",
 		"dateformat": "^3.0.3",
 		"directory-tree": "^2.2.4",
-		"express": "^4.17.1",
+		"express": "^4.17.3",
 		"express-session": "^1.17.0",
 		"find-remove": "^2.0.1",
 		"formidable": "^1.2.2",
