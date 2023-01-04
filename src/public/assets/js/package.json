@@ -14,8 +14,8 @@
   },
   "devDependencies": {
     "uglifyjs-webpack-plugin": "^0.4.6",
-    "underscore-template-loader": "^0.8.0",
-    "webpack": "^3.5.5",
+    "underscore-template-loader": "^1.2.0",
+    "webpack": "^5.75.0",
     "webpack-merge": "^4.1.0"
   },
   "scripts": {
